@@ -1,0 +1,72 @@
+{Encoding of this file is UTF-8}
+
+	Кузнецов Алексей, ФИТ НГУ, 2007.
+	
+	Задание клиент-сервер на Java для GNU/Linux.
+	
+	Использованные библиотеки располагаются в директории lib
+	
+	Для сборки исползуйте Apache Ant 1.6.5 и JDK 1.6 (должно собираться и на 1.5) от 
+	Sun Mycrosystems. Имеющиеся цели сборки:
+	
+		client_distr
+		server_distr
+	
+	После сборки в директории distr появится все необходимое для запуска 
+	приложения. Скопируйте это содержимое в отдельную директорию, т.к
+	перед следующей сборкой содержимое директории distr очищается.
+	
+	ВНИМАНИЕ! Отправляемые списки IP-адресов клиента принимаются, но 
+	игнорируются. Для идентификации клиента используется IP-адрес хоста, 
+	от которого пришел запрос.
+	
+	Запуск клиента:
+	
+	JDK 1.6:
+
+		java -cp "*" com.swsoft.trial.client.Main --help
+		java -cp "*" com.swsoft.trial.client.Main -H <адрес сервера>
+		
+	JDK 1.5:
+	
+		java -cp client.jar:commons-cli-1.0.jar:commons-io-1.3.1.jar:\
+				 commons-lang-2.3.jar:serializer.jar:xalan.jar \
+				 com.swsoft.trial.client.Main --help
+		java -cp client.jar:commons-cli-1.0.jar:commons-io-1.3.1.jar:\
+				 commons-lang-2.3.jar:serializer.jar:xalan.jar \
+				 com.swsoft.trial.client.Main -H <адрес сервера>
+	
+	Запуск сервера:
+		
+	JDK 1.6:
+	
+		java -cp "*" com.swsoft.trial.server.Main --help
+		java -cp "*" com.swsoft.trial.server.Main
+		
+	JDK 1.5
+	
+		java -cp commons-cli-1.0.jar:commons-io-1.3.1.jar:commons-lang-2.3.jar:\
+				 log4j-1.2.14.jar:serializer.jar:xalan.jar:server.jar \
+				 com.swsoft.trial.server.Main --help
+		java -cp commons-cli-1.0.jar:commons-io-1.3.1.jar:commons-lang-2.3.jar:\
+				 log4j-1.2.14.jar:serializer.jar:xalan.jar:server.jar \
+				 com.swsoft.trial.server.Main
+				 
+	ВНИМАНИЕ: Если сервер нештатно завершает свобю работу сразу же после запуска, 
+			  то проверьте server.log
+	
+	Нештатное завершение работы: Если "echo $?" выдает ненулевое значение.
+				 
+	Останов сервера:
+	
+		Используйте:
+			kill <pid> или kill -s SIGTERM <pid>
+			Можно использовать Ctrl+C, если запущен в консоли
+		
+		(Сервер перехватывает эти сигналы и останавливается, возможно не мгновенно)
+			
+	Конфигурирование сервера:
+	
+		Используйте файл config.xml в директории с сборкой сервера. 
+		Он интуитивно понятен.
+			

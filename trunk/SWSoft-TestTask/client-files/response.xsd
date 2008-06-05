@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:element name="failures">
+    	<xsd:complexType>
+      		<xsd:sequence>
+				<xsd:element name="device" type="xsd:string" maxOccurs="unbounded" minOccurs="0"/>
+	  		</xsd:sequence>
+      		<xsd:attribute name="abnormal" type="xsd:boolean" use="required" />
+    	</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

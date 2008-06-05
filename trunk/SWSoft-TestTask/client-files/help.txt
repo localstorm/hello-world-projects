@@ -1,0 +1,17 @@
+Verifies if currently mounted devices have allowed file systems.
+Usage: <Launch Script> [OPTIONS]
+
+    -H, --host <Address>  Server's host
+    -P, --port <Port>     Server's port
+    -d, --dummy           Include pseudo-devices
+    -l, --loop            Include loopback addresses
+    -v, --version         Display version information and exit
+    -h, --help            Display this help and exit
+    
+
+Examples:
+    <Launch Script> -d  -H localhost
+    <Launch Script> -l -d -H localhost -P 1888
+		
+Report bugs to <localstorm@gmail.com>.
+
