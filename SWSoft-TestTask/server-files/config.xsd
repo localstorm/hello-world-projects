@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<xsd:element name="server">
+    	<xsd:complexType>
+      	<xsd:sequence>
+				<xsd:element name="conf" type="conf_type"/>
+				<xsd:element name="hosts" type="hosts_type" maxOccurs="1" minOccurs="0"/> 
+	  		</xsd:sequence>
+    	</xsd:complexType>
+	</xsd:element>
+  
+	<xsd:complexType name="conf_type">
+		<xsd:sequence>
+			<xsd:element name="port">
+				<xsd:simpleType>  
+					<xsd:restriction base="xsd:integer">  
+						<xsd:minInclusive value="1"/>  
+						<xsd:maxInclusive value="65535"/>  
+					</xsd:restriction>  
+				</xsd:simpleType>  
+			</xsd:element>
+			<xsd:element name="maxRequest">
+				<xsd:simpleType>  
+					<xsd:restriction base="xsd:integer">  
+						<xsd:minInclusive value="1"/>  
+					</xsd:restriction>  
+				</xsd:simpleType>  
+			</xsd:element>
+			<xsd:element name="queue">
+				<xsd:simpleType>  
+					<xsd:restriction base="xsd:integer">  
+						<xsd:minInclusive value="1"/>  
+						<xsd:maxInclusive value="32767"/>  
+					</xsd:restriction>  
+				</xsd:simpleType>  
+			</xsd:element>
+			<xsd:element name="threads">
+				<xsd:simpleType>  
+					<xsd:restriction base="xsd:integer">  
+						<xsd:minInclusive value="1"/>  
+						<xsd:maxInclusive value="1024"/>  
+					</xsd:restriction>  
+				</xsd:simpleType>  
+			</xsd:element>
+		</xsd:sequence>
+  	</xsd:complexType>
+
+  	<xsd:complexType name="hosts_type">
+		<xsd:sequence>
+			<xsd:element name="host" type="host_record" maxOccurs="unbounded" minOccurs="0"/>
+		</xsd:sequence>
+  	</xsd:complexType>
+
+  	<xsd:complexType name="host_record">
+		<xsd:sequence>
+        	<xsd:element name="allowed" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+    	</xsd:sequence>
+    	<xsd:attribute name="addr" type="xsd:string" use="required" />
+  	</xsd:complexType>
+
+	<xsd:complexType name="device_record">
+		<xsd:sequence>
+        	<xsd:element name="fs" type="xsd:string"/>
+        	<xsd:element name="name" type="xsd:string"/>
+    	</xsd:sequence>
+  	</xsd:complexType>
+  	
+</xsd:schema>

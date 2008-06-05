@@ -1,0 +1,12 @@
+Verifies if currently mounted client's devices have allowed file systems.
+Usage: <Launch Script> [OPTIONS]
+
+    -v, --version         Display version information and exit
+    -h, --help            Display this help and exit
+    
+
+Examples:
+    <Launch Script> -h -v
+    <Launch Script>
+		
+Report bugs to <localstorm@gmail.com>.

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<server>
+	<conf>
+		<port>1888</port>
+		<maxRequest>10240</maxRequest>
+		<queue>10</queue>
+		<threads>25</threads>
+	</conf>
+	<hosts>
+		<host addr="127.0.0.1">
+			<allowed>ext3</allowed>
+			<allowed>ext2</allowed>
+			<allowed>raiserfs</allowed>
+		</host>
+	</hosts>
+</server>

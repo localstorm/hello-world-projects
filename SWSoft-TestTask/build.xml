@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Test task" default="compile_all" basedir="."> 
+	
+	<property name="src" location="src"/>
+	<property name="distr" location="distr"/>
+	<property name="build" location="bin"/>
+	<property name="lib" location="lib"/>
+	<property name="client-files" location="client-files"/>
+	<property name="server-files" location="server-files"/>
+	<property name="server-config" location="server-config"/>
+
+	<target name="init">
+		<tstamp/>
+		<delete dir="${build}"/>
+		<mkdir dir="${build}"/>
+		<delete dir="${distr}"/>
+		<mkdir dir="${distr}"/>
+	</target>
+
+	<target name="compile_client" depends="init" description="compile the client source" >
+		<javac classpath="${lib}/commons-lang-2.3.jar;
+						  ${lib}/commons-io-1.3.1.jar;
+						  ${lib}/commons-cli-1.0.jar;
+						  ${lib}/xalan.jar"
+			   destdir="${build}">
+		    <src path="${src}/com/swsoft/trial/client;${src}/com/swsoft/trial/util;${src}/com/swsoft/trial/common"/>
+		</javac>
+	</target>
+	
+	<target name="compile_server" depends="init" description="compile the server source" >
+		<javac classpath="${lib}/commons-lang-2.3.jar;
+						  ${lib}/log4j-1.2.14.jar;
+						  ${lib}/commons-io-1.3.1.jar;
+						  ${lib}/commons-cli-1.0.jar;
+			  			  ${lib}/xalan.jar"
+			   destdir="${build}">
+		    <src path="${src}/com/swsoft/trial/server;${src}/com/swsoft/trial/util;${src}/com/swsoft/trial/common"/>
+		</javac>
+	</target>
+	
+	<target name="server_distr" depends="compile_server" description="generate server JAR distribution">
+		<copy todir="${build}">
+			<fileset dir="${server-files}" casesensitive="yes">
+				<filename name="**/*.*"/>
+			</fileset>
+		</copy>
+
+		<jar jarfile="${distr}/server.jar" basedir="${build}"/>
+		
+		<copy todir="${distr}">
+			<fileset dir="${lib}" casesensitive="yes">
+				<filename name="**/*.jar"/>
+			</fileset>
+		</copy>
+		
+		<copy todir="${distr}" file="${server-config}/config.xml"/>
+	</target>
+	
+	<target name="client_distr" depends="compile_client" description="generate client JAR distribution">
+
+		<copy todir="${build}">
+			<fileset dir="${client-files}" casesensitive="yes">
+				<filename name="**/*.*"/>
+			</fileset>
+		</copy>
+		
+		<jar jarfile="${distr}/client.jar" basedir="${build}"/>
+		
+		<copy todir="${distr}">
+			<fileset dir="${lib}" casesensitive="yes">
+				<filename name="**/*.jar"/>
+				<not>
+					<filename name="log4j-1.2.14.jar"/>
+				</not>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="compile_all" depends="compile_client, compile_server" description="compile client and server source"/>
+	
+</project>
