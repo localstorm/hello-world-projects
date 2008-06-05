@@ -1,0 +1,379 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>Java "Annotations"</title>        
+
+
+
+    
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="Content-Language" content="pt">
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="http://jroller.com/rss/brviking">
+        <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://jroller.com/rsd/brviking">
+
+    <script type="text/javascript" src="brviking_files/roller.js"></script>
+    <script type="text/javascript" src="brviking_files/global.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="brviking_files/base.css">
+    <link rel="stylesheet" type="text/css" href="brviking_files/theme.css">
+    <style type="text/css">
+                        
+.hCalendarMonthYearRowBig {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.hCalendarTableBig {
+  width: 95%;
+  border: dashed 1px #aaaaaa;
+  text-align : center;
+  padding: 5px;
+}
+
+.hCalendarMonthYearRowBig {
+  color: white;
+  background-color : #9191cd;
+  border: dashed 1px #aaaaaa;
+  width: 12%;
+}
+
+.hCalendarDayNameRowBig {
+  border: dashed 1px #aaaaaa;
+  background-color: #ffffff;
+  margin: 2px;
+  width: 12%;
+  font-weight: bold;
+}
+
+.bCalendarDayContentBig {
+  font-size: x-small;
+  padding: 3px 0px 3px 0px;
+}
+
+.hCalendarDayTitleBig {
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 25%;
+  padding: 3px 0 3px 0;
+  background: transparent;
+  color: #050505;
+  border-right: 1px solid #050505;
+  border-bottom: 1px solid #050505;
+  font-size: small;
+  text-align: center;
+  font-size: small;
+}
+
+.hCalendarDayBig {
+  vertical-align: top;
+  border: dashed 1px #aaaaaa;
+  background-color: #ffffff;
+  margin: 2px;
+  width: 12%;
+}
+
+TD.hCalendarDayCurrentBig {
+  vertical-align: top;
+  border: dashed 1px #aaaaaa;
+  background-color: #ffffff;
+  margin: 2px;
+  width: 12%;
+}
+
+TD.hCalendarDayLinkedBig {
+  vertical-align: top;
+  border-color: #8facc5; 
+  border-width: 1px; 
+  border-style: solid;  
+  background-color: #ffffff;
+  margin: 2px;
+  width: 12%;
+}
+
+TD.hCalendarDayNotInMonthBig {
+  vertical-align: top;
+  border: dashed 1px #aaaaaa;
+  background-color: #ffffff;
+  margin: 2px;
+  width: 12%;
+}
+
+.hCalendarDayNameRowBig {
+  border: dashed 1px #aaaaaa;
+  background-color: #ffffff;
+  margin: 2px;
+  width: 12%;
+  font-weight: bold;
+}
+
+.hCalendarNextPrevBig {
+  border: dashed 1px #aaaaaa;
+  background-color: #ffffff;
+  margin: 2px;
+  width: 12%;
+}
+
+    </style></head><body>
+
+
+
+<div id="MainColumn">
+   <div align="center">
+       <h2>Java "Annotations"</h2>
+       
+    <div class="rWeblogCategoryChooser">
+                <span class="rChosenCategory">All</span>
+    
+                        |
+                    <span class="rUnchosenCategory"><a href="http://www.jroller.com/page/brviking?catname=%2FGeneral">General</a></span>
+                            |
+                    <span class="rUnchosenCategory"><a href="http://www.jroller.com/page/brviking?catname=%2FStatus">Status</a></span>
+                            |
+                    <span class="rUnchosenCategory"><a href="http://www.jroller.com/page/brviking?catname=%2FJava">Java</a></span>
+                            |
+                    <span class="rUnchosenCategory"><a href="http://www.jroller.com/page/brviking?catname=%2FTechnology">Technology</a></span>
+                </div>
+   </div>
+            <div class="next-previous">
+                <a href="http://www.jroller.com/page/brviking">Weblog</a>
+                |     <span id="nextEntry">
+            <a href="http://www.jroller.com/page/brviking?entry=configuring_netbeans_embedded_tomcat_for" title="Next Entries">Configuring NetBeans Embedded ... »</a>
+        </span>
+        </div>
+                            
+<div class="box">
+
+<h2 class="box">
+      <a href="http://www.jroller.com/page/brviking/20060605"><img class="daypermalink" src="brviking_files/permalink.gif" title="Permanent link to this day" alt="20060605"></a>
+      Monday June 05, 2006    </h2>   
+  <a name="glassfish_for_tomcat_users_jdbc" id="glassfish_for_tomcat_users_jdbc"></a>
+  <b>Glassfish for Tomcat Users - JDBC Authentication</b>
+                                 
+<p>Hi!</p>
+
+
+<p>I'm glad to say I could get JDBC Auth and Authorization working like
+a charm in Glassfish, after reading Petr Blaha's tutorials, and writing
+my own custom module.<br>
+His excellent tutorial about LDAP auth (<a href="http://blogs.sun.com/roller/trackback/pblaha/Weblog/ldap_authentication_in_sun_application">see it here</a>) was my major guide in this work.</p>
+
+
+<p>Why another JDBC authentication, if Glassfish will have one in r.1?
+First of all, because it's already here, don't wait to get it used.
+Second, this one uses exatly same parameters as Tomcat JDBC
+implementation uses, accelerating adoption of Glassfish.</p>
+
+
+<p>After creating this library, I was able to convert five projects
+from Tomcat to Glassfish in matter of few hours. Just time to configure
+NB 5.5 daily build, change projects from Tomcat to Glassfish, create
+JDBC/Datasources on server and then deploy. No changes in my code at
+all.</p>
+
+
+<p>The library I wrote is free to anyone who want to use it (I just ask
+to every one who uses it to send me a digital photo from his location <img src="brviking_files/wink.htm" class="smiley" alt=";-)" title=";-)"> , e-mail is on the sources).</p>
+
+
+<p>I originally published the steps needed to put things working on nbj2ee mail list, and source code is included.</p>
+
+
+<p>I could get all my web projects from Tomcat working fine under Glassfish with this library, but I give to you NO GUARANTEES.</p>
+
+
+<p>All paths bellow suppose you installed SunApp Server 9 FCS on
+C:\Sun\AppServer (but all this steps should work with other paths and
+other SO). So, adjust all to your paths.</p>
+
+
+<p><step-by-step></step-by-step></p>
+
+
+<p>1) Put .jar into C:\Sun\AppServer\lib\addons\ . You should download latest release from <a href="http://jroller.com/resources/b/brviking/JdbcAuthModule.jar">JdbcAuthModule.jar</a></p>
+
+
+<p>2) Add to the file
+C:\Sun\AppServer\domains\domain1\config\login.conf the following lines
+(this is fundamental so App server will know who is responsible for
+logins using the jdbc realm!):</p>
+
+
+<p>jdbcRealm {<br>
+  org.nbcommunity.glassfish.jdbcAuthModule.JdbcLoginModule required;<br>
+};</p>
+
+
+<p>3) Start SunApp Server (or Glassfish)</p>
+
+
+<p>4) In Web Admin console, goes to "Application Server -&gt; JVM
+Settings -&gt; Path Settings", then goes to field "Classpath suffix"
+and add "C:\Sun\AppServer\lib\addons\JdbcAuthModule.jar".</p>
+
+
+<p>5) Create a connection pool and a datasource. IMPORTANT: mark option
+"Allow Non Component Callers:", or your module will not be able to open
+the connection (for obvious security reasons).</p>
+
+
+<p>6) Create a realm (Configuration -&gt; Security -&gt; Realms). Name of realm you define here will be used on <realm-name> on web.xml after, so keep it in mind! Put following custom class name to your realm:</realm-name></p>
+
+
+<p>Class name: org.nbcommunity.glassfish.jdbcAuthModule.JdbcRealm</p>
+
+
+<p>7) Add following properties<br>
+jaas-context=jdbcRealm<br>
+debug = true<br>
+dataSource=DATASOURCE_NAME<br>
+userTable=USER_TABLE_NAME<br>
+userRoleTable=USER_ROLE_TABLE<br>
+userNameCol=USERNAME_COLUMN<br>
+userCredCol=PASSWORD_COLUMN<br>
+roleNameCol=ROLENAME_COLUMN</p>
+
+
+<p>Notes: The jaas-context came from step 2 above. Datasource name came
+from step 4 above. Change "UPPERCASE" above by your tables/columns
+names (if you don't know, don't ask me: who will know? <img src="brviking_files/wink.htm" class="smiley" alt=";-)" title=";-)"> )</p>
+
+
+<p>8) and final step, send a mail with a photo from your location to e-mail address indicated on the sources... :D</p>
+
+
+<p>That's it! Just create your web app, and don't forget to configure security section on web.xml.</p>
+
+
+<p></p>
+
+
+<p>Thanks to you all, NB and Glassfish team.</p>
+
+
+             Posted by brviking
+  <span class="dateStamp">(    Jun 05 2006, 11:22:16 AM BRT    )</span>
+      <a href="http://www.jroller.com/page/brviking?entry=glassfish_for_tomcat_users_jdbc" title="Permanent link to this weblog entry" class="entrypermalink">Permalink</a>
+            <br>
+  <br>
+    
+    
+</div>                    <div class="comments" id="comments">
+            <div class="comments-head">Comments:</div>
+                <br>
+        </div>
+                    Comments are closed for this entry.
+            <br>
+           <p style="text-align: center; font-size: x-small;">
+
+   <a href="http://validator.w3.org/check/referer">
+      <img src="brviking_files/valid-html401.png" alt="Valid HTML!" border="0"></a>
+
+   <a href="http://jigsaw.w3.org/css-validator/check/referer">
+      <img src="brviking_files/vcss.png" alt="Valid CSS!" border="0"></a>
+
+   <br>
+   <br>
+   This is a personal weblog, I do <i>not</i> speak for my employer.<br>
+
+</p></div>
+
+        <div id="SideBar">
+
+<div class="box">
+<h2 class="box">calendar</h2>
+<center>    <a href="http://www.jroller.com/"><img src="brviking_files/jroller-badge.gif" border="0"></a>&nbsp;<a href="http://www.javalobby.org/"><img src="brviking_files/javalobby-badge.gif" border="0"></a>        
+    <table summary="Blog Archive Calendar" class="hCalendarTable" border="0" cellspacing="0"><tbody><tr><td colspan="7" class="hCalendarMonthYearRow" align="center"><a href="http://www.jroller.com/page/brviking/20060531" title="Prev" class="hCalendarNavBar">«</a> June 2006 <a href="http://www.jroller.com/page/brviking/20060731" title="Next" class="hCalendarNavBar">»</a></td></tr><tr><th class="hCalendarDayNameRow" align="center">Sun</th><th class="hCalendarDayNameRow" align="center">Mon</th><th class="hCalendarDayNameRow" align="center">Tue</th><th class="hCalendarDayNameRow" align="center">Wed</th><th class="hCalendarDayNameRow" align="center">Thu</th><th class="hCalendarDayNameRow" align="center">Fri</th><th class="hCalendarDayNameRow" align="center">Sat</th></tr><tr><td class="hCalendarDayNotInMonth">&nbsp;</td><td class="hCalendarDayNotInMonth">&nbsp;</td><td class="hCalendarDayNotInMonth">&nbsp;</td><td class="hCalendarDayNotInMonth">&nbsp;</td><td class="hCalendarDay"><div class="hCalendarDayTitle">1</div></td><td class="hCalendarDay"><div class="hCalendarDayTitle">2</div></td><td class="hCalendarDay"><div class="hCalendarDayTitle">3</div></td></tr><tr><td class="hCalendarDay"><div class="hCalendarDayTitle">4</div></td><td class="hCalendarDayLinked"><div class="hCalendarDayTitle"><a href="http://www.jroller.com/page/brviking/20060605">5</a></div></td><td class="hCalendarDay"><div class="hCalendarDayTitle">6</div></td><td class="hCalendarDayLinked"><div class="hCalendarDayTitle"><a href="http://www.jroller.com/page/brviking/20060607">7</a></div></td><td class="hCalendarDayLinked"><div class="hCalendarDayTitle"><a href="http://www.jroller.com/page/brviking/20060608">8</a></div></td><td class="hCalendarDay"><div class="hCalendarDayTitle">9</div></td><td class="hCalendarDay"><div class="hCalendarDayTitle">10</div></td></tr><tr><td class="hCalendarDay"><div class="hCalendarDayTitle">11</div></td><td class="hCalendarDay"><div class="hCalendarDayTitle">12</div></td><td class="hCalendarDay"><div class="hCalendarDayTitle">13</div></td><td class="hCalendarDay"><div class="hCalendarDayTitle">14</div></td><td class="hCalendarDay"><div class="hCalendarDayTitle">15</div></td><td class="hCalendarDay"><div class="hCalendarDayTitle">16</div></td><td class="hCalendarDay"><div class="hCalendarDayTitle">17</div></td></tr><tr><td class="hCalendarDay"><div class="hCalendarDayTitle">18</div></td><td class="hCalendarDay"><div class="hCalendarDayTitle">19</div></td><td class="hCalendarDay"><div class="hCalendarDayTitle">20</div></td><td class="hCalendarDay"><div class="hCalendarDayTitle">21</div></td><td class="hCalendarDay"><div class="hCalendarDayTitle">22</div></td><td class="hCalendarDay"><div class="hCalendarDayTitle">23</div></td><td class="hCalendarDay"><div class="hCalendarDayTitle">24</div></td></tr><tr><td class="hCalendarDay"><div class="hCalendarDayTitle">25</div></td><td class="hCalendarDay"><div class="hCalendarDayTitle">26</div></td><td class="hCalendarDayLinked"><div class="hCalendarDayTitle"><a href="http://www.jroller.com/page/brviking/20060627">27</a></div></td><td class="hCalendarDay"><div class="hCalendarDayTitle">28</div></td><td class="hCalendarDay"><div class="hCalendarDayTitle">29</div></td><td class="hCalendarDay"><div class="hCalendarDayTitle">30</div></td><td class="hCalendarDayNotInMonth">&nbsp;</td></tr><tr><td class="hCalendarDayNotInMonth">&nbsp;</td><td class="hCalendarDayNotInMonth">&nbsp;</td><td class="hCalendarDayNotInMonth">&nbsp;</td><td class="hCalendarDayNotInMonth">&nbsp;</td><td class="hCalendarDayNotInMonth">&nbsp;</td><td class="hCalendarDayNotInMonth">&nbsp;</td><td class="hCalendarDayNotInMonth">&nbsp;</td></tr><tr class="hCalendarNextPrev"><td colspan="7" align="center"><a href="http://www.jroller.com/page/brviking" class="hCalendarNavBar">Today</a></td></tr></tbody></table>
+</center>
+</div>
+
+<div class="box"><h2 class="box">search</h2>
+    <form id="searchForm" method="get" action="/search/brviking" style="margin: 0pt; padding: 0pt;" onsubmit="return validateSearch(this)">
+        <p>
+          <input id="q" name="q" size="20" maxlength="255" value="" type="text">
+                    <select name="c">
+          <option value="">- In Category -</option>
+                        <option>General</option>
+                        <option>Status</option>
+                        <option>Java</option>
+                        <option>Technology</option>
+                    </select>
+          <input value="Search" type="submit">
+        </p>
+    </form>
+    <script type="text/javascript">
+        function validateSearch(form) {
+            if (form.q.value == "") {
+                alert("Please enter a search term to continue.");
+                form.q.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+</div>
+
+<div class="box"><h2 class="box">navigation</h2>
+            <div class="rNavigationBar">
+         <br>
+    <a href="http://www.jroller.com/">Front Page</a>
+<br>
+    <a href="http://www.jroller.com/page/brviking/Archives">Archives</a>                                                                                                             
+                                     <br>
+Weblog <br>
+    <a href="http://www.jroller.com/login-redirect.jsp;jsessionid=ag45ak9NBGTcxhAQfh">Login</a>                </div>
+<br>
+<br>
+    
+</div>
+
+<div class="box"><h2 class="box">links</h2>
+<br>
+                       <ul class="rFolder">
+                    <li class="rFolderItem">
+                    <a href="http://www.eclipsezone.com/" title="" class="rBookmark0">EclipseZone.com</a>
+        </li>
+                <li class="rFolderItem">
+                    <a href="http://www.javablackbelt.com/" title="" class="rBookmark0">JavaBlackBelt.com</a>
+        </li>
+                <li class="rFolderItem">
+                    <a href="http://www.javaforge.com/" title="" class="rBookmark0">JavaForge.com</a>
+        </li>
+                <li class="rFolderItem">
+                    <a href="http://www.javalobby.org/" title="" class="rBookmark0">Javalobby.org</a>
+        </li>
+                <li class="rFolderItem">
+                    <a href="http://jroller.com/" title="" class="rBookmark0">JRoller.com</a>
+        </li>
+                <li class="rFolderItem">
+                    <a href="http://www.myjavaserver.com/" title="" class="rBookmark0">MyJavaServer.com</a>
+        </li>
+                   </ul>
+        <br>
+</div>
+
+<div class="box"><h2 class="box">rss feeds</h2>
+    <a href="http://www.jroller.com/rss/brviking"><img class="rssbadge" src="brviking_files/rssbadge.gif" alt="XML"></a>
+<br>
+    <a href="http://www.jroller.com/rss/brviking">All</a>
+    [<a href="http://www.jroller.com/rss/brviking?excerpts=true">excerpts</a>]<br>
+                <a href="http://www.jroller.com/rss/brviking?catname=/General">/General</a>
+        [<a href="http://www.jroller.com/rss/brviking?catname=/General&amp;excerpts=true">excerpts</a>]<br>
+            <a href="http://www.jroller.com/rss/brviking?catname=/Status">/Status</a>
+        [<a href="http://www.jroller.com/rss/brviking?catname=/Status&amp;excerpts=true">excerpts</a>]<br>
+            <a href="http://www.jroller.com/rss/brviking?catname=/Java">/Java</a>
+        [<a href="http://www.jroller.com/rss/brviking?catname=/Java&amp;excerpts=true">excerpts</a>]<br>
+            <a href="http://www.jroller.com/rss/brviking?catname=/Technology">/Technology</a>
+        [<a href="http://www.jroller.com/rss/brviking?catname=/Technology&amp;excerpts=true">excerpts</a>]<br>
+    <br>
+</div>
+
+<div class="box"><h2 class="box">referers</h2>
+Today's top referers<br>
+  
+</div>
+
+<br>
+<br>
+
+</div>
+        </body></html>
