@@ -37,7 +37,7 @@ public class Core {
 		}
 	}
 	
-	public boolean join() {
+	public synchronized boolean join() {
 		
 		if (coreThread!=null && coreThread.isAlive()) {
 			try { 
