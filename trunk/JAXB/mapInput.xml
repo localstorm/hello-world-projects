@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<map>
+   <entry>
+     <key>MyKey</key>
+     <value>1000</value>
+   </entry>
+   <entry>
+     <key>MyKey1</key>
+     <value>121</value>
+   </entry>
+</map> 
