@@ -1,0 +1,702 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <title>Обзор JAXB 2.0, 1.0 - МСС</title>
+
+        
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <script language="javascript">
+        var contextPath = '';
+        var i18n = [];
+    </script>
+
+                            <link rel="stylesheet" href="viewpage.action_files/main-action.css" type="text/css">
+            
+        <link rel="shortcut icon" href="https://portal.mss-holding.ru/images/icons/favicon.ico">
+    <link rel="icon" type="image/png" href="https://portal.mss-holding.ru/images/icons/favicon.png">
+        
+            <script type="text/javascript" src="viewpage.action_files/effects.js"></script>
+    
+
+        
+
+</head><body onload="placeFocus()">
+
+<div id="PageContent">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+            <td class="logocell">            <div class="spacenametitle-printable"><a href="https://portal.mss-holding.ru/display/IP"><img src="viewpage.action_files/confluence_logo.gif" align="absmiddle" border="0"></a> Интеграционная платформа</div>
+    </td>
+        </tr>
+    </tbody></table>
+
+	<table class="pagecontent" width="100%" border="0" cellpadding="0" cellspacing="0">
+		<tbody><tr>
+			<td class="pagebody" valign="top">
+				<div class="pageheader">
+					<span class="pagetitle">Обзор JAXB 2.0, 1.0</span>
+				</div>
+
+                <!--
+    Root decorator: all decisions about how a page is to be decorated via the
+                    inline decoration begins here.
+-->
+
+
+
+<!--
+    Switch based upon the context. However, for now, just delegate to a decorator
+    identified directly by the context.
+-->
+
+
+    
+    
+
+
+    
+    
+        
+    
+    
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+
+    <tbody><tr>
+        <td class="pagebody" valign="top">
+
+                        <table style="clear: both;" width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tbody><tr>
+                    <td class="pagecontent" valign="top" width="100%">
+
+                    
+                    
+                    
+                                                    
+                            <table style="margin-bottom: 5px;" width="100%" cellspacing="0">
+                                <tbody><tr>
+                                    <td valign="top" align="left">
+                                        <span class="smalltext">
+                                                        Добавлено     <a href="https://portal.mss-holding.ru/display/%7Eakuznetsov">Алексей Кузнецов</a>, последний раз изменено     <a href="https://portal.mss-holding.ru/display/%7Eakuznetsov">Алексей Кузнецов</a>  10.07.2008
+                      &nbsp;(<a href="https://portal.mss-holding.ru/pages/diffpages.action?pageId=9601121&amp;originalId=9830642">просмотр изменений</a>)
+              
+                                            
+ 
+<style type="text/css">
+div.auto_complete {
+    width: 350px;
+    background: #fff;
+}
+
+div.auto_complete ul {
+    border: 1px solid #888;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    list-style-type: none;
+}
+
+div.auto_complete ul li {
+    margin: 0;
+    padding: 3px;
+}
+
+div.auto_complete ul li.selected {
+    background-color: #ffb;
+}
+
+div.auto_complete ul strong.highlight {
+    color: #800;
+    margin: 0;
+    padding: 0;
+}
+</style>
+
+
+<!-- Delay the loading of the external javascript file needed for labels (as it takes too long to load and visibly holds loading of the page body) -->
+<!-- To do this without javascript errors over undefined functions, we need to declare stubs here (that are overrided later by the proper implementations) -->
+<script language="JavaScript" type="text/javascript">
+    function doAddLabel(hideTextfieldAfterAddParam)
+    {
+        // stub
+    }
+
+    function onAddLabel()
+    {
+        // stub
+    }
+
+    function showLabelsInput()
+    {
+        // stub
+    }
+</script>
+
+<!-- This is a hack to work around an apparent SiteMesh bug - http://jira.opensymphony.com/browse/SIM-198 -->
+
+
+<span class="error"><span class="errorMessage" id="errorSpan"></span></span>
+<form name="addLabelForm" method="" action="" onsubmit="doAddLabel(false); return false;" style="margin: 0px; padding: 0px;">
+    <div style="float: left;">Метки:&nbsp;</div>
+    <div id="labelsInfo" style="float: left; width: 90%;">
+        <span id="labelsList">
+                    (нет)
+                </span>
+                    <span id="editLabelsLink" class="inline-control-link" style="display: none;">
+            <a href="" onclick="onAddLabel(); showLabelsInput(); return false;">РЕДАКТИРОВАТЬ</a>
+        </span>
+            </div>
+    <br clear="all"><!-- Do not remove this line-break. You will make Safari cry. -->
+    <div id="labelInputSpan" style="display: none; clear: both;">
+        <br>
+        <div style="border: 1px solid rgb(204, 204, 204); padding: 8px; background-color: rgb(240, 240, 240);">
+
+        <div id="labelOperationErrorContainer" style="display: none;"><span class="error"><span class="errorMessage" id="labelOperationErrorMessage"></span></span></div>
+
+        <table width="100%">
+            <tbody><tr>
+                <td>
+                    <div class="formtitle" style="padding-bottom: 3px; font-size: 13px;">Добавить метки</div>
+                </td>
+                <td align="right"><div id="waitImageAndStatus" style="display: none; height: 16px;"><img alt="Wait Image" src="viewpage.action_files/wait.gif" align="absmiddle" border="0">&nbsp;<span id="labelOperationStatus" class="smalltext" style="vertical-align: middle;"></span></div></td>
+            </tr>
+            <tr><td width="50%">
+                    Введите метки для добавления к этой странице:<br>
+        <input autocomplete="off" id="labelName" name="labelsString" value="" class="monospaceInput" size="40" type="text">
+        <input onclick="doAddLabel(false); return false;" value="Добавить" type="submit"><input onclick="doAddLabel(true); return false;" value="Завершен" type="button">
+        <div style="display: none;" class="auto_complete" id="labelsAutocompleteList"></div>
+        <div class="smalltext">
+            <em>Подсказка </em> Ищите метку? Достаточно начать набирать название.
+        </div>
+        </td>
+            <td valign="top" width="50%">
+                <div id="suggestedLabelsSpan"></div>
+            </td>
+        </tr></tbody></table>
+        </div>
+    </div>
+</form>
+                                        </span>
+                                    </td>
+                                    <td valign="top" align="right">
+                                                                            </td>
+                                </tr>
+                            </tbody></table>
+
+                                                        
+                            <div class="wiki-content">
+                               <!-- wiki content -->
+            <table class="noteMacro" width="85%" align="center" border="0" cellpadding="5" cellspacing="8"><colgroup><col width="24"><col></colgroup><tbody><tr><td valign="top"><img src="viewpage.action_files/warning.gif" alt="" height="16" width="16" align="absmiddle" border="0"></td><td>Данный документ будет дополнен инструкциями по ручному аннотированию классов</td></tr></tbody></table>
+
+<h2><a name="ОбзорJAXB2.0,1.0-Содержание"></a>Содержание</h2>
+
+<style type="text/css">/*<![CDATA[*/
+div.rbtoc1215697892343 {margin-left: 1.5em;padding: 0px;}
+div.rbtoc1215697892343 ul {list-style: disc;margin-left: 0px;}
+div.rbtoc1215697892343 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class="rbtoc1215697892343">
+<ul>
+<ul>
+    <li><a href="#%D0%9E%D0%B1%D0%B7%D0%BE%D1%80JAXB2.0%2C1.0-%D0%A1%D0%BE%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D0%BD%D0%B8%D0%B5">Содержание</a></li>
+    <li><a href="#%D0%9E%D0%B1%D0%B7%D0%BE%D1%80JAXB2.0%2C1.0-%D0%A7%D1%82%D0%BE%D1%82%D0%B0%D0%BA%D0%BE%D0%B5JAXB">Что такое JAXB</a></li>
+    <li><a href="#%D0%9E%D0%B1%D0%B7%D0%BE%D1%80JAXB2.0%2C1.0-%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%801.%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8F%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D1%8B%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%D0%BF%D0%BEXML%D1%81%D1%85%D0%B5%D0%BC%D0%B5">Пример 1. Генерация структуры классов по XML-схеме</a></li>
+    <li><a href="#%D0%9E%D0%B1%D0%B7%D0%BE%D1%80JAXB2.0%2C1.0-%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%802.%D0%A0%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%D0%B8%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8FXML%D1%84%D0%B0%D0%B9%D0%BB%D0%B0.">Пример 2. Разбор и генерация XML-файла.</a></li>
+    <li><a href="#%D0%9E%D0%B1%D0%B7%D0%BE%D1%80JAXB2.0%2C1.0-%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%803.%D0%93%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D1%8FXML%D1%81%D1%85%D0%B5%D0%BC%D1%8B%D0%B8%D0%B7Java%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2.">Пример 3. Генерация XML-схемы из Java-классов.</a></li>
+    <li><a href="#%D0%9E%D0%B1%D0%B7%D0%BE%D1%80JAXB2.0%2C1.0-%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%804.%D0%95%D1%89%D1%91%D0%BE%D0%B4%D0%B8%D0%BD%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80">Пример 4. Ещё один практический пример</a></li>
+    <li><a href="#%D0%9E%D0%B1%D0%B7%D0%BE%D1%80JAXB2.0%2C1.0-%D0%9D%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%B5%D1%82%D0%BE%D0%BD%D0%BA%D0%BE%D1%81%D1%82%D0%B8JAXB">Некоторые тонкости JAXB</a></li>
+<ul>
+    <li><a href="#%D0%9E%D0%B1%D0%B7%D0%BE%D1%80JAXB2.0%2C1.0-%D0%9F%D0%B0%D1%80%D0%B0%D0%BB%D0%BB%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5%28concurrency%29">Параллельное исполнение (concurrency)</a></li>
+    <li><a href="#%D0%9E%D0%B1%D0%B7%D0%BE%D1%80JAXB2.0%2C1.0-%D0%A1%D0%BF%D0%B8%D1%81%D0%BA%D0%B8%2C%D0%BE%D1%82%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F%28Map%27%D1%8B%29">Списки, отображения (Map'ы)</a></li>
+    <li><a href="#%D0%9E%D0%B1%D0%B7%D0%BE%D1%80JAXB2.0%2C1.0-%D0%9F%D0%B5%D1%80%D0%B5%D0%BA%D1%80%D1%91%D1%81%D1%82%D0%BD%D1%8B%D0%B5%D1%81%D1%81%D1%8B%D0%BB%D0%BA%D0%B8">Перекрёстные ссылки</a></li>
+</ul>
+    <li><a href="#%D0%9E%D0%B1%D0%B7%D0%BE%D1%80JAXB2.0%2C1.0-%D0%A1%D1%81%D1%8B%D0%BB%D0%BA%D0%B8">Ссылки</a></li>
+</ul>
+</ul></div>
+
+<h2><a name="ОбзорJAXB2.0,1.0-ЧтотакоеJAXB"></a>Что такое JAXB</h2>
+
+<p>JAXB = Java API for XML Binding. Средство отображения Java-классов в
+XML и обратно. Реализация JAXB 2.0 имеется в стандартной поставке Java
+SE v.1.6, на которой написана серверная часть интеграционной платформы.
+В Интернете полно всяческой информации о JAXB, поэтому остановимся на
+основных и простейших приёмах работы с JAXB.</p>
+
+<table class="noteMacro" width="85%" align="center" border="0" cellpadding="5" cellspacing="8"><colgroup><col width="24"><col></colgroup><tbody><tr><td valign="top"><img src="viewpage.action_files/warning.gif" alt="" height="16" width="16" align="absmiddle" border="0"></td><td>JAXB 2.0 не совместим с Java SE 1.4.2</td></tr></tbody></table>
+<table class="infoMacro" width="85%" align="center" border="0" cellpadding="5" cellspacing="8"><colgroup><col width="24"><col></colgroup><tbody><tr><td valign="top"><img src="viewpage.action_files/information.gif" alt="" height="16" width="16" align="absmiddle" border="0"></td><td>Для сильных духом есть JAXB 1.0 <span class="nobr"><a href="https://jaxb.dev.java.net/servlets/ProjectDocumentList?folderID=4719&amp;expandFolder=4719&amp;folderID=4719" rel="nofollow">https://jaxb.dev.java.net/servlets/ProjectDocumentList?folderID=4719&amp;expandFolder=4719&amp;folderID=4719<sup><img class="rendericon" src="viewpage.action_files/linkext7.gif" alt="" height="7" width="7" align="absmiddle" border="0"></sup></a></span>.
+Версия 1.0 совместима с Java SE v.1.3 и выше. Распространяется в виде
+библиотеки. Однако работает JAXB 1.0 несколько иначе. Во-первых
+генерируются не JavaBeans, а интерфейс с реализацией. Во-вторых,
+фактически генерируется исходный код для конвертации объектов в XML и
+наоборот, что в версии 2.0 заменено на обработку аннотаций.
+<p>JAXB 2.0 сохраняет совместимость с версией 1.0, хотя нужно это
+скорее всего только в случае, если имеется большое количество
+унаследованного кода.</p></td></tr></tbody></table>
+
+<h2><a name="ОбзорJAXB2.0,1.0-Пример1.ГенерацияструктурыклассовпоXMLсхеме"></a>Пример 1. Генерация структуры классов по XML-схеме</h2>
+
+<p>В директории $JAVA_HOME/bin есть скрипт или исполняемый файл <b>xjc</b>. Его мы и будем использовать. Пусть имеется XML-схема:</p>
+
+<div class="code"><div class="codeHeader"><b>schema.xsd</b></div><div class="codeContent">
+<pre class="code-java">&lt;?xml version=<span class="code-quote">"1.0"</span> encoding=<span class="code-quote">"ISO-8859-1"</span> ?&gt;
+&lt;xs:schema xmlns:xs=<span class="code-quote">"http:<span class="code-comment">//www.w3.org/2001/XMLSchema"</span>&gt;
+</span>
+&lt;xs:element name=<span class="code-quote">"shiporder"</span>&gt;
+ &lt;xs:complexType&gt;
+  &lt;xs:sequence&gt;
+   &lt;xs:element name=<span class="code-quote">"orderperson"</span> type=<span class="code-quote">"xs:string"</span>/&gt;
+   &lt;xs:element name=<span class="code-quote">"shipto"</span>&gt;
+    &lt;xs:complexType&gt;
+     &lt;xs:sequence&gt;
+      &lt;xs:element name=<span class="code-quote">"name"</span> type=<span class="code-quote">"xs:string"</span>/&gt;
+      &lt;xs:element name=<span class="code-quote">"address"</span> type=<span class="code-quote">"xs:string"</span>/&gt;
+      &lt;xs:element name=<span class="code-quote">"city"</span> type=<span class="code-quote">"xs:string"</span>/&gt;
+      &lt;xs:element name=<span class="code-quote">"country"</span> type=<span class="code-quote">"xs:string"</span>/&gt;
+     &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+   &lt;/xs:element&gt;
+   &lt;xs:element name=<span class="code-quote">"item"</span> maxOccurs=<span class="code-quote">"unbounded"</span>&gt;
+    &lt;xs:complexType&gt;
+     &lt;xs:sequence&gt;
+      &lt;xs:element name=<span class="code-quote">"title"</span> type=<span class="code-quote">"xs:string"</span>/&gt;
+      &lt;xs:element name=<span class="code-quote">"note"</span> type=<span class="code-quote">"xs:string"</span> minOccurs=<span class="code-quote">"0"</span>/&gt;
+      &lt;xs:element name=<span class="code-quote">"quantity"</span> type=<span class="code-quote">"xs:positiveInteger"</span>/&gt;
+      &lt;xs:element name=<span class="code-quote">"price"</span> type=<span class="code-quote">"xs:decimal"</span>/&gt;
+     &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+   &lt;/xs:element&gt;
+  &lt;/xs:sequence&gt;
+  &lt;xs:attribute name=<span class="code-quote">"orderid"</span> type=<span class="code-quote">"xs:string"</span> use=<span class="code-quote">"required"</span>/&gt;
+ &lt;/xs:complexType&gt;
+&lt;/xs:element&gt;
+
+&lt;/xs:schema&gt;</pre>
+</div></div>
+
+<p>Мы желаем парсить файлы, удовлетворяющие этой схеме. Более того, мы
+хотим поддерживать соответствие наших объектных моделей и применяемых
+XML-схем. Этого можно добиться, сгенерировав Java-классы по данной
+XML-схеме. Выполним вот это:</p>
+
+<div class="code"><div class="codeHeader"><b>Команда шелла</b></div><div class="codeContent">
+<pre class="code-java">$JAVA_HOME/bin/xjc -p ru.mss.ip.proj.subproj.jaxb.binding schema.xsd</pre>
+</div></div>
+
+<p>В результате получим два сгенерированных класса:</p>
+
+<p>ru/mss/ip/proj/subproj/jaxb/binding/ObjectFactory.java<br>
+ru/mss/ip/proj/subproj/jaxb/binding/Shiporder.java</p>
+
+<p>Далее применяем эти классы. Важно заметить, что информация о том,
+как данный класс соответствует нашей XML-схеме хранится в нём самом
+(аннотации) и эти классы можно подвергать рефакторингу без нарушения
+отображения. Например вы можете переименовать <b>Shiporder</b> в <b>ShipOrder</b></p>
+
+<p>Отметим также, что внутри класса Shiporder объявлены статические
+классы Shiporder.Item, Shiporder.Shipto. В целом это удобно, но
+внутренние классы можно выносить, это не влияет на работу JAXB.
+Сгенерированный класс ObjectFactory, как оказалось, не обязателен (он
+нужен для совместимости с кодом, рассчитанным на JAXB 1.0. В JAXB 1.0
+объекты можно было создавать только с помощью этой фабрики.).
+Сгенерированные классы можно использовать и без этой фабрики, начиная с
+JAXB 2.0.</p>
+
+<p>Вообще говоря, несмотря на то, что сгенерированные классы легко
+можно модифицировать – делать этого без особенной нужды не стоит. Т.к.
+в этом случае теряется одно из преимуществ JAXB – синхронизация
+объектной модели и XML-схемы. Если схема изменится – придётся
+накатывать те же самые изменения на вновь сгенерированные классы.</p>
+
+<h2><a name="ОбзорJAXB2.0,1.0-Пример2.РазборигенерацияXMLфайла."></a>Пример 2. Разбор и генерация XML-файла.</h2>
+
+<p>Пусть имеется XML-файл, соответствующий XML-схеме из примера выше:</p>
+
+<div class="code"><div class="codeHeader"><b>file.xml</b></div><div class="codeContent">
+<pre class="code-java">&lt;?xml version=<span class="code-quote">"1.0"</span> encoding=<span class="code-quote">"ISO-8859-1"</span>?&gt;
+&lt;shiporder orderid=<span class="code-quote">"889923"</span> xmlns:xsi=<span class="code-quote">"http:<span class="code-comment">//www.w3.org/2001/XMLSchema-instance"</span> xsi:noNamespaceSchemaLocation=<span class="code-quote">"schema.xsd"</span>&gt;
+</span> &lt;orderperson&gt;John Smith&lt;/orderperson&gt;
+ &lt;shipto&gt;
+  &lt;name&gt;Ola Nordmann&lt;/name&gt;
+  &lt;address&gt;Langgt 23&lt;/address&gt;
+  &lt;city&gt;4000 Stavanger&lt;/city&gt;
+  &lt;country&gt;Norway&lt;/country&gt;
+ &lt;/shipto&gt;
+ &lt;item&gt;
+  &lt;title&gt;Empire Burlesque&lt;/title&gt;
+  &lt;note&gt;Special Edition&lt;/note&gt;
+  &lt;quantity&gt;1&lt;/quantity&gt;
+  &lt;price&gt;10.90&lt;/price&gt;
+ &lt;/item&gt;
+ &lt;item&gt;
+  &lt;title&gt;Hide your heart&lt;/title&gt;
+  &lt;quantity&gt;1&lt;/quantity&gt;
+  &lt;price&gt;9.90&lt;/price&gt;
+ &lt;/item&gt;</pre>
+</div></div>
+
+<p>Вот всё, что нужно, для того, чтобы превратить этот XML в объект Shiporder:</p>
+
+<div class="code"><div class="codeHeader"><b>Код для разбора XML</b></div><div class="codeContent">
+<pre class="code-java"><span class="code-keyword">public</span> <span class="code-keyword">static</span> void main(<span class="code-object">String</span>[] args) <span class="code-keyword">throws</span> JAXBException {
+    JAXBContext ctx = JAXBContext.newInstance(<span class="code-keyword">new</span> <span class="code-object">Class</span>[] {Shiporder.class});
+    Unmarshaller um = ctx.createUnmarshaller();
+    Shiporder c = (Shiporder) um.unmarshal(<span class="code-keyword">new</span> File(<span class="code-quote">"file.xml"</span>));
+    ....
+}</pre>
+</div></div>
+
+<p>Вот всё, что нужно, для того, чтобы превратить объект Shiporder в XML файл:</p>
+
+<div class="code"><div class="codeHeader"><b>Код для генерации XML</b></div><div class="codeContent">
+<pre class="code-java"><span class="code-keyword">public</span> <span class="code-keyword">static</span> void main(<span class="code-object">String</span>[] args) <span class="code-keyword">throws</span> JAXBException, IOException {
+
+    <span class="code-comment">// Заметим, что контекст инициаллизируется top-level классами. При инициаллизации контекста
+</span>    <span class="code-comment">// JAXB проходит по всем внутренним полям и их типы также включаются в контекст.
+</span>    JAXBContext ctx = JAXBContext.newInstance(<span class="code-keyword">new</span> <span class="code-object">Class</span>[] {Shiporder.class});
+    Marshaller mr = ctx.createMarshaller();
+    ....
+    Shiporder shipOrder = ...; <span class="code-comment">// Достаём где-нибудь объект Shiporder (например создаём сами)
+</span>    
+    FileOutputStream fos = <span class="code-keyword">new</span> FileOutputStream(<span class="code-quote">"output.xml"</span>);
+    mr.marshal(shipOrder, fos);
+    fos.close();
+}</pre>
+</div></div>
+
+<h2><a name="ОбзорJAXB2.0,1.0-Пример3.ГенерацияXMLсхемыизJavaклассов."></a>Пример 3. Генерация XML-схемы из Java-классов.</h2>
+
+<p>JAXB позволяет генерировать XML-схемы из аннотированных
+Java-классов. Хотя это и не так просто (нужно прописать кучу
+аннотаций), можно проверить, как это работает. Мы просто сгенерируем
+схему по тому классу, который мы сгенерировали в первом примере:</p>
+
+<div class="code"><div class="codeHeader"><b>Команда шелла</b></div><div class="codeContent">
+<pre class="code-java">$JAVA_HOME/bin/schemagen ru/mss/ip/proj/subproj/jaxb/binding/Shiporder.java</pre>
+</div></div>
+
+<p>Схема сгенерирована:</p>
+
+<div class="code"><div class="codeHeader"><b>schema1.xsd</b></div><div class="codeContent">
+<pre class="code-java">&lt;?xml version=<span class="code-quote">"1.0"</span> encoding=<span class="code-quote">"UTF-8"</span> standalone=<span class="code-quote">"yes"</span>?&gt;
+&lt;xs:schema version=<span class="code-quote">"1.0"</span> xmlns:xs=<span class="code-quote">"http:<span class="code-comment">//www.w3.org/2001/XMLSchema"</span>&gt;
+</span>
+  &lt;xs:element name=<span class="code-quote">"shiporder"</span>&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element name=<span class="code-quote">"orderperson"</span> type=<span class="code-quote">"xs:string"</span>/&gt;
+        &lt;xs:element name=<span class="code-quote">"shipto"</span>&gt;
+          &lt;xs:complexType&gt;
+            &lt;xs:sequence&gt;
+              &lt;xs:element name=<span class="code-quote">"name"</span> type=<span class="code-quote">"xs:string"</span>/&gt;
+              &lt;xs:element name=<span class="code-quote">"address"</span> type=<span class="code-quote">"xs:string"</span>/&gt;
+              &lt;xs:element name=<span class="code-quote">"city"</span> type=<span class="code-quote">"xs:string"</span>/&gt;
+              &lt;xs:element name=<span class="code-quote">"country"</span> type=<span class="code-quote">"xs:string"</span>/&gt;
+            &lt;/xs:sequence&gt;
+          &lt;/xs:complexType&gt;
+        &lt;/xs:element&gt;
+        &lt;xs:element name=<span class="code-quote">"item"</span> maxOccurs=<span class="code-quote">"unbounded"</span>&gt;
+          &lt;xs:complexType&gt;
+            &lt;xs:sequence&gt;
+              &lt;xs:element name=<span class="code-quote">"title"</span> type=<span class="code-quote">"xs:string"</span>/&gt;
+              &lt;xs:element name=<span class="code-quote">"note"</span> type=<span class="code-quote">"xs:string"</span> minOccurs=<span class="code-quote">"0"</span>/&gt;
+              &lt;xs:element name=<span class="code-quote">"quantity"</span> type=<span class="code-quote">"xs:integer"</span>/&gt;
+              &lt;xs:element name=<span class="code-quote">"price"</span> type=<span class="code-quote">"xs:decimal"</span>/&gt;
+            &lt;/xs:sequence&gt;
+          &lt;/xs:complexType&gt;
+        &lt;/xs:element&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name=<span class="code-quote">"orderid"</span> type=<span class="code-quote">"xs:string"</span> use=<span class="code-quote">"required"</span>/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+&lt;/xs:schema&gt;</pre>
+</div></div>
+
+<h2><a name="ОбзорJAXB2.0,1.0-Пример4.Ещёодинпрактическийпример"></a>Пример 4. Ещё один практический пример</h2>
+
+<p>Рассмотрим такую XML-схему:</p>
+
+<div class="code"><div class="codeContent">
+<pre class="code-java">&lt;?xml version=<span class="code-quote">"1.0"</span> encoding=<span class="code-quote">"UTF-8"</span> standalone=<span class="code-quote">"yes"</span>?&gt;
+&lt;xs:schema version=<span class="code-quote">"1.0"</span> xmlns:xs=<span class="code-quote">"http:<span class="code-comment">//www.w3.org/2001/XMLSchema"</span>&gt;
+</span> 
+ &lt;xs:element name=<span class="code-quote">"map"</span>&gt;
+   &lt;xs:complexType&gt;
+     &lt;xs:sequence&gt;
+       &lt;xs:element name=<span class="code-quote">"entry"</span> type=<span class="code-quote">"entryType"</span> minOccurs=<span class="code-quote">"0"</span> maxOccurs=<span class="code-quote">"unbounded"</span> /&gt;
+     &lt;/xs:sequence&gt;
+   &lt;/xs:complexType&gt;
+ &lt;/xs:element&gt;
+
+ &lt;xs:complexType name=<span class="code-quote">"entryType"</span>&gt;
+   &lt;xs:sequence&gt;
+     &lt;xs:element name=<span class="code-quote">"key"</span> minOccurs=<span class="code-quote">"0"</span> type=<span class="code-quote">"xs:string"</span>/&gt;
+     &lt;xs:element name=<span class="code-quote">"value"</span> minOccurs=<span class="code-quote">"0"</span> type=<span class="code-quote">"xs:<span class="code-object">long</span>"</span>/&gt;
+   &lt;/xs:sequence&gt;
+ &lt;/xs:complexType&gt;
+
+&lt;/xs:schema&gt;</pre>
+</div></div>
+
+<p>После того, как по данной схеме будут сгенерированы классы мы получим:</p>
+
+<div class="code"><div class="codeContent">
+<pre class="code-java"><span class="code-keyword">package</span> org.localstorm.jaxb.bound;
+
+<span class="code-keyword">import</span> java.util.ArrayList;
+<span class="code-keyword">import</span> java.util.List;
+<span class="code-keyword">import</span> javax.xml.bind.annotation.XmlAccessType;
+<span class="code-keyword">import</span> javax.xml.bind.annotation.XmlAccessorType;
+<span class="code-keyword">import</span> javax.xml.bind.annotation.XmlRootElement;
+<span class="code-keyword">import</span> javax.xml.bind.annotation.XmlType;
+
+
+/**
+ * &lt;p&gt;Java class <span class="code-keyword">for</span> anonymous complex type.
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "", propOrder = {
+    <span class="code-quote">"entry"</span>
+})
+@XmlRootElement(name = <span class="code-quote">"map"</span>)
+<span class="code-keyword">public</span> class Map {
+
+    <span class="code-keyword">protected</span> List&lt;EntryType&gt; entry;
+
+    <span class="code-comment">// Some docs here
+</span>    <span class="code-keyword">public</span> List&lt;EntryType&gt; getEntry() {
+        <span class="code-keyword">if</span> (entry == <span class="code-keyword">null</span>) {
+            entry = <span class="code-keyword">new</span> ArrayList&lt;EntryType&gt;();
+        }
+        <span class="code-keyword">return</span> <span class="code-keyword">this</span>.entry;
+    }
+
+}</pre>
+</div></div>
+
+<p>Заметим две вещи. Во-первых, метод класса Map, getEntry(),
+называется не очень правильно. Логично отрефакторить его в
+getEntryList() или getEntries(). На данный момент не ясно, как должна
+выглядеть XML-схема, чтобы метод сразу стал называться getEntries. По
+всей видимости, дело в том, как отображается &lt;xs:sequence&gt; в
+Java-классы. Хотя возможно это просто недоработка в JAXB.</p>
+
+<p>Во-вторых, данный класс не содержит внутренних классов. Как
+оказалось, это определяется самой схемой. В данном примере типы не
+вложены друг в друга, поэтому EntryType был сгенерирован отдельно.</p>
+
+<p>Названия типов и элементов в XML-схеме разумно делать согласно Camel-нотации: xxxxXxxxXxxXxx. Сравните:</p>
+
+<p>&lt;xs:element name="shiporder"/&gt; =&gt; Shiporder<br>
+&lt;xs:element name="shipOrder"/&gt; =&gt; ShipOrder</p>
+
+<table class="infoMacro" width="85%" align="center" border="0" cellpadding="5" cellspacing="8"><colgroup><col width="24"><col></colgroup><tbody><tr><td valign="top"><img src="viewpage.action_files/information.gif" alt="" height="16" width="16" align="absmiddle" border="0"></td><td>Заметим
+также, что при десериализации объектов из XML мы не указываем
+конкретный класс, который хотим получить. JAXB определяет это сам,
+исходя из своего контекста (JAXBContext).</td></tr></tbody></table>
+
+<h2><a name="ОбзорJAXB2.0,1.0-НекоторыетонкостиJAXB"></a>Некоторые тонкости JAXB</h2>
+
+<h3><a name="ОбзорJAXB2.0,1.0-Параллельноеисполнение(concurrency)"></a>Параллельное исполнение (concurrency)</h3>
+
+<p>Согласно <span class="nobr"><a href="https://jaxb.dev.java.net/faq/index.html#threadSafety" rel="nofollow">https://jaxb.dev.java.net/faq/index.html#threadSafety<sup><img class="rendericon" src="viewpage.action_files/linkext7.gif" alt="" height="7" width="7" align="absmiddle" border="0"></sup></a></span> классы Marshaller, Unmarshaller, Validator – <b>НЕ</b> являются thread-safe, в то же самое время, JAXBContext – является thread-safe.</p>
+
+<h3><a name="ОбзорJAXB2.0,1.0-Списки,отображения(Map'ы)"></a>Списки, отображения (Map'ы)</h3>
+
+<p>JAXB совершенно нормально поддерживает генерацию таких структур, как
+списки. В приведённом примере &lt;xs:sequence&gt; превращается в
+список. Однако генерировать отображения (Map'ы) не получится. Тут дело
+в том, что в XML-схемах нет такого понятия. Что может сделать? Можно
+аннотировать специальный метод, который даст нам другое представление
+для Map:</p>
+
+<div class="code"><div class="codeHeader"><b>java.util.Map Workaround</b></div><div class="codeContent">
+<pre class="code-java"><span class="code-comment">//Used only <span class="code-keyword">for</span> JAXB.  Helps deal w/ the underlying map.
+</span><span class="code-comment">//@XmlElementWrapper(name = <span class="code-quote">"courses"</span>)  
+</span><span class="code-comment">//Activate <span class="code-keyword">if</span> you want <span class="code-quote">"courses"</span> wrapper
+</span>@XmlElement(name=<span class="code-quote">"course"</span>)
+<span class="code-keyword">private</span> Course[] getXmlCourses()
+{
+   Course[] result = <span class="code-keyword">new</span> Course[courses.size()];
+    
+   <span class="code-object">int</span> e=0;
+   <span class="code-keyword">for</span> (<span class="code-object">String</span> id : courses.keySet()) {
+     result[e++] = courses.get(id);
+   }
+ 
+    <span class="code-keyword">return</span> result;
+}
+  
+<span class="code-comment">//Used only <span class="code-keyword">for</span> JAXB.  Helps deal w/ the underlying map.
+</span><span class="code-keyword">private</span> void setXmlCourses(Course[] replacements)
+{
+   courses.clear();
+   <span class="code-keyword">for</span> (Course c : replacements) {
+     courses.put(c.id, c);
+   }
+}</pre>
+</div></div>
+
+<p>Взято отсюда: <span class="nobr"><a href="http://forums.java.net/jive/thread.jspa?threadID=37764&amp;tstart=15" rel="nofollow">http://forums.java.net/jive/thread.jspa?threadID=37764&amp;tstart=15<sup><img class="rendericon" src="viewpage.action_files/linkext7.gif" alt="" height="7" width="7" align="absmiddle" border="0"></sup></a></span></p>
+
+<h3><a name="ОбзорJAXB2.0,1.0-Перекрёстныессылки"></a>Перекрёстные ссылки</h3>
+
+<p>С перекрёстными ссылками, насколько интереснее. Вообще говоря, циклы
+JAXB не умеет укладывать в древовидные структуры самостоятельно
+(ругается ошибками). Но ему можно в этом помочь. Данная статья <span class="nobr"><a href="https://jaxb.dev.java.net/guide/Mapping_cyclic_references_to_XML.html" rel="nofollow">https://jaxb.dev.java.net/guide/Mapping_cyclic_references_to_XML.html<sup><img class="rendericon" src="viewpage.action_files/linkext7.gif" alt="" height="7" width="7" align="absmiddle" border="0"></sup></a></span> как раз посвящена таким сложным случаям. В кратце можно изложить так. Есть два варианта борьбы с циклами:</p>
+
+<ol>
+	<li>Следать одно из полей @XmlTransient, а потом при разборе
+заполнить его. Это подходит для т.н. родительских ссылок (Отдел
+содержит ссылки на сотрудников, а сотрудник ссылается на отдел, в
+котором работает)</li>
+	<li>Использовать ID-ссылки (xs:IDREF) вместо вложения при генерации XML: <span class="nobr"><a href="https://jaxb.dev.java.net/guide/Mapping_cyclic_references_to_XML.html#_XmlID_and__XmlIDREF" rel="nofollow">https://jaxb.dev.java.net/guide/Mapping_cyclic_references_to_XML.html#_XmlID_and__XmlIDREF<sup><img class="rendericon" src="viewpage.action_files/linkext7.gif" alt="" height="7" width="7" align="absmiddle" border="0"></sup></a></span></li>
+</ol>
+
+
+<p>В целом, проблема циклов решается достаточно просто.</p>
+
+
+<h2><a name="ОбзорJAXB2.0,1.0-Ссылки"></a>Ссылки</h2>
+
+<p>Вот ссылки, которые можно полистать:</p>
+
+<p><span class="nobr"><a href="https://jaxb.dev.java.net/" rel="nofollow">https://jaxb.dev.java.net/<sup><img class="rendericon" src="viewpage.action_files/linkext7.gif" alt="" height="7" width="7" align="absmiddle" border="0"></sup></a></span><br>
+<span class="nobr"><a href="http://java.sun.com/developer/technicalArticles/WebServices/jaxb/" rel="nofollow">http://java.sun.com/developer/technicalArticles/WebServices/jaxb/<sup><img class="rendericon" src="viewpage.action_files/linkext7.gif" alt="" height="7" width="7" align="absmiddle" border="0"></sup></a></span><br>
+<span class="nobr"><a href="https://jaxb.dev.java.net/guide/" rel="nofollow">https://jaxb.dev.java.net/guide/<sup><img class="rendericon" src="viewpage.action_files/linkext7.gif" alt="" height="7" width="7" align="absmiddle" border="0"></sup></a></span><br>
+<span class="nobr"><a href="https://jaxb.dev.java.net/guide/Running_JAXB_1_0_and_2_x_side_by_side.html" rel="nofollow">https://jaxb.dev.java.net/guide/Running_JAXB_1_0_and_2_x_side_by_side.html<sup><img class="rendericon" src="viewpage.action_files/linkext7.gif" alt="" height="7" width="7" align="absmiddle" border="0"></sup></a></span></p>
+                            </div>
+
+                            <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+    rdf:about="https://portal.mss-holding.ru/pages/viewpage.action?pageId=9601121"
+    dc:identifier="https://portal.mss-holding.ru/pages/viewpage.action?pageId=9601121"
+    dc:title="Обзор JAXB 2.0, 1.0"
+    trackback:ping="https://portal.mss-holding.ru/rpc/trackback/9601121"/>
+</rdf:RDF>
+-->
+
+                            
+                    
+                                <!--
+    Root decorator: all decisions about how a page is to be decorated via the
+                    inline decoration begins here.
+-->
+
+
+
+<!--
+    Switch based upon the context. However, for now, just delegate to a decorator
+    identified directly by the context.
+-->
+
+
+    
+    
+
+<div class="wiki-content" style="margin-right: 10px;">
+    <p style="clear: both;"><!-- comments should always display underneath the content. we should have a 'clear:both' here just in case there are floats or aligned images in the content -->
+
+    
+    
+    
+            
+            
+                                                    </p><div style="padding: 0pt;">
+        <a name="comment-9830437"></a>
+                <div class="commentBox" style="">
+            <div class="commentblock"><p>binded -&gt; bound или binding.</p></div>
+            <div class="smallfont" style="color: rgb(102, 102, 102); width: 98%;" align="left">
+                         <img src="viewpage.action_files/comment_16.gif" height="16" width="16" align="absmiddle" border="0">
+    
+                                
+                
+                                    Размещено     <a href="https://portal.mss-holding.ru/display/%7Enant">Никита Няньчук-Татарский</a>  <a href="https://portal.mss-holding.ru/pages/viewpage.action?pageId=9601121&amp;focusedCommentId=9830437#comment-9830437">07.07.2008 12:51</a>
+                
+                            </div>
+
+            <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+    rdf:about="https://portal.mss-holding.ru/pages/viewpage.action?pageId=9601121&focusedCommentId=9830437#comment-9830437"
+    dc:identifier="https://portal.mss-holding.ru/pages/viewpage.action?pageId=9601121&focusedCommentId=9830437#comment-9830437"
+    dc:title="$comment.title"
+    trackback:ping="https://portal.mss-holding.ru/rpc/trackback/9830437"/>
+</rdf:RDF>
+-->
+
+                    </div>
+        
+                                </div>
+                                        <div style="padding: 0pt;">
+        <a name="comment-9830440"></a>
+                <div class="commentBox" style="">
+            <div class="commentblock"><p>Верно, сейчас поправлю. Правда обзор ещё не закончен <img class="emoticon" src="viewpage.action_files/smile.gif" alt="" height="20" width="20" align="absmiddle" border="0"></p></div>
+            <div class="smallfont" style="color: rgb(102, 102, 102); width: 98%;" align="left">
+                         <img src="viewpage.action_files/comment_16.gif" height="16" width="16" align="absmiddle" border="0">
+    
+                                
+                
+                                    Размещено     <a href="https://portal.mss-holding.ru/display/%7Eakuznetsov">Алексей Кузнецов</a>  <a href="https://portal.mss-holding.ru/pages/viewpage.action?pageId=9601121&amp;focusedCommentId=9830440#comment-9830440">07.07.2008 14:58</a>
+                
+                            </div>
+
+            <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+    rdf:about="https://portal.mss-holding.ru/pages/viewpage.action?pageId=9601121&focusedCommentId=9830440#comment-9830440"
+    dc:identifier="https://portal.mss-holding.ru/pages/viewpage.action?pageId=9601121&focusedCommentId=9830440#comment-9830440"
+    dc:title="$comment.title"
+    trackback:ping="https://portal.mss-holding.ru/rpc/trackback/9830440"/>
+</rdf:RDF>
+-->
+
+                    </div>
+        
+                                </div>
+                            
+            
+    </div>
+
+
+
+                                                            </td>
+
+
+                                                    </tr>
+        </tbody></table>
+
+        
+        </td>
+    </tr>
+</tbody></table>
+			</td>
+		</tr>
+	</tbody></table>
+</div>
+
+  	                                <div class="bottomshadow"></div>
+  	<div id="poweredby" class="smalltext">
+		Powered by <a href="http://www.atlassian.com/wiki/?clicked=footer" class="smalltext">Atlassian Confluence</a>, the <a href="http://www.atlassian.com/wiki/?clicked=footer" class="smalltext">Enterprise Wiki</a>. (Version: 2.5.4 Build:#809 июн 12, 2007)
+		-
+		<a href="http://jira.atlassian.com/secure/BrowseProject.jspa?id=10471" class="smalltext">Ошибка/новая особенность</a>
+		-
+		<a href="https://portal.mss-holding.ru/administrators.action">Свяжитесь с Администраторами</a>
+		<br>
+	</div>
+
+<!-- delay the loading of large javascript files to the end so that they don't interfere with the loading of page content -->
+<span style="display: none;">
+    <script type="text/javascript" language="JavaScript">var domainName = 'https://portal.mss-holding.ru'; var entityId = '9601121'; var spaceKey = 'IP'</script>
+    <script type="text/javascript" language="JavaScript" src="viewpage.action_files/labels-javascript"></script>
+    <script>new Ajax.Autocompleter('labelName', 'labelsAutocompleteList', '9601121', { tokens: new Array(',', ' '), dwrFunction: GenerateAutocompleteLabelsListForEntity.autocompleteLabels});</script>
+</span>
+
+
+</body></html>
