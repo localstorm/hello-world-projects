@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
+
+  <persistence-unit name="gtdmcc-unit">
+    <jta-data-source>java:openejb/Resource/MCC_DB</jta-data-source>
+    <non-jta-data-source>java:openejb/Resource/MCC_DB_UNMANAGED</non-jta-data-source>
+    <!--properties>
+      <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
+    </properties-->
+  </persistence-unit>
+</persistence>
