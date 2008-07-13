@@ -1,0 +1,96 @@
+<project name="GTD-MCC" basedir="." default="dist">
+	
+        <property name="eelib.dir" value="ee-lib" />
+        <property name="lib.dir" value="lib" />
+	<property name="src.dir" value="src" />
+	<property name="build.dir" value="build" />
+	<property name="dist.dir" value="dist" />
+	<property name="tmp.dir" value="tmp" />
+	<property name="ejbres.dir" value="ejb-res" />
+        <property name="res.dir" value="web-res" />
+	<property name="pname" value="gtdmcc" />
+	
+	<path id="compile.classpath">
+		<fileset dir="${lib.dir}">
+	        	<include name="**/*.jar"/>
+	        </fileset>
+                <fileset dir="${eelib.dir}">
+	        	<include name="**/*.jar"/>
+	        </fileset>
+	 </path>
+	
+	<target name="clean">
+		<delete dir="${dist.dir}" />
+		<delete dir="${build.dir}" />
+	</target>
+	
+	<target name="prepare">
+		<mkdir dir="build" />
+		<mkdir dir="dist" />
+	</target>
+                
+	<target name="compile" depends="clean,prepare">
+		<javac srcdir="${src.dir}"  destdir="${build.dir}"  debug="true">
+                    <classpath refid="compile.classpath"/>
+                </javac>
+	</target>
+	
+        <target name="build-ejb-jar" depends="compile">
+             <mkdir dir="${tmp.dir}"/>			
+
+            <copy todir="${tmp.dir}/org/localstorm/mcc/ejb">
+            	<fileset dir="${build.dir}/org/localstorm/mcc/ejb" />
+            </copy>
+            
+            <copy todir="${tmp.dir}/META-INF">
+            	<fileset dir="${ejbres.dir}" />
+            </copy>
+		
+            <jar destfile="${dist.dir}/${pname}-ejb.jar" basedir="${tmp.dir}" />
+	
+            <delete dir="${tmp.dir}" /> 
+        </target>
+        
+        <target name="build-ejb-client" depends="compile">
+             <mkdir dir="${tmp.dir}"/>			
+
+            <copy todir="${tmp.dir}/org/localstorm/mcc/ejb">
+            	<fileset dir="${build.dir}/org/localstorm/mcc/ejb" casesensitive="yes">
+                    <include name="**/*.class"/>
+                    <exclude name="**/impl/*.class"/>
+                </fileset>
+            </copy>
+		
+            <jar destfile="${dist.dir}/${pname}-ejb-client.jar" basedir="${tmp.dir}" />
+	
+            <delete dir="${tmp.dir}" /> 
+        </target>
+        
+	<target name="build" depends="build-ejb-jar,build-ejb-client">
+		<mkdir dir="${tmp.dir}/WEB-INF/classes/org/localstorm/mcc/web"/>
+
+		<copy todir="${tmp.dir}">
+			<fileset dir="${res.dir}"  />
+		</copy>
+		
+		<copy todir="${tmp.dir}/WEB-INF/lib">
+			<fileset dir="${lib.dir}"  />
+		</copy>
+                
+                <copy todir="${tmp.dir}/WEB-INF/lib">
+			<fileset file="${dist.dir}/${pname}-ejb-client.jar"  />
+		</copy>
+                
+		<copy todir="${tmp.dir}/WEB-INF/classes/org/localstorm/mcc/web">
+			<fileset dir="${build.dir}/org/localstorm/mcc/web"  />
+		</copy>
+		
+		<jar destfile="${dist.dir}/${pname}.war" basedir="${tmp.dir}" />
+		
+		<delete dir="${tmp.dir}" /> 
+        </target>
+        
+        <target name="dist" depends="build"/>
+            
+        
+</project>
