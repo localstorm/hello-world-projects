@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="TechlogTest" default="build" basedir=".">
+
+    <!-- ====================== Property Definitions ======================= -->
+
+    <property name="dist.dir"		value="dist" />
+    <property name="build.dir"  	value="build" />
+    <property name="src.dir"  		value="src" />
+    <property name="lib.dir"  		value="lib" />
+    <property name="module.name" 	value="TechlogTest"/>
+
+    <!-- ====================== EJBGen Task Definition  ==================== -->
+
+    <taskdef name="junitee" classname="org.junitee.anttask.JUnitEETask">
+        <classpath>
+            <pathelement location="lib/junitee-anttask.jar"/>
+        </classpath>
+    </taskdef>
+
+    <!-- ===================== Compilation Classpath ======================= -->
+
+    <path id="compile.classpath">
+        <fileset dir="${lib.dir}">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <!-- ===================== Clean Target ================================ -->
+
+    <target name="clean"
+        description="Delete build and others temporary directories">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <!-- ===================== Prepare Target ============================== -->
+
+    <target name="prepare"
+        description="Prepare for build">
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${build.dir}/current/lib"/>
+        <mkdir dir="${build.dir}/current/deploy"/>
+        <mkdir dir="${build.dir}/current/server"/>
+    </target>
+
+    <!-- ===================== Compile Target ============================== -->
+
+    <target name="compile" depends="prepare"
+        description="Compile java sources">
+        <mkdir dir="${build.dir}/classes"/>
+        <javac srcdir="${src.dir}"
+            destdir="${build.dir}/classes"
+            debug="${compile.debug}"
+            deprecation="${compile.deprecation}"
+            optimize="${compile.optimize}">
+            <classpath refid="compile.classpath"/>
+        </javac>
+    </target>
+
+    <target name="client-jar" depends="compile"
+        description="Create client jar file">
+        <jar jarfile="${build.dir}/current/lib/${module.name}.jar">
+            <fileset dir="${build.dir}/classes">
+                <include name="**/*.class" />
+            </fileset>
+        </jar>
+    </target>
+
+
+    <target name="build" depends="compile,test-war"
+        description="Build module">
+    </target>
+
+    <!-- ===================== Rebuild Target ============================== -->
+
+    <target name="rebuild" depends="clean, build"
+        description="Rebuild module">
+    </target>
+
+    <!-- ===================== Dist Target ================================= -->
+
+    <target name="test-war" depends="compile,client-jar"
+            description="make war">
+        <mkdir dir="${build.dir}/war/WEB-INF/classes"/>
+        <mkdir dir="${build.dir}/war/WEB-INF/lib"/>
+        <mkdir dir="${build.dir}/current/deploy"/>
+
+        <copy todir="${build.dir}/war/WEB-INF">
+            <fileset dir="${src.dir}/WEB-INF"/>
+        </copy>
+
+        <copy todir="${build.dir}/war/WEB-INF/lib">
+            <fileset file="lib/junitee.jar" />
+            <!--fileset file="lib/commons-httpclient-2.0.2.jar" /-->
+            <fileset file="${build.dir}/current/lib/${module.name}.jar" />
+        </copy>
+
+        <copy todir="${build.dir}/war/">
+            <fileset dir="${src.dir}/">
+                <include name="*.xml"/>
+            </fileset>
+        </copy>
+
+        <copy todir="${build.dir}/war/WEB-INF/lib">
+            <fileset dir="${lib.dir}">
+                <include name="junit.jar"/>
+            </fileset>
+            <!--<fileset dir="${Common.lib.dir}">
+                <include name="**/*.jar" />
+            </fileset>-->
+        </copy>
+
+        <jar jarfile="${dist.dir}/${module.name}.war"
+            basedir="${build.dir}/war" includes="**/*.*"/>
+            
+	<delete dir="${build.dir}/war" />
+	<delete dir="${build.dir}/current" />
+
+    </target>
+
+    <!--target name="run.deploy.AllTests" description="Runs all unit and integrational tests" depends="deploy">
+        <ant dir="." target="run.nodeploy.AllTests" inheritAll="false"/>
+    </target-->
+
+    <target name="run.nodeploy.AllTests" description="Runs all unit and integrational tests">
+        <junitee url="http://localhost:8080/TechlogTest/JUnitEEXMLTest" printsummary="true" filtertrace="true" threaded="true">
+            <formatter type="plain"/> <!-- xml, brief? -->
+            <test todir="logs" name="ru.mss.ip.pms.techlog.tests.TechlogAllTest" />
+        </junitee>
+    </target>
+
+</project>
