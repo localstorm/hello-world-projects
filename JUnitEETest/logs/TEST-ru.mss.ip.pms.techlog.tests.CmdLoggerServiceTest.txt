@@ -1,0 +1,6 @@
+Testsuite: ru.mss.ip.pms.techlog.tests.CmdLoggerServiceTest
+Tests run: 1
+Errors: 0
+Failures: 0
+Time elapsed: 0.000 sec
+
