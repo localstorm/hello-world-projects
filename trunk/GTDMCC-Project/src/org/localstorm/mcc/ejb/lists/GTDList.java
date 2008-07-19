@@ -1,11 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-package org.localstorm.mcc.ejb.contexts;
+package org.localstorm.mcc.ejb.lists;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,15 +11,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import org.localstorm.mcc.ejb.users.User;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import org.localstorm.mcc.ejb.contexts.Context;
+
 
 /**
- *
  * @author localstorm
  */
 @Entity
-@Table(name="CONTEXTS")
-public class Context implements Serializable {   
+@Table(name="LISTS")
+public class GTDList implements Serializable {   
     
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY, generator="id")
@@ -35,22 +33,32 @@ public class Context implements Serializable {
     @Column(name="sort_order", unique=false, updatable=true, nullable=false )    
     private Integer sortOrder;
     
-    @JoinColumn(name="user_id", nullable=false)
+    @JoinColumn(name="context_id", nullable=false)
     @ManyToOne(fetch=FetchType.EAGER)
-    private User owner;
+    private Context context;
+    
+    @JoinColumn(name="type_id", nullable=false)
+    @ManyToOne(fetch=FetchType.EAGER)
+    private GTDListType type;
     
     @Column(name="is_archived", unique=false, updatable=true, nullable=false )    
     private boolean archived;
+    
+    @Column(name="creation", unique=false, updatable=true, nullable=false )    
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date creation;
 
-    public Context() 
+    public GTDList() 
     {
     
     }
 
-    public Context( String name, User owner ) {
-        this.name = name;
-        this.owner = owner;
-        this.archived = false;
+    public GTDList( String name, Context ctx, GTDListType type ) {
+        this.name       = name;
+        this.context    = ctx;
+        this.archived   = false;
+        this.creation   = new Date();
+        this.type       = type;
     }
     
     public Integer getId() {
@@ -61,12 +69,20 @@ public class Context implements Serializable {
         return name;
     }
 
-    public User getOwner() {
-        return owner;
-    }
-
     public Integer getSortOrder() {
         return sortOrder;
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public Date getCreation() {
+        return creation;
+    }
+
+    public GTDListType getType() {
+        return type;
     }
 
     public boolean isArchived() {
@@ -84,4 +100,13 @@ public class Context implements Serializable {
     public void setArchived(boolean archived) {
         this.archived = archived;
     }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
+    public void setType(GTDListType type) {
+        this.type = type;
+    }
+    
 }
