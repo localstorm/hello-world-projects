@@ -22,5 +22,6 @@ public interface ContextManager
     
     public Context findById( int id ) throws ObjectNotFoundException;
     
+    /* Doesn't return archived contexts */
     public Collection<Context> findByUser(User u) throws ObjectNotFoundException;
 }
