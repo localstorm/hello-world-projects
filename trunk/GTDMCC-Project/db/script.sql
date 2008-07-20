@@ -90,12 +90,15 @@ create table TASKS_TO_FLIGHT_PLANS
     FOREIGN KEY (plan_id) REFERENCES FLIGHT_PLANS(id)
 )  ENGINE=INNODB;
 
+
 --drop table REFERENCED_OBJECTS
 create table REFERENCED_OBJECTS
 (
     id INT NOT NULL AUTO_INCREMENT,
     name        TEXT NOT NULL,
     creation DATETIME NOT NULL,
+    sort_order INT not null,
+    is_archived SMALLINT NOT NULL,
     PRIMARY KEY (id)
 )  ENGINE=INNODB;
 
@@ -212,5 +215,3 @@ insert into LIST_TYPES (id, name, sort_order) values (null, 'TOBUY', 2);
 insert into LIST_TYPES (id, name, sort_order) values (null, 'TOASK', 3);
 
 select * from LIST_TYPES
-
-
