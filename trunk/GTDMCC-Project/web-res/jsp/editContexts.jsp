@@ -12,7 +12,10 @@
         <c:forEach items="${actionBean.operativeContexts}" var="ctx">
 	<tr>
 		<td width="95%">
-			<p><img border="0" src="<c:url value="/images/arrow.gif" />"/>&nbsp;<span><a href="#">University</a></span>
+			<p><img border="0" src="<c:url value="/images/arrow.gif" />"/>
+                        <span><a href="<c:url value="/actions/ViewContext">
+                                            <c:param name="id" value="1" />
+                                       </c:url>">University</a></span>
 		</td>
 		<td width="5%"> <a href="#" title="Delete"><img border="0" src="<c:url value="/images/trash.png"/>" /></a></p></td>
 	</tr>
