@@ -1,4 +1,5 @@
 #! /bin/sh
+ant dist
 
 cp dist/gtdmcc.war ~/Program_Files/tomcat-w-ejb/webapps
 cp dist/gtdmcc-ejb.jar ~/Program_Files/tomcat-w-ejb/apps
