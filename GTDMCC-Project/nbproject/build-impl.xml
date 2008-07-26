@@ -510,9 +510,17 @@ or ant -Dj2ee.platform.classpath=&lt;server_classpath&gt; (where no properties f
         <copy-ear-war file="${file.reference.j2ee.jar}" propname="included.lib.file.reference.j2ee.jar.X"/>
         <basename file="${file.reference.javaee.jar}" property="included.lib.file.reference.javaee.jar"/>
         <copy-ear-war file="${file.reference.javaee.jar}" propname="included.lib.file.reference.javaee.jar.X"/>
+        <basename file="${file.reference.commons-logging.jar}" property="included.lib.file.reference.commons-logging.jar"/>
+        <copy-ear-war file="${file.reference.commons-logging.jar}" propname="included.lib.file.reference.commons-logging.jar.X"/>
+        <basename file="${file.reference.cos.jar}" property="included.lib.file.reference.cos.jar"/>
+        <copy-ear-war file="${file.reference.cos.jar}" propname="included.lib.file.reference.cos.jar.X"/>
+        <basename file="${file.reference.log4j-1.2.11.jar}" property="included.lib.file.reference.log4j-1.2.11.jar"/>
+        <copy-ear-war file="${file.reference.log4j-1.2.11.jar}" propname="included.lib.file.reference.log4j-1.2.11.jar.X"/>
+        <basename file="${file.reference.stripes.jar}" property="included.lib.file.reference.stripes.jar"/>
+        <copy-ear-war file="${file.reference.stripes.jar}" propname="included.lib.file.reference.stripes.jar.X"/>
         <mkdir dir="${build.web.dir}/META-INF"/>
         <manifest file="${build.web.dir}/META-INF/MANIFEST.MF" mode="update">
-            <attribute name="Class-Path" value="${included.lib.file.reference.jstl-1.2.jar} ${included.lib.file.reference.j2ee.jar} ${included.lib.file.reference.javaee.jar} "/>
+            <attribute name="Class-Path" value="${included.lib.file.reference.jstl-1.2.jar} ${included.lib.file.reference.j2ee.jar} ${included.lib.file.reference.javaee.jar} ${included.lib.file.reference.commons-logging.jar} ${included.lib.file.reference.cos.jar} ${included.lib.file.reference.log4j-1.2.11.jar} ${included.lib.file.reference.stripes.jar} "/>
         </manifest>
         <delete dir="${dist.ear.dir}/temp"/>
     </target>
@@ -520,6 +528,10 @@ or ant -Dj2ee.platform.classpath=&lt;server_classpath&gt; (where no properties f
         <copy file="${file.reference.jstl-1.2.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copy file="${file.reference.j2ee.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copy file="${file.reference.javaee.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copy file="${file.reference.commons-logging.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copy file="${file.reference.cos.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copy file="${file.reference.log4j-1.2.11.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copy file="${file.reference.stripes.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
     </target>
     <target depends="init,compile,compile-jsps,-pre-dist,library-inclusion-in-manifest" name="do-ear-dist">
         <dirname file="${dist.ear.war}" property="dist.jar.dir"/>
