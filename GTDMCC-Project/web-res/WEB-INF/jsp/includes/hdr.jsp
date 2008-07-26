@@ -13,25 +13,24 @@
 	<a href="<c:url value="/" />"><img src="<c:url value="/images/logo.png" />" alt="Mission-Control Center" width="245" height="37" border="0"  class="logo" title="Miccion-Control Center"/></a>
 	<p>Mission-Control Center</p>
 		
-  <div id="topContactPan" />
+  <div id="topContactPan" ></div>
   
-	<div id="topMenuPan">
-	  <div id="topMenuLeftPan"></div>
-	  
-	  <div id="topMenuMiddlePan">
-	  	<ul align="center">
-			<li class="home">Home</li>
-			<li><a href="#">About me</a></li>
-			<li><a href="#">Photos</a></li>
-			<li><a href="#">Interests</a></li>
-			<li><a href="#">University</a></li>
-			<li><a href="#">Resume</a></li>
-			<li><a href="#">Blog</a></li>
-			<li class="contact"><a href="#">Contact</a></li>
-		</ul>
-	  </div>
-	  <div id="topMenuRightPan"></div>
-	</div>
+  <div id="topMenuPan">
+    <div id="topMenuLeftPan"></div>
+    <div id="topMenuMiddlePan">
+        <ul>
+            <li class="home">Home</li>
+            <li><a href="#">About me</a></li>
+            <li><a href="#">Photos</a></li>
+            <li><a href="#">Interests</a></li>
+            <li><a href="#">University</a></li>
+            <li><a href="#">Resume</a></li>
+            <li><a href="#">Blog</a></li>
+            <li class="contact"><a href="#">Contact</a></li>
+	</ul>
+    </div>
+    <div id="topMenuRightPan"></div>
+  </div>
 </div>
 <div id="bodyPan">
     <div id="bodyLeftPan">
