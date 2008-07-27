@@ -16,7 +16,9 @@
         <td width="80%" ><hr/></td>
         <td width="20%" >
         <nobr>
-            <a href="#" title="Expand"><img alt="expand" src="<c:url value="/images/expand.png"/>" border="0" /></a>
+            <a href="<c:url value="/actions/ViewTask">
+                        <c:param name="id" value="1" />
+                     </c:url>" title="Expand"><img alt="expand" src="<c:url value="/images/expand.png"/>" border="0" /></a>
             <a href="#" title="Finish"><img alt="finish" border="0" src="<c:url value="/images/finish.png"/>"/></a>
             <a href="#" title="Cancel"><img alt="cancel" border="0" src="<c:url value="/images/cancel.png"/>"/></a>
             <a href="#" title="Delegate"><img alt="delegate" border="0" src="<c:url value="/images/delegate.png"/>"/></a>
@@ -32,7 +34,9 @@
         <td width="80%" ><hr/></td>
         <td width="20%" >
         <nobr>
-            <a href="#" title="Expand"><img alt="expand" src="<c:url value="/images/expand.png"/>" border="0" /></a>
+            <a href="<c:url value="/actions/ViewTask">
+                        <c:param name="id" value="1" />
+                     </c:url>" title="Expand"><img alt="expand" src="<c:url value="/images/expand.png"/>" border="0" /></a>
             <a href="#" title="Finish"><img alt="finish" border="0" src="<c:url value="/images/finish.png"/>"/></a>
             <a href="#" title="Cancel"><img alt="cancel" border="0" src="<c:url value="/images/cancel.png"/>"/></a>
             <a href="#" title="Delegate"><img alt="delegate" border="0" src="<c:url value="/images/delegate.png"/>"/></a>
@@ -47,7 +51,9 @@
         <td width="80%" ><hr/></td>
         <td width="20%" >
         <nobr>
-            <a href="#" title="Expand"><img alt="expand" src="<c:url value="/images/expand.png"/>" border="0" /></a>
+            <a href="<c:url value="/actions/ViewTask">
+                        <c:param name="id" value="1" />
+                     </c:url>" title="Expand"><img alt="expand" src="<c:url value="/images/expand.png"/>" border="0" /></a>
             <a href="#" title="Finish"><img alt="finish" border="0" src="<c:url value="/images/finish.png"/>"/></a>
             <a href="#" title="Cancel"><img alt="cancel" border="0" src="<c:url value="/images/cancel.png"/>"/></a>
             <a href="#" title="Delegate"><img alt="delegate" border="0" src="<c:url value="/images/delegate.png"/>"/></a>
