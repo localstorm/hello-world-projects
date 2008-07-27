@@ -7,13 +7,14 @@ import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 
 import org.localstorm.mcc.ejb.contexts.Context;
+import org.localstorm.mcc.ejb.lists.GTDList;
 
 /**
  *
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/ViewContext")
-public class ContextViewActionBean extends BaseActionBean
+@UrlBinding("/actions/ViewList")
+public class ListViewActionBean extends BaseActionBean
 {
     @Validate( required=true )
     private int id;
@@ -26,20 +27,20 @@ public class ContextViewActionBean extends BaseActionBean
         this.id = id;
     }
     
-    private Context contextResult;
+    private GTDList listResult;
 
-    public Context getContextResult() {
-        return contextResult;
+    public GTDList getListResult() {
+        return listResult;
     }
 
-    public void setContextResult( Context contextResult ) {
-        this.contextResult = contextResult;
+    public void setListResult(GTDList listResult) {
+        this.listResult = listResult;
     }
+
     
     @DefaultHandler
     public Resolution filling() {
-        contextResult = new Context();
-        System.out.println("Viewing context:" +id);
-        return new ForwardResolution("/jsp/viewContext.jsp");
+        System.out.println("Viewing list:" +id);
+        return new ForwardResolution("/jsp/viewList.jsp");
     }
 }

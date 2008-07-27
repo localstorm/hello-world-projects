@@ -14,16 +14,6 @@ CREATE UNIQUE INDEX idx_users_login
     ON USERS (login)
 
 
---drop table LIST_TYPES
-create table LIST_TYPES (
-     id INT NOT NULL AUTO_INCREMENT,
-     name CHAR(50) NOT NULL,
-     sort_order INT not null,
-     PRIMARY KEY (id)
-) ENGINE=INNODB;
-
-
-
 create table CONTEXTS (
      id INT NOT NULL AUTO_INCREMENT,
      name TEXT NOT NULL,
@@ -43,12 +33,10 @@ create table LISTS (
      id INT NOT NULL AUTO_INCREMENT,
      name TEXT NOT NULL,
      creation DATETIME not null,  
-     type_id INT NOT NULL,
      context_id INT NOT NULL,
      sort_order INT not null,
      is_archived SMALLINT NOT NULL,
      PRIMARY KEY (id),
-     FOREIGN KEY (type_id) REFERENCES LIST_TYPES(id),
      FOREIGN KEY (context_id) REFERENCES CONTEXTS(id)
 ) ENGINE=INNODB;
 
@@ -205,13 +193,3 @@ create table CONTEXTS_TO_OBJECTS
     FOREIGN KEY (context_id) REFERENCES CONTEXTS(id)
 )  ENGINE=INNODB;
 
-drop table GTD_LIST_TASKS
---drop table GTD_LIST_TASKS
---drop table GTD_LISTS
-
---------- DATA IMPORT ------------
-insert into LIST_TYPES (id, name, sort_order) values (null, 'TODO', 1);
-insert into LIST_TYPES (id, name, sort_order) values (null, 'TOBUY', 2);
-insert into LIST_TYPES (id, name, sort_order) values (null, 'TOASK', 3);
-
-select * from LIST_TYPES

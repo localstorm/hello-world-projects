@@ -37,10 +37,6 @@ public class GTDList implements Serializable {
     @ManyToOne(fetch=FetchType.EAGER)
     private Context context;
     
-    @JoinColumn(name="type_id", nullable=false)
-    @ManyToOne(fetch=FetchType.EAGER)
-    private GTDListType type;
-    
     @Column(name="is_archived", unique=false, updatable=true, nullable=false )    
     private boolean archived;
     
@@ -53,12 +49,11 @@ public class GTDList implements Serializable {
     
     }
 
-    public GTDList( String name, Context ctx, GTDListType type ) {
+    public GTDList( String name, Context ctx ) {
         this.name       = name;
         this.context    = ctx;
         this.archived   = false;
         this.creation   = new Date();
-        this.type       = type;
     }
     
     public Integer getId() {
@@ -81,10 +76,6 @@ public class GTDList implements Serializable {
         return creation;
     }
 
-    public GTDListType getType() {
-        return type;
-    }
-
     public boolean isArchived() {
         return archived;
     }
@@ -105,8 +96,4 @@ public class GTDList implements Serializable {
         this.context = context;
     }
 
-    public void setType(GTDListType type) {
-        this.type = type;
-    }
-    
 }

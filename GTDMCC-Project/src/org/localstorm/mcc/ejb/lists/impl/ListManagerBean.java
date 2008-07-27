@@ -15,7 +15,6 @@ import org.localstorm.mcc.ejb.contexts.Context;
 import org.localstorm.mcc.ejb.except.DuplicateException;
 import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 import org.localstorm.mcc.ejb.lists.GTDList;
-import org.localstorm.mcc.ejb.lists.GTDListType;
 import org.localstorm.mcc.ejb.lists.ListManagerLocal;
 import org.localstorm.mcc.ejb.lists.ListManagerRemote;
 import org.localstorm.mcc.ejb.users.User;
@@ -53,16 +52,16 @@ public class ListManagerBean implements ListManagerLocal, ListManagerRemote
     }
 
     @Override
-    public Collection<GTDListType> findAllListTypes() 
-    {
+    public Collection<GTDList> findAllListTypes() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public Collection<GTDListType> findAllLists(Context ctx) 
-    {
+    public Collection<GTDList> findAllLists(Context ctx) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+   
     
     @PersistenceContext(unitName=Constants.DEFAULT_PU)
     private EntityManager em;

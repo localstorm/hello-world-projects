@@ -16,9 +16,9 @@ public interface ListManager
     public void updateList(GTDList list);
     
     /* Doesn't return archived lists */
-    public Collection<GTDListType> findAllLists( Context ctx );
+    public Collection<GTDList> findAllLists( Context ctx );
     
-    public Collection<GTDListType> findAllListTypes( );
+    public Collection<GTDList> findAllListTypes( );
     
     public GTDList findById(int id) throws ObjectNotFoundException;
 }
