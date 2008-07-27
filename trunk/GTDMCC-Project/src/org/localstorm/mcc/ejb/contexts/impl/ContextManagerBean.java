@@ -6,14 +6,15 @@
 package org.localstorm.mcc.ejb.contexts.impl;
 
 import java.util.Collection;
+import javax.ejb.Local;
+import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.localstorm.mcc.ejb.Constants;
 import org.localstorm.mcc.ejb.contexts.Context;
-import org.localstorm.mcc.ejb.contexts.ContextManagerLocal;
-import org.localstorm.mcc.ejb.contexts.ContextManagerRemote;
+import org.localstorm.mcc.ejb.contexts.ContextManager;
 import org.localstorm.mcc.ejb.except.DuplicateException;
 import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 import org.localstorm.mcc.ejb.users.User;
@@ -23,7 +24,9 @@ import org.localstorm.mcc.ejb.users.User;
  * @author localstorm
  */
 @Stateless
-public class ContextManagerBean implements ContextManagerLocal, ContextManagerRemote 
+@Local(ContextManager.class)
+//@Remote(ContextManagerRemote.class)
+public class ContextManagerBean implements ContextManager//Local, ContextManagerRemote 
 {
 
     @Override

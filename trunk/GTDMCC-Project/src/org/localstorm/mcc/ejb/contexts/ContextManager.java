@@ -6,6 +6,7 @@
 package org.localstorm.mcc.ejb.contexts;
 
 import java.util.Collection;
+import javax.ejb.Local;
 import org.localstorm.mcc.ejb.except.DuplicateException;
 import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 import org.localstorm.mcc.ejb.users.User;
@@ -14,6 +15,7 @@ import org.localstorm.mcc.ejb.users.User;
  *
  * @author localstorm
  */
+@Local
 public interface ContextManager 
 {
     public void createContext(Context ctx) throws DuplicateException;

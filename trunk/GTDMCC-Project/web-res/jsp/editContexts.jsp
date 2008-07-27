@@ -17,15 +17,17 @@
                                             <c:param name="id" value="1" />
                                        </c:url>">University</a></span>
 		</td>
-		<td width="5%"> <a href="#" title="Delete"><img border="0" src="<c:url value="/images/trash.png"/>" /></a></p></td>
+		<td width="5%"> <a href="<c:url value="/actions/ToggleStateContext">
+                                            <c:param name="id" value="1" />
+                                       </c:url>" title="Delete"><img border="0" src="<c:url value="/images/trash.png"/>" /></a></p></td>
 	</tr>
         </c:forEach>
         <tr >
 		<td colspan="2" align="center">
                     <br/>
-                    <stripes:form action="/actions/EditContexts" focus="name" >
+                    <stripes:form action="/actions/AddContext" focus="name" >
                         <stripes:errors/>
-                        <stripes:text name="name"/>&nbsp;<stripes:submit name="submit" value="Create" />
+                        Name: <stripes:text name="name"/>&nbsp;<stripes:submit name="submit" value="Create" />
                     </stripes:form>
                     <br/>
                     <hr/>
@@ -39,7 +41,9 @@
 		<td width="95%">
 			<p><img border="0" src="<c:url value="/images/arrow.gif"/>"/> <span><a href="#">Iraq</a></span>
 		</td>
-		<td width="5%"> <a href="#" title="Make Operative Again"><img border="0" src="<c:url value="/images/deleted.png"/>" /></a></p></td>
+		<td width="5%"> <a href="<c:url value="/actions/ToggleStateContext">
+                                            <c:param name="id" value="1" />
+                                       </c:url>" title="Undelete"><img border="0" src="<c:url value="/images/deleted.png"/>" /></a></p></td>
 	</tr>
         </c:forEach>
 	</table>

@@ -19,7 +19,7 @@
     <div id="topMenuLeftPan"></div>
     <div id="topMenuMiddlePan">
         <ul>
-            <li class="home">Home</li>
+            <li class="home"><a href="<c:url value="/" />">Home</a></li>
             <li><a href="#">About me</a></li>
             <li><a href="#">Photos</a></li>
             <li><a href="#">Interests</a></li>

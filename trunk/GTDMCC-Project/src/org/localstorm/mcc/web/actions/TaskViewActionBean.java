@@ -6,14 +6,14 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 
-import org.localstorm.mcc.ejb.contexts.Context;
+import org.localstorm.mcc.ejb.tasks.Task;
 
 /**
  *
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/ViewContext")
-public class ContextViewActionBean extends BaseActionBean
+@UrlBinding("/actions/ViewTask")
+public class TaskViewActionBean extends BaseActionBean
 {
     @Validate( required=true )
     private int id;
@@ -26,20 +26,20 @@ public class ContextViewActionBean extends BaseActionBean
         this.id = id;
     }
     
-    private Context contextResult;
+    private Task taskResult;
 
-    public Context getContextResult() {
-        return contextResult;
+    public Task getTaskResult() {
+        return taskResult;
     }
 
-    public void setContextResult( Context contextResult ) {
-        this.contextResult = contextResult;
+    public void setTaskResult(Task taskResult) {
+        this.taskResult = taskResult;
     }
+
     
     @DefaultHandler
     public Resolution filling() {
-        contextResult = new Context();
-        System.out.println("Viewing context:" +id);
-        return new ForwardResolution("/jsp/viewContext.jsp");
+        System.out.println("Viewing task:" +id);
+        return new ForwardResolution("/jsp/viewTask.jsp");
     }
 }
