@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE message SYSTEM "80030.dtd">
+
+<message class="80030" version="1" number="22">
+    <datetime>
+	<timestamp>20031103144121</timestamp>
+	<daylightsavingtime>0</daylightsavingtime>
+	<day>20031102</day>
+    </datetime>
+
+    <sender>
+	<inn>4401003493</inn>
+	<name>Костромская ГРЭС</name>
+    </sender>
+
+    <area>
+
+        <inn>4401003493</inn>
+	<name>Костромская ГРЭС</name>
+    
+        <measuringscheme>
+	    <period start="0000" end="1230"><value>1</value></period>
+    	    <period start="1230" end="0000"><value>2</value></period>
+	</measuringscheme>
+
+	<measuringobject code="423430001123405" name="ШСВ" type="1">
+    	    <period start="0000" end="1230"><value>0</value></period>
+	    <period start="1230" end="0000"><value>1</value></period>
+	</measuringobject>
+
+	<measuringtool code="13141507867512301" name="счетчик" type="1">
+	    <record type="0300" timestamp="20031014000045">пропадание питания</record>
+    	    <record type="0301" timestamp="20031014000230">восстановление питания</record>
+	</measuringtool>
+
+    </area>
+</message>

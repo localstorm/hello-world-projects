@@ -1,0 +1,57 @@
+<!ELEMENT message (comment?,datetime,sender,area*)>
+   <!ATTLIST message
+   	class   	CDATA #REQUIRED 
+   	version 	CDATA #REQUIRED 
+   	number 	CDATA #REQUIRED  
+   >
+
+<!ELEMENT datetime (timestamp, daylightsavingtime, day)>
+<!ELEMENT timestamp (#PCDATA)>
+<!ELEMENT daylightsavingtime (#PCDATA)>  
+<!ELEMENT day (#PCDATA)>  
+
+<!ELEMENT sender (inn,name)>
+<!ELEMENT inn (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+
+<!ELEMENT comment (#PCDATA)>
+
+<!ELEMENT area (inn, name, measuringscheme+, measuringobject+, measuringtool+) >
+<!ATTLIST area
+	timezone	CDATA #IMPLIED
+>
+
+<!ELEMENT measuringscheme (period+) >
+
+
+<!ELEMENT measuringtool (record+) >
+   <!ATTLIST measuringtool
+   	code   	CDATA #REQUIRED 
+   	name   	CDATA #REQUIRED 
+   	type   	CDATA #REQUIRED 
+   >
+
+<!ELEMENT record (#PCDATA) >
+   <!ATTLIST record
+   	type	CDATA #REQUIRED 
+   	timestamp CDATA #REQUIRED 
+   >
+
+
+<!ELEMENT measuringobject (period+) >
+   <!ATTLIST measuringobject
+   	code   	CDATA #REQUIRED 
+   	name   	CDATA #REQUIRED 
+   	type   	CDATA #REQUIRED 
+   >
+
+<!ELEMENT period (value) >
+   <!ATTLIST period
+   	start 	CDATA #REQUIRED  
+   	end 	CDATA #REQUIRED  
+   	summer  CDATA #IMPLIED >
+
+<!ELEMENT value (#PCDATA) >
+   <!ATTLIST value 
+	status	CDATA #IMPLIED  
+    >
