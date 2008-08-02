@@ -2,13 +2,15 @@ package org.localstorm.mcc.ejb.tasks.impl;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
+import javax.ejb.Stateless;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import org.localstorm.mcc.ejb.AbstractManager;
 import org.localstorm.mcc.ejb.Constants;
 import org.localstorm.mcc.ejb.contexts.Context;
-import org.localstorm.mcc.ejb.except.DuplicateException;
-import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 import org.localstorm.mcc.ejb.lists.GTDList;
 import org.localstorm.mcc.ejb.tasks.Task;
 import org.localstorm.mcc.ejb.tasks.TaskManagerLocal;
@@ -19,40 +21,28 @@ import org.localstorm.mcc.ejb.users.User;
  *
  * @author Alexey Kuznetsov
  */
-public class TaskManagerBean implements TaskManagerLocal, TaskManagerRemote 
+@Stateless
+public class TaskManagerBean extends AbstractManager<Task>
+                             implements TaskManagerLocal, TaskManagerRemote 
 {
-
-    @Override
-    public void createTask(Task task) throws DuplicateException 
-    {
-        try 
-        {
-            em.persist( task );
-        } catch(EntityExistsException e) 
-        {
-            throw new DuplicateException(e);
-        }
+    public TaskManagerBean() {
+        super(Task.class);
     }
 
-    @Override
-    public void updateTask(Task task) {
-         em.merge( task );
-    }
     
-
     @Override
     public Collection<Task> findByContext(Context ctx) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public Task findById(int id) throws ObjectNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
     public Collection<Task> findByList(GTDList l) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Query tq = em.createNamedQuery(Task.Queries.FIND_BY_LIST);
+        tq.setParameter(Task.Properties.LIST, l);
+        
+        List<Task> list = tq.getResultList();
+        System.out.println("RETURNED: "+list.size());
+        return list;
     }
 
     @Override
@@ -79,7 +69,4 @@ public class TaskManagerBean implements TaskManagerLocal, TaskManagerRemote
     public Collection<Task> findStartedByUserAndLines(User user, Date redLine, Date deadLine) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-
-    @PersistenceContext(unitName=Constants.DEFAULT_PU)
-    private EntityManager em;
 }

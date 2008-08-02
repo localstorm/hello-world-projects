@@ -11,9 +11,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.localstorm.mcc.ejb.Identifiable;
 
 
 /**
@@ -21,7 +24,17 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name="TASKS")
-public class Task implements Serializable 
+@NamedQueries({
+    @NamedQuery(
+        name = Task.Queries.FIND_BY_LIST,
+        query= "SELECT o FROM Task o WHERE o.list=:list and o.finished=false"
+    ),
+    @NamedQuery(
+        name = Task.Queries.FIND_BY_LIST_ARCHIVED,
+        query= "SELECT o FROM Task o WHERE o.list=:list and o.finished=true"
+    )
+})
+public class Task implements Identifiable, Serializable 
 {   
     
     @Id
@@ -44,8 +57,8 @@ public class Task implements Serializable
     @ManyToOne(fetch=FetchType.EAGER)
     private GTDList list;
     
-    @Column(name="is_accomplished", unique=false, updatable=true, nullable=false )    
-    private boolean accomplished;
+    @Column(name="is_finished", unique=false, updatable=true, nullable=false )    
+    private boolean finished;
     
     @Column(name="is_started", unique=false, updatable=true, nullable=false )    
     private boolean started;
@@ -79,13 +92,14 @@ public class Task implements Serializable
         this.list = list;
         this.deadline = deadline;
         this.redline = redline;
-        this.accomplished = false;
+        this.finished = false;
         this.started = false;
         this.paused = true;
         this.delegated = false;
         this.creation = new Date();
     }
 
+    @Override
     public Integer getId() {
         return id;
     }
@@ -123,7 +137,7 @@ public class Task implements Serializable
     }
 
     public boolean isAccomplished() {
-        return accomplished;
+        return finished;
     }
 
     public boolean isDelegated() {
@@ -139,7 +153,7 @@ public class Task implements Serializable
     }
 
     public void setAccomplished(boolean accomplished) {
-        this.accomplished = accomplished;
+        this.finished = accomplished;
     }
 
     public void setSortOrder(Integer sortOrder) {
@@ -184,6 +198,16 @@ public class Task implements Serializable
 
     public void setSummary(String summary) {
         this.summary = summary;
+    }
+    
+    public static interface Queries {
+        public static final String FIND_BY_LIST          = "findByList";
+        public static final String FIND_BY_LIST_ARCHIVED = "findByListArchived";
+    }
+    
+    public static interface Properties
+    {
+        public static final String LIST = "list";
     }
 
 }

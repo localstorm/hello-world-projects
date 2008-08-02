@@ -6,6 +6,7 @@ import net.sourceforge.stripes.action.ActionBeanContext;
 import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.contexts.ContextManager;
 import org.localstorm.mcc.ejb.lists.ListManager;
+import org.localstorm.mcc.ejb.tasks.TaskManager;
 import org.localstorm.mcc.ejb.users.UserManager;
 
 /**
@@ -41,5 +42,9 @@ public class BaseActionBean implements ActionBean
     
     protected UserManager getUserManager() {
         return ContextLookup.lookup(UserManager.class, UserManager.BEAN_NAME);
+    }
+    
+    protected TaskManager getTaskManager() {
+        return ContextLookup.lookup(TaskManager.class, TaskManager.BEAN_NAME);
     }
  }

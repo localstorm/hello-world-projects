@@ -10,9 +10,10 @@
 <tr>
     <th colspan="2">Operative</th>
 </tr>
+<c:forEach items="${actionBean.tasks}" var="task">
 <tr> 
     <td>
-        <p>diansduian au nd ue wne wenwen uqwen fnwqe fwenf uwe finwe fwqe ifniwen fweq nfiwqen iwne fiunwef inwef</p>
+        <p>${task.summary}</p>
         <table width="100%">
             <tr>
                 <td width="80%" ><hr/></td>
@@ -20,7 +21,7 @@
                 <nobr>
                     <a href="#" title="Cut"><img alt="cut" src="<c:url value="/images/cut.png"/>" border="0" /></a>
                     <a href="<c:url value="/actions/ViewTask">
-                                <c:param name="id" value="1" />
+                                <c:param name="id" value="${taks.id}" />
                              </c:url>" title="Expand"><img alt="expand" src="<c:url value="/images/expand.png"/>" border="0" /></a>
                     <a href="#" title="Append To Flight Plan"><img alt="flight" border="0" src="<c:url value="/images/flight.png"/>"/></a>
                     <a href="#" title="Finish"><img alt="finish" border="0" src="<c:url value="/images/finish.png"/>"/></a>
@@ -32,6 +33,7 @@
         </table>
     </td>
 </tr>
+</c:forEach>
 <tr> 
     <td>
         <p>diansduian au nd ue wne wenwen uqwen fnwqe fwenf uwe finwe fwqe ifniwen fweq nfiwqen iwne fiunwef inwef</p>
