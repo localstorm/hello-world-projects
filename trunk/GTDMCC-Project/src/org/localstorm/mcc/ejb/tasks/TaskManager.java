@@ -2,9 +2,8 @@ package org.localstorm.mcc.ejb.tasks;
 
 import java.util.Collection;
 import java.util.Date;
+import org.localstorm.mcc.ejb.BaseManager;
 import org.localstorm.mcc.ejb.contexts.Context;
-import org.localstorm.mcc.ejb.except.DuplicateException;
-import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 import org.localstorm.mcc.ejb.lists.GTDList;
 import org.localstorm.mcc.ejb.users.User;
 
@@ -12,14 +11,9 @@ import org.localstorm.mcc.ejb.users.User;
  *
  * @author Alexey Kuznetsov
  */
-public interface TaskManager 
+public interface TaskManager extends BaseManager<Task>
 {
-    public void createTask(Task task) throws DuplicateException;
-    
-    public void updateTask(Task task);
-    
-    public Task findById( int id ) throws ObjectNotFoundException;
-
+    public static final String BEAN_NAME = "TaskManagerBean";
     
     //TODO!
     /* Doesn't return archived contexts */

@@ -24,7 +24,7 @@
                 <nobr>
                     <a href="#" title="Cut"><img alt="cut" src="<c:url value="/images/cut.png"/>" border="0" /></a>
                     <a href="<c:url value="/actions/ViewList">
-                                <c:param name="id" value="${list.id}" />
+                                <c:param name="listId" value="${list.id}" />
                              </c:url>" title="View tasks"><img alt="expand" src="<c:url value="/images/expand.png"/>" border="0" /></a>
                     <a href="<c:url value="/actions/ResolveList">
                                 <c:param name="listId" value="${list.id}" />
@@ -69,7 +69,9 @@
                 <td width="10%" >
                 <nobr>
                     <a href="#" title="Cut"><img alt="cut" src="<c:url value="/images/cut.png"/>" border="0" /></a>
-                    <a href="#" title="Expand"><img alt="expand" src="<c:url value="/images/expand.png"/>" border="0" /></a>
+                    <a href="<c:url value="/actions/ViewList">
+                                <c:param name="listId" value="${list.id}" />
+                             </c:url>" title="Expand"><img alt="expand" src="<c:url value="/images/expand.png"/>" border="0" /></a>
                     <a href="<c:url value="/actions/ResolveList">
                                 <c:param name="listId" value="${list.id}" />
                                 <c:param name="action" value="ERASE" />

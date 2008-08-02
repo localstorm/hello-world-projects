@@ -9,6 +9,8 @@ create table USERS (
     PRIMARY KEY (id)
 ) ENGINE=INNODB;
 
+insert into USERS (id, fname, lname, login, pass_hash, is_blocked) values (174947681, 'root', 'root', 'root', 'ho-ho', 0);
+
 
 CREATE UNIQUE INDEX idx_users_login
     ON USERS (login)
@@ -20,7 +22,7 @@ create table CONTEXTS (
      sort_order INT not null,
      user_id INT not null,
      PRIMARY KEY (id),
-     FOREIGN KEY (user_id) REFERENCES USERS(id)
+     FOREIGN KEY (user_id) REFERENCES USERS(id)  ON DELETE CASCADE
 ) ENGINE=INNODB;
 
 alter table CONTEXTS add column
@@ -37,7 +39,7 @@ create table LISTS (
      sort_order INT not null,
      is_archived SMALLINT NOT NULL,
      PRIMARY KEY (id),
-     FOREIGN KEY (context_id) REFERENCES CONTEXTS(id)
+     FOREIGN KEY (context_id) REFERENCES CONTEXTS(id)  ON DELETE CASCADE
 ) ENGINE=INNODB;
 
 --
@@ -58,7 +60,7 @@ create table TASKS (
      creation DATETIME not null,  
      deadline DATETIME,  
      redline DATETIME,  
-     is_accompished SMALLINT not null,
+     is_finished SMALLINT not null,
      is_started SMALLINT not null,
      is_paused SMALLINT not null,
      is_delegated SMALLINT not null,
@@ -66,7 +68,7 @@ create table TASKS (
      sort_order INT not null,
      list_id INT not null,
      PRIMARY KEY (id),
-     FOREIGN KEY (list_id) REFERENCES LISTS(id)
+     FOREIGN KEY (list_id) REFERENCES LISTS(id) ON DELETE CASCADE
 )  ENGINE=INNODB;
 
 --drop table TASKS_TO_FLIGHT_PLANS 
@@ -74,8 +76,8 @@ create table TASKS_TO_FLIGHT_PLANS
 (
     task_id INT NOT NULL,
     plan_id INT NOT NULL,
-    FOREIGN KEY (task_id) REFERENCES TASKS(id),
-    FOREIGN KEY (plan_id) REFERENCES FLIGHT_PLANS(id)
+    FOREIGN KEY (task_id) REFERENCES TASKS(id) ON DELETE CASCADE,
+    FOREIGN KEY (plan_id) REFERENCES FLIGHT_PLANS(id) ON DELETE CASCADE
 )  ENGINE=INNODB;
 
 
@@ -104,8 +106,8 @@ create table NOTES_TO_TASKS
 (
     note_id INT NOT NULL,
     task_id INT NOT NULL,
-    FOREIGN KEY (task_id) REFERENCES TASKS(id),
-    FOREIGN KEY (note_id) REFERENCES NOTES(id)
+    FOREIGN KEY (task_id) REFERENCES TASKS(id)  ON DELETE CASCADE,
+    FOREIGN KEY (note_id) REFERENCES NOTES(id)  ON DELETE CASCADE
 )  ENGINE=INNODB;
 
 --drop table NOTES_TO_OBJECTS
@@ -113,8 +115,8 @@ create table NOTES_TO_OBJECTS
 (
     note_id INT NOT NULL,
     object_id INT NOT NULL,
-    FOREIGN KEY (object_id) REFERENCES REFERENCED_OBJECTS(id),
-    FOREIGN KEY (note_id) REFERENCES NOTES(id)
+    FOREIGN KEY (object_id) REFERENCES REFERENCED_OBJECTS(id)  ON DELETE CASCADE,
+    FOREIGN KEY (note_id) REFERENCES NOTES(id)  ON DELETE CASCADE
 )  ENGINE=INNODB;
 
 --drop table NOTES_TO_LISTS
@@ -122,8 +124,8 @@ create table NOTES_TO_LISTS
 (
     note_id INT NOT NULL,
     list_id INT NOT NULL,
-    FOREIGN KEY (list_id) REFERENCES LISTS(id),
-    FOREIGN KEY (note_id) REFERENCES NOTES(id)
+    FOREIGN KEY (list_id) REFERENCES LISTS(id)  ON DELETE CASCADE,
+    FOREIGN KEY (note_id) REFERENCES NOTES(id)  ON DELETE CASCADE
 )  ENGINE=INNODB;
 
 
@@ -144,8 +146,8 @@ create table FILES_TO_TASKS
 (
     task_id INT NOT NULL,
     file_id INT NOT NULL,
-    FOREIGN KEY (task_id) REFERENCES TASKS(id),
-    FOREIGN KEY (file_id) REFERENCES FILES(id)
+    FOREIGN KEY (task_id) REFERENCES TASKS(id)  ON DELETE CASCADE,
+    FOREIGN KEY (file_id) REFERENCES FILES(id)  ON DELETE CASCADE
 )  ENGINE=INNODB;
 
 --drop table FILES_TO_LISTS
@@ -153,8 +155,8 @@ create table FILES_TO_LISTS
 (
     list_id INT NOT NULL,
     file_id INT NOT NULL,
-    FOREIGN KEY (list_id) REFERENCES LISTS(id),
-    FOREIGN KEY (file_id) REFERENCES FILES(id)
+    FOREIGN KEY (list_id) REFERENCES LISTS(id)  ON DELETE CASCADE,
+    FOREIGN KEY (file_id) REFERENCES FILES(id) ON DELETE CASCADE
 )  ENGINE=INNODB;
 
 --drop table FILES_TO_OBJECTS
@@ -162,8 +164,8 @@ create table FILES_TO_OBJECTS
 (
     file_id INT NOT NULL,
     object_id INT NOT NULL,
-    FOREIGN KEY (object_id) REFERENCES REFERENCED_OBJECTS(id),
-    FOREIGN KEY (file_id) REFERENCES FILES(id)
+    FOREIGN KEY (object_id) REFERENCES REFERENCED_OBJECTS(id)  ON DELETE CASCADE,
+    FOREIGN KEY (file_id) REFERENCES FILES(id)  ON DELETE CASCADE
 )  ENGINE=INNODB;
 
 --drop table LISTS_TO_OBJECTS
@@ -171,8 +173,8 @@ create table LISTS_TO_OBJECTS
 (
     list_id INT NOT NULL,
     object_id INT NOT NULL,
-    FOREIGN KEY (object_id) REFERENCES REFERENCED_OBJECTS(id),
-    FOREIGN KEY (list_id) REFERENCES LISTS(id)
+    FOREIGN KEY (object_id) REFERENCES REFERENCED_OBJECTS(id)  ON DELETE CASCADE,
+    FOREIGN KEY (list_id) REFERENCES LISTS(id) ON DELETE CASCADE
 )  ENGINE=INNODB;
 
 --drop table TASKS_TO_OBJECTS
@@ -180,8 +182,8 @@ create table TASKS_TO_OBJECTS
 (
     task_id INT NOT NULL,
     object_id INT NOT NULL,
-    FOREIGN KEY (object_id) REFERENCES REFERENCED_OBJECTS(id),
-    FOREIGN KEY (task_id) REFERENCES TASKS(id)
+    FOREIGN KEY (object_id) REFERENCES REFERENCED_OBJECTS(id)  ON DELETE CASCADE,
+    FOREIGN KEY (task_id) REFERENCES TASKS(id)  ON DELETE CASCADE
 )  ENGINE=INNODB;
 
 --drop table CONTEXTS_TO_OBJECTS
@@ -189,7 +191,7 @@ create table CONTEXTS_TO_OBJECTS
 (
     context_id INT NOT NULL,
     object_id INT NOT NULL,
-    FOREIGN KEY (object_id) REFERENCES REFERENCED_OBJECTS(id),
-    FOREIGN KEY (context_id) REFERENCES CONTEXTS(id)
+    FOREIGN KEY (object_id) REFERENCES REFERENCED_OBJECTS(id)  ON DELETE CASCADE,
+    FOREIGN KEY (context_id) REFERENCES CONTEXTS(id)  ON DELETE CASCADE
 )  ENGINE=INNODB;
 
