@@ -32,13 +32,13 @@ public class AuthFilter implements Filter
     @Override
     public void doFilter(ServletRequest _req, ServletResponse _res, FilterChain chain) throws IOException, ServletException {
         try {
-            UserManager um = ContextLookup.lookup(UserManagerRemote.class, 
-                                                  UserManager.BEAN_NAME);
             
             HttpSession sess = ((HttpServletRequest) _req).getSession();
             
             if (SessionUtil.isEmpty(sess, SessionKeys.USER)) {
-                sess.setAttribute(SessionKeys.USER, um.findById(174947681));
+               UserManager um = ContextLookup.lookup(UserManagerRemote.class, 
+                                                     UserManager.BEAN_NAME);
+               sess.setAttribute(SessionKeys.USER, um.findById(174947681));
             }
             
         }catch(ObjectNotFoundException e){

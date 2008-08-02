@@ -10,7 +10,6 @@ import net.sourceforge.stripes.action.UrlBinding;
 import org.localstorm.mcc.ejb.contexts.*;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.SessionKeys;
-import org.localstorm.mcc.web.annotations.EJBBean;
 
 /**
  *
@@ -18,9 +17,6 @@ import org.localstorm.mcc.web.annotations.EJBBean;
  */
 @UrlBinding("/actions/EditContexts")
 public class ContextsEditActionBean extends BaseActionBean {
-
-    @EJBBean(ContextManager.BEAN_NAME)
-    private ContextManager cm;
 
     private List<Context> result;
 
@@ -38,7 +34,12 @@ public class ContextsEditActionBean extends BaseActionBean {
         HttpSession sess = getSession();
         User u = (User) sess.getAttribute(SessionKeys.USER);
         
-        result = cm.findByOwnerArchived(u);
+        if (u==null)
+        {
+            throw new RuntimeException("USER IS NULL");
+        }
+        
+        result = getContextManager().findByOwnerArchived(u);
         return new ForwardResolution("/jsp/editContexts.jsp");
     }
     

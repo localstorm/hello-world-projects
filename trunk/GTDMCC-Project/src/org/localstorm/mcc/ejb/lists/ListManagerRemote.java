@@ -1,9 +1,9 @@
 
 package org.localstorm.mcc.ejb.lists;
 
-import javax.ejb.Local;
+import javax.ejb.Remote;
 
-@Local
+@Remote
 public interface ListManagerRemote extends ListManager
 {
     

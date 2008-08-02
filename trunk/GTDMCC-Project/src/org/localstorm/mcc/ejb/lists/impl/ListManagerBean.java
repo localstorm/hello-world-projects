@@ -7,62 +7,45 @@ package org.localstorm.mcc.ejb.lists.impl;
 
 import java.util.Collection;
 import javax.ejb.Stateless;
-import javax.persistence.EntityExistsException;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import org.localstorm.mcc.ejb.Constants;
+import javax.persistence.Query;
+import org.localstorm.mcc.ejb.AbstractManager;
 import org.localstorm.mcc.ejb.contexts.Context;
-import org.localstorm.mcc.ejb.except.DuplicateException;
-import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 import org.localstorm.mcc.ejb.lists.GTDList;
 import org.localstorm.mcc.ejb.lists.ListManagerLocal;
 import org.localstorm.mcc.ejb.lists.ListManagerRemote;
-import org.localstorm.mcc.ejb.users.User;
-
+import java.util.*;
 /**
  *
  * @author localstorm
  */
 @Stateless
-public class ListManagerBean implements ListManagerLocal, ListManagerRemote 
+public class ListManagerBean extends AbstractManager<GTDList>
+                             implements ListManagerLocal, ListManagerRemote 
 {
+    public ListManagerBean() {
+        super(GTDList.class);
+    }
+
     
     @Override
-    public void createList(GTDList list) throws DuplicateException 
+    public Collection<GTDList> findByContext(Context ctx)
     {
-        try 
-        {
-            em.persist( list );
-        } catch(EntityExistsException e) 
-        {
-            throw new DuplicateException(e);
-        }
+        Query lq = em.createNamedQuery(GTDList.Queries.FIND_BY_CTX);
+        lq.setParameter(GTDList.Properties.CONTEXT, ctx);
+        
+        List<GTDList> list = lq.getResultList();
+        System.out.println("RETURNED: "+list.size());
+        return list;
     }
 
     @Override
-    public void updateList(GTDList list)
-    {
-        em.merge( list );
+    public Collection<GTDList> findByContextArchived(Context ctx) {
+        Query lq = em.createNamedQuery(GTDList.Queries.FIND_BY_CTX_ARCHIVED);
+        lq.setParameter(GTDList.Properties.CONTEXT, ctx);
+        
+        List<GTDList> list = lq.getResultList();
+        System.out.println("RETURNED: "+list.size());
+        return list;
     }
     
-    @Override
-    public GTDList findById(int id) throws ObjectNotFoundException 
-    {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public Collection<GTDList> findAllListTypes() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public Collection<GTDList> findAllLists(Context ctx) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-   
-    
-    @PersistenceContext(unitName=Constants.DEFAULT_PU)
-    private EntityManager em;
 }

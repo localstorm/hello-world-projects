@@ -8,19 +8,8 @@
 	id="WebApp_ID" 
 	version="2.5" >
     
-    <display-name>GTD Personal Task Manager</display-name>
+        <display-name>GTD Personal Task Manager</display-name>
     
-    <!--servlet>
-        <servlet-name>test</servlet-name>
-        <servlet-class>org.localstorm.mcc.web.TestServlet</servlet-class>
-        <load-on-startup>2</load-on-startup>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>test</servlet-name>
-        <url-pattern>/test</url-pattern>
-    </servlet-mapping-->
-
         <filter>
                 <display-name>Stripes Filter</display-name>
                 <filter-name>StripesFilter</filter-name>
@@ -32,13 +21,6 @@
                 <init-param>
                     <param-name>ActionResolver.PackageFilters</param-name>
                     <param-value>org.localstorm.mcc.web.actions</param-value>
-                </init-param>
-                <init-param>
-                    <param-name>Interceptor.Classes</param-name>
-                    <param-value>
-                        org.localstorm.mcc.web.interceptors.EJBInterceptor,
-                        net.sourceforge.stripes.controller.BeforeAfterMethodInterceptor
-                    </param-value>
                 </init-param>
         </filter>
         

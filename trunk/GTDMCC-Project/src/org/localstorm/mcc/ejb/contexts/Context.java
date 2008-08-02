@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import org.localstorm.mcc.ejb.Identifiable;
 import org.localstorm.mcc.ejb.users.User;
 
 /**
@@ -35,7 +36,7 @@ import org.localstorm.mcc.ejb.users.User;
         query= "SELECT o FROM Context o WHERE o.owner=:owner and archived=true"
     )
 })
-public class Context implements Serializable {   
+public class Context implements Identifiable, Serializable {   
     
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)

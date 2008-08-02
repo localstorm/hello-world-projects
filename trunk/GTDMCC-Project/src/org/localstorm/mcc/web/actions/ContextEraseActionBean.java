@@ -6,15 +6,14 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.contexts.*;
-import org.localstorm.mcc.web.SessionKeys;
-import org.localstorm.mcc.web.util.SessionUtil;
+
 
 /**
  *
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/ToggleStateContext")
-public class ContextToggleStateActionBean extends BaseActionBean
+@UrlBinding("/actions/EraseContext")
+public class ContextEraseActionBean extends BaseActionBean
 {
     @Validate( required=true )
     private int contextId;
@@ -34,10 +33,8 @@ public class ContextToggleStateActionBean extends BaseActionBean
         
         ContextManager cm = getContextManager();
         Context ctx = cm.findById(getContextId());
-        ctx.setArchived( !ctx.isArchived() );
-        cm.update(ctx);
-        
-        SessionUtil.clear(getSession(), SessionKeys.CONTEXTS);
+        cm.remove(ctx);
+
         return new RedirectResolution(ContextsEditActionBean.class);
     }
 }

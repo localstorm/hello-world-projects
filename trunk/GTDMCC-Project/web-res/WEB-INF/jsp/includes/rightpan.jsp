@@ -7,7 +7,7 @@
 	<ul>
             <c:forEach items="${contexts}" var="ctx" >
                 <li><a href="<c:url value="/actions/ViewContext">
-                           <c:param name="id" value="${ctx.id}" />
+                           <c:param name="contextId" value="${ctx.id}" />
                          </c:url>">${ctx.name}</a>
                 </li>
             </c:forEach>

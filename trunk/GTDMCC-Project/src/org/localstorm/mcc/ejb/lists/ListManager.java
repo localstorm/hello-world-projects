@@ -1,24 +1,19 @@
 package org.localstorm.mcc.ejb.lists;
 
 import java.util.Collection;
+import org.localstorm.mcc.ejb.BaseManager;
 import org.localstorm.mcc.ejb.contexts.Context;
-import org.localstorm.mcc.ejb.except.DuplicateException;
-import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 
 /**
  *
  * @author Alexey Kuznetsov
  */
-public interface ListManager 
+public interface ListManager extends BaseManager<GTDList>
 {
-    public void createList(GTDList list) throws DuplicateException;
-    
-    public void updateList(GTDList list);
+    public static final String BEAN_NAME = "ListManagerBean";
     
     /* Doesn't return archived lists */
-    public Collection<GTDList> findAllLists( Context ctx );
+    public Collection<GTDList> findByContext( Context ctx );
     
-    public Collection<GTDList> findAllListTypes( );
-    
-    public GTDList findById(int id) throws ObjectNotFoundException;
+    public Collection<GTDList> findByContextArchived(Context ctx);
 }
