@@ -9,16 +9,16 @@
 	<tr>
 		<th colspan="2">Operative</th>
 	</tr>
-        <c:forEach items="${actionBean.operativeContexts}" var="ctx">
+        <c:forEach items="${contexts}" var="ctx">
 	<tr>
 		<td width="95%">
 			<p><img border="0" src="<c:url value="/images/arrow.gif" />"/>
                         <span><a href="<c:url value="/actions/ViewContext">
-                                            <c:param name="id" value="1" />
-                                       </c:url>">University</a></span>
+                                            <c:param name="id" value="${ctx.id}" />
+                                       </c:url>">${ctx.name}</a></span>
 		</td>
 		<td width="5%"> <a href="<c:url value="/actions/ToggleStateContext">
-                                            <c:param name="id" value="1" />
+                                            <c:param name="id" value="${ctx.id}" />
                                        </c:url>" title="Delete"><img border="0" src="<c:url value="/images/trash.png"/>" /></a></p></td>
 	</tr>
         </c:forEach>
@@ -33,19 +33,24 @@
                     <hr/>
                 </td>
 	</tr>
-	<tr >
-		<th colspan="2">Archived</th>
-	</tr>
-        <c:forEach items="${actionBean.archiveContexts}" var="ctx" >
-	<tr>
-		<td width="95%">
-			<p><img border="0" src="<c:url value="/images/arrow.gif"/>"/> <span><a href="#">Iraq</a></span>
-		</td>
-		<td width="5%"> <a href="<c:url value="/actions/ToggleStateContext">
-                                            <c:param name="id" value="1" />
-                                       </c:url>" title="Undelete"><img border="0" src="<c:url value="/images/deleted.png"/>" /></a></p></td>
-	</tr>
-        </c:forEach>
+        <c:if test="${not empty actionBean.archiveContexts}">
+            <tr >
+                    <th colspan="2">Archived</th>
+            </tr>
+            <c:forEach items="${actionBean.archiveContexts}" var="ctx" >
+            <tr>
+                    <td width="95%">
+                            <p><img border="0" src="<c:url value="/images/arrow.gif"/>"/> <span><a href="<c:url 
+                                        value="/actions/ViewContext">
+                                            <c:param name="id" value="${ctx.id}" />
+                                        </c:url>">${ctx.name}</a></span>
+                    </td>
+                    <td width="5%"> <a href="<c:url value="/actions/ToggleStateContext">
+                                                <c:param name="id" value="${ctx.id}" />
+                                           </c:url>" title="Undelete"><img border="0" src="<c:url value="/images/deleted.png"/>" /></a></p></td>
+            </tr>
+            </c:forEach>
+        </c:if>
 	</table>
     	<br/><br/>
 

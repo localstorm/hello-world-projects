@@ -1,13 +1,20 @@
 package org.localstorm.mcc.web.actions;
 
+import javax.servlet.http.HttpSession;
 import net.sourceforge.stripes.action.After;
 import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.ForwardResolution;
+import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
+import org.localstorm.mcc.ejb.contexts.Context;
+import org.localstorm.mcc.ejb.contexts.ContextManager;
+import org.localstorm.mcc.ejb.users.*;
+import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.annotations.EJBBean;
+import org.localstorm.mcc.web.util.SessionUtil;
 
 
 /**
@@ -17,7 +24,9 @@ import net.sourceforge.stripes.validation.Validate;
 @UrlBinding("/actions/AddContext")
 public class ContextAddActionBean extends ContextsEditActionBean {
 
-
+    @EJBBean(ContextManager.BEAN_NAME)
+    private ContextManager cm;
+    
     @Validate( required=true )
     private String name;
 
@@ -43,7 +52,28 @@ public class ContextAddActionBean extends ContextsEditActionBean {
     @DefaultHandler
     public Resolution addContext() {
         System.out.println("Adding context:"+getName());
-        return new ForwardResolution( ContextsEditActionBean.class );
+        HttpSession sess = super.getSession();
+        
+        try {
+            User user = (User)sess.getAttribute(SessionKeys.USER);
+            
+            if (user==null)
+            {
+                throw new NullPointerException("USER IS NULL!");
+            }
+            
+            Context ctx = new Context(this.getName(), user);
+            ctx.setSortOrder(1);
+            
+            cm.create(ctx);
+            
+            SessionUtil.clear(sess, SessionKeys.CONTEXTS);
+        } catch(Exception e) 
+        {
+            e.printStackTrace();
+        }
+        
+        return new RedirectResolution( ContextsEditActionBean.class );
     }
     
 }

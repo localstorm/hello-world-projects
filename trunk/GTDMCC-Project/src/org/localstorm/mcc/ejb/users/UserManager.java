@@ -5,18 +5,14 @@
 
 package org.localstorm.mcc.ejb.users;
 
-import org.localstorm.mcc.ejb.except.DuplicateException;
-import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
+import org.localstorm.mcc.ejb.*;
 
 /**
  *
  * @author localstorm
  */
-public interface UserManager 
+public interface UserManager extends BaseManager<User>
 {
-    public void createUser(User user) throws DuplicateException;
-    
-    public void updateUser(User user);
-    
-    public User findById( int id ) throws ObjectNotFoundException;
+    public static final String BEAN_NAME="UserManagerBean";
+   
 }

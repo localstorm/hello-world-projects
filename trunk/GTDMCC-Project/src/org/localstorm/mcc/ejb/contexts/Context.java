@@ -14,6 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import org.localstorm.mcc.ejb.users.User;
 
@@ -23,10 +25,20 @@ import org.localstorm.mcc.ejb.users.User;
  */
 @Entity
 @Table(name="CONTEXTS")
+@NamedQueries({
+    @NamedQuery(
+        name = Context.Queries.FIND_BY_OWNER,
+        query= "SELECT o FROM Context o WHERE o.owner=:owner and archived=false"
+    ),
+    @NamedQuery(
+        name = Context.Queries.FIND_BY_OWNER_ARCHIVED,
+        query= "SELECT o FROM Context o WHERE o.owner=:owner and archived=true"
+    )
+})
 public class Context implements Serializable {   
     
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY, generator="id")
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     
     @Column(name="name", unique=false, updatable=true, nullable=false )
@@ -83,5 +95,16 @@ public class Context implements Serializable {
 
     public void setArchived(boolean archived) {
         this.archived = archived;
+    }
+    
+    public static interface Queries
+    {
+        public static final String FIND_BY_OWNER = "findByUser";
+        public static final String FIND_BY_OWNER_ARCHIVED = "findByUserArchived";
+    }
+    
+    public static interface Properties
+    {
+        public static final String OWNER = "owner";
     }
 }
