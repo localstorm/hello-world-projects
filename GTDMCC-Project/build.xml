@@ -7,6 +7,7 @@
 	<property name="dist.dir" value="dist" />
 	<property name="tmp.dir" value="tmp" />
 	<property name="ejbres.dir" value="ejb-res" />
+        <property name="earres.dir" value="ear-res" />
         <property name="res.dir" value="web-res" />
 	<property name="pname" value="gtdmcc" />
 	
@@ -66,7 +67,7 @@
             <delete dir="${tmp.dir}" /> 
         </target>
         
-	<target name="build" depends="build-ejb-jar,build-ejb-client">
+	<target name="build-web">
 		<mkdir dir="${tmp.dir}/WEB-INF/classes/org/localstorm/mcc/web"/>
 
 		<copy todir="${tmp.dir}">
@@ -77,9 +78,9 @@
 			<fileset dir="${lib.dir}"  />
 		</copy>
                 
-                <copy todir="${tmp.dir}/WEB-INF/lib">
+                <!--copy todir="${tmp.dir}/WEB-INF/lib">
 			<fileset file="${dist.dir}/${pname}-ejb-client.jar"  />
-		</copy>
+		</copy-->
                 
 		<copy todir="${tmp.dir}/WEB-INF/classes/org/localstorm/mcc/web">
 			<fileset dir="${build.dir}/org/localstorm/mcc/web"  />
@@ -90,7 +91,27 @@
 		<delete dir="${tmp.dir}" /> 
         </target>
         
-        <target name="dist" depends="build"/>
+        <target name="dist" depends="build-ejb-jar,build-ejb-client,build-web">
+            <mkdir dir="${tmp.dir}"/>
+            
+            <copy todir="${tmp.dir}">
+                <fileset file="${dist.dir}/${pname}.war"/>
+                <fileset file="${dist.dir}/${pname}-ejb.jar"/>
+            </copy>
+            
+            <copy todir="${tmp.dir}">
+                <fileset dir="${earres.dir}"/>
+            </copy>
+            
+            <jar destfile="${dist.dir}/${pname}.ear" basedir="${tmp.dir}" />
+            
+            <delete dir="${tmp.dir}" />
+
+            <delete>
+                <fileset file="${dist.dir}/${pname}.war"/>
+                <fileset file="${dist.dir}/${pname}-ejb.jar"/>
+            </delete>
+        </target>
             
         
 </project>

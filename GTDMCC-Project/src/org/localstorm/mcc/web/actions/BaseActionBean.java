@@ -1,5 +1,6 @@
 package org.localstorm.mcc.web.actions;
 
+import javax.servlet.http.HttpSession;
 import net.sourceforge.stripes.action.ActionBean;
 import net.sourceforge.stripes.action.ActionBeanContext;
 
@@ -19,5 +20,10 @@ public class BaseActionBean implements ActionBean
     @Override
     public void setContext(ActionBeanContext context) {
         this.context = context;
+    }
+    
+    protected HttpSession getSession()
+    {
+        return this.getContext().getRequest().getSession(true);
     }
 }

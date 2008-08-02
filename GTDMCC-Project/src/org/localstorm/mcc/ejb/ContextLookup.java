@@ -1,27 +1,34 @@
 package org.localstorm.mcc.ejb;
 
 
-import java.util.Properties;
+import java.text.MessageFormat;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import javax.naming.Context;
 
 
 public class ContextLookup<T>
 {
-    /*private static final Properties properties;
-    static {
-        properties = new Properties();
-        properties.setProperty(Context.INITIAL_CONTEXT_FACTORY, 
-                "org.apache.openejb.client.LocalInitialContextFactory");
-    }*/
+    private static final String JNDI_LOOKUP_REMOTE = "gtdmcc/{0}/remote";
+    private static final String JNDI_LOOKUP_LOCAL = "gtdmcc/{0}/local";
     
     @SuppressWarnings("unchecked")
     public static <T> T lookup(Class<T> cl, String beanName)  throws RuntimeException
     {
         try {
-            InitialContext ic = new InitialContext( /*properties*/ );
-            Object o = ic.lookup(beanName);
+            InitialContext ic = new InitialContext();
+            Object o = ic.lookup(MessageFormat.format(JNDI_LOOKUP_REMOTE, beanName));
+            ic.close();
+            return (T) o;
+        } catch(NamingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public static <T> T lookupLocal(Class<T> cl, String beanName)  throws RuntimeException
+    {
+        try {
+            InitialContext ic = new InitialContext();
+            Object o = ic.lookup(MessageFormat.format(JNDI_LOOKUP_LOCAL, beanName));
             ic.close();
             return (T) o;
         } catch(NamingException e) {

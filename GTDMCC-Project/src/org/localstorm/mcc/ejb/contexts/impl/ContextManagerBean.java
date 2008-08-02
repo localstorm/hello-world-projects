@@ -6,17 +6,13 @@
 package org.localstorm.mcc.ejb.contexts.impl;
 
 import java.util.Collection;
-import javax.ejb.Local;
-import javax.ejb.Remote;
+import java.util.List;
 import javax.ejb.Stateless;
-import javax.persistence.EntityExistsException;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import org.localstorm.mcc.ejb.Constants;
+import javax.persistence.Query;
+import org.localstorm.mcc.ejb.AbstractManager;
 import org.localstorm.mcc.ejb.contexts.Context;
-import org.localstorm.mcc.ejb.contexts.ContextManager;
-import org.localstorm.mcc.ejb.except.DuplicateException;
-import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
+import org.localstorm.mcc.ejb.contexts.ContextManagerLocal;
+import org.localstorm.mcc.ejb.contexts.ContextManagerRemote;
 import org.localstorm.mcc.ejb.users.User;
 
 /**
@@ -24,41 +20,36 @@ import org.localstorm.mcc.ejb.users.User;
  * @author localstorm
  */
 @Stateless
-@Local(ContextManager.class)
-//@Remote(ContextManagerRemote.class)
-public class ContextManagerBean implements ContextManager//Local, ContextManagerRemote 
+public class ContextManagerBean extends AbstractManager<Context>
+                                implements ContextManagerLocal, 
+                                           ContextManagerRemote 
 {
 
+    public ContextManagerBean() {
+        super(Context.class);
+    }
+    
     @Override
-    public void createContext(Context ctx) throws DuplicateException 
+    public Collection<Context> findByOwner(User u)
     {
-        try 
-        {
-            em.persist( ctx );
-        } catch(EntityExistsException e) 
-        {
-            throw new DuplicateException(e);
-        }
+        Query uq = em.createNamedQuery(Context.Queries.FIND_BY_OWNER);
+        uq.setParameter(Context.Properties.OWNER, u);
+        
+        List<Context> list = uq.getResultList();
+        System.out.println("RETURNED: "+list.size());
+        return list;
     }
 
     @Override
-    public void updateContext( Context ctx ) 
-    {
-        em.merge( ctx );
+    public List<Context> findByOwnerArchived(User u) {
+        Query uq = em.createNamedQuery(Context.Queries.FIND_BY_OWNER_ARCHIVED);
+        uq.setParameter(Context.Properties.OWNER, u); // 
+        
+        List<Context> list = uq.getResultList();
+        System.out.println("RETURNED: "+list.size());
+        return list;
     }
     
-    @Override
-    public Context findById(int id) throws ObjectNotFoundException 
-    {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
     
-    @Override
-    public Collection<Context> findByUser(User u) throws ObjectNotFoundException 
-    {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-    
-    @PersistenceContext(unitName=Constants.DEFAULT_PU)
-    private EntityManager em;
+   
 }

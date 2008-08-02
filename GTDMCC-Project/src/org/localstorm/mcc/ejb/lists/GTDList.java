@@ -24,7 +24,7 @@ import org.localstorm.mcc.ejb.contexts.Context;
 public class GTDList implements Serializable {   
     
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY, generator="id")
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     
     @Column(name="name", unique=false, updatable=true, nullable=false )

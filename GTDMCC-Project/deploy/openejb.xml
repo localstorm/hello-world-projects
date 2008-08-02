@@ -158,7 +158,7 @@
 #
 #  This connector will not work until you download the driver at:
 #  http://www.mysql.com/downloads/api-jdbc-stable.html
-
+MCC_DB
     JdbcDriver  com.mysql.jdbc.Driver
     JdbcUrl     jdbc:mysql://localhost/just_for_fun
     UserName    root

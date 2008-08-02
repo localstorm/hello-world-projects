@@ -24,7 +24,7 @@ import org.localstorm.mcc.ejb.contexts.Context;
 public class Note implements Serializable {   
     
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY, generator="id")
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     
     @Column(name="note", unique=false, updatable=true, nullable=false )

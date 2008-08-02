@@ -6,24 +6,22 @@
 package org.localstorm.mcc.ejb.contexts;
 
 import java.util.Collection;
-import javax.ejb.Local;
-import org.localstorm.mcc.ejb.except.DuplicateException;
-import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
+import java.util.List;
+import org.localstorm.mcc.ejb.BaseManager;
+
 import org.localstorm.mcc.ejb.users.User;
 
 /**
  *
  * @author localstorm
  */
-@Local
-public interface ContextManager 
+
+public interface ContextManager extends BaseManager<Context> 
 {
-    public void createContext(Context ctx) throws DuplicateException;
-    
-    public void updateContext(Context ctx);
-    
-    public Context findById( int id ) throws ObjectNotFoundException;
+    public static final String BEAN_NAME="ContextManagerBean";
     
     /* Doesn't return archived contexts */
-    public Collection<Context> findByUser(User u) throws ObjectNotFoundException;
+    public Collection<Context> findByOwner(User u);
+
+    public List<Context> findByOwnerArchived(User u);
 }
