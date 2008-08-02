@@ -13,7 +13,6 @@ import org.localstorm.mcc.ejb.contexts.Context;
 import org.localstorm.mcc.ejb.contexts.ContextManager;
 import org.localstorm.mcc.ejb.users.*;
 import org.localstorm.mcc.web.SessionKeys;
-import org.localstorm.mcc.web.annotations.EJBBean;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 
@@ -24,9 +23,6 @@ import org.localstorm.mcc.web.util.SessionUtil;
 @UrlBinding("/actions/AddContext")
 public class ContextAddActionBean extends ContextsEditActionBean {
 
-    @EJBBean(ContextManager.BEAN_NAME)
-    private ContextManager cm;
-    
     @Validate( required=true )
     private String name;
 
@@ -65,7 +61,7 @@ public class ContextAddActionBean extends ContextsEditActionBean {
             Context ctx = new Context(this.getName(), user);
             ctx.setSortOrder(1);
             
-            cm.create(ctx);
+            getContextManager().create(ctx);
             
             SessionUtil.clear(sess, SessionKeys.CONTEXTS);
         } catch(Exception e) 

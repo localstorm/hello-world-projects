@@ -11,7 +11,7 @@ import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
  *
  * @author Alexey Kuznetsov
  */
-public abstract class AbstractManager<T> implements BaseManager<T>
+public abstract class AbstractManager<T extends Identifiable> implements BaseManager<T>
 {
 
     public AbstractManager(Class<T> c) {
@@ -42,6 +42,14 @@ public abstract class AbstractManager<T> implements BaseManager<T>
     {
         return (T) em.find(cl, id);
     }
+
+    @Override
+    public void remove(T obj) {
+        obj = (T) em.find(cl, obj.getId() );
+        em.remove(obj);
+    }
+    
+    
     
     @PersistenceContext(unitName=Constants.DEFAULT_PU)
     protected EntityManager em;

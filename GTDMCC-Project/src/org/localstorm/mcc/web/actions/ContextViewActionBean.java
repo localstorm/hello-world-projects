@@ -1,5 +1,6 @@
 package org.localstorm.mcc.web.actions;
 
+import java.util.Collection;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
@@ -7,6 +8,9 @@ import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 
 import org.localstorm.mcc.ejb.contexts.Context;
+import org.localstorm.mcc.ejb.contexts.ContextManager;
+import org.localstorm.mcc.ejb.lists.GTDList;
+import org.localstorm.mcc.ejb.lists.ListManager;
 
 /**
  *
@@ -16,17 +20,36 @@ import org.localstorm.mcc.ejb.contexts.Context;
 public class ContextViewActionBean extends BaseActionBean
 {
     @Validate( required=true )
-    private int id;
+    private int contextId;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-    
     private Context contextResult;
+    private Collection<GTDList> contextLists;
+    private Collection<GTDList> archivedLists;
+    
+    
+    public int getContextId() {
+        return contextId;
+    }
+
+    public void setContextId(int id) {
+        this.contextId = id;
+    }
+
+    public Collection<GTDList> getContextLists() {
+        return contextLists;
+    }
+
+    public void setContextLists(Collection<GTDList> contextLists) {
+        this.contextLists = contextLists;
+    }
+
+    public Collection<GTDList> getArchivedLists() {
+        return archivedLists;
+    }
+
+    public void setArchivedLists(Collection<GTDList> archivedLists) {
+        this.archivedLists = archivedLists;
+    }
 
     public Context getContextResult() {
         return contextResult;
@@ -37,9 +60,15 @@ public class ContextViewActionBean extends BaseActionBean
     }
     
     @DefaultHandler
-    public Resolution filling() {
-        contextResult = new Context();
-        System.out.println("Viewing context:" +id);
+    public Resolution filling() throws Exception {
+        
+        contextResult   = getContextManager().findById(getContextId());
+        ListManager lm  = getListManager();
+        
+        contextLists    = lm.findByContext(contextResult);
+        archivedLists   = lm.findByContextArchived(contextResult);
+        
+        System.out.println("Viewing context:" +contextId);
         return new ForwardResolution("/jsp/viewContext.jsp");
     }
 }

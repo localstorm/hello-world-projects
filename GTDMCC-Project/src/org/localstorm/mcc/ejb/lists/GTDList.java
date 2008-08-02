@@ -10,9 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.localstorm.mcc.ejb.Identifiable;
 import org.localstorm.mcc.ejb.contexts.Context;
 
 
@@ -21,7 +24,17 @@ import org.localstorm.mcc.ejb.contexts.Context;
  */
 @Entity
 @Table(name="LISTS")
-public class GTDList implements Serializable {   
+@NamedQueries({
+    @NamedQuery(
+        name = GTDList.Queries.FIND_BY_CTX,
+        query= "SELECT o FROM GTDList o WHERE o.context=:context and archived=false"
+    ),
+    @NamedQuery(
+        name = GTDList.Queries.FIND_BY_CTX_ARCHIVED,
+        query= "SELECT o FROM GTDList o WHERE o.context=:context and archived=true"
+    )
+})
+public class GTDList implements Identifiable, Serializable {   
     
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -55,11 +68,12 @@ public class GTDList implements Serializable {
         this.archived   = false;
         this.creation   = new Date();
     }
-    
-    public Integer getId() {
-        return id;
-    }
 
+    @Override
+    public Integer getId() {
+        return this.id;
+    }
+    
     public String getName() {
         return name;
     }
@@ -96,4 +110,14 @@ public class GTDList implements Serializable {
         this.context = context;
     }
 
+    public static interface Queries
+    {
+        public static final String FIND_BY_CTX = "findByContext";
+        public static final String FIND_BY_CTX_ARCHIVED = "findByContextArchived";
+    }
+    
+    public static interface Properties
+    {
+        public static final String CONTEXT = "context";
+    }
 }

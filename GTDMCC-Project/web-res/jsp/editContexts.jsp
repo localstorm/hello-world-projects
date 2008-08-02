@@ -14,12 +14,12 @@
 		<td width="95%">
 			<p><img border="0" src="<c:url value="/images/arrow.gif" />"/>
                         <span><a href="<c:url value="/actions/ViewContext">
-                                            <c:param name="id" value="${ctx.id}" />
+                                            <c:param name="contextId" value="${ctx.id}" />
                                        </c:url>">${ctx.name}</a></span>
 		</td>
 		<td width="5%"> <a href="<c:url value="/actions/ToggleStateContext">
-                                            <c:param name="id" value="${ctx.id}" />
-                                       </c:url>" title="Delete"><img border="0" src="<c:url value="/images/trash.png"/>" /></a></p></td>
+                                            <c:param name="contextId" value="${ctx.id}" />
+                                       </c:url>" title="Archive"><img border="0" src="<c:url value="/images/trash.png"/>" /></a></p></td>
 	</tr>
         </c:forEach>
         <tr >
@@ -42,12 +42,17 @@
                     <td width="95%">
                             <p><img border="0" src="<c:url value="/images/arrow.gif"/>"/> <span><a href="<c:url 
                                         value="/actions/ViewContext">
-                                            <c:param name="id" value="${ctx.id}" />
+                                            <c:param name="contextId" value="${ctx.id}" />
                                         </c:url>">${ctx.name}</a></span>
                     </td>
-                    <td width="5%"> <a href="<c:url value="/actions/ToggleStateContext">
-                                                <c:param name="id" value="${ctx.id}" />
-                                           </c:url>" title="Undelete"><img border="0" src="<c:url value="/images/deleted.png"/>" /></a></p></td>
+                    <td width="5%"><nobr><a href="<c:url value="/actions/ToggleStateContext">
+                                                <c:param name="contextId" value="${ctx.id}" />
+                                           </c:url>" title="Unarchive"><img border="0" src="<c:url value="/images/deleted.png"/>" /></a>
+                                           <a href="<c:url value="/actions/EraseContext">
+                                                <c:param name="contextId" value="${ctx.id}" />
+                                           </c:url>" title="Delete permanently"><img border="0" src="<c:url value="/images/erase.png"/>" /></a>
+                    </nobr>
+                    </td>
             </tr>
             </c:forEach>
         </c:if>

@@ -6,13 +6,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.localstorm.mcc.ejb.Identifiable;
 
 /**
  * @author localstorm
  */
 @Entity
 @Table(name="USERS")
-public class User implements Serializable 
+public class User implements Identifiable, Serializable 
 {
      @Id
      @Column(name="id", unique=true, updatable=false )
@@ -72,12 +73,13 @@ public class User implements Serializable
     public String getLogin() {
         return login;
     }
-    
-    public Integer getId() 
-    {
-        return id;
+
+    @Override
+    public Integer getId() {
+        return this.id;
     }
 
+    
     public void setId(Integer id) 
     {
         this.id = id;
