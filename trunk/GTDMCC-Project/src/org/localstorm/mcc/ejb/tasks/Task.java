@@ -44,10 +44,10 @@ public class Task implements Identifiable, Serializable
     @Column(name="summary", unique=false, updatable=true, nullable=false )
     private String summary;
     
-    @Column(name="details", unique=false, updatable=true, nullable=false )
+    @Column(name="details", unique=false, updatable=true, nullable=true )
     private String details;
     
-    @Column(name="runtime_note", unique=false, updatable=true, nullable=false )
+    @Column(name="runtime_note", unique=false, updatable=true, nullable=true )
     private String runtimeNote;
     
     @Column(name="sort_order", unique=false, updatable=true, nullable=false )    
@@ -73,11 +73,11 @@ public class Task implements Identifiable, Serializable
     @Temporal(TemporalType.TIMESTAMP)
     private Date creation;
     
-    @Column(name="deadline", unique=false, updatable=true, nullable=false )    
+    @Column(name="deadline", unique=false, updatable=true, nullable=true )    
     @Temporal(TemporalType.TIMESTAMP)
     private Date deadline;
     
-    @Column(name="redline", unique=false, updatable=true, nullable=false )    
+    @Column(name="redline", unique=false, updatable=true, nullable=true )    
     @Temporal(TemporalType.TIMESTAMP)
     private Date redline;
 

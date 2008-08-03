@@ -2,11 +2,14 @@ package org.localstorm.mcc.web.actions;
 
 import net.sourceforge.stripes.action.After;
 import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.ForwardResolution;
+import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
+import org.localstorm.mcc.ejb.lists.GTDList;
+import org.localstorm.mcc.ejb.lists.ListManager;
+import org.localstorm.mcc.ejb.tasks.*;
 
 /**
  *
@@ -19,20 +22,20 @@ public class TaskAddActionBean extends ListViewActionBean
     @Validate( required=true )
     private String summary;
     
-    @Validate( required=true )
+    /*@Validate( required=true )
     private int listId;
 
     public int getListId() {
         return listId;
-    }
+    }*/
 
     public String getSummary() {
         return summary;
     }
 
-    public void setListId(int listId) {
+    /*public void setListId(int listId) {
         this.listId = listId;
-    }
+    }*/
 
     public void setSummary(String summary) {
         this.summary = summary;
@@ -49,14 +52,21 @@ public class TaskAddActionBean extends ListViewActionBean
     }
     
     @DefaultHandler
-    public Resolution addTask() {
+    public Resolution addTask() throws Exception {
         System.out.println("Adding task:"+getSummary());
 
+        ListManager lm = getListManager();
+        GTDList list = lm.findById(getListId());
         
+        Task t = new Task(getSummary(), "", list, null, null);
+        t.setSortOrder(1);
         
-        ForwardResolution fr = new ForwardResolution( ListViewActionBean.class );
-        fr.addParameter( "listId", listId );
-        return fr;
+        TaskManager tm = getTaskManager();
+        tm.create(t);
+        
+        RedirectResolution rr = new RedirectResolution( ListViewActionBean.class );
+        rr.addParameter( "listId", getListId() );
+        return rr;
     }
     
 }

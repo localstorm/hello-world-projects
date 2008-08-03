@@ -4,13 +4,13 @@
 <%@ include file="/WEB-INF/jsp/includes/hdr.jsp" %>
 
 <h2><span>LIST</span> tasks</h2>
-<div align="right" ><a href="#" title="Paste task"><img src="<c:url value="/images/paste.png" />" border="0" /></a>&nbsp;(My mega cool and very long list name)</div> 
+<div align="right" ><a href="#" title="Paste task"><img src="<c:url value="/images/paste.png" />" border="0" /></a>&nbsp;(${actionBean.listResult.name})</div> 
 
 <table width="100%">
 <tr>
     <th colspan="2">Operative</th>
 </tr>
-<c:forEach items="${actionBean.tasks}" var="task">
+<c:forEach items="${actionBean.tasks}" var="task" varStatus="status">
 <tr> 
     <td>
         <p>${task.summary}</p>
@@ -21,7 +21,7 @@
                 <nobr>
                     <a href="#" title="Cut"><img alt="cut" src="<c:url value="/images/cut.png"/>" border="0" /></a>
                     <a href="<c:url value="/actions/ViewTask">
-                                <c:param name="id" value="${taks.id}" />
+                                <c:param name="id" value="${task.id}" />
                              </c:url>" title="Expand"><img alt="expand" src="<c:url value="/images/expand.png"/>" border="0" /></a>
                     <a href="#" title="Append To Flight Plan"><img alt="flight" border="0" src="<c:url value="/images/flight.png"/>"/></a>
                     <a href="#" title="Finish"><img alt="finish" border="0" src="<c:url value="/images/finish.png"/>"/></a>
@@ -31,35 +31,17 @@
                 </td>
             </tr>
         </table>
+        <c:if test="${status.last}">
+            <p class="more"><a href="#">PRINT</a></p>
+        </c:if>
     </td>
 </tr>
 </c:forEach>
-<tr> 
-    <td>
-        <p>diansduian au nd ue wne wenwen uqwen fnwqe fwenf uwe finwe fwqe ifniwen fweq nfiwqen iwne fiunwef inwef</p>
-        <table width="100%">
-            <tr>
-                <td width="80%" ><hr/></td>
-                <td width="20%" >
-                <nobr>
-                    <a href="#" title="Cut"><img alt="cut" src="<c:url value="/images/cut.png"/>" border="0" /></a>
-                    <a href="<c:url value="/actions/ViewList">
-                                <c:param name="id" value="1" />
-                             </c:url>" title="Expand"><img alt="expand" src="<c:url value="/images/expand.png"/>" border="0" /></a>
-                    <a href="#" title="Finish"><img alt="finish" border="0" src="<c:url value="/images/finish.png"/>"/></a>
-                    <a href="#" title="Cancel"><img alt="cancel" border="0" src="<c:url value="/images/cancel.png"/>"/></a>
-                    <a href="#" title="Delegate"><img border="0" src="<c:url value="/images/delegate.png"/>"/></a>
-                </nobr>
-                </td>
-            </tr>
-        </table>
-        <p class="more"><a href="#">PRINT</a></p>
-    </td>
-</tr>
+        
 <tr>
    <td colspan="2" align="center">
     <br/>
-        <stripes:form action="/actions/AddTask" focus="name" >
+        <stripes:form action="/actions/AddTask" focus="summary" >
         <stripes:errors/>
         <stripes:hidden name="listId" value="1" />
             Summary: <stripes:text name="summary"/>&nbsp;<stripes:submit name="submit" value="Create" />
