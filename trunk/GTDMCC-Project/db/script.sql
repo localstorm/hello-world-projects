@@ -1,4 +1,3 @@
---drop table USERS
 create table USERS (
     id INT NOT NULL,
     fname TEXT NOT NULL,
@@ -29,7 +28,6 @@ alter table CONTEXTS add column
 (
     is_archived SMALLINT not NULL
 );
---drop table LISTS
 
 create table LISTS (
      id INT NOT NULL AUTO_INCREMENT,
@@ -42,8 +40,6 @@ create table LISTS (
      FOREIGN KEY (context_id) REFERENCES CONTEXTS(id)  ON DELETE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
---
---drop table FLIGHT_PLANS
 create table FLIGHT_PLANS (
      id INT NOT NULL AUTO_INCREMENT,
      name TEXT NOT NULL,
@@ -52,7 +48,6 @@ create table FLIGHT_PLANS (
      PRIMARY KEY (id)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
---drop table TASKS
 create table TASKS (
      id INT NOT NULL AUTO_INCREMENT,
      summary TEXT NOT NULL,
@@ -60,8 +55,9 @@ create table TASKS (
      creation DATETIME not null,  
      deadline DATETIME,  
      redline DATETIME,  
+     is_cancelled SMALLINT not null,     
      is_finished SMALLINT not null,
-     is_started SMALLINT not null,
+     is_awaited SMALLINT not null,
      is_paused SMALLINT not null,
      is_delegated SMALLINT not null,
      runtime_note TEXT,
@@ -71,7 +67,6 @@ create table TASKS (
      FOREIGN KEY (list_id) REFERENCES LISTS(id) ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
---drop table TASKS_TO_FLIGHT_PLANS 
 create table TASKS_TO_FLIGHT_PLANS 
 (
     task_id INT NOT NULL,
@@ -80,8 +75,6 @@ create table TASKS_TO_FLIGHT_PLANS
     FOREIGN KEY (plan_id) REFERENCES FLIGHT_PLANS(id) ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-
---drop table REFERENCED_OBJECTS
 create table REFERENCED_OBJECTS
 (
     id INT NOT NULL AUTO_INCREMENT,
@@ -92,7 +85,6 @@ create table REFERENCED_OBJECTS
     PRIMARY KEY (id)
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
---drop table NOTES 
 create table NOTES 
 (
     id INT NOT NULL AUTO_INCREMENT,
@@ -101,7 +93,6 @@ create table NOTES
     PRIMARY KEY (id)
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
---drop table NOTES_TO_TASKS
 create table NOTES_TO_TASKS
 (
     note_id INT NOT NULL,
@@ -110,7 +101,6 @@ create table NOTES_TO_TASKS
     FOREIGN KEY (note_id) REFERENCES NOTES(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
---drop table NOTES_TO_OBJECTS
 create table NOTES_TO_OBJECTS
 (
     note_id INT NOT NULL,
@@ -119,7 +109,6 @@ create table NOTES_TO_OBJECTS
     FOREIGN KEY (note_id) REFERENCES NOTES(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
---drop table NOTES_TO_LISTS
 create table NOTES_TO_LISTS
 (
     note_id INT NOT NULL,
@@ -128,9 +117,6 @@ create table NOTES_TO_LISTS
     FOREIGN KEY (note_id) REFERENCES NOTES(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-
-
---drop table FILES
 create table FILES
 (
     id INT NOT NULL AUTO_INCREMENT,
@@ -141,7 +127,6 @@ create table FILES
     PRIMARY KEY (id)
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
---drop table FILES_TO_TASKS
 create table FILES_TO_TASKS
 (
     task_id INT NOT NULL,
@@ -150,7 +135,6 @@ create table FILES_TO_TASKS
     FOREIGN KEY (file_id) REFERENCES FILES(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
---drop table FILES_TO_LISTS
 create table FILES_TO_LISTS
 (
     list_id INT NOT NULL,
@@ -159,7 +143,6 @@ create table FILES_TO_LISTS
     FOREIGN KEY (file_id) REFERENCES FILES(id) ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
---drop table FILES_TO_OBJECTS
 create table FILES_TO_OBJECTS
 (
     file_id INT NOT NULL,
@@ -168,7 +151,6 @@ create table FILES_TO_OBJECTS
     FOREIGN KEY (file_id) REFERENCES FILES(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
---drop table LISTS_TO_OBJECTS
 create table LISTS_TO_OBJECTS
 (
     list_id INT NOT NULL,
@@ -177,7 +159,6 @@ create table LISTS_TO_OBJECTS
     FOREIGN KEY (list_id) REFERENCES LISTS(id) ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
---drop table TASKS_TO_OBJECTS
 create table TASKS_TO_OBJECTS
 (
     task_id INT NOT NULL,
@@ -186,7 +167,6 @@ create table TASKS_TO_OBJECTS
     FOREIGN KEY (task_id) REFERENCES TASKS(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
---drop table CONTEXTS_TO_OBJECTS
 create table CONTEXTS_TO_OBJECTS
 (
     context_id INT NOT NULL,

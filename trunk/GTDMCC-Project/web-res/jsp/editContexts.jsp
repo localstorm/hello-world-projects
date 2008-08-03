@@ -15,7 +15,7 @@
 			<p><img border="0" src="<c:url value="/images/arrow.gif" />"/>
                         <span><a href="<c:url value="/actions/ViewContext">
                                             <c:param name="contextId" value="${ctx.id}" />
-                                       </c:url>">${ctx.name}</a></span>
+                                       </c:url>"><c:out value="${ctx.name}"/></a></span>
 		</td>
 		<td width="5%"> <a href="<c:url value="/actions/ToggleStateContext">
                                             <c:param name="contextId" value="${ctx.id}" />
@@ -43,7 +43,7 @@
                             <p><img border="0" src="<c:url value="/images/arrow.gif"/>"/> <span><a href="<c:url 
                                         value="/actions/ViewContext">
                                             <c:param name="contextId" value="${ctx.id}" />
-                                        </c:url>">${ctx.name}</a></span>
+                                        </c:url>"><c:out value="${ctx.name}"/></a></span>
                     </td>
                     <td width="5%"><nobr><a href="<c:url value="/actions/ToggleStateContext">
                                                 <c:param name="contextId" value="${ctx.id}" />
