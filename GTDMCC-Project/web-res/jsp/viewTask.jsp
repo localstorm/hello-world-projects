@@ -15,13 +15,13 @@
     <th colspan="2">Summary:</th>
 </tr>
 <tr>
-    <td colspan="2"> <stripes:textarea rows="4" style="width: 100%;" name="summary" /></td>
+    <td colspan="2"> <stripes:textarea rows="4" style="width: 100%;" name="summary" value="${actionBean.taskResult.summary}"/></td>
 </tr>
 <tr>
     <th colspan="2">Details:</th>
 </tr>
 <tr>
-    <td colspan="2"><stripes:textarea rows="10" style="width: 100%;" name="summary" /></td>
+    <td colspan="2"><stripes:textarea rows="10" style="width: 100%;" name="details" value="${actionBean.taskResult.details}"/></td>
 </tr>
 <tr>
     <th colspan="2">Dates:</th>

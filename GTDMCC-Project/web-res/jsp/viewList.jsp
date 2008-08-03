@@ -13,16 +13,15 @@
 <c:forEach items="${actionBean.tasks}" var="task" varStatus="status">
 <tr> 
     <td>
-        <p>${task.summary}</p>
+        <p><a href="<c:url value="/actions/ViewTask">
+                        <c:param name="id" value="${task.id}" />
+                    </c:url>">${task.summary}</a></p>
         <table width="100%">
             <tr>
                 <td width="80%" ><hr/></td>
                 <td width="20%" >
                 <nobr>
                     <a href="#" title="Cut"><img alt="cut" src="<c:url value="/images/cut.png"/>" border="0" /></a>
-                    <a href="<c:url value="/actions/ViewTask">
-                                <c:param name="id" value="${task.id}" />
-                             </c:url>" title="Expand"><img alt="expand" src="<c:url value="/images/expand.png"/>" border="0" /></a>
                     <a href="#" title="Append To Flight Plan"><img alt="flight" border="0" src="<c:url value="/images/flight.png"/>"/></a>
                     <a href="#" title="Finish"><img alt="finish" border="0" src="<c:url value="/images/finish.png"/>"/></a>
                     <a href="#" title="Cancel"><img alt="cancel" border="0" src="<c:url value="/images/cancel.png"/>"/></a>

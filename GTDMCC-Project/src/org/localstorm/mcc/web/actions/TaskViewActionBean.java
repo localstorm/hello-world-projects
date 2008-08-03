@@ -7,6 +7,7 @@ import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 
 import org.localstorm.mcc.ejb.tasks.Task;
+import org.localstorm.mcc.ejb.tasks.TaskManager;
 
 /**
  *
@@ -38,7 +39,9 @@ public class TaskViewActionBean extends BaseActionBean
 
     
     @DefaultHandler
-    public Resolution filling() {
+    public Resolution filling() throws Exception {
+        TaskManager tm = getTaskManager();
+        setTaskResult(tm.findById(getId()));
         System.out.println("Viewing task:" +id);
         return new ForwardResolution("/jsp/viewTask.jsp");
     }
