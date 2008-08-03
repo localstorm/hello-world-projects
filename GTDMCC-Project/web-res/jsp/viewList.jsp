@@ -4,7 +4,7 @@
 <%@ include file="/WEB-INF/jsp/includes/hdr.jsp" %>
 
 <h2><span>LIST</span> tasks</h2>
-<div align="right" ><a href="#" title="Paste task"><img src="<c:url value="/images/paste.png" />" border="0" /></a>&nbsp;(${actionBean.listResult.name})</div> 
+<div align="right" ><a href="#" title="Paste task"><img src="<c:url value="/images/paste.png" />" border="0" /></a>&nbsp;(<c:out value="${actionBean.listResult.name}"/>)</div> 
 
 <table width="100%">
 <tr>
@@ -15,17 +15,29 @@
     <td>
         <p><a href="<c:url value="/actions/ViewTask">
                         <c:param name="id" value="${task.id}" />
-                    </c:url>">${task.summary}</a></p>
+                    </c:url>"><c:out value="${task.summary}" /></a></p>
         <table width="100%">
             <tr>
                 <td width="80%" ><hr/></td>
                 <td width="20%" >
                 <nobr>
                     <a href="#" title="Cut"><img alt="cut" src="<c:url value="/images/cut.png"/>" border="0" /></a>
-                    <a href="#" title="Append To Flight Plan"><img alt="flight" border="0" src="<c:url value="/images/flight.png"/>"/></a>
-                    <a href="#" title="Finish"><img alt="finish" border="0" src="<c:url value="/images/finish.png"/>"/></a>
-                    <a href="#" title="Cancel"><img alt="cancel" border="0" src="<c:url value="/images/cancel.png"/>"/></a>
-                    <a href="#" title="Delegate"><img border="0" src="<c:url value="/images/delegate.png"/>"/></a>
+                    <a href="<c:url value="/actions/ResolveTask">
+                                <c:param name="taskId" value="${task.id}" />
+                                <c:param name="action" value="FLIGHT" />
+                             </c:url>" title="Append To Flight Plan"><img alt="flight" border="0" src="<c:url value="/images/flight.png"/>"/></a>
+                    <a href="<c:url value="/actions/ResolveTask">
+                                <c:param name="taskId" value="${task.id}" />
+                                <c:param name="action" value="FINISH" />
+                             </c:url>" title="Finish"><img alt="finish" border="0" src="<c:url value="/images/finish.png"/>"/></a>
+                    <a href="<c:url value="/actions/ResolveTask">
+                                <c:param name="taskId" value="${task.id}" />
+                                <c:param name="action" value="CANCEL" />
+                             </c:url>" title="Cancel"><img alt="cancel" border="0" src="<c:url value="/images/cancel.png"/>"/></a>
+                    <a href="<c:url value="/actions/ResolveTask">
+                                <c:param name="taskId" value="${task.id}" />
+                                <c:param name="action" value="DELEGATE" />
+                             </c:url>" title="Delegate"><img border="0" src="<c:url value="/images/delegate.png"/>"/></a>
                 </nobr>
                 </td>
             </tr>

@@ -5,8 +5,9 @@
 
 <h2><span>TASK</span> details</h2>
 
-<stripes:form action="/actions/AddTask" focus="summary" >
+<stripes:form action="/actions/UpdateTask" focus="summary" >
 <stripes:errors/>
+<stripes:hidden name="taskId" value="${actionBean.taskResult.id}" />
 <table width="100%">
 <tr>
     <th colspan="2"><font color="red">This task was delegated to Santa</font>&nbsp;<a href="#" title="Clear note">[x]</a></th>
@@ -31,7 +32,7 @@
     <td>Dead&nbsp;Line:&nbsp;<stripes:text style="width: 100%;" name="deadline" /></td>
 </tr>
 <tr>
-    <td colspan="2" align="center"><stripes:submit name="submit" value="Apply" /></td>
+    <td colspan="2" align="center"><stripes:submit name="submit" value="Apply" />&nbsp;<stripes:reset name="reset"/></td>
 </tr>
 </table>     
 </stripes:form>

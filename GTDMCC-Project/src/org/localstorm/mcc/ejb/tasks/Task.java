@@ -57,11 +57,14 @@ public class Task implements Identifiable, Serializable
     @ManyToOne(fetch=FetchType.EAGER)
     private GTDList list;
     
-    @Column(name="is_finished", unique=false, updatable=true, nullable=false )    
+    @Column(name="is_cancelled", unique=false, updatable=true, nullable=false )    
+    private boolean cancelled;
+    
+    @Column(name="is_finished", unique=false, updatable=true, nullable=false )       
     private boolean finished;
     
-    @Column(name="is_started", unique=false, updatable=true, nullable=false )    
-    private boolean started;
+    @Column(name="is_awaited", unique=false, updatable=true, nullable=false )    
+    private boolean awaited;
     
     @Column(name="is_paused", unique=false, updatable=true, nullable=false )    
     private boolean paused;
@@ -93,7 +96,7 @@ public class Task implements Identifiable, Serializable
         this.deadline = deadline;
         this.redline = redline;
         this.finished = false;
-        this.started = false;
+        this.awaited = false;
         this.paused = true;
         this.delegated = false;
         this.creation = new Date();
@@ -136,7 +139,7 @@ public class Task implements Identifiable, Serializable
         return runtimeNote;
     }
 
-    public boolean isAccomplished() {
+    public boolean isFinished() {
         return finished;
     }
 
@@ -148,11 +151,19 @@ public class Task implements Identifiable, Serializable
         return paused;
     }
 
-    public boolean isStarted() {
-        return started;
+    public boolean isAwaited() {
+        return awaited;
     }
 
-    public void setAccomplished(boolean accomplished) {
+    public boolean isCancelled() {
+        return cancelled;
+    }
+    
+    public void setCancelled(boolean cancelled) {
+        this.cancelled  = cancelled;
+    }
+
+    public void setFinished(boolean accomplished) {
         this.finished = accomplished;
     }
 
@@ -192,10 +203,10 @@ public class Task implements Identifiable, Serializable
         this.runtimeNote = runtimeNote;
     }
 
-    public void setStarted(boolean started) {
-        this.started = started;
+    public void setAwaited(boolean started) {
+        this.awaited = started;
     }
-
+    
     public void setSummary(String summary) {
         this.summary = summary;
     }

@@ -7,7 +7,7 @@
 
 <div align="right" ><a href="#" title="Paste list"><img src="<c:url value="/images/paste.png"/>" border="0" /></a> (<a href="<c:url value="/actions/ViewContext">
                                 <c:param name="contextId" value="${actionBean.contextResult.id}" />
-                        </c:url>">${actionBean.contextResult.name}</a>)</div> 
+                        </c:url>"><c:out value="${actionBean.contextResult.name}"/></a>)</div> 
 
 <table width="100%">
 <tr>
@@ -18,7 +18,7 @@
     <td>
         <p><span><img src="<c:url value="/images/partially-finished.png"/>" />&nbsp;<a href="<c:url value="/actions/ViewList">
                                 <c:param name="listId" value="${list.id}" />
-                          </c:url>">${list.name}</a></span></p>
+                    </c:url>"><c:out value="${list.name}"/></a></span></p>
         <table width="100%">
             <tr>
                 <td width="80%" ><hr/></td>
@@ -61,16 +61,16 @@
         <p><a href="<c:url value="/actions/ResolveList">
                         <c:param name="listId" value="${list.id}" />
                         <c:param name="action" value="UNRESOLVE" />
-                    </c:url>" title="Undo"><img alt="Undo" border="0" src="<c:url value="/images/deleted.png"/>"/></a> <span>${list.name}</span></p>
+                    </c:url>" title="Undo"><img alt="Undo" border="0" src="<c:url value="/images/deleted.png"/>"/></a>
+                    <span><a href="<c:url value="/images/partially-finished.png"/>" />&nbsp;<a href="<c:url value="/actions/ViewList">
+                                <c:param name="listId" value="${list.id}" />
+                    </c:url>"><c:out value="${list.name}"/></a></span></p>
         <table width="100%">
             <tr>
                 <td width="80%" ><hr/></td>
                 <td width="10%" >
                 <nobr>
                     <a href="#" title="Cut"><img alt="cut" src="<c:url value="/images/cut.png"/>" border="0" /></a>
-                    <a href="<c:url value="/actions/ViewList">
-                                <c:param name="listId" value="${list.id}" />
-                             </c:url>" title="Expand"><img alt="expand" src="<c:url value="/images/expand.png"/>" border="0" /></a>
                     <a href="<c:url value="/actions/ResolveList">
                                 <c:param name="listId" value="${list.id}" />
                                 <c:param name="action" value="ERASE" />
