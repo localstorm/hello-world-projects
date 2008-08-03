@@ -16,7 +16,9 @@
 <c:forEach items="${actionBean.contextLists}" var="list" >
 <tr> 
     <td>
-        <p><span>${list.name}</span></p>
+        <p><span><a href="<c:url value="/actions/ViewList">
+                                <c:param name="listId" value="${list.id}" />
+                          </c:url>">${list.name}</a></span></p>
         <table width="100%">
             <tr>
                 <td width="80%" ><hr/></td>

@@ -7,7 +7,7 @@ create table USERS (
     pass_hash TEXT NOT NULL,
     is_blocked SMALLINT NOT NULL,
     PRIMARY KEY (id)
-) ENGINE=INNODB;
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 insert into USERS (id, fname, lname, login, pass_hash, is_blocked) values (174947681, 'root', 'root', 'root', 'ho-ho', 0);
 
@@ -23,7 +23,7 @@ create table CONTEXTS (
      user_id INT not null,
      PRIMARY KEY (id),
      FOREIGN KEY (user_id) REFERENCES USERS(id)  ON DELETE CASCADE
-) ENGINE=INNODB;
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 alter table CONTEXTS add column
 (
@@ -40,7 +40,7 @@ create table LISTS (
      is_archived SMALLINT NOT NULL,
      PRIMARY KEY (id),
      FOREIGN KEY (context_id) REFERENCES CONTEXTS(id)  ON DELETE CASCADE
-) ENGINE=INNODB;
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 --
 --drop table FLIGHT_PLANS
@@ -50,7 +50,7 @@ create table FLIGHT_PLANS (
      creation DATETIME not null, -- sorted by creation
      is_active SMALLINT  not null,
      PRIMARY KEY (id)
-) ENGINE=INNODB;
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 --drop table TASKS
 create table TASKS (
@@ -69,7 +69,7 @@ create table TASKS (
      list_id INT not null,
      PRIMARY KEY (id),
      FOREIGN KEY (list_id) REFERENCES LISTS(id) ON DELETE CASCADE
-)  ENGINE=INNODB;
+)  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 --drop table TASKS_TO_FLIGHT_PLANS 
 create table TASKS_TO_FLIGHT_PLANS 
@@ -78,7 +78,7 @@ create table TASKS_TO_FLIGHT_PLANS
     plan_id INT NOT NULL,
     FOREIGN KEY (task_id) REFERENCES TASKS(id) ON DELETE CASCADE,
     FOREIGN KEY (plan_id) REFERENCES FLIGHT_PLANS(id) ON DELETE CASCADE
-)  ENGINE=INNODB;
+)  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 
 --drop table REFERENCED_OBJECTS
@@ -90,7 +90,7 @@ create table REFERENCED_OBJECTS
     sort_order INT not null,
     is_archived SMALLINT NOT NULL,
     PRIMARY KEY (id)
-)  ENGINE=INNODB;
+)  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 --drop table NOTES 
 create table NOTES 
@@ -99,7 +99,7 @@ create table NOTES
     note    TEXT NOT NULL,
     creation DATETIME NOT NULL,
     PRIMARY KEY (id)
-)  ENGINE=INNODB;
+)  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 --drop table NOTES_TO_TASKS
 create table NOTES_TO_TASKS
@@ -108,7 +108,7 @@ create table NOTES_TO_TASKS
     task_id INT NOT NULL,
     FOREIGN KEY (task_id) REFERENCES TASKS(id)  ON DELETE CASCADE,
     FOREIGN KEY (note_id) REFERENCES NOTES(id)  ON DELETE CASCADE
-)  ENGINE=INNODB;
+)  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 --drop table NOTES_TO_OBJECTS
 create table NOTES_TO_OBJECTS
@@ -117,7 +117,7 @@ create table NOTES_TO_OBJECTS
     object_id INT NOT NULL,
     FOREIGN KEY (object_id) REFERENCES REFERENCED_OBJECTS(id)  ON DELETE CASCADE,
     FOREIGN KEY (note_id) REFERENCES NOTES(id)  ON DELETE CASCADE
-)  ENGINE=INNODB;
+)  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 --drop table NOTES_TO_LISTS
 create table NOTES_TO_LISTS
@@ -126,7 +126,7 @@ create table NOTES_TO_LISTS
     list_id INT NOT NULL,
     FOREIGN KEY (list_id) REFERENCES LISTS(id)  ON DELETE CASCADE,
     FOREIGN KEY (note_id) REFERENCES NOTES(id)  ON DELETE CASCADE
-)  ENGINE=INNODB;
+)  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 
 
@@ -139,7 +139,7 @@ create table FILES
     data        BLOB NOT NULL,
     creation DATETIME NOT NULL,
     PRIMARY KEY (id)
-)  ENGINE=INNODB;
+)  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 --drop table FILES_TO_TASKS
 create table FILES_TO_TASKS
@@ -148,7 +148,7 @@ create table FILES_TO_TASKS
     file_id INT NOT NULL,
     FOREIGN KEY (task_id) REFERENCES TASKS(id)  ON DELETE CASCADE,
     FOREIGN KEY (file_id) REFERENCES FILES(id)  ON DELETE CASCADE
-)  ENGINE=INNODB;
+)  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 --drop table FILES_TO_LISTS
 create table FILES_TO_LISTS
@@ -157,7 +157,7 @@ create table FILES_TO_LISTS
     file_id INT NOT NULL,
     FOREIGN KEY (list_id) REFERENCES LISTS(id)  ON DELETE CASCADE,
     FOREIGN KEY (file_id) REFERENCES FILES(id) ON DELETE CASCADE
-)  ENGINE=INNODB;
+)  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 --drop table FILES_TO_OBJECTS
 create table FILES_TO_OBJECTS
@@ -166,7 +166,7 @@ create table FILES_TO_OBJECTS
     object_id INT NOT NULL,
     FOREIGN KEY (object_id) REFERENCES REFERENCED_OBJECTS(id)  ON DELETE CASCADE,
     FOREIGN KEY (file_id) REFERENCES FILES(id)  ON DELETE CASCADE
-)  ENGINE=INNODB;
+)  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 --drop table LISTS_TO_OBJECTS
 create table LISTS_TO_OBJECTS
@@ -175,7 +175,7 @@ create table LISTS_TO_OBJECTS
     object_id INT NOT NULL,
     FOREIGN KEY (object_id) REFERENCES REFERENCED_OBJECTS(id)  ON DELETE CASCADE,
     FOREIGN KEY (list_id) REFERENCES LISTS(id) ON DELETE CASCADE
-)  ENGINE=INNODB;
+)  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 --drop table TASKS_TO_OBJECTS
 create table TASKS_TO_OBJECTS
@@ -184,7 +184,7 @@ create table TASKS_TO_OBJECTS
     object_id INT NOT NULL,
     FOREIGN KEY (object_id) REFERENCES REFERENCED_OBJECTS(id)  ON DELETE CASCADE,
     FOREIGN KEY (task_id) REFERENCES TASKS(id)  ON DELETE CASCADE
-)  ENGINE=INNODB;
+)  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 --drop table CONTEXTS_TO_OBJECTS
 create table CONTEXTS_TO_OBJECTS
@@ -193,5 +193,5 @@ create table CONTEXTS_TO_OBJECTS
     object_id INT NOT NULL,
     FOREIGN KEY (object_id) REFERENCES REFERENCED_OBJECTS(id)  ON DELETE CASCADE,
     FOREIGN KEY (context_id) REFERENCES CONTEXTS(id)  ON DELETE CASCADE
-)  ENGINE=INNODB;
+)  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
