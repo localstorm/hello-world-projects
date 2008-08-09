@@ -55,6 +55,11 @@ public class TaskResolveActionBean extends BaseActionBean
                 t.setAwaited(false);
                 t.setCancelled(false);
                 break;
+            case UNDELEGATE:
+                // Undelegating
+                t.setAwaited(false);
+                t.setDelegated(false);
+                break;
             case DELEGATE:
                 // Delegating
                 t.setAwaited(true);
@@ -62,12 +67,13 @@ public class TaskResolveActionBean extends BaseActionBean
                 break;
             case CANCEL:
                 // Cancelling tasks
-                t.setFinished(true);
                 t.setCancelled(true);
+                t.setFinished(false);
                 break;
             case FINISH:
                 // Finishing tasks
                 t.setFinished(true);
+                t.setCancelled(false);
                 break;
             default:
                 throw new RuntimeException("Unexpected action:"+this.getAction());
@@ -85,6 +91,7 @@ public class TaskResolveActionBean extends BaseActionBean
     {
         CANCEL,
         FINISH,
+        UNDELEGATE,
         DELEGATE,
         UNRESOLVE,
         FLIGHT

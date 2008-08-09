@@ -22,6 +22,9 @@ public class ListViewActionBean extends BaseActionBean
     private int listId;
     
     private Collection<Task> tasks;
+    private Collection<Task> awaitedTasks;
+    private Collection<Task> archiveTasks;
+    private GTDList listResult;
 
     public Collection<Task> getTasks() {
         return tasks;
@@ -39,9 +42,15 @@ public class ListViewActionBean extends BaseActionBean
     public void setListId(int id) {
         this.listId = id;
     }
-    
-    private GTDList listResult;
 
+    public Collection<Task> getArchiveTasks() {
+        return archiveTasks;
+    }
+
+    public void setArchiveTasks(Collection<Task> archiveTasks) {
+        this.archiveTasks = archiveTasks;
+    }
+    
     public GTDList getListResult() {
         return listResult;
     }
@@ -50,6 +59,13 @@ public class ListViewActionBean extends BaseActionBean
         this.listResult = listResult;
     }
 
+    public void setAwaitedTasks(Collection<Task> tasks) {
+        this.awaitedTasks = tasks;
+    }
+
+    public Collection<Task> getAwaitedTasks() {
+        return this.awaitedTasks;
+    }
     
     @DefaultHandler
     public Resolution filling() throws Exception {
@@ -57,9 +73,13 @@ public class ListViewActionBean extends BaseActionBean
         this.setListResult( list );
         
         TaskManager tm = getTaskManager();
-        this.setTasks(tm.findByList(list));
+        this.setTasks(tm.findOpeartiveByList(list));
+        this.setAwaitedTasks(tm.findAwaitedByList(list));
+        this.setArchiveTasks(tm.findArchiveByList(list));
         
         System.out.println("Viewing list:" +listId);
         return new ForwardResolution("/jsp/viewList.jsp");
     }
+
+    
 }

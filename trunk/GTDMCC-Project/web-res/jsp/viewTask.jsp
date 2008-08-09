@@ -3,9 +3,17 @@
 
 <%@ include file="/WEB-INF/jsp/includes/hdr.jsp" %>
 
+
+<script language="javascript1.2">
+
+var rlinec = new CodeThatCalendar(caldef1);
+var dlinec = new CodeThatCalendar(caldef1);
+
+</script>
+
 <h2><span>TASK</span> details</h2>
 
-<stripes:form action="/actions/UpdateTask" focus="summary" >
+<stripes:form action="/actions/UpdateTask" focus="summary" name="taskForm" >
 <stripes:errors/>
 <stripes:hidden name="taskId" value="${actionBean.taskResult.id}" />
 <table width="100%">
@@ -28,8 +36,20 @@
     <th colspan="2">Dates:</th>
 </tr>
 <tr>
-    <td>Red&nbsp;Line:&nbsp;<stripes:text style="width: 100%;" name="redline" /></td>
-    <td>Dead&nbsp;Line:&nbsp;<stripes:text style="width: 100%;" name="deadline" /></td>
+    <td>
+        <table width="100%">
+            <td bgcolor="red"><font color="yellow">Red&nbsp;Line:</font></td> 
+            <td><stripes:text readonly="true" name="redline" size="10" value="${actionBean.redline}" /></td> 
+            <td><nobr><img onclick="rlinec.popup('redline');" border="0px" src="<c:url value="/images/calendar.png"/>" /><img onclick="document.taskForm.redline.value = '';" border="0px" src="<c:url value="/images/nocalendar.png"/>" /></nobr></td>
+        </table>
+    </td>
+    <td>
+        <table width="100%">
+            <td bgcolor="black"><font color="white">Dead&nbsp;Line:</font></td> 
+            <td><stripes:text readonly="true" name="deadline" size="10" value="${actionBean.deadline}" /></td> 
+            <td><nobr><img onclick="dlinec.popup('deadline');" border="0px" src="<c:url value="/images/calendar.png"/>" /><img onclick="document.taskForm.deadline.value = '';" border="0px" src="<c:url value="/images/nocalendar.png"/>" /></nobr></td>
+        </table>
+    </td>
 </tr>
 <tr>
     <td colspan="2" align="center"><stripes:submit name="submit" value="Apply" />&nbsp;<stripes:reset name="reset"/></td>

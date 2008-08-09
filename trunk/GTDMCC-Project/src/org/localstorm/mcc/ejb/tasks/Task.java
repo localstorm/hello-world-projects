@@ -27,11 +27,15 @@ import org.localstorm.mcc.ejb.Identifiable;
 @NamedQueries({
     @NamedQuery(
         name = Task.Queries.FIND_BY_LIST,
-        query= "SELECT o FROM Task o WHERE o.list=:list and o.finished=false"
+        query= "SELECT o FROM Task o WHERE o.list=:list and o.finished=false and o.delegated=false and o.cancelled=false"
     ),
     @NamedQuery(
         name = Task.Queries.FIND_BY_LIST_ARCHIVED,
-        query= "SELECT o FROM Task o WHERE o.list=:list and o.finished=true"
+        query= "SELECT o FROM Task o WHERE o.list=:list and o.finished=true or o.cancelled=true"
+    ),
+    @NamedQuery(
+        name = Task.Queries.FIND_BY_LIST_AWAITED,
+        query= "SELECT o FROM Task o WHERE o.list=:list and o.finished=false and o.delegated=true"
     )
 })
 public class Task implements Identifiable, Serializable 
@@ -214,6 +218,7 @@ public class Task implements Identifiable, Serializable
     public static interface Queries {
         public static final String FIND_BY_LIST          = "findByList";
         public static final String FIND_BY_LIST_ARCHIVED = "findByListArchived";
+        public static final String FIND_BY_LIST_AWAITED  = "findByListAwaited";;
     }
     
     public static interface Properties
