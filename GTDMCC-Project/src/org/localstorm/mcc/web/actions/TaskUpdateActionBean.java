@@ -1,5 +1,8 @@
 package org.localstorm.mcc.web.actions;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.RedirectResolution;
@@ -72,11 +75,16 @@ public class TaskUpdateActionBean extends BaseActionBean
     
     @DefaultHandler
     public Resolution updatingTask() throws Exception {
+        SimpleDateFormat sdf = new SimpleDateFormat(Constants.DATE_FORMAT);
+        
         TaskManager tm = getTaskManager();
         Task t = tm.findById(getTaskId());
         
         t.setSummary(this.getSummary());
         t.setDetails(this.getDetails());
+
+        t.setRedline(this.parse(this.getRedline(), sdf));
+        t.setDeadline(this.parse(this.getDeadline(), sdf));
         
         tm.update(t);
         
@@ -86,5 +94,12 @@ public class TaskUpdateActionBean extends BaseActionBean
             rr.addParameter("listId", t.getList().getId());
         }
         return rr;
+    }
+    
+    private Date parse(String s, DateFormat df) throws Exception {
+        if (s!=null) {
+            return df.parse(s);
+        }
+        return null;
     }
 }

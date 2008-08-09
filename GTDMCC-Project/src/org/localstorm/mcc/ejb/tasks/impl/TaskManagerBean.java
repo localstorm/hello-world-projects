@@ -36,7 +36,7 @@ public class TaskManagerBean extends AbstractManager<Task>
     }
 
     @Override
-    public Collection<Task> findByList(GTDList l) {
+    public Collection<Task> findOpeartiveByList(GTDList l) {
         Query tq = em.createNamedQuery(Task.Queries.FIND_BY_LIST);
         tq.setParameter(Task.Properties.LIST, l);
         
@@ -44,6 +44,29 @@ public class TaskManagerBean extends AbstractManager<Task>
         System.out.println("RETURNED: "+list.size());
         return list;
     }
+    
+    @Override
+    public Collection<Task> findAwaitedByList(GTDList l)
+    {
+        Query tq = em.createNamedQuery(Task.Queries.FIND_BY_LIST_AWAITED);
+        tq.setParameter(Task.Properties.LIST, l);
+        
+        List<Task> list = tq.getResultList();
+        System.out.println("RETURNED: "+list.size());
+        return list;
+    }
+
+    @Override
+    public Collection<Task> findArchiveByList(GTDList l) {
+        Query tq = em.createNamedQuery(Task.Queries.FIND_BY_LIST_ARCHIVED);
+        tq.setParameter(Task.Properties.LIST, l);
+        
+        List<Task> list = tq.getResultList();
+        System.out.println("RETURNED: "+list.size());
+        return list;
+    }
+    
+    
 
     @Override
     public Collection<Task> findByUserAndLines(User user, Date redLine, Date deadLine) {

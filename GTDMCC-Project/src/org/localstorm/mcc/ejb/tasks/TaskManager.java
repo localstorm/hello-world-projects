@@ -17,7 +17,11 @@ public interface TaskManager extends BaseManager<Task>
     
     //TODO!
     /* Doesn't return archived contexts */
-    public Collection<Task> findByList(GTDList l);
+    public Collection<Task> findOpeartiveByList(GTDList l);
+    
+    public Collection<Task> findAwaitedByList(GTDList l);
+    
+    public Collection<Task> findArchiveByList(GTDList l);
     
     /* Doesn't return archived contexts */
     public Collection<Task> findByContext(Context ctx);
