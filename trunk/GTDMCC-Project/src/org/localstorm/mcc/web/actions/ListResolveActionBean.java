@@ -1,5 +1,6 @@
 package org.localstorm.mcc.web.actions;
 
+import java.util.Collection;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
@@ -7,6 +8,7 @@ import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.lists.GTDList;
 import org.localstorm.mcc.ejb.lists.ListManager;
+import org.localstorm.mcc.ejb.tasks.*;
 
 /**
  *
@@ -43,6 +45,7 @@ public class ListResolveActionBean extends BaseActionBean
     public Resolution resolvingList() throws Exception {
         
         ListManager lm = getListManager();
+        TaskManager tm = getTaskManager();
         
         GTDList list = lm.findById(this.getListId());
         
@@ -56,13 +59,11 @@ public class ListResolveActionBean extends BaseActionBean
                 lm.update(list);
                 break;
             case CANCEL:
-                // Cancelling tasks
-                list.setArchived(true);
+                this.cancelList(list, tm);
                 lm.update(list);
                 break;
             case FINISH:
-                // Finishing tasks
-                list.setArchived(true);
+                this.finishList(list, tm);
                 lm.update(list);
                 break;
             default:
@@ -84,6 +85,32 @@ public class ListResolveActionBean extends BaseActionBean
         CANCEL,
         FINISH,
         UNRESOLVE
+    }
+
+    private void cancelList(GTDList list, TaskManager tm) {
+        Collection<Task> tasks = tm.findOpeartiveByList(list);
+        tasks.addAll(tm.findAwaitedByList(list));
+        
+        for (Task t: tasks)
+        {
+            t.setDelegated(false);
+            t.setCancelled(true);
+            tm.update(t);
+        }
+        list.setArchived(true);
+    }
+    
+    private void finishList(GTDList list, TaskManager tm) {
+        Collection<Task> tasks = tm.findOpeartiveByList(list);
+        tasks.addAll(tm.findAwaitedByList(list));
+        
+        for (Task t: tasks)
+        {
+            t.setDelegated(false);
+            t.setFinished(true);
+            tm.update(t);
+        }
+        list.setArchived(true);
     }
     
 }

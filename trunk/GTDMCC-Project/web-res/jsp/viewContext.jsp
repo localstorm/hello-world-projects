@@ -16,7 +16,7 @@
 <c:forEach items="${actionBean.contextLists}" var="list" >
 <tr> 
     <td>
-        <p><span><img src="<c:url value="/images/partially-finished.png"/>" />&nbsp;<a href="<c:url value="/actions/ViewList">
+        <p><span><a href="<c:url value="/actions/ViewList">
                                 <c:param name="listId" value="${list.id}" />
                     </c:url>"><c:out value="${list.name}"/></a></span></p>
         <table width="100%">
@@ -49,9 +49,13 @@
             Name: <stripes:text name="name"/>&nbsp;<stripes:submit name="submit" value="Create" />
         </stripes:form>
      <br/>
-     <hr/>
+     <%--c:if test="${not empty actionBean.archivedLists}">
+        <hr/>
+     </c:if--%>
      </td>
 </tr>     
+
+<c:if test="${not empty actionBean.archivedLists}">
 <tr>
     <th colspan="2">Archive</th>
 </tr>
@@ -82,6 +86,7 @@
     </td>
 </tr>    
 </c:forEach> 
+</c:if>
 </table>
 
 <%@ include file="/WEB-INF/jsp/includes/rightpan.jsp" %>

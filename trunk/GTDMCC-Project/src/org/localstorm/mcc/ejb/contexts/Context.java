@@ -18,6 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import org.localstorm.mcc.ejb.Identifiable;
+import org.localstorm.mcc.ejb.Retireable;
 import org.localstorm.mcc.ejb.users.User;
 
 /**
@@ -36,7 +37,7 @@ import org.localstorm.mcc.ejb.users.User;
         query= "SELECT o FROM Context o WHERE o.owner=:owner and archived=true"
     )
 })
-public class Context implements Identifiable, Serializable {   
+public class Context implements Identifiable, Retireable, Serializable {   
     
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -49,7 +50,7 @@ public class Context implements Identifiable, Serializable {
     private Integer sortOrder;
     
     @JoinColumn(name="user_id", nullable=false)
-    @ManyToOne(fetch=FetchType.EAGER)
+    @ManyToOne(fetch=FetchType.LAZY)
     private User owner;
     
     @Column(name="is_archived", unique=false, updatable=true, nullable=false )    
@@ -82,6 +83,7 @@ public class Context implements Identifiable, Serializable {
         return sortOrder;
     }
 
+    @Override
     public boolean isArchived() {
         return archived;
     }
@@ -94,6 +96,7 @@ public class Context implements Identifiable, Serializable {
         this.sortOrder = sortOrder;
     }
 
+    @Override
     public void setArchived(boolean archived) {
         this.archived = archived;
     }
