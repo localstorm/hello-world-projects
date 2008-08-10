@@ -42,11 +42,12 @@ create table LISTS (
 
 create table FLIGHT_PLANS (
      id INT NOT NULL AUTO_INCREMENT,
-     name TEXT NOT NULL,
-     creation DATETIME not null, -- sorted by creation
-     is_active SMALLINT  not null,
+     creation DATETIME not null,
+     is_archive SMALLINT  not null,
+     user_id INT not null,
      PRIMARY KEY (id)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
 
 create table TASKS (
      id INT NOT NULL AUTO_INCREMENT,
@@ -69,11 +70,14 @@ create table TASKS (
 
 create table TASKS_TO_FLIGHT_PLANS 
 (
+    id      INT NOT NULL AUTO_INCREMENT,
     task_id INT NOT NULL,
     plan_id INT NOT NULL,
+    PRIMARY KEY (id),
     FOREIGN KEY (task_id) REFERENCES TASKS(id) ON DELETE CASCADE,
     FOREIGN KEY (plan_id) REFERENCES FLIGHT_PLANS(id) ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
+
 
 create table REFERENCED_OBJECTS
 (
