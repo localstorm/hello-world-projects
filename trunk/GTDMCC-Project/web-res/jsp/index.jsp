@@ -4,12 +4,14 @@
 <%@ include file="/WEB-INF/jsp/includes/hdr.jsp" %>
 
 <h2><span>FILGHT</span> plan</h2>
-<div align="right" >
-    <a href="#" title="Utilize &amp; build new"><img src="<c:url value="/images/utilize.png"/>" border="0" /></a>
-    <a href="#" title="Day before"><img src="<c:url value="/images/backward.png"/>" border="0" /></a>
-    (25 oct 2008)
-    <a href="#" title="Next day"><img src="<c:url value="/images/forward.png"/>" border="0"/></a></div> 
-
+    <c:if test="${(not empty actionBean.flightPlanTasks) or (not empty actionBean.awaitedFlightPlanTasks) or (not empty actionBean.archiveFlightPlanTasks)}">
+    <div align="right" >    
+        <a href="<c:url value="/actions/UtilizeFlightPlan" />" title="Utilize &amp; build new"><img src="<c:url value="/images/utilize.png"/>" border="0" /></a>
+    </div>
+    </c:if>
+<br/>
+<c:if test="${not empty actionBean.flightPlanTasks}">
+<table width="100%"><tr><th>Operative</th></tr></table> 
 <c:forEach items="${actionBean.flightPlanTasks}" var="task">
     <p><span><c:out value="${task.list.context.name}" />:</span>&nbsp;<a href="<c:url value="/actions/ViewTask">
                         <c:param name="id" value="${task.id}" />
@@ -36,10 +38,30 @@
     </tr>
 </table>
 </c:forEach>
-<c:if test="${not empty actionBean.flightPlanTasks}">
+</c:if>
+
+<c:if test="${not empty actionBean.awaitedFlightPlanTasks}">
+<table width="100%"><tr><th>Awaited</th></tr></table> 
+<c:forEach items="${actionBean.awaitedFlightPlanTasks}" var="task">
+
+    <p><a href="<c:url value="/actions/ResolveFlightTask">
+                            <c:param name="taskId" value="${task.id}" />
+                            <c:param name="action" value="UNDELEGATE" />
+                        </c:url>" title="Not delegated"><img border="0" src="<c:url value="/images/delegated.png"/>" /></a>
+                        <span><c:out value="${task.list.context.name}" />:</span>&nbsp;
+              <a href="<c:url value="/actions/ViewTask">
+                            <c:param name="id" value="${task.id}" />
+                        </c:url>"><c:out value="${task.summary}"/></a></p>
+<hr/>
+</c:forEach>
+</c:if>
+
+<c:if test="${(not empty actionBean.flightPlanTasks) or (not empty actionBean.awaitedFlightPlanTasks)}">
     <p class="more"><a href="#">PRINT</a></p>
 </c:if>
 
+<c:if test="${not empty actionBean.archiveFlightPlanTasks}">
+<table width="100%"><tr><th>Archive</th></tr></table> 
 <c:forEach items="${actionBean.archiveFlightPlanTasks}" var="task" >
 <p>
     <a href="<c:url value="/actions/ResolveFlightTask" >
@@ -52,39 +74,26 @@
     <hr/>
 </p>
 </c:forEach>
-
+</c:if>
 <%--p><a href="#" title="Not cancelled"><img border="0" src="<c:url value="/images/cancelled.png"/>" /></a><span>@work:</span>&nbsp;diansduian au nd ue wne wenwen uqwen fnwqe fwenf uwe finwe fwqe ifniwen fweq nfiwqen iwne fiunwef inwef<hr/></p>
 
 <p><a href="#" title="Not delegated"><img border="0" src="<c:url value="/images/delegated.png"/>" /></a><span>@work:</span>&nbsp;diansduian au nd ue wne wenwen uqwen fnwqe fwenf uwe finwe fwqe ifniwen fweq nfiwqen iwne fiunwef inwef<hr/></p--%>
 	
 <br/><br/>
-
+<c:if test="${not empty actionBean.affectedLists}">
 <h2><span>AFFECTED</span> lists</h2>
-<div id="bookcatagories">
+<div id="affectedlists">
     <div id="nameonePan">
         <ul>
-            <li>Operative TOBUY</li>
-            <li>Work TODO</li>
-            <li>Home TODO</li>
+            <c:forEach items="${actionBean.affectedLists}" var="list" >
+                <li><a href="<c:url value="/actions/ViewList">
+                               <c:param name="listId" value="${list.id}" />
+                   </c:url>"><c:out value="${list.name}"/></a></li>
+            </c:forEach>
         </ul>   
     </div>
-		
-    <div id="priceonePan">
-        <ul>
-            <li>shops</li>
-            <li>work</li>
-            <li>home</li>
-	</ul>
-    </div>
-	  
-    <div id="discountonePan">
-        <ul>
-            <li><font color="black"><img src="<c:url value="/images/active.png"/>"/></font></li>
-            <li><font color="darkgrey"><img src="<c:url value="/images/inactive.png"/>"/></font></li>
-            <li><font color="black"><img src="<c:url value="/images/active.png"/>"/></font></li>
-	</ul>
-    </div>
-</div>
+</div>    
+</c:if>
   
 <%@ include file="/WEB-INF/jsp/includes/rightpan.jsp" %>
 <%@ include file="/WEB-INF/jsp/includes/foot.jsp" %>

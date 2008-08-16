@@ -56,11 +56,11 @@ ul{list-style-type:none;}
 #bodyLeftPan p.next a{display:block; width:44px; height:11px; background:#fff; color:#003D5C; text-decoration:none; margin:0 0 0 246px; line-height:11px; text-align:center; padding:0px; text-transform:uppercase;}
 #bodyLeftPan p.next a:hover{display:block; width:44px; height:11px; background:#E0DEDE; color:#003D5C; text-decoration:none;}
 
-#bookcatagories{width:410px; position:relative; margin:0 auto; padding:5px 0 0;}
+#affectedlists{width:410px; position:relative; margin:0 auto; padding:5px 0 0;}
 #namePan{width:156px; float:left; background:url(../images/name-dot.gif) 100% 85% no-repeat #fff; color:#4F4F4F; font-size:14px; text-transform:uppercase;}
-#nameonePan{width:156px; float:left;}
-#nameonePan ul{width:156px;}
-#nameonePan ul li{width:140px; height:20px; background:url(../images/arrow.gif) 0 6px no-repeat #fff; color:#03537D; padding:0 0 0 10px;}
+#nameonePan{width:100%; float:left;}
+#nameonePan ul{width:100%;}
+#nameonePan ul li{width:90%; height:20px; color:#03537D; padding:0 0 0 10px;}
 
 #pricePan{width:106px; float:left; background:url(../images/price-dot.gif) 100% 85% no-repeat #fff; color:#4F4F4F; font-size:14px; text-transform:uppercase;}
 #priceonePan{width:143px; float:left;}
