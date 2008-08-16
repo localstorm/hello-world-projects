@@ -14,7 +14,6 @@ public class FlightPlanUtilizeActionBean extends BaseActionBean
     @DefaultHandler
     public Resolution utilization() throws Exception {
         this.getFlightPlanManager().utilizeCurrent(this.getUser());
-        System.out.println("FUKK");
         return new RedirectResolution(IndexActionBean.class);
     }
 
