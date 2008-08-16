@@ -101,6 +101,7 @@ public  class FlightPlanManagerBean extends AbstractSingletonManager<FlightPlan,
         {
             FlightPlan result = new FlightPlan(u);
             em.persist(result);
+            System.out.println("============DDDDD============");
             return result;
         } catch(EntityExistsException e) 
         {
