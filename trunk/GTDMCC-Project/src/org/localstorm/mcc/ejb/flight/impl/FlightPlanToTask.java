@@ -23,11 +23,11 @@ import org.localstorm.mcc.ejb.tasks.Task;
 @NamedQueries({
     @NamedQuery(
         name = FlightPlanToTask.Queries.FIND_BY_TASK_AND_PLAN,
-        query= "SELECT o FROM FlightPlanToTask o WHERE o.flightPlan=:flightPlan and o.task=:task"
+        query= "SELECT o.task FROM FlightPlanToTask o WHERE o.flightPlan=:flightPlan and o.task=:task"
     ),
     @NamedQuery(
         name = FlightPlanToTask.Queries.FIND_BY_PLAN,
-        query= "SELECT o FROM FlightPlanToTask o WHERE o.flightPlan=:flightPlan"
+        query= "SELECT o.task FROM FlightPlanToTask o WHERE o.flightPlan=:flightPlan"
     )
 })
 public class FlightPlanToTask implements Serializable

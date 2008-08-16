@@ -31,15 +31,7 @@ public class ContextsEditActionBean extends BaseActionBean {
     @DefaultHandler
     public Resolution filling() {
         System.out.println("Filling contextlist");
-        HttpSession sess = getSession();
-        User u = (User) sess.getAttribute(SessionKeys.USER);
-        
-        if (u==null)
-        {
-            throw new RuntimeException("USER IS NULL");
-        }
-        
-        result = getContextManager().findByOwnerArchived(u);
+        result = getContextManager().findByOwnerArchived(super.getUser());
         return new ForwardResolution("/jsp/editContexts.jsp");
     }
     
