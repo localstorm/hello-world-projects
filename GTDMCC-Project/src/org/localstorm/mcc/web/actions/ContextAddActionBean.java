@@ -48,22 +48,18 @@ public class ContextAddActionBean extends ContextsEditActionBean {
     @DefaultHandler
     public Resolution addContext() {
         System.out.println("Adding context:"+getName());
-        HttpSession sess = super.getSession();
+        
         
         try {
-            User user = (User)sess.getAttribute(SessionKeys.USER);
-            
-            if (user==null)
-            {
-                throw new NullPointerException("USER IS NULL!");
-            }
+            User user = super.getUser();
             
             Context ctx = new Context(this.getName(), user);
             ctx.setSortOrder(1);
             
             getContextManager().create(ctx);
             
-            SessionUtil.clear(sess, SessionKeys.CONTEXTS);
+            SessionUtil.clear(super.getSession(), SessionKeys.CONTEXTS);
+            
         } catch(Exception e) 
         {
             e.printStackTrace();

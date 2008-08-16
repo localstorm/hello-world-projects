@@ -8,7 +8,9 @@ import org.localstorm.mcc.ejb.contexts.ContextManager;
 import org.localstorm.mcc.ejb.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.lists.ListManager;
 import org.localstorm.mcc.ejb.tasks.TaskManager;
+import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.ejb.users.UserManager;
+import org.localstorm.mcc.web.SessionKeys;
 
 /**
  *
@@ -51,5 +53,16 @@ public class BaseActionBean implements ActionBean
     
     protected FlightPlanManager getFlightPlanManager() {
         return ContextLookup.lookup(FlightPlanManager.class, FlightPlanManager.BEAN_NAME);
+    }
+    
+    protected User getUser() 
+    {
+        User user = (User)this.getSession().getAttribute(SessionKeys.USER);
+            
+        if (user==null) {
+            throw new NullPointerException("USER IS NULL!");
+        }
+        
+        return user;
     }
  }
