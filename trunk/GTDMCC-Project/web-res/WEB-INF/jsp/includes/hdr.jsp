@@ -23,7 +23,7 @@
         <ul>
             <li class="home"><a href="<c:url value="/" />">Home</a></li>
             <li><a href="<c:url value="/actions/Logout"/>">Log out</a></li>
-            <li><a href="#">Photos</a></li>
+            <li><a href="<c:url value="/actions/Configure"/>">Configure</a></li>
             <li><a href="#">Interests</a></li>
             <li><a href="#">University</a></li>
             <li><a href="#">Resume</a></li>

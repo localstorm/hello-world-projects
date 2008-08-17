@@ -12,6 +12,7 @@ import net.sourceforge.stripes.validation.Validate;
 
 import org.localstorm.mcc.ejb.tasks.Task;
 import org.localstorm.mcc.ejb.tasks.TaskManager;
+import org.localstorm.mcc.web.ReturnPages;
 
 /**
  *
@@ -31,6 +32,8 @@ public class TaskUpdateActionBean extends BaseActionBean
     private String deadline;
     
     private String redline;
+    
+    private String returnPage;
 
     public int getTaskId() {
         return taskId;
@@ -71,7 +74,14 @@ public class TaskUpdateActionBean extends BaseActionBean
     public void setRedline(String redline) {
         this.redline = redline;
     }
-    
+
+    public String getReturnPage() {
+        return returnPage;
+    }
+
+    public void setReturnPage(String returnPage) {
+        this.returnPage = returnPage;
+    }
     
     @DefaultHandler
     public Resolution updatingTask() throws Exception {
@@ -88,10 +98,14 @@ public class TaskUpdateActionBean extends BaseActionBean
         
         tm.update(t);
         
-        System.out.println("Updating task:" +taskId);
-        RedirectResolution rr = new RedirectResolution(ListViewActionBean.class);
-        {
-            rr.addParameter("listId", t.getList().getId());
+        System.out.println("Updated task:" +taskId);
+        
+        RedirectResolution rr;
+        if (ReturnPages.IDX.toString().equals(returnPage)) {
+            rr = new RedirectResolution(IndexActionBean.class);
+        } else {
+            rr = new RedirectResolution(ListViewActionBean.class);
+            rr.addParameter(ListViewActionBean.IncommingParameters.LIST_ID, t.getList().getId());
         }
         return rr;
     }

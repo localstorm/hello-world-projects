@@ -11,10 +11,12 @@ import org.localstorm.mcc.ejb.*;
  *
  * @author localstorm
  */
-public interface UserManager extends BaseManager<User>
+public interface UserManager
 {
     public static final String BEAN_NAME="UserManagerBean";
 
     public User login(String login, String pwd);
-   
+    
+    public boolean subscribe(String login, String pwd);
+    
 }

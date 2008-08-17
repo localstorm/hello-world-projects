@@ -11,6 +11,7 @@ import org.localstorm.mcc.ejb.contexts.Context;
 import org.localstorm.mcc.ejb.contexts.ContextManager;
 import org.localstorm.mcc.ejb.lists.GTDList;
 import org.localstorm.mcc.ejb.lists.ListManager;
+import org.localstorm.mcc.web.Views;
 
 /**
  *
@@ -69,6 +70,10 @@ public class ContextViewActionBean extends BaseActionBean
         archivedLists   = lm.findByContextArchived(contextResult);
         
         System.out.println("Viewing context:" +contextId);
-        return new ForwardResolution("/jsp/viewContext.jsp");
+        return new ForwardResolution(Views.VIEW_CTX);
+    }
+    
+    public static interface IncommingParameters {
+        public static final String CTX_ID = "contextId";
     }
 }

@@ -28,7 +28,7 @@
 		<td colspan="2"><hr/></td>
 	</tr>
 	<tr>
-		<td colspan="2" align="center"><input type="submit" value="Log in"></td>
+		<td colspan="2" align="center"><input type="submit" value="Log in"/></td>
 	</tr>
 </table>
 </div>

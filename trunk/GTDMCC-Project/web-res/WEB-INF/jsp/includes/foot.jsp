@@ -1,7 +1,7 @@
 <%@ page pageEncoding="UTF-8" language="java" %>
 
 </div>
-<div id="footermainPan">
+<%--div id="footermainPan">
   <div id="footerPan">
   	<ul>
 			<li class="home"><a href="#">Home</a> |</li>
@@ -15,6 +15,6 @@
 	</ul>
 	
   </div>
-</div>
+</div--%>
 </body>
 </html>
