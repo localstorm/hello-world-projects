@@ -30,11 +30,11 @@ import org.localstorm.mcc.ejb.users.User;
 @NamedQueries({
     @NamedQuery(
         name = Context.Queries.FIND_BY_OWNER,
-        query= "SELECT o FROM Context o WHERE o.owner=:owner and archived=false"
+        query= "SELECT o FROM Context o WHERE o.owner=:owner and o.archived=false"
     ),
     @NamedQuery(
         name = Context.Queries.FIND_BY_OWNER_ARCHIVED,
-        query= "SELECT o FROM Context o WHERE o.owner=:owner and archived=true"
+        query= "SELECT o FROM Context o WHERE o.owner=:owner and o.archived=true"
     )
 })
 public class Context implements Identifiable, Retireable, Serializable {   

@@ -22,7 +22,7 @@
     <div id="topMenuMiddlePan">
         <ul>
             <li class="home"><a href="<c:url value="/" />">Home</a></li>
-            <li><a href="<c:url value="/actions/Logout"/>">Log out</a></li>
+            <li><a href="#">About me</a></li>
             <li><a href="#">Photos</a></li>
             <li><a href="#">Interests</a></li>
             <li><a href="#">University</a></li>
@@ -34,5 +34,3 @@
     <div id="topMenuRightPan"></div>
   </div>
 </div>
-<div id="bodyPan">
-    <div id="bodyLeftPan">

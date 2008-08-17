@@ -1,15 +1,20 @@
 package org.localstorm.mcc.web.actions;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 
+import org.localstorm.mcc.ejb.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.lists.GTDList;
 import org.localstorm.mcc.ejb.tasks.TaskManager;
 import org.localstorm.mcc.ejb.tasks.Task;
+import org.localstorm.mcc.web.actions.wrap.TaskWrapper;
 
 /**
  *
@@ -21,16 +26,16 @@ public class ListViewActionBean extends BaseActionBean
     @Validate( required=true )
     private int listId;
     
-    private Collection<Task> tasks;
-    private Collection<Task> awaitedTasks;
-    private Collection<Task> archiveTasks;
+    private Collection<TaskWrapper> tasks;
+    private Collection<TaskWrapper> awaitedTasks;
+    private Collection<TaskWrapper> archiveTasks;
     private GTDList listResult;
 
-    public Collection<Task> getTasks() {
+    public Collection<TaskWrapper> getTasks() {
         return tasks;
     }
 
-    public void setTasks(Collection<Task> tasks) {
+    public void setTasks(Collection<TaskWrapper> tasks) {
         this.tasks = tasks;
     }
     
@@ -43,11 +48,11 @@ public class ListViewActionBean extends BaseActionBean
         this.listId = id;
     }
 
-    public Collection<Task> getArchiveTasks() {
+    public Collection<TaskWrapper> getArchiveTasks() {
         return archiveTasks;
     }
 
-    public void setArchiveTasks(Collection<Task> archiveTasks) {
+    public void setArchiveTasks(Collection<TaskWrapper> archiveTasks) {
         this.archiveTasks = archiveTasks;
     }
     
@@ -59,11 +64,11 @@ public class ListViewActionBean extends BaseActionBean
         this.listResult = listResult;
     }
 
-    public void setAwaitedTasks(Collection<Task> tasks) {
+    public void setAwaitedTasks(Collection<TaskWrapper> tasks) {
         this.awaitedTasks = tasks;
     }
 
-    public Collection<Task> getAwaitedTasks() {
+    public Collection<TaskWrapper> getAwaitedTasks() {
         return this.awaitedTasks;
     }
     
@@ -72,13 +77,37 @@ public class ListViewActionBean extends BaseActionBean
         GTDList list = getListManager().findById(getListId());
         this.setListResult( list );
         
-        TaskManager tm = getTaskManager();
-        this.setTasks(tm.findOpeartiveByList(list));
-        this.setAwaitedTasks(tm.findAwaitedByList(list));
-        this.setArchiveTasks(tm.findArchiveByList(list));
+        
+        
+        TaskManager tm        = this.getTaskManager();
+        FlightPlanManager fpm = this.getFlightPlanManager();
+        
+        Collection<Task> currentFp = fpm.getTasksFromFlightPlan(fpm.findCurrent(this.getUser()));
+        
+        this.setTasks(genWrappers(tm.findOpeartiveByList(list), currentFp));
+        this.setAwaitedTasks(genWrappers(tm.findAwaitedByList(list), currentFp));
+        this.setArchiveTasks(genWrappers(tm.findArchiveByList(list), currentFp));
         
         System.out.println("Viewing list:" +listId);
         return new ForwardResolution("/jsp/viewList.jsp");
+    }
+
+    private Collection<TaskWrapper> genWrappers(Collection<Task> taskList,
+                                                Collection<Task> currentFp) 
+    {
+        Map<Integer, Boolean> mp = new HashMap<Integer, Boolean>();
+        for (Task t: currentFp)
+        {
+            mp.put( t.getId(), Boolean.TRUE );
+        }
+        
+        Collection<TaskWrapper> result = new ArrayList<TaskWrapper>(taskList.size());
+        for (Task t: taskList)
+        {
+            result.add(new TaskWrapper(t, mp.containsKey(t.getId())));
+        }
+        
+        return result;
     }
 
     
