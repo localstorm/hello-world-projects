@@ -49,7 +49,6 @@ public class ContextAddActionBean extends ContextsEditActionBean {
     public Resolution addContext() {
         System.out.println("Adding context:"+getName());
         
-        
         try {
             User user = super.getUser();
             

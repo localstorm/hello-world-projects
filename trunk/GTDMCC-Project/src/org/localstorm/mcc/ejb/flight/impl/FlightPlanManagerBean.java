@@ -25,7 +25,7 @@ public  class FlightPlanManagerBean extends AbstractSingletonManager<FlightPlan,
 
     @Override
     public void addTaskToFlightPlan(Task t, FlightPlan fp) {
-        Query uq = em.createNamedQuery(FlightPlanToTask.Queries.FIND_BY_TASK_AND_PLAN);
+        Query uq = em.createNamedQuery(FlightPlanToTask.Queries.FIND_CONNECTORS_BY_TASK_AND_PLAN);
         {
             uq.setParameter(FlightPlanToTask.Properties.FLIGHT_PLAN, fp);
             uq.setParameter(FlightPlanToTask.Properties.TASK, t);
@@ -40,7 +40,7 @@ public  class FlightPlanManagerBean extends AbstractSingletonManager<FlightPlan,
     
     @Override
     public void removeTaskFromFlightPlan(Task t, FlightPlan fp) {
-        Query uq = em.createNamedQuery(FlightPlanToTask.Queries.FIND_BY_TASK_AND_PLAN);
+        Query uq = em.createNamedQuery(FlightPlanToTask.Queries.FIND_CONNECTORS_BY_TASK_AND_PLAN);
         {
             uq.setParameter(FlightPlanToTask.Properties.FLIGHT_PLAN, fp);
             uq.setParameter(FlightPlanToTask.Properties.TASK, t);
@@ -54,7 +54,7 @@ public  class FlightPlanManagerBean extends AbstractSingletonManager<FlightPlan,
     
     @Override
     public Collection<Task> getTasksFromFlightPlan(FlightPlan fp) {
-        Query uq = em.createNamedQuery(FlightPlanToTask.Queries.FIND_BY_PLAN);
+        Query uq = em.createNamedQuery(FlightPlanToTask.Queries.FIND_TASKS_BY_PLAN);
         {
             uq.setParameter(FlightPlanToTask.Properties.FLIGHT_PLAN, fp);
         }
@@ -101,7 +101,6 @@ public  class FlightPlanManagerBean extends AbstractSingletonManager<FlightPlan,
         {
             FlightPlan result = new FlightPlan(u);
             em.persist(result);
-            System.out.println("============DDDDD============");
             return result;
         } catch(EntityExistsException e) 
         {

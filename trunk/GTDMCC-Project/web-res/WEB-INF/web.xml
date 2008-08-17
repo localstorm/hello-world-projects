@@ -77,9 +77,21 @@
                 <load-on-startup>1</load-on-startup>
         </servlet>
         
+        <servlet>
+                <servlet-name>AuthServlet</servlet-name>
+                <servlet-class>org.localstorm.mcc.web.AuthServlet</servlet-class>
+                <load-on-startup>2</load-on-startup>
+        </servlet>
+        
         <servlet-mapping>
                 <servlet-name>StripesDispatcher</servlet-name>
                 <url-pattern>/actions/*</url-pattern>
         </servlet-mapping>
+        
+        <servlet-mapping>
+                <servlet-name>AuthServlet</servlet-name>
+                <url-pattern>/auth</url-pattern>
+        </servlet-mapping>
+
 
 </web-app>

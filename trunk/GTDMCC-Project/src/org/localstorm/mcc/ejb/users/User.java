@@ -5,6 +5,8 @@ import java.util.Random;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import org.localstorm.mcc.ejb.Identifiable;
 
@@ -13,26 +15,32 @@ import org.localstorm.mcc.ejb.Identifiable;
  */
 @Entity
 @Table(name="USERS")
+@NamedQueries({
+    @NamedQuery(
+        name = User.Queries.FIND_BY_LOGIN_AND_PASS,
+        query= "SELECT o FROM User o WHERE o.login=:login and o.passHash=:password and o.blocked=false"
+    )
+})
 public class User implements Identifiable, Serializable 
 {
-     @Id
-     @Column(name="id", unique=true, updatable=false )
-     private Integer id;
+    @Id
+    @Column(name="id", unique=true, updatable=false )
+    private Integer id;
      
-     @Column(name="fname")
-     private String firstName;
+    @Column(name="fname")
+    private String firstName;
      
-     @Column(name="login", unique=true, updatable=false )
-     private String login;
+    @Column(name="login", unique=true, updatable=false )
+    private String login;
      
-     @Column(name="lname")
-     private String lastName;
+    @Column(name="lname")
+    private String lastName;
      
-     @Column(name="pass_hash")
-     private String passHash;
+    @Column(name="pass_hash")
+    private String passHash;
      
-     @Column(name="is_blocked")
-     private boolean blocked;
+    @Column(name="is_blocked")
+    private boolean blocked;
 
     public User() 
     {
@@ -104,5 +112,13 @@ public class User implements Identifiable, Serializable
     {
         this.lastName = lastName;
     }
-
+    
+    public static interface Queries {
+        public static final String FIND_BY_LOGIN_AND_PASS = "findByLoginAndPass";
+    }
+    
+    public static interface Properties {
+        public static final String PASSWORD = "password";
+        public static final String LOGIN    = "login"; 
+    }
 }

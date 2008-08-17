@@ -47,19 +47,17 @@ public class FlightTaskResolveActionBean extends BaseActionBean
         
         TaskManager tm = getTaskManager();
         ListManager lm = getListManager();
+        FlightPlanManager fpm = this.getFlightPlanManager();
         
         Task t = tm.findById(this.getTaskId());
         
-        switch (ACTIONS.valueOf(this.getAction())) {
-            case FLIGHT:
-                HttpSession sess = getSession();
-                User u = (User) sess.getAttribute(SessionKeys.USER);
+        User u = (User) this.getUser();
         
-                if (u==null) {
-                    throw new RuntimeException("USER IS NULL");
-                }
-                
-                FlightPlanManager fpm = this.getFlightPlanManager();
+        switch (ACTIONS.valueOf(this.getAction())) {
+            case UNFLIGHT:
+                fpm.removeTaskFromFlightPlan(t, fpm.findCurrent(u));
+                break;
+            case FLIGHT:
                 fpm.addTaskToFlightPlan(t, fpm.findCurrent(u));
                 break;
             case UNRESOLVE:
@@ -135,5 +133,6 @@ public class FlightTaskResolveActionBean extends BaseActionBean
         DELEGATE,
         UNRESOLVE,
         FLIGHT,
+        UNFLIGHT
     }
 }

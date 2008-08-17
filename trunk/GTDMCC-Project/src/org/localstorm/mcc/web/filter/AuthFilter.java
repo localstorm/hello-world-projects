@@ -31,19 +31,14 @@ public class AuthFilter implements Filter
 
     @Override
     public void doFilter(ServletRequest _req, ServletResponse _res, FilterChain chain) throws IOException, ServletException {
-        try {
+        HttpServletRequest req = (HttpServletRequest) _req;
+        HttpSession sess = req.getSession();
             
-            HttpSession sess = ((HttpServletRequest) _req).getSession();
-            
-            if (SessionUtil.isEmpty(sess, SessionKeys.USER)) {
-               UserManager um = ContextLookup.lookup(UserManagerRemote.class, 
-                                                     UserManager.BEAN_NAME);
-               sess.setAttribute(SessionKeys.USER, um.findById(174947681));
-            }
-            
-        }catch(ObjectNotFoundException e){
-            e.printStackTrace();
+        if (SessionUtil.isEmpty(sess, SessionKeys.USER)) {
+            req.getRequestDispatcher("/jsp/login.jsp").forward(_req, _res);
+            return;
         }
+        
         chain.doFilter(_req, _res);
     }
 

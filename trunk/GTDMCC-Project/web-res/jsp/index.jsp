@@ -23,6 +23,10 @@
         <nobr>
             <a href="<c:url value="/actions/ResolveFlightTask" >
                 <c:param name="taskId" value="${task.id}" />
+                <c:param name="action" value="UNFLIGHT" />
+            </c:url>" title="Remove from flight plan"><img alt="unflight" border="0" src="<c:url value="/images/unflight.png"/>"/></a>
+            <a href="<c:url value="/actions/ResolveFlightTask" >
+                <c:param name="taskId" value="${task.id}" />
                 <c:param name="action" value="FINISH" />
             </c:url>" title="Finish"><img alt="finish" border="0" src="<c:url value="/images/finish.png"/>"/></a>
             <a href="<c:url value="/actions/ResolveFlightTask" >

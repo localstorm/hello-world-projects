@@ -14,5 +14,7 @@ import org.localstorm.mcc.ejb.*;
 public interface UserManager extends BaseManager<User>
 {
     public static final String BEAN_NAME="UserManagerBean";
+
+    public User login(String login, String pwd);
    
 }
