@@ -74,7 +74,7 @@ public class ListResolveActionBean extends BaseActionBean
         
         RedirectResolution rr = new RedirectResolution(ContextViewActionBean.class);
         {
-            rr.addParameter("contextId", list.getContext().getId());
+            rr.addParameter(ContextViewActionBean.IncommingParameters.CTX_ID, list.getContext().getId());
         }
         return rr;
     }

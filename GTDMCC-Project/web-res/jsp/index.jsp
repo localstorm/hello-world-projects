@@ -15,6 +15,7 @@
 <c:forEach items="${actionBean.flightPlanTasks}" var="task">
     <p><span><c:out value="${task.list.context.name}" />:</span>&nbsp;<a href="<c:url value="/actions/ViewTask">
                         <c:param name="id" value="${task.id}" />
+                        <c:param name="returnPage" value="IDX" />
                 </c:url>" title="Expand"><c:out value="${task.summary}" /></a></p>
 <table width="100%">
     <tr>
@@ -55,6 +56,7 @@
                         <span><c:out value="${task.list.context.name}" />:</span>&nbsp;
               <a href="<c:url value="/actions/ViewTask">
                             <c:param name="id" value="${task.id}" />
+                            <c:param name="returnPage" value="IDX" />
                         </c:url>"><c:out value="${task.summary}"/></a></p>
 <hr/>
 </c:forEach>
@@ -74,14 +76,12 @@
             </c:url>" title="Unresolve"><img border="0" src="<c:choose><c:when test="${task.finished}"><c:url value="/images/done.png"/></c:when><c:when test="${task.cancelled}"><c:url value="/images/cancelled.png"/></c:when></c:choose>" /></a>
     <span><c:out value="${task.list.context.name}" />:</span>&nbsp;<a href="<c:url value="/actions/ViewTask">
                         <c:param name="id" value="${task.id}" />
+                        <c:param name="returnPage" value="IDX" />
                 </c:url>"><c:out value="${task.summary} "/></a>
     <hr/>
 </p>
 </c:forEach>
 </c:if>
-<%--p><a href="#" title="Not cancelled"><img border="0" src="<c:url value="/images/cancelled.png"/>" /></a><span>@work:</span>&nbsp;diansduian au nd ue wne wenwen uqwen fnwqe fwenf uwe finwe fwqe ifniwen fweq nfiwqen iwne fiunwef inwef<hr/></p>
-
-<p><a href="#" title="Not delegated"><img border="0" src="<c:url value="/images/delegated.png"/>" /></a><span>@work:</span>&nbsp;diansduian au nd ue wne wenwen uqwen fnwqe fwenf uwe finwe fwqe ifniwen fweq nfiwqen iwne fiunwef inwef<hr/></p--%>
 	
 <br/><br/>
 <c:if test="${not empty actionBean.affectedLists}">

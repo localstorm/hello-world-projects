@@ -24,8 +24,8 @@ public class AuthServlet extends HttpServlet
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         
-        String login = req.getParameter("__login");
-        String pwd   = req.getParameter("__pass");
+        String login = req.getParameter(CGIParams.AUTH_LOGIN);
+        String pwd   = req.getParameter(CGIParams.AUTH_PASSWORD);
                 
         UserManager um = ContextLookup.lookup(UserManagerRemote.class, 
                                               UserManager.BEAN_NAME);
@@ -36,7 +36,7 @@ public class AuthServlet extends HttpServlet
             sess.setAttribute(SessionKeys.USER, u);
             res.sendRedirect("actions/Index");
         } else {
-            req.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
+            req.getRequestDispatcher(Views.LOGIN).forward(req, res);
             return;
         }
     }

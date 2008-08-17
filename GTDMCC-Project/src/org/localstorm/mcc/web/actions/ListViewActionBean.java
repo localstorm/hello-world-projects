@@ -14,6 +14,7 @@ import org.localstorm.mcc.ejb.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.lists.GTDList;
 import org.localstorm.mcc.ejb.tasks.TaskManager;
 import org.localstorm.mcc.ejb.tasks.Task;
+import org.localstorm.mcc.web.Views;
 import org.localstorm.mcc.web.actions.wrap.TaskWrapper;
 
 /**
@@ -89,7 +90,7 @@ public class ListViewActionBean extends BaseActionBean
         this.setArchiveTasks(genWrappers(tm.findArchiveByList(list), currentFp));
         
         System.out.println("Viewing list:" +listId);
-        return new ForwardResolution("/jsp/viewList.jsp");
+        return new ForwardResolution(Views.VIEW_LIST);
     }
 
     private Collection<TaskWrapper> genWrappers(Collection<Task> taskList,
@@ -110,5 +111,8 @@ public class ListViewActionBean extends BaseActionBean
         return result;
     }
 
+    public static interface IncommingParameters {
+        public static final String LIST_ID = "listId";
+    }
     
 }

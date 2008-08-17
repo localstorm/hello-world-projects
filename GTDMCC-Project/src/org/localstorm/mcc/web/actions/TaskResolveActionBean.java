@@ -115,7 +115,7 @@ public class TaskResolveActionBean extends BaseActionBean
             
             rr = new RedirectResolution(ListViewActionBean.class);
             {
-                rr.addParameter("listId", t.getList().getId());
+                rr.addParameter(ListViewActionBean.IncommingParameters.LIST_ID, t.getList().getId());
             }
         }
         

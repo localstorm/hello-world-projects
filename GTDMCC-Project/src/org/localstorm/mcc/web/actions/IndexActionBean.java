@@ -17,6 +17,7 @@ import org.localstorm.mcc.ejb.flight.FlightPlan;
 import org.localstorm.mcc.ejb.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.lists.GTDList;
 import org.localstorm.mcc.ejb.tasks.*;
+import org.localstorm.mcc.web.Views;
 
 /**
  * A very simple calculator action.
@@ -111,7 +112,7 @@ public class IndexActionBean extends BaseActionBean {
             }
         });        
         
-        return new ForwardResolution("/jsp/index.jsp");
+        return new ForwardResolution(Views.IDX);
     }
 
 }

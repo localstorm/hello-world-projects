@@ -11,6 +11,7 @@ import net.sourceforge.stripes.validation.Validate;
 
 import org.localstorm.mcc.ejb.tasks.Task;
 import org.localstorm.mcc.ejb.tasks.TaskManager;
+import org.localstorm.mcc.web.Views;
 
 /**
  *
@@ -26,6 +27,7 @@ public class TaskViewActionBean extends BaseActionBean
     
     private String deadline;
     private String redline;
+    private String returnPage;
     
     public int getId() {
         return id;
@@ -58,7 +60,14 @@ public class TaskViewActionBean extends BaseActionBean
     public void setRedline(String redline) {
         this.redline = redline;
     }
-    
+
+    public String getReturnPage() {
+        return returnPage;
+    }
+
+    public void setReturnPage(String returnPage) {
+        this.returnPage = returnPage;
+    }
     
     @DefaultHandler
     public Resolution filling() throws Exception {
@@ -72,9 +81,8 @@ public class TaskViewActionBean extends BaseActionBean
         this.setDeadline(this.format(task.getDeadline(), sdf));
         this.setRedline(this.format(task.getRedline(), sdf));
         
-        
         System.out.println("Viewing task:" +id);
-        return new ForwardResolution("/jsp/viewTask.jsp");
+        return new ForwardResolution(Views.VIEW_TASK);
     }
 
     private String format(Date date, DateFormat sdf) throws Exception 

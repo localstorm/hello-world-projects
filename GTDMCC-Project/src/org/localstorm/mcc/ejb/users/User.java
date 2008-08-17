@@ -19,6 +19,10 @@ import org.localstorm.mcc.ejb.Identifiable;
     @NamedQuery(
         name = User.Queries.FIND_BY_LOGIN_AND_PASS,
         query= "SELECT o FROM User o WHERE o.login=:login and o.passHash=:password and o.blocked=false"
+    ),
+    @NamedQuery(
+        name = User.Queries.FIND_BY_LOGIN,
+        query= "SELECT o FROM User o WHERE o.login=:login"
     )
 })
 public class User implements Identifiable, Serializable 
@@ -115,6 +119,7 @@ public class User implements Identifiable, Serializable
     
     public static interface Queries {
         public static final String FIND_BY_LOGIN_AND_PASS = "findByLoginAndPass";
+        public static final String FIND_BY_LOGIN          = "findByLogin";  
     }
     
     public static interface Properties {

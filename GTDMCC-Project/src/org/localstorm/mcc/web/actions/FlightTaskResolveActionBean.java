@@ -1,17 +1,16 @@
 package org.localstorm.mcc.web.actions;
 
-import javax.servlet.http.HttpSession;
+import java.util.Collection;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.flight.FlightPlanManager;
+import org.localstorm.mcc.ejb.flight.*;
 import org.localstorm.mcc.ejb.lists.GTDList;
 import org.localstorm.mcc.ejb.lists.ListManager;
 import org.localstorm.mcc.ejb.tasks.*;
 import org.localstorm.mcc.ejb.users.User;
-import org.localstorm.mcc.web.SessionKeys;
 
 /**
  *
@@ -52,13 +51,14 @@ public class FlightTaskResolveActionBean extends BaseActionBean
         Task t = tm.findById(this.getTaskId());
         
         User u = (User) this.getUser();
+        FlightPlan fp = fpm.findCurrent(u);
         
         switch (ACTIONS.valueOf(this.getAction())) {
             case UNFLIGHT:
-                fpm.removeTaskFromFlightPlan(t, fpm.findCurrent(u));
+                fpm.removeTaskFromFlightPlan(t, fp);
                 break;
             case FLIGHT:
-                fpm.addTaskToFlightPlan(t, fpm.findCurrent(u));
+                fpm.addTaskToFlightPlan(t, fp);
                 break;
             case UNRESOLVE:
                 t.setFinished(false);
@@ -104,17 +104,25 @@ public class FlightTaskResolveActionBean extends BaseActionBean
             lm.update(list);
         }
         
-        if (noMoreFlightTasksPending())
+        if (noMoreFlightTasksPending(fpm, fp))
         {
-           // Creating new FP
+           fpm.utilizeCurrent(u);
         }
         
         return new RedirectResolution(IndexActionBean.class);
     }
     
     
-    private boolean noMoreFlightTasksPending() {
-        return false;//throw new UnsupportedOperationException("Not yet implemented");
+    private boolean noMoreFlightTasksPending(FlightPlanManager fpm, FlightPlan fp) {
+        Collection<Task> tasks = fpm.getTasksFromFlightPlan(fp);
+        
+        for (Task t: tasks) {
+            if (!t.isFinished() && !t.isCancelled()) {
+                return false;
+            }
+        }
+        
+        return true;
     }
 
     private boolean noMoreTasksPending(GTDList list) {

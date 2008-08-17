@@ -16,6 +16,7 @@ var dlinec = new CodeThatCalendar(caldef1);
 <stripes:form action="/actions/UpdateTask" focus="summary" name="taskForm" >
 <stripes:errors/>
 <stripes:hidden name="taskId" value="${actionBean.taskResult.id}" />
+<stripes:hidden name="returnPage" value="${actionBean.returnPage}" />
 <table width="100%">
 <tr>
     <th colspan="2"><font color="red">This task was delegated to Santa</font>&nbsp;<a href="#" title="Clear note">[x]</a></th>

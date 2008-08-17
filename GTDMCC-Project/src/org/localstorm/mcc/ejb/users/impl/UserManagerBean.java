@@ -7,8 +7,11 @@ package org.localstorm.mcc.ejb.users.impl;
 
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.persistence.EntityExistsException;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import org.localstorm.mcc.ejb.AbstractManager;
+import org.localstorm.mcc.ejb.Constants;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.ejb.users.UserManagerLocal;
 import org.localstorm.mcc.ejb.users.UserManagerRemote;
@@ -18,11 +21,9 @@ import org.localstorm.mcc.ejb.users.UserManagerRemote;
  * @author localstorm
  */
 @Stateless
-public class UserManagerBean extends AbstractManager<User> 
-                             implements UserManagerLocal, UserManagerRemote 
+public class UserManagerBean implements UserManagerLocal, UserManagerRemote 
 {
     public UserManagerBean() {
-        super(User.class);
     }
 
     @Override
@@ -30,9 +31,8 @@ public class UserManagerBean extends AbstractManager<User>
     {
         Query uq = em.createNamedQuery(User.Queries.FIND_BY_LOGIN_AND_PASS);
         uq.setParameter(User.Properties.LOGIN, login);
-        uq.setParameter(User.Properties.PASSWORD, pwd);
-        System.out.println("LOGIN:"+login);
-        System.out.println("pwd:"+pwd);
+        
+        uq.setParameter(User.Properties.PASSWORD, this.getHashString(pwd) );
         
         List<User> l = uq.getResultList();
         if ( l.isEmpty() ) {
@@ -43,6 +43,32 @@ public class UserManagerBean extends AbstractManager<User>
         }
         
     }
+
+    @Override
+    public boolean subscribe(String login, String pwd) 
+    {
+        Query uq = em.createNamedQuery(User.Queries.FIND_BY_LOGIN);
+        uq.setParameter(User.Properties.LOGIN, login);
+        
+        List<User> l = uq.getResultList();
+        if ( l.isEmpty() ) {
+            try {
+                User u = new User(login, "First Name", "Last Name", this.getHashString(pwd));
+                em.persist(u);
+                return true;
+            } catch(EntityExistsException e) {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
     
+    private String getHashString(String s)
+    {
+        return MD5Util.md5ToString(MD5Util.getMD5(s));
+    }
     
+    @PersistenceContext(unitName=Constants.DEFAULT_PU)
+    protected EntityManager em;
 }
