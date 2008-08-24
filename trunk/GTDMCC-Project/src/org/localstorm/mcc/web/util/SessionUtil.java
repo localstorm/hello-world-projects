@@ -21,4 +21,7 @@ public class SessionUtil
         return sess.getAttribute(key)==null;
     }
     
+    public static Object getValue(HttpSession sess, String key) {
+        return sess.getAttribute(key);
+    }
 }

@@ -76,8 +76,10 @@ public class ListViewActionBean extends BaseActionBean
     @DefaultHandler
     public Resolution filling() throws Exception {
         GTDList list = getListManager().findById(getListId());
-        this.setListResult( list );
         
+        super.setCurrent(list);
+        
+        this.setListResult( list );
         
         
         TaskManager tm        = this.getTaskManager();

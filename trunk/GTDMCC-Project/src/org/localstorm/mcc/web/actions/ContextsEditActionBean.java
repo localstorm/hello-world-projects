@@ -28,6 +28,7 @@ public class ContextsEditActionBean extends BaseActionBean {
 
     @DefaultHandler
     public Resolution filling() {
+        super.clearCurrent();
         System.out.println("Filling contextlist");
         result = getContextManager().findByOwnerArchived(super.getUser());
         return new ForwardResolution(Views.EDIT_CTXS);

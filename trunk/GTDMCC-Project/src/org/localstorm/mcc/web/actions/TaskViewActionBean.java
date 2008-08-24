@@ -76,6 +76,9 @@ public class TaskViewActionBean extends BaseActionBean
         TaskManager tm = getTaskManager();
         
         Task task = tm.findById(getId());
+        
+        super.setCurrent(task);
+        
         this.setTaskResult(task);
         
         this.setDeadline(this.format(task.getDeadline(), sdf));

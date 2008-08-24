@@ -35,4 +35,5 @@
   </div>
 </div>
 <div id="bodyPan">
+    <%@ include file="/WEB-INF/jsp/includes/thirdpan.jsp" %>
     <div id="bodyLeftPan">

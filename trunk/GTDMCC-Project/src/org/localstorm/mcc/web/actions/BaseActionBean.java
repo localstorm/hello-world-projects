@@ -1,16 +1,21 @@
 package org.localstorm.mcc.web.actions;
 
+
 import javax.servlet.http.HttpSession;
 import net.sourceforge.stripes.action.ActionBean;
 import net.sourceforge.stripes.action.ActionBeanContext;
 import org.localstorm.mcc.ejb.ContextLookup;
+import org.localstorm.mcc.ejb.contexts.Context;
 import org.localstorm.mcc.ejb.contexts.ContextManager;
 import org.localstorm.mcc.ejb.flight.FlightPlanManager;
+import org.localstorm.mcc.ejb.lists.GTDList;
 import org.localstorm.mcc.ejb.lists.ListManager;
+import org.localstorm.mcc.ejb.tasks.Task;
 import org.localstorm.mcc.ejb.tasks.TaskManager;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.ejb.users.UserManager;
 import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
  *
@@ -19,7 +24,7 @@ import org.localstorm.mcc.web.SessionKeys;
 public class BaseActionBean implements ActionBean 
 {
     private ActionBeanContext context;
-
+    
     @Override
     public ActionBeanContext getContext() {
         return context;
@@ -65,4 +70,53 @@ public class BaseActionBean implements ActionBean
         
         return user;
     }
+    
+    protected void setCurrent(GTDList list)
+    {
+        HttpSession sess = this.getSession();
+        SessionUtil.fill(sess, SessionKeys.CURR_CTX, list.getContext());
+        SessionUtil.fill(sess, SessionKeys.CURR_LIST, list);
+        SessionUtil.clear(sess, SessionKeys.CURR_TASK);
+    }
+    
+    protected void setCurrent(Task t)
+    {
+        HttpSession sess = this.getSession();
+        SessionUtil.fill(sess, SessionKeys.CURR_CTX,  t.getList().getContext());
+        SessionUtil.fill(sess, SessionKeys.CURR_LIST, t.getList());
+        SessionUtil.fill(sess, SessionKeys.CURR_TASK, t);
+    }
+    
+    protected void setCurrent(Context t)
+    {
+        HttpSession sess = this.getSession();
+        SessionUtil.clear(sess, SessionKeys.CURR_TASK);
+        SessionUtil.clear(sess, SessionKeys.CURR_LIST);
+        SessionUtil.fill(sess, SessionKeys.CURR_CTX,  t);
+    }
+    
+    protected void clearCurrent()
+    {
+        HttpSession sess = this.getSession();
+        SessionUtil.clear(sess, SessionKeys.CURR_TASK);
+        SessionUtil.clear(sess, SessionKeys.CURR_LIST);
+        SessionUtil.clear(sess, SessionKeys.CURR_CTX);
+    }
+    
+    protected Context getCurrentContext()
+    {
+        return (Context) SessionUtil.getValue(this.getSession(), SessionKeys.CURR_CTX);
+    }
+    
+    protected GTDList getCurrentList()
+    {
+        return (GTDList) SessionUtil.getValue(this.getSession(), SessionKeys.CURR_LIST);
+    }
+    
+    protected Task getCurrentTask()
+    {
+        return (Task) SessionUtil.getValue(this.getSession(), SessionKeys.CURR_TASK);
+    }
+    
+    
  }

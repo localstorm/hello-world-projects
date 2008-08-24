@@ -26,6 +26,9 @@
                 <c:param name="taskId" value="${task.id}" />
                 <c:param name="action" value="UNFLIGHT" />
             </c:url>" title="Remove from flight plan"><img alt="unflight" border="0" src="<c:url value="/images/unflight.png"/>"/></a>
+            <a href="<c:url value="/actions/ViewList" >
+                <c:param name="listId" value="${task.list.id}" />
+            </c:url>" title="Open affected list"><img alt="toList" border="0" src="<c:url value="/images/toList.png"/>"/></a>
             <a href="<c:url value="/actions/ResolveFlightTask" >
                 <c:param name="taskId" value="${task.id}" />
                 <c:param name="action" value="FINISH" />
@@ -83,21 +86,6 @@
 </c:forEach>
 </c:if>
 	
-<br/><br/>
-<c:if test="${not empty actionBean.affectedLists}">
-<h2><span>AFFECTED</span> lists</h2>
-<div id="affectedlists">
-    <div id="nameonePan">
-        <ul>
-            <c:forEach items="${actionBean.affectedLists}" var="list" >
-                <li><a href="<c:url value="/actions/ViewList">
-                               <c:param name="listId" value="${list.id}" />
-                   </c:url>"><c:out value="${list.name}"/></a></li>
-            </c:forEach>
-        </ul>   
-    </div>
-</div>    
-</c:if>
-  
+ 
 <%@ include file="/WEB-INF/jsp/includes/rightpan.jsp" %>
 <%@ include file="/WEB-INF/jsp/includes/foot.jsp" %>
