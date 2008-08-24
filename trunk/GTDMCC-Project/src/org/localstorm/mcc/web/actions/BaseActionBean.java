@@ -14,6 +14,7 @@ import org.localstorm.mcc.ejb.tasks.Task;
 import org.localstorm.mcc.ejb.tasks.TaskManager;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.ejb.users.UserManager;
+import org.localstorm.mcc.web.Clipboard;
 import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
@@ -118,5 +119,16 @@ public class BaseActionBean implements ActionBean
         return (Task) SessionUtil.getValue(this.getSession(), SessionKeys.CURR_TASK);
     }
     
+    protected Clipboard getClipboard()
+    {
+        HttpSession sess = this.getSession();
+        Clipboard clip = (Clipboard) SessionUtil.getValue(sess, SessionKeys.CLIPBOARD);
+        if (clip==null) {
+            clip = new Clipboard();
+            SessionUtil.fill(sess, SessionKeys.CLIPBOARD, clip);
+        }
+        
+        return clip;
+    }
     
  }

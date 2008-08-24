@@ -3,9 +3,10 @@
 
 <%@ include file="/WEB-INF/jsp/includes/hdr.jsp" %>
 
+<%@ include file="clipboard.jsp" %>
 <h2><span>CONTEXT</span> details</h2>
 
-<div align="right" ><a href="#" title="Paste list"><img src="<c:url value="/images/paste.png"/>" border="0" /></a> (<a href="<c:url value="/actions/ViewContext">
+<div align="right" >(<a href="<c:url value="/actions/ViewContext">
                                 <c:param name="contextId" value="${actionBean.contextResult.id}" />
                         </c:url>"><c:out value="${actionBean.contextResult.name}"/></a>)</div> 
 
@@ -24,7 +25,10 @@
                 <td width="80%" ><hr/></td>
                 <td width="20%" >
                 <nobr>
-                    <a href="#" title="Cut"><img alt="cut" src="<c:url value="/images/cut.png"/>" border="0" /></a>
+                    <a href="<c:url value="/actions/ResolveList">
+                                <c:param name="listId" value="${list.id}" />
+                                <c:param name="action" value="COPY" />
+                             </c:url>" title="Cut"><img alt="cut" src="<c:url value="/images/cut.png"/>" border="0" /></a>
                     <a href="<c:url value="/actions/ResolveList">
                                 <c:param name="listId" value="${list.id}" />
                                 <c:param name="action" value="FINISH" />

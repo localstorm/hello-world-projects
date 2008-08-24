@@ -9,6 +9,7 @@ import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.lists.GTDList;
 import org.localstorm.mcc.ejb.lists.ListManager;
 import org.localstorm.mcc.ejb.tasks.*;
+import org.localstorm.mcc.web.Clipboard;
 
 /**
  *
@@ -40,7 +41,6 @@ public class ListResolveActionBean extends BaseActionBean
     }
     
     
-    
     @DefaultHandler
     public Resolution resolvingList() throws Exception {
         
@@ -48,9 +48,20 @@ public class ListResolveActionBean extends BaseActionBean
         TaskManager tm = getTaskManager();
         
         GTDList list = lm.findById(this.getListId());
-        
+        Clipboard clip = super.getClipboard();
         
         switch (ACTIONS.valueOf(this.getAction())) {
+            case PASTE:
+                GTDList l = clip.pickList(this.getListId());
+                if (l!=null)
+                {
+                    l.setContext(super.getCurrentContext());
+                    lm.update(l);
+                }
+                break;
+            case COPY:
+                clip.copyList(list);
+                break;
             case ERASE:
                 lm.remove(list);
                 break;
@@ -70,17 +81,17 @@ public class ListResolveActionBean extends BaseActionBean
                 throw new RuntimeException("Unexpected action:"+this.getAction());
         }
         
-        
-        
         RedirectResolution rr = new RedirectResolution(ContextViewActionBean.class);
         {
-            rr.addParameter(ContextViewActionBean.IncommingParameters.CTX_ID, list.getContext().getId());
+            rr.addParameter(ContextViewActionBean.IncommingParameters.CTX_ID, super.getCurrentContext().getId());
         }
         return rr;
     }
     
     private static enum ACTIONS 
     {
+        PASTE,
+        COPY,
         ERASE,
         CANCEL,
         FINISH,

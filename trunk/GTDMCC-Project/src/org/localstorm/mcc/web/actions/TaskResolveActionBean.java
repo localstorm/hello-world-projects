@@ -11,6 +11,7 @@ import org.localstorm.mcc.ejb.lists.GTDList;
 import org.localstorm.mcc.ejb.lists.ListManager;
 import org.localstorm.mcc.ejb.tasks.*;
 import org.localstorm.mcc.ejb.users.User;
+import org.localstorm.mcc.web.Clipboard;
 import org.localstorm.mcc.web.SessionKeys;
 
 /**
@@ -51,8 +52,22 @@ public class TaskResolveActionBean extends BaseActionBean
         ListManager lm = getListManager();
         
         Task t = tm.findById(this.getTaskId());
+        Clipboard clip = super.getClipboard();
         
         switch (ACTIONS.valueOf(this.getAction())) {
+            case PASTE:
+                t = clip.pickTask(this.getTaskId());
+                if (t!=null)
+                {
+                    t.setList(super.getCurrentList());
+                } else {
+                    t = tm.findById(this.getTaskId());
+                }
+                break;
+            case COPY:
+                
+                clip.copyTask(t);
+                break;
             case FLIGHT:
                 HttpSession sess = getSession();
                 User u = (User) sess.getAttribute(SessionKeys.USER);
@@ -106,7 +121,7 @@ public class TaskResolveActionBean extends BaseActionBean
             
             rr = new RedirectResolution(ContextViewActionBean.class);
             {
-                rr.addParameter("contextId", t.getList().getContext().getId());
+                rr.addParameter("contextId", super.getCurrentContext().getId());
             }
         } else {
             GTDList list = t.getList();
@@ -115,7 +130,7 @@ public class TaskResolveActionBean extends BaseActionBean
             
             rr = new RedirectResolution(ListViewActionBean.class);
             {
-                rr.addParameter(ListViewActionBean.IncommingParameters.LIST_ID, t.getList().getId());
+                rr.addParameter(ListViewActionBean.IncommingParameters.LIST_ID, super.getCurrentList().getId());
             }
         }
         
@@ -124,6 +139,8 @@ public class TaskResolveActionBean extends BaseActionBean
     
     private static enum ACTIONS 
     {
+        PASTE,
+        COPY,
         CANCEL,
         FINISH,
         UNDELEGATE,
