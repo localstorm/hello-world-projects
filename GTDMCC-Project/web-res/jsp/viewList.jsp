@@ -3,6 +3,7 @@
 
 <%@ include file="/WEB-INF/jsp/includes/hdr.jsp" %>
 
+<%@ include file="clipboard.jsp" %>
 <h2><span>LIST</span> tasks</h2>
 <div align="right" ><a href="#" title="Paste task"><img src="<c:url value="/images/paste.png" />" border="0" /></a>&nbsp;(<c:out value="${actionBean.listResult.name}"/>)</div> 
 
@@ -22,7 +23,10 @@
                     <td width="80%" ><hr/></td>
                     <td width="20%" >
                     <nobr>
-                        <a href="#" title="Cut"><img alt="cut" src="<c:url value="/images/cut.png"/>" border="0" /></a>
+                        <a href="<c:url value="/actions/ResolveTask">
+                                    <c:param name="taskId" value="${task.id}" />
+                                    <c:param name="action" value="COPY" />
+                                 </c:url>" title="Cut"><img alt="cut" src="<c:url value="/images/cut.png"/>" border="0" /></a>
                         <c:if test="${not task.inFlightPlan}">
                         <a href="<c:url value="/actions/ResolveTask">
                                     <c:param name="taskId" value="${task.id}" />

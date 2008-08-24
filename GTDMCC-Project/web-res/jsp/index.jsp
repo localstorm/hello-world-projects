@@ -3,7 +3,8 @@
 
 <%@ include file="/WEB-INF/jsp/includes/hdr.jsp" %>
 
-<h2><span>FILGHT</span> plan</h2>
+<%@ include file="clipboard.jsp" %>
+<h2><span>FLIGHT</span> plan</h2>
     <c:if test="${(not empty actionBean.flightPlanTasks) or (not empty actionBean.awaitedFlightPlanTasks) or (not empty actionBean.archiveFlightPlanTasks)}">
     <div align="right" >    
         <a href="<c:url value="/actions/UtilizeFlightPlan" />" title="Utilize &amp; build new"><img src="<c:url value="/images/utilize.png"/>" border="0" /></a>

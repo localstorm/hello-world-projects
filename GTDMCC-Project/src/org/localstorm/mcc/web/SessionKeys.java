@@ -12,4 +12,5 @@ public class SessionKeys
     public static final String CURR_CTX  = "currContext";
     public static final String CURR_LIST = "currList";
     public static final String CURR_TASK = "currTask";
+    public static final String CLIPBOARD = "clipboard";
 }

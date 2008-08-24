@@ -29,6 +29,8 @@ ul{list-style-type:none;}
 
 #topMenuRightPan{width:70px; height:16px; float:left; background:url(../images/menu-rightbg.gif) 0 0 no-repeat;}
 /*----/TOP PANEL----*/
+/*----/CLIPBOARD----*/
+#clipboard{width: 100%; background:#FFFFD0; border:1px dotted #DADADA; }
 /*----BODY PANEL----*/
 #bodyPan{width:1200px; position:relative; margin:0 auto; padding:25px 0 0; }
 /*----BODY LEFT PANEL----*/
