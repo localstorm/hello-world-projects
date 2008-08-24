@@ -13,7 +13,7 @@
             </c:forEach>
 	</ul>
 		<p class="more"><a href="<c:url value="/actions/EditContexts"/>">EDIT</a></p>
-		<h3><span>Reference</span> pane</h3>
+		<h3><span>Reports</span> pane</h3>
 		<p class="boldtext">03 oct 2006</p>
 		<p><a href="#">Экзамен по Кожанову</a></p>
 		

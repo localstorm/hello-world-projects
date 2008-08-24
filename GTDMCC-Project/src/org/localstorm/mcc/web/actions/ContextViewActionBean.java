@@ -62,8 +62,10 @@ public class ContextViewActionBean extends BaseActionBean
     
     @DefaultHandler
     public Resolution filling() throws Exception {
-        
         contextResult   = getContextManager().findById(getContextId());
+        
+        super.setCurrent(contextResult);
+        
         ListManager lm  = getListManager();
         
         contextLists    = lm.findByContext(contextResult);

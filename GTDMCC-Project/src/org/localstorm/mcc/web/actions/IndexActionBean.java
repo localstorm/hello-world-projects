@@ -29,8 +29,7 @@ public class IndexActionBean extends BaseActionBean {
     private Collection<Task> flightPlanTasks;
     private Collection<Task> archiveFlightPlanTasks;
     private Collection<Task> awaitedFlightPlanTasks;
-    private List<GTDList> affectedList;
-
+    
     public FlightPlan getFlightPlan() {
         return flightPlan;
     }
@@ -47,15 +46,10 @@ public class IndexActionBean extends BaseActionBean {
         return awaitedFlightPlanTasks;
     }
     
-    public Collection<GTDList> getAffectedLists() {
-        return affectedList;
-    }
-    
-    
     
     @DefaultHandler
     public Resolution filling() {
-        Map<Integer, Boolean> map = new HashMap<Integer, Boolean>();
+        super.clearCurrent();
         
         FlightPlanManager fpm = this.getFlightPlanManager();
 
@@ -81,18 +75,11 @@ public class IndexActionBean extends BaseActionBean {
         
         archiveFlightPlanTasks = new LinkedList<Task>();
         awaitedFlightPlanTasks = new LinkedList<Task>();
-        affectedList           = new LinkedList<GTDList>();
+        
         
         for (Iterator<Task> it = flightPlanTasks.iterator(); it.hasNext(); )
         {
             Task t = it.next();
-            GTDList list = t.getList();
-            
-            if (map.get(list.getId())==null) {
-                affectedList.add(list);
-                map.put(list.getId(), Boolean.TRUE);
-            }
-            
             if (t.isFinished() || t.isCancelled()){
                 it.remove();
                 archiveFlightPlanTasks.add(t);
@@ -104,13 +91,6 @@ public class IndexActionBean extends BaseActionBean {
                 awaitedFlightPlanTasks.add(t);
             }
         }
-        
-        Collections.sort(affectedList, new Comparator<GTDList>() {
-            @Override
-            public int compare(GTDList o1, GTDList o2) {
-                return o1.getName().compareTo(o2.getName());
-            }
-        });        
         
         return new ForwardResolution(Views.IDX);
     }
