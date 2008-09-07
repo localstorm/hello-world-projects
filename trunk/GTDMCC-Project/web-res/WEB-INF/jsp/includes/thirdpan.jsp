@@ -4,15 +4,10 @@
 <div id="bodyThirdPan">
        <h2><span>Reference</span> pane</h2>       
        <ul>
-            <li><a href="#">Goo</a></li>
-            <li><a href="#">Boo</a></li>
-            <li><a href="#">Boo</a></li>
-            <li><a href="#">Boo</a></li>
-            <li><a href="#">Boo</a></li>
-            <li><a href="#">Boo</a></li>
-            <li><a href="#">Boo</a></li>
+           <c:forEach items="${refObjects}" var="ro">
+               <li><a href="#"><c:out value="${ro.name}" /></a></li>
+           </c:forEach>
        </ul>   
-       
     
     <p class="more"><a href="<c:url value="/actions/ROEdit"/>">EDIT</a></p>
     

@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,6 +24,20 @@ import org.localstorm.mcc.ejb.contexts.Context;
  */
 @Entity
 @Table(name="REFERENCED_OBJECTS")
+@NamedQueries({
+    @NamedQuery(
+        name = ReferencedObject.Queries.FIND_BY_OWNER,
+        query= "SELECT o FROM ReferencedObject o WHERE o.context.owner=:owner"
+    ),
+    @NamedQuery(
+        name = ReferencedObject.Queries.FIND_OPERATIVE_BY_OWNER,
+        query= "SELECT o FROM ReferencedObject o WHERE o.context.owner=:owner and o.archived=false"
+    ),
+    @NamedQuery(
+        name = ReferencedObject.Queries.FIND_ARCHIVED_BY_OWNER,
+        query= "SELECT o FROM ReferencedObject o WHERE o.context.owner=:owner and o.archived=true"
+    )
+})
 public class ReferencedObject implements Serializable, Identifiable 
 {   
     
@@ -94,6 +110,18 @@ public class ReferencedObject implements Serializable, Identifiable
 
     public void setContext(Context context) {
         this.context = context;
+    }
+    
+    public static interface Queries
+    {
+        public static final String FIND_BY_OWNER = "findROByOwner";
+        public static final String FIND_OPERATIVE_BY_OWNER = "findOpROByOwner";
+        public static final String FIND_ARCHIVED_BY_OWNER = "findArROByOwner";
+    }
+    
+    public static interface Properties
+    {
+        public static final String OWNER = "owner";
     }
     
 }

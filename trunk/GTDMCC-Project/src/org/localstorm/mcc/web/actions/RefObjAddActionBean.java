@@ -1,12 +1,16 @@
 package org.localstorm.mcc.web.actions;
 
+import net.sourceforge.stripes.action.After;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
+import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.referenced.ReferencedObject;
 import org.localstorm.mcc.ejb.contexts.*;
+import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.util.SessionUtil;
 
 
 /**
@@ -14,7 +18,7 @@ import org.localstorm.mcc.ejb.contexts.*;
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/AddRO")
-public class RefObjAddActionBean extends BaseActionBean
+public class RefObjAddActionBean extends RefObjEditActionBean
 {
     // TODO: Type
     @Validate( required=true )
@@ -40,11 +44,21 @@ public class RefObjAddActionBean extends BaseActionBean
     }
 
     
+    @After( LifecycleStage.BindingAndValidation ) 
+    public void doPostValidationStuff() throws Exception {
+        if ( getContext().getValidationErrors().hasFieldErrors() )
+        {
+            super.filling();
+        }
+    }
+    
     @DefaultHandler
-    public Resolution addList() throws Exception {
+    public Resolution addRefObject() throws Exception {
         Context ctx = this.getContextManager().findById(this.getContextId());
         ReferencedObject ro = new ReferencedObject(name, ctx);
         super.getRefObjectManager().create(ro);
+        
+        SessionUtil.clear(this.getSession(), SessionKeys.REFERENCE_OBJECTS);
         return new RedirectResolution( RefObjEditActionBean.class );
     }
     

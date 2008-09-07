@@ -48,6 +48,51 @@
         </stripes:form>
     </div>
     </div>
+    
+    <table width="100%">
+	<c:if test="${not empty actionBean.refObjects}">
+        <tr>
+		<th colspan="2">Operative</th>
+	</tr>
+        <c:forEach items="${actionBean.refObjects}" var="ro">
+            
+	<tr>
+		<td width="95%">
+			<p><img border="0" src="<c:url value="/images/arrow.gif" />"/>
+                        <span><a href="<c:url value="#">
+                                            <c:param name="objectId" value="${ro.id}" />
+                                       </c:url>"><c:out value="${ro.name}"/></a></span>
+		</td>
+		<td width="5%"> <a href="<c:url value="/actions/ToggleStateRefObj">
+                                            <c:param name="objectId" value="${ro.id}" />
+                                       </c:url>" title="Archive"><img border="0" src="<c:url value="/images/trash.png"/>" /></a></p></td>
+	</tr>
+        </c:forEach>
+        </c:if>
+        <c:if test="${not empty actionBean.archiveObjects}">
+            <tr >
+                    <th colspan="2">Archived</th>
+            </tr>
+            <c:forEach items="${actionBean.archiveObjects}" var="ro" >
+            <tr>
+                    <td width="95%">
+                            <p><img border="0" src="<c:url value="/images/arrow.gif"/>"/> <span><a href="<c:url 
+                                        value="#">
+                                            <c:param name="contextId" value="${ro.id}" />
+                                        </c:url>"><c:out value="${ro.name}"/></a></span>
+                    </td>
+                    <td width="5%"><nobr><a href="<c:url value="/actions/ToggleStateRefObj">
+                                                <c:param name="objectId" value="${ro.id}" />
+                                           </c:url>" title="Unarchive"><img border="0" src="<c:url value="/images/deleted.png"/>" /></a>
+                                           <a href="<c:url value="/actions/EraseRefObj">
+                                                <c:param name="objectId" value="${ro.id}" />
+                                           </c:url>" title="Delete permanently"><img border="0" src="<c:url value="/images/erase.png"/>" /></a>
+                    </nobr>
+                    </td>
+            </tr>
+            </c:forEach>
+        </c:if>
+   </table>
 
     
 <%@ include file="/WEB-INF/jsp/includes/rightpan.jsp" %>
