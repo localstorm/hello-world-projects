@@ -7,7 +7,43 @@
 <h2><span>LIST</span> tasks</h2>
 <div align="right" ><a href="<c:url value="/actions/ViewContext" >
                                <c:param name="contextId" value="${actionBean.listResult.context.id}" />
-                             </c:url>" title="Go to parent"><img src="<c:url value="/images/parent.png" />" border="0" /></a>&nbsp;(<c:out value="${actionBean.listResult.name}"/>)</div> 
+                             </c:url>" title="Go to parent"><img src="<c:url value="/images/parent.png" />" border="0" /></a>&nbsp;<a href="#" onclick="show('addTaskDiv'); return false">Add task</a>
+                             (<c:out value="${actionBean.listResult.name}"/>)</div> 
+
+
+    <div align="center">
+    
+    <div id="addTaskDiv" width="80%" style="display: <c:choose>
+             <c:when test="${not empty actionBean.context.validationErrors}">inline</c:when>
+             <c:otherwise>none</c:otherwise>
+    </c:choose>;">
+        <stripes:form action="/actions/AddTask" focus="summary" >
+        <stripes:errors/>
+        <stripes:hidden name="listId" value="1" />
+        <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
+            <tr>
+                <td>&nbsp;</td>
+                <td>Summary: </td>
+                <td><stripes:text name="summary" style="width: 100%;" /></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td colspan="2"><hr/></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td colspan="2" align="center">
+                    <stripes:submit name="submit" value="Add" style="width: 7em;"/>&nbsp;
+                    <stripes:submit name="cancel" value="Cancel" style="width: 7em;" onclick="hide('addTaskDiv'); return false" />
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+        </stripes:form>
+</div>
+</div>
 
 <table width="100%">
 <c:if test="${not empty actionBean.tasks}" >
@@ -82,19 +118,7 @@
     </tr>
     </c:forEach>
 </c:if>
-<tr>
-   <td colspan="2" align="center">
-    <br/>
-        <stripes:form action="/actions/AddTask" focus="summary" >
-        <stripes:errors/>
-        <stripes:hidden name="listId" value="1" />
-            Summary: <stripes:text name="summary"/>&nbsp;<stripes:submit name="submit" value="Create" />
-        </stripes:form>
-     <br/>
-     <hr/>
-     
-    </td>
-</tr>
+
 <c:if test="${not empty actionBean.archiveTasks}" >
 <tr>
     <th colspan="2">Archive</th>

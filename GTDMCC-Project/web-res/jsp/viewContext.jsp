@@ -5,10 +5,43 @@
 
 <%@ include file="clipboard.jsp" %>
 <h2><span>CONTEXT</span> details</h2>
-
-<div align="right" >(<c:out value="${actionBean.contextResult.name}"/>)</div> 
+<div align="right" width="80%"><a href="#" onclick="show('addLISTDiv'); return false">Add list</a> (<c:out value="${actionBean.contextResult.name}"/>)</div>
+<div align="center">
+    
+    <div id="addLISTDiv" width="80%" style="display: <c:choose>
+             <c:when test="${not empty actionBean.context.validationErrors}">inline</c:when>
+             <c:otherwise>none</c:otherwise>
+    </c:choose>;">
+    <stripes:form action="/actions/AddList" focus="name" >
+        <stripes:hidden name="contextId" value="${actionBean.contextResult.id}" />
+        <stripes:errors/>
+        <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
+            <tr>
+                <td>&nbsp;</td>
+                <td>Name: </td>
+                <td><stripes:text name="name" style="width: 100%;" /></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td colspan="2"><hr/></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td colspan="2" align="center">
+                    <stripes:submit name="submit" value="Add" style="width: 7em;"/>&nbsp;
+                    <stripes:submit name="cancel" value="Cancel" style="width: 7em;" onclick="hide('addLISTDiv'); return false" />
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+    </stripes:form>
+    </div>
+</div>
 
 <table width="100%">
+<c:if test="${not empty actionBean.contextLists}">
 <tr>
     <th colspan="2">Operative</th>
 </tr>
@@ -42,20 +75,7 @@
     </td>
 </tr>    
 </c:forEach>
-<tr>
-    <td colspan="2" align="center">
-    <br/>
-        <stripes:form action="/actions/AddList" focus="name" >
-        <stripes:errors/>
-        <stripes:hidden name="contextId" value="${actionBean.contextResult.id}" />
-            Name: <stripes:text name="name"/>&nbsp;<stripes:submit name="submit" value="Create" />
-        </stripes:form>
-     <br/>
-     <%--c:if test="${not empty actionBean.archivedLists}">
-        <hr/>
-     </c:if--%>
-     </td>
-</tr>     
+</c:if>
 
 <c:if test="${not empty actionBean.archivedLists}">
 <tr>

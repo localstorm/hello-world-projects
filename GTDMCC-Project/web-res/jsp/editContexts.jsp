@@ -4,7 +4,40 @@
 <%@ include file="/WEB-INF/jsp/includes/hdr.jsp" %>
 
 <h2><span>CONTEXT</span> list</h2>
-	<br/>
+    <div align="right" width="80%"><a href="#" onclick="show('addCTXDiv'); return false">Add context</a></div>
+    <div align="center">
+    
+    <div id="addCTXDiv" width="80%" style="display: <c:choose>
+             <c:when test="${not empty actionBean.context.validationErrors}">inline</c:when>
+             <c:otherwise>none</c:otherwise>
+    </c:choose>;">
+        <stripes:form action="/actions/AddContext" focus="name" >
+        <stripes:errors/>
+        <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
+            <tr>
+                <td>&nbsp;</td>
+                <td>Name: </td>
+                <td><stripes:text name="name" style="width: 100%;" /></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td colspan="2"><hr/></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td colspan="2" align="center">
+                    <stripes:submit name="submit" value="Add" style="width: 7em;"/>&nbsp;
+                    <stripes:submit name="cancel" value="Cancel" style="width: 7em;" onclick="hide('addCTXDiv'); return false" />
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+        </stripes:form>
+    </div>
+    </div>
+        <br/>
 	<table width="100%">
 	<tr>
 		<th colspan="2">Operative</th>
@@ -22,17 +55,6 @@
                                        </c:url>" title="Archive"><img border="0" src="<c:url value="/images/trash.png"/>" /></a></p></td>
 	</tr>
         </c:forEach>
-        <tr >
-		<td colspan="2" align="center">
-                    <br/>
-                    <stripes:form action="/actions/AddContext" focus="name" >
-                        <stripes:errors/>
-                        Name: <stripes:text name="name"/>&nbsp;<stripes:submit name="submit" value="Create" />
-                    </stripes:form>
-                    <br/>
-                    <hr/>
-                </td>
-	</tr>
         <c:if test="${not empty actionBean.archiveContexts}">
             <tr >
                     <th colspan="2">Archived</th>
