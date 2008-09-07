@@ -133,16 +133,24 @@ public class TaskResolveActionBean extends BaseActionBean
             
             rr = new RedirectResolution(ContextViewActionBean.class);
             {
-                rr.addParameter("contextId", super.getCurrentContext().getId());
+                rr.addParameter(ContextViewActionBean.IncommingParameters.CTX_ID, super.getCurrentContext().getId());
             }
         } else {
             GTDList list = t.getList();
             list.setArchived(false);
             lm.update(list);
             
+            
             rr = new RedirectResolution(ListViewActionBean.class);
             {
-                rr.addParameter(ListViewActionBean.IncommingParameters.LIST_ID, super.getCurrentList().getId());
+                GTDList curList = super.getCurrentList();
+                if (curList!=null)
+                {
+                    Integer id = curList.getId();
+                    rr.addParameter(ListViewActionBean.IncommingParameters.LIST_ID, id);
+                } else {
+                    rr.addParameter(ListViewActionBean.IncommingParameters.LIST_ID, list.getId());
+                }
             }
         }
         
