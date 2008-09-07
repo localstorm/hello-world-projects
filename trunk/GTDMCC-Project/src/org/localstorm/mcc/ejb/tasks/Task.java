@@ -31,7 +31,7 @@ import org.localstorm.mcc.ejb.Identifiable;
     ),
     @NamedQuery(
         name = Task.Queries.FIND_BY_LIST_ARCHIVED,
-        query= "SELECT o FROM Task o WHERE o.list=:list and o.finished=true or o.cancelled=true"
+        query= "SELECT o FROM Task o WHERE o.list=:list and (o.finished=true or o.cancelled=true)"
     ),
     @NamedQuery(
         name = Task.Queries.FIND_BY_LIST_AWAITED,

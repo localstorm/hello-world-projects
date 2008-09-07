@@ -9,6 +9,7 @@
 <link href="<c:url value="/css/style.css" />" rel="stylesheet" type="text/css" />
 <script language="javascript1.2" src="<c:url value="/js/codethatcalendarstd.js"/>"></script>
 <script language="javascript1.2" src="<c:url value="/js/scroller_ex.js"/>"></script>
+<script language="javascript1.2" src="<c:url value="/js/showhide.js"/>"></script>
 </head>
 <body>
 <div id="topPan">
