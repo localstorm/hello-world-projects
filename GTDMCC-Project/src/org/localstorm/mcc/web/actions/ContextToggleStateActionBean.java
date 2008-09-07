@@ -28,7 +28,7 @@ public class ContextToggleStateActionBean extends BaseActionBean
     }
     
     @DefaultHandler
-    public Resolution deletingContext() throws Exception {
+    public Resolution toggle() throws Exception {
         
         System.out.println("Deleting/Undeleting context:" +contextId);
         

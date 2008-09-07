@@ -9,12 +9,17 @@ import org.localstorm.mcc.ejb.users.User;
  *
  * @author Alexey Kuznetsov
  */
+
 public interface RefObjectManager  extends BaseManager<ReferencedObject>
 {
     public static final String BEAN_NAME = "RefObjectManagerBean";
-    //TODO!
-    public Collection<ReferencedObject> findOperativeByUser( User user );
+
+    public Collection<ReferencedObject> findAllArchivedByOwner(User user);
     
-    public Collection<ReferencedObject> findByContext(Context ctx);
+    public Collection<ReferencedObject> findAllByOwner( User user );
+    
+    public Collection<ReferencedObject> findOperativeByOwner( User user );
+    
+    public Collection<ReferencedObject> findOperativeByContext( Context ctx );
     
 }

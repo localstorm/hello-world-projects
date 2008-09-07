@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.contexts.ContextManager;
 import org.localstorm.mcc.ejb.contexts.ContextManagerRemote;
-import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
+import org.localstorm.mcc.ejb.referenced.*;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
@@ -52,6 +52,12 @@ public class LazyLoadFilter implements Filter
             ContextManager cm = ContextLookup.lookup(ContextManagerRemote.class, 
                                                      ContextManager.BEAN_NAME);
             SessionUtil.fill(sess, SessionKeys.CONTEXTS, cm.findByOwner(user));
+        }
+        
+        if ( SessionUtil.isEmpty(sess, SessionKeys.REFERENCE_OBJECTS) ) {
+            RefObjectManager rom = ContextLookup.lookup(RefObjectManagerRemote.class, 
+                                                         RefObjectManager.BEAN_NAME);
+            SessionUtil.fill(sess, SessionKeys.REFERENCE_OBJECTS, rom.findOperativeByOwner(user));
         }
             
     }

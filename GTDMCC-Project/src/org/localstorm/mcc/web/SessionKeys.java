@@ -8,6 +8,7 @@ public class SessionKeys
 {
     public static final String USER     = "user";
     public static final String CONTEXTS = "contexts";
+    public static final String REFERENCE_OBJECTS = "refObjects";
     
     public static final String CURR_CTX  = "currContext";
     public static final String CURR_LIST = "currList";
