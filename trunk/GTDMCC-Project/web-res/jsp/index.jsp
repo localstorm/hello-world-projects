@@ -18,6 +18,19 @@
                         <c:param name="id" value="${task.id}" />
                         <c:param name="returnPage" value="IDX" />
                 </c:url>" title="Expand"><c:out value="${task.summary}" /></a></p>
+<div id="<c:out value="delegate-${task.id}" />" style="display: none;" >
+    <stripes:form action="/actions/ResolveFlightTask" >
+        <stripes:hidden name="taskId" value="${task.id}" />
+        <stripes:hidden name="action" value="DELEGATE" />
+        <table width="100%" style="background:#FFFFD0; border:1px dotted #DADADA;">
+            <tr>
+                <td width="80%" align="center"><stripes:text name="runtimeNote" style="width: 95%"/></td>
+                <td width="10%" align="center"><stripes:submit name="s1" value="Delegate" style="width: 7em;" /></td>
+                <td width="10%" align="center"><stripes:submit name="s1" value="Cancel" style="width: 7em;" onclick="hide('delegate-${task.id}'); return false" /></td>
+            </tr>
+        </table>
+    </stripes:form>
+</div>
 <table width="100%">
     <tr>
         <td width="80%" ><hr/></td>
@@ -38,10 +51,7 @@
                 <c:param name="taskId" value="${task.id}" />
                 <c:param name="action" value="CANCEL" />
             </c:url>" title="Cancel"><img alt="cancel" border="0" src="<c:url value="/images/cancel.png"/>"/></a>
-            <a href="<c:url value="/actions/ResolveFlightTask" >
-                <c:param name="taskId" value="${task.id}" />
-                <c:param name="action" value="DELEGATE" />
-            </c:url>" title="Delegate"><img alt="delegate" border="0" src="<c:url value="/images/delegate.png"/>"/></a>
+            <a href="#" onclick="show('<c:out value="delegate-${task.id}" />'); return false" title="Delegate"><img alt="delegate" border="0" src="<c:url value="/images/delegate.png"/>"/></a>
         </nobr>
         </td>
     </tr>

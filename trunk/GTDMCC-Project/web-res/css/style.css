@@ -50,12 +50,12 @@ ul{list-style-type:none;}
 #bodyLeftPan ul li a:hover{width:634px; height:20px; background:url(../images/button-hover.png) 0 6px no-repeat #fff; color:#676363; text-decoration:underline;}
 
 #bodyLeftPan p.more{background:#F3F3F3; color:#003D5C; width:654px; height:11px; margin:25px 0; padding:0px; line-height:11px; font-size:11px; }
-#bodyLeftPan p.more a{display:block; width:44px; height:11px; background:#fff; color:#003D5C; text-decoration:none; margin:0 0 0 246px; line-height:11px; text-align:center; padding:0px; text-transform:uppercase;}
+#bodyLeftPan p.more a{display:block; width:44px; height:11px; background:#fff; color:#003D5C; text-decoration:none; margin:0 0 0 502px; line-height:11px; text-align:center; padding:0px; text-transform:uppercase;}
 #bodyLeftPan p.more a:hover{display:block; width:44px; height:11px; background:#E0DEDE; color:#003D5C; text-decoration:none;}
 
 #bodyLeftNextPan{width:654px; clear:both; padding:10px 0 0;}
 #bodyLeftPan p.next{background:#F3F3F3; color:#003D5C; width:654px; height:11px; padding:0px; line-height:11px; font-size:11px; clear:both; }
-#bodyLeftPan p.next a{display:block; width:44px; height:11px; background:#fff; color:#003D5C; text-decoration:none; margin:0 0 0 246px; line-height:11px; text-align:center; padding:0px; text-transform:uppercase;}
+#bodyLeftPan p.next a{display:block; width:44px; height:11px; background:#fff; color:#003D5C; text-decoration:none; margin:0 0 0 502px; line-height:11px; text-align:center; padding:0px; text-transform:uppercase;}
 #bodyLeftPan p.next a:hover{display:block; width:44px; height:11px; background:#E0DEDE; color:#003D5C; text-decoration:none;}
 
 #affectedlists{width:654px; position:relative; margin:0 auto; padding:5px 0 0;}
