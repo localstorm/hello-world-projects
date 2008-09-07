@@ -6,6 +6,8 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.contexts.*;
+import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.util.SessionUtil;
 
 
 /**
@@ -35,6 +37,8 @@ public class ContextEraseActionBean extends BaseActionBean
         Context ctx = cm.findById(getContextId());
         cm.remove(ctx);
 
+        SessionUtil.clear(getSession(), SessionKeys.CONTEXTS);
+        SessionUtil.clear(getSession(), SessionKeys.REFERENCE_OBJECTS);
         return new RedirectResolution(ContextsEditActionBean.class);
     }
 }

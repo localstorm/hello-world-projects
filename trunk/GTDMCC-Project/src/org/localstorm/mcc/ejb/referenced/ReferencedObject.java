@@ -31,11 +31,11 @@ import org.localstorm.mcc.ejb.contexts.Context;
     ),
     @NamedQuery(
         name = ReferencedObject.Queries.FIND_OPERATIVE_BY_OWNER,
-        query= "SELECT o FROM ReferencedObject o WHERE o.context.owner=:owner and o.archived=false"
+        query= "SELECT o FROM ReferencedObject o WHERE o.context.archived=false and o.context.owner=:owner and o.archived=false"
     ),
     @NamedQuery(
         name = ReferencedObject.Queries.FIND_ARCHIVED_BY_OWNER,
-        query= "SELECT o FROM ReferencedObject o WHERE o.context.owner=:owner and o.archived=true"
+        query= "SELECT o FROM ReferencedObject o WHERE o.context.owner=:owner and (o.archived=true or o.context.archived=true)"
     )
 })
 public class ReferencedObject implements Serializable, Identifiable 

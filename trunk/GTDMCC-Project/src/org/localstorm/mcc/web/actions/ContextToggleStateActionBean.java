@@ -38,6 +38,7 @@ public class ContextToggleStateActionBean extends BaseActionBean
         cm.update(ctx);
         
         SessionUtil.clear(getSession(), SessionKeys.CONTEXTS);
+        SessionUtil.clear(getSession(), SessionKeys.REFERENCE_OBJECTS);
         return new RedirectResolution(ContextsEditActionBean.class);
     }
 }
