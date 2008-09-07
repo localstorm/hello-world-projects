@@ -18,9 +18,11 @@ var dlinec = new CodeThatCalendar(caldef1);
 <stripes:hidden name="taskId" value="${actionBean.taskResult.id}" />
 <stripes:hidden name="returnPage" value="${actionBean.returnPage}" />
 <table width="100%">
-<tr>
-    <th colspan="2"><font color="red">This task was delegated to Santa</font>&nbsp;<a href="#" title="Clear note">[x]</a></th>
+
+<c:if test="${not empty actionBean.taskResult.runtimeNote}"><tr>
+    <th colspan="2"><font color="red"><c:out value="${actionBean.taskResult.runtimeNote}" /></font></th>
 </tr>
+</c:if>
 <tr>
     <th colspan="2">Summary:</th>
 </tr>

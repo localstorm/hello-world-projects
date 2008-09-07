@@ -24,6 +24,16 @@ public class FlightTaskResolveActionBean extends BaseActionBean
     
     @Validate( required=true )
     private String action;
+    
+    private String runtimeNote;
+
+    public String getRuntimeNote() {
+        return runtimeNote;
+    }
+
+    public void setRuntimeNote(String runtimeNote) {
+        this.runtimeNote = runtimeNote;
+    }
 
     public int getTaskId() {
         return taskId;
@@ -69,11 +79,13 @@ public class FlightTaskResolveActionBean extends BaseActionBean
                 break;
             case UNDELEGATE:
                 // Undelegating
+                t.setRuntimeNote(null);
                 t.setAwaited(false);
                 t.setDelegated(false);
                 break;
             case DELEGATE:
                 // Delegating
+                t.setRuntimeNote(this.getRuntimeNote());
                 t.setAwaited(true);
                 t.setDelegated(true);
                 break;
