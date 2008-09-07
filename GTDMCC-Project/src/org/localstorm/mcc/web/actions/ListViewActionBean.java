@@ -75,7 +75,9 @@ public class ListViewActionBean extends BaseActionBean
     
     @DefaultHandler
     public Resolution filling() throws Exception {
+        
         GTDList list = getListManager().findById(getListId());
+        
         
         super.setCurrent(list);
         
@@ -91,6 +93,7 @@ public class ListViewActionBean extends BaseActionBean
         this.setAwaitedTasks(genWrappers(tm.findAwaitedByList(list), currentFp));
         this.setArchiveTasks(genWrappers(tm.findArchiveByList(list), currentFp));
         
+        System.out.println("Current list: "+list.getName());
         System.out.println("Viewing list:" +listId);
         return new ForwardResolution(Views.VIEW_LIST);
     }

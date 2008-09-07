@@ -6,9 +6,7 @@
 <%@ include file="clipboard.jsp" %>
 <h2><span>CONTEXT</span> details</h2>
 
-<div align="right" >(<a href="<c:url value="/actions/ViewContext">
-                                <c:param name="contextId" value="${actionBean.contextResult.id}" />
-                        </c:url>"><c:out value="${actionBean.contextResult.name}"/></a>)</div> 
+<div align="right" >(<c:out value="${actionBean.contextResult.name}"/>)</div> 
 
 <table width="100%">
 <tr>

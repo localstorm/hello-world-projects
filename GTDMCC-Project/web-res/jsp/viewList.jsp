@@ -5,7 +5,9 @@
 
 <%@ include file="clipboard.jsp" %>
 <h2><span>LIST</span> tasks</h2>
-<div align="right" ><a href="#" title="Paste task"><img src="<c:url value="/images/paste.png" />" border="0" /></a>&nbsp;(<c:out value="${actionBean.listResult.name}"/>)</div> 
+<div align="right" ><a href="<c:url value="/actions/ViewContext" >
+                               <c:param name="contextId" value="${actionBean.listResult.context.id}" />
+                             </c:url>" title="Go to parent"><img src="<c:url value="/images/parent.png" />" border="0" /></a>&nbsp;(<c:out value="${actionBean.listResult.name}"/>)</div> 
 
 <table width="100%">
 <c:if test="${not empty actionBean.tasks}" >

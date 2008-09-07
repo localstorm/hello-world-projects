@@ -39,6 +39,7 @@ public class ListResolveActionBean extends BaseActionBean
     public void setAction(String action) {
         this.action = action;
     }
+
     
     
     @DefaultHandler
