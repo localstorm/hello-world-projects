@@ -10,6 +10,7 @@ import org.localstorm.mcc.ejb.contexts.ContextManager;
 import org.localstorm.mcc.ejb.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.lists.GTDList;
 import org.localstorm.mcc.ejb.lists.ListManager;
+import org.localstorm.mcc.ejb.referenced.RefObjectManager;
 import org.localstorm.mcc.ejb.tasks.Task;
 import org.localstorm.mcc.ejb.tasks.TaskManager;
 import org.localstorm.mcc.ejb.users.User;
@@ -59,6 +60,10 @@ public class BaseActionBean implements ActionBean
     
     protected FlightPlanManager getFlightPlanManager() {
         return ContextLookup.lookup(FlightPlanManager.class, FlightPlanManager.BEAN_NAME);
+    }
+    
+    protected RefObjectManager getRefObjectManager() {
+        return ContextLookup.lookup(RefObjectManager.class, RefObjectManager.BEAN_NAME);
     }
     
     protected User getUser() 
