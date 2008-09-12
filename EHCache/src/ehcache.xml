@@ -1,5 +1,5 @@
 <ehcache>
-    <diskStore path="java.io.tmpdir"/>
+    <!--diskStore path="java.io.tmpdir"/-->
     <defaultCache
             maxElementsInMemory="10000"
             eternal="false"
@@ -17,9 +17,15 @@
             timeToIdleSeconds="1800"
             timeToLiveSeconds="3600"
             overflowToDisk="false"
-            maxElementsOnDisk="0"
             diskPersistent="false"
-            diskExpiryThreadIntervalSeconds="1"
             memoryStoreEvictionPolicy="LFU" /> <!-- FIFO, LFU, LRU -->
+    <cache  name="notShared"
+            maxElementsInMemory="10"
+            eternal="false"
+            timeToIdleSeconds="1800"
+            timeToLiveSeconds="3600"
+            overflowToDisk="false"
+            diskPersistent="false"
+            memoryStoreEvictionPolicy="LFU" />
 
 </ehcache>
