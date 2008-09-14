@@ -5,21 +5,21 @@
 
 <%@ include file="clipboard.jsp" %>
 <h2><span>CONTEXT</span> details</h2>
-<div align="right" width="80%"><a href="#" onclick="show('addLISTDiv'); return false">Add list</a> (<c:out value="${actionBean.contextResult.name}"/>)</div>
+<div align="right" width="80%"><a href="#" onclick="show('addLISTDiv', 'name-id'); return false">Add list</a> (<c:out value="${actionBean.contextResult.name}"/>)</div>
 <div align="center">
     
     <div id="addLISTDiv" width="80%" style="display: <c:choose>
              <c:when test="${not empty actionBean.context.validationErrors}">inline</c:when>
              <c:otherwise>none</c:otherwise>
     </c:choose>;">
-    <stripes:form action="/actions/AddList" focus="name" >
+    <stripes:form action="/actions/AddList" >
         <stripes:hidden name="contextId" value="${actionBean.contextResult.id}" />
         <stripes:errors/>
         <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
             <tr>
                 <td>&nbsp;</td>
                 <td>Name: </td>
-                <td><stripes:text name="name" style="width: 100%;" /></td>
+                <td><stripes:text name="name" id="name-id" style="width: 100%;" /></td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
