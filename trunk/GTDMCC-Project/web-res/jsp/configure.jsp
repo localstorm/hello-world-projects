@@ -7,6 +7,7 @@
   
 <br/><br/><br/>
 <stripes:form action="/actions/UpdateConfig" focus="oldPassword" name="changePassForm" >
+<stripes:errors/>
 <div align="center">
 <table width="80%" bgColor="#CCCCEE" >
 	<tr>

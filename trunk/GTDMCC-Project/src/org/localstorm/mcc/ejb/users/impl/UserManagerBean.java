@@ -63,6 +63,15 @@ public class UserManagerBean implements UserManagerLocal, UserManagerRemote
             return false;
         }
     }
+
+    @Override
+    public void changePassword(User user, String password) {
+        try {
+            user.setPasswordHash(this.getHashString(password));
+            em.merge(user);
+        } catch(EntityExistsException e) {
+        }
+    }
     
     private String getHashString(String s)
     {

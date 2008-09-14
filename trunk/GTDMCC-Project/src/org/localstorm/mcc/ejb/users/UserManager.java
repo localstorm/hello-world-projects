@@ -5,8 +5,6 @@
 
 package org.localstorm.mcc.ejb.users;
 
-import org.localstorm.mcc.ejb.*;
-
 /**
  *
  * @author localstorm
@@ -14,6 +12,8 @@ import org.localstorm.mcc.ejb.*;
 public interface UserManager
 {
     public static final String BEAN_NAME="UserManagerBean";
+
+    public void changePassword(User user, String password);
 
     public User login(String login, String pwd);
     
