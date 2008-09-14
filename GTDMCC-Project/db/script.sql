@@ -36,6 +36,7 @@ create table LISTS (
      context_id INT NOT NULL,
      sort_order INT not null,
      is_archived SMALLINT NOT NULL,
+     is_pinned SMALLINT NOT NULL,
      PRIMARY KEY (id),
      FOREIGN KEY (context_id) REFERENCES CONTEXTS(id)  ON DELETE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;

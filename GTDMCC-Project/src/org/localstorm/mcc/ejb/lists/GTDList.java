@@ -53,6 +53,9 @@ public class GTDList implements Identifiable, Serializable {
     @Column(name="is_archived", unique=false, updatable=true, nullable=false )    
     private boolean archived;
     
+    @Column(name="is_pinned", unique=false, updatable=true)    
+    private boolean pinned;
+    
     @Column(name="creation", unique=false, updatable=true, nullable=false )    
     @Temporal(TemporalType.TIMESTAMP)
     private Date creation;
@@ -67,6 +70,7 @@ public class GTDList implements Identifiable, Serializable {
         this.context    = ctx;
         this.archived   = false;
         this.creation   = new Date();
+        this.pinned     = false;
     }
 
     @Override
@@ -108,6 +112,14 @@ public class GTDList implements Identifiable, Serializable {
 
     public void setContext(Context context) {
         this.context = context;
+    }
+
+    public boolean isPinned() {
+        return pinned;
+    }
+
+    public void setPinned(boolean pinned) {
+        this.pinned = pinned;
     }
 
     public static interface Queries

@@ -1,6 +1,8 @@
 package org.localstorm.mcc.web.actions;
 
 import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
@@ -26,6 +28,7 @@ public class ContextViewActionBean extends BaseActionBean
     private Context contextResult;
     private Collection<GTDList> contextLists;
     private Collection<GTDList> archivedLists;
+    private Collection<GTDList> pinnedLists;
     
     
     public int getContextId() {
@@ -36,6 +39,10 @@ public class ContextViewActionBean extends BaseActionBean
         this.contextId = id;
     }
 
+    public Collection<GTDList> getPinnedLists() {
+        return pinnedLists;
+    }
+    
     public Collection<GTDList> getContextLists() {
         return contextLists;
     }
@@ -68,8 +75,19 @@ public class ContextViewActionBean extends BaseActionBean
         
         ListManager lm  = getListManager();
         
+        pinnedLists     = new LinkedList<GTDList>();
         contextLists    = lm.findByContext(contextResult);
         archivedLists   = lm.findByContextArchived(contextResult);
+        
+        for (Iterator<GTDList> it = contextLists.iterator(); it.hasNext(); ) {
+            GTDList list = it.next();
+            if (list.isPinned())
+            {
+                it.remove();
+                pinnedLists.add(list);
+            }
+        }
+    
         
         System.out.println("Viewing context:" +contextId);
         return new ForwardResolution(Views.VIEW_CTX);
