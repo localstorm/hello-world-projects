@@ -5,14 +5,14 @@
 
 <h2><span>REFERENCE</span> objects</h2>
     
-    <div align="right" width="80%"><a href="#" onclick="show('addRODiv'); return false">Add object</a></div>
+    <div align="right" width="80%"><a href="#" onclick="show('addRODiv', 'name-id'); return false">Add object</a></div>
     <div align="center">
     
     <div id="addRODiv" width="80%" style="display: <c:choose>
              <c:when test="${not empty actionBean.context.validationErrors}">inline</c:when>
              <c:otherwise>none</c:otherwise>
     </c:choose>;">
-        <stripes:form action="/actions/AddRO" focus="name" >
+        <stripes:form action="/actions/AddRO" >
         <stripes:errors/>
         <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
             <tr>
@@ -28,7 +28,7 @@
             <tr>
                 <td>&nbsp;</td>
                 <td>Name: </td>
-                <td><stripes:text name="name" style="width: 100%;" /></td>
+                <td><stripes:text name="name" id="name-id" style="width: 100%;" /></td>
                 <td>&nbsp;</td>
             </tr>
             <tr>

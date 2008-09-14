@@ -7,7 +7,7 @@
 <h2><span>LIST</span> tasks</h2>
 <div align="right" ><a href="<c:url value="/actions/ViewContext" >
                                <c:param name="contextId" value="${actionBean.listResult.context.id}" />
-                             </c:url>" title="Go to parent"><img src="<c:url value="/images/parent.png" />" border="0" /></a>&nbsp;<a href="#" onclick="show('addTaskDiv'); return false">Add task</a>
+                             </c:url>" title="Go to parent"><img src="<c:url value="/images/parent.png" />" border="0" /></a>&nbsp;<a href="#" onclick="show('addTaskDiv', 'summary-id'); return false">Add task</a>
                              (<c:out value="${actionBean.listResult.name}"/>)</div> 
 
 
@@ -17,14 +17,14 @@
              <c:when test="${not empty actionBean.context.validationErrors}">inline</c:when>
              <c:otherwise>none</c:otherwise>
     </c:choose>;">
-        <stripes:form action="/actions/AddTask" focus="summary" >
+        <stripes:form action="/actions/AddTask" >
         <stripes:errors/>
         <stripes:hidden name="listId" value="1" />
         <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
             <tr>
                 <td>&nbsp;</td>
                 <td>Summary: </td>
-                <td><stripes:text name="summary" style="width: 100%;" /></td>
+                <td><stripes:text name="summary" id="summary-id" style="width: 100%;" /></td>
                 <td>&nbsp;</td>
             </tr>
             <tr>

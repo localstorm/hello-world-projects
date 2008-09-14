@@ -3,21 +3,22 @@
 
 <%@ include file="/WEB-INF/jsp/includes/hdr.jsp" %>
 
+
 <h2><span>CONTEXT</span> list</h2>
-    <div align="right" width="80%"><a href="#" onclick="show('addCTXDiv'); return false">Add context</a></div>
+    <div align="right" width="80%"><a href="#" onclick="show('addCTXDiv', 'name-id'); return false">Add context</a></div>
     <div align="center">
     
     <div id="addCTXDiv" width="80%" style="display: <c:choose>
              <c:when test="${not empty actionBean.context.validationErrors}">inline</c:when>
              <c:otherwise>none</c:otherwise>
     </c:choose>;">
-        <stripes:form action="/actions/AddContext" focus="name" >
+        <stripes:form action="/actions/AddContext">
         <stripes:errors/>
         <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
             <tr>
                 <td>&nbsp;</td>
                 <td>Name: </td>
-                <td><stripes:text name="name" style="width: 100%;" /></td>
+                <td><stripes:text name="name" id="name-id" style="width: 100%;" /></td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
