@@ -52,6 +52,10 @@ public class ListResolveActionBean extends BaseActionBean
         Clipboard clip = super.getClipboard();
         
         switch (ACTIONS.valueOf(this.getAction())) {
+            case PIN:
+                list.setPinned(!list.isPinned());
+                lm.update(list);
+                break;
             case PASTE:
                 GTDList l = clip.pickList(this.getListId());
                 if (l!=null)
@@ -89,16 +93,6 @@ public class ListResolveActionBean extends BaseActionBean
         return rr;
     }
     
-    private static enum ACTIONS 
-    {
-        PASTE,
-        COPY,
-        ERASE,
-        CANCEL,
-        FINISH,
-        UNRESOLVE
-    }
-
     private void cancelList(GTDList list, TaskManager tm) {
         Collection<Task> tasks = tm.findOpeartiveByList(list);
         tasks.addAll(tm.findAwaitedByList(list));
@@ -125,4 +119,14 @@ public class ListResolveActionBean extends BaseActionBean
         list.setArchived(true);
     }
     
+    private static enum ACTIONS 
+    {
+        PIN,
+        PASTE,
+        COPY,
+        ERASE,
+        CANCEL,
+        FINISH,
+        UNRESOLVE
+    }
 }
