@@ -12,7 +12,7 @@ import org.localstorm.mcc.web.Views;
  *
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/ROEdit")
+@UrlBinding("/actions/EditRefObj")
 public class RefObjEditActionBean extends BaseActionBean {
 
     private Collection<ReferencedObject> refObjects;

@@ -17,7 +17,7 @@ import org.localstorm.mcc.web.util.SessionUtil;
  *
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/AddRO")
+@UrlBinding("/actions/AddRefObj")
 public class RefObjAddActionBean extends RefObjEditActionBean
 {
     // TODO: Type

@@ -6,14 +6,11 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.SimpleError;
 import net.sourceforge.stripes.validation.Validate;
-import net.sourceforge.stripes.validation.ValidationError;
 import net.sourceforge.stripes.validation.ValidationErrors;
 import net.sourceforge.stripes.validation.ValidationMethod;
 import net.sourceforge.stripes.validation.ValidationState;
 import org.localstorm.mcc.ejb.users.UserManager;
 import org.localstorm.mcc.web.Views;
-
-
 
 
 /**
@@ -37,11 +34,13 @@ public class ConfigUpdateActionBean extends ContextsEditActionBean {
         UserManager um = this.getUserManager();
         if (um.login(this.getUser().getLogin(), oldPassword)==null)
         {
-            errors.add("oldPassword", new SimpleError("Old passwrod is not valid."));
+            errors.add(IncommingParameters.OLD_PASSW, 
+                       new SimpleError("Old passwrod is not valid."));
         }
         if (!password.equals(password2))
         {
-            errors.add("password", new SimpleError("New password values are not the same."));
+            errors.add(IncommingParameters.PASSWORD, 
+                       new SimpleError("New password values are not the same."));
         }
     }
 
@@ -65,4 +64,9 @@ public class ConfigUpdateActionBean extends ContextsEditActionBean {
         return new ForwardResolution( Views.CONFIGURE );
     }
     
+    public static interface IncommingParameters {
+        public static final String PASSWORD  = "password";
+        public static final String PASSWORD2 = "password2";
+        public static final String OLD_PASSW = "oldPassword";
+    }
 }

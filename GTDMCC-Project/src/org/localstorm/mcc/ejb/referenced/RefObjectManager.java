@@ -9,7 +9,6 @@ import org.localstorm.mcc.ejb.users.User;
  *
  * @author Alexey Kuznetsov
  */
-
 public interface RefObjectManager  extends BaseManager<ReferencedObject>
 {
     public static final String BEAN_NAME = "RefObjectManagerBean";

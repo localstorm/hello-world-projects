@@ -12,7 +12,7 @@
              <c:when test="${not empty actionBean.context.validationErrors}">inline</c:when>
              <c:otherwise>none</c:otherwise>
     </c:choose>;">
-        <stripes:form action="/actions/AddRO" >
+        <stripes:form action="/actions/AddRefObj" >
         <stripes:errors/>
         <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
             <tr>
@@ -59,7 +59,7 @@
 	<tr>
 		<td width="95%">
 			<p><img border="0" src="<c:url value="/images/arrow.gif" />"/>
-                        <span><a href="<c:url value="#">
+                        <span><a href="<c:url value="/actions/ViewRefObj">
                                             <c:param name="objectId" value="${ro.id}" />
                                        </c:url>"><c:out value="${ro.name}"/></a></span>
 		</td>
@@ -76,8 +76,8 @@
             <c:forEach items="${actionBean.archiveObjects}" var="ro" >
             <tr>
                     <td width="95%">
-                            <p><img border="0" src="<c:url value="/images/arrow.gif"/>"/> <span><a href="<c:url 
-                                        value="#">
+                            <p><img border="0" src="<c:url value="/images/arrow.gif"/>"/> 
+                            <span><a href="<c:url value="/actions/ViewRefObj">
                                             <c:param name="contextId" value="${ro.id}" />
                                         </c:url>"><c:out value="${ro.name}"/></a></span>
                     </td>
