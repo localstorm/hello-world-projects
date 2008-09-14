@@ -14,4 +14,5 @@ public class Views
     public static final String EDIT_CTXS = "/jsp/editContexts.jsp";
     public static final String CONFIGURE = "/jsp/configure.jsp";
     public static final String EDIT_RO   = "/jsp/editRefObjects.jsp";
+    public static final String VIEW_RO   = "/jsp/viewRefObject.jsp";
 }
