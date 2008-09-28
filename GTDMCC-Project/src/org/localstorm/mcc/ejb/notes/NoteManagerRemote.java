@@ -1,9 +1,9 @@
 
 package org.localstorm.mcc.ejb.notes;
 
-import javax.ejb.Local;
+import javax.ejb.Remote;
 
-@Local
+@Remote
 public interface NoteManagerRemote extends NoteManager
 {
     

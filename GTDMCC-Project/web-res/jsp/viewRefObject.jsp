@@ -86,6 +86,12 @@
         </stripes:form>
     </div>
     </div>
+    <c:forEach var="note" items="${actionBean.objectNotes}">    
+        <p><span><a title="Detach" href="<c:url value="/actions/DetachRefObj" >
+            <c:param name="objectId" value="${actionBean.objectResult.id}" />
+            <c:param name="noteId" value="${note.id}" />
+        </c:url>"><img src="<c:url value="/images/trash.png"/>" border="0" alt="detach" /></a>&nbsp;Link</span>: <a href="<c:out value="${note.note}" />"><c:out value="${note.description}" /></a><br/></p>
+    </c:forEach>
     
 <%@ include file="/WEB-INF/jsp/includes/rightpan.jsp" %>
 <%@ include file="/WEB-INF/jsp/includes/foot.jsp" %>

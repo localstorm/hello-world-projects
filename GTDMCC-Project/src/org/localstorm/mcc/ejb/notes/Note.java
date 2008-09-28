@@ -4,16 +4,12 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import org.localstorm.mcc.ejb.contexts.Context;
 
 
 /**
@@ -30,18 +26,27 @@ public class Note implements Serializable {
     @Column(name="note", unique=false, updatable=true, nullable=false )
     private String note;
     
+    @Column(name="type", unique=false, updatable=true, nullable=false )
+    private String type;
+    
+    @Column(name="description", unique=false, updatable=true, nullable=false )
+    private String description;
+    
     @Column(name="creation", unique=false, updatable=true, nullable=false )    
     @Temporal(TemporalType.TIMESTAMP)
     private Date creation;
 
     public Note() 
     {
-    
+        this.note       = "";
+        this.creation   = new Date();
+        this.type       = "DEFAULT";
     }
 
-    public Note( String note ) {
+    public Note( String note, String type ) {
         this.note       = note;
         this.creation   = new Date();
+        this.type       = type;
     }
     
     public Integer getId() {
@@ -60,4 +65,19 @@ public class Note implements Serializable {
         this.note = note;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }

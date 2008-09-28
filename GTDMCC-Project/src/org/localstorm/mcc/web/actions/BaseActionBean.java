@@ -10,6 +10,7 @@ import org.localstorm.mcc.ejb.contexts.ContextManager;
 import org.localstorm.mcc.ejb.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.lists.GTDList;
 import org.localstorm.mcc.ejb.lists.ListManager;
+import org.localstorm.mcc.ejb.notes.NoteManager;
 import org.localstorm.mcc.ejb.referenced.RefObjectManager;
 import org.localstorm.mcc.ejb.tasks.Task;
 import org.localstorm.mcc.ejb.tasks.TaskManager;
@@ -64,6 +65,10 @@ public class BaseActionBean implements ActionBean
     
     protected RefObjectManager getRefObjectManager() {
         return ContextLookup.lookup(RefObjectManager.class, RefObjectManager.BEAN_NAME);
+    }
+
+    protected NoteManager getNoteManager() {
+        return ContextLookup.lookup(NoteManager.class, NoteManager.BEAN_NAME);
     }
     
     protected User getUser() 
@@ -135,5 +140,5 @@ public class BaseActionBean implements ActionBean
         
         return clip;
     }
-    
+  
  }
