@@ -1,10 +1,10 @@
 package org.localstorm.punjab;
 
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Properties;
-import javax.net.ssl.SSLSocketFactory;
 import org.jivesoftware.smack.ConnectionConfiguration;
 
 /**
@@ -20,11 +20,14 @@ public class Punjab
             System.err.println("Usage: <config_file>");
             return;
         }
-        
-        try {
 
+        InputStream is = null;
+                
+        try {
+            is = new FileInputStream(args[0]);
+            
             Properties props = new Properties();
-            props.load(new FileInputStream(args[0]));
+            props.load(is);
             
             JID jid         = new JID(props.getProperty("auth.jid"));
             String pwd      = props.getProperty("auth.password");
@@ -46,10 +49,10 @@ public class Punjab
                 throw new ClassCastException("XmppHandler subclass expected!");
             }
             
-            ConnectionConfiguration cc    = Punjab.getConnectionCfg(jid, 
-                                                                    host, 
-                                                                    port, 
-                                                                    secure);
+            ConnectionConfiguration cc    = XmppUtils.getConnectionCfg(jid, 
+                                                                       host, 
+                                                                       port, 
+                                                                       secure);
             XmppHandler             xmpph = (XmppHandler) o;
             
             final PJBService pjbs = new PJBService(cc, 
@@ -70,37 +73,13 @@ public class Punjab
         } catch(Exception e) {
             System.err.println("Error: " + e.getMessage());
             return;
+        } finally {
+            XmppUtils.closeQuietly(is);
         }
         
     }
 
-    private static ConnectionConfiguration getConnectionCfg(JID jid,
-                                                            String host,
-                                                            String port,
-                                                            boolean secure) 
-    {
-        int portVal = new Integer(port);
-        ConnectionConfiguration cc = null;
-        
-        if (jid.getService().equals(host))
-        {
-            cc = new ConnectionConfiguration(host, portVal);
-        } else {
-            cc = new ConnectionConfiguration(host, portVal, jid.getService());
-        }
-        
-        cc.setReconnectionAllowed(true);
-        cc.setCompressionEnabled(true);
-        cc.setSASLAuthenticationEnabled(true);
-
-        if (secure) {
-            cc.setSecurityMode(ConnectionConfiguration.SecurityMode.enabled);
-            SSLSocketFactory sockFact = (SSLSocketFactory) SSLSocketFactory.getDefault();
-            cc.setSocketFactory(sockFact);
-        }
-        
-        return cc;
-    }
+   
     
     private static Collection<JID> getApprovedPeers(String list)
     {
