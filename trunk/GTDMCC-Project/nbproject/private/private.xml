@@ -1,4 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/src/org/localstorm/mcc/ejb/referenced/RefObjectManager.java</file>
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/src/org/localstorm/mcc/ejb/referenced/ReferencedObject.java</file>
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/src/org/localstorm/mcc/ejb/users/UserManager.java</file>
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/src/org/localstorm/mcc/ejb/users/impl/UserManagerBean.java</file>
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/src/org/localstorm/mcc/web/Views.java</file>
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/src/org/localstorm/mcc/web/actions/ConfigUpdateActionBean.java</file>
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/src/org/localstorm/mcc/web/actions/ContextViewActionBean.java</file>
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/src/org/localstorm/mcc/web/actions/ContextsEditActionBean.java</file>
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/src/org/localstorm/mcc/web/actions/ListViewActionBean.java</file>
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/src/org/localstorm/mcc/web/actions/RefObjAddActionBean.java</file>
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/src/org/localstorm/mcc/web/actions/RefObjAttachActionBean.java</file>
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/src/org/localstorm/mcc/web/actions/RefObjEditActionBean.java</file>
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/src/org/localstorm/mcc/web/actions/RefObjEraseActionBean.java</file>
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/src/org/localstorm/mcc/web/actions/RefObjToggleStateActionBean.java</file>
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/src/org/localstorm/mcc/web/actions/RefObjViewActionBean.java</file>
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/src/org/localstorm/mcc/web/actions/TaskAddActionBean.java</file>
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/web-res/WEB-INF/jsp/includes/rightpan.jsp</file>
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/web-res/WEB-INF/jsp/includes/thirdpan.jsp</file>
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/web-res/jsp/configure.jsp</file>
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/web-res/jsp/editRefObjects.jsp</file>
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/web-res/jsp/viewRefObject.jsp</file>
+    </open-files>
 </project-private>

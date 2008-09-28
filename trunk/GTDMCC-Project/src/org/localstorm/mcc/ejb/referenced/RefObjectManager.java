@@ -6,7 +6,6 @@ import org.localstorm.mcc.ejb.contexts.Context;
 import org.localstorm.mcc.ejb.users.User;
 
 /**
- *
  * @author Alexey Kuznetsov
  */
 public interface RefObjectManager  extends BaseManager<ReferencedObject>

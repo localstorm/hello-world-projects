@@ -12,20 +12,14 @@ import org.localstorm.mcc.ejb.referenced.ReferencedObject;
  *
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/AttachRefObj")
-public class RefObjAttachActionBean extends BaseActionBean
+@UrlBinding("/actions/DetachRefObj")
+public class RefObjDetachActionBean extends BaseActionBean
 {
     @Validate( required=true )
     private int objectId;
     
     @Validate( required=true )
-    private String attachmentType;
-    
-    @Validate( required=false )
-    private String text;
-    
-    @Validate( required=false )
-    private String description;
+    private int noteId;
     
     public int getObjectId() {
         return objectId;
@@ -35,26 +29,22 @@ public class RefObjAttachActionBean extends BaseActionBean
         this.objectId = objectId;
     }
 
-    public void setAttachmentType(String attachmentType) {
-        this.attachmentType = attachmentType;
+    public int getNoteId() {
+        return noteId;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setNoteId(int noteId) {
+        this.noteId = noteId;
     }
 
-    public void setText(String text) {
-        this.text = text;
-    }
 
     @DefaultHandler
-    public Resolution filling() throws Exception {
+    public Resolution handling() throws Exception {
         
         ReferencedObject ro = this.getRefObjectManager().findById(this.objectId);
-        Note note = new Note(text, this.attachmentType);
-        note.setDescription(description);
-
-        this.getNoteManager().createAttachedNote(note, ro);
+        Note note           = this.getNoteManager().findById(this.noteId);
+        
+        this.getNoteManager().detachNote(note, ro);
         
         RedirectResolution rr = new RedirectResolution(RefObjViewActionBean.class);
         {
@@ -65,12 +55,7 @@ public class RefObjAttachActionBean extends BaseActionBean
 
     public static interface IncommingParameters {
         public static final String OBJECT_ID = "objectId";
+        public static final String NOTE_ID = "noteId";
     }
     
-    private static enum AttachmentTypes
-    {
-        URL,
-        NONE,
-        FILE
-    }
 }
