@@ -1,10 +1,12 @@
 package org.localstorm.punjab;
 
+import java.io.IOException;
 import java.util.Collection;
 import org.jivesoftware.smack.Chat;
 import org.jivesoftware.smack.ChatManagerListener;
 import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.MessageListener;
+import org.jivesoftware.smack.Roster;
 import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smack.packet.Message;
@@ -35,64 +37,66 @@ public class PJBService
         this.anonAllowed   = anonymous;
     }
     
-    public void start(JID jid, String password) throws XMPPException
+    public void start(JID jid, String password) throws IOException
     {
-        this.conn = new XMPPConnection(this.config);
-        this.conn.connect();
-        
-        this.conn.login(jid.toString(), password);
+        try {
+            this.conn = new XMPPConnection(this.config);
+            this.conn.connect();
 
-        System.out.println("Logged in as "+jid.toString());
-        
-        Presence presence = new Presence(Presence.Type.available);
-        this.conn.sendPacket(presence);
+            this.conn.login(jid.toString(), password);
 
-        this.conn.getChatManager().addChatListener(new ChatManagerListener() {
+            System.out.println("Logged in as "+jid.toString());
 
-            public void chatCreated(Chat chat, boolean locally) {
+            Presence presence = new Presence(Presence.Type.available);
+            this.conn.sendPacket(presence);
 
-                String peer  = chat.getParticipant();
+            this.conn.getChatManager().addChatListener(new ChatManagerListener() {
 
-                if (!PJBService.this.handler.isAllowed(peer))
-                {
-                    String reply = PJBService.this.handler.getDenialMessage();
-                    XmppUtils.sendSilently(reply, chat);
+                public void chatCreated(Chat chat, boolean locally) {
 
-                } else {
+                    String peer  = chat.getParticipant();
 
-                    MessageListener ml = new MessageListener() {
+                    if (!PJBService.this.handler.isAllowed(peer))
+                    {
+                        String reply = PJBService.this.handler.getDenialMessage();
+                        XmppUtils.sendSilently(reply, chat);
 
-                        public void processMessage(Chat chat, Message message) {
-                            try {
+                    } else {
 
-                                String peer  = chat.getParticipant();
-                                String reply = PJBService.this.handler.onMessage(message.getBody(), 
-                                                                                 peer);
-                                XmppUtils.sendSilently(reply, chat);
+                        MessageListener ml = new MessageListener() {
 
-                            } catch(Exception e) {
-                                System.err.println("Error: "+e.getMessage());
+                            public void processMessage(Chat chat, Message message) {
+                                try {
+
+                                    String peer  = chat.getParticipant();
+                                    String reply = PJBService.this.handler.onMessage(message.getBody(), 
+                                                                                     peer);
+                                    XmppUtils.sendSilently(reply, chat);
+
+                                } catch(Exception e) {
+                                    System.err.println("Error: "+e.getMessage());
+                                }
+
+                                chat.removeMessageListener(this);
                             }
-                            
-                            chat.removeMessageListener(this);
-                        }
 
-                    };
-                    
-                    chat.addMessageListener(ml);
+                        };
+
+                        chat.addMessageListener(ml);
+                    }
+
                 }
-
-            }
-        });
-
-        
+            });
+        } catch(XMPPException e) {
+            throw new IOException(e);
+        }
     }
     
     public void join() throws InterruptedException
     {
         while (this.conn.isConnected())
         {
-            Thread.sleep(1000);
+            Thread.sleep(5000);
         }
     }
     
@@ -101,5 +105,23 @@ public class PJBService
         System.out.println("Stopping...");
         Presence presence = new Presence(Presence.Type.unsubscribed);
         this.conn.disconnect(presence);
+    }
+    
+    public void sendMessage(JID to, String message, String subj, boolean ignoreOffline) throws IOException
+    {
+        if (!ignoreOffline) {
+            Roster roster = this.conn.getRoster();
+            Presence presence = roster.getPresence(to.toString());
+            if (!presence.isAvailable()) {
+                throw new IOException(to+" contact is offline.");
+            }
+        }
+        
+        Message msg = new Message();
+        msg.setTo(to.toString());
+        msg.setBody(message);
+        msg.setSubject(subj);
+        msg.setType(Message.Type.chat);
+        this.conn.sendPacket(msg);
     }
 }
