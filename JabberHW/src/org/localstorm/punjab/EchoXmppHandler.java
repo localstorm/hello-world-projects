@@ -6,8 +6,8 @@ package org.localstorm.punjab;
  */
 public class EchoXmppHandler implements XmppHandler
 {
-    public String onMessage(String msg, String fromJid) {
-        System.out.println("Message from "+fromJid+": "+msg);
+    public String onMessage(String msg, String from) {
+        System.out.println("Message from "+from+": "+msg);
         return msg;
     }
 
