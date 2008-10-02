@@ -50,7 +50,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception {
-        String jexlExp = "(foo.getInner().foo() eq true) and (foo.getInner().goo() >= 99)";
+        String jexlExp = "(foo.getInner().foo() eq true) and (foo.getInner().goo() eq (foo.getInner().goo()+1-1))";
         Expression e = ExpressionFactory.createExpression( jexlExp );
 
         // Create a context and add data
