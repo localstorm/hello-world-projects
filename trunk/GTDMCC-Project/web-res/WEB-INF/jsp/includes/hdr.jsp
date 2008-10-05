@@ -10,6 +10,7 @@
 <script language="javascript1.2" src="<c:url value="/js/codethatcalendarstd.js"/>"></script>
 <script language="javascript1.2" src="<c:url value="/js/scroller_ex.js"/>"></script>
 <script language="javascript1.2" src="<c:url value="/js/showhide.js"/>"></script>
+<script language="javascript1.2" src="<c:url value="/js/validate.js"/>"></script>
 </head>
 <body>
 <div id="topPan">

@@ -84,6 +84,7 @@ public class NoteManagerBean implements NoteManagerLocal, NoteManagerRemote
         {
             em.remove(n);
         }
+        
         note = this.findById(note.getId());
         em.remove(note);
     }
