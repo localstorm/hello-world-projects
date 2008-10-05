@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.localstorm.mcc.ejb.Identifiable;
@@ -19,6 +21,18 @@ import org.localstorm.mcc.ejb.referenced.ReferencedObject;
  */
 @Entity
 @Table(name="FILES_TO_OBJECTS")
+@NamedQueries({
+    @NamedQuery(
+        name = FileToRefObject.Queries.FIND_FILES_BY_OBJECT,
+        query= "SELECT o.file FROM FileToRefObject o WHERE o.refObject=:"+
+                FileToRefObject.Properties.OBJECT
+    ),
+    @NamedQuery(
+        name = FileToRefObject.Queries.FIND_BY_FILE,
+        query= "SELECT o FROM FileToRefObject o WHERE o.file=:"+
+                FileToRefObject.Properties.FILE
+    )
+})
 public class FileToRefObject implements Serializable, Identifiable
 {
     @Id
@@ -63,4 +77,16 @@ public class FileToRefObject implements Serializable, Identifiable
         this.file = file;
     }
     
+    public static interface Queries
+    {
+        public static final String FIND_FILES_BY_OBJECT = "findFilesByObject";
+        public static final String FIND_BY_FILE         = "findLinksByFile";
+    }
+    
+    public static interface Properties 
+    {
+        public static final String OBJECT = "obj";
+        public static final String FILE   = "file";
+    }
+
 }

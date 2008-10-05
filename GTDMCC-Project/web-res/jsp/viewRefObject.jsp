@@ -107,6 +107,13 @@
             <c:param name="noteId" value="${note.id}" />
         </c:url>"><img src="<c:url value="/images/trash.png"/>" border="0" alt="detach" /></a>&nbsp;Link</span>: <a href="<c:out value="${note.note}" />"><c:out value="${note.description}" /></a><br/></p>
     </c:forEach>
+    <br/>
+    <c:forEach var="file" items="${actionBean.objectFiles}">    
+        <p><span><a title="Detach" href="<c:url value="/actions/DetachFileRefObj" >
+            <c:param name="objectId" value="${actionBean.objectResult.id}" />
+            <c:param name="fileId" value="${file.id}" />
+</c:url>"><img src="<c:url value="/images/trash.png"/>" border="0" alt="detach" /></a>&nbsp;File</span>: <a href="#"><c:out value="${file.name}"/></a> (<c:out value="${file.description}" />)<br/></p>
+    </c:forEach>
     
 <%@ include file="/WEB-INF/jsp/includes/rightpan.jsp" %>
 <%@ include file="/WEB-INF/jsp/includes/foot.jsp" %>

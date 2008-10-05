@@ -27,6 +27,29 @@ public class FileDao
             throw new NullPointerException("Given DataSource is null!");
         }
     }
+
+    public void deleteBody(Integer fileId) throws SQLException
+    {
+        Connection conn = null;
+        try {
+            conn = ds.getConnection();
+            
+            if (conn==null)
+            {
+                throw new SQLException("Can't obtain a connection.");
+            }
+            
+            PreparedStatement ps = conn.prepareStatement("delete from FILE_BODIES where id=?");
+            ps.setInt(1, fileId);
+            ps.execute();
+            
+        } finally {
+            if (conn!=null)
+            {
+                conn.close();
+            }
+        }
+    }
     
     public int uploadFile(InputStream is, int fileId) throws IOException, SQLException
     {
