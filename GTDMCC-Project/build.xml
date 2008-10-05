@@ -10,12 +10,16 @@
         <property name="earres.dir" value="ear-res" />
         <property name="res.dir" value="web-res" />
 	<property name="pname" value="gtdmcc" />
+        <property name="earlib.dir" value="${earres.dir}/lib" />
 	
 	<path id="compile.classpath">
 		<fileset dir="${lib.dir}">
 	        	<include name="**/*.jar"/>
 	        </fileset>
                 <fileset dir="${eelib.dir}">
+	        	<include name="**/*.jar"/>
+	        </fileset>
+                <fileset dir="${earlib.dir}">
 	        	<include name="**/*.jar"/>
 	        </fileset>
 	 </path>
