@@ -2,7 +2,20 @@
 <%@ include file="/WEB-INF/jsp/includes/include.jsp" %>
 
 <%@ include file="/WEB-INF/jsp/includes/hdr.jsp" %>
-
+<script language="JavaScript">
+    function validateUrlForm()
+    {
+        value = document.getElementById("text-id");
+	if (!isUrl(value.value)) {
+	    alert("URL is not valid! Try again please!");
+	    return false;
+	}
+	else {
+            return true;
+        }
+    }
+</script>
+		
 <h2><span>OBJECT</span> details</h2>
     
     <div align="right" width="80%">Attach&nbsp;<a href="#" onclick="show('attachURLDiv', 'text-id'); hide('attachFileDiv'); return false">URL</a> |
@@ -11,10 +24,11 @@
     
     <div id="attachURLDiv" width="80%" style="display:
             <c:choose>
-             <c:when test="${not empty actionBean.context.validationErrors}">inline</c:when>
+             <c:when test="${not empty actionBean.context.validationErrors 
+                             and not empty urlForm}">inline</c:when>
              <c:otherwise>none</c:otherwise>
             </c:choose>;">
-        <stripes:form action="/actions/AttachRefObj" >
+           <stripes:form name="utlForm" action="/actions/AttachRefObj" onsubmit="return validateUrlForm()">
             <stripes:hidden name="attachmentType" value="URL" />
             <stripes:hidden name="objectId" value="${actionBean.objectResult.id}" />
             <stripes:errors/>
@@ -39,7 +53,7 @@
             <tr>
                 <td>&nbsp;</td>
                 <td colspan="2" align="center">
-                    <stripes:submit name="submit" value="Add" style="width: 7em;"/>&nbsp;
+                    <stripes:submit name="submit" value="Add" style="width: 7em;" />&nbsp;
                     <stripes:submit name="cancel" value="Cancel" style="width: 7em;" onclick="hide('attachURLDiv'); return false" />
                 </td>
                 <td>&nbsp;</td>
@@ -49,10 +63,11 @@
     </div>
     <div id="attachFileDiv" width="80%" style="display:
             <c:choose>
-             <c:when test="${not empty actionBean.context.validationErrors}">inline</c:when>
+             <c:when test="${not empty actionBean.context.validationErrors
+                             and not empty fileForm}">inline</c:when>
              <c:otherwise>none</c:otherwise>
             </c:choose>;">
-        <stripes:form action="/actions/AttachRefObj" >
+        <stripes:form action="/actions/UploadRefObj" >
             <stripes:hidden name="attachmentType" value="FILE" />
             <stripes:hidden name="objectId" value="${actionBean.objectResult.id}" />
             <stripes:errors/>

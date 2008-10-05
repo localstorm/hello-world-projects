@@ -7,6 +7,7 @@ import net.sourceforge.stripes.action.ActionBeanContext;
 import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.contexts.Context;
 import org.localstorm.mcc.ejb.contexts.ContextManager;
+import org.localstorm.mcc.ejb.files.FileManager;
 import org.localstorm.mcc.ejb.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.lists.GTDList;
 import org.localstorm.mcc.ejb.lists.ListManager;
@@ -57,6 +58,10 @@ public class BaseActionBean implements ActionBean
     
     protected TaskManager getTaskManager() {
         return ContextLookup.lookup(TaskManager.class, TaskManager.BEAN_NAME);
+    }
+    
+    protected FileManager getFileManager() {
+        return ContextLookup.lookupLocal(FileManager.class, FileManager.BEAN_NAME);
     }
     
     protected FlightPlanManager getFlightPlanManager() {

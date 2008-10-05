@@ -1,3 +1,5 @@
+delete from NOTES
+
 create table USERS (
     id INT NOT NULL,
     fname TEXT NOT NULL,
@@ -103,14 +105,6 @@ create table NOTES
     PRIMARY KEY (id)
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-create table NOTES_TO_TASKS
-(
-    note_id INT NOT NULL,
-    task_id INT NOT NULL,
-    FOREIGN KEY (task_id) REFERENCES TASKS(id)  ON DELETE CASCADE,
-    FOREIGN KEY (note_id) REFERENCES NOTES(id)  ON DELETE CASCADE
-)  ENGINE=INNODB DEFAULT CHARSET=utf8;
-
 
 create table NOTES_TO_OBJECTS
 (
@@ -123,18 +117,11 @@ create table NOTES_TO_OBJECTS
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 
-create table NOTES_TO_LISTS
-(
-    note_id INT NOT NULL,
-    list_id INT NOT NULL,
-    FOREIGN KEY (list_id) REFERENCES LISTS(id)  ON DELETE CASCADE,
-    FOREIGN KEY (note_id) REFERENCES NOTES(id)  ON DELETE CASCADE
-)  ENGINE=INNODB DEFAULT CHARSET=utf8;
-
 create table FILES
 (
     id INT NOT NULL AUTO_INCREMENT,
     name        TEXT NOT NULL,
+    description TEXT NOT NULL,
     mime_type   TEXT NOT NULL,
     creation DATETIME NOT NULL,
     PRIMARY KEY (id)
@@ -149,11 +136,15 @@ create table FILE_BODIES
     FOREIGN KEY (file_id) REFERENCES FILES(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
+
 create table FILES_TO_OBJECTS
 (
+    id INT NOT NULL AUTO_INCREMENT,
     file_id INT NOT NULL,
     object_id INT NOT NULL,
+    PRIMARY KEY (id),    
     FOREIGN KEY (object_id) REFERENCES REFERENCED_OBJECTS(id)  ON DELETE CASCADE,
     FOREIGN KEY (file_id) REFERENCES FILES(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
+select * from FILES

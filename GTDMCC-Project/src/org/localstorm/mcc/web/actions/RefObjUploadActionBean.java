@@ -2,35 +2,45 @@ package org.localstorm.mcc.web.actions;
 
 import net.sourceforge.stripes.action.After;
 import net.sourceforge.stripes.action.DefaultHandler;
+import net.sourceforge.stripes.action.FileBean;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.notes.Note;
+import org.localstorm.mcc.ejb.files.FileAttachment;
+import org.localstorm.mcc.ejb.files.FileManager;
 import org.localstorm.mcc.ejb.referenced.ReferencedObject;
 
 /**
  *
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/AttachRefObj")
-public class RefObjAttachActionBean extends RefObjViewActionBean
+@UrlBinding("/actions/UploadRefObj")
+public class RefObjUploadActionBean extends RefObjViewActionBean
 {
     @Validate( required=true )
     private int objectId;
     
     @Validate( required=true )
-    private String text;
+    private String description;
     
     @Validate( required=true )
-    private String description;
+    private FileBean file;
+
+    public FileBean getFile() {
+        return file;
+    }
+
+    public void setFile(FileBean file) {
+        this.file = file;
+    }
 
     @After( LifecycleStage.BindingAndValidation ) 
     public void doPostValidationStuff() throws Exception {
         if ( getContext().getValidationErrors().hasFieldErrors() )
         {
-            getContext().getRequest().setAttribute("urlForm", "true");
+            getContext().getRequest().setAttribute("fileForm", "true");
             super.filling();
         }
     }
@@ -49,19 +59,26 @@ public class RefObjAttachActionBean extends RefObjViewActionBean
         this.description = description;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public String getDescription() {
+        return description;
     }
 
     @DefaultHandler
     @Override
     public Resolution filling() throws Exception {
         
-        ReferencedObject ro = this.getRefObjectManager().findById(this.objectId);
+        ReferencedObject ro = super.getRefObjectManager().findById(this.objectId);
         
-        Note note = new Note(text, "URL");
-        note.setDescription(description);
-        this.getNoteManager().createAttachedNote(note, ro);
+        FileManager fm      = super.getFileManager();
+        FileAttachment fa   = new FileAttachment();
+        
+        
+        FileBean fb = this.getFile();
+        fa.setName(fb.getFileName());
+        fa.setMimeType(fb.getContentType());
+        fa.setDescription(this.getDescription());
+                
+        fm.attachToObject(fa, ro, fb.getInputStream());
         
         RedirectResolution rr = new RedirectResolution(RefObjViewActionBean.class);
         {
