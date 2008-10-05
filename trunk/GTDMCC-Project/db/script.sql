@@ -131,7 +131,7 @@ create table FILE_BODIES
 (
     id          INT NOT NULL AUTO_INCREMENT,    
     file_id     INT NOT NULL,    
-    data        BLOB NOT NULL,
+    data        LONGBLOB NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (file_id) REFERENCES FILES(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
@@ -147,4 +147,3 @@ create table FILES_TO_OBJECTS
     FOREIGN KEY (file_id) REFERENCES FILES(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-select * from FILES

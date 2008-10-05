@@ -54,6 +54,10 @@ public class FileAttachment implements Identifiable, Serializable
         this.mimeType = mimeType;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
