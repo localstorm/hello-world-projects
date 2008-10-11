@@ -60,15 +60,19 @@ public class Punjab
                                                    Punjab.getApprovedPeers(clist), 
                                                    isAnonAlowed);
             
-            pjbs.start(jid, pwd);
+            while (true)
+            {
+                pjbs.start(jid, pwd);
 
-            Runtime.getRuntime().addShutdownHook(new Thread() {
-                public void run() {
-                    pjbs.stop();
-                }
-            });
-            
-            pjbs.join();
+                Runtime.getRuntime().addShutdownHook(new Thread() {
+                    public void run() {
+                        pjbs.stop();
+                    }
+                });
+
+                pjbs.join();
+                System.err.println("Connection closed. Trying to reconnect.");
+            }
             
         } catch(Exception e) {
             System.err.println("Error: " + e.getMessage());
