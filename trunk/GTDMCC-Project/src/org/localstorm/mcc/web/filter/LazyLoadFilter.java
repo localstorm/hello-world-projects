@@ -49,13 +49,13 @@ public class LazyLoadFilter implements Filter
         
         
         if ( SessionUtil.isEmpty(sess, SessionKeys.CONTEXTS) ) {
-            ContextManager cm = ContextLookup.lookup(ContextManagerRemote.class, 
+            ContextManager cm = ContextLookup.lookup(ContextManager.class, 
                                                      ContextManager.BEAN_NAME);
             SessionUtil.fill(sess, SessionKeys.CONTEXTS, cm.findByOwner(user));
         }
         
         if ( SessionUtil.isEmpty(sess, SessionKeys.REFERENCE_OBJECTS) ) {
-            RefObjectManager rom = ContextLookup.lookup(RefObjectManagerRemote.class, 
+            RefObjectManager rom = ContextLookup.lookup(RefObjectManager.class, 
                                                          RefObjectManager.BEAN_NAME);
             SessionUtil.fill(sess, SessionKeys.REFERENCE_OBJECTS, rom.findOperativeByOwner(user));
         }

@@ -28,7 +28,7 @@ import org.localstorm.mcc.ejb.users.User;
 @NamedQueries({
     @NamedQuery(
         name = FlightPlan.Queries.FIND_CURRENT_BY_USER,
-        query= "SELECT o FROM FlightPlan o WHERE o.owner=:owner and archived=false"
+        query= "SELECT o FROM FlightPlan o WHERE o.owner=:owner and o.archived=false"
     )
 })
 public class FlightPlan implements Identifiable, Retireable, Serializable
@@ -73,10 +73,12 @@ public class FlightPlan implements Identifiable, Retireable, Serializable
         this.creation = creation;
     }
 
+    @Override
     public boolean isArchived() {
         return archived;
     }
 
+    @Override
     public void setArchived(boolean archived) {
         this.archived = archived;
     }

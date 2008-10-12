@@ -8,6 +8,7 @@ import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.contexts.Context;
 import org.localstorm.mcc.ejb.contexts.ContextManager;
 import org.localstorm.mcc.ejb.files.FileManager;
+import org.localstorm.mcc.ejb.files.FileManagerLocal;
 import org.localstorm.mcc.ejb.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.lists.GTDList;
 import org.localstorm.mcc.ejb.lists.ListManager;
@@ -61,7 +62,7 @@ public class BaseActionBean implements ActionBean
     }
     
     protected FileManager getFileManager() {
-        return ContextLookup.lookupLocal(FileManager.class, FileManager.BEAN_NAME);
+        return ContextLookup.lookupLocal(FileManagerLocal.class, FileManager.BEAN_NAME);
     }
     
     protected FlightPlanManager getFlightPlanManager() {
