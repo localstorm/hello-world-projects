@@ -27,11 +27,11 @@ import org.localstorm.mcc.ejb.contexts.Context;
 @NamedQueries({
     @NamedQuery(
         name = GTDList.Queries.FIND_BY_CTX,
-        query= "SELECT o FROM GTDList o WHERE o.context=:context and archived=false"
+        query= "SELECT o FROM GTDList o WHERE o.context=:context and o.archived=false"
     ),
     @NamedQuery(
         name = GTDList.Queries.FIND_BY_CTX_ARCHIVED,
-        query= "SELECT o FROM GTDList o WHERE o.context=:context and archived=true"
+        query= "SELECT o FROM GTDList o WHERE o.context=:context and o.archived=true"
     )
 })
 public class GTDList implements Identifiable, Serializable {   

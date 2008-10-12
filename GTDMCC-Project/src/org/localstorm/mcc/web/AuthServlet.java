@@ -27,7 +27,7 @@ public class AuthServlet extends HttpServlet
         String login = req.getParameter(CGIParams.AUTH_LOGIN);
         String pwd   = req.getParameter(CGIParams.AUTH_PASSWORD);
                 
-        UserManager um = ContextLookup.lookup(UserManagerRemote.class, 
+        UserManager um = ContextLookup.lookup(UserManager.class, 
                                               UserManager.BEAN_NAME);
         User u = um.login(login, pwd);
         HttpSession sess = req.getSession(true);

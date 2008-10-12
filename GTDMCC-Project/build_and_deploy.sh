@@ -12,5 +12,7 @@ ant dist
 
 cp dist/gtdmcc.ear ~/Program_Files/jboss-4.2.3.GA/server/default/deploy
 
+#cp dist/gtdmcc.ear ~/Program_Files/glassfish/domains/domain1/autodeploy
+
 
 
