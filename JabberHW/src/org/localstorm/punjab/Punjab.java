@@ -1,6 +1,7 @@
 package org.localstorm.punjab;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -60,18 +61,24 @@ public class Punjab
                                                    Punjab.getApprovedPeers(clist), 
                                                    isAnonAlowed);
             
-            while (true)
-            {
-                pjbs.start(jid, pwd);
+            Runtime.getRuntime().addShutdownHook(new Thread() {
+                @Override
+                public void run() {
+                    pjbs.stop();
+                }
+            });
 
-                Runtime.getRuntime().addShutdownHook(new Thread() {
-                    public void run() {
-                        pjbs.stop();
-                    }
-                });
+            while (true) {
+                try {
+                    pjbs.start(jid, pwd);
+                    pjbs.join();
+                    System.err.println("Connection closed. Trying to reconnect.");
+                } catch(IOException e) {
+                    System.err.println("Unable to connect to server...");
+                    Thread.sleep(5000);
+                    System.err.println("Trying to reconnect...");
+                }
 
-                pjbs.join();
-                System.err.println("Connection closed. Trying to reconnect.");
             }
             
         } catch(Exception e) {
