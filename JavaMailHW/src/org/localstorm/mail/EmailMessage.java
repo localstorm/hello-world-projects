@@ -11,6 +11,8 @@ import javax.mail.internet.InternetAddress;
  */
 public class EmailMessage 
 {
+    private static final String DEFAULT_CHARSET = "UTF-8";
+    
     private Collection      toAddresses = new LinkedList();
     private Collection      attachments = new LinkedList();
 
@@ -20,6 +22,7 @@ public class EmailMessage
     private boolean         htmlText;
     private Date            recievedDate;
     private Date            sentDate;
+    private String          charset;
     
     public EmailMessage()
     {
@@ -116,6 +119,22 @@ public class EmailMessage
     public String getMessageText()
     {
         return this.message;
+    }
+
+    public String getCharset()
+    {
+        if (this.charset!=null)
+        {
+            return this.charset;
+        } else 
+        {
+            return DEFAULT_CHARSET;
+        }
+    }
+
+    public void setCharset(String charset)
+    {
+        this.charset = charset;
     }
     
 }

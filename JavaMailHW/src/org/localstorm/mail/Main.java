@@ -17,7 +17,7 @@ public class Main {
 
     private static final String SMTP_HOST_NAME = "smtp.gmail.com";
     private static final String SMTP_PORT = "465";
-    private static final String emailMsgTxt = "<html><head/><body>Test <b>Message</b> Contents</body></html>";
+    private static final String emailMsgTxt = "<html><head/><body>Test <b>Пидарас</b> Contents</body></html>";
     private static final String emailSubjectTxt = "A test from gmail";
     private static final String emailFromAddress = "localstorm@gmail.com";
     private static final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
@@ -86,7 +86,14 @@ public class Main {
         MimeBodyPart messageBodyPart = new MimeBodyPart();
         {
             //fill message
-            messageBodyPart.setContent(email.getMessageText(), (email.isHtmlText()) ? "text/html" : "text/plain" );
+            messageBodyPart.setContent(email.getMessageText(), 
+                                           (email.isHtmlText()) 
+                                           ? 
+                                           "text/html; charset="+email.getCharset() 
+                                           : 
+                                           "text/plain; charset="+email.getCharset() 
+                                       );
+            
         }
 
 
