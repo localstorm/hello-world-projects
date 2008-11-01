@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- *
  * @author Alexey Kuznetsov
  */
 public class StreamAttachment implements EmailAttachment
