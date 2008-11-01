@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- *
  * @author Alexey Kuznetsov
  */
 public class BinaryAttachment implements EmailAttachment
