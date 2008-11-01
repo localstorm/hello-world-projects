@@ -1,10 +1,12 @@
 package org.localstorm.mail;
 
+import java.io.File;
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.activation.*;
 
 import java.security.Security;
+import java.util.Iterator;
 import java.util.Properties;
 
 
@@ -15,11 +17,11 @@ public class Main {
 
     private static final String SMTP_HOST_NAME = "smtp.gmail.com";
     private static final String SMTP_PORT = "465";
-    private static final String emailMsgTxt = "Test Message Contents";
+    private static final String emailMsgTxt = "<html><head/><body>Test <b>Message</b> Contents</body></html>";
     private static final String emailSubjectTxt = "A test from gmail";
     private static final String emailFromAddress = "localstorm@gmail.com";
     private static final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
-    private static final String[] sendTo = {"zeextor@gmail.com"};
+    private static final String sendTo = "zeextor@gmail.com";
 
 
     public static void main(String args[]) throws Exception {
@@ -32,12 +34,22 @@ public class Main {
         
         Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
 
-        new Main().sendSSLMessage(sendTo, emailSubjectTxt, emailMsgTxt, emailFromAddress, args[0]);   
+        EmailMessage email = new EmailMessage();
+        {
+            email.addRecipient(new InternetAddress(sendTo));
+            email.setSubject(emailSubjectTxt);
+            email.setMessageText(emailMsgTxt);
+            email.setHtmlText(true);
+            email.setFromAddress(new InternetAddress(emailFromAddress));    
+            email.addAttachment(new FileAttachment(new File("image.jpeg"), "image/jpeg"));
+            email.addAttachment(new FileAttachment(new File("build.xml"), "text/xml"));
+        }
+        
+        Main.sendSSLMessage(email, args[0]);   
         System.out.println("Sucessfully Sent mail to All Users");
     }
 
-    public void sendSSLMessage(String recipients[], String subject,
-        String message, final String from, final String password) throws MessagingException {
+    public static void sendSSLMessage(final EmailMessage email, final String password) throws MessagingException {
         boolean debug = true;
 
         Properties props = new Properties();
@@ -50,9 +62,8 @@ public class Main {
         props.put("mail.smtp.socketFactory.fallback", "false");
 
         Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-                @Override
                 protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(from, password);
+                    return new PasswordAuthentication(email.getFromAddress().toString(), password);
                 }
             }
         );
@@ -62,35 +73,55 @@ public class Main {
         
          // Define message
         MimeMessage mail = new MimeMessage(session);
-        mail.setFrom(new InternetAddress(from));
+        mail.setFrom(email.getFromAddress());
         
-        for (int i = 0; i < recipients.length; i++) {
-            mail.addRecipient( Message.RecipientType.TO, new InternetAddress(recipients[i]));
+        for (Iterator it = email.getRecipients().iterator(); it.hasNext(); ) 
+        {
+            mail.addRecipient( Message.RecipientType.TO, (InternetAddress)it.next());
         }
         
-        mail.setSubject( "Hello JavaMail Attachment" );
+        mail.setSubject( email.getSubject() );
 
         // create the message part 
         MimeBodyPart messageBodyPart = new MimeBodyPart();
         {
             //fill message
-            messageBodyPart.setText(message);
+            messageBodyPart.setContent(email.getMessageText(), (email.isHtmlText()) ? "text/html" : "text/plain" );
         }
 
-        Multipart multipart = new MimeMultipart();
-        multipart.addBodyPart(messageBodyPart);
 
+        MimeBodyPart parts[] = new MimeBodyPart[email.getAttachments().size()];
+        
+        int i=0;
+        for (Iterator it = email.getAttachments().iterator(); it.hasNext(); )
+        {
+            EmailAttachment attach = (EmailAttachment)it.next();
+            parts[i] = new MimeBodyPart();
+            {
+                DataSource source = new AttachmentDataSource(attach);
+                parts[i].setDataHandler(new DataHandler(source));
+                parts[i].setFileName(attach.getAttachmentFileName());
+            }
+            
+            i++;
+        }
+            
         // Part two is attachment
-        messageBodyPart = new MimeBodyPart();
-        DataSource source = new FileDataSource("image.jpeg");
-        messageBodyPart.setDataHandler(new DataHandler(source));
-        messageBodyPart.setFileName("cool.jpeg");
-        multipart.addBodyPart(messageBodyPart);
-
+        
+        
+        Multipart multipart = new MimeMultipart();
+        {
+            multipart.addBodyPart(messageBodyPart); // Message text part
+            
+            for (int j = 0; j<parts.length; j++)
+            {
+                multipart.addBodyPart(parts[j]);
+            }
+        }
+        
         // Put parts in message
         mail.setContent(multipart);
         Transport.send(mail);
-        
     }
 
 }
