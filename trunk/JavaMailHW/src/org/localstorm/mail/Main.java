@@ -40,7 +40,11 @@ public class Main {
             email.setSubject(emailSubjectTxt);
             email.setMessageText(emailMsgTxt);
             email.setHtmlText(true);
-            email.setFromAddress(new InternetAddress(emailFromAddress));    
+            
+            InternetAddress from = new InternetAddress(emailFromAddress);
+            from.setPersonal("Педик", "UTF-8");
+            
+            email.setFromAddress(from);    
             email.addAttachment(new FileAttachment(new File("image.jpeg"), "image/jpeg"));
             email.addAttachment(new FileAttachment(new File("build.xml"), "text/xml"));
         }
@@ -49,7 +53,7 @@ public class Main {
         System.out.println("Sucessfully Sent mail to All Users");
     }
 
-    public static void sendSSLMessage(final EmailMessage email, final String password) throws MessagingException {
+    public static void sendSSLMessage(final EmailMessage email, final String password) throws Exception {
         boolean debug = true;
 
         Properties props = new Properties();
@@ -63,7 +67,7 @@ public class Main {
 
         Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
                 protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(email.getFromAddress().toString(), password);
+                    return new PasswordAuthentication("localstorm@gmail.com", password);
                 }
             }
         );
@@ -73,6 +77,7 @@ public class Main {
         
          // Define message
         MimeMessage mail = new MimeMessage(session);
+
         mail.setFrom(email.getFromAddress());
         
         for (Iterator it = email.getRecipients().iterator(); it.hasNext(); ) 
