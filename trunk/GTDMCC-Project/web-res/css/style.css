@@ -84,10 +84,14 @@ ul{list-style-type:none;}
 #bodyRightPan h3{width:195px; height:35px; display:block; border:1px solid #DADADA; background:#fff; color:#00111A; font:24px/34px Georgia, "Times New Roman", Times, serif; margin:6px 8px 0; padding:0 0 0 20px;}
 #bodyRightPan h3 span{background:#fff; color:#046598;}
 
-#bodyRightPan ul{width:180px; margin:0 0 17px 28px;}
-#bodyRightPan ul li{width:180px; height:18px;}
-#bodyRightPan ul li a{width:160px; height:18px; display:block; background:url(../images/button.png) 0 6px no-repeat #F3F3F3; color:#1A1A1A; text-decoration:none; padding:0 0 0 20px;}
-#bodyRightPan ul li a:hover{background:url(../images/button-hover.png) 0 6px no-repeat #F3F3F3; color:#797878; text-decoration:none;}
+#bodyRightPan table.contexts {width:180px; margin:0 0 17px 28px;}
+#bodyRightPan table.contexts tr td a{width:160px; display:block; color:#1A1A1A; text-decoration:none; }
+#bodyRightPan table.contexts tr td a:hover{color:#797878; text-decoration:none; }
+
+#bodyRightPan table.reports {width:180px; margin:0 0 17px 28px;}
+#bodyRightPan table.reports tr td a{width:160px; display:block; color:#1A1A1A; text-decoration:none; }
+#bodyRightPan table.reports tr td a:hover{color:#797878; text-decoration:none; }
+
 
 #bodyRightPan p{padding:0px 29px 0px 29px;}
 #bodyRightPan p.boldtext{padding:10px 29px 0px; font-size:14px; background:#F3F3F3; color:#1A1A1A; font-weight:bold;}
@@ -109,6 +113,10 @@ ul{list-style-type:none;}
 #bodyThirdPan ul li{width:180px; height:18px;}
 #bodyThirdPan ul li a{width:160px; height:18px; display:block; background:url(../images/button.png) 0 6px no-repeat #F3F3F3; color:#1A1A1A; text-decoration:none; padding:0 0 0 20px;}
 #bodyThirdPan ul li a:hover{background:url(../images/button-hover.png) 0 6px no-repeat #F3F3F3; color:#797878; text-decoration:none;}
+
+#bodyThirdPan table.refobjs {width:180px; margin:0 0 17px 28px;}
+#bodyThirdPan table.refobjs tr td a{width:160px; display:block; color:#1A1A1A; text-decoration:none; }
+#bodyThirdPan table.refobjs tr td a:hover{color:#797878; text-decoration:none; }
 
 #bodyThirdPan p{padding:0px 29px 0px 29px;}
 #bodyThirdPan p.boldtext{padding:10px 29px 0px; font-size:14px; background:#F3F3F3; color:#1A1A1A; font-weight:bold;}

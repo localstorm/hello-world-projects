@@ -4,29 +4,28 @@
 </div>
 <div id="bodyRightPan">
   	<h2><span>Contexts</span> pane</h2>
-	<ul>
-            <c:forEach items="${contexts}" var="ctx" >
-                <li><a href="<c:url value="/actions/ViewContext">
-                           <c:param name="contextId" value="${ctx.id}" />
-                         </c:url>"><c:out value="${ctx.name}"/></a>
-                </li>
-            </c:forEach>
-	</ul>
-		<p class="more"><a href="<c:url value="/actions/EditContexts"/>">EDIT</a></p>
-		<h3><span>Reports</span> pane</h3>
-		<p class="boldtext">03 oct 2006</p>
-		<p><a href="#">Экзамен по Кожанову</a></p>
-		
+	<p class="more"><a href="<c:url value="/actions/EditContexts"/>">EDIT</a></p>
+        <table class="contexts">
+        <c:forEach items="${contexts}" var="ctx" >            
+            <tr>
+                <td width="18px" valign="top"><img src="<c:url value="/images/button.png"/>"/></td>
+                <td><a href="<c:url value="/actions/ViewContext">
+                       <c:param name="contextId" value="${ctx.id}" />
+                     </c:url>"><c:out value="${ctx.name}"/></a></td>
+            </tr>
+        </c:forEach>
+        </table>            
 	
-		<p class="boldtext">03 oct 2006</p>
-		<p><a href="#">Очередное скотомудилище</a></p>
-		
-
-		<p class="boldtext">03 oct 2006</p>
-		<p><a href="#">Очередное скотомудилище</a></p>
-		
-
-		<p class="boldtext">03 oct 2006</p>
-		<p><a href="#">Очередное скотомудилище</a></p>
-		<p class="more"><a href="#">ALL</a></p>
+        <h2><span>Reports</span> pane</h2>
+            <%--ul class="reportsUL">
+                <li><a href="#">Отчёт по дедлайнам</a></li>
+            </ul--%>
+            <table class="reports">
+                <tr>
+                    <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
+                    <td><a href="#">Отчёт по дедлайнам</a></td>
+                </tr>
+            </table>
+                <%--img src="<c:url value="/images/report.png"/>"/--%>
+                <%--p class="more"><a href="#">ALL</a></p--%>
 </div>
