@@ -17,13 +17,14 @@
         </table>            
 	
         <h2><span>Reports</span> pane</h2>
-            <%--ul class="reportsUL">
-                <li><a href="#">Отчёт по дедлайнам</a></li>
-            </ul--%>
             <table class="reports">
                 <tr>
                     <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
-                    <td><a href="#">Отчёт по дедлайнам</a></td>
+                    <td><a href="#">Deadline report</a></td>
+                </tr>
+                <tr>
+                    <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
+                    <td><a href="#">Effort report</a></td>
                 </tr>
             </table>
                 <%--img src="<c:url value="/images/report.png"/>"/--%>

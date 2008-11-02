@@ -53,7 +53,7 @@
     <c:forEach items="${actionBean.tasks}" var="task" varStatus="status">
     <tr> 
         <td>
-            <p><a href="<c:url value="/actions/ViewTask">
+            <p><img src="<c:url value="/images/loe${task.effort}.png"/>"/>&nbsp;<a href="<c:url value="/actions/ViewTask">
                             <c:param name="id" value="${task.id}" />
                         </c:url>"><c:out value="${task.summary}" /></a></p>
         <div id="<c:out value="delegate-${task.id}" />" style="display: none;" >

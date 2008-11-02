@@ -67,6 +67,7 @@ create table TASKS (
      runtime_note TEXT,
      sort_order INT not null,
      list_id INT not null,
+     effort INT NOT NULL,
      PRIMARY KEY (id),
      FOREIGN KEY (list_id) REFERENCES LISTS(id) ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;

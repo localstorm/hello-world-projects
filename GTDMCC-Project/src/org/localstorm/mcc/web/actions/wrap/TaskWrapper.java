@@ -76,6 +76,12 @@ public class TaskWrapper extends Task
     }
 
     @Override
+    public int getEffort() {
+        return t.getEffort();
+    }
+
+    
+    @Override
     public boolean isAwaited() {
         return t.isAwaited();
     }
@@ -164,5 +170,12 @@ public class TaskWrapper extends Task
     public void setSummary(String summary) {
         t.setSummary(summary);
     }
+
+    @Override
+    public void setEffort(int effort) {
+        t.setEffort(effort);
+    }
+    
+    
     
 }
