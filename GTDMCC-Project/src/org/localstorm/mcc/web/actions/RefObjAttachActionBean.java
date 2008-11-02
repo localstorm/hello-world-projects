@@ -1,12 +1,15 @@
 package org.localstorm.mcc.web.actions;
 
+import java.net.URL;
 import net.sourceforge.stripes.action.After;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.controller.LifecycleStage;
+import net.sourceforge.stripes.validation.SimpleError;
 import net.sourceforge.stripes.validation.Validate;
+import net.sourceforge.stripes.validation.ValidationErrors;
 import org.localstorm.mcc.ejb.notes.Note;
 import org.localstorm.mcc.ejb.referenced.ReferencedObject;
 
@@ -28,9 +31,19 @@ public class RefObjAttachActionBean extends RefObjViewActionBean
 
     @After( LifecycleStage.BindingAndValidation ) 
     public void doPostValidationStuff() throws Exception {
-        if ( getContext().getValidationErrors().hasFieldErrors() )
+        
+        ValidationErrors ve = this.getContext().getValidationErrors();
+
+        // Verify format of URL.
+        try {
+            new URL(this.text);
+        } catch (Exception e) {
+            ve.add(IncommingParameters.URL, new SimpleError("Given URL is malformed!"));
+        }
+        
+        if ( this.getContext().getValidationErrors().hasFieldErrors() )
         {
-            getContext().getRequest().setAttribute("urlForm", "true");
+            this.getContext().getRequest().setAttribute("urlForm", "true");
             super.filling();
         }
     }
@@ -72,6 +85,7 @@ public class RefObjAttachActionBean extends RefObjViewActionBean
 
     public static interface IncommingParameters {
         public static final String OBJECT_ID = "objectId";
+        public static final String URL       = "text";
     }
       
 }

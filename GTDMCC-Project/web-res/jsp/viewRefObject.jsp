@@ -2,7 +2,7 @@
 <%@ include file="/WEB-INF/jsp/includes/include.jsp" %>
 
 <%@ include file="/WEB-INF/jsp/includes/hdr.jsp" %>
-<script language="JavaScript">
+<%--script language="JavaScript">
     function validateUrlForm()
     {
         value = document.getElementById("text-id");
@@ -14,7 +14,7 @@
             return true;
         }
     }
-</script>
+</script--%>
 		
 <h2><span>OBJECT</span> details</h2>
     
@@ -28,7 +28,8 @@
                              and not empty urlForm}">inline</c:when>
              <c:otherwise>none</c:otherwise>
             </c:choose>;">
-           <stripes:form name="utlForm" action="/actions/AttachRefObj" onsubmit="return validateUrlForm()">
+           <%-- onsubmit="return validateUrlForm()" --%>
+           <stripes:form name="utlForm" action="/actions/AttachRefObj" > 
             <stripes:hidden name="attachmentType" value="URL" />
             <stripes:hidden name="objectId" value="${actionBean.objectResult.id}" />
             <stripes:errors/>

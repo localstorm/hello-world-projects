@@ -1,3 +1,4 @@
+/*
 function isUrl(s) {
    var v = new RegExp();
    v.compile("^[A-Za-z]+://[A-Za-z0-9-_]+\\.[A-Za-z0-9-_%&\?\/.=]+$");
@@ -6,3 +7,4 @@ function isUrl(s) {
    } 
    return true;
 }
+*/
