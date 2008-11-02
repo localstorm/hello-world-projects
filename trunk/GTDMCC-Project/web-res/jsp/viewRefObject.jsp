@@ -28,8 +28,7 @@
                              and not empty urlForm}">inline</c:when>
              <c:otherwise>none</c:otherwise>
             </c:choose>;">
-           <%-- onsubmit="return validateUrlForm()" --%>
-           <stripes:form name="utlForm" action="/actions/AttachRefObj" > 
+        <stripes:form name="utlForm" action="/actions/AttachRefObj" > 
             <stripes:hidden name="attachmentType" value="URL" />
             <stripes:hidden name="objectId" value="${actionBean.objectResult.id}" />
             <stripes:errors/>
