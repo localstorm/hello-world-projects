@@ -2,13 +2,18 @@ package org.localstorm.mcc.web.filter;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.localstorm.mcc.ejb.ContextLookup;
+import org.localstorm.mcc.ejb.contexts.Context;
 import org.localstorm.mcc.ejb.contexts.ContextManager;
-import org.localstorm.mcc.ejb.contexts.ContextManagerRemote;
 import org.localstorm.mcc.ejb.referenced.*;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.SessionKeys;
@@ -51,7 +56,17 @@ public class LazyLoadFilter implements Filter
         if ( SessionUtil.isEmpty(sess, SessionKeys.CONTEXTS) ) {
             ContextManager cm = ContextLookup.lookup(ContextManager.class, 
                                                      ContextManager.BEAN_NAME);
-            SessionUtil.fill(sess, SessionKeys.CONTEXTS, cm.findByOwner(user));
+            Collection<Context> ctxList = cm.findByOwner(user);
+            List<Context> ctxs = new ArrayList<Context>(ctxList);
+            
+            Collections.sort(ctxs, new Comparator<Context>() {
+                @Override
+                public int compare(Context o1, Context o2) {
+                    return o1.getName().compareTo(o2.getName());
+                }
+            });
+            
+            SessionUtil.fill(sess, SessionKeys.CONTEXTS, ctxs);
         }
         
         if ( SessionUtil.isEmpty(sess, SessionKeys.REFERENCE_OBJECTS) ) {
