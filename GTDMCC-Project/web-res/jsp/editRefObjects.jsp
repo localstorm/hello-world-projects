@@ -18,7 +18,7 @@
             <tr>
                 <td>&nbsp;</td>
                 <td>Context: </td>
-                <td><stripes:select name="contextId" style="width: 100%;" >
+                <td><stripes:select name="contextId" style="width: 100%;" value="${actionBean.currentContext.id}">
                         <c:forEach items="${contexts}" var="ctx">
                             <stripes:option value="${ctx.id}" label="${ctx.name}"/>
                         </c:forEach>

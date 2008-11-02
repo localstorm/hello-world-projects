@@ -68,6 +68,7 @@ public class IndexActionBean extends BaseActionBean {
                             t2.getList().getContext().getName()
                        );
             }
+            
         });
         
         flightPlanTasks.clear();
