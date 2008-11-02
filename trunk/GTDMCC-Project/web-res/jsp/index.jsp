@@ -14,7 +14,7 @@
 <c:if test="${not empty actionBean.flightPlanTasks}">
 <table width="100%"><tr><th>Operative</th></tr></table> 
 <c:forEach items="${actionBean.flightPlanTasks}" var="task">
-    <p><span><c:out value="${task.list.context.name}" />:</span>&nbsp;<a href="<c:url value="/actions/ViewTask">
+    <p><span><img src="<c:url value="/images/loe${task.effort}.png"/>"/>&nbsp;<c:out value="${task.list.context.name}" />:</span>&nbsp;<a href="<c:url value="/actions/ViewTask">
                         <c:param name="id" value="${task.id}" />
                         <c:param name="returnPage" value="IDX" />
                 </c:url>" title="Expand"><c:out value="${task.summary}" /></a></p>

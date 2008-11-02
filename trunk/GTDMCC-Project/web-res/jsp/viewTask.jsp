@@ -24,19 +24,34 @@ var dlinec = new CodeThatCalendar(caldef1);
 </tr>
 </c:if>
 <tr>
-    <th colspan="2">Summary:</th>
+    <th colspan="2" align="left">
+        <table width="100%">
+            <tr align="left">
+                <th>Summary:</th>
+                <th width="20%" align="right">
+                    <stripes:select name="effort" value="${actionBean.taskResult.effort}">
+                        <stripes:option value="1">Elementary</stripes:option>
+                        <stripes:option value="2">Easy</stripes:option>
+                        <stripes:option value="3">Medium</stripes:option>
+                        <stripes:option value="4">Difficult</stripes:option>
+                        <stripes:option value="5">Very difficult</stripes:option>
+                    </stripes:select>
+                </th>
+            </tr>
+        </table>
+    </th>
 </tr>
 <tr>
     <td colspan="2"> <stripes:textarea rows="4" style="width: 100%;" name="summary" value="${actionBean.taskResult.summary}"/></td>
 </tr>
 <tr>
-    <th colspan="2">Details:</th>
+    <th colspan="2" align="left">Details:</th>
 </tr>
 <tr>
     <td colspan="2"><stripes:textarea rows="10" style="width: 100%;" name="details" value="${actionBean.taskResult.details}"/></td>
 </tr>
 <tr>
-    <th colspan="2">Dates:</th>
+    <th colspan="2" align="left">Dates:</th>
 </tr>
 <tr>
     <td>

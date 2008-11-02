@@ -34,6 +34,9 @@ public class TaskUpdateActionBean extends BaseActionBean
     private String redline;
     
     private String returnPage;
+    
+    @Validate( required=true )
+    private Integer effort;
 
     public int getTaskId() {
         return taskId;
@@ -63,6 +66,10 @@ public class TaskUpdateActionBean extends BaseActionBean
         this.summary = summary;
     }
 
+    public void setEffort(Integer effort) {
+        this.effort = effort;
+    }
+    
     public void setDetails(String details) {
         this.details = details;
     }
@@ -78,6 +85,12 @@ public class TaskUpdateActionBean extends BaseActionBean
     public String getReturnPage() {
         return returnPage;
     }
+
+    public Integer getEffort() {
+        return effort;
+    }
+    
+    
 
     public void setReturnPage(String returnPage) {
         this.returnPage = returnPage;
@@ -95,6 +108,7 @@ public class TaskUpdateActionBean extends BaseActionBean
 
         t.setRedline(this.parse(this.getRedline(), sdf));
         t.setDeadline(this.parse(this.getDeadline(), sdf));
+        t.setEffort(this.getEffort());
         
         tm.update(t);
         

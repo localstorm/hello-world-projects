@@ -57,6 +57,9 @@ public class Task implements Identifiable, Serializable
     @Column(name="sort_order", unique=false, updatable=true, nullable=false )    
     private Integer sortOrder;
     
+    @Column(name="effort", unique=false, updatable=true, nullable=false )    
+    private int effort;
+    
     @JoinColumn(name="list_id", nullable=false)
     @ManyToOne(fetch=FetchType.EAGER)
     private GTDList list;
@@ -104,6 +107,7 @@ public class Task implements Identifiable, Serializable
         this.paused = true;
         this.delegated = false;
         this.creation = new Date();
+        this.effort = 3;
     }
 
     @Override
@@ -162,6 +166,10 @@ public class Task implements Identifiable, Serializable
     public boolean isCancelled() {
         return cancelled;
     }
+
+    public int getEffort() {
+        return effort;
+    }
     
     public void setCancelled(boolean cancelled) {
         this.cancelled  = cancelled;
@@ -213,6 +221,10 @@ public class Task implements Identifiable, Serializable
     
     public void setSummary(String summary) {
         this.summary = summary;
+    }
+
+    public void setEffort(int effort) {
+        this.effort = effort;
     }
     
     public static interface Queries {
