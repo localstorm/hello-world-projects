@@ -120,17 +120,17 @@ public class BaseActionBean implements ActionBean
         SessionUtil.clear(sess, SessionKeys.CURR_CTX);
     }
     
-    protected Context getCurrentContext()
+    public Context getCurrentContext()
     {
         return (Context) SessionUtil.getValue(this.getSession(), SessionKeys.CURR_CTX);
     }
     
-    protected GTDList getCurrentList()
+    public GTDList getCurrentList()
     {
         return (GTDList) SessionUtil.getValue(this.getSession(), SessionKeys.CURR_LIST);
     }
     
-    protected Task getCurrentTask()
+    public Task getCurrentTask()
     {
         return (Task) SessionUtil.getValue(this.getSession(), SessionKeys.CURR_TASK);
     }
