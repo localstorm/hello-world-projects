@@ -62,7 +62,7 @@
                 <stripes:hidden name="action" value="DELEGATE" />
                 <table width="100%" style="background:#FFFFD0; border:1px dotted #DADADA;">
                     <tr>
-                        <td width="80%" align="center"><stripes:text name="runtimeNote" style="width: 95%"/></td>
+                        <td width="80%" align="center"><stripes:text name="runtimeNote" id="rtn-${task.id}" style="width: 95%"/></td>
                         <td width="10%" align="center"><stripes:submit name="s1" value="Delegate" style="width: 7em;" /></td>
                         <td width="10%" align="center"><stripes:submit name="s1" value="Cancel" style="width: 7em;" onclick="hide('delegate-${task.id}'); return false" /></td>
                     </tr>
@@ -92,7 +92,7 @@
                                     <c:param name="taskId" value="${task.id}" />
                                     <c:param name="action" value="CANCEL" />
                                  </c:url>" title="Cancel"><img alt="cancel" border="0" src="<c:url value="/images/cancel.png"/>"/></a>
-                        <a href="#" onclick="show('<c:out value="delegate-${task.id}" />'); return false" title="Delegate"><img alt="delegate" border="0" src="<c:url value="/images/delegate.png"/>"/></a>
+                        <a href="#" onclick="show('<c:out value="delegate-${task.id}" />', '<c:out value="rtn-${task.id}" />'); return false" title="Delegate"><img alt="delegate" border="0" src="<c:url value="/images/delegate.png"/>"/></a>
                     </nobr>
                     </td>
                 </tr>
