@@ -5,7 +5,7 @@
 
 <%@ include file="clipboard.jsp" %>
 <h2><span>CONTEXT</span> details</h2>
-<div align="right" width="80%"><a href="#" onclick="show('addLISTDiv', 'name-id'); return false">Add list</a> (<a onclick="show('renameDiv', 'newname-id'); return false" href="#"><c:out value="${actionBean.contextResult.name}"/></a>)</div>
+<div align="right" width="80%"><a href="#" onclick="show('addLISTDiv', 'name-id'); hide('renameDiv'); return false">Add list</a> (<a onclick="show('renameDiv', 'newname-id'); hide('addLISTDiv');  return false" href="#"><c:out value="${actionBean.contextResult.name}"/></a>)</div>
 <div align="center">
     
     <div id="addLISTDiv" width="80%" style="display: <c:choose>
