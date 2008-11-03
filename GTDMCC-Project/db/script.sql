@@ -1,5 +1,3 @@
-delete from NOTES
-
 create table USERS (
     id INT NOT NULL,
     fname TEXT NOT NULL,
@@ -10,8 +8,7 @@ create table USERS (
     PRIMARY KEY (id)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-insert into USERS (id, fname, lname, login, pass_hash, is_blocked) values (174947681, 'root', 'root', 'root', 'ho-ho', 0);
-
+insert into USERS (id, fname, lname, login, pass_hash, is_blocked) values (174947681, 'root', 'root', 'root', 'e10adc3949ba59abbe56e057f20f883e', 0); -- Password is 123456
 
 CREATE UNIQUE INDEX idx_users_login
     ON USERS (login)
