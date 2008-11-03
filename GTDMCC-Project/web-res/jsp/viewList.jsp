@@ -7,14 +7,14 @@
 <h2><span>LIST</span> tasks</h2>
 <div align="right" ><a href="<c:url value="/actions/ViewContext" >
                                <c:param name="contextId" value="${actionBean.listResult.context.id}" />
-                             </c:url>" title="Go to parent"><img src="<c:url value="/images/parent.png" />" border="0" /></a>&nbsp;<a href="#" onclick="show('addTaskDiv', 'summary-id'); return false">Add task</a>
-                             (<c:out value="${actionBean.listResult.name}"/>)</div> 
+                             </c:url>" title="Go to parent"><img src="<c:url value="/images/parent.png" />" border="0" /></a>&nbsp;<a href="#" onclick="show('addTaskDiv', 'summary-id'); hide('renameDiv'); return false">Add task</a>
+                            (<a href="#" onclick="show('renameDiv', 'newname-id'); hide('addTaskDiv'); return false"><c:out value="${actionBean.listResult.name}"/></a>)</div> 
 
 
     <div align="center">
     
     <div id="addTaskDiv" width="80%" style="display: <c:choose>
-             <c:when test="${not empty actionBean.context.validationErrors}">inline</c:when>
+             <c:when test="${not empty actionBean.context.validationErrors and empty renameForm}">inline</c:when>
              <c:otherwise>none</c:otherwise>
     </c:choose>;">
         <stripes:form action="/actions/AddTask" >
@@ -37,6 +37,36 @@
                 <td colspan="2" align="center">
                     <stripes:submit name="submit" value="Add" style="width: 7em;"/>&nbsp;
                     <stripes:submit name="cancel" value="Cancel" style="width: 7em;" onclick="hide('addTaskDiv'); return false" />
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+        </stripes:form>
+</div>
+<div id="renameDiv" width="80%" style="display: <c:choose>
+             <c:when test="${not empty actionBean.context.validationErrors and not empty renameForm}">inline</c:when>
+             <c:otherwise>none</c:otherwise>
+    </c:choose>;">
+        <stripes:form action="/actions/RenameList" >
+        <stripes:errors/>
+        <stripes:hidden name="listId" value="1" />
+        <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
+            <tr>
+                <td>&nbsp;</td>
+                <td>Name: </td>
+                <td><stripes:text name="name" id="newname-id" style="width: 100%;" /></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td colspan="2"><hr/></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td colspan="2" align="center">
+                    <stripes:submit name="submit" value="Rename" style="width: 7em;"/>&nbsp;
+                    <stripes:submit name="cancel" value="Cancel" style="width: 7em;" onclick="hide('renameDiv'); return false" />
                 </td>
                 <td>&nbsp;</td>
             </tr>

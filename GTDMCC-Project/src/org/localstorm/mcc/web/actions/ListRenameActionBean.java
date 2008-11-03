@@ -7,19 +7,17 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
+import org.localstorm.mcc.ejb.lists.GTDList;
+import org.localstorm.mcc.ejb.lists.ListManager;
 
-import org.localstorm.mcc.ejb.contexts.Context;
-import org.localstorm.mcc.ejb.contexts.ContextManager;
-import org.localstorm.mcc.web.SessionKeys;
-import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
  *
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/RenameContext")
-public class ContextRenameActionBean extends ContextViewActionBean {
-
+@UrlBinding("/actions/RenameList")
+public class ListRenameActionBean extends ListViewActionBean
+{
     @Validate( required=true )
     private String name;
     
@@ -44,22 +42,21 @@ public class ContextRenameActionBean extends ContextViewActionBean {
     @DefaultHandler
     @Override
     public Resolution filling() throws Exception {
-        ContextManager cm = this.getContextManager();
+        ListManager lm = this.getListManager();
         
-        Context ctx   = cm.findById(super.getContextId());
-        ctx.setName(this.getName());
-        cm.update(ctx);
+        GTDList list   = lm.findById(super.getListId());
+        list.setName(this.getName());
+        lm.update(list);
         
-        SessionUtil.clear(getSession(), SessionKeys.CONTEXTS);
-        
-        RedirectResolution rr = new RedirectResolution(ContextViewActionBean.class);
+        RedirectResolution rr = new RedirectResolution(ListViewActionBean.class);
         {
-            rr.addParameter(ContextViewActionBean.IncommingParameters.CTX_ID, super.getContextId());
+            rr.addParameter(ListViewActionBean.IncommingParameters.LIST_ID, super.getListId());
         }
         return rr;
     }
     
     public static interface IncommingParameters {
-        public static final String CTX_ID = "contextId";
+        public static final String LIST_ID = "listId";
     }
+    
 }
