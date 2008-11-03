@@ -67,8 +67,12 @@
                             <c:param name="taskId" value="${task.id}" />
                             <c:param name="action" value="UNDELEGATE" />
                         </c:url>" title="Not delegated"><img border="0" src="<c:url value="/images/delegated.png"/>" /></a>
+                        <a href="<c:url value="/actions/ResolveFlightTask" >
+                            <c:param name="taskId" value="${task.id}" />
+                            <c:param name="action" value="UNFLIGHT" />
+                        </c:url>" title="Remove from flight plan"><img alt="unflight" border="0" src="<c:url value="/images/unflight.png"/>"/></a>
                         <span><c:out value="${task.list.context.name}" />:</span>&nbsp;
-              <a href="<c:url value="/actions/ViewTask">
+                        <a href="<c:url value="/actions/ViewTask">
                             <c:param name="id" value="${task.id}" />
                             <c:param name="returnPage" value="IDX" />
                         </c:url>"><c:out value="${task.summary}"/></a></p>
@@ -88,6 +92,10 @@
                 <c:param name="taskId" value="${task.id}" />
                 <c:param name="action" value="UNRESOLVE" />
             </c:url>" title="Unresolve"><img border="0" src="<c:choose><c:when test="${task.finished}"><c:url value="/images/done.png"/></c:when><c:when test="${task.cancelled}"><c:url value="/images/cancelled.png"/></c:when></c:choose>" /></a>
+    <a href="<c:url value="/actions/ResolveFlightTask" >
+                <c:param name="taskId" value="${task.id}" />
+                <c:param name="action" value="UNFLIGHT" />
+            </c:url>" title="Remove from flight plan"><img alt="unflight" border="0" src="<c:url value="/images/unflight.png"/>"/></a>            
     <span><c:out value="${task.list.context.name}" />:</span>&nbsp;<a href="<c:url value="/actions/ViewTask">
                         <c:param name="id" value="${task.id}" />
                         <c:param name="returnPage" value="IDX" />
