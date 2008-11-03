@@ -2,19 +2,6 @@
 <%@ include file="/WEB-INF/jsp/includes/include.jsp" %>
 
 <%@ include file="/WEB-INF/jsp/includes/hdr.jsp" %>
-<%--script language="JavaScript">
-    function validateUrlForm()
-    {
-        value = document.getElementById("text-id");
-	if (!isUrl(value.value)) {
-	    alert("URL is not valid! Try again please!");
-	    return false;
-	}
-	else {
-            return true;
-        }
-    }
-</script--%>
 		
 <h2><span>OBJECT</span> details</h2>
     
