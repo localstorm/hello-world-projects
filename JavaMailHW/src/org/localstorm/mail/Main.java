@@ -21,7 +21,10 @@ import java.util.Properties;
  * @author localstorm
  */
 public class Main {
+    public static final String HTML_CONTENT_TYPE = "text/html";
     public static final String INET_ADDRESS_TYPE = "rfc822";
+    public static final String MULTIPART_PREFIX = "multipart/";
+    public static final String TEXTUAL_PREFIX = "text/";
 
     private static final String SMTP_HOST_NAME = "smtp.gmail.com";
     private static final String SMTP_PORT = "465";
@@ -59,7 +62,7 @@ public class Main {
         
         //Main.sendSSLMessage(email, args[0]);   
         
-        Collection coll = Main.checkNewMessages(args[0]);
+        Collection coll = Main.loadMessages(args[0]);
         if (!coll.isEmpty())
         {
             for (Iterator it = coll.iterator(); it.hasNext(); )
@@ -101,7 +104,7 @@ public class Main {
         
     }
 
-    public static Collection checkNewMessages(String password) 
+    public static Collection loadMessages(String password) 
         throws Exception
     {
         Collection result = new LinkedList();
@@ -134,7 +137,6 @@ public class Main {
         
         folder.open(Folder.READ_ONLY);
         
-        //System.out.println("COUNT: "+folder.getMessageCount());
         if ( true )
         {    
             Message[] messages = folder.getMessages();
@@ -147,17 +149,11 @@ public class Main {
             {
                 result.add(convertToEmailMessage( messages[i], session ));
             }
-        } else 
-        {
-            System.out.println("HAS NO NEW MESSAGES!");
         }
         
         store.close();
         return result;
     }
-    
-    
-        
     
     public static void sendSSLMessage(final EmailMessage email, final String password) throws Exception {
     
@@ -310,7 +306,7 @@ public class Main {
             mail.setHtmlText(isHtmlByContentType(email.getContentType()));
         } else 
         {
-            throw new Exception("Unexpected content type");
+            throw new Exception("Unexpected content type: " + content.getClass().getName());
         }
 
         return mail;
@@ -325,25 +321,80 @@ public class Main {
         }
     }
 
-    private static void handlePart(Part part, EmailMessage mail) throws Exception
+    public static Multipart getMultipartFromPart(final Part part) throws MessagingException
     {
+        final DataSource ds = new DataSource() {
+
+            public InputStream getInputStream()
+                    throws IOException
+            {
+                try
+                {
+                    return part.getInputStream();
+                } catch(MessagingException e)
+                {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            public OutputStream getOutputStream()
+                    throws IOException
+            {
+                return null;
+            }
+
+            public String getContentType()
+            {
+                try
+                {
+                    return part.getContentType();
+                } catch(MessagingException e)
+                {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            public String getName()
+            {
+                try
+                {
+                    return part.getFileName();
+                } catch(MessagingException e)
+                {
+                    throw new RuntimeException(e);
+                }
+            }
+        };
+            
+        return new MimeMultipart(ds);
+    }
+    
+    private static void handlePart(final Part part, EmailMessage mail) throws Exception
+    {
+            
         String disposition = part.getDisposition();
         String contentType = part.getContentType();
         ContentType ct = new ContentType(contentType);
         String baseType = ct.getBaseType();
+
+        if (baseType.startsWith(MULTIPART_PREFIX))
+        {
+            handleMultipart(getMultipartFromPart(part), mail);
+            return;
+        }
         
-        if (disposition == null) 
+        if (disposition == null || disposition.equalsIgnoreCase(Part.INLINE)) 
         {   // When just body
             
-            if (!baseType.startsWith("text/"))
+            if (!baseType.startsWith(TEXTUAL_PREFIX))
             {
-                throw new MessagingException("Textual mime-type expected.");
+                throw new MessagingException("Textual mime-type expected. But: "+baseType+" found!");
             }
             
             mail.setHtmlText(isHtmlByContentType(ct));
             mail.setMessageText(partAsString(part, ct));
             
-        } else if (disposition.equalsIgnoreCase(Part.ATTACHMENT) || disposition.equalsIgnoreCase(Part.INLINE)) 
+        } else if (disposition.equalsIgnoreCase(Part.ATTACHMENT) ) 
         {
             mail.addAttachment(new BinaryAttachment(partAsBinary(part), part.getFileName(), baseType));
         } else 
@@ -361,7 +412,7 @@ public class Main {
     
     private static boolean isHtmlByContentType(ContentType ct) throws Exception
     {
-        return (ct.getBaseType().equals("text/html"));
+        return (ct.getBaseType().equals(HTML_CONTENT_TYPE));
     }
 
     private static byte[] partAsBinary(Part part) throws Exception
