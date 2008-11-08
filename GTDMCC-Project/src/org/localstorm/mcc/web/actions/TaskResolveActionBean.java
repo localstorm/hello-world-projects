@@ -53,8 +53,6 @@ public class TaskResolveActionBean extends BaseActionBean
         this.runtimeNote = runtimeNote;
     }
     
-    
-    
     @DefaultHandler
     public Resolution resolvingTask() throws Exception {
         
@@ -63,6 +61,8 @@ public class TaskResolveActionBean extends BaseActionBean
         
         Task t = tm.findById(this.getTaskId());
         Clipboard clip = super.getClipboard();
+        
+        boolean update = true;
         
         switch (ACTIONS.valueOf(this.getAction())) {
             case PASTE:
@@ -118,14 +118,25 @@ public class TaskResolveActionBean extends BaseActionBean
                 t.setFinished(true);
                 t.setCancelled(false);
                 break;
+            case REMOVE:
+                update = false;
+                break; 
             default:
                 throw new RuntimeException("Unexpected action:"+this.getAction());
         }
-        tm.update(t);
+        
+        
+        GTDList list = t.getList();
+        
+        if (update)
+        {
+            tm.update(t);
+        } else {
+            tm.remove(t);
+        }
         
         RedirectResolution rr = null;
         
-        GTDList list = t.getList();
         list.setArchived((!list.isPinned()) && noMoreTasksPending(list));
         lm.update(list);
  
@@ -161,6 +172,7 @@ public class TaskResolveActionBean extends BaseActionBean
         DELEGATE,
         UNRESOLVE,
         FLIGHT,
+        REMOVE
     }
 
     private boolean noMoreTasksPending(GTDList list) {
