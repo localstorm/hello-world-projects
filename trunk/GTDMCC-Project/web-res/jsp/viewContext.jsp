@@ -78,7 +78,7 @@
     <p><a title="Pin/Unpin" href="<c:url value="/actions/ResolveList">
                     <c:param name="listId" value="${list.id}" />
                     <c:param name="action" value="PIN" />
-                 </c:url>"><img border="0" src="<c:url value="/images/pin.png"/>"/></a><span><a href="<c:url value="/actions/ViewList">
+                 </c:url>"><img border="0" src="<c:url value="/images/pin_on.png"/>"/></a>&nbsp;<span><a href="<c:url value="/actions/ViewList">
                                 <c:param name="listId" value="${list.id}" />
                  </c:url>"><c:out value="${list.name}"/></a></span></p>
 </c:forEach>    
@@ -96,7 +96,7 @@
         <p><a href="<c:url value="/actions/ResolveList">
                         <c:param name="listId" value="${list.id}" />
                         <c:param name="action" value="PIN" />
-                    </c:url>"><img border="0" src="<c:url value="/images/pin.png"/>"/></a><span><a href="<c:url value="/actions/ViewList">
+                    </c:url>"><img border="0" src="<c:url value="/images/pin_off.png"/>"/></a>&nbsp;<span><a href="<c:url value="/actions/ViewList">
                                 <c:param name="listId" value="${list.id}" />
                     </c:url>"><c:out value="${list.name}"/></a></span></p>
         <table width="100%">
