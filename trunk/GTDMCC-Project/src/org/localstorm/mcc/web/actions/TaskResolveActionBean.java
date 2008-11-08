@@ -6,6 +6,7 @@ import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
+import org.localstorm.mcc.ejb.contexts.Context;
 import org.localstorm.mcc.ejb.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.lists.GTDList;
 import org.localstorm.mcc.ejb.lists.ListManager;
@@ -127,6 +128,7 @@ public class TaskResolveActionBean extends BaseActionBean
         
         
         GTDList list = t.getList();
+        Context ctx  = list.getContext();
         
         if (update)
         {
@@ -143,7 +145,7 @@ public class TaskResolveActionBean extends BaseActionBean
         if (list.isArchived()) {
             rr = new RedirectResolution(ContextViewActionBean.class);
             {
-                rr.addParameter(ContextViewActionBean.IncommingParameters.CTX_ID, super.getCurrentContext().getId());
+                rr.addParameter(ContextViewActionBean.IncommingParameters.CTX_ID, ctx.getId());
             }
         } else {
             rr = new RedirectResolution(ListViewActionBean.class);
