@@ -125,22 +125,16 @@ public class TaskResolveActionBean extends BaseActionBean
         
         RedirectResolution rr = null;
         
-        if (noMoreTasksPending(t.getList()))
-        {
-            GTDList list = t.getList();
-            list.setArchived(true);
-            lm.update(list);
-            
+        GTDList list = t.getList();
+        list.setArchived((!list.isPinned()) && noMoreTasksPending(list));
+        lm.update(list);
+ 
+        if (list.isArchived()) {
             rr = new RedirectResolution(ContextViewActionBean.class);
             {
                 rr.addParameter(ContextViewActionBean.IncommingParameters.CTX_ID, super.getCurrentContext().getId());
             }
         } else {
-            GTDList list = t.getList();
-            list.setArchived(false);
-            lm.update(list);
-            
-            
             rr = new RedirectResolution(ListViewActionBean.class);
             {
                 GTDList curList = super.getCurrentList();
