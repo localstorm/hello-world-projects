@@ -6,6 +6,7 @@ import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
+import org.localstorm.mcc.ejb.contexts.Context;
 import org.localstorm.mcc.ejb.lists.GTDList;
 import org.localstorm.mcc.ejb.lists.ListManager;
 import org.localstorm.mcc.ejb.tasks.*;
@@ -48,7 +49,8 @@ public class ListResolveActionBean extends BaseActionBean
         ListManager lm = getListManager();
         TaskManager tm = getTaskManager();
         
-        GTDList list = lm.findById(this.getListId());
+        GTDList list   = lm.findById(this.getListId());
+        Context ctx    = list.getContext(); 
         Clipboard clip = super.getClipboard();
         
         switch (ACTIONS.valueOf(this.getAction())) {
@@ -88,7 +90,7 @@ public class ListResolveActionBean extends BaseActionBean
         
         RedirectResolution rr = new RedirectResolution(ContextViewActionBean.class);
         {
-            rr.addParameter(ContextViewActionBean.IncommingParameters.CTX_ID, super.getCurrentContext().getId());
+            rr.addParameter(ContextViewActionBean.IncommingParameters.CTX_ID, ctx.getId());
         }
         return rr;
     }
