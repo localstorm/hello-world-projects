@@ -3,7 +3,7 @@
 
 <%@ include file="/WEB-INF/jsp/includes/hdr.jsp" %>
 
-<h2><span>AWAITING</span> report</h2>
+<h2><span>AWAITINGS</span> report</h2>
 <br/>
 <c:forEach items="${actionBean.awaitedTasks}" var="task" >
 <tr> 
