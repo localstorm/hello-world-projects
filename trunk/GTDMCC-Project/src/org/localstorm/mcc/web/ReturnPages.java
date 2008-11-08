@@ -6,5 +6,6 @@ package org.localstorm.mcc.web;
  */
 public enum ReturnPages 
 {
-    IDX //Index
+    IDX, //Index
+    AW_REPORT
 }

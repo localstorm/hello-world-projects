@@ -16,6 +16,7 @@ import org.localstorm.mcc.ejb.tasks.TaskManager;
 import org.localstorm.mcc.ejb.tasks.Task;
 import org.localstorm.mcc.web.Views;
 import org.localstorm.mcc.web.actions.wrap.TaskWrapper;
+import org.localstorm.mcc.web.actions.wrap.WrapUtil;
 
 /**
  *
@@ -89,32 +90,16 @@ public class ListViewActionBean extends BaseActionBean
         
         Collection<Task> currentFp = fpm.getTasksFromFlightPlan(fpm.findCurrent(this.getUser()));
         
-        this.setTasks(genWrappers(tm.findOpeartiveByList(list), currentFp));
-        this.setAwaitedTasks(genWrappers(tm.findAwaitedByList(list), currentFp));
-        this.setArchiveTasks(genWrappers(tm.findArchiveByList(list), currentFp));
+        this.setTasks(WrapUtil.genWrappers(tm.findOpeartiveByList(list), currentFp));
+        this.setAwaitedTasks(WrapUtil.genWrappers(tm.findAwaitedByList(list), currentFp));
+        this.setArchiveTasks(WrapUtil.genWrappers(tm.findArchiveByList(list), currentFp));
         
         System.out.println("Current list: "+list.getName());
         System.out.println("Viewing list:" +listId);
         return new ForwardResolution(Views.VIEW_LIST);
     }
 
-    private Collection<TaskWrapper> genWrappers(Collection<Task> taskList,
-                                                Collection<Task> currentFp) 
-    {
-        Map<Integer, Boolean> mp = new HashMap<Integer, Boolean>();
-        for (Task t: currentFp)
-        {
-            mp.put( t.getId(), Boolean.TRUE );
-        }
-        
-        Collection<TaskWrapper> result = new ArrayList<TaskWrapper>(taskList.size());
-        for (Task t: taskList)
-        {
-            result.add(new TaskWrapper(t, mp.containsKey(t.getId())));
-        }
-        
-        return result;
-    }
+    
 
     public static interface IncommingParameters {
         public static final String LIST_ID = "listId";

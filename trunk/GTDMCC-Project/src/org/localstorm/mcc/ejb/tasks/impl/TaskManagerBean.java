@@ -10,6 +10,7 @@ import org.localstorm.mcc.ejb.lists.GTDList;
 import org.localstorm.mcc.ejb.tasks.Task;
 import org.localstorm.mcc.ejb.tasks.TaskManagerLocal;
 import org.localstorm.mcc.ejb.tasks.TaskManagerRemote;
+import org.localstorm.mcc.ejb.users.User;
 
 /**
  *
@@ -59,5 +60,16 @@ public class TaskManagerBean extends AbstractManager<Task>
         System.out.println("RETURNED: "+list.size());
         return list;
     }
+
+    @Override
+    public Collection<Task> findAllAwaited(User u) {
+        Query tq = em.createNamedQuery(Task.Queries.FIND_ALL_AWAITED);
+        tq.setParameter(Task.Properties.USER, u);
+        
+        List<Task> list = tq.getResultList();
+        System.out.println("RETURNED: "+list.size());
+        return list;
+    }
+    
     
 }

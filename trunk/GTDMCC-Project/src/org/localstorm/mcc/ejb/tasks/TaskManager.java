@@ -4,6 +4,7 @@ import java.util.Collection;
 import org.localstorm.mcc.ejb.BaseManager;
 import org.localstorm.mcc.ejb.contexts.Context;
 import org.localstorm.mcc.ejb.lists.GTDList;
+import org.localstorm.mcc.ejb.users.User;
 
 /**
  *
@@ -23,6 +24,8 @@ public interface TaskManager extends BaseManager<Task>
     
     /* Doesn't return archived contexts */
     public Collection<Task> findByContext(Context ctx);
+    
+    public Collection<Task> findAllAwaited(User u);
     
     
 }

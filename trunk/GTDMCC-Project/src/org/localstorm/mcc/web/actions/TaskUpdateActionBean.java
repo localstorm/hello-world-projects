@@ -4,7 +4,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
@@ -117,6 +116,8 @@ public class TaskUpdateActionBean extends BaseActionBean
         RedirectResolution rr;
         if (ReturnPages.IDX.toString().equals(returnPage)) {
             rr = new RedirectResolution(IndexActionBean.class);
+        } else if (ReturnPages.AW_REPORT.toString().equals(returnPage)) {
+            rr = new RedirectResolution(AwaitingsReportActionBean.class);
         } else {
             rr = new RedirectResolution(ListViewActionBean.class);
             rr.addParameter(ListViewActionBean.IncommingParameters.LIST_ID, t.getList().getId());

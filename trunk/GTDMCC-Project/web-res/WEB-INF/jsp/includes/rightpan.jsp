@@ -20,6 +20,10 @@
             <table class="reports">
                 <tr>
                     <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
+                    <td><a href="<c:url value="/actions/AwaitedReport" />">Awaitings report</a></td>
+                </tr>
+                <tr>
+                    <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
                     <td><a href="#">Deadline report</a></td>
                 </tr>
                 <tr>
