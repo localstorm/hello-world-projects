@@ -105,16 +105,9 @@ public class FlightTaskResolveActionBean extends BaseActionBean
         tm.update(t);
         
         // List retirement?
-        if (noMoreTasksPending(t.getList()))
-        {
-            GTDList list = t.getList();
-            list.setArchived(true);
-            lm.update(list);
-        } else {
-            GTDList list = t.getList();
-            list.setArchived(false);
-            lm.update(list);
-        }
+        GTDList list = t.getList();
+        list.setArchived( (!list.isPinned()) && noMoreTasksPending(list) );
+        lm.update(list);
         
         if (noMoreFlightTasksPending(fpm, fp))
         {
