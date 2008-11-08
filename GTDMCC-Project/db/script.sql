@@ -11,7 +11,7 @@ create table USERS (
 insert into USERS (id, fname, lname, login, pass_hash, is_blocked) values (174947681, 'root', 'root', 'root', 'e10adc3949ba59abbe56e057f20f883e', 0); -- Password is 123456
 
 CREATE UNIQUE INDEX idx_users_login
-    ON USERS (login)
+    ON USERS (login);
 
 
 create table CONTEXTS (
@@ -19,14 +19,11 @@ create table CONTEXTS (
      name TEXT NOT NULL,
      sort_order INT not null,
      user_id INT not null,
+     is_archived SMALLINT not NULL,
      PRIMARY KEY (id),
      FOREIGN KEY (user_id) REFERENCES USERS(id)  ON DELETE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-alter table CONTEXTS add column
-(
-    is_archived SMALLINT not NULL
-);
 
 create table LISTS (
      id INT NOT NULL AUTO_INCREMENT,
