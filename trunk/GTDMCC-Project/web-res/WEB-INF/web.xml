@@ -41,6 +41,12 @@
         </filter>
         
         <filter>
+                <display-name>Tx Filter</display-name>
+                <filter-name>TxFilter</filter-name>
+                <filter-class>org.localstorm.mcc.web.filter.TxFilter</filter-class>
+        </filter>
+        
+        <filter>
                 <display-name>Lazy Load Filter</display-name>
                 <filter-name>LazyLoadFilter</filter-name>
                 <filter-class>org.localstorm.mcc.web.filter.LazyLoadFilter</filter-class>
@@ -55,6 +61,12 @@
         
         <filter-mapping>
                 <filter-name>AuthFilter</filter-name>
+                <servlet-name>StripesDispatcher</servlet-name>
+                <dispatcher>REQUEST</dispatcher>
+        </filter-mapping>
+        
+        <filter-mapping>
+                <filter-name>TxFilter</filter-name>
                 <servlet-name>StripesDispatcher</servlet-name>
                 <dispatcher>REQUEST</dispatcher>
         </filter-mapping>
