@@ -1,11 +1,15 @@
 package org.localstorm.mcc.web.actions;
 
 import javax.servlet.http.HttpSession;
+import javax.transaction.Status;
+import javax.transaction.TransactionManager;
+import javax.transaction.UserTransaction;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
+import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.contexts.Context;
 import org.localstorm.mcc.ejb.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.lists.GTDList;
@@ -56,15 +60,14 @@ public class TaskResolveActionBean extends BaseActionBean
     
     @DefaultHandler
     public Resolution resolvingTask() throws Exception {
-        
         TaskManager tm = getTaskManager();
         ListManager lm = getListManager();
-        
+
         Task t = tm.findById(this.getTaskId());
         Clipboard clip = super.getClipboard();
-        
+
         boolean update = true;
-        
+
         switch (ACTIONS.valueOf(this.getAction())) {
             case PASTE:
                 t = clip.pickTask(this.getTaskId());
@@ -76,17 +79,17 @@ public class TaskResolveActionBean extends BaseActionBean
                 }
                 break;
             case COPY:
-                
+
                 clip.copyTask(t);
                 break;
             case FLIGHT:
                 HttpSession sess = getSession();
                 User u = (User) sess.getAttribute(SessionKeys.USER);
-        
+
                 if (u==null) {
                     throw new RuntimeException("USER IS NULL");
                 }
-                
+
                 FlightPlanManager fpm = this.getFlightPlanManager();
                 fpm.addTaskToFlightPlan(t, fpm.findCurrent(u));
                 break;
@@ -125,23 +128,23 @@ public class TaskResolveActionBean extends BaseActionBean
             default:
                 throw new RuntimeException("Unexpected action:"+this.getAction());
         }
-        
-        
+
         GTDList list = t.getList();
-        Context ctx  = list.getContext();
-        
+
         if (update)
         {
             tm.update(t);
         } else {
             tm.remove(t);
         }
-        
-        RedirectResolution rr = null;
-        
+
+        Context ctx  = list.getContext();
         list.setArchived((!list.isPinned()) && noMoreTasksPending(list));
         lm.update(list);
- 
+
+        RedirectResolution rr = null;
+
+
         if (list.isArchived()) {
             rr = new RedirectResolution(ContextViewActionBean.class);
             {
@@ -160,7 +163,7 @@ public class TaskResolveActionBean extends BaseActionBean
                 }
             }
         }
-        
+
         return rr;
     }
     

@@ -16,4 +16,5 @@ public class Views
     public static final String EDIT_RO   = "/jsp/editRefObjects.jsp";
     public static final String VIEW_RO   = "/jsp/viewRefObject.jsp";
     public static final String VIEW_AW   = "/jsp/awaitings.jsp";
+    public static final String ERROR     = "/jsp/error.jsp";
 }

@@ -40,7 +40,13 @@ public abstract class AbstractManager<T extends Identifiable> implements BaseMan
     @Override
     public T findById( int id ) throws ObjectNotFoundException
     {
-        return (T) em.find(cl, id);
+        T t = (T) em.find(cl, id);
+        if (t==null)
+        {
+            throw new ObjectNotFoundException();
+        }
+        
+        return t;
     }
 
     @Override
@@ -48,8 +54,6 @@ public abstract class AbstractManager<T extends Identifiable> implements BaseMan
         obj = (T) em.find(cl, obj.getId() );
         em.remove(obj);
     }
-    
-    
     
     @PersistenceContext(unitName=Constants.DEFAULT_PU)
     protected EntityManager em;
