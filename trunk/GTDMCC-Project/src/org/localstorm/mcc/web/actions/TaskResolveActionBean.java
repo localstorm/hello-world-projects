@@ -12,6 +12,7 @@ import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.contexts.Context;
 import org.localstorm.mcc.ejb.flight.FlightPlanManager;
+import org.localstorm.mcc.web.backend.TaskResolutionLogic;
 import org.localstorm.mcc.ejb.lists.GTDList;
 import org.localstorm.mcc.ejb.lists.ListManager;
 import org.localstorm.mcc.ejb.tasks.*;
@@ -60,87 +61,17 @@ public class TaskResolveActionBean extends BaseActionBean
     
     @DefaultHandler
     public Resolution resolvingTask() throws Exception {
-        TaskManager tm = getTaskManager();
-        ListManager lm = getListManager();
 
-        Task t = tm.findById(this.getTaskId());
-        Clipboard clip = super.getClipboard();
-
-        boolean update = true;
-
-        switch (ACTIONS.valueOf(this.getAction())) {
-            case PASTE:
-                t = clip.pickTask(this.getTaskId());
-                if (t!=null)
-                {
-                    t.setList(super.getCurrentList());
-                } else {
-                    t = tm.findById(this.getTaskId());
-                }
-                break;
-            case COPY:
-
-                clip.copyTask(t);
-                break;
-            case FLIGHT:
-                HttpSession sess = getSession();
-                User u = (User) sess.getAttribute(SessionKeys.USER);
-
-                if (u==null) {
-                    throw new RuntimeException("USER IS NULL");
-                }
-
-                FlightPlanManager fpm = this.getFlightPlanManager();
-                fpm.addTaskToFlightPlan(t, fpm.findCurrent(u));
-                break;
-            case UNRESOLVE:
-                t.setFinished(false);
-                t.setDelegated(false);
-                t.setPaused(false);
-                t.setAwaited(false);
-                t.setCancelled(false);
-                break;
-            case UNDELEGATE:
-                // Undelegating
-                t.setRuntimeNote(null);
-                t.setAwaited(false);
-                t.setDelegated(false);
-                break;
-            case DELEGATE:
-                // Delegating
-                t.setRuntimeNote(this.getRuntimeNote());
-                t.setAwaited(true);
-                t.setDelegated(true);
-                break;
-            case CANCEL:
-                // Cancelling tasks
-                t.setCancelled(true);
-                t.setFinished(false);
-                break;
-            case FINISH:
-                // Finishing tasks
-                t.setFinished(true);
-                t.setCancelled(false);
-                break;
-            case REMOVE:
-                update = false;
-                break; 
-            default:
-                throw new RuntimeException("Unexpected action:"+this.getAction());
-        }
-
-        GTDList list = t.getList();
-
-        if (update)
-        {
-            tm.update(t);
-        } else {
-            tm.remove(t);
-        }
-
-        Context ctx  = list.getContext();
-        list.setArchived((!list.isPinned()) && noMoreTasksPending(list));
-        lm.update(list);
+        GTDList list = TaskResolutionLogic.resolveTask(this.getTaskId(), 
+                                                       TaskResolutionAction.valueOf(this.getAction()), 
+                                                       this.getRuntimeNote(), 
+                                                       this.getCurrentList(), 
+                                                       super.getClipboard(), 
+                                                       super.getTaskManager(), 
+                                                       super.getListManager(), 
+                                                       super.getFlightPlanManager(), 
+                                                       super.getUser());
+        
 
         RedirectResolution rr = null;
 
@@ -148,7 +79,7 @@ public class TaskResolveActionBean extends BaseActionBean
         if (list.isArchived()) {
             rr = new RedirectResolution(ContextViewActionBean.class);
             {
-                rr.addParameter(ContextViewActionBean.IncommingParameters.CTX_ID, ctx.getId());
+                rr.addParameter(ContextViewActionBean.IncommingParameters.CTX_ID, list.getContext().getId());
             }
         } else {
             rr = new RedirectResolution(ListViewActionBean.class);
