@@ -12,6 +12,7 @@ import net.sourceforge.stripes.validation.Validate;
 import net.sourceforge.stripes.validation.ValidationErrors;
 import org.localstorm.mcc.ejb.notes.Note;
 import org.localstorm.mcc.ejb.referenced.ReferencedObject;
+import org.localstorm.mcc.web.Types;
 
 /**
  *
@@ -26,26 +27,36 @@ public class RefObjAttachActionBean extends RefObjViewActionBean
     @Validate( required=true )
     private String text;
     
+    @Validate( required=true, expression="${(type eq '"+Types.URL+"') or (type eq '"+Types.TXT+"')}" )
+    private String type;
+    
     @Validate( required=true )
     private String description;
 
     @After( LifecycleStage.BindingAndValidation ) 
     public void doPostValidationStuff() throws Exception {
         
-        ValidationErrors ve = this.getContext().getValidationErrors();
+        
+        if (Types.URL.equalsIgnoreCase(this.getType()))
+        {
+            ValidationErrors ve = this.getContext().getValidationErrors();
+            
+            // Verify format of URL.
+            try {
+                new URL(this.text);
+            } catch (Exception e) {
+                ve.add(IncommingParameters.URL, new SimpleError("Given URL is malformed!"));
+            }
 
-        // Verify format of URL.
-        try {
-            new URL(this.text);
-        } catch (Exception e) {
-            ve.add(IncommingParameters.URL, new SimpleError("Given URL is malformed!"));
+            if ( this.getContext().getValidationErrors().hasFieldErrors() )
+            {
+                this.getContext().getRequest().setAttribute("urlForm", "true");
+                super.filling();
+            }
+            
+            return;
         }
         
-        if ( this.getContext().getValidationErrors().hasFieldErrors() )
-        {
-            this.getContext().getRequest().setAttribute("urlForm", "true");
-            super.filling();
-        }
     }
     
     @Override
@@ -66,13 +77,21 @@ public class RefObjAttachActionBean extends RefObjViewActionBean
         this.text = text;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+    
     @DefaultHandler
     @Override
     public Resolution filling() throws Exception {
         
         ReferencedObject ro = this.getRefObjectManager().findById(this.objectId);
         
-        Note note = new Note(text, "URL");
+        Note note = new Note(text, this.getType());
         note.setDescription(description);
         this.getNoteManager().createAttachedNote(note, ro);
         
@@ -83,6 +102,7 @@ public class RefObjAttachActionBean extends RefObjViewActionBean
         return rr;
     }
 
+   
     public static interface IncommingParameters {
         public static final String OBJECT_ID = "objectId";
         public static final String URL       = "text";

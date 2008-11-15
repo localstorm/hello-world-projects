@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import org.localstorm.mcc.ejb.notes.Note;
 import org.localstorm.mcc.ejb.tasks.Task;
 
 /**
@@ -28,5 +29,17 @@ public class WrapUtil
         }
         
         return result;
+    }
+    
+    public static Collection<NoteWrapper> genWrappers(Collection<Note> notes) 
+    {
+        ArrayList<NoteWrapper> nws = new ArrayList<NoteWrapper>(notes.size());
+        
+        for (Note note : notes)
+        {
+            nws.add(new NoteWrapper(note));
+        }
+        
+        return nws;
     }
 }
