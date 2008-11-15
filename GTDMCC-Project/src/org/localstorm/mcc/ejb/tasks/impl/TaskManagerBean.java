@@ -1,6 +1,7 @@
 package org.localstorm.mcc.ejb.tasks.impl;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
@@ -70,6 +71,28 @@ public class TaskManagerBean extends AbstractManager<Task>
         System.out.println("RETURNED: "+list.size());
         return list;
     }
+
+    @Override
+    public Collection<Task> findRedlinedTasks(User user) {
+        Query tq = em.createNamedQuery(Task.Queries.FIND_REDLINED);
+        tq.setParameter(Task.Properties.USER, user);
+        tq.setParameter(Task.Properties.NOW, new Date());
+        
+        List<Task> list = tq.getResultList();
+        return list;
+    }
+
+    @Override
+    public Collection<Task> findDeadlinedTasks(User user) {
+        Query tq = em.createNamedQuery(Task.Queries.FIND_DEADLINED);
+        tq.setParameter(Task.Properties.USER, user);
+        tq.setParameter(Task.Properties.NOW, new Date());
+        
+        List<Task> list = tq.getResultList();
+        return list;
+    }
+    
+    
     
     
 }

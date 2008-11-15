@@ -13,8 +13,8 @@ import org.localstorm.mcc.web.backend.TaskResolutionLogic;
  *
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/ResolveAwaiting")
-public class ResolveAwaitingActionBean extends BaseActionBean
+@UrlBinding("/actions/ResolveDeadlines")
+public class DeadlinesResolveActionBean extends BaseActionBean
 {
     @Validate(required=true)
     private Integer taskId;
@@ -39,8 +39,6 @@ public class ResolveAwaitingActionBean extends BaseActionBean
     public void setAction(String action) {
         this.action = action;
     }
-    
-    
     
     @DefaultHandler
     public Resolution filling() throws Exception {
@@ -68,7 +66,7 @@ public class ResolveAwaitingActionBean extends BaseActionBean
                 break;
         }
         
-        return new RedirectResolution(AwaitingsReportActionBean.class);
+        return new RedirectResolution(DeadlinesReportActionBean.class);
     }
     
     

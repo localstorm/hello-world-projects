@@ -111,17 +111,29 @@ public class TaskUpdateActionBean extends BaseActionBean
         
         tm.update(t);
         
-        System.out.println("Updated task:" +taskId);
-        
         RedirectResolution rr;
-        if (ReturnPages.IDX.toString().equals(returnPage)) {
-            rr = new RedirectResolution(IndexActionBean.class);
-        } else if (ReturnPages.AW_REPORT.toString().equals(returnPage)) {
-            rr = new RedirectResolution(AwaitingsReportActionBean.class);
-        } else {
-            rr = new RedirectResolution(ListViewActionBean.class);
-            rr.addParameter(ListViewActionBean.IncommingParameters.LIST_ID, t.getList().getId());
+        
+        ReturnPages rp = (returnPage==null) ? ReturnPages.LIST_VIEW : ReturnPages.valueOf(returnPage);
+        
+        switch (rp)
+        {
+            case IDX:
+                rr = new RedirectResolution(IndexActionBean.class);    
+                break;
+            case AW_REPORT:
+                rr = new RedirectResolution(AwaitingsReportActionBean.class);
+                 break;
+            case DL_REPORT:
+                rr = new RedirectResolution(DeadlinesReportActionBean.class);
+                break;
+            
+            default:
+            case LIST_VIEW:
+                rr = new RedirectResolution(ListViewActionBean.class);
+                rr.addParameter(ListViewActionBean.IncommingParameters.LIST_ID, t.getList().getId());
+                break;
         }
+            
         return rr;
     }
     

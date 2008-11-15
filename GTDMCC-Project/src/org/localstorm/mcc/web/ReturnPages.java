@@ -7,5 +7,7 @@ package org.localstorm.mcc.web;
 public enum ReturnPages 
 {
     IDX, //Index
-    AW_REPORT
+    AW_REPORT, // Awaitings report
+    DL_REPORT,  // Deadlines report
+    LIST_VIEW
 }

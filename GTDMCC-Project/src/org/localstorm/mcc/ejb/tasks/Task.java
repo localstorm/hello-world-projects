@@ -26,6 +26,14 @@ import org.localstorm.mcc.ejb.Identifiable;
 @Table(name="TASKS")
 @NamedQueries({
     @NamedQuery(
+        name = Task.Queries.FIND_DEADLINED,
+        query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and o.deadline<=:now"
+    ),
+    @NamedQuery(
+        name = Task.Queries.FIND_REDLINED,
+        query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and o.redline<=:now and (o.deadline>:now or o.deadline is NULL)"
+    ),
+    @NamedQuery(
         name = Task.Queries.FIND_BY_LIST,
         query= "SELECT o FROM Task o WHERE o.list=:list and o.finished=false and o.delegated=false and o.cancelled=false"
     ),
@@ -236,12 +244,16 @@ public class Task implements Identifiable, Serializable
         public static final String FIND_BY_LIST          = "findByList";
         public static final String FIND_BY_LIST_ARCHIVED = "findByListArchived";
         public static final String FIND_BY_LIST_AWAITED  = "findByListAwaited";
+        public static final String FIND_REDLINED         = "findRedlined";
+        public static final String FIND_DEADLINED        = "findDeadlined";
     }
     
     public static interface Properties
     {
         public static final String LIST = "list";
         public static final String USER = "user";
+        public static final String NOW  = "now";
+        
     }
 
 }
