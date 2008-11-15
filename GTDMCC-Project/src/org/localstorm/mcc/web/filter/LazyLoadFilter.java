@@ -52,6 +52,9 @@ public class LazyLoadFilter implements Filter
         HttpSession sess = req.getSession(true);
         User user = (User) sess.getAttribute(SessionKeys.USER);
         
+        if ( SessionUtil.isEmpty(sess, SessionKeys.FP_FILTER_CONTEXT) ) {
+            SessionUtil.fill(sess, SessionKeys.FP_FILTER_CONTEXT, new Integer(-1));
+        }
         
         if ( SessionUtil.isEmpty(sess, SessionKeys.CONTEXTS) ) {
             ContextManager cm = ContextLookup.lookup(ContextManager.class, 

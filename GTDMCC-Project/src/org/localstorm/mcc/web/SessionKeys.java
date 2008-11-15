@@ -14,4 +14,5 @@ public class SessionKeys
     public static final String CURR_LIST = "currList";
     public static final String CURR_TASK = "currTask";
     public static final String CLIPBOARD = "clipboard";
+    public static final String FP_FILTER_CONTEXT="fpFilterCtx";
 }

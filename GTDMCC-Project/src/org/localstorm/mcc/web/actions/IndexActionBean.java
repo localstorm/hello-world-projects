@@ -14,7 +14,9 @@ import net.sourceforge.stripes.action.UrlBinding;
 import org.localstorm.mcc.ejb.flight.FlightPlan;
 import org.localstorm.mcc.ejb.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.tasks.*;
+import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.Views;
+import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
  * A very simple calculator action.
@@ -90,7 +92,27 @@ public class IndexActionBean extends BaseActionBean {
             }
         }
         
+        this.applyIndexFilter(flightPlanTasks);
+        this.applyIndexFilter(archiveFlightPlanTasks);
+        this.applyIndexFilter(awaitedFlightPlanTasks);
+
         return new ForwardResolution(Views.IDX);
+    }
+
+    private void applyIndexFilter(Collection<Task> flightPlanTasks) 
+    {
+        Integer ctx = (Integer) SessionUtil.getValue(super.getSession(), SessionKeys.FP_FILTER_CONTEXT);
+        
+        if ( ctx<0 ) {
+            return;
+        }
+        
+        for (Iterator<Task> it = flightPlanTasks.iterator(); it.hasNext(); ) {
+            Task t = it.next();
+            if (!ctx.equals(t.getList().getContext().getId())) {
+                it.remove();
+            }
+        }
     }
 
 }

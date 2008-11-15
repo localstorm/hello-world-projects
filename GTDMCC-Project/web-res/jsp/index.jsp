@@ -5,11 +5,25 @@
 
 <%@ include file="clipboard.jsp" %>
 <h2><span>FLIGHT</span> plan</h2>
-    <c:if test="${(not empty actionBean.flightPlanTasks) or (not empty actionBean.awaitedFlightPlanTasks) or (not empty actionBean.archiveFlightPlanTasks)}">
-    <div align="right" >    
-        <a href="<c:url value="/actions/UtilizeFlightPlan" />" title="Utilize &amp; build new"><img src="<c:url value="/images/utilize.png"/>" border="0" /></a>
-    </div>
-    </c:if>
+    <table width="100%">
+        <tr>
+            <td align="left">
+                <stripes:form action="/actions/SetIndexFilter" >
+                    <stripes:select name="contextId" value="${fpFilterCtx}" onchange="submit();">
+                        <stripes:option value="-1" >[Show all]</stripes:option>
+                        <c:forEach items="${contexts}" var="ctx" >            
+                            <stripes:option value="${ctx.id}" ><c:out value="${ctx.name}"/></stripes:option>
+                        </c:forEach>
+                    </stripes:select>
+                </stripes:form>
+            </td>
+            <c:if test="${(not empty actionBean.flightPlanTasks) or (not empty actionBean.awaitedFlightPlanTasks) or (not empty actionBean.archiveFlightPlanTasks)}">
+            <td align="right">
+                <a href="<c:url value="/actions/UtilizeFlightPlan" />" title="Utilize &amp; build new"><img src="<c:url value="/images/utilize.png"/>" border="0" /></a>
+            </td>
+            </c:if>
+        </tr>
+    </table>
 <br/>
 <c:if test="${not empty actionBean.flightPlanTasks}">
 <table width="100%"><tr><th>Operative</th></tr></table> 
