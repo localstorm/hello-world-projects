@@ -14,7 +14,7 @@ import org.localstorm.mcc.web.actions.wrap.WrapUtil;
  *
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/DeadlineReport")
+@UrlBinding("/actions/DeadlinesReport")
 public class DeadlinesReportActionBean extends BaseActionBean
 {
 
