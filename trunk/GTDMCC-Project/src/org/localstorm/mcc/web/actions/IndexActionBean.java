@@ -13,7 +13,9 @@ import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import org.localstorm.mcc.ejb.flight.FlightPlan;
 import org.localstorm.mcc.ejb.flight.FlightPlanManager;
+import org.localstorm.mcc.ejb.referenced.RefObjectManager;
 import org.localstorm.mcc.ejb.tasks.*;
+import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.Views;
 import org.localstorm.mcc.web.util.SessionUtil;
@@ -29,6 +31,25 @@ public class IndexActionBean extends BaseActionBean {
     private Collection<Task> archiveFlightPlanTasks;
     private Collection<Task> awaitedFlightPlanTasks;
     
+    private boolean redlinesBroken;
+    private boolean deadlinesBroken;
+
+    public boolean isDeadlinesBroken() {
+        return deadlinesBroken;
+    }
+
+    public boolean isRedlinesBroken() {
+        return redlinesBroken;
+    }
+
+    public void setRedlinesBroken(boolean redlinesBroken) {
+        this.redlinesBroken = redlinesBroken;
+    }
+
+    public void setDeadlinesBroken(boolean deadlinesBroken) {
+        this.deadlinesBroken = deadlinesBroken;
+    }
+
     public FlightPlan getFlightPlan() {
         return flightPlan;
     }
@@ -52,7 +73,8 @@ public class IndexActionBean extends BaseActionBean {
         
         FlightPlanManager fpm = this.getFlightPlanManager();
 
-        this.flightPlan      = fpm.findCurrent(super.getUser());
+        User user = super.getUser();
+        this.flightPlan      = fpm.findCurrent(user);
                 
         this.flightPlanTasks = fpm.getTasksFromFlightPlan(flightPlan);
         
@@ -95,6 +117,10 @@ public class IndexActionBean extends BaseActionBean {
         this.applyIndexFilter(flightPlanTasks);
         this.applyIndexFilter(archiveFlightPlanTasks);
         this.applyIndexFilter(awaitedFlightPlanTasks);
+        
+        TaskManager tm = this.getTaskManager();
+        this.setRedlinesBroken(!tm.findRedlinedTasks(user).isEmpty());
+        this.setDeadlinesBroken(!tm.findDeadlinedTasks(user).isEmpty());
 
         return new ForwardResolution(Views.IDX);
     }
