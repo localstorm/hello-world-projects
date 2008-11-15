@@ -1,0 +1,53 @@
+package org.localstorm.mcc.web.actions;
+
+import java.util.Collection;
+import net.sourceforge.stripes.action.DefaultHandler;
+import net.sourceforge.stripes.action.ForwardResolution;
+import net.sourceforge.stripes.action.Resolution;
+import net.sourceforge.stripes.action.UrlBinding;
+import org.localstorm.mcc.ejb.flight.FlightPlanManager;
+import org.localstorm.mcc.ejb.tasks.Task;
+import org.localstorm.mcc.web.Views;
+import org.localstorm.mcc.web.actions.wrap.WrapUtil;
+
+/**
+ *
+ * @author Alexey Kuznetsov
+ */
+@UrlBinding("/actions/DeadlineReport")
+public class DeadlinesReportActionBean extends BaseActionBean
+{
+
+    private Collection<? extends Task>  redlinedTasks;
+    private Collection<? extends Task> deadlinedTasks;
+
+    public Collection<? extends Task> getRedlinedTasks() {
+        return redlinedTasks;
+    }
+
+    public void setRedlinedTasks(Collection<? extends Task> redlinedTasks) {
+        this.redlinedTasks = redlinedTasks;
+    }
+
+    public Collection<? extends Task> getDeadlinedTasks() {
+        return deadlinedTasks;
+    }
+
+    public void setDeadlinedTasks(Collection<? extends Task> deadlinedTasks) {
+        this.deadlinedTasks = deadlinedTasks;
+    }
+
+    @DefaultHandler
+    public Resolution filling() throws Exception {
+        FlightPlanManager fp = this.getFlightPlanManager();
+        Collection<Task> fpt = fp.getTasksFromFlightPlan(fp.findCurrent(this.getUser()));
+        
+        Collection<Task> rlt = this.getTaskManager().findRedlinedTasks(this.getUser());
+        Collection<Task> dlt = this.getTaskManager().findDeadlinedTasks(this.getUser());
+
+        this.setDeadlinedTasks(WrapUtil.genWrappers(dlt, fpt));
+        this.setRedlinedTasks(WrapUtil.genWrappers(rlt, fpt));
+        return new ForwardResolution(Views.VIEW_DLR);
+    }
+    
+}

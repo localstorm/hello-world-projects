@@ -26,6 +26,10 @@ public interface TaskManager extends BaseManager<Task>
     public Collection<Task> findByContext(Context ctx);
     
     public Collection<Task> findAllAwaited(User u);
+
+    public Collection<Task> findRedlinedTasks(User user);
+
+    public Collection<Task> findDeadlinedTasks(User user);
     
     
 }

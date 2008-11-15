@@ -42,7 +42,7 @@ ul{list-style-type:none;}
 #bodyLeftPan h3 span{background:#fff; color:#046598;}
 
 #bodyLeftPan p{padding:7px 0 0;}
-#bodyLeftPan p span{background:#fff; color:#046598; font-weight:bold;}
+#bodyLeftPan p span{color:#046598; font-weight:bold;}
 
 #bodyLeftPan ul{width:654px; margin:10px 0 0;}
 #bodyLeftPan ul li{width:654px; height:20px;}

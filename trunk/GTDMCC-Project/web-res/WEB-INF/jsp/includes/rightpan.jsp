@@ -24,7 +24,7 @@
                 </tr>
                 <tr>
                     <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
-                    <td><a href="#">Deadline report</a></td>
+                    <td><a href="<c:url value="/actions/DeadlineReport"/>">Deadlines report</a></td>
                 </tr>
                 <tr>
                     <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
