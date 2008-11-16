@@ -7,6 +7,7 @@ import net.sourceforge.stripes.action.ActionBeanContext;
 import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.contexts.Context;
 import org.localstorm.mcc.ejb.contexts.ContextManager;
+import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 import org.localstorm.mcc.ejb.files.FileManager;
 import org.localstorm.mcc.ejb.files.FileManagerLocal;
 import org.localstorm.mcc.ejb.flight.FlightPlanManager;
@@ -146,5 +147,34 @@ public class BaseActionBean implements ActionBean
         
         return clip;
     }
+    
+    protected Integer getContextIdFilter()
+    {
+        Integer ctx = (Integer) SessionUtil.getValue(this.getSession(), SessionKeys.FILTER_CONTEXT);
+        
+        if (ctx==null) {
+            return -1;
+        }
+        
+        return ctx;
+    }
+    
+    protected void setContextIdFilter(Integer contextId)
+    {
+        if (contextId>=0) {
+            ContextManager cm = this.getContextManager();
+            try
+            {
+                cm.findById(contextId);    
+            }catch(ObjectNotFoundException e){
+                contextId = -1;
+            }
+        } else {
+            contextId = -1;
+        }
+        
+        SessionUtil.fill(this.getSession(), SessionKeys.FILTER_CONTEXT, contextId);
+    }
+      
   
  }
