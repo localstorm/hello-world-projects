@@ -14,7 +14,7 @@
 <c:forEach items="${actionBean.deadlinedTasks}" var="task" >
 <tr bgcolor="#A3A69C"> 
     <td>
-        <p>&nbsp;<span><c:out value="${task.list.context.name}/${task.list.name}"/>&nbsp;(Since: <fmt:formatDate value="${task.creation}"/>):</span><br/>
+        <p><img src="<c:url value="/images/loe${task.effort}.png"/>"/>&nbsp;<span><c:out value="${task.list.context.name}/${task.list.name}"/>&nbsp;(Since: <fmt:formatDate value="${task.creation}"/>):</span><br/>
         <div align="center">
             <a href="<c:url value="/actions/ViewTask">
                             <c:param name="id" value="${task.id}" />
@@ -69,7 +69,7 @@
 <c:forEach items="${actionBean.redlinedTasks}" var="task" >
 <tr bgcolor="#FFCF91"> 
     <td>
-        <p>&nbsp;<span><c:out value="${task.list.context.name}/${task.list.name}"/>&nbsp;(Since: <fmt:formatDate value="${task.creation}"/>):</span><br/>
+        <p><img src="<c:url value="/images/loe${task.effort}.png"/>"/>&nbsp;<span><c:out value="${task.list.context.name}/${task.list.name}"/>&nbsp;(Since: <fmt:formatDate value="${task.creation}"/>):</span><br/>
         <div align="center">
             <a href="<c:url value="/actions/ViewTask">
                             <c:param name="id" value="${task.id}" />
