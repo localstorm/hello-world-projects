@@ -128,45 +128,41 @@
     </div>
     </div>
     <c:forEach var="note" items="${actionBean.objectTextualNotes}">    
-        <p><span>Text: <a title="Detach" href="<c:url value="/actions/DetachRefObj" >
-            <c:param name="objectId" value="${actionBean.objectResult.id}" />
-            <c:param name="noteId" value="${note.id}" />
-        </c:url>"><img src="<c:url value="/images/trash.png"/>" border="0" alt="detach" /></a></span>&nbsp;<br/>
-        <div align="center">
-        <c:choose>
-            <c:when test="${note.noteSize >= 175 and note.noteSize < 350}">
-                <textarea style="width: 85%; border: dotted 1px;" rows="5" ><c:out value="${note.note}" /></textarea>
-            </c:when>
-            <c:when test="${note.noteSize >= 350}">
-                <textarea style="width: 85%; border: dotted 1px;" rows="10" ><c:out value="${note.note}" /></textarea>
-            </c:when>
-            <c:otherwise>
-                <c:out value="${note.note}" />
-            </c:otherwise>
-        </c:choose>
-        </div>        
-        </p>
-    </c:forEach>
-    <c:if test="${not empty actionBean.objectTextualNotes}">
-        <hr/>
-    </c:if>
-    <c:forEach var="note" items="${actionBean.objectUrlNotes}">    
         <p><span><a title="Detach" href="<c:url value="/actions/DetachRefObj" >
             <c:param name="objectId" value="${actionBean.objectResult.id}" />
             <c:param name="noteId" value="${note.id}" />
-        </c:url>"><img src="<c:url value="/images/trash.png"/>" border="0" alt="detach" /></a>&nbsp;Link</span>: <a href="<c:out value="${note.note}" />"><c:out value="${note.description}" /></a></p>
+        </c:url>"><img src="<c:url value="/images/trash.png"/>" border="0" alt="detach" /></a>&nbsp;Text: </span>&nbsp;<br/>
+            <table width="100%">
+                <tr><td><c:out escapeXml="false" value="${note.noteHtmlEscaped}" /></td></tr>
+            </table>
+        </p>
     </c:forEach>
+    
     <c:if test="${not empty actionBean.objectUrlNotes}">
-        <hr/>
+        <c:if test="${not empty actionBean.objectTextualNotes}">
+            <hr/>
+        </c:if>
+        <c:forEach var="note" items="${actionBean.objectUrlNotes}">    
+            <p><span><a title="Detach" href="<c:url value="/actions/DetachRefObj" >
+                <c:param name="objectId" value="${actionBean.objectResult.id}" />
+                <c:param name="noteId" value="${note.id}" />
+            </c:url>"><img src="<c:url value="/images/trash.png"/>" border="0" alt="detach" /></a>&nbsp;Link</span>: <a href="<c:out value="${note.note}" />"><c:out value="${note.description}" /></a></p>
+        </c:forEach>
     </c:if>
-    <c:forEach var="file" items="${actionBean.objectFiles}">    
-        <p><span><a title="Detach" href="<c:url value="/actions/DetachFileRefObj" >
-            <c:param name="objectId" value="${actionBean.objectResult.id}" />
-            <c:param name="fileId" value="${file.id}" />
-    </c:url>"><img src="<c:url value="/images/trash.png"/>" border="0" alt="detach" /></a>&nbsp;File</span>: <a href="<c:url value="/actions/DownloadFile">
-            <c:param name="fileId" value="${file.id}" />        
-    </c:url>"><c:out value="${file.name}"/></a> (<c:out value="${file.description}" />)</p>
-    </c:forEach>
+
+    <c:if test="${not empty actionBean.objectFiles}">
+        <c:if test="${not empty actionBean.objectUrlNotes or not empty actionBean.objectTextualNotes}">
+            <hr/>
+        </c:if>
+        <c:forEach var="file" items="${actionBean.objectFiles}">    
+            <p><span><a title="Detach" href="<c:url value="/actions/DetachFileRefObj" >
+                <c:param name="objectId" value="${actionBean.objectResult.id}" />
+                <c:param name="fileId" value="${file.id}" />
+        </c:url>"><img src="<c:url value="/images/trash.png"/>" border="0" alt="detach" /></a>&nbsp;File</span>: <a href="<c:url value="/actions/DownloadFile">
+                <c:param name="fileId" value="${file.id}" />        
+        </c:url>"><c:out value="${file.name}"/></a> (<c:out value="${file.description}" />)</p>
+        </c:forEach>
+    </c:if>
     
 <%@ include file="/WEB-INF/jsp/includes/rightpan.jsp" %>
 <%@ include file="/WEB-INF/jsp/includes/foot.jsp" %>

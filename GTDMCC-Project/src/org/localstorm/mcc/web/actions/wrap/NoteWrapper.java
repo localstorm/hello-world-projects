@@ -2,6 +2,7 @@ package org.localstorm.mcc.web.actions.wrap;
 
 import java.util.Date;
 import org.localstorm.mcc.ejb.notes.Note;
+import org.localstorm.mcc.web.util.EscapeUtil;
 
 /**
  *
@@ -55,9 +56,9 @@ public class NoteWrapper extends Note
         this.note.setType(type);
     }
 
-    public int getNoteSize()
+    public String getNoteHtmlEscaped()
     {
-        return this.getNote().length();
+        return EscapeUtil.forHTML(this.getNote());
     }
     
 }
