@@ -28,11 +28,12 @@ import org.localstorm.mcc.ejb.Identifiable;
     @NamedQuery(
         name = Task.Queries.FIND_BY_MAX_EFFORT_IN_CTX,
         query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and " +
-               "o.cancelled=false and o.effort<=:effort and o.list.context=:ctx"
+               "o.cancelled=false and o.effort<=:effort and o.list.context=:ctx and o.delegated=false"
     ),
     @NamedQuery(
         name = Task.Queries.FIND_BY_MAX_EFFORT,
-        query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and o.effort<=:effort"
+        query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and" +
+        " o.effort<=:effort and o.delegated=false"
     ),
     @NamedQuery(
         name = Task.Queries.FIND_DEADLINED,

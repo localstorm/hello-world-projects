@@ -12,8 +12,8 @@ import org.localstorm.mcc.ejb.tasks.*;
  *
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/ResolveFlightTask")
-public class FlightTaskResolveActionBean extends BaseActionBean
+@UrlBinding("/actions/ResolveEasyTask")
+public class EasyTaskResolveActionBean extends BaseActionBean
 {
     @Validate( required=true )
     private int taskId;
@@ -60,7 +60,7 @@ public class FlightTaskResolveActionBean extends BaseActionBean
                                         super.getFlightPlanManager(), 
                                         super.getUser());
         
-        return new RedirectResolution(IndexActionBean.class);
+        return new RedirectResolution(EasyTasksReportActionBean.class);
     }
     
     
