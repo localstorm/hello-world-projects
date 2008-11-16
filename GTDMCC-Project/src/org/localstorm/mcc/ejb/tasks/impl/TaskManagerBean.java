@@ -8,6 +8,7 @@ import javax.persistence.Query;
 import org.localstorm.mcc.ejb.AbstractManager;
 import org.localstorm.mcc.ejb.contexts.Context;
 import org.localstorm.mcc.ejb.lists.GTDList;
+import org.localstorm.mcc.ejb.tasks.Effort;
 import org.localstorm.mcc.ejb.tasks.Task;
 import org.localstorm.mcc.ejb.tasks.TaskManagerLocal;
 import org.localstorm.mcc.ejb.tasks.TaskManagerRemote;
@@ -88,6 +89,23 @@ public class TaskManagerBean extends AbstractManager<Task>
         tq.setParameter(Task.Properties.USER, user);
         tq.setParameter(Task.Properties.NOW, new Date());
         
+        List<Task> list = tq.getResultList();
+        return list;
+    }
+
+    @Override
+    public Collection<Task> findByMaxEffort(Context ctx, Effort effort, User user) {
+        Query tq = null;
+        if (ctx==null)
+        {
+            tq = em.createNamedQuery(Task.Queries.FIND_BY_MAX_EFFORT);
+        } else {
+            tq = em.createNamedQuery(Task.Queries.FIND_BY_MAX_EFFORT_IN_CTX);
+            tq.setParameter(Task.Properties.CTX, ctx);
+        }
+                
+        tq.setParameter(Task.Properties.USER, user);
+        tq.setParameter(Task.Properties.EFFORT, effort.getEffort());
         List<Task> list = tq.getResultList();
         return list;
     }

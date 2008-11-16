@@ -127,7 +127,7 @@ public class IndexActionBean extends BaseActionBean {
 
     private void applyIndexFilter(Collection<Task> flightPlanTasks) 
     {
-        Integer ctx = (Integer) SessionUtil.getValue(super.getSession(), SessionKeys.FP_FILTER_CONTEXT);
+        Integer ctx = (Integer) SessionUtil.getValue(super.getSession(), SessionKeys.FILTER_CONTEXT);
         
         if ( ctx<0 ) {
             return;

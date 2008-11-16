@@ -9,7 +9,7 @@
         <tr>
             <td align="left">
                 <stripes:form action="/actions/SetIndexFilter" >
-                    <stripes:select name="contextId" value="${fpFilterCtx}" onchange="submit();">
+                    <stripes:select name="contextId" value="${filterCtx}" onchange="submit();">
                         <stripes:option value="-1" >[Show all]</stripes:option>
                         <c:forEach items="${contexts}" var="ctx" >            
                             <stripes:option value="${ctx.id}" ><c:out value="${ctx.name}"/></stripes:option>

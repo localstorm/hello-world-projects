@@ -9,6 +9,7 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 
+import org.localstorm.mcc.ejb.tasks.Effort;
 import org.localstorm.mcc.ejb.tasks.Task;
 import org.localstorm.mcc.ejb.tasks.TaskManager;
 import org.localstorm.mcc.web.Views;
@@ -39,6 +40,11 @@ public class TaskViewActionBean extends BaseActionBean
     
     public Task getTaskResult() {
         return taskResult;
+    }
+    
+    public Effort[] getEfforts()
+    {
+        return Effort.values();
     }
 
     public void setTaskResult(Task taskResult) {

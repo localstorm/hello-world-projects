@@ -31,5 +31,10 @@ public interface TaskManager extends BaseManager<Task>
 
     public Collection<Task> findDeadlinedTasks(User user);
     
+    /**
+     * @param ctx May be null!
+     */
+    public Collection<Task> findByMaxEffort(Context ctx, Effort effort, User user);
+    
     
 }
