@@ -59,7 +59,7 @@
 	<tr>
 		<td width="95%">
 			<p><img border="0" src="<c:url value="/images/arrow.gif" />"/>
-                        <span><a href="<c:url value="/actions/ViewRefObj">
+                        <span><c:out value="${ro.context.name}"/>:&nbsp;<a href="<c:url value="/actions/ViewRefObj">
                                             <c:param name="objectId" value="${ro.id}" />
                                        </c:url>"><c:out value="${ro.name}"/></a></span>
 		</td>
