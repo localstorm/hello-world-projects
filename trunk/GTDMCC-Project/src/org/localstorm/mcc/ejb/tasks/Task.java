@@ -26,6 +26,15 @@ import org.localstorm.mcc.ejb.Identifiable;
 @Table(name="TASKS")
 @NamedQueries({
     @NamedQuery(
+        name = Task.Queries.FIND_BY_MAX_EFFORT_IN_CTX,
+        query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and " +
+               "o.cancelled=false and o.effort<=:effort and o.list.context=:ctx"
+    ),
+    @NamedQuery(
+        name = Task.Queries.FIND_BY_MAX_EFFORT,
+        query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and o.effort<=:effort"
+    ),
+    @NamedQuery(
         name = Task.Queries.FIND_DEADLINED,
         query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and o.deadline<=:now"
     ),
@@ -240,6 +249,8 @@ public class Task implements Identifiable, Serializable
     }
     
     public static interface Queries {
+        public static final String FIND_BY_MAX_EFFORT        = "findByMaxEffort";
+        public static final String FIND_BY_MAX_EFFORT_IN_CTX = "findByMaxEffortInContext";
         public static final String FIND_ALL_AWAITED      = "findAllAwaitedTasks";
         public static final String FIND_BY_LIST          = "findByList";
         public static final String FIND_BY_LIST_ARCHIVED = "findByListArchived";
@@ -250,10 +261,11 @@ public class Task implements Identifiable, Serializable
     
     public static interface Properties
     {
+        public static final String CTX  = "ctx";
         public static final String LIST = "list";
         public static final String USER = "user";
         public static final String NOW  = "now";
-        
+        public static final String EFFORT = "effort";
     }
 
 }

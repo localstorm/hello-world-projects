@@ -30,11 +30,9 @@ var dlinec = new CodeThatCalendar(caldef1);
                 <th>Summary:</th>
                 <th width="20%" align="right">
                     <stripes:select name="effort" value="${actionBean.taskResult.effort}">
-                        <stripes:option value="1">Elementary</stripes:option>
-                        <stripes:option value="2">Easy</stripes:option>
-                        <stripes:option value="3">Medium</stripes:option>
-                        <stripes:option value="4">Difficult</stripes:option>
-                        <stripes:option value="5">Very difficult</stripes:option>
+                        <c:forEach items="${actionBean.efforts}" var="effort">
+                            <stripes:option value="${effort.effort}"><c:out value="${effort.latinName}"/></stripes:option>
+                        </c:forEach>
                     </stripes:select>
                 </th>
             </tr>

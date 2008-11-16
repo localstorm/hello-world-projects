@@ -13,8 +13,8 @@ import org.localstorm.mcc.web.util.SessionUtil;
 /**
  * A very simple calculator action.
  */
-@UrlBinding("/actions/SetIndexFilter")
-public class SetIndexFilterActionBean extends BaseActionBean {
+@UrlBinding("/actions/SetEasyFilter")
+public class SetEasyFilterActionBean extends BaseActionBean {
 
     @Validate(required=true)
     private Integer contextId;
@@ -41,7 +41,7 @@ public class SetIndexFilterActionBean extends BaseActionBean {
         }
         
         SessionUtil.fill(this.getSession(), SessionKeys.FILTER_CONTEXT, this.getContextId());
-        return new RedirectResolution(IndexActionBean.class);
+        return new RedirectResolution(EasyTasksReportActionBean.class);
     }
 
 }

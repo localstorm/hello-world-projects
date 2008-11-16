@@ -24,13 +24,11 @@
                 </tr>
                 <tr>
                     <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
-                    <td><a href="<c:url value="/actions/DeadlinesReport"/>">Deadlines report</a></td>
+                    <td><a href="<c:url value="/actions/DeadlinesReport" />">Deadlines report</a></td>
                 </tr>
                 <tr>
                     <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
-                    <td><a href="#">Effort report</a></td>
+                    <td><a href="<c:url value="/actions/EasyTasksReport" />">Easy tasks</a></td>
                 </tr>
             </table>
-                <%--img src="<c:url value="/images/report.png"/>"/--%>
-                <%--p class="more"><a href="#">ALL</a></p--%>
 </div>
