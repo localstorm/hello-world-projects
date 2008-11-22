@@ -9,6 +9,7 @@ import org.localstorm.mcc.ejb.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.tasks.Task;
 import org.localstorm.mcc.web.Views;
 import org.localstorm.mcc.web.actions.wrap.WrapUtil;
+import org.localstorm.mcc.web.util.FilterUtil;
 
 /**
  *
@@ -44,6 +45,10 @@ public class DeadlinesReportActionBean extends BaseActionBean
         
         Collection<Task> rlt = this.getTaskManager().findRedlinedTasks(this.getUser());
         Collection<Task> dlt = this.getTaskManager().findDeadlinedTasks(this.getUser());
+
+        Integer ctxId = super.getContextIdFilter();
+        FilterUtil.applyContextFilter(rlt, ctxId);
+        FilterUtil.applyContextFilter(dlt, ctxId);
 
         this.setDeadlinedTasks(WrapUtil.genWrappers(dlt, fpt));
         this.setRedlinedTasks(WrapUtil.genWrappers(rlt, fpt));

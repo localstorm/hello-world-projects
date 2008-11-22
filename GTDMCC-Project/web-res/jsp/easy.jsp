@@ -5,21 +5,15 @@
 
 <%@ include file="clipboard.jsp" %>
 <h2><span>EASY TASKS</span> report</h2>
-    <table width="100%">
-        <tr>
-            <td align="left">
-                <stripes:form action="/actions/SetContextFilter" >
-                    <stripes:hidden name="returnPage" value="EASY_REPORT" />
-                    <stripes:select name="contextId" value="${filterCtx}" onchange="submit();">
-                        <stripes:option value="-1" >[Show all]</stripes:option>
-                        <c:forEach items="${contexts}" var="ctx" >            
-                            <stripes:option value="${ctx.id}" ><c:out value="${ctx.name}"/></stripes:option>
-                        </c:forEach>
-                    </stripes:select>
-                </stripes:form>
-            </td>
-        </tr>
-    </table>
+<table width="100%">
+    <tr>
+        <td align="left">
+            <jsp:include page="/WEB-INF/jsp/includes/ctxFilter.jsp">
+                <jsp:param name="returnPage" value="EASY_REPORT" />
+            </jsp:include>
+        </td>
+    </tr>
+</table>
 <br/>
 <c:if test="${not empty actionBean.tasks}">
 <c:forEach items="${actionBean.tasks}" var="task">

@@ -4,6 +4,15 @@
 <%@ include file="/WEB-INF/jsp/includes/hdr.jsp" %>
 
 <h2><span>AWAITINGS</span> report</h2>
+<table width="100%">
+    <tr>
+        <td align="left">
+            <jsp:include page="/WEB-INF/jsp/includes/ctxFilter.jsp">
+                <jsp:param name="returnPage" value="AW_REPORT" />
+            </jsp:include>
+        </td>
+    </tr>
+</table>
 <br/>
 <table width="100%">
 <c:forEach items="${actionBean.awaitedTasks}" var="task" >

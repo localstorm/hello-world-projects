@@ -8,15 +8,9 @@
     <table width="100%">
         <tr>
             <td align="left">
-                <stripes:form action="/actions/SetContextFilter" >
-                    <stripes:hidden name="returnPage" value="IDX" />
-                    <stripes:select name="contextId" value="${filterCtx}" onchange="submit();">
-                        <stripes:option value="-1" >[Show all]</stripes:option>
-                        <c:forEach items="${contexts}" var="ctx" >            
-                            <stripes:option value="${ctx.id}" ><c:out value="${ctx.name}"/></stripes:option>
-                        </c:forEach>
-                    </stripes:select>
-                </stripes:form>
+                <jsp:include page="/WEB-INF/jsp/includes/ctxFilter.jsp">
+                    <jsp:param name="returnPage" value="IDX" />
+                </jsp:include>
             </td>
                 
             <td align="right">

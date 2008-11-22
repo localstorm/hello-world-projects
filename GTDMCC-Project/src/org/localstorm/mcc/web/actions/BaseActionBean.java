@@ -147,7 +147,7 @@ public class BaseActionBean implements ActionBean
         
         return clip;
     }
-    
+
     protected Integer getContextIdFilter()
     {
         Integer ctx = (Integer) SessionUtil.getValue(this.getSession(), SessionKeys.FILTER_CONTEXT);
@@ -175,6 +175,7 @@ public class BaseActionBean implements ActionBean
         
         SessionUtil.fill(this.getSession(), SessionKeys.FILTER_CONTEXT, contextId);
     }
-      
+
+
   
  }

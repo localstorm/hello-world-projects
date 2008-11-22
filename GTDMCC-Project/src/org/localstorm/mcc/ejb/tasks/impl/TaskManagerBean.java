@@ -94,15 +94,8 @@ public class TaskManagerBean extends AbstractManager<Task>
     }
 
     @Override
-    public Collection<Task> findByMaxEffort(Context ctx, Effort effort, User user) {
-        Query tq = null;
-        if (ctx==null)
-        {
-            tq = em.createNamedQuery(Task.Queries.FIND_BY_MAX_EFFORT);
-        } else {
-            tq = em.createNamedQuery(Task.Queries.FIND_BY_MAX_EFFORT_IN_CTX);
-            tq.setParameter(Task.Properties.CTX, ctx);
-        }
+    public Collection<Task> findByMaxEffort(Effort effort, User user) {
+        Query tq = em.createNamedQuery(Task.Queries.FIND_BY_MAX_EFFORT);
                 
         tq.setParameter(Task.Properties.USER, user);
         tq.setParameter(Task.Properties.EFFORT, effort.getEffort());
