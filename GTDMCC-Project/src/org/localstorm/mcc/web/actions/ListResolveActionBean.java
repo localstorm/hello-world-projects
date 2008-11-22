@@ -50,7 +50,8 @@ public class ListResolveActionBean extends BaseActionBean
         TaskManager tm = getTaskManager();
         
         GTDList list   = lm.findById(this.getListId());
-        Context ctx    = list.getContext(); 
+        Context ctx    = list.getContext();
+        Context dstCtx = ctx;
         Clipboard clip = super.getClipboard();
         
         switch (ACTIONS.valueOf(this.getAction())) {
@@ -64,6 +65,8 @@ public class ListResolveActionBean extends BaseActionBean
                 {
                     l.setContext(super.getCurrentContext());
                     lm.update(l);
+
+                    dstCtx = super.getCurrentContext();
                 }
                 break;
             case COPY:
@@ -90,7 +93,7 @@ public class ListResolveActionBean extends BaseActionBean
         
         RedirectResolution rr = new RedirectResolution(ContextViewActionBean.class);
         {
-            rr.addParameter(ContextViewActionBean.IncommingParameters.CTX_ID, ctx.getId());
+            rr.addParameter(ContextViewActionBean.IncommingParameters.CTX_ID, dstCtx.getId());
         }
         return rr;
     }
