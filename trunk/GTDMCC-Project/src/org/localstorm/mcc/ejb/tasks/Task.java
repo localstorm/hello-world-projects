@@ -33,15 +33,17 @@ import org.localstorm.mcc.ejb.Identifiable;
     @NamedQuery(
         name = Task.Queries.FIND_BY_MAX_EFFORT,
         query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and" +
-        " o.effort<=:effort and o.delegated=false"
+        " o.effort<=:effort and o.delegated=false ORDER BY o.list.context.name, o.list.name"
     ),
     @NamedQuery(
         name = Task.Queries.FIND_DEADLINED,
-        query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and o.deadline<=:now"
+        query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and o.deadline<=:now" +
+        " ORDER BY o.list.context.name, o.list.name"
     ),
     @NamedQuery(
         name = Task.Queries.FIND_REDLINED,
-        query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and o.redline<=:now and (o.deadline>:now or o.deadline is NULL)"
+        query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and o.redline<=:now and (o.deadline>:now or o.deadline is NULL)" +
+        "  ORDER BY o.list.context.name, o.list.name"
     ),
     @NamedQuery(
         name = Task.Queries.FIND_BY_LIST,
@@ -57,7 +59,8 @@ import org.localstorm.mcc.ejb.Identifiable;
     ),
     @NamedQuery(
         name = Task.Queries.FIND_ALL_AWAITED,
-        query= "SELECT o FROM Task o WHERE o.finished=false and o.delegated=true and o.list.context.owner=:user"
+        query= "SELECT o FROM Task o WHERE o.finished=false and o.delegated=true and o.list.context.owner=:user" +
+        " ORDER BY o.list.context.name, o.list.name"
     )
 })
 public class Task implements Identifiable, Serializable 

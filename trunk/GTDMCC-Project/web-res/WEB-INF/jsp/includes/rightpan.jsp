@@ -20,15 +20,19 @@
             <table class="reports">
                 <tr>
                     <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
+                    <td><a href="<c:url value="/actions/EasyTasksReport" />">Easy tasks</a></td>
+                </tr>
+                <tr>
+                    <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
                     <td><a href="<c:url value="/actions/AwaitedReport" />">Awaitings report</a></td>
                 </tr>
                 <tr>
                     <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
-                    <td><a href="<c:url value="/actions/DeadlinesReport" />">Deadlines report</a></td>
+                    <td><a href="<c:url value="/actions/DeadlinesReport" />">Broken deadlines report</a></td>
                 </tr>
                 <tr>
                     <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
-                    <td><a href="<c:url value="/actions/EasyTasksReport" />">Easy tasks</a></td>
+                    <td><a href="<c:url value="#" />">Following deadlines report</a></td>
                 </tr>
             </table>
 </div>
