@@ -7,7 +7,7 @@ import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.web.backend.TaskResolutionLogic;
 import org.localstorm.mcc.ejb.lists.GTDList;
 import org.localstorm.mcc.ejb.tasks.*;
-import org.localstorm.mcc.web.NextDestinationUtil;
+import org.localstorm.mcc.web.actions.NextDestinationUtil;
 
 /**
  *

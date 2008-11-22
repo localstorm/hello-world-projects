@@ -1,10 +1,15 @@
-package org.localstorm.mcc.web;
+package org.localstorm.mcc.web.actions;
 
+import org.localstorm.mcc.web.actions.ReturnPages;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import org.localstorm.mcc.ejb.lists.GTDList;
 import org.localstorm.mcc.ejb.tasks.TaskResolutionAction;
+import org.localstorm.mcc.web.actions.AwaitingsReportActionBean;
 import org.localstorm.mcc.web.actions.ContextViewActionBean;
+import org.localstorm.mcc.web.actions.DeadlinesReportActionBean;
+import org.localstorm.mcc.web.actions.EasyTasksReportActionBean;
+import org.localstorm.mcc.web.actions.IndexActionBean;
 import org.localstorm.mcc.web.actions.ListViewActionBean;
 
 /**
@@ -13,6 +18,26 @@ import org.localstorm.mcc.web.actions.ListViewActionBean;
  */
 public class NextDestinationUtil 
 {
+
+    public static Resolution getRedirectionByReturnPageName(String returnPage)
+    {
+        ReturnPages rp = ReturnPages.valueOf(returnPage);
+
+        switch(rp)
+        {
+            case AW_REPORT:
+                return new RedirectResolution(AwaitingsReportActionBean.class);
+            case DL_REPORT:
+                return new RedirectResolution(DeadlinesReportActionBean.class);
+            case EASY_REPORT:
+                return new RedirectResolution(EasyTasksReportActionBean.class);
+            default:
+            case IDX:
+                return new RedirectResolution(IndexActionBean.class);
+
+        }
+    }
+
     public static Resolution taskResolveActionResolution(TaskResolutionAction action, 
                                                          GTDList list, 
                                                          GTDList currentList)

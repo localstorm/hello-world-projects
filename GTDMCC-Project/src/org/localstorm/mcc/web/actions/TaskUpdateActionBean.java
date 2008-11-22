@@ -11,7 +11,7 @@ import net.sourceforge.stripes.validation.Validate;
 
 import org.localstorm.mcc.ejb.tasks.Task;
 import org.localstorm.mcc.ejb.tasks.TaskManager;
-import org.localstorm.mcc.web.ReturnPages;
+import org.localstorm.mcc.web.actions.ReturnPages;
 
 /**
  *

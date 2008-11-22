@@ -8,7 +8,8 @@
     <table width="100%">
         <tr>
             <td align="left">
-                <stripes:form action="/actions/SetEasyFilter" >
+                <stripes:form action="/actions/SetContextFilter" >
+                    <stripes:hidden name="returnPage" value="EASY_REPORT" />
                     <stripes:select name="contextId" value="${filterCtx}" onchange="submit();">
                         <stripes:option value="-1" >[Show all]</stripes:option>
                         <c:forEach items="${contexts}" var="ctx" >            
