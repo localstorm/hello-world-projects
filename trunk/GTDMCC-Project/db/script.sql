@@ -144,10 +144,19 @@ create table FILES_TO_OBJECTS
 
 ---- CASH FLOW
 
+--drop table ASSETS;
+--drop table TARGETS;
+--drop table OPERATIONS;
+--drop table COSTS;
+--drop table VALUABLE_OBJECTS;
+
 create table VALUABLE_OBJECTS
 (
     id INT NOT NULL AUTO_INCREMENT,
-    PRIMARY KEY (id)    
+    user_id INT not null,
+    is_archived SMALLINT not NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES USERS(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 create table ASSETS
