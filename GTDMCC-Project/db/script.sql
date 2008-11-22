@@ -180,7 +180,6 @@ create table TARGETS
 create table COSTS
 (
     id INT NOT NULL AUTO_INCREMENT,
-    name        TEXT NOT NULL,
     valuable_id INT NOT NULL,
     actuation_date DATETIME NOT NULL,
     buy  DECIMAL(10,5),
