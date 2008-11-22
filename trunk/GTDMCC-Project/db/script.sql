@@ -142,3 +142,54 @@ create table FILES_TO_OBJECTS
     FOREIGN KEY (file_id) REFERENCES FILES(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
+---- CASH FLOW
+
+create table VALUABLE_OBJECTS
+(
+    id INT NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (id)    
+)  ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+create table ASSETS
+(
+    id INT NOT NULL AUTO_INCREMENT,
+    name        TEXT NOT NULL,
+    valuable_id INT NOT NULL,
+    PRIMARY KEY (id),    
+    FOREIGN KEY (valuable_id) REFERENCES VALUABLE_OBJECTS(id)  ON DELETE CASCADE
+)  ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+create table TARGETS
+(
+    id INT NOT NULL AUTO_INCREMENT,
+    name        TEXT NOT NULL,
+    valuable_id INT NOT NULL,
+    PRIMARY KEY (id),    
+    FOREIGN KEY (valuable_id) REFERENCES VALUABLE_OBJECTS(id)  ON DELETE CASCADE
+)  ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+create table COSTS
+(
+    id INT NOT NULL AUTO_INCREMENT,
+    name        TEXT NOT NULL,
+    valuable_id INT NOT NULL,
+    actuation_date DATETIME NOT NULL,
+    buy  DECIMAL(10,5),
+    sell DECIMAL(10,5),
+    exchange_buy  DECIMAL(10,5),
+    exchange_sell DECIMAL(10,5),
+    PRIMARY KEY (id),    
+    FOREIGN KEY (valuable_id) REFERENCES VALUABLE_OBJECTS(id)  ON DELETE CASCADE
+)  ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+create table OPERATIONS
+(
+    id INT NOT NULL AUTO_INCREMENT,
+    type        TEXT NOT NULL,
+    comment     TEXT NOT NULL,
+    operation_date DATETIME NOT NULL,
+    amount  DECIMAL(10,5) NOT NULL,
+    cost_id INT NOT NULL,
+    PRIMARY KEY (id),    
+    FOREIGN KEY (cost_id) REFERENCES COSTS(id)  ON DELETE CASCADE
+)  ENGINE=INNODB DEFAULT CHARSET=utf8;
