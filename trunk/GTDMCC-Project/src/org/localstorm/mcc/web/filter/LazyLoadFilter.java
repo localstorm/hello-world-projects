@@ -1,6 +1,7 @@
 package org.localstorm.mcc.web.filter;
 
 
+import org.localstorm.mcc.ejb.gtd.referenced.RefObjectManager;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -12,9 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.localstorm.mcc.ejb.ContextLookup;
-import org.localstorm.mcc.ejb.contexts.Context;
-import org.localstorm.mcc.ejb.contexts.ContextManager;
-import org.localstorm.mcc.ejb.referenced.*;
+import org.localstorm.mcc.ejb.gtd.contexts.Context;
+import org.localstorm.mcc.ejb.gtd.contexts.ContextManager;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;

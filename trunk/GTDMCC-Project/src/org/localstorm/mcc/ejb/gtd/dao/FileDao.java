@@ -1,4 +1,4 @@
-package org.localstorm.mcc.ejb.dao;
+package org.localstorm.mcc.ejb.gtd.dao;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

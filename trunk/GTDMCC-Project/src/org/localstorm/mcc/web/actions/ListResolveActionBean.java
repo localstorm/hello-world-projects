@@ -1,15 +1,16 @@
 package org.localstorm.mcc.web.actions;
 
+import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
+import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import java.util.Collection;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.contexts.Context;
-import org.localstorm.mcc.ejb.lists.GTDList;
-import org.localstorm.mcc.ejb.lists.ListManager;
-import org.localstorm.mcc.ejb.tasks.*;
+import org.localstorm.mcc.ejb.gtd.contexts.Context;
+import org.localstorm.mcc.ejb.gtd.lists.GTDList;
+import org.localstorm.mcc.ejb.gtd.lists.ListManager;
 import org.localstorm.mcc.web.Clipboard;
 
 /**

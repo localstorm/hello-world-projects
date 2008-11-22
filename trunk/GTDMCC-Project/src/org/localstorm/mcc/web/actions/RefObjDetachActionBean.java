@@ -5,8 +5,8 @@ import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.notes.Note;
-import org.localstorm.mcc.ejb.referenced.ReferencedObject;
+import org.localstorm.mcc.ejb.gtd.notes.Note;
+import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
 
 /**
  *

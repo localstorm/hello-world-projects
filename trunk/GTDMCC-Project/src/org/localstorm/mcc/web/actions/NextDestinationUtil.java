@@ -2,8 +2,8 @@ package org.localstorm.mcc.web.actions;
 
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
-import org.localstorm.mcc.ejb.lists.GTDList;
-import org.localstorm.mcc.ejb.tasks.TaskResolutionAction;
+import org.localstorm.mcc.ejb.gtd.lists.GTDList;
+import org.localstorm.mcc.ejb.gtd.tasks.TaskResolutionAction;
 
 /**
  *

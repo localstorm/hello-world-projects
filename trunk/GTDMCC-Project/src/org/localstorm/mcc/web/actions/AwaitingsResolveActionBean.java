@@ -6,7 +6,7 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
-import org.localstorm.mcc.ejb.tasks.TaskResolutionAction;
+import org.localstorm.mcc.ejb.gtd.tasks.TaskResolutionAction;
 import org.localstorm.mcc.web.backend.TaskResolutionLogic;
 
 /**

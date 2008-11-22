@@ -3,8 +3,8 @@ package org.localstorm.mcc.web;
 import java.util.Collection;
 import java.util.Map;
 import java.util.TreeMap;
-import org.localstorm.mcc.ejb.lists.GTDList;
-import org.localstorm.mcc.ejb.tasks.Task;
+import org.localstorm.mcc.ejb.gtd.lists.GTDList;
+import org.localstorm.mcc.ejb.gtd.tasks.Task;
 
 /**
  *

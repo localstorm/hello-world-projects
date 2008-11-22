@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import org.localstorm.mcc.ejb.notes.Note;
-import org.localstorm.mcc.ejb.tasks.Task;
+import org.localstorm.mcc.ejb.gtd.notes.Note;
+import org.localstorm.mcc.ejb.gtd.tasks.Task;
 
 /**
  *
