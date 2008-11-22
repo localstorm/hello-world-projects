@@ -19,10 +19,6 @@ public  class FlightPlanManagerBean extends AbstractSingletonManager<FlightPlan,
                                     implements FlightPlanManagerLocal, FlightPlanManagerRemote
 {
 
-    public FlightPlanManagerBean() {
-        super(FlightPlan.class);
-    }
-
     @Override
     public void addTaskToFlightPlan(Task t, FlightPlan fp) {
         Query uq = em.createNamedQuery(FlightPlanToTask.Queries.FIND_CONNECTORS_BY_TASK_AND_PLAN);
