@@ -7,7 +7,10 @@ if (document.all) {
     browserType = "ie"
 }
 if (window.navigator.userAgent.toLowerCase().match("gecko")) {
-  browserType= "gecko"
+  browserType = "gecko"
+}
+if (window.opera) {
+  browserType = "opera"
 }
 
 function focus(id)    
@@ -23,43 +26,34 @@ function focus(id)
 
 function hide(id) 
 {
-  if (browserType == "gecko" )
-     document.poppedLayer = 
-         eval('document.getElementById("'+id+'")');
+  if (browserType == "gecko" || browserType == "opera")
+     document.poppedLayer = eval('document.getElementById("'+id+'")');
   else if (browserType == "ie")
-     document.poppedLayer = 
-        eval('document.getElementById("'+id+'")');
+     document.poppedLayer = eval('document.getElementById("'+id+'")');
   else
-     document.poppedLayer =   
-        eval('document.layers["'+id+'"]');
+     document.poppedLayer = eval('document.layers["'+id+'"]');
   document.poppedLayer.style.display = "none";
 }
 
 function show(id) 
 {
-  if (browserType == "gecko" )
-     document.poppedLayer = 
-         eval('document.getElementById("'+id+'")');
+  if (browserType == "gecko" || browserType == "opera")
+     document.poppedLayer = eval('document.getElementById("'+id+'")');
   else if (browserType == "ie")
-     document.poppedLayer = 
-        eval('document.getElementById("'+id+'")');
+     document.poppedLayer = eval('document.getElementById("'+id+'")');
   else
-     document.poppedLayer = 
-         eval('document.layers["'+id+'"]');
+     document.poppedLayer = eval('document.layers["'+id+'"]');
   document.poppedLayer.style.display = "inline";
 }
 
 function show(id, focusId) 
 {
-  if (browserType == "gecko" )
-     document.poppedLayer = 
-         eval('document.getElementById("'+id+'")');
+  if (browserType == "gecko" || browserType == "opera")
+     document.poppedLayer = eval('document.getElementById("'+id+'")');
   else if (browserType == "ie")
-     document.poppedLayer = 
-        eval('document.getElementById("'+id+'")');
+     document.poppedLayer = eval('document.getElementById("'+id+'")');
   else
-     document.poppedLayer = 
-         eval('document.layers["'+id+'"]');
+     document.poppedLayer = eval('document.layers["'+id+'"]');
   document.poppedLayer.style.display = "inline";
   
   focus(focusId);
