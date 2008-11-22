@@ -22,15 +22,17 @@
 <br/>
 <c:if test="${not empty actionBean.tasks}">
 <c:forEach items="${actionBean.tasks}" var="task">
-    <p><span><img src="<c:url value="/images/loe${task.effort}.png"/>"/>&nbsp;<c:out value="${task.list.context.name}" />:</span>&nbsp;<a href="<c:url value="/actions/ViewTask">
-                        <c:param name="id" value="${task.id}" />
-                        <c:param name="returnPage" value="EASY_REPORT" />
-                </c:url>" title="Expand"><c:out value="${task.summary}" /></a></p>
-    <c:if test="${not empty task.details}" >
+    <p><span><img src="<c:url value="/images/loe${task.effort}.png"/>"/>&nbsp;<c:out value="${task.list.context.name}, ${task.list.name}" />:</span><br/>
         <div align="center">
-            <c:out escapeXml="false" value="${task.detailsHtmlEscaped}"/>
+            <a href="<c:url value="/actions/ViewTask">
+                            <c:param name="id" value="${task.id}" />
+                            <c:param name="returnPage" value="EASY_REPORT" />
+                    </c:url>" title="Expand"><c:out value="${task.summary}" /></a>
         </div>
-    </c:if>    
+        <c:if test="${not empty task.details}" >
+             <c:out escapeXml="false" value="${task.detailsHtmlEscaped}"/>
+        </c:if>
+</p>
 <div id="<c:out value="delegate-${task.id}" />" style="display: none;" >
     <stripes:form action="/actions/ResolveEasyTask" >
         <stripes:hidden name="taskId" value="${task.id}" />

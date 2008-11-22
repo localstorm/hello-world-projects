@@ -38,10 +38,14 @@
 <c:if test="${not empty actionBean.flightPlanTasks}">
 <table width="100%"><tr><th>Operative</th></tr></table> 
 <c:forEach items="${actionBean.flightPlanTasks}" var="task">
-    <p><span><img src="<c:url value="/images/loe${task.effort}.png"/>"/>&nbsp;<c:out value="${task.list.context.name}" />:</span>&nbsp;<a href="<c:url value="/actions/ViewTask">
+    <p><span><img src="<c:url value="/images/loe${task.effort}.png"/>"/>&nbsp;<c:out value="${task.list.context.name}, ${task.list.name}" />:</span><br/>
+    <div align="center">
+        <a href="<c:url value="/actions/ViewTask">
                         <c:param name="id" value="${task.id}" />
                         <c:param name="returnPage" value="IDX" />
-                </c:url>" title="Expand"><c:out value="${task.summary}" /></a></p>
+                </c:url>" title="Expand"><c:out value="${task.summary}" /></a>
+    </div>
+    </p>
 <div id="<c:out value="delegate-${task.id}" />" style="display: none;" >
     <stripes:form action="/actions/ResolveFlightTask" >
         <stripes:hidden name="taskId" value="${task.id}" />
@@ -95,11 +99,14 @@
                             <c:param name="taskId" value="${task.id}" />
                             <c:param name="action" value="UNFLIGHT" />
                         </c:url>" title="Remove from flight plan"><img alt="unflight" border="0" src="<c:url value="/images/unflight.png"/>"/></a>
-                        <span><c:out value="${task.list.context.name}" />:</span>&nbsp;
-                        <a href="<c:url value="/actions/ViewTask">
-                            <c:param name="id" value="${task.id}" />
-                            <c:param name="returnPage" value="IDX" />
-                        </c:url>"><c:out value="${task.summary}"/></a></p>
+                        <span><c:out value="${task.list.context.name}, ${task.list.name}" />:</span><br/>
+                        <div aligm="center">
+                            <a href="<c:url value="/actions/ViewTask">
+                                <c:param name="id" value="${task.id}" />
+                                <c:param name="returnPage" value="IDX" />
+                            </c:url>"><c:out value="${task.summary}"/></a>
+                        </div>
+                        </p>
 <hr/>
 </c:forEach>
 </c:if>
@@ -120,10 +127,13 @@
                 <c:param name="taskId" value="${task.id}" />
                 <c:param name="action" value="UNFLIGHT" />
             </c:url>" title="Remove from flight plan"><img alt="unflight" border="0" src="<c:url value="/images/unflight.png"/>"/></a>            
-    <span><c:out value="${task.list.context.name}" />:</span>&nbsp;<a href="<c:url value="/actions/ViewTask">
+    <span><c:out value="${task.list.context.name}, ${task.list.name}" />:</span><br/>
+        <div align="center">
+            <a href="<c:url value="/actions/ViewTask">
                         <c:param name="id" value="${task.id}" />
                         <c:param name="returnPage" value="IDX" />
                 </c:url>"><c:out value="${task.summary} "/></a>
+        </div>
     <hr/>
 </p>
 </c:forEach>
