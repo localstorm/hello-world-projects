@@ -3,6 +3,7 @@ package org.localstorm.mcc.web.actions.wrap;
 import java.util.Date;
 import org.localstorm.mcc.ejb.lists.GTDList;
 import org.localstorm.mcc.ejb.tasks.Task;
+import org.localstorm.mcc.web.util.EscapeUtil;
 
 /**
  *
@@ -175,7 +176,11 @@ public class TaskWrapper extends Task
     public void setEffort(int effort) {
         t.setEffort(effort);
     }
-    
+
+    public String getDetailsHtmlEscaped()
+    {
+        return EscapeUtil.forHTML(this.getDetails());
+    }
     
     
 }
