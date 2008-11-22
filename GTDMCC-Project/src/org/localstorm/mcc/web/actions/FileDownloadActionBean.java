@@ -6,8 +6,8 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 
-import org.localstorm.mcc.ejb.files.FileAttachment;
-import org.localstorm.mcc.ejb.files.FileManager;
+import org.localstorm.mcc.ejb.gtd.files.FileAttachment;
+import org.localstorm.mcc.ejb.gtd.files.FileManager;
 
 /**
  *

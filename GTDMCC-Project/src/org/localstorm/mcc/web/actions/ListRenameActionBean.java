@@ -7,8 +7,8 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.lists.GTDList;
-import org.localstorm.mcc.ejb.lists.ListManager;
+import org.localstorm.mcc.ejb.gtd.lists.GTDList;
+import org.localstorm.mcc.ejb.gtd.lists.ListManager;
 
 
 /**

@@ -2,13 +2,13 @@ package org.localstorm.mcc.web.backend;
 
 import java.util.Collection;
 import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
-import org.localstorm.mcc.ejb.flight.FlightPlan;
-import org.localstorm.mcc.ejb.flight.FlightPlanManager;
-import org.localstorm.mcc.ejb.lists.GTDList;
-import org.localstorm.mcc.ejb.lists.ListManager;
-import org.localstorm.mcc.ejb.tasks.Task;
-import org.localstorm.mcc.ejb.tasks.TaskManager;
-import org.localstorm.mcc.ejb.tasks.TaskResolutionAction;
+import org.localstorm.mcc.ejb.gtd.flight.FlightPlan;
+import org.localstorm.mcc.ejb.gtd.flight.FlightPlanManager;
+import org.localstorm.mcc.ejb.gtd.lists.GTDList;
+import org.localstorm.mcc.ejb.gtd.lists.ListManager;
+import org.localstorm.mcc.ejb.gtd.tasks.Task;
+import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
+import org.localstorm.mcc.ejb.gtd.tasks.TaskResolutionAction;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.Clipboard;
 

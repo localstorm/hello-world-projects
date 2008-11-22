@@ -1,12 +1,12 @@
 package org.localstorm.mcc.web.actions;
 
+import org.localstorm.mcc.ejb.gtd.contexts.Context;
 import java.util.List;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.UrlBinding;
 
-import org.localstorm.mcc.ejb.contexts.*;
 import org.localstorm.mcc.web.Views;
 
 /**

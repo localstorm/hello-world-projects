@@ -1,13 +1,12 @@
 package org.localstorm.mcc.web.actions;
 
+import org.localstorm.mcc.ejb.gtd.tasks.TaskResolutionAction;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.web.backend.TaskResolutionLogic;
-import org.localstorm.mcc.ejb.lists.GTDList;
-import org.localstorm.mcc.ejb.tasks.*;
-import org.localstorm.mcc.web.actions.NextDestinationUtil;
+import org.localstorm.mcc.ejb.gtd.lists.GTDList;
 
 /**
  *

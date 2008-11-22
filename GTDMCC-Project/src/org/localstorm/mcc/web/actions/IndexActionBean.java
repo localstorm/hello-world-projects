@@ -1,5 +1,7 @@
 package org.localstorm.mcc.web.actions;
 
+import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
+import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -7,9 +9,8 @@ import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.UrlBinding;
-import org.localstorm.mcc.ejb.flight.FlightPlan;
-import org.localstorm.mcc.ejb.flight.FlightPlanManager;
-import org.localstorm.mcc.ejb.tasks.*;
+import org.localstorm.mcc.ejb.gtd.flight.FlightPlan;
+import org.localstorm.mcc.ejb.gtd.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.Views;
 import org.localstorm.mcc.web.util.FilterUtil;

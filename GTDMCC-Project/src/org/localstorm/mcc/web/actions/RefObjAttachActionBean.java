@@ -10,8 +10,8 @@ import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.SimpleError;
 import net.sourceforge.stripes.validation.Validate;
 import net.sourceforge.stripes.validation.ValidationErrors;
-import org.localstorm.mcc.ejb.notes.Note;
-import org.localstorm.mcc.ejb.referenced.ReferencedObject;
+import org.localstorm.mcc.ejb.gtd.notes.Note;
+import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
 import org.localstorm.mcc.web.Types;
 
 /**
