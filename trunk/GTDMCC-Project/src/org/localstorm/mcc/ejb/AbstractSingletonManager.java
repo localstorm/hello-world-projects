@@ -12,10 +12,6 @@ public abstract class AbstractSingletonManager <T extends Identifiable & Retirea
 {
     protected abstract T createNewCurrent(E owner);
 
-    public AbstractSingletonManager(Class<T> c) {
-        this.cl = c;
-    }
-    
     @Override
     public void update( T o ) 
     {
@@ -34,5 +30,4 @@ public abstract class AbstractSingletonManager <T extends Identifiable & Retirea
     @PersistenceContext(unitName=Constants.DEFAULT_PU)
     protected EntityManager em;
     
-    private Class<T> cl;
 }

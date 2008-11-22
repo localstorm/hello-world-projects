@@ -53,7 +53,7 @@ public class LazyLoadFilter implements Filter
         User user = (User) sess.getAttribute(SessionKeys.USER);
         
         if ( SessionUtil.isEmpty(sess, SessionKeys.FILTER_CONTEXT) ) {
-            SessionUtil.fill(sess, SessionKeys.FILTER_CONTEXT, new Integer(-1));
+            SessionUtil.fill(sess, SessionKeys.FILTER_CONTEXT, -1);
         }
         
         if ( SessionUtil.isEmpty(sess, SessionKeys.CONTEXTS) ) {
