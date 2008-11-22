@@ -24,8 +24,7 @@
         </p>
         <c:if test="${not empty task.details}" >
             <div align="center">
-                <textarea readonly style="width: 90%; border: dotted 1px" rows="5"><c:out 
-                 value="${task.details}"/></textarea>
+                <c:out escapeXml="false" value="${task.detailsHtmlEscaped}"/>
             </div>
         </c:if>
         <c:if test="${not empty task.runtimeNote}" >
@@ -79,8 +78,7 @@
         </p>
         <c:if test="${not empty task.details}" >
             <div align="center">
-                <textarea readonly style="width: 90%; border: dotted 1px" rows="5"><c:out 
-                 value="${task.details}"/></textarea>
+                <c:out escapeXml="false" value="${task.detailsHtmlEscaped}"/>
             </div>
         </c:if>
         <c:if test="${not empty task.runtimeNote}" >
