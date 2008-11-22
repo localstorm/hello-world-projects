@@ -12,6 +12,7 @@ import org.localstorm.mcc.ejb.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.tasks.*;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.Views;
+import org.localstorm.mcc.web.util.FilterUtil;
 
 /**
  * A very simple calculator action.
@@ -73,7 +74,6 @@ public class IndexActionBean extends BaseActionBean {
         archiveFlightPlanTasks = new LinkedList<Task>();
         awaitedFlightPlanTasks = new LinkedList<Task>();
         
-        
         for (Iterator<Task> it = flightPlanTasks.iterator(); it.hasNext(); )
         {
             Task t = it.next();
@@ -88,32 +88,18 @@ public class IndexActionBean extends BaseActionBean {
                 awaitedFlightPlanTasks.add(t);
             }
         }
+
+        Integer ctxId = super.getContextIdFilter();
         
-        this.applyIndexFilter(flightPlanTasks);
-        this.applyIndexFilter(archiveFlightPlanTasks);
-        this.applyIndexFilter(awaitedFlightPlanTasks);
+        FilterUtil.applyContextFilter(flightPlanTasks, ctxId);
+        FilterUtil.applyContextFilter(archiveFlightPlanTasks, ctxId);
+        FilterUtil.applyContextFilter(awaitedFlightPlanTasks, ctxId);
         
         TaskManager tm = this.getTaskManager();
         this.setRedlinesBroken(!tm.findRedlinedTasks(user).isEmpty());
         this.setDeadlinesBroken(!tm.findDeadlinedTasks(user).isEmpty());
 
         return new ForwardResolution(Views.IDX);
-    }
-
-    private void applyIndexFilter(Collection<Task> flightPlanTasks) 
-    {
-        Integer ctx = super.getContextIdFilter();
-        
-        if ( ctx<0 ) {
-            return;
-        }
-        
-        for (Iterator<Task> it = flightPlanTasks.iterator(); it.hasNext(); ) {
-            Task t = it.next();
-            if (!ctx.equals(t.getList().getContext().getId())) {
-                it.remove();
-            }
-        }
     }
 
 }

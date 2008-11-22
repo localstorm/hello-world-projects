@@ -34,7 +34,7 @@ public interface TaskManager extends BaseManager<Task>
     /**
      * @param ctx May be null!
      */
-    public Collection<Task> findByMaxEffort(Context ctx, Effort effort, User user);
+    public Collection<Task> findByMaxEffort(Effort effort, User user);
     
     
 }

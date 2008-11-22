@@ -1,16 +1,9 @@
 package org.localstorm.mcc.web.actions;
 
-import org.localstorm.mcc.web.actions.ReturnPages;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import org.localstorm.mcc.ejb.lists.GTDList;
 import org.localstorm.mcc.ejb.tasks.TaskResolutionAction;
-import org.localstorm.mcc.web.actions.AwaitingsReportActionBean;
-import org.localstorm.mcc.web.actions.ContextViewActionBean;
-import org.localstorm.mcc.web.actions.DeadlinesReportActionBean;
-import org.localstorm.mcc.web.actions.EasyTasksReportActionBean;
-import org.localstorm.mcc.web.actions.IndexActionBean;
-import org.localstorm.mcc.web.actions.ListViewActionBean;
 
 /**
  *
