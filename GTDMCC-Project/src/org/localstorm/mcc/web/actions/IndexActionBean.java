@@ -72,25 +72,7 @@ public class IndexActionBean extends BaseActionBean {
 
         User user = super.getUser();
         this.flightPlan      = fpm.findCurrent(user);
-                
         this.flightPlanTasks = fpm.getTasksFromFlightPlan(flightPlan);
-        
-        List<Task> l = new ArrayList<Task>(flightPlanTasks.size());
-        l.addAll(flightPlanTasks);
-        
-        Collections.sort(l, new Comparator<Task>() {
-
-            @Override
-            public int compare(Task t1, Task t2) {
-                return t1.getList().getContext().getName().compareTo(
-                            t2.getList().getContext().getName()
-                       );
-            }
-            
-        });
-        
-        flightPlanTasks.clear();
-        flightPlanTasks.addAll(l);
         
         archiveFlightPlanTasks = new LinkedList<Task>();
         awaitedFlightPlanTasks = new LinkedList<Task>();

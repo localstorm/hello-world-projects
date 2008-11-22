@@ -3,7 +3,7 @@
 
 <%@ include file="/WEB-INF/jsp/includes/hdr.jsp" %>
 
-<h2><span>DEADLINES</span> report</h2>
+<h2><span>BROKEN DEADLINES</span> report</h2>
 <br/>
 <table width="100%">
 <c:if test="${not empty actionBean.deadlinedTasks}">
@@ -14,19 +14,20 @@
 <c:forEach items="${actionBean.deadlinedTasks}" var="task" >
 <tr bgcolor="#A3A69C"> 
     <td>
-        <p><img src="<c:url value="/images/loe${task.effort}.png"/>"/>&nbsp;<span><c:out value="${task.list.context.name}/${task.list.name}"/>&nbsp;(Since: <fmt:formatDate value="${task.creation}"/>):</span><br/>
+        <p><img src="<c:url value="/images/loe${task.effort}.png"/>"/>&nbsp;<span><c:out value="${task.list.context.name}, ${task.list.name}"/>&nbsp;(Since: <fmt:formatDate value="${task.creation}"/>):</span><br/>
         <div align="center">
             <a href="<c:url value="/actions/ViewTask">
                             <c:param name="id" value="${task.id}" />
                             <c:param name="returnPage" value="DL_REPORT" />
                     </c:url>"><c:out value="${task.summary}" /></a>
         </div>
-        </p>
         <c:if test="${not empty task.details}" >
             <div align="center">
                 <c:out escapeXml="false" value="${task.detailsHtmlEscaped}"/>
             </div>
         </c:if>
+        </p>
+        
         <c:if test="${not empty task.runtimeNote}" >
             <p><i>Responsibility:&nbsp;</i><c:out value="${task.runtimeNote}"/></p>
         </c:if>
@@ -68,19 +69,18 @@
 <c:forEach items="${actionBean.redlinedTasks}" var="task" >
 <tr bgcolor="#FFCF91"> 
     <td>
-        <p><img src="<c:url value="/images/loe${task.effort}.png"/>"/>&nbsp;<span><c:out value="${task.list.context.name}/${task.list.name}"/>&nbsp;(Since: <fmt:formatDate value="${task.creation}"/>):</span><br/>
+        <p><img src="<c:url value="/images/loe${task.effort}.png"/>"/>&nbsp;<span><c:out value="${task.list.context.name}, ${task.list.name}"/>&nbsp;(Since: <fmt:formatDate value="${task.creation}"/>):</span><br/>
         <div align="center">
             <a href="<c:url value="/actions/ViewTask">
                             <c:param name="id" value="${task.id}" />
                             <c:param name="returnPage" value="DL_REPORT" />
                     </c:url>"><c:out value="${task.summary}" /></a>
         </div>
-        </p>
         <c:if test="${not empty task.details}" >
-            <div align="center">
-                <c:out escapeXml="false" value="${task.detailsHtmlEscaped}"/>
-            </div>
+             <c:out escapeXml="false" value="${task.detailsHtmlEscaped}"/>
         </c:if>
+        </p>
+        
         <c:if test="${not empty task.runtimeNote}" >
             <p><i>Responsibility:&nbsp;</i><c:out value="${task.runtimeNote}"/></p>
         </c:if>
