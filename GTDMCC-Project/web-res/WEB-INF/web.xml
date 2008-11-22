@@ -20,7 +20,7 @@
                 </init-param>
                 <init-param>
                     <param-name>ActionResolver.PackageFilters</param-name>
-                    <param-value>org.localstorm.mcc.web.actions</param-value>
+                    <param-value>org.localstorm.mcc.web.gtd.actions</param-value>
                 </init-param>
                 <init-param>
                     <param-name>LocalePicker.Locales</param-name>
