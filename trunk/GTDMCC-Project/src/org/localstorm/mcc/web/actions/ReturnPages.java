@@ -1,4 +1,4 @@
-package org.localstorm.mcc.web;
+package org.localstorm.mcc.web.actions;
 
 /**
  *
