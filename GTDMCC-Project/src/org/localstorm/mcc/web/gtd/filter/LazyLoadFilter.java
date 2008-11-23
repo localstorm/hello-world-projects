@@ -1,4 +1,4 @@
-package org.localstorm.mcc.web.filter;
+package org.localstorm.mcc.web.gtd.filter;
 
 
 import org.localstorm.mcc.ejb.gtd.referenced.RefObjectManager;

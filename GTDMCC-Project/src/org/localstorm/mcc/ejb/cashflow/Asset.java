@@ -14,15 +14,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import org.localstorm.mcc.ejb.Identifiable;
 
 /**
- *
  * @author localstorm
  */
 @Entity
 @Table(name="ASSETS")
+@NamedQueries({
+    @NamedQuery(
+        name = Asset.Queries.FIND_BY_OWNER,
+        query= "SELECT o FROM Asset o WHERE o.valuable.owner=:owner ORDER BY o.name"
+    )
+})
 public class Asset implements Identifiable, Serializable {
 
     @Id
@@ -60,4 +67,13 @@ public class Asset implements Identifiable, Serializable {
         this.valuable = valuable;
     }
 
+    public static interface Queries
+    {
+        public static final String FIND_BY_OWNER          = "findAssetsByUser";
+    }
+
+    public static interface Properties
+    {
+        public static final String OWNER = "owner";
+    }
 }

@@ -15,7 +15,7 @@ import org.localstorm.mcc.web.util.SessionUtil;
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/EraseContext")
-public class ContextEraseActionBean extends BaseActionBean
+public class ContextEraseActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )
     private int contextId;

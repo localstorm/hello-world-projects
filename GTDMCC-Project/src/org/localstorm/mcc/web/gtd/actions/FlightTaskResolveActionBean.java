@@ -13,7 +13,7 @@ import org.localstorm.mcc.web.gtd.backend.TaskResolutionLogic;
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/ResolveFlightTask")
-public class FlightTaskResolveActionBean extends BaseActionBean
+public class FlightTaskResolveActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )
     private int taskId;

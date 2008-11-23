@@ -14,7 +14,7 @@ import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/DetachFileRefObj")
-public class RefObjDetachFileActionBean extends BaseActionBean
+public class RefObjDetachFileActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )
     private int objectId;

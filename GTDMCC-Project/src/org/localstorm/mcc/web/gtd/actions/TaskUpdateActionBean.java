@@ -11,14 +11,13 @@ import net.sourceforge.stripes.validation.Validate;
 
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
-import org.localstorm.mcc.web.gtd.actions.ReturnPages;
 
 /**
  *
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/UpdateTask")
-public class TaskUpdateActionBean extends BaseActionBean
+public class TaskUpdateActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )
     private int taskId;

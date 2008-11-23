@@ -1,5 +1,6 @@
 package org.localstorm.mcc.web.gtd.actions;
 
+import org.localstorm.mcc.web.BaseActionBean;
 import java.util.Collection;
 import java.util.LinkedList;
 import net.sourceforge.stripes.action.DefaultHandler;
@@ -21,7 +22,7 @@ import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/ViewRefObj")
-public class RefObjViewActionBean extends BaseActionBean
+public class RefObjViewActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )
     private int objectId;

@@ -13,7 +13,7 @@ import org.localstorm.mcc.web.gtd.Views;
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/EditRefObj")
-public class RefObjEditActionBean extends BaseActionBean {
+public class RefObjEditActionBean extends GtdBaseActionBean {
 
     private Collection<ReferencedObject> refObjects;
     private Collection<ReferencedObject> archiveObjects;

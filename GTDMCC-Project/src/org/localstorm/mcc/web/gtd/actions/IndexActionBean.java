@@ -1,5 +1,6 @@
 package org.localstorm.mcc.web.gtd.actions;
 
+import org.localstorm.mcc.web.BaseActionBean;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import java.util.Collection;
@@ -19,7 +20,7 @@ import org.localstorm.mcc.web.util.FilterUtil;
  * A very simple calculator action.
  */
 @UrlBinding("/actions/Index")
-public class IndexActionBean extends BaseActionBean {
+public class IndexActionBean extends GtdBaseActionBean {
 
     private FlightPlan flightPlan;
     private Collection<Task> flightPlanTasks;

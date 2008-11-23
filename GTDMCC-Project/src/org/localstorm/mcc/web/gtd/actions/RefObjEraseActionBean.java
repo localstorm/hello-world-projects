@@ -16,7 +16,7 @@ import org.localstorm.mcc.web.util.SessionUtil;
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/EraseRefObj")
-public class RefObjEraseActionBean extends BaseActionBean
+public class RefObjEraseActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )
     private int objectId;

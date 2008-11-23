@@ -44,7 +44,7 @@ public class ContextRenameActionBean extends ContextViewActionBean {
     @DefaultHandler
     @Override
     public Resolution filling() throws Exception {
-        ContextManager cm = this.getContextManager();
+        ContextManager cm = super.getContextManager();
         
         Context ctx   = cm.findById(super.getContextId());
         ctx.setName(this.getName());

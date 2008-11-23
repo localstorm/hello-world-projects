@@ -1,5 +1,6 @@
 package org.localstorm.mcc.web.gtd.actions;
 
+import org.localstorm.mcc.web.BaseActionBean;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,7 +20,7 @@ import org.localstorm.mcc.web.gtd.Views;
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/ViewTask")
-public class TaskViewActionBean extends BaseActionBean
+public class TaskViewActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )
     private int id;

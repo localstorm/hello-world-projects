@@ -15,4 +15,5 @@ public class SessionKeys
     public static final String CURR_TASK = "currTask";
     public static final String CLIPBOARD = "clipboard";
     public static final String FILTER_CONTEXT="filterCtx";
+    public static final String ASSETS    = "assets";
 }
