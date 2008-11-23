@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,6 +24,24 @@ import org.localstorm.mcc.ejb.Identifiable;
  */
 @Entity
 @Table(name="OPERATIONS")
+@NamedQueries({
+    @NamedQuery(
+        name = Operation.Queries.FIND_BY_VO_DESC,
+        query= "SELECT o FROM Operation o WHERE o.cost.valuable=:valuable ORDER BY o.cost.actuationDate DESC"
+    ),
+    @NamedQuery(
+        name = Operation.Queries.SUM_BOUGHT_BY_VO,
+        query= "SELECT SUM(o.cost.buy*o.amount) FROM Operation o WHERE o.cost.valuable=:valuable and o.type='BUY' and o.cost.buy IS NOT NULL"
+    ),
+    @NamedQuery(
+        name = Operation.Queries.SUM_BOUGHT_FOR_EXCHANGE_BY_VO,
+        query= "SELECT SUM(o.cost.exchangeBuy) FROM Operation o WHERE o.cost.valuable=:valuable and o.type='BUY_FX' and o.cost.exchangeBuy IS NOT NULL"
+    ),
+    @NamedQuery(
+        name = Operation.Queries.SUM_AMOUNT_BY_VO,
+        query= "SELECT SUM(o.amount) FROM Operation o WHERE o.cost.valuable=:valuable"
+    )
+})
 public class Operation implements Identifiable, Serializable {
 
     @Id
@@ -90,4 +110,16 @@ public class Operation implements Identifiable, Serializable {
         this.type = type;
     }
 
+    public static interface Queries
+    {
+        public static final String FIND_BY_VO_DESC = "findOpsByVoDesc";
+        public static final String SUM_BOUGHT_BY_VO = "sumBought";
+        public static final String SUM_BOUGHT_FOR_EXCHANGE_BY_VO = "sumBoughtFx";
+        public static final String SUM_AMOUNT_BY_VO = "totalAmount";
+    }
+
+    public static interface Properties
+    {
+        public static final String VALUABLE = "valuable";
+    }
 }

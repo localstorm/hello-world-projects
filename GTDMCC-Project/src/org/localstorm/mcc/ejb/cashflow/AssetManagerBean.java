@@ -105,24 +105,36 @@ public class AssetManagerBean implements AssetManagerLocal,
         return true;
     }
 
+   @Override
+    public Collection<Operation> getOperations(ValuableObject vo) {
+        Query uq = em.createNamedQuery(Operation.Queries.FIND_BY_VO_DESC);
+        uq.setParameter(Cost.Properties.VALUABLE, vo);
+
+        Collection<Operation> ops = (Collection<Operation>) uq.getResultList();
+        return ops;
+    }
 
     @Override
     public BigDecimal getInvestmentsCost(ValuableObject vo) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Query b1 = em.createNamedQuery(Operation.Queries.SUM_BOUGHT_BY_VO);
+        b1.setParameter(Cost.Properties.VALUABLE, vo);
+
+        Query b2 = em.createNamedQuery(Operation.Queries.SUM_BOUGHT_FOR_EXCHANGE_BY_VO);
+        b2.setParameter(Cost.Properties.VALUABLE, vo);
+
+        BigDecimal s1 = (BigDecimal) b1.getSingleResult();
+        BigDecimal s2 = (BigDecimal) b2.getSingleResult();
+
+        return s1.add(s2);
     }
 
     @Override
     public BigDecimal getTotalAmount(ValuableObject vo) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Query total = em.createNamedQuery(Operation.Queries.SUM_AMOUNT_BY_VO);
+        total.setParameter(Cost.Properties.VALUABLE, vo);
+
+        return (BigDecimal) total.getSingleResult();
     }
-
-   
-
-    @Override
-    public Collection<Operation> getOperations(ValuableObject vo) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
 
     @PersistenceContext(unitName=Constants.DEFAULT_PU)
     protected EntityManager em;
