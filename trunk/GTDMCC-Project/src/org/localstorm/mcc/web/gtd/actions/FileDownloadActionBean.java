@@ -14,7 +14,7 @@ import org.localstorm.mcc.ejb.gtd.files.FileManager;
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/DownloadFile")
-public class FileDownloadActionBean extends BaseActionBean
+public class FileDownloadActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )
     private int fileId;

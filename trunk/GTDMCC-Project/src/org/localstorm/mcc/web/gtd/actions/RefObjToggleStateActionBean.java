@@ -15,7 +15,7 @@ import org.localstorm.mcc.web.util.SessionUtil;
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/ToggleStateRefObj")
-public class RefObjToggleStateActionBean extends BaseActionBean
+public class RefObjToggleStateActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )
     private int objectId;

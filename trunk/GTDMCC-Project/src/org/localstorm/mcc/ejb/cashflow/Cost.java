@@ -16,6 +16,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,16 +29,12 @@ import org.localstorm.mcc.ejb.Identifiable;
  */
 @Entity
 @Table(name="COSTS")
-//@NamedQueries({
-//    @NamedQuery(
-//        name = ValuableObject.Queries.FIND_BY_OWNER,
-//        query= "SELECT o FROM ValuableObject o WHERE o.owner=:owner and o.archived=false"
-//    ),
-//    @NamedQuery(
-//        name = ValuableObject.Queries.FIND_BY_OWNER_ARCHIVED,
-//        query= "SELECT o FROM ValuableObject o WHERE o.owner=:owner and o.archived=true"
-//    )
-//})
+@NamedQueries({
+    @NamedQuery(
+        name = Cost.Queries.FIND_COSTS_BY_VO_DESC,
+        query= "SELECT o FROM Cost o WHERE o.valuable=:valuable ORDER BY o.actuationDate DESC"
+    )
+})
 public class Cost implements Identifiable, Serializable {
 
     @Id
@@ -120,6 +118,20 @@ public class Cost implements Identifiable, Serializable {
 
     public Date getActuationDate() {
         return actuationDate;
+    }
+
+    public void setValuable(ValuableObject vo) {
+        this.valuable = vo;
+    }
+
+    public static interface Queries
+    {
+        public static final String FIND_COSTS_BY_VO_DESC = "findCostsByVoDesc";
+    }
+
+    public static interface Properties
+    {
+        public static final String VALUABLE = "valuable";
     }
 
 }

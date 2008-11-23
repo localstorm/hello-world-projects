@@ -7,8 +7,6 @@ import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
-import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.gtd.contexts.Context;
 import org.localstorm.mcc.ejb.gtd.flight.FlightPlan;
 import org.localstorm.mcc.ejb.gtd.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.gtd.tasks.Effort;
@@ -23,7 +21,7 @@ import org.localstorm.mcc.web.util.FilterUtil;
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/EasyTasksReport")
-public class EasyTasksReportActionBean extends BaseActionBean
+public class EasyTasksReportActionBean extends GtdBaseActionBean
 {
     private List<Task> tasks;
     

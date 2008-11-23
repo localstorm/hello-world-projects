@@ -9,7 +9,7 @@ import net.sourceforge.stripes.action.UrlBinding;
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/UtilizeFlightPlan")
-public class FlightPlanUtilizeActionBean extends BaseActionBean
+public class FlightPlanUtilizeActionBean extends GtdBaseActionBean
 {
     @DefaultHandler
     public Resolution utilization() throws Exception {

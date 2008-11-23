@@ -1,5 +1,6 @@
 package org.localstorm.mcc.web.gtd.actions;
 
+import org.localstorm.mcc.web.BaseActionBean;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskResolutionAction;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
@@ -13,7 +14,7 @@ import org.localstorm.mcc.web.gtd.backend.TaskResolutionLogic;
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/ResolveEasyTask")
-public class EasyTaskResolveActionBean extends BaseActionBean
+public class EasyTaskResolveActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )
     private int taskId;

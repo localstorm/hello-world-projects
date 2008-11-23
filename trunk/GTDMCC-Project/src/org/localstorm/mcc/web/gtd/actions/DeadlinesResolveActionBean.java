@@ -1,5 +1,6 @@
 package org.localstorm.mcc.web.gtd.actions;
 
+import org.localstorm.mcc.web.BaseActionBean;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
@@ -14,7 +15,7 @@ import org.localstorm.mcc.web.gtd.backend.TaskResolutionLogic;
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/ResolveDeadlines")
-public class DeadlinesResolveActionBean extends BaseActionBean
+public class DeadlinesResolveActionBean extends GtdBaseActionBean
 {
     @Validate(required=true)
     private Integer taskId;

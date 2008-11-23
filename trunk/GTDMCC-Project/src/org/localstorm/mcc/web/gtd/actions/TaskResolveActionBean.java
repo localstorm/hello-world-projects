@@ -13,7 +13,7 @@ import org.localstorm.mcc.ejb.gtd.lists.GTDList;
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/ResolveTask")
-public class TaskResolveActionBean extends BaseActionBean
+public class TaskResolveActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )
     private int taskId;

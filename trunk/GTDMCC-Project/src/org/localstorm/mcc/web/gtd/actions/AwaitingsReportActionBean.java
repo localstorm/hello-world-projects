@@ -2,7 +2,6 @@ package org.localstorm.mcc.web.gtd.actions;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
@@ -19,7 +18,7 @@ import org.localstorm.mcc.web.util.FilterUtil;
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/AwaitedReport")
-public class AwaitingsReportActionBean extends BaseActionBean
+public class AwaitingsReportActionBean extends GtdBaseActionBean
 {
 
     private List<Task> awaitedTasks;

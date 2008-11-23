@@ -4,13 +4,12 @@ import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.web.gtd.actions.NextDestinationUtil;
 
 /**
  * A very simple calculator action.
  */
 @UrlBinding("/actions/SetContextFilter")
-public class SetContextFilterActionBean extends BaseActionBean {
+public class SetContextFilterActionBean extends GtdBaseActionBean {
 
     @Validate(required=true)
     private Integer contextId;

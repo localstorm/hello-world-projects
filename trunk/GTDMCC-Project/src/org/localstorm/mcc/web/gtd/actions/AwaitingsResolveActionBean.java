@@ -14,7 +14,7 @@ import org.localstorm.mcc.web.gtd.backend.TaskResolutionLogic;
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/ResolveAwaitings")
-public class AwaitingsResolveActionBean extends BaseActionBean
+public class AwaitingsResolveActionBean extends GtdBaseActionBean
 {
     @Validate(required=true)
     private Integer taskId;

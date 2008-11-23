@@ -1,15 +1,8 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<web-app 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee" 
-	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
-	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	id="WebApp_ID" 
-	version="2.5" >
-    
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
         <display-name>GTD Personal Task Manager</display-name>
-    
+
         <filter>
                 <display-name>Stripes Filter</display-name>
                 <filter-name>StripesFilter</filter-name>
@@ -27,31 +20,36 @@
                     <param-value>en_US:UTF-8</param-value>
                 </init-param>
         </filter>
-        
+
         <filter>
                 <display-name>403 Filter</display-name>
                 <filter-name>RestrictionFilter</filter-name>
                 <filter-class>org.localstorm.mcc.web.filter.RestrictionFilter</filter-class>
         </filter>
-        
+
         <filter>
                 <display-name>Auth Filter</display-name>
                 <filter-name>AuthFilter</filter-name>
                 <filter-class>org.localstorm.mcc.web.filter.AuthFilter</filter-class>
         </filter>
-        
+
         <filter>
                 <display-name>Tx Filter</display-name>
                 <filter-name>TxFilter</filter-name>
                 <filter-class>org.localstorm.mcc.web.filter.TxFilter</filter-class>
         </filter>
-        
+
         <filter>
                 <display-name>Lazy Load Filter</display-name>
                 <filter-name>LazyLoadFilter</filter-name>
-                <filter-class>org.localstorm.mcc.web.filter.LazyLoadFilter</filter-class>
+                <filter-class>org.localstorm.mcc.web.gtd.filter.LazyLoadFilter</filter-class>
         </filter>
 
+        <filter>
+                <display-name>Cashflow Lazy Load Filter</display-name>
+                <filter-name>CfLazyLoadFilter</filter-name>
+                <filter-class>org.localstorm.mcc.web.cashflow.filter.LazyLoadFilter</filter-class>
+        </filter>
         
         <filter-mapping>
                 <filter-name>RestrictionFilter</filter-name>
@@ -76,7 +74,13 @@
                 <servlet-name>StripesDispatcher</servlet-name>
                 <dispatcher>REQUEST</dispatcher>
         </filter-mapping>
-        
+
+        <filter-mapping>
+                <filter-name>CfLazyLoadFilter</filter-name>
+                <servlet-name>StripesDispatcher</servlet-name>
+                <dispatcher>REQUEST</dispatcher>
+        </filter-mapping>
+
         <filter-mapping>
                 <filter-name>StripesFilter</filter-name>
                 <servlet-name>StripesDispatcher</servlet-name>

@@ -19,7 +19,7 @@ import org.localstorm.mcc.web.gtd.Views;
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/ViewContext")
-public class ContextViewActionBean extends BaseActionBean
+public class ContextViewActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )
     private int contextId;

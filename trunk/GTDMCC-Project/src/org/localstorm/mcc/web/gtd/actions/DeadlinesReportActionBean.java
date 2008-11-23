@@ -1,5 +1,6 @@
 package org.localstorm.mcc.web.gtd.actions;
 
+import org.localstorm.mcc.web.BaseActionBean;
 import java.util.Collection;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
@@ -16,7 +17,7 @@ import org.localstorm.mcc.web.util.FilterUtil;
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/DeadlinesReport")
-public class DeadlinesReportActionBean extends BaseActionBean
+public class DeadlinesReportActionBean extends GtdBaseActionBean
 {
 
     private Collection<? extends Task>  redlinedTasks;

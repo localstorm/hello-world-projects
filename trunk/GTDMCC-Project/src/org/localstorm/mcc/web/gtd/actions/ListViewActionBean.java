@@ -1,9 +1,6 @@
 package org.localstorm.mcc.web.gtd.actions;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
@@ -23,7 +20,7 @@ import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/ViewList")
-public class ListViewActionBean extends BaseActionBean
+public class ListViewActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )
     private int listId;

@@ -14,7 +14,7 @@ import org.localstorm.mcc.web.util.SessionUtil;
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/ToggleStateContext")
-public class ContextToggleStateActionBean extends BaseActionBean
+public class ContextToggleStateActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )
     private int contextId;
