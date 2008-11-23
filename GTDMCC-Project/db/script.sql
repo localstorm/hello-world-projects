@@ -201,3 +201,11 @@ create table OPERATIONS
     PRIMARY KEY (id),    
     FOREIGN KEY (cost_id) REFERENCES COSTS(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+
+select * from USERS
+insert into VALUABLE_OBJECTS (id, user_id, is_archived) values (null, 174947681, false);
+insert into ASSETS (id, name, valuable_id) values (null, "Her", "1");
+
+insert into COSTS (id, valuable_id, actuation_date, buy, sell, exchange_buy, exchange_sell) VALUES (null, 1, CURRENT_TIME, 1.0, 2.0, 3.0. 4.0)
+

@@ -122,8 +122,8 @@ public class AssetManagerBean implements AssetManagerLocal,
         Query b2 = em.createNamedQuery(Operation.Queries.SUM_BOUGHT_FOR_EXCHANGE_BY_VO);
         b2.setParameter(Cost.Properties.VALUABLE, vo);
 
-        BigDecimal s1 = (BigDecimal) b1.getSingleResult();
-        BigDecimal s2 = (BigDecimal) b2.getSingleResult();
+        BigDecimal s1 = this.nvl((BigDecimal) b1.getSingleResult());
+        BigDecimal s2 = this.nvl((BigDecimal) b2.getSingleResult());
 
         return s1.add(s2);
     }
@@ -133,7 +133,15 @@ public class AssetManagerBean implements AssetManagerLocal,
         Query total = em.createNamedQuery(Operation.Queries.SUM_AMOUNT_BY_VO);
         total.setParameter(Cost.Properties.VALUABLE, vo);
 
-        return (BigDecimal) total.getSingleResult();
+        BigDecimal sum = this.nvl((BigDecimal) total.getSingleResult());
+        return sum;
+    }
+
+    private BigDecimal nvl(BigDecimal bigDecimal) {
+        if (bigDecimal==null) {
+            return new BigDecimal(0.0);
+        }
+        return bigDecimal;
     }
 
     @PersistenceContext(unitName=Constants.DEFAULT_PU)
