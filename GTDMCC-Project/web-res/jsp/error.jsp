@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/jsp/includes/include.jsp" %>
 
-<%@ include file="/WEB-INF/jsp/includes/hdr.jsp" %>
+<%@ include file="/WEB-INF/jsp/includes/noPanesHdr.jsp" %>
 
 
 <h2>Error!</h2>
@@ -20,5 +20,4 @@
     <textarea wrap="off" readonly style="width: 95%; border: dotted 1px;" rows="20"><c:out value="${exception}"/></textarea>
 </div>
 
-<%@ include file="/WEB-INF/jsp/includes/rightpan.jsp" %>
 <%@ include file="/WEB-INF/jsp/includes/foot.jsp" %>

@@ -1,11 +1,14 @@
 package org.localstorm.mcc.web.cashflow.filter;
 
 import java.io.IOException;
+import java.util.Collection;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.localstorm.mcc.ejb.ContextLookup;
+import org.localstorm.mcc.ejb.cashflow.Asset;
+import org.localstorm.mcc.ejb.cashflow.AssetManager;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
@@ -44,7 +47,11 @@ public class LazyLoadFilter implements Filter
         User user = (User) sess.getAttribute(SessionKeys.USER);
         
         if ( SessionUtil.isEmpty(sess, SessionKeys.ASSETS) ) {
-            //SessionUtil.fill(sess, SessionKeys.CONTEXTS, ctxs);
+            AssetManager am = ContextLookup.lookup(AssetManager.class,
+                                                   AssetManager.BEAN_NAME);
+
+            Collection<Asset> assets = am.findAssetsByOwner(user);
+            SessionUtil.fill(sess, SessionKeys.ASSETS, assets);
         }
     }
     
