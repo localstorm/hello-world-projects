@@ -54,25 +54,32 @@ var dlinec = new CodeThatCalendar(caldef1);
 <tr>
     <td>
         <table width="100%">
-            <td bgcolor="red"><font color="yellow">Red&nbsp;Line:</font></td> 
-            <td><stripes:text readonly="true" name="redline" size="10" value="${actionBean.redline}" /></td> 
-            <td><nobr><img onclick="rlinec.popup('redline');" border="0px" src="<c:url value="/images/calendar.png"/>" /><img onclick="document.taskForm.redline.value = '';" border="0px" src="<c:url value="/images/nocalendar.png"/>" /></nobr></td>
+            <tr>
+                <td bgcolor="red"><font color="yellow">Red&nbsp;Line:</font></td>
+                <td>
+                    <stripes:text readonly="true" name="redline" id="r1" size="10" value="${actionBean.redline}"/><img onclick="showCalendar('r1', '%d.%m.%Y', false, true);" border="0px" src="<c:url value="/images/calendar.png"/>" />&nbsp;<img onclick="document.taskForm.deadline.value = '';" border="0px" src="<c:url value="/images/nocalendar.png"/>" />
+                </td>
+            </tr>
         </table>
     </td>
     <td>
         <table width="100%">
-            <td bgcolor="black"><font color="white">Dead&nbsp;Line:</font></td> 
-            <td><stripes:text readonly="true" name="deadline" size="10" value="${actionBean.deadline}" /></td> 
-            <td><nobr><img onclick="dlinec.popup('deadline');" border="0px" src="<c:url value="/images/calendar.png"/>" /><img onclick="document.taskForm.deadline.value = '';" border="0px" src="<c:url value="/images/nocalendar.png"/>" /></nobr></td>
+            <tr>
+                <td bgcolor="black"><font color="white">Dead&nbsp;Line:</font></td>
+                <td>
+                    <stripes:text readonly="true" name="deadline" id="d1" size="10" value="${actionBean.deadline}"/><img onclick="showCalendar('d1', '%d.%m.%Y', false, true);" border="0px" src="<c:url value="/images/calendar.png"/>" />&nbsp;<img onclick="document.taskForm.deadline.value = '';" border="0px" src="<c:url value="/images/nocalendar.png"/>" />
+                </td>
+            </tr>
         </table>
     </td>
 </tr>
 <tr>
     <td colspan="2" align="center"><stripes:submit name="submit" value="Apply" />&nbsp;<stripes:reset name="reset"/></td>
 </tr>
-</table>     
+</table>
 </stripes:form>
-        
+
+
 
 <%@ include file="/WEB-INF/jsp/includes/rightpan.jsp" %>
 <%@ include file="/WEB-INF/jsp/includes/foot.jsp" %>
