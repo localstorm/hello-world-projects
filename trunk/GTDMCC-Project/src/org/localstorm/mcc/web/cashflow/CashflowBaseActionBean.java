@@ -1,7 +1,7 @@
 package org.localstorm.mcc.web.cashflow;
 
 import org.localstorm.mcc.ejb.ContextLookup;
-import org.localstorm.mcc.ejb.cashflow.AssetManager;
+import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
 import org.localstorm.mcc.web.BaseActionBean;
 
 /**
