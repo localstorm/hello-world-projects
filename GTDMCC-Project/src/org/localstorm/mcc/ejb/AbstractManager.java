@@ -2,6 +2,7 @@ package org.localstorm.mcc.ejb;
 
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
+import javax.persistence.FlushModeType;
 import javax.persistence.PersistenceContext;
 import org.localstorm.mcc.ejb.except.DuplicateException;
 import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
@@ -47,6 +48,11 @@ public abstract class AbstractManager<T extends Identifiable> implements BaseMan
         }
         
         return t;
+    }
+
+    @Override
+    public void flush() {
+        em.flush();
     }
 
     @Override

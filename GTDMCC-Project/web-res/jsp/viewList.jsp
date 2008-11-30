@@ -29,6 +29,27 @@
             </tr>
             <tr>
                 <td>&nbsp;</td>
+                <td>Effort: </td>
+                <td>
+                    <stripes:select name="effort" value="3" style="width: 100%">
+                        <c:forEach items="${actionBean.efforts}" var="effort">
+                            <stripes:option value="${effort.effort}"><c:out value="${effort.latinName}"/></stripes:option>
+                        </c:forEach>
+                    </stripes:select>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>Flight: </td>
+                <td>
+                    <stripes:checkbox name="flight" checked="false" />
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+
+            <tr>
+                <td>&nbsp;</td>
                 <td colspan="2"><hr/></td>
                 <td>&nbsp;</td>
             </tr>

@@ -27,7 +27,15 @@ import org.localstorm.mcc.ejb.Identifiable;
 @NamedQueries({
     @NamedQuery(
         name = Asset.Queries.FIND_BY_OWNER,
-        query= "SELECT o FROM Asset o WHERE o.valuable.owner=:owner ORDER BY o.name"
+        query= "SELECT o FROM Asset o WHERE o.valuable.owner=:owner and o.archived = false ORDER BY o.name"
+    ),
+    @NamedQuery(
+        name = Asset.Queries.FIND_BY_VALUABLE,
+        query= "SELECT o FROM Asset o WHERE o.valuable=:valuable"
+    ),
+    @NamedQuery(
+        name = Asset.Queries.FIND_ARCHIVED_BY_OWNER,
+        query= "SELECT o FROM Asset o WHERE o.valuable.owner=:owner and o.archived = true ORDER BY o.name"
     )
 })
 public class Asset implements Identifiable, Serializable {
@@ -39,9 +47,12 @@ public class Asset implements Identifiable, Serializable {
     @Column(name="name", unique=false, updatable=true, nullable=false )
     private String name;
 
-    @JoinColumn(name="valuable_id", nullable=false)
-    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="valuable_id", updatable=false, nullable=false)
+    @ManyToOne(fetch=FetchType.EAGER)
     private ValuableObject valuable;
+
+    @Column(name="is_archived", updatable=true, nullable=false )
+    private boolean archived;
 
     public Asset() {
     }
@@ -67,13 +78,25 @@ public class Asset implements Identifiable, Serializable {
         this.valuable = valuable;
     }
 
+    public void setArchived(boolean archived) {
+        this.archived = archived;
+    }
+
+    public boolean isArchived() {
+        return archived;
+    }
+
     public static interface Queries
     {
+        public static final String FIND_BY_VALUABLE       = "findAssetByValuable";
         public static final String FIND_BY_OWNER          = "findAssetsByUser";
+        public static final String FIND_ARCHIVED_BY_OWNER = "findArchivedAssetsByUser";
     }
 
     public static interface Properties
     {
+        public static final String VALUABLE = "valuable";
         public static final String OWNER = "owner";
+        public static final String ID    = "id";
     }
 }

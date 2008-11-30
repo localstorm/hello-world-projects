@@ -150,11 +150,11 @@ create table FILES_TO_OBJECTS
 --drop table COSTS;
 --drop table VALUABLE_OBJECTS;
 
+
 create table VALUABLE_OBJECTS
 (
     id INT NOT NULL AUTO_INCREMENT,
     user_id INT not null,
-    is_archived SMALLINT not NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES USERS(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
@@ -163,6 +163,7 @@ create table ASSETS
 (
     id INT NOT NULL AUTO_INCREMENT,
     name        TEXT NOT NULL,
+    is_archived SMALLINT NOT NULL,    
     valuable_id INT NOT NULL,
     PRIMARY KEY (id),    
     FOREIGN KEY (valuable_id) REFERENCES VALUABLE_OBJECTS(id)  ON DELETE CASCADE
@@ -182,10 +183,10 @@ create table COSTS
     id INT NOT NULL AUTO_INCREMENT,
     valuable_id INT NOT NULL,
     actuation_date DATETIME NOT NULL,
-    buy  DECIMAL(10,5),
-    sell DECIMAL(10,5),
-    exchange_buy  DECIMAL(10,5),
-    exchange_sell DECIMAL(10,5),
+    buy  DECIMAL(15,5),
+    sell DECIMAL(15,5),
+    exchange_buy  DECIMAL(15,5),
+    exchange_sell DECIMAL(15,5),
     PRIMARY KEY (id),    
     FOREIGN KEY (valuable_id) REFERENCES VALUABLE_OBJECTS(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
@@ -196,16 +197,10 @@ create table OPERATIONS
     type        TEXT NOT NULL,
     comment     TEXT NOT NULL,
     operation_date DATETIME NOT NULL,
-    amount  DECIMAL(10,5) NOT NULL,
+    amount  DECIMAL(15,5) NOT NULL,
     cost_id INT NOT NULL,
     PRIMARY KEY (id),    
     FOREIGN KEY (cost_id) REFERENCES COSTS(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-
-select * from USERS
-insert into VALUABLE_OBJECTS (id, user_id, is_archived) values (null, 174947681, false);
-insert into ASSETS (id, name, valuable_id) values (null, "Her", "1");
-
-insert into COSTS (id, valuable_id, actuation_date, buy, sell, exchange_buy, exchange_sell) VALUES (null, 1, CURRENT_TIME, 1.0, 2.0, 3.0. 4.0)
 

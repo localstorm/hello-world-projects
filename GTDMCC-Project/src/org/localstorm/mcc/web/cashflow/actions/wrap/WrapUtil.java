@@ -12,17 +12,25 @@ import org.localstorm.mcc.ejb.cashflow.ValuableObject;
  */
 public class WrapUtil {
 
+    public static Asset wrapAsset(Asset ass, 
+                                  AssetManager am)
+    {
+        ValuableObject vo = ass.getValuable();
+        return new AssetWrapper(ass, 
+                                am.getTotalAmount(vo),
+                                am.getCurrentCost(vo),
+                                am.getInvestmentsCost(vo),
+                                am.getBalance(vo),
+                                am.getRevenuAmount(vo));
+    }
+
     public static Collection<Asset> wrapAssets(Collection<Asset> assets,
                                                AssetManager am)
     {
         Collection<Asset> result = new ArrayList<Asset>(assets.size());
         for (Asset ass: assets)
         {
-            ValuableObject vo = ass.getValuable();
-            result.add(new AssetWrapper(ass,
-                                        am.getTotalAmount(vo),
-                                        am.getCurrentCost(vo),
-                                        am.getInvestmentsCost(vo)));
+            result.add(wrapAsset(ass, am));
         }
 
         return result;

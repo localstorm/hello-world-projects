@@ -7,7 +7,9 @@
 
 <c:forEach items="${actionBean.assets}" var="asset">
 <table width="80%" border="0px" >
-    <tr><th colspan="2" align="center"><a hre="#"><c:out value="${asset.name}"/></a></th></tr>
+    <tr><th colspan="2" align="center"><a href="<c:url value="/actions/ViewAsset">
+                                                    <c:param name="assetId" value="${asset.id}" />
+                                                </c:url>"><c:out value="${asset.name}"/></a></th></tr>
     <tr bgcolor="#FBFFBD">
         <td width="50%" align="right" >Buy cost (1 piece):</td>
         <td width="50%" align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${asset.currentCost.buy}"/></td>
@@ -16,11 +18,13 @@
         <td align="right">Sell cost (1 piece):</td>
         <td align="right"><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${asset.currentCost.sell}"/></td>
     </tr>
-    <c:if test="${(not empty asset.currentCost.exchangeBuy) and (not empty asset.currentCost.exchangeSell)}">
+    <c:if test="${not empty asset.currentCost.exchangeBuy}">
     <tr bgcolor="#FBFFBD">
         <td align="right">Buy for exchange cost (1 piece):</td>
         <td align="right"><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${asset.currentCost.exchangeBuy}"/></td>
     </tr>
+    </c:if>
+    <c:if test="${not empty asset.currentCost.exchangeSell}">
     <tr bgColor="#DFFFBF">
         <td align="right" >Sell for exchange cost (1 piece):</td>
         <td align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${asset.currentCost.exchangeSell}"/></td>
@@ -35,33 +39,16 @@
         <td align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${asset.netWealth}"/></td>
     </tr>
     <tr bgColor="#FBFFBD">
-        <td align="right" >Investments cost:</td>
+        <td align="right" >Investment amount:</td>
         <td align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${asset.investmentsCost}"/></td>
     </tr>
     <tr bgColor="#DFFFBF">
-        <td align="right" >Net profit:</td>
-        <td align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${asset.netWealth-asset.investmentsCost}"/></td>
+        <td align="right" >Revenu amount:</td>
+        <td align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${asset.revenuAmount}"/></td>
     </tr>
-    <tr bgcolor="#FFEABD">
-        <td colspan="2">
-        <table width="100%" border="0px">
-            <tr>
-                <td align="left" border="0px">
-                    <img src="<c:url value="/images/buy.png"/>"/>
-                    <c:if test="${not empty asset.currentCost.exchangeBuy}">
-                        <img src="<c:url value="/images/exchange_buy.png"/>"/>
-                    </c:if>
-                    <img src="<c:url value="/images/sell.png"/>"/>
-                    <c:if test="${not empty asset.currentCost.exchangeSell}">
-                        <img src="<c:url value="/images/exchange_sell.png"/>"/>
-                    </c:if>
-                </td>
-                <td align="right"  border="0px">
-                    <img src="<c:url value="/images/history.png"/>"/>
-                </td>
-            </tr>
-        </table>
-        </td>
+    <tr bgColor="#FBFFBD">
+        <td align="right" >Balance:</td>
+        <td align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${asset.balance}"/></td>
     </tr>
 </table>
 </c:forEach>
