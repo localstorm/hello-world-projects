@@ -1,4 +1,4 @@
-package org.localstorm.mcc.web.gtd.actions;
+package org.localstorm.mcc.web;
 
 /**
  *

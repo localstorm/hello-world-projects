@@ -6,6 +6,7 @@
 package org.localstorm.mcc.web.cashflow.actions;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
@@ -81,12 +82,14 @@ public class VOPricesUpdateActionBean extends CashflowBaseActionBean {
         AssetManager am = super.getAssetManager();
         ValuableObject vo = am.findValuableById(this.getValuableId());
 
+        MathContext rounding = new MathContext(5);
+
         Cost cost = new Cost(vo);
         {
-            cost.setBuy(this.getBuy());
-            cost.setExchangeBuy(this.getBuyFx());
-            cost.setSell(this.getSell());
-            cost.setExchangeSell(this.getSellFx());
+            cost.setBuy(RoundUtil.round(this.getBuy(), rounding));
+            cost.setExchangeBuy(RoundUtil.round(this.getBuyFx(), rounding));
+            cost.setSell(RoundUtil.round(this.getSell(), rounding));
+            cost.setExchangeSell(RoundUtil.round(this.getSellFx(), rounding));
         }
         
         am.updateCost(vo, cost);
