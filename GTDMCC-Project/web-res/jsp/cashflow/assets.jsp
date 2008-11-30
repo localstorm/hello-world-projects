@@ -3,6 +3,8 @@
 
 <%@ include file="/WEB-INF/jsp/includes/cashflow/hdr.jsp" %>
 
+<h2><span>ASSETS</span> list</h2>
+<br/>
 <div align="center">
 <table width="80%" border="0px" >
     <tr><th colspan="2" align="center">Totals:</th></tr>

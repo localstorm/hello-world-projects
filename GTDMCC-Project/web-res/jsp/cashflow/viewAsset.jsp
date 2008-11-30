@@ -187,7 +187,9 @@
     <stripes:hidden name="valuableId" value="${actionBean.assetResult.valuable.id}" />
 
 <table width="80%" border="0px" >
-    <tr><th colspan="2" align="center"><c:out value="${actionBean.assetResult.name}"/> (<a href="#">Operations</a>)</th></tr>
+    <tr><th colspan="2" align="center"><c:out value="${actionBean.assetResult.name}"/> (<a href="<c:url value="/actions/ViewOperations">
+                                                                                            <c:param name="assetId" value="${actionBean.assetResult.id}" />
+                                                                                        </c:url>">Operations</a>)</th></tr>
     <tr bgcolor="#FBFFBD">
         <td width="50%" align="right" >Buy cost (1 piece):</td>
         <td width="50%" align="right" ><stripes:text name="buy" id="buy-id" value="${buyCost}" style="width: 95%"/></td>
