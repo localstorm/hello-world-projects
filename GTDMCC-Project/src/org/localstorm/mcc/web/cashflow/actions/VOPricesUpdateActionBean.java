@@ -11,9 +11,9 @@ import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.cashflow.AssetManager;
-import org.localstorm.mcc.ejb.cashflow.Cost;
-import org.localstorm.mcc.ejb.cashflow.ValuableObject;
+import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
+import org.localstorm.mcc.ejb.cashflow.asset.Cost;
+import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
 
 /**

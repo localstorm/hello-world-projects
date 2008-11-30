@@ -1,4 +1,4 @@
-package org.localstorm.mcc.ejb.cashflow;
+package org.localstorm.mcc.ejb.cashflow.asset;
 
 import java.math.BigDecimal;
 import java.util.Collection;

@@ -2,9 +2,9 @@ package org.localstorm.mcc.web.cashflow.actions.wrap;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import org.localstorm.mcc.ejb.cashflow.Asset;
-import org.localstorm.mcc.ejb.cashflow.AssetManager;
-import org.localstorm.mcc.ejb.cashflow.ValuableObject;
+import org.localstorm.mcc.ejb.cashflow.asset.Asset;
+import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
+import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
 
 /**
  *

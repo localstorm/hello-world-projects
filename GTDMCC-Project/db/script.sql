@@ -203,3 +203,19 @@ create table OPERATIONS
     FOREIGN KEY (cost_id) REFERENCES COSTS(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
+
+--drop table HISTORICAL_VALUES
+
+create table HISTORICAL_VALUES
+(
+    id INT NOT NULL AUTO_INCREMENT,
+    value_tag   TEXT,
+    fix_date DATETIME NOT NULL,
+    val  DECIMAL(30,10) NOT NULL,
+    object_id INT,
+    user_id INT not null,
+    PRIMARY KEY (id),    
+    FOREIGN KEY (user_id) REFERENCES USERS(id)  ON DELETE CASCADE
+)  ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+

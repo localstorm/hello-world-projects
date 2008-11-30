@@ -19,12 +19,11 @@ import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 import org.jfree.util.Rotation;
 import org.localstorm.mcc.ejb.ContextLookup;
-import org.localstorm.mcc.ejb.cashflow.Asset;
-import org.localstorm.mcc.ejb.cashflow.AssetManager;
+import org.localstorm.mcc.ejb.cashflow.asset.Asset;
+import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.Constants;
 import org.localstorm.mcc.web.SessionKeys;
-import org.localstorm.mcc.web.cashflow.actions.RoundUtil;
 import org.localstorm.mcc.web.cashflow.actions.wrap.AssetWrapper;
 import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
 import org.localstorm.mcc.web.util.SessionUtil;
@@ -57,10 +56,16 @@ public class TotalWealthPieChartServlet extends HttpServlet
             false
         );
 
+
+
         final PiePlot3D plot = (PiePlot3D) chart.getPlot();
-        plot.setStartAngle(290);
+        plot.setDarkerSides(true);
+        plot.setIgnoreZeroValues(true);
+
+        plot.setCircular(true);
+        plot.setStartAngle(120);
         plot.setDirection(Rotation.CLOCKWISE);
-        plot.setForegroundAlpha(0.5f);
+        plot.setForegroundAlpha(0.7f);
         plot.setNoDataMessage("No data to display");
         
         resp.setContentType("image/png");
@@ -78,7 +83,6 @@ public class TotalWealthPieChartServlet extends HttpServlet
         Collection<Asset> assets = am.findAssetsByOwner(user);
         assets = WrapUtil.wrapAssets(assets, am);
 
-        MathContext rounding = new MathContext(0);
         final DefaultPieDataset result = new DefaultPieDataset();
 
         for (Asset a: assets)
