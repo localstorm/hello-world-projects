@@ -4,7 +4,18 @@
 <%@ include file="/WEB-INF/jsp/includes/cashflow/hdr.jsp" %>
 
 <div align="center">
-
+<table width="80%" border="0px" >
+    <tr><th colspan="2" align="center">Totals:</th></tr>
+    <tr bgcolor="#FBFFBD">
+        <td width="50%" align="right" >Net wealth:</td>
+        <td width="50%" align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${actionBean.netWealth}"/></td>
+    </tr>
+    <tr bgColor="#DFFFBF">
+        <td width="50%" align="right" >Balance:</td>
+        <td width="50%" align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${actionBean.balance}"/></td>
+    </tr>
+</table>
+<hr/>
 <c:forEach items="${actionBean.assets}" var="asset">
 <table width="80%" border="0px" >
     <tr><th colspan="2" align="center"><a href="<c:url value="/actions/ViewAsset">

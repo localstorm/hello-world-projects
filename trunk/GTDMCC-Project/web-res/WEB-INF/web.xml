@@ -62,10 +62,22 @@
                 <servlet-name>StripesDispatcher</servlet-name>
                 <dispatcher>REQUEST</dispatcher>
         </filter-mapping>
+
+        <filter-mapping>
+                <filter-name>AuthFilter</filter-name>
+                <url-pattern>/chart/*</url-pattern>
+                <dispatcher>REQUEST</dispatcher>
+        </filter-mapping>
         
         <filter-mapping>
                 <filter-name>TxFilter</filter-name>
                 <servlet-name>StripesDispatcher</servlet-name>
+                <dispatcher>REQUEST</dispatcher>
+        </filter-mapping>
+
+        <filter-mapping>
+                <filter-name>TxFilter</filter-name>
+                <url-pattern>/chart/*</url-pattern>
                 <dispatcher>REQUEST</dispatcher>
         </filter-mapping>
         
@@ -86,19 +98,26 @@
                 <servlet-name>StripesDispatcher</servlet-name>
                 <dispatcher>REQUEST</dispatcher>
         </filter-mapping>
-        
+
+
         <servlet>
                 <servlet-name>StripesDispatcher</servlet-name>
                 <servlet-class>net.sourceforge.stripes.controller.DispatcherServlet</servlet-class>
                 <load-on-startup>1</load-on-startup>
         </servlet>
-        
+
+        <servlet>
+                <servlet-name>TotalWealthPieChartServlet</servlet-name>
+                <servlet-class>org.localstorm.mcc.web.cashflow.servlets.TotalWealthPieChartServlet</servlet-class>
+                <load-on-startup>2</load-on-startup>
+        </servlet>
+
         <servlet>
                 <servlet-name>AuthServlet</servlet-name>
                 <servlet-class>org.localstorm.mcc.web.AuthServlet</servlet-class>
                 <load-on-startup>2</load-on-startup>
         </servlet>
-        
+
         <servlet-mapping>
                 <servlet-name>StripesDispatcher</servlet-name>
                 <url-pattern>/actions/*</url-pattern>
@@ -108,6 +127,12 @@
                 <servlet-name>AuthServlet</servlet-name>
                 <url-pattern>/auth</url-pattern>
         </servlet-mapping>
+
+                <servlet-mapping>
+                <servlet-name>TotalWealthPieChartServlet</servlet-name>
+                <url-pattern>/chart/totalWealth.png</url-pattern>
+        </servlet-mapping>
+
 
 
 </web-app>
