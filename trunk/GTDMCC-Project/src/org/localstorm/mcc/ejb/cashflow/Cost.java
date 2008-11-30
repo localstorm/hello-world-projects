@@ -63,6 +63,7 @@ public class Cost implements Identifiable, Serializable {
 
     protected Cost()
     {
+        this.actuationDate = new Date();
     }
 
     public Cost(ValuableObject vo)

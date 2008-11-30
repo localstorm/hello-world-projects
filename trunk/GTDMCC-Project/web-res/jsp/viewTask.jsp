@@ -57,7 +57,7 @@ var dlinec = new CodeThatCalendar(caldef1);
             <tr>
                 <td bgcolor="red"><font color="yellow">Red&nbsp;Line:</font></td>
                 <td>
-                    <stripes:text readonly="true" name="redline" id="r1" size="10" value="${actionBean.redline}"/><img onclick="showCalendar('r1', '%d.%m.%Y', false, true);" border="0px" src="<c:url value="/images/calendar.png"/>" />&nbsp;<img onclick="document.taskForm.deadline.value = '';" border="0px" src="<c:url value="/images/nocalendar.png"/>" />
+                    <stripes:text readonly="true" name="redline" id="r1" size="10" value="${actionBean.redline}"/><img onclick="showCalendar('r1', '%d.%m.%Y', false, true);" border="0px" src="<c:url value="/images/calendar.png"/>" />&nbsp;<img onclick="document.taskForm.redline.value = '';" border="0px" src="<c:url value="/images/nocalendar.png"/>" />
                 </td>
             </tr>
         </table>

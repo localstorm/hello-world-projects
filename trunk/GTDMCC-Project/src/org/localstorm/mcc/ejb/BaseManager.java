@@ -13,4 +13,5 @@ public interface BaseManager<T>
     public void create(T o) throws DuplicateException;
     public T findById( int id ) throws ObjectNotFoundException;
     public void remove( T o );
+    public void flush();
 }

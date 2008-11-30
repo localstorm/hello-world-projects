@@ -35,7 +35,15 @@ import org.localstorm.mcc.ejb.Identifiable;
     ),
     @NamedQuery(
         name = Operation.Queries.SUM_BOUGHT_FOR_EXCHANGE_BY_VO,
-        query= "SELECT SUM(o.cost.exchangeBuy) FROM Operation o WHERE o.cost.valuable=:valuable and o.type='BUY_FX' and o.cost.exchangeBuy IS NOT NULL"
+        query= "SELECT SUM(o.cost.exchangeBuy*o.amount) FROM Operation o WHERE o.cost.valuable=:valuable and o.type='BUY_FX' and o.cost.exchangeBuy IS NOT NULL"
+    ),
+    @NamedQuery(
+        name = Operation.Queries.SUM_SELL_BY_VO,
+        query= "SELECT SUM(o.cost.sell*o.amount) FROM Operation o WHERE o.cost.valuable=:valuable and o.type='SELL' and o.cost.sell IS NOT NULL"
+    ),
+    @NamedQuery(
+        name = Operation.Queries.SUM_SELL_FOR_EXCHANGE_BY_VO,
+        query= "SELECT SUM(o.cost.exchangeSell*o.amount) FROM Operation o WHERE o.cost.valuable=:valuable and o.type='SELL_FX' and o.cost.exchangeSell IS NOT NULL"
     ),
     @NamedQuery(
         name = Operation.Queries.SUM_AMOUNT_BY_VO,
@@ -57,7 +65,7 @@ public class Operation implements Identifiable, Serializable {
     @Column(name="amount", unique=false, updatable=true, nullable=false)
     private BigDecimal amount;
 
-    @Column(name="actuation_date", unique=false, updatable=true, nullable=false )
+    @Column(name="operation_date", unique=false, updatable=true, nullable=false )
     @Temporal(TemporalType.TIMESTAMP)
     private Date operationDate;
 
@@ -116,6 +124,8 @@ public class Operation implements Identifiable, Serializable {
         public static final String SUM_BOUGHT_BY_VO = "sumBought";
         public static final String SUM_BOUGHT_FOR_EXCHANGE_BY_VO = "sumBoughtFx";
         public static final String SUM_AMOUNT_BY_VO = "totalAmount";
+        public static final String SUM_SELL_BY_VO   = "sumSell";
+        public static final String SUM_SELL_FOR_EXCHANGE_BY_VO = "sumSellFx";
     }
 
     public static interface Properties

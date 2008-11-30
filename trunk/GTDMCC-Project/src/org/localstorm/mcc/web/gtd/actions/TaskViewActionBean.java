@@ -1,6 +1,5 @@
 package org.localstorm.mcc.web.gtd.actions;
 
-import org.localstorm.mcc.web.BaseActionBean;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -10,7 +9,6 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 
-import org.localstorm.mcc.ejb.gtd.tasks.Effort;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.web.gtd.Views;
@@ -43,11 +41,6 @@ public class TaskViewActionBean extends GtdBaseActionBean
         return taskResult;
     }
     
-    public Effort[] getEfforts()
-    {
-        return Effort.values();
-    }
-
     public void setTaskResult(Task taskResult) {
         this.taskResult = taskResult;
     }

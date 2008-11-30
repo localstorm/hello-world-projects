@@ -6,7 +6,6 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
 import org.localstorm.mcc.ejb.AbstractManager;
-import org.localstorm.mcc.ejb.gtd.contexts.Context;
 import org.localstorm.mcc.ejb.gtd.lists.GTDList;
 import org.localstorm.mcc.ejb.users.User;
 
@@ -22,11 +21,6 @@ public class TaskManagerBean extends AbstractManager<Task>
         super(Task.class);
     }
 
-    
-    @Override
-    public Collection<Task> findByContext(Context ctx) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 
     @Override
     public Collection<Task> findOpeartiveByList(GTDList l) {
@@ -34,7 +28,6 @@ public class TaskManagerBean extends AbstractManager<Task>
         tq.setParameter(Task.Properties.LIST, l);
         
         List<Task> list = tq.getResultList();
-        System.out.println("RETURNED: "+list.size());
         return list;
     }
     
@@ -45,7 +38,6 @@ public class TaskManagerBean extends AbstractManager<Task>
         tq.setParameter(Task.Properties.LIST, l);
         
         List<Task> list = tq.getResultList();
-        System.out.println("RETURNED: "+list.size());
         return list;
     }
 

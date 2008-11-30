@@ -20,19 +20,7 @@
             <table class="reports">
                 <tr>
                     <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
-                    <td><a href="#">#####</a></td>
-                </tr>
-                <tr>
-                    <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
-                    <td><a href="#">#####</a></td>
-                </tr>
-                <tr>
-                    <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
-                    <td><a href="#">#####</a></td>
-                </tr>
-                <tr>
-                    <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
-                    <td><a href="#">####</a></td>
+                    <td><a href="#">Total wealth</a></td>
                 </tr>
             </table>
 </div>

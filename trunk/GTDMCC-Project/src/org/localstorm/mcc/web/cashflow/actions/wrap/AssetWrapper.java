@@ -21,8 +21,15 @@ public class AssetWrapper extends Asset {
     private Cost cost;
     private BigDecimal netWealth;
     private BigDecimal iCost;
+    private BigDecimal balance;
+    private BigDecimal revenuAmount;
 
-    public AssetWrapper(Asset asset, BigDecimal amount, Cost cost, BigDecimal iCost) {
+    public AssetWrapper(Asset asset, 
+                        BigDecimal amount,
+                        Cost cost,
+                        BigDecimal iCost,
+                        BigDecimal balance,
+                        BigDecimal revenuAmount) {
         if (amount==null) {
             throw new NullPointerException("Amount is null!");
         }
@@ -36,6 +43,8 @@ public class AssetWrapper extends Asset {
         this.cost      = cost;
         this.iCost     = iCost;
         this.netWealth = amount.multiply(cost.getSell());
+        this.balance   = balance;
+        this.revenuAmount = revenuAmount;
     }
 
     @Override
@@ -83,4 +92,12 @@ public class AssetWrapper extends Asset {
         return this.iCost;
     }
 
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    public BigDecimal getRevenuAmount() {
+        return revenuAmount;
+    }
+    
 }

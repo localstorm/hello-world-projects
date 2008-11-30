@@ -33,7 +33,7 @@ public class Target implements Identifiable, Serializable {
     private String name;
 
     @JoinColumn(name="valuable_id", nullable=false)
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.EAGER)
     private ValuableObject valuable;
 
     public Target() {

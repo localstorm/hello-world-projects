@@ -19,18 +19,32 @@ public  class FlightPlanManagerBean extends AbstractSingletonManager<FlightPlan,
 {
 
     @Override
-    public void addTaskToFlightPlan(Task t, FlightPlan fp) {
+    public void addTaskToFlightPlan(Task t, FlightPlan fp, boolean newTask) {
+
+        if (newTask) {
+            FlightPlanToTask fp2t = new FlightPlanToTask(fp, t);
+            em.persist(fp2t);
+            return;
+        }
+        
         Query uq = em.createNamedQuery(FlightPlanToTask.Queries.FIND_CONNECTORS_BY_TASK_AND_PLAN);
         {
             uq.setParameter(FlightPlanToTask.Properties.FLIGHT_PLAN, fp);
             uq.setParameter(FlightPlanToTask.Properties.TASK, t);
         }
-        
+
         List<FlightPlanToTask> list = uq.getResultList();
         if (list.isEmpty()) {
             FlightPlanToTask fp2t = new FlightPlanToTask(fp, t);
             em.persist(fp2t);
         }
+    }
+
+
+
+    @Override
+    public void addTaskToFlightPlan(Task t, FlightPlan fp) {
+        this.addTaskToFlightPlan(t, fp, false);
     }
     
     @Override

@@ -9,6 +9,8 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
+import org.localstorm.mcc.ejb.gtd.flight.FlightPlan;
+import org.localstorm.mcc.ejb.gtd.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.gtd.lists.GTDList;
 import org.localstorm.mcc.ejb.gtd.lists.ListManager;
 
@@ -22,51 +24,65 @@ public class TaskAddActionBean extends ListViewActionBean
 
     @Validate( required=true )
     private String summary;
-    
-    /*@Validate( required=true )
-    private int listId;
 
-    public int getListId() {
-        return listId;
-    }*/
+    @Validate( required=true )
+    private Integer effort;
+
+    private boolean flight;
 
     public String getSummary() {
         return summary;
     }
 
-    /*public void setListId(int listId) {
-        this.listId = listId;
-    }*/
-
     public void setSummary(String summary) {
         this.summary = summary;
     }
 
+    public Integer getEffort() {
+        return effort;
+    }
+
+    public void setEffort(Integer effort) {
+        this.effort = effort;
+    }
+
+    public boolean isFlight() {
+        return flight;
+    }
+
+    public void setFlight(boolean flight) {
+        this.flight = flight;
+    }
     
     @After( LifecycleStage.BindingAndValidation ) 
     public void doPostValidationStuff() throws Exception {
         if ( getContext().getValidationErrors().hasFieldErrors() )
         {
-            System.out.println("Forced Filling!");
             super.filling();
         }
     }
     
     @DefaultHandler
     public Resolution addTask() throws Exception {
-        System.out.println("Adding task:"+getSummary());
 
         ListManager lm = getListManager();
-        GTDList list = lm.findById(getListId());
+        GTDList list = lm.findById(super.getListId());
         
-        Task t = new Task(getSummary(), "", list, null, null);
+        Task t = new Task(this.getSummary(), "", list, null, null);
+        t.setEffort(this.getEffort());
         t.setSortOrder(1);
         
         TaskManager tm = getTaskManager();
         tm.create(t);
+
+        if (t.getId()!=null && this.isFlight()) {
+            FlightPlanManager fpm = super.getFlightPlanManager();
+            FlightPlan fp         = fpm.findCurrent(super.getUser());
+            fpm.addTaskToFlightPlan(t, fp, true);
+        }
         
         RedirectResolution rr = new RedirectResolution( ListViewActionBean.class );
-        rr.addParameter( ListViewActionBean.IncommingParameters.LIST_ID, getListId() );
+        rr.addParameter( ListViewActionBean.IncommingParameters.LIST_ID, super.getListId() );
         return rr;
     }
     

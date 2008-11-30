@@ -26,15 +26,32 @@ public class AssetManagerBean implements AssetManagerLocal,
 
     @Override
     public void createAsset(Asset newAsset, Cost assetCost) {
+       ValuableObject vo = newAsset.getValuable();
+       em.persist(vo);
        em.persist(newAsset);
-       assetCost.setValuable(newAsset.getValuable());
+
+       assetCost.setValuable(vo);
        em.persist(assetCost);
     }
 
     @Override
+    public void update(Asset asset) {
+        em.merge(asset);
+    }
+
+    @Override
+    public void remove(Asset asset) {
+        asset = (Asset) em.find(Asset.class, asset.getId() );
+        em.remove(asset);
+    }
+
+    @Override
     public void createTarget(Target newTarget, Cost targetCost) {
+       ValuableObject vo = newTarget.getValuable();
+       em.persist(vo);
        em.persist(newTarget);
-       targetCost.setValuable(newTarget.getValuable());
+
+       targetCost.setValuable(vo);
        em.persist(targetCost);
     }
 
@@ -46,6 +63,16 @@ public class AssetManagerBean implements AssetManagerLocal,
         List<Asset> list = uq.getResultList();
         return list;
     }
+
+    @Override
+    public Collection<Asset> findArchivedAssetsByOwner(User user) {
+        Query uq = em.createNamedQuery(Asset.Queries.FIND_ARCHIVED_BY_OWNER);
+        uq.setParameter(Asset.Properties.OWNER, user);
+
+        List<Asset> list = uq.getResultList();
+        return list;
+    }
+
 
     @Override
     public Cost getCurrentCost(ValuableObject vo) {
@@ -75,7 +102,8 @@ public class AssetManagerBean implements AssetManagerLocal,
     public void buy(ValuableObject vo, BigDecimal amount, String comment, boolean exchange) {
         Operation op = new Operation();
         {
-            op.setType((!exchange)?OperationTypes.BUY:OperationTypes.BUY_FX);
+            OperationType type = (!exchange)?OperationType.BUY:OperationType.BUY_FX;
+            op.setType(type.toString());
             op.setAmount(amount);
             op.setCost(this.getCurrentCost(vo));
             op.setOperationDate(new Date());
@@ -94,7 +122,8 @@ public class AssetManagerBean implements AssetManagerLocal,
 
         Operation op = new Operation();
         {
-            op.setType((!exchange)?OperationTypes.SELL:OperationTypes.SELL_FX);
+            OperationType type = (!exchange)?OperationType.SELL:OperationType.SELL_FX;
+            op.setType(type.toString());
             op.setAmount(amount.negate());
             op.setCost(this.getCurrentCost(vo));
             op.setOperationDate(new Date());
@@ -122,11 +151,35 @@ public class AssetManagerBean implements AssetManagerLocal,
         Query b2 = em.createNamedQuery(Operation.Queries.SUM_BOUGHT_FOR_EXCHANGE_BY_VO);
         b2.setParameter(Cost.Properties.VALUABLE, vo);
 
-        BigDecimal s1 = this.nvl((BigDecimal) b1.getSingleResult());
-        BigDecimal s2 = this.nvl((BigDecimal) b2.getSingleResult());
+        BigDecimal sb1 = this.nvl((BigDecimal) b1.getSingleResult());
+        BigDecimal sb2 = this.nvl((BigDecimal) b2.getSingleResult());
 
-        return s1.add(s2);
+        return sb1.add(sb2);
     }
+
+    @Override
+    public BigDecimal getRevenuAmount(ValuableObject vo) {
+        Query s1 = em.createNamedQuery(Operation.Queries.SUM_SELL_BY_VO);
+        s1.setParameter(Cost.Properties.VALUABLE, vo);
+
+        Query s2 = em.createNamedQuery(Operation.Queries.SUM_SELL_FOR_EXCHANGE_BY_VO);
+        s2.setParameter(Cost.Properties.VALUABLE, vo);
+
+        BigDecimal ss1 = this.nvl((BigDecimal) s1.getSingleResult());
+        BigDecimal ss2 = this.nvl((BigDecimal) s2.getSingleResult());
+        return BigDecimal.ZERO.subtract(ss1).subtract(ss2);
+    }
+
+    @Override
+    public BigDecimal getBalance(ValuableObject vo) {
+
+        BigDecimal netWealth  = this.getNetWealthSellCost(vo);
+        BigDecimal investment = this.getInvestmentsCost(vo);
+        BigDecimal ro         = this.getRevenuAmount(vo);
+
+        return netWealth.add(ro).subtract(investment);
+    }
+
 
     @Override
     public BigDecimal getTotalAmount(ValuableObject vo) {
@@ -135,6 +188,31 @@ public class AssetManagerBean implements AssetManagerLocal,
 
         BigDecimal sum = this.nvl((BigDecimal) total.getSingleResult());
         return sum;
+    }
+
+    @Override
+    public Asset findAssetsByValuable(ValuableObject vo) {
+        Query uq = em.createNamedQuery(Asset.Queries.FIND_BY_VALUABLE);
+        uq.setParameter(Asset.Properties.VALUABLE, vo);
+
+        return (Asset) uq.getSingleResult();
+    }
+
+
+    @Override
+    public Asset findAssetById(int assetId) {
+        return (Asset) em.find(Asset.class, assetId);
+    }
+
+    @Override
+    public ValuableObject findValuableById(Integer valuableId) {
+        return (ValuableObject) em.find(ValuableObject.class, valuableId);
+    }
+
+
+    @Override
+    public void updateValuableObject(ValuableObject vo) {
+        em.merge( vo );
     }
 
     private BigDecimal nvl(BigDecimal bigDecimal) {
