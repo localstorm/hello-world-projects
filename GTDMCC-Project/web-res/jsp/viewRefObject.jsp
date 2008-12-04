@@ -5,10 +5,54 @@
 		
 <h2><span>OBJECT</span> details</h2>
     
-    <div align="right" width="80%">Attach&nbsp;<a href="#" onclick="show('attachTextDiv', 'text-id'); hide('attachFileDiv'); hide('attachURLDiv'); return false">Note</a> | 
-    <a href="#" onclick="show('attachURLDiv', 'text-id'); hide('attachFileDiv'); hide('attachTextDiv'); return false">URL</a> |
-    <a href="#" onclick="show('attachFileDiv', 'desc-id'); hide('attachTextDiv'); hide('attachURLDiv'); return false">File</a> (<c:out value="${actionBean.objectResult.name}"/>)</div>
+    <div align="right" width="80%">Attach&nbsp;<a href="#" onclick="show('attachTextDiv', 'text-id'); hide('attachFileDiv'); hide('attachURLDiv'); hide('updateDiv'); return false">Note</a> |
+    <a href="#" onclick="show('attachURLDiv', 'text-id'); hide('attachFileDiv'); hide('attachTextDiv'); hide('updateDiv'); return false">URL</a> |
+    <a href="#" onclick="show('attachFileDiv', 'desc-id'); hide('attachTextDiv'); hide('attachURLDiv'); hide('updateDiv'); return false">File</a>
+        (<a href="#" onclick="show('updateDiv', 'new-name-id'); hide('attachTextDiv'); hide('attachURLDiv'); hide('attachFileDiv');"><c:out value="${actionBean.objectResult.name}"/></a>)</div>
+    
     <div align="center">
+
+    <div id="updateDiv" width="80%" style="display: <c:choose>
+             <c:when test="${not empty actionBean.context.validationErrors
+                             and not empty updateForm}">inline</c:when>
+             <c:otherwise>none</c:otherwise>
+    </c:choose>;">
+        <stripes:form action="/actions/UpdateRefObj" >
+        <stripes:hidden name="objectId" value="${actionBean.objectResult.id}"/>
+        <stripes:errors/>
+        <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
+            <tr>
+                <td>&nbsp;</td>
+                <td>Context: </td>
+                <td><stripes:select name="contextId" style="width: 100%;" value="${actionBean.currentContext.id}">
+                        <c:forEach items="${contexts}" var="ctx">
+                            <stripes:option value="${ctx.id}" label="${ctx.name}"/>
+                        </c:forEach>
+                    </stripes:select></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>Name: </td>
+                <td><stripes:text name="name" id="new-name-id" style="width: 100%;" value="${actionBean.objectResult.name}" /></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td colspan="2"><hr/></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td colspan="2" align="center">
+                    <stripes:submit name="submit" value="Update" style="width: 7em;"/>&nbsp;
+                    <stripes:submit name="cancel" value="Cancel" style="width: 7em;" onclick="hide('updateDiv'); return false" />
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+        </stripes:form>
+    </div>
 
     <div id="attachTextDiv" width="75%" style="display:
             <c:choose>

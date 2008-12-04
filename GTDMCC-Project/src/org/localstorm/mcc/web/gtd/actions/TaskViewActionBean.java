@@ -22,20 +22,19 @@ import org.localstorm.mcc.web.gtd.Views;
 public class TaskViewActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )
-    private int id;
+    private int taskId;
 
     private Task taskResult;
-    
     private String deadline;
     private String redline;
     private String returnPage;
     
-    public int getId() {
-        return id;
+    public int getTaskId() {
+        return taskId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setTaskId(int id) {
+        this.taskId = id;
     }
     
     public Task getTaskResult() {
@@ -76,7 +75,7 @@ public class TaskViewActionBean extends GtdBaseActionBean
         
         TaskManager tm = getTaskManager();
         
-        Task task = tm.findById(getId());
+        Task task = tm.findById(this.getTaskId());
         
         super.setCurrent(task);
         
@@ -85,7 +84,7 @@ public class TaskViewActionBean extends GtdBaseActionBean
         this.setDeadline(this.format(task.getDeadline(), sdf));
         this.setRedline(this.format(task.getRedline(), sdf));
         
-        System.out.println("Viewing task:" +id);
+        System.out.println("Viewing task:" +this.getTaskId());
         return new ForwardResolution(Views.VIEW_TASK);
     }
 

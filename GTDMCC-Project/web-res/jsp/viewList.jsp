@@ -105,7 +105,7 @@
     <tr> 
         <td>
             <p><img src="<c:url value="/images/loe${task.effort}.png"/>"/>&nbsp;<a href="<c:url value="/actions/ViewTask">
-                            <c:param name="id" value="${task.id}" />
+                            <c:param name="taskId" value="${task.id}" />
                         </c:url>"><c:out value="${task.summary}" /></a></p>
         <div id="<c:out value="delegate-${task.id}" />" style="display: none;" >
             <stripes:form action="/actions/ResolveTask" >
@@ -170,7 +170,7 @@
                             <c:param name="action" value="UNDELEGATE" />
                         </c:url>" title="Not delegated"><img border="0" src="<c:url value="/images/delegated.png"/>" /></a>
               <a href="<c:url value="/actions/ViewTask">
-                            <c:param name="id" value="${task.id}" />
+                            <c:param name="taskId" value="${task.id}" />
                         </c:url>"><c:out value="${task.summary}"/></a><hr/></p>
             <c:if test="${status.last}">
                 <p class="more"><a href="#">PRINT</a></p>
@@ -199,7 +199,7 @@
                         </c:url>" title="Erase">
                         <img border="0" src="<c:url value="/images/erase.png"/>" /></a>
               <a href="<c:url value="/actions/ViewTask">
-                            <c:param name="id" value="${task.id}" />
+                            <c:param name="taskId" value="${task.id}" />
                         </c:url>"><c:out value="${task.summary}"/></a><hr/></p>
         </td>
     </tr>
