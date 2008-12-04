@@ -32,8 +32,14 @@ public class RefObjectManagerBean extends AbstractManager<ReferencedObject>
     }
 
     @Override
-    public Collection<ReferencedObject> findOperativeByOwner(User user) {
-        Query lq = em.createNamedQuery(ReferencedObject.Queries.FIND_OPERATIVE_BY_OWNER);
+    public Collection<ReferencedObject> findOperativeByOwner(User user, boolean sortByContext) {
+        String queryName;
+        if (sortByContext) {
+            queryName = ReferencedObject.Queries.FIND_OPERATIVE_BY_OWNER;
+        } else {
+            queryName = ReferencedObject.Queries.FIND_OPERATIVE_BY_OWNER_NO_CTX_SORT;
+        }
+        Query lq = em.createNamedQuery(queryName);
         lq.setParameter(ReferencedObject.Properties.OWNER, user);
         
         List<ReferencedObject> list = lq.getResultList();

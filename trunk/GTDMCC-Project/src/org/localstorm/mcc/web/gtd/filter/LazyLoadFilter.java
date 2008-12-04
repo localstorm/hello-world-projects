@@ -75,7 +75,8 @@ public class LazyLoadFilter implements Filter
         if ( SessionUtil.isEmpty(sess, SessionKeys.REFERENCE_OBJECTS) ) {
             RefObjectManager rom = ContextLookup.lookup(RefObjectManager.class, 
                                                          RefObjectManager.BEAN_NAME);
-            SessionUtil.fill(sess, SessionKeys.REFERENCE_OBJECTS, rom.findOperativeByOwner(user));
+
+            SessionUtil.fill(sess, SessionKeys.REFERENCE_OBJECTS, rom.findOperativeByOwner(user, false));
         }
             
     }
