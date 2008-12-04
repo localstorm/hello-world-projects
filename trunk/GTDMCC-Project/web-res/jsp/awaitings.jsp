@@ -21,7 +21,7 @@
         <p><span><c:out value="${task.list.context.name}, ${task.list.name}"/>&nbsp;(Since: <fmt:formatDate value="${task.creation}"/>):</span><br/>
         <div align="center">
             <a href="<c:url value="/actions/ViewTask">
-                            <c:param name="id" value="${task.id}" />
+                            <c:param name="taskId" value="${task.id}" />
                             <c:param name="returnPage" value="AW_REPORT" />
                     </c:url>"><c:out value="${task.summary}" /></a>
         </div>
