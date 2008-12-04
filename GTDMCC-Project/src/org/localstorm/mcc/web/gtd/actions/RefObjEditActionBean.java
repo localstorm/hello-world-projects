@@ -5,7 +5,9 @@ import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
+import org.localstorm.mcc.ejb.gtd.referenced.RefObjectManager;
 import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
+import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.gtd.Views;
 
 /**
@@ -37,8 +39,11 @@ public class RefObjEditActionBean extends GtdBaseActionBean {
     
     @DefaultHandler
     public Resolution filling() {
-        this.setRefObjects( super.getRefObjectManager().findOperativeByOwner(super.getUser()) );
-        this.setArchiveObjects( super.getRefObjectManager().findAllArchivedByOwner(super.getUser()) );
+        RefObjectManager rom = super.getRefObjectManager();
+        User user = super.getUser();
+        
+        this.setRefObjects(     rom.findOperativeByOwner(user, true) );
+        this.setArchiveObjects( rom.findAllArchivedByOwner(user) );
         return new ForwardResolution( Views.EDIT_RO );
     }
 

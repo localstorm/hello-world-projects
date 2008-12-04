@@ -34,6 +34,10 @@ import org.localstorm.mcc.ejb.gtd.contexts.Context;
         query= "SELECT o FROM ReferencedObject o WHERE o.context.archived=false and o.context.owner=:owner and o.archived=false ORDER BY o.context.name, o.name"
     ),
     @NamedQuery(
+        name = ReferencedObject.Queries.FIND_OPERATIVE_BY_OWNER_NO_CTX_SORT,
+        query= "SELECT o FROM ReferencedObject o WHERE o.context.archived=false and o.context.owner=:owner and o.archived=false ORDER BY o.name"
+    ),
+    @NamedQuery(
         name = ReferencedObject.Queries.FIND_ARCHIVED_BY_OWNER,
         query= "SELECT o FROM ReferencedObject o WHERE o.context.owner=:owner and (o.archived=true or o.context.archived=true) ORDER BY o.context.name, o.name"
     )
@@ -117,6 +121,7 @@ public class ReferencedObject implements Serializable, Identifiable
         public static final String FIND_BY_OWNER = "findROByOwner";
         public static final String FIND_OPERATIVE_BY_OWNER = "findOpROByOwner";
         public static final String FIND_ARCHIVED_BY_OWNER = "findArROByOwner";
+        public static final String FIND_OPERATIVE_BY_OWNER_NO_CTX_SORT = "findOpROByOwnerNoCtxSort";
     }
     
     public static interface Properties
