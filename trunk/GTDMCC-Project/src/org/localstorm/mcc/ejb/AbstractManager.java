@@ -27,11 +27,13 @@ public abstract class AbstractManager<T extends Identifiable> implements BaseMan
     
     
     @Override
-    public void create(T o) throws DuplicateException 
+    public T create(T o) throws DuplicateException
     {
         try 
         {
             em.persist(o);
+            em.flush();
+            return o;
         } catch(EntityExistsException e) 
         {
             throw new DuplicateException(e);
@@ -41,7 +43,7 @@ public abstract class AbstractManager<T extends Identifiable> implements BaseMan
     @Override
     public T findById( int id ) throws ObjectNotFoundException
     {
-        T t = (T) em.find(cl, id);
+        T t = em.find(cl, id);
         if (t==null)
         {
             throw new ObjectNotFoundException();
@@ -57,7 +59,7 @@ public abstract class AbstractManager<T extends Identifiable> implements BaseMan
 
     @Override
     public void remove(T obj) {
-        obj = (T) em.find(cl, obj.getId() );
+        obj = em.find(cl, obj.getId() );
         em.remove(obj);
     }
     

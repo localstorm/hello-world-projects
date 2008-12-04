@@ -10,7 +10,7 @@ import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 public interface BaseManager<T>
 {
     public void update( T o );
-    public void create(T o) throws DuplicateException;
+    public T create(T o) throws DuplicateException;
     public T findById( int id ) throws ObjectNotFoundException;
     public void remove( T o );
     public void flush();

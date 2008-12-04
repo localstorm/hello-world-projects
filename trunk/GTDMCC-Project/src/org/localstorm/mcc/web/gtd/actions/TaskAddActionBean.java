@@ -73,9 +73,10 @@ public class TaskAddActionBean extends ListViewActionBean
         t.setSortOrder(1);
         
         TaskManager tm = getTaskManager();
-        tm.create(t);
 
-        if (t.getId()!=null && this.isFlight()) {
+        t = tm.create(t);
+
+        if (t.getId() !=null && this.isFlight()) {
             FlightPlanManager fpm = super.getFlightPlanManager();
             FlightPlan fp         = fpm.findCurrent(super.getUser());
             fpm.addTaskToFlightPlan(t, fp, true);

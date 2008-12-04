@@ -62,7 +62,7 @@ public class Task implements Identifiable, Serializable
 {   
     
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     
     @Column(name="summary", unique=false, updatable=true, nullable=false )
@@ -133,6 +133,11 @@ public class Task implements Identifiable, Serializable
     @Override
     public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id)
+    {
+        this.id = id;
     }
 
     public Integer getSortOrder() {
