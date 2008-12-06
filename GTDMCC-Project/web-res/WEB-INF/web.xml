@@ -124,6 +124,12 @@
                 <servlet-class>org.localstorm.mcc.web.cashflow.servlets.TotalWealthPieChartServlet</servlet-class>
                 <load-on-startup>2</load-on-startup>
         </servlet>
+        
+        <servlet>
+                <servlet-name>AssetCostChartServlet</servlet-name>
+                <servlet-class>org.localstorm.mcc.web.cashflow.servlets.AssetCostChartServlet</servlet-class>
+                <load-on-startup>2</load-on-startup>
+        </servlet>
 
         <servlet>
                 <servlet-name>AuthServlet</servlet-name>
@@ -141,11 +147,15 @@
                 <url-pattern>/auth</url-pattern>
         </servlet-mapping>
 
-                <servlet-mapping>
+        <servlet-mapping>
                 <servlet-name>TotalWealthPieChartServlet</servlet-name>
                 <url-pattern>/chart/totalWealth.png</url-pattern>
         </servlet-mapping>
 
+        <servlet-mapping>
+                <servlet-name>AssetCostChartServlet</servlet-name>
+                <url-pattern>/chart/assetCost.png</url-pattern>
+        </servlet-mapping>
 
 
 </web-app>

@@ -18,7 +18,7 @@ public class ContextLookup<T>
     {
         try {
             InitialContext ic = new InitialContext();
-            Object o = ic.lookup(MessageFormat.format(JNDI_LOOKUP_REMOTE, beanName));
+            Object o = ic.lookup(MessageFormat.format(JNDI_LOOKUP_LOCAL, beanName));
             ic.close();
             return (T) o;
         } catch(NamingException e) {

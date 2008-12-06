@@ -99,6 +99,16 @@ public class AssetManagerBean implements AssetManagerLocal,
     }
 
     @Override
+    public Collection<Cost> getCostHistory(ValuableObject vo) {
+        Query uq = em.createNamedQuery(Cost.Queries.FIND_COSTS_BY_VO_DESC);
+        uq.setParameter(Cost.Properties.VALUABLE, vo);
+
+        return (Collection<Cost>) uq.getResultList();
+    }
+
+
+
+    @Override
     public void buy(ValuableObject vo, BigDecimal amount, String comment, boolean exchange) {
         Operation op = new Operation();
         {
