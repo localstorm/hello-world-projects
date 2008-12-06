@@ -25,6 +25,9 @@
                     <c:if test="${actionBean.redlinesBroken or actionBean.deadlinesBroken}">|</c:if>
                     <a href="<c:url value="/actions/UtilizeFlightPlan" />" title="Utilize &amp; build new"><img src="<c:url value="/images/utilize.png"/>" border="0" /></a>
                 </c:if>
+                <c:if test="${needCleanUp}">
+                    <a href="<c:url value="/actions/CleanupFinishedTasks" />" title="Cleanup finished tasks"><img src="<c:url value="/images/cleanup.png"/>" border="0" /></a>
+                </c:if>
             </td>
             
         </tr>

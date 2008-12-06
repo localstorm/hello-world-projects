@@ -26,6 +26,14 @@ import org.localstorm.mcc.ejb.Identifiable;
 @Table(name="TASKS")
 @NamedQueries({
     @NamedQuery(
+        name = Task.Queries.COUNT_CLEANABLE_BY_USER,
+        query= "SELECT COUNT(o) FROM Task o WHERE o.list.context.owner=:user and (o.finished=true or o.cancelled=true)"
+    ),
+    @NamedQuery(
+        name = Task.Queries.FIND_CLEANABLE_BY_USER,
+        query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and (o.finished=true or o.cancelled=true)"
+    ),
+    @NamedQuery(
         name = Task.Queries.FIND_BY_MAX_EFFORT,
         query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and" +
         " o.effort<=:effort and o.delegated=false ORDER BY o.list.context.name, o.list.name"
@@ -253,13 +261,15 @@ public class Task implements Identifiable, Serializable
     }
     
     public static interface Queries {
-        public static final String FIND_BY_MAX_EFFORT        = "findByMaxEffort";
+        public static final String FIND_BY_MAX_EFFORT    = "findByMaxEffort";
         public static final String FIND_ALL_AWAITED      = "findAllAwaitedTasks";
         public static final String FIND_BY_LIST          = "findByList";
         public static final String FIND_BY_LIST_ARCHIVED = "findByListArchived";
         public static final String FIND_BY_LIST_AWAITED  = "findByListAwaited";
         public static final String FIND_REDLINED         = "findRedlined";
         public static final String FIND_DEADLINED        = "findDeadlined";
+        public static final String FIND_CLEANABLE_BY_USER= "findCleanableTasksUpByUser";
+        public static final String COUNT_CLEANABLE_BY_USER = "countCleanableTasksByUser";
     }
     
     public static interface Properties
