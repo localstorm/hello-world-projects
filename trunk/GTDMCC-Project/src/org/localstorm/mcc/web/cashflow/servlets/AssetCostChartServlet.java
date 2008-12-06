@@ -23,6 +23,7 @@ import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.cashflow.asset.Asset;
 import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
 import org.localstorm.mcc.ejb.cashflow.asset.Cost;
+import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.Constants;
 import org.localstorm.mcc.web.SessionKeys;
@@ -87,12 +88,13 @@ public class AssetCostChartServlet extends HttpServlet
         
         AssetManager am = ContextLookup.lookup(AssetManager.class, AssetManager.BEAN_NAME);
         Asset asset = am.findAssetById(assetId);
+        ValuableObject vo = asset.getValuable();
 
-        if (!user.getId().equals(asset.getValuable().getOwner().getId())) {
+        if (!user.getId().equals(vo.getOwner().getId())) {
             return null;
         }
 
-        Collection<Cost> costs = am.getCostHistory(asset.getValuable());
+        Collection<Cost> costs = am.getCostHistory(vo);
 
         TimeSeries sell     = new TimeSeries(asset.getName()+" sell cost");
         TimeSeries buy      = new TimeSeries(asset.getName()+" buy cost");
@@ -104,6 +106,8 @@ public class AssetCostChartServlet extends HttpServlet
 
         TimeSeriesCollection tsc = new TimeSeriesCollection();
 
+        Cost current = am.getCurrentCost(vo);
+
         for (Cost c: costs) {
             sell.addOrUpdate(new Day(c.getActuationDate()), c.getSell());
             buy.addOrUpdate(new Day(c.getActuationDate()), c.getBuy());
@@ -112,6 +116,9 @@ public class AssetCostChartServlet extends HttpServlet
             sellFxEnable |= (c.getExchangeSell() != null);
         }
 
+        buy.addOrUpdate(new Day(new Date()), current.getBuy());
+        sell.addOrUpdate(new Day(new Date()), current.getSell());
+
         tsc.addSeries(buy);
         tsc.addSeries(sell);
 
@@ -119,6 +126,7 @@ public class AssetCostChartServlet extends HttpServlet
             for (Cost c: costs) {
                 buyFx.addOrUpdate(new Day(c.getActuationDate()), this.nvlCost(c.getExchangeBuy(), c.getBuy()));
             }
+            buyFx.addOrUpdate(new Day(new Date()), this.nvlCost(current.getExchangeBuy(), current.getBuy()));
             tsc.addSeries(buyFx);
         }
 
@@ -126,6 +134,7 @@ public class AssetCostChartServlet extends HttpServlet
             for (Cost c: costs) {
                 sellFx.addOrUpdate(new Day(c.getActuationDate()), this.nvlCost(c.getExchangeSell(), c.getSell()));
             }
+            sellFx.addOrUpdate(new Day(new Date()), this.nvlCost(current.getExchangeSell(), current.getSell()));
             tsc.addSeries(sellFx);
         }
 
