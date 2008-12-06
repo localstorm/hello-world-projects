@@ -6,6 +6,8 @@ import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
+import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
+import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.web.gtd.backend.TaskResolutionLogic;
 
 /**
@@ -50,21 +52,40 @@ public class FlightTaskResolveActionBean extends GtdBaseActionBean
     @DefaultHandler
     public Resolution resolvingTask() throws Exception {
         
-        TaskResolutionLogic.resolveTask(this.getTaskId(), 
-                                        TaskResolutionAction.valueOf(action), 
-                                        this.getRuntimeNote(), 
-                                        this.getCurrentList(),
+        TaskResolutionLogic.resolveTask(this.getTaskId(),
+                                        this.getResolveAction(),
+                                        this.getRuntimeNote(),
+                                        super.getCurrentList(),
                                         super.getClipboard(),
-                                        super.getTaskManager(), 
-                                        super.getListManager(), 
-                                        super.getFlightPlanManager(), 
+                                        super.getTaskManager(),
+                                        super.getListManager(),
+                                        super.getFlightPlanManager(),
                                         super.getUser());
-        
+
+        try
+        {
+            Task t = super.getTaskManager().findById(this.getTaskId());
+
+            if (t.isCancelled() || t.isFinished()) {
+                TaskResolutionLogic.resolveTask(this.getTaskId(),
+                                                TaskResolutionAction.UNFLIGHT,
+                                                this.getRuntimeNote(),
+                                                super.getCurrentList(),
+                                                super.getClipboard(),
+                                                super.getTaskManager(),
+                                                super.getListManager(),
+                                                super.getFlightPlanManager(),
+                                                super.getUser());
+            }
+        } catch(ObjectNotFoundException e) {
+            /* Ignoring */
+        }
+
         return new RedirectResolution(IndexActionBean.class);
     }
-    
-    
-   
-    
+
+    private TaskResolutionAction getResolveAction() {
+        return TaskResolutionAction.valueOf(action);
+    }
    
 }

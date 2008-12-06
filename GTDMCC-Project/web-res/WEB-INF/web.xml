@@ -40,6 +40,12 @@
         </filter>
 
         <filter>
+                <display-name>NoCache Filter</display-name>
+                <filter-name>NoCacheFilter</filter-name>
+                <filter-class>org.localstorm.mcc.web.filter.NoCacheFilter</filter-class>
+        </filter>
+
+        <filter>
                 <display-name>Lazy Load Filter</display-name>
                 <filter-name>LazyLoadFilter</filter-name>
                 <filter-class>org.localstorm.mcc.web.gtd.filter.LazyLoadFilter</filter-class>
@@ -50,7 +56,9 @@
                 <filter-name>CfLazyLoadFilter</filter-name>
                 <filter-class>org.localstorm.mcc.web.cashflow.filter.LazyLoadFilter</filter-class>
         </filter>
-        
+
+        <!-- Mapping -->
+
         <filter-mapping>
                 <filter-name>RestrictionFilter</filter-name>
                 <url-pattern>*.jsp</url-pattern>
@@ -80,7 +88,13 @@
                 <url-pattern>/chart/*</url-pattern>
                 <dispatcher>REQUEST</dispatcher>
         </filter-mapping>
-        
+
+        <filter-mapping>
+                <filter-name>NoCacheFilter</filter-name>
+                <url-pattern>/chart/*</url-pattern>
+                <dispatcher>REQUEST</dispatcher>
+        </filter-mapping>
+
         <filter-mapping>
                 <filter-name>LazyLoadFilter</filter-name>
                 <servlet-name>StripesDispatcher</servlet-name>
@@ -98,7 +112,6 @@
                 <servlet-name>StripesDispatcher</servlet-name>
                 <dispatcher>REQUEST</dispatcher>
         </filter-mapping>
-
 
         <servlet>
                 <servlet-name>StripesDispatcher</servlet-name>
