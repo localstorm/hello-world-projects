@@ -7,7 +7,9 @@ import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskResolutionAction;
+import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.gtd.backend.TaskResolutionLogic;
+import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
  *
@@ -67,7 +69,8 @@ public class AwaitingsResolveActionBean extends GtdBaseActionBean
                 this.cancel();
                 break;
         }
-        
+
+        SessionUtil.clear(super.getSession(), SessionKeys.NEED_CLEANUP);
         return new RedirectResolution(AwaitingsReportActionBean.class);
     }
     

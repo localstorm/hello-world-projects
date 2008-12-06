@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.gtd.contexts.Context;
 import org.localstorm.mcc.ejb.gtd.contexts.ContextManager;
+import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
@@ -78,6 +79,14 @@ public class LazyLoadFilter implements Filter
 
             SessionUtil.fill(sess, SessionKeys.REFERENCE_OBJECTS, rom.findOperativeByOwner(user, false));
         }
+
+        if ( SessionUtil.isEmpty(sess, SessionKeys.NEED_CLEANUP ) ) {
+            TaskManager tm = ContextLookup.lookup(TaskManager.class,
+                                                  TaskManager.BEAN_NAME);
+
+            SessionUtil.fill(sess, SessionKeys.NEED_CLEANUP, tm.isCleanupNeeded(user));
+        }
+
             
     }
     

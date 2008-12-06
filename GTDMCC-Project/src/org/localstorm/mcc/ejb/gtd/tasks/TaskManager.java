@@ -2,7 +2,6 @@ package org.localstorm.mcc.ejb.gtd.tasks;
 
 import java.util.Collection;
 import org.localstorm.mcc.ejb.BaseManager;
-import org.localstorm.mcc.ejb.gtd.contexts.Context;
 import org.localstorm.mcc.ejb.gtd.lists.GTDList;
 import org.localstorm.mcc.ejb.users.User;
 
@@ -13,9 +12,11 @@ import org.localstorm.mcc.ejb.users.User;
 public interface TaskManager extends BaseManager<Task>
 {
     public static final String BEAN_NAME = "TaskManagerBean";
+
+    public boolean isCleanupNeeded(User user);
+
+    public void cleanup(User user);
     
-    //TODO!
-    /* Doesn't return archived contexts */
     public Collection<Task> findOpeartiveByList(GTDList l);
     
     public Collection<Task> findAwaitedByList(GTDList l);

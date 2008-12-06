@@ -90,8 +90,25 @@ public class TaskManagerBean extends AbstractManager<Task>
         List<Task> list = tq.getResultList();
         return list;
     }
-    
-    
-    
-    
+
+    @Override
+    public void cleanup(User user) {
+        Query tq = em.createNamedQuery(Task.Queries.FIND_CLEANABLE_BY_USER);
+        tq.setParameter(Task.Properties.USER, user);
+        List<Task> list = tq.getResultList();
+
+        for (Task t: list)
+        {
+            em.remove(t);
+        }
+    }
+
+    @Override
+    public boolean isCleanupNeeded(User user) {
+        Query tq = em.createNamedQuery(Task.Queries.COUNT_CLEANABLE_BY_USER);
+        tq.setParameter(Task.Properties.USER, user);
+        Long count = (Long) tq.getSingleResult();
+
+        return count>0;
+    }
 }

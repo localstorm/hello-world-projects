@@ -7,6 +7,8 @@ import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.web.gtd.backend.TaskResolutionLogic;
 import org.localstorm.mcc.ejb.gtd.lists.GTDList;
+import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
  *
@@ -60,7 +62,9 @@ public class TaskResolveActionBean extends GtdBaseActionBean
                                                        super.getListManager(), 
                                                        super.getFlightPlanManager(), 
                                                        super.getUser());
-        
+
+
+        SessionUtil.clear(super.getSession(), SessionKeys.NEED_CLEANUP);
         return NextDestinationUtil.taskResolveActionResolution(act, list, super.getCurrentList());
     }
     
