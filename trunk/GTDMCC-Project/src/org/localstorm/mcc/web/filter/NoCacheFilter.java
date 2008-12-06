@@ -7,33 +7,25 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import org.localstorm.mcc.web.SessionKeys;
-import org.localstorm.mcc.web.util.SessionUtil;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
  * @author Alexey Kuznetsov
  */
-public class AuthFilter implements Filter 
+public class NoCacheFilter implements Filter 
 {
-    
-    
-    
-    public AuthFilter() {
+    public NoCacheFilter() {
     
     }
 
     @Override
     public void doFilter(ServletRequest _req, ServletResponse _res, FilterChain chain) throws IOException, ServletException {
-        HttpServletRequest req = (HttpServletRequest) _req;
-        HttpSession sess = req.getSession();
-            
-        if (SessionUtil.isEmpty(sess, SessionKeys.USER)) {
-            req.getRequestDispatcher("/jsp/login.jsp").forward(_req, _res);
-            return;
-        }
+        HttpServletResponse resp = (HttpServletResponse) _res;
+        
+        resp.setHeader("Cache-Control", "private,no-cache,no-store");
+        resp.addHeader("Pragma", "No-Cache");
+        resp.setDateHeader("Expires", 0);
         
         chain.doFilter(_req, _res);
     }
