@@ -245,7 +245,9 @@
                     </c:if>
                 </td>
                 <td align="right"  border="0px">
-                    <img src="<c:url value="/images/history.png"/>"/>
+                    <a href="<c:url value="/actions/ViewAssetCostHistory">
+                                <c:param name="assetId" value="${actionBean.assetResult.id}"/>
+                        </c:url>"><img border="0" src="<c:url value="/images/history.png"/>"/></a>
                 </td>
             </tr>
         </table>

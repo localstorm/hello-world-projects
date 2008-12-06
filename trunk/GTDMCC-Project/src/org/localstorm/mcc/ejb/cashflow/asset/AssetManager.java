@@ -28,6 +28,8 @@ public interface AssetManager
 
     public BigDecimal getBalance(ValuableObject vo);
 
+    public Collection<Cost> getCostHistory(ValuableObject valuable);
+
     public BigDecimal getNetWealthSellCost(ValuableObject vo);
 
     public BigDecimal getInvestmentsCost(ValuableObject vo);

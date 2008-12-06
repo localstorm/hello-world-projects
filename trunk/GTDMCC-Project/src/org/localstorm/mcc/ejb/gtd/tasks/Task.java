@@ -50,15 +50,15 @@ import org.localstorm.mcc.ejb.Identifiable;
     ),
     @NamedQuery(
         name = Task.Queries.FIND_BY_LIST,
-        query= "SELECT o FROM Task o WHERE o.list=:list and o.finished=false and o.delegated=false and o.cancelled=false"
+        query= "SELECT o FROM Task o WHERE o.list=:list and o.finished=false and o.delegated=false and o.cancelled=false ORDER BY o.effort, o.summary"
     ),
     @NamedQuery(
         name = Task.Queries.FIND_BY_LIST_ARCHIVED,
-        query= "SELECT o FROM Task o WHERE o.list=:list and (o.finished=true or o.cancelled=true)"
+        query= "SELECT o FROM Task o WHERE o.list=:list and (o.finished=true or o.cancelled=true)  ORDER BY o.summary"
     ),
     @NamedQuery(
         name = Task.Queries.FIND_BY_LIST_AWAITED,
-        query= "SELECT o FROM Task o WHERE o.list=:list and o.finished=false and o.delegated=true"
+        query= "SELECT o FROM Task o WHERE o.list=:list and o.finished=false and o.delegated=true  ORDER BY o.summary"
     ),
     @NamedQuery(
         name = Task.Queries.FIND_ALL_AWAITED,
