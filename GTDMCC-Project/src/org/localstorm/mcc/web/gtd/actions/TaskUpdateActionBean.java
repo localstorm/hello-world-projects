@@ -92,7 +92,7 @@ public class TaskUpdateActionBean extends TaskViewActionBean
                 rr = new RedirectResolution(AwaitingsReportActionBean.class);
                  break;
             case DL_REPORT:
-                rr = new RedirectResolution(DeadlinesReportActionBean.class);
+                rr = new RedirectResolution(DeadlineLookupReportActionBean.class);
                 break;
             
             case EASY_REPORT:

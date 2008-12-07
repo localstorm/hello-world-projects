@@ -181,6 +181,6 @@ public class TaskWrapper extends Task
     {
         return EscapeUtil.forHTML(this.getDetails());
     }
-    
+
     
 }

@@ -111,4 +111,14 @@ public class TaskManagerBean extends AbstractManager<Task>
 
         return count>0;
     }
+
+    @Override
+    public Collection<Task> findScheduledNonFinishedTasks(User user) {
+        Query tq = em.createNamedQuery(Task.Queries.FIND_SCHEDULED_BY_USER);
+        tq.setParameter(Task.Properties.USER, user);
+
+        List<Task> list = tq.getResultList();
+        return list;
+    }
+
 }

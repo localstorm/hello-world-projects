@@ -26,6 +26,10 @@ import org.localstorm.mcc.ejb.Identifiable;
 @Table(name="TASKS")
 @NamedQueries({
     @NamedQuery(
+        name = Task.Queries.FIND_SCHEDULED_BY_USER,
+        query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and (o.redline IS NOT NULL or o.deadline IS NOT NULL)"
+    ),
+    @NamedQuery(
         name = Task.Queries.COUNT_CLEANABLE_BY_USER,
         query= "SELECT COUNT(o) FROM Task o WHERE o.list.context.owner=:user and (o.finished=true or o.cancelled=true)"
     ),
@@ -270,6 +274,7 @@ public class Task implements Identifiable, Serializable
         public static final String FIND_DEADLINED        = "findDeadlined";
         public static final String FIND_CLEANABLE_BY_USER= "findCleanableTasksUpByUser";
         public static final String COUNT_CLEANABLE_BY_USER = "countCleanableTasksByUser";
+        public static final String FIND_SCHEDULED_BY_USER = "findScheduledTasksByUser";
     }
     
     public static interface Properties

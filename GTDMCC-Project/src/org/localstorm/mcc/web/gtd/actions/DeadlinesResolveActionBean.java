@@ -1,6 +1,5 @@
 package org.localstorm.mcc.web.gtd.actions;
 
-import org.localstorm.mcc.web.BaseActionBean;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
@@ -71,7 +70,7 @@ public class DeadlinesResolveActionBean extends GtdBaseActionBean
 
 
         SessionUtil.clear(super.getSession(), SessionKeys.NEED_CLEANUP);
-        return new RedirectResolution(DeadlinesReportActionBean.class);
+        return new RedirectResolution(DeadlineLookupReportActionBean.class);
     }
     
     
