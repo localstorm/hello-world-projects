@@ -21,7 +21,7 @@ public class NextDestinationUtil
             case AW_REPORT:
                 return new RedirectResolution(AwaitingsReportActionBean.class);
             case DL_REPORT:
-                return new RedirectResolution(DeadlinesReportActionBean.class);
+                return new RedirectResolution(DeadlineLookupReportActionBean.class);
             case EASY_REPORT:
                 return new RedirectResolution(EasyTasksReportActionBean.class);
             default:

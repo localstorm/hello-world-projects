@@ -13,6 +13,8 @@ public interface TaskManager extends BaseManager<Task>
 {
     public static final String BEAN_NAME = "TaskManagerBean";
 
+    public Collection<Task> findScheduledNonFinishedTasks(User user);
+
     public boolean isCleanupNeeded(User user);
 
     public void cleanup(User user);

@@ -3,7 +3,7 @@
 
 <%@ include file="/WEB-INF/jsp/includes/hdr.jsp" %>
 
-<h2><span>BROKEN DEADLINES</span> report</h2>
+<h2><span>DEADLINES</span> report</h2>
  <table width="100%">
     <tr>
         <td align="left">
@@ -15,51 +15,47 @@
 </table>
 <br/>
 <table width="100%">
-<c:if test="${not empty actionBean.deadlinedTasks}">
-    <tr>
-        <th>Deadline broken:</th>
-    </tr> 
-</c:if>
-<c:forEach items="${actionBean.deadlinedTasks}" var="task" >
-<tr bgcolor="#A3A69C"> 
+<c:forEach items="${actionBean.broken}" var="taskMarker" >
+
+<tr bgcolor="<c:choose><c:when test="${taskMarker.redCrossed}">#FFCF91</c:when><c:otherwise>#A3A69C</c:otherwise></c:choose>">
     <td>
-        <p><img src="<c:url value="/images/loe${task.effort}.png"/>"/>&nbsp;<span><c:out value="${task.list.context.name}, ${task.list.name}"/>&nbsp;(Since: <fmt:formatDate value="${task.creation}"/>):</span><br/>
+        <p><img src="<c:url value="/images/loe${taskMarker.task.effort}.png"/>"/>&nbsp;(<c:out value="${taskMarker.timeRemainsCrossed}"/>)&nbsp;<span><c:out value="${taskMarker.task.list.context.name}, ${taskMarker.task.list.name}"/>&nbsp;(Since: <fmt:formatDate value="${taskMarker.task.creation}"/>):</span><br/>
         <div align="center">
             <a href="<c:url value="/actions/ViewTask">
-                            <c:param name="taskId" value="${task.id}" />
-                            <c:param name="returnPage" value="DL_REPORT" />
-                    </c:url>"><c:out value="${task.summary}" /></a>
+                            <c:param name="taskId" value="${taskMarker.task.id}" />
+                            <c:param name="returnPage" value="DL_REPORT" /> <%-- TODO --%>
+                    </c:url>"><c:out value="${taskMarker.task.summary}" /></a>
         </div>
-        <c:if test="${not empty task.details}" >
+        <c:if test="${not empty taskMarker.task.details}" >
             <div align="center">
-                <c:out escapeXml="false" value="${task.detailsHtmlEscaped}"/>
+                <c:out escapeXml="false" value="${taskMarker.task.detailsHtmlEscaped}"/>
             </div>
         </c:if>
         </p>
         
-        <c:if test="${not empty task.runtimeNote}" >
-            <p><i>Responsibility:&nbsp;</i><c:out value="${task.runtimeNote}"/></p>
+        <c:if test="${not empty taskMarker.task.runtimeNote}" >
+            <p><i>Responsibility:&nbsp;</i><c:out value="${taskMarker.task.runtimeNote}"/></p>
         </c:if>
         <table width="100%">
             <tr>
                 <td width="80%" ><hr/></td>
                 <td width="1%" >
                 <nobr>
-                    <c:if test="${not task.inFlightPlan}">
+                    <c:if test="${not taskMarker.task.inFlightPlan}">
                     <a href="<c:url value="/actions/ResolveDeadlines">
-                                <c:param name="taskId" value="${task.id}" />
+                                <c:param name="taskId" value="${taskMarker.task.id}" />
                                 <c:param name="action" value="FLIGHT" />
                              </c:url>" title="Append To Flight Plan"><img alt="flight" border="0" src="<c:url value="/images/flight.png"/>"/></a>
                     </c:if>
                     <a href="<c:url value="/actions/ViewList" >
-                        <c:param name="listId" value="${task.list.id}" />
+                        <c:param name="listId" value="${taskMarker.task.list.id}" />
                     </c:url>" title="Open affected list"><img alt="toList" border="0" src="<c:url value="/images/toList.png"/>"/></a>
                     <a href="<c:url value="/actions/ResolveDeadlines">
-                                <c:param name="taskId" value="${task.id}" />
+                                <c:param name="taskId" value="${taskMarker.task.id}" />
                                 <c:param name="action" value="FINISH" />
                              </c:url>" title="Finish"><img alt="finish" border="0" src="<c:url value="/images/finish.png"/>"/></a>
                     <a href="<c:url value="/actions/ResolveDeadlines">
-                                <c:param name="taskId" value="${task.id}" />
+                                <c:param name="taskId" value="${taskMarker.task.id}" />
                                 <c:param name="action" value="CANCEL" />
                              </c:url>" title="Cancel"><img alt="cancel" border="0" src="<c:url value="/images/cancel.png"/>"/></a>
                 </nobr>
@@ -68,51 +64,59 @@
 
         </table>
     </td>
-</tr>    
+</tr>
 </c:forEach>
-<c:if test="${not empty actionBean.redlinedTasks}">
-    <tr>
-        <th>Redline broken:</th>
-    </tr> 
-</c:if>
-<c:forEach items="${actionBean.redlinedTasks}" var="task" >
-<tr bgcolor="#FFCF91"> 
+<tr>
+    <td align="center">
+        <table width="100%">
+            <tr>
+                <td width="80%"><hr style="height: 3px; color: #f00; background-color: #f00;"/></td>
+                <td><fmt:formatDate value="${actionBean.today}"/></td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<c:forEach items="${actionBean.following}" var="taskMarker" >
+
+    <tr bgcolor="<c:choose><c:when test="${taskMarker.redNonCrossed}">#FFCF91</c:when><c:otherwise>#A3A69C</c:otherwise></c:choose>">
     <td>
-        <p><img src="<c:url value="/images/loe${task.effort}.png"/>"/>&nbsp;<span><c:out value="${task.list.context.name}, ${task.list.name}"/>&nbsp;(Since: <fmt:formatDate value="${task.creation}"/>):</span><br/>
+        <p><img src="<c:url value="/images/loe${taskMarker.task.effort}.png"/>"/>&nbsp;(<c:out value="${taskMarker.timeRemainsNonCrossed}"/>)&nbsp;<span><c:out value="${taskMarker.task.list.context.name}, ${taskMarker.task.list.name}"/>&nbsp;(Since: <fmt:formatDate value="${taskMarker.task.creation}"/>):</span><br/>
         <div align="center">
             <a href="<c:url value="/actions/ViewTask">
-                            <c:param name="taskId" value="${task.id}" />
+                            <c:param name="taskId" value="${taskMarker.task.id}" />
                             <c:param name="returnPage" value="DL_REPORT" />
-                    </c:url>"><c:out value="${task.summary}" /></a>
+                    </c:url>"><c:out value="${taskMarker.task.summary}" /></a>
         </div>
-        <c:if test="${not empty task.details}" >
-             <c:out escapeXml="false" value="${task.detailsHtmlEscaped}"/>
+        <c:if test="${not empty taskMarker.task.details}" >
+            <div align="center">
+                <c:out escapeXml="false" value="${taskMarker.task.detailsHtmlEscaped}"/>
+            </div>
         </c:if>
         </p>
-        
-        <c:if test="${not empty task.runtimeNote}" >
-            <p><i>Responsibility:&nbsp;</i><c:out value="${task.runtimeNote}"/></p>
+
+        <c:if test="${not empty taskMarker.task.runtimeNote}" >
+            <p><i>Responsibility:&nbsp;</i><c:out value="${taskMarker.task.runtimeNote}"/></p>
         </c:if>
         <table width="100%">
             <tr>
                 <td width="80%" ><hr/></td>
                 <td width="1%" >
                 <nobr>
-                    <c:if test="${not task.inFlightPlan}">
+                    <c:if test="${not taskMarker.task.inFlightPlan}">
                     <a href="<c:url value="/actions/ResolveDeadlines">
-                                <c:param name="taskId" value="${task.id}" />
+                                <c:param name="taskId" value="${taskMarker.task.id}" />
                                 <c:param name="action" value="FLIGHT" />
                              </c:url>" title="Append To Flight Plan"><img alt="flight" border="0" src="<c:url value="/images/flight.png"/>"/></a>
                     </c:if>
                     <a href="<c:url value="/actions/ViewList" >
-                        <c:param name="listId" value="${task.list.id}" />
+                        <c:param name="listId" value="${taskMarker.task.list.id}" />
                     </c:url>" title="Open affected list"><img alt="toList" border="0" src="<c:url value="/images/toList.png"/>"/></a>
                     <a href="<c:url value="/actions/ResolveDeadlines">
-                                <c:param name="taskId" value="${task.id}" />
+                                <c:param name="taskId" value="${taskMarker.task.id}" />
                                 <c:param name="action" value="FINISH" />
                              </c:url>" title="Finish"><img alt="finish" border="0" src="<c:url value="/images/finish.png"/>"/></a>
                     <a href="<c:url value="/actions/ResolveDeadlines">
-                                <c:param name="taskId" value="${task.id}" />
+                                <c:param name="taskId" value="${taskMarker.task.id}" />
                                 <c:param name="action" value="CANCEL" />
                              </c:url>" title="Cancel"><img alt="cancel" border="0" src="<c:url value="/images/cancel.png"/>"/></a>
                 </nobr>
@@ -121,7 +125,7 @@
 
         </table>
     </td>
-</tr>    
+</tr>
 </c:forEach>
 </table>
 
