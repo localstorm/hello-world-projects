@@ -80,8 +80,7 @@ public class ContextViewActionBean extends GtdBaseActionBean
         
         for (Iterator<GTDList> it = contextLists.iterator(); it.hasNext(); ) {
             GTDList list = it.next();
-            if (list.isPinned())
-            {
+            if (list.isPinned()) {
                 it.remove();
                 pinnedLists.add(list);
             }
