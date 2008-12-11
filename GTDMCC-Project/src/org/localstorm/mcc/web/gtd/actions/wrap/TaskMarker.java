@@ -89,10 +89,13 @@ public class TaskMarker {
         if (isRedlineCrossed() && isDeadlineCrossed()) {
             return !this.isCorrect();
         }
-        return null; // Should never happen
+        throw new RuntimeException("Unexpected case");
     }
 
     private Boolean checkRedNonCrossed() {
+        System.out.println("RLC:"+isRedlineCrossed()+", DLC:"+isDeadlineCrossed());
+        System.out.println("RL:"+task.getRedline()+", DL:"+task.getDeadline());
+
         if (isRedlineCrossed() && (!isDeadlineCrossed())) {
             if (task.getDeadline() == null) {
                 return null;
@@ -108,12 +111,23 @@ public class TaskMarker {
             }
         }
         if ((!isRedlineCrossed()) && (!isDeadlineCrossed())) {
-            return this.isCorrect();
+            if (task.getRedline()==null && task.getDeadline()==null) {
+                return null;
+            }
+            if (task.getRedline()!=null && task.getDeadline()==null) {
+                return true;
+            }
+            if (task.getRedline()==null && task.getDeadline()!=null) {
+                return false;
+            }
+            if (task.getRedline()!=null && task.getDeadline()!=null) {
+                return this.isCorrect();
+            }
         }
         if (isRedlineCrossed() && isDeadlineCrossed()) {
             return null;
         }
-        return null; // Should never happen
+        throw new RuntimeException("Unexpected case");
     }
 
 
@@ -138,8 +152,14 @@ public class TaskMarker {
         Boolean rc = getRedNonCrossed();
         if (rc!=null) {
             if (rc) {
+                if (this.task.getRedline()==null) {
+                    throw new RuntimeException("Unexpected case");
+                }
                 return daysDelta(this.task.getRedline(), today);
             } else {
+                if (this.task.getDeadline()==null) {
+                    throw new RuntimeException("Unexpected case");
+                }
                 return daysDelta(this.task.getDeadline(), today);
             }
         }
