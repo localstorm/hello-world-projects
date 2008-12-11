@@ -93,8 +93,8 @@ public class TaskMarker {
     }
 
     private Boolean checkRedNonCrossed() {
-        System.out.println("RLC:"+isRedlineCrossed()+", DLC:"+isDeadlineCrossed());
-        System.out.println("RL:"+task.getRedline()+", DL:"+task.getDeadline());
+        //System.out.println("RLC:"+isRedlineCrossed()+", DLC:"+isDeadlineCrossed());
+        //System.out.println("RL:"+task.getRedline()+", DL:"+task.getDeadline());
 
         if (isRedlineCrossed() && (!isDeadlineCrossed())) {
             if (task.getDeadline() == null) {
