@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
@@ -46,6 +47,21 @@ public class AssetCostHistoryChartGenerator {
         }
 
         Collection<Cost> costs = am.getCostHistory(vo, cal.getTime());
+        Cost current = am.getCurrentCost(vo);
+
+        if (costs.isEmpty())
+        {
+            Cost cost = new Cost(vo);
+            {
+                cost.setBuy(current.getBuy());
+                cost.setSell(current.getSell());
+                cost.setExchangeBuy(current.getExchangeBuy());
+                cost.setExchangeSell(current.getExchangeSell());
+                cost.setActuationDate(cal.getTime());
+            }
+
+            costs = Collections.singletonList(cost);
+        }
 
         TimeSeries sell     = new TimeSeries(asset.getName()+" sell cost");
         TimeSeries buy      = new TimeSeries(asset.getName()+" buy cost");
@@ -56,8 +72,6 @@ public class AssetCostHistoryChartGenerator {
         boolean sellFxEnable = false;
 
         TimeSeriesCollection tsc = new TimeSeriesCollection();
-
-        Cost current = am.getCurrentCost(vo);
 
         for (Cost c: costs) {
             sell.addOrUpdate(new Day(c.getActuationDate()), c.getSell());
