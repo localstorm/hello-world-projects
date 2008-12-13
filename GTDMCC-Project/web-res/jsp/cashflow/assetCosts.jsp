@@ -9,6 +9,17 @@
     <br/>
     <img src="<c:url value="/chart/assetCost.png">
         <c:param name="assetId" value="${actionBean.assetResult.id}" />
+        <c:param name="name" value="Asset cost weekly changes" />
+        <c:param name="period" value="7" />
+    </c:url>"/><br/><br/>
+    <img src="<c:url value="/chart/assetCost.png">
+        <c:param name="assetId" value="${actionBean.assetResult.id}" />
+        <c:param name="name" value="Asset cost monthly changes" />
+        <c:param name="period" value="30" />
+    </c:url>"/><br/><br/>
+    <img src="<c:url value="/chart/assetCost.png">
+        <c:param name="name" value="Asset cost changes history" />
+        <c:param name="assetId" value="${actionBean.assetResult.id}" />
     </c:url>"/>
 </div>
 

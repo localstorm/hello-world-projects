@@ -1,6 +1,7 @@
 package org.localstorm.mcc.ejb.cashflow.asset;
 
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -77,8 +78,14 @@ public class AssetManagerBean implements AssetManagerLocal,
     @Override
     public Cost getCurrentCost(ValuableObject vo) {
         Query uq = em.createNamedQuery(Cost.Queries.FIND_COSTS_BY_VO_DESC);
-        uq.setParameter(Cost.Properties.VALUABLE, vo);
-        uq.setMaxResults(1);
+        {
+            Calendar cal = Calendar.getInstance();
+            cal.add(Calendar.YEAR, -1000);
+
+            uq.setParameter(Cost.Properties.VALUABLE, vo);
+            uq.setParameter(Cost.Properties.MIN_DATE, cal.getTime());
+            uq.setMaxResults(1);
+        }
 
         Cost cost = (Cost) uq.getSingleResult();
         return cost;
@@ -99,10 +106,10 @@ public class AssetManagerBean implements AssetManagerLocal,
     }
 
     @Override
-    public Collection<Cost> getCostHistory(ValuableObject vo) {
+    public Collection<Cost> getCostHistory(ValuableObject vo, Date minDate) {
         Query uq = em.createNamedQuery(Cost.Queries.FIND_COSTS_BY_VO_DESC);
         uq.setParameter(Cost.Properties.VALUABLE, vo);
-
+        uq.setParameter(Cost.Properties.MIN_DATE, minDate);
         return (Collection<Cost>) uq.getResultList();
     }
 

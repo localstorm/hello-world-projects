@@ -32,7 +32,7 @@ import org.localstorm.mcc.ejb.Identifiable;
 @NamedQueries({
     @NamedQuery(
         name = Cost.Queries.FIND_COSTS_BY_VO_DESC,
-        query= "SELECT o FROM Cost o WHERE o.valuable=:valuable ORDER BY o.actuationDate DESC"
+        query= "SELECT o FROM Cost o WHERE o.valuable=:valuable and o.actuationDate>:minDate ORDER BY o.actuationDate DESC"
     )
 })
 public class Cost implements Identifiable, Serializable {
@@ -133,6 +133,7 @@ public class Cost implements Identifiable, Serializable {
     public static interface Properties
     {
         public static final String VALUABLE = "valuable";
+        public static final String MIN_DATE = "minDate";
     }
 
 }

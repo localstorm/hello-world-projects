@@ -2,6 +2,7 @@ package org.localstorm.mcc.web.cashflow.charting;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import org.jfree.chart.ChartFactory;
@@ -26,7 +27,15 @@ import org.localstorm.mcc.web.Constants;
  */
 public class AssetCostHistoryChartGenerator {
 
-    private static XYDataset getAssetCostDataset(User user, Integer assetId) {
+    private static XYDataset getAssetCostDataset(User user, Integer assetId, Integer daysPeriod) {
+
+        Calendar cal = Calendar.getInstance();
+
+        if ( daysPeriod==null ) {
+            cal.add(Calendar.YEAR, -1000); // 1000 years
+        } else {
+            cal.add(Calendar.DATE, -daysPeriod);
+        }
 
         AssetManager am = ContextLookup.lookup(AssetManager.class, AssetManager.BEAN_NAME);
         Asset asset = am.findAssetById(assetId);
@@ -36,7 +45,7 @@ public class AssetCostHistoryChartGenerator {
             return null;
         }
 
-        Collection<Cost> costs = am.getCostHistory(vo);
+        Collection<Cost> costs = am.getCostHistory(vo, cal.getTime());
 
         TimeSeries sell     = new TimeSeries(asset.getName()+" sell cost");
         TimeSeries buy      = new TimeSeries(asset.getName()+" buy cost");
@@ -83,13 +92,12 @@ public class AssetCostHistoryChartGenerator {
         return tsc;
     }
 
-    public static JFreeChart getChart(User user, Integer assetId) {
+    public static JFreeChart getChart(User user, Integer assetId, Integer daysOffset, String name) {
         SimpleDateFormat sdf = new SimpleDateFormat(Constants.DATE_FORMAT);
-        String curDate = sdf.format(new Date());
 
-        XYDataset dataset = AssetCostHistoryChartGenerator.getAssetCostDataset(user, assetId);
+        XYDataset dataset = AssetCostHistoryChartGenerator.getAssetCostDataset(user, assetId, daysOffset);
 
-        JFreeChart chart = ChartFactory.createTimeSeriesChart("Asset cost history (until " + curDate + ")",
+        JFreeChart chart = ChartFactory.createTimeSeriesChart(name,
                                                               "Time line",
                                                               "Costs",
                                                               dataset,

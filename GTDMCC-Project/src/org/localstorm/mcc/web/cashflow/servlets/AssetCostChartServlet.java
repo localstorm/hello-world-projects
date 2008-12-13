@@ -20,12 +20,23 @@ import org.localstorm.mcc.web.util.SessionUtil;
 public class AssetCostChartServlet extends HttpServlet
 {
     public static final String ASSERT_ID_PARAMETER = "assetId";
+    public static final String PERIOD              = "period";
+    public static final String NAME                = "name";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession sess = req.getSession(true);
         User user        = (User) SessionUtil.getValue(sess, SessionKeys.USER);
+
         String said      = req.getParameter(ASSERT_ID_PARAMETER);
+        String period    = req.getParameter(PERIOD);
+        String name      = req.getParameter(NAME);
+        
+        Integer daysOffset = null;
+
+        if (period!=null && period.length()>0) {
+            daysOffset = Integer.parseInt(period);
+        }
 
         if (user==null || said==null) {
             resp.sendError(HttpServletResponse.SC_FORBIDDEN);
@@ -33,7 +44,7 @@ public class AssetCostChartServlet extends HttpServlet
         }
 
         Integer assetId  = new Integer(said);
-        JFreeChart chart = AssetCostHistoryChartGenerator.getChart(user, assetId);
+        JFreeChart chart = AssetCostHistoryChartGenerator.getChart(user, assetId, daysOffset, name);
 
         if ( chart==null ) {
             resp.sendError(HttpServletResponse.SC_FORBIDDEN);
