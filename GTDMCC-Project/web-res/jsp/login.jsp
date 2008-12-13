@@ -3,12 +3,12 @@
 
 <%@ include file="/WEB-INF/jsp/includes/loginhdr.jsp" %>
 
-<br/><br/><br/>
+<br/><br/><br/><br/><br/><br/>
 <form action="<c:url value="/auth" />" method="POST" >
 <div align="center">
 <table width="30%" bgColor="#CCCCEE" >
 	<tr>
-		<th colspan="2" bgColor="#7777EE"><font color="white">Log in</font></th>
+		<th colspan="2" bgColor="#7777EE"><font color="white">Sign in</font></th>
 	</tr>
 	<tr>
 		<th colspan="2" >&nbsp;</th>
@@ -28,7 +28,7 @@
 		<td colspan="2"><hr/></td>
 	</tr>
 	<tr>
-		<td colspan="2" align="center"><input type="submit" value="Log in"/></td>
+		<td colspan="2" align="center"><input type="submit" value="Enter"/></td>
 	</tr>
 </table>
 </div>
