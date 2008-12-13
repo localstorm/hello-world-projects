@@ -2,6 +2,7 @@ package org.localstorm.mcc.ejb.cashflow.asset;
 
 import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.Date;
 import org.localstorm.mcc.ejb.users.User;
 
 
@@ -28,7 +29,7 @@ public interface AssetManager
 
     public BigDecimal getBalance(ValuableObject vo);
 
-    public Collection<Cost> getCostHistory(ValuableObject valuable);
+    public Collection<Cost> getCostHistory(ValuableObject valuable, Date time);
 
     public BigDecimal getNetWealthSellCost(ValuableObject vo);
 
