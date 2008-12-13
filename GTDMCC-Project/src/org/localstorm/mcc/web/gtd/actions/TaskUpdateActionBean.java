@@ -94,11 +94,13 @@ public class TaskUpdateActionBean extends TaskViewActionBean
             case DL_REPORT:
                 rr = new RedirectResolution(DeadlineLookupReportActionBean.class);
                 break;
-            
             case EASY_REPORT:
                 rr = new RedirectResolution(EasyTasksReportActionBean.class);
                 break;
-                
+            case OLD_REPORT:
+                rr = new RedirectResolution(OldTasksReportActionBean.class);
+                break;
+
             default:
             case LIST_VIEW:
                 rr = new RedirectResolution(ListViewActionBean.class);

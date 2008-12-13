@@ -30,5 +30,9 @@
                     <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
                     <td><a href="<c:url value="/actions/DeadlineLookupReport" />">Deadlines report</a></td>
                 </tr>
+                <tr>
+                    <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
+                    <td><a href="<c:url value="/actions/OldTasksReport" />">Old tasks report</a></td>
+                </tr>
             </table>
 </div>

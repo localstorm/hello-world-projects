@@ -156,9 +156,23 @@ public class GtdBaseActionBean extends BaseActionBean {
         SessionUtil.fill(this.getSession(), SessionKeys.FILTER_CONTEXT, contextId);
     }
 
+    public void setAffectedContexts(Collection<Context> ctxs) {
+        Map<Integer, Boolean> affectedContexts = new HashMap<Integer, Boolean>();
+
+        for (Context ctx: ctxs) {
+            affectedContexts.put(ctx.getId(), Boolean.TRUE);
+        }
+
+        if (affectedContexts.isEmpty()) {
+            affectedContexts.put(-1, Boolean.FALSE);
+        }
+
+        HttpServletRequest req = this.getContext().getRequest();
+        req.setAttribute(RequestAttributes.AFFECTED_CONTEXTS, affectedContexts);
+    }
+
     public void setAffectedContexts(Collection<Task> ... cols) {
         Integer ctxId = this.getContextIdFilter();
-        HttpServletRequest req = this.getContext().getRequest();
         
         Map<Integer, Boolean> affectedContexts = new HashMap<Integer, Boolean>();
         {
@@ -173,7 +187,8 @@ public class GtdBaseActionBean extends BaseActionBean {
                 }
             }
         }
-        
+
+        HttpServletRequest req = this.getContext().getRequest();
         req.setAttribute(RequestAttributes.AFFECTED_CONTEXTS, affectedContexts);
     }
 
