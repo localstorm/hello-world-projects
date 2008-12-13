@@ -18,11 +18,9 @@
                     <a href="<c:url value="/actions/DeadlineLookupReport" />" title="Redlines are broken!"><img src="<c:url value="/images/redline.png"/>" border="0" /></a>
                 </c:if>
                 <c:if test="${actionBean.deadlinesBroken}">
-                    <c:if test="${actionBean.redlinesBroken}">|</c:if>
                     <a href="<c:url value="/actions/DeadlineLookupReport" />" title="Deadlines are broken!"><img src="<c:url value="/images/deadline.png"/>" border="0" /></a>
                 </c:if>
                 <c:if test="${(not empty actionBean.flightPlanTasks) or (not empty actionBean.awaitedFlightPlanTasks) or (not empty actionBean.archiveFlightPlanTasks)}">
-                    <c:if test="${actionBean.redlinesBroken or actionBean.deadlinesBroken}">|</c:if>
                     <a href="<c:url value="/actions/UtilizeFlightPlan" />" title="Utilize &amp; build new"><img src="<c:url value="/images/utilize.png"/>" border="0" /></a>
                 </c:if>
                 <c:if test="${needCleanUp}">
