@@ -15,10 +15,9 @@
 <div id="topPan">
 	<a href="<c:url value="/" />"><img src="<c:url value="/images/logo.png" />" alt="Mission-Control Center" width="245" height="37" border="0"  class="logo" title="Mission-Control Center"/></a>
 	<p>Be aware!</p>
-		
-  <div id="topContactPan" ></div>
-  
-  <div id="topMenuPan">
+
+  <%--div id="topContactPan" ></div--%>
+  <%--div id="topMenuPan">
     <div id="topMenuLeftPan"></div>
     <div id="topMenuMiddlePan">
         <ul>
@@ -33,5 +32,5 @@
 	</ul>
     </div>
     <div id="topMenuRightPan"></div>
-  </div>
+  </div--%>
 </div>
