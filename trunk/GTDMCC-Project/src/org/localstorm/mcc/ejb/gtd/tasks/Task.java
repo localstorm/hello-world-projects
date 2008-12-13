@@ -26,6 +26,10 @@ import org.localstorm.mcc.ejb.Identifiable;
 @Table(name="TASKS")
 @NamedQueries({
     @NamedQuery(
+        name = Task.Queries.FIND_OLDEST_BY_CTX,
+        query= "SELECT o FROM Task o WHERE o.list.context=:ctx and o.finished=false and o.cancelled=false and o.delegated=false ORDER BY o.creation ASC"
+    ),
+    @NamedQuery(
         name = Task.Queries.FIND_SCHEDULED_BY_USER,
         query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and (o.redline IS NOT NULL or o.deadline IS NOT NULL)"
     ),
@@ -275,6 +279,7 @@ public class Task implements Identifiable, Serializable
         public static final String FIND_CLEANABLE_BY_USER= "findCleanableTasksUpByUser";
         public static final String COUNT_CLEANABLE_BY_USER = "countCleanableTasksByUser";
         public static final String FIND_SCHEDULED_BY_USER = "findScheduledTasksByUser";
+        public static final String FIND_OLDEST_BY_CTX    = "finOldestTasksByCtx";
     }
     
     public static interface Properties

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
 import org.localstorm.mcc.ejb.AbstractManager;
+import org.localstorm.mcc.ejb.gtd.contexts.Context;
 import org.localstorm.mcc.ejb.gtd.lists.GTDList;
 import org.localstorm.mcc.ejb.users.User;
 
@@ -21,6 +22,15 @@ public class TaskManagerBean extends AbstractManager<Task>
         super(Task.class);
     }
 
+    @Override
+    public Collection<Task> findOldestOperative(Context ctx, int max) {
+        Query tq = em.createNamedQuery(Task.Queries.FIND_OLDEST_BY_CTX);
+        tq.setParameter(Task.Properties.CTX, ctx);
+        tq.setMaxResults(max);
+
+        List<Task> list = tq.getResultList();
+        return list;
+    }
 
     @Override
     public Collection<Task> findOpeartiveByList(GTDList l) {

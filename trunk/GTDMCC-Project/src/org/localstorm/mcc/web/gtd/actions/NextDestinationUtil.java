@@ -24,6 +24,8 @@ public class NextDestinationUtil
                 return new RedirectResolution(DeadlineLookupReportActionBean.class);
             case EASY_REPORT:
                 return new RedirectResolution(EasyTasksReportActionBean.class);
+            case OLD_REPORT:
+                return new RedirectResolution(OldTasksReportActionBean.class);
             default:
             case IDX:
                 return new RedirectResolution(IndexActionBean.class);
