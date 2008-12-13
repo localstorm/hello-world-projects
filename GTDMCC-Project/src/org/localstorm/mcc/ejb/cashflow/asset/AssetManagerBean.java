@@ -27,12 +27,27 @@ public class AssetManagerBean implements AssetManagerLocal,
 
     @Override
     public void createAsset(Asset newAsset, Cost assetCost) {
-       ValuableObject vo = newAsset.getValuable();
-       em.persist(vo);
-       em.persist(newAsset);
+        ValuableObject vo = newAsset.getValuable();
+        em.persist(vo);
+        em.persist(newAsset);
 
-       assetCost.setValuable(vo);
-       em.persist(assetCost);
+        assetCost.setValuable(vo);
+        em.persist(assetCost);
+
+        Cost fake = new Cost(vo);
+        {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(assetCost.getActuationDate());
+            cal.add(Calendar.DATE, -1);
+
+            fake.setActuationDate(cal.getTime());
+            fake.setBuy(assetCost.getBuy());
+            fake.setExchangeBuy(assetCost.getExchangeBuy());
+            
+            fake.setSell(BigDecimal.ZERO);
+            fake.setExchangeSell((assetCost.getExchangeSell()!=null) ? BigDecimal.ZERO : null);
+        }
+        em.persist(fake);
     }
 
     @Override

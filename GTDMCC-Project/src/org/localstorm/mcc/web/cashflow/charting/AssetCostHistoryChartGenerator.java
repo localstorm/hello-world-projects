@@ -1,5 +1,7 @@
 package org.localstorm.mcc.web.cashflow.charting;
 
+import java.awt.Color;
+import java.awt.Paint;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -125,8 +127,11 @@ public class AssetCostHistoryChartGenerator {
             axis.setDateFormatOverride(new SimpleDateFormat(Constants.REDUCED_DATE_FORMAT));
             plot.setForegroundAlpha(0.7f);
             plot.setNoDataMessage("No data to display");
+            plot.setRangeGridlinePaint(Color.WHITE);
+            plot.setDomainGridlinePaint(Color.WHITE);
+            plot.setBackgroundPaint(Color.LIGHT_GRAY);
         }
-
+        
         return chart;
     }
 
