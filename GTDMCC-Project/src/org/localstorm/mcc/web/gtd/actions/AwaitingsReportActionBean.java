@@ -40,6 +40,8 @@ public class AwaitingsReportActionBean extends GtdBaseActionBean
 
         FilterUtil.applyContextFilter(awaited, super.getContextIdFilter());
         this.setAwaitedTasks(WrapUtil.genWrappers(awaited, fpt));
+
+        super.setAffectedContexts(this.getAwaitedTasks());
         
         return new ForwardResolution(Views.VIEW_AW);
     }

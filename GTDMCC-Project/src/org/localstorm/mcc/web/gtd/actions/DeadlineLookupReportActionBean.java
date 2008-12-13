@@ -4,8 +4,11 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
@@ -15,6 +18,7 @@ import org.localstorm.mcc.ejb.gtd.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.ejb.users.User;
+import org.localstorm.mcc.web.gtd.RequestAttributes;
 import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.mcc.web.gtd.actions.wrap.TaskMarker;
 import org.localstorm.mcc.web.gtd.actions.wrap.TaskWrapper;
@@ -91,6 +95,9 @@ public class DeadlineLookupReportActionBean extends GtdBaseActionBean
         this.orderByRemains(broken, true);
         this.orderByRemains(following, false);
 
+        this.setAffectedContextsByMarkers(this.broken,
+                                          this.following);
+        
         return new ForwardResolution(Views.VIEW_DLR);
     }
 
@@ -113,5 +120,33 @@ public class DeadlineLookupReportActionBean extends GtdBaseActionBean
 
         Collections.sort(markers, cmp);
     }
+
+    public void setAffectedContextsByMarkers(Collection<TaskMarker> ... cols) {
+        Integer ctxId = this.getContextIdFilter();
+        HttpServletRequest req = this.getContext().getRequest();
+
+        Map<Integer, Boolean> affectedContexts = new HashMap<Integer, Boolean>();
+        {
+            if (ctxId > 0) {
+                affectedContexts.put(ctxId, Boolean.TRUE);
+            } else {
+                for (Collection<TaskMarker> col: cols) {
+                    this.appendAffectedCtxs(col, affectedContexts);
+                }
+                if (affectedContexts.isEmpty()) {
+                    affectedContexts.put(-1, Boolean.FALSE);
+                }
+            }
+        }
+
+        req.setAttribute(RequestAttributes.AFFECTED_CONTEXTS, affectedContexts);
+    }
+
+    private void appendAffectedCtxs(Collection<TaskMarker> tasks, Map<Integer, Boolean> affectedContexts) {
+        for (TaskMarker tm : tasks) {
+            affectedContexts.put(tm.getTask().getList().getContext().getId(), Boolean.TRUE);
+        }
+    }
+
    
 }
