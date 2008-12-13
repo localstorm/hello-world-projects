@@ -36,10 +36,10 @@ ul{list-style-type:none;}
 /*----BODY LEFT PANEL----*/
 #bodyLeftPan{width:654px; float:left; padding:12px 36px 0 36px;}
 #bodyLeftPan h2{width:654px; height:30px; background:url(../images/border1.gif) 100% 70% no-repeat #fff; color:#00111A; font:28px/28px Georgia, "Times New Roman", Times, serif;}
-#bodyLeftPan h2 span{background:#fff; color:#046598;}
+#bodyLeftPan h2 span{color:#046598;}
 
 #bodyLeftPan h3{width:654px; height:30px; background:url(../images/border2.gif) 100% 70% no-repeat #fff; color:#00111A; font:28px/28px Georgia, "Times New Roman", Times, serif;}
-#bodyLeftPan h3 span{background:#fff; color:#046598;}
+#bodyLeftPan h3 span{color:#046598;}
 
 #bodyLeftPan p{padding:7px 0 0;}
 #bodyLeftPan p span{color:#046598; font-weight:bold;}
@@ -79,10 +79,10 @@ ul{list-style-type:none;}
 #bodyRightPan{width:235px; float:left; border:1px solid #DADADA; background:#F3F3F3; color:#1A1A1A; padding:0 0 28px;}
 
 #bodyRightPan h2{width:195px; height:35px; display:block; border:1px solid #DADADA; background:#fff; color:#00111A; font:24px/34px Georgia, "Times New Roman", Times, serif; margin:6px 8px 16px; padding:0 0 0 20px;}
-#bodyRightPan h2 span{background:#fff; color:#046598;}
+#bodyRightPan h2 span{ color:#046598;}
 
 #bodyRightPan h3{width:195px; height:35px; display:block; border:1px solid #DADADA; background:#fff; color:#00111A; font:24px/34px Georgia, "Times New Roman", Times, serif; margin:6px 8px 0; padding:0 0 0 20px;}
-#bodyRightPan h3 span{background:#fff; color:#046598;}
+#bodyRightPan h3 span{ color:#046598;}
 
 #bodyRightPan table.contexts {width:180px; margin:0 0 17px 28px;}
 #bodyRightPan table.contexts tr td a{width:160px; display:block; color:#1A1A1A; text-decoration:none; }
@@ -104,10 +104,10 @@ ul{list-style-type:none;}
 #bodyThirdPan{width:235px; float:left; border:1px solid #DADADA; background:#F3F3F3; color:#1A1A1A; padding:0 0 28px;}
 
 #bodyThirdPan h2{width:195px; height:35px; display:block; border:1px solid #DADADA; background:#fff; color:#00111A; font:24px/34px Georgia, "Times New Roman", Times, serif; margin:6px 8px 16px; padding:0 0 0 20px;}
-#bodyThirdPan h2 span{background:#fff; color:#046598;}
+#bodyThirdPan h2 span{color:#046598;}
 
 #bodyThirdPan h3{width:195px; height:35px; display:block; border:1px solid #DADADA; background:#fff; color:#00111A; font:24px/34px Georgia, "Times New Roman", Times, serif; margin:6px 8px 0; padding:0 0 0 20px;}
-#bodyThirdPan h3 span{background:#fff; color:#046598;}
+#bodyThirdPan h3 span{color:#046598;}
 
 #bodyThirdPan ul{width:180px; margin:0 0 17px 29px;}
 #bodyThirdPan ul li{width:180px; height:18px;}
