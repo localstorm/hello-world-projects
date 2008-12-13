@@ -1,6 +1,5 @@
 package org.localstorm.mcc.web.gtd.actions;
 
-import org.localstorm.mcc.web.BaseActionBean;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import java.util.Collection;
@@ -100,6 +99,10 @@ public class IndexActionBean extends GtdBaseActionBean {
         TaskManager tm = this.getTaskManager();
         this.setRedlinesBroken(!tm.findRedlinedTasks(user).isEmpty());
         this.setDeadlinesBroken(!tm.findDeadlinedTasks(user).isEmpty());
+
+        this.setAffectedContexts(this.flightPlanTasks,
+                                 this.awaitedFlightPlanTasks,
+                                 this.archiveFlightPlanTasks);
 
         return new ForwardResolution(Views.IDX);
     }

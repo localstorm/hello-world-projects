@@ -48,6 +48,9 @@ public class EasyTasksReportActionBean extends GtdBaseActionBean
         FilterUtil.applyContextFilter(easy, ctxId);
 
         this.setTasks(WrapUtil.genWrappers(easy, fpTasks));
+
+        super.setAffectedContexts(this.getTasks());
+
         return new ForwardResolution(Views.VIEW_EASY);
     }
     

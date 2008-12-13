@@ -5,6 +5,10 @@
 
 package org.localstorm.mcc.web.gtd.actions;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
@@ -23,6 +27,7 @@ import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.web.BaseActionBean;
 import org.localstorm.mcc.web.Clipboard;
 import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.gtd.RequestAttributes;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
@@ -151,5 +156,31 @@ public class GtdBaseActionBean extends BaseActionBean {
         SessionUtil.fill(this.getSession(), SessionKeys.FILTER_CONTEXT, contextId);
     }
 
+    public void setAffectedContexts(Collection<Task> ... cols) {
+        Integer ctxId = this.getContextIdFilter();
+        HttpServletRequest req = this.getContext().getRequest();
+        
+        Map<Integer, Boolean> affectedContexts = new HashMap<Integer, Boolean>();
+        {
+            if (ctxId > 0) {
+                affectedContexts.put(ctxId, Boolean.TRUE);
+            } else {
+                for (Collection<Task> col: cols) {
+                    this.appendAffectedCtxs(col, affectedContexts);
+                }
+                if (affectedContexts.isEmpty()) {
+                    affectedContexts.put(-1, Boolean.FALSE);
+                }
+            }
+        }
+        
+        req.setAttribute(RequestAttributes.AFFECTED_CONTEXTS, affectedContexts);
+    }
+
+    private void appendAffectedCtxs(Collection<Task> tasks, Map<Integer, Boolean> affectedContexts) {
+        for (Task t : tasks) {
+            affectedContexts.put(t.getList().getContext().getId(), Boolean.TRUE);
+        }
+    }
 
 }
