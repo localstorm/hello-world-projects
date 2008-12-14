@@ -2,6 +2,7 @@ package org.localstorm.mcc.ejb.cashflow.stat;
 
 import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.Date;
 import org.localstorm.mcc.ejb.users.User;
 
 
@@ -21,9 +22,11 @@ public interface HistoricalValuesManager
     public void log(HistoricalValue hv);
 
     public Collection<HistoricalValue> findByValueTag(ValueType valueTag,
-                                                      User user);
+                                                      User user,
+                                                      Date minDate);
 
     public Collection<HistoricalValue> findByValueTagAndObjectId(ValueType valueTag, 
                                                                  Integer objectId,
-                                                                 User user);
+                                                                 User user,
+                                                                 Date minDate);
 }

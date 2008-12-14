@@ -1,8 +1,6 @@
 package org.localstorm.mcc.web.cashflow.charting;
 
 import java.awt.Color;
-import java.awt.Paint;
-import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collection;
@@ -21,8 +19,11 @@ import org.localstorm.mcc.ejb.cashflow.asset.Asset;
 import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
 import org.localstorm.mcc.ejb.cashflow.asset.Cost;
 import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
+import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.Constants;
+
+import static org.localstorm.mcc.web.cashflow.charting.DecimalUtil.*;
 
 /**
  *
@@ -35,7 +36,7 @@ public class AssetCostHistoryChartGenerator {
         Calendar cal = Calendar.getInstance();
 
         if ( daysPeriod==null ) {
-            cal.add(Calendar.YEAR, -1000); // 1000 years
+            cal.add(Calendar.YEAR, -50); // 50 years
         } else {
             cal.add(Calendar.DATE, -daysPeriod);
         }
@@ -91,17 +92,17 @@ public class AssetCostHistoryChartGenerator {
 
         if (buyFxEnable) {
             for (Cost c: costs) {
-                buyFx.addOrUpdate(new Day(c.getActuationDate()), nvlCost(c.getExchangeBuy(), c.getBuy()));
+                buyFx.addOrUpdate(new Day(c.getActuationDate()), nvl(c.getExchangeBuy(), c.getBuy()));
             }
-            buyFx.addOrUpdate(new Day(new Date()), nvlCost(current.getExchangeBuy(), current.getBuy()));
+            buyFx.addOrUpdate(new Day(new Date()), nvl(current.getExchangeBuy(), current.getBuy()));
             tsc.addSeries(buyFx);
         }
 
         if (sellFxEnable) {
             for (Cost c: costs) {
-                sellFx.addOrUpdate(new Day(c.getActuationDate()), nvlCost(c.getExchangeSell(), c.getSell()));
+                sellFx.addOrUpdate(new Day(c.getActuationDate()), nvl(c.getExchangeSell(), c.getSell()));
             }
-            sellFx.addOrUpdate(new Day(new Date()), nvlCost(current.getExchangeSell(), current.getSell()));
+            sellFx.addOrUpdate(new Day(new Date()), nvl(current.getExchangeSell(), current.getSell()));
             tsc.addSeries(sellFx);
         }
 
@@ -109,9 +110,11 @@ public class AssetCostHistoryChartGenerator {
     }
 
     public static JFreeChart getChart(User user, Integer assetId, Integer daysOffset, String name) {
-        SimpleDateFormat sdf = new SimpleDateFormat(Constants.DATE_FORMAT);
-
         XYDataset dataset = AssetCostHistoryChartGenerator.getAssetCostDataset(user, assetId, daysOffset);
+        
+        if (dataset==null) {
+            return null;
+        }
 
         JFreeChart chart = ChartFactory.createTimeSeriesChart(name,
                                                               "Time line",
@@ -135,8 +138,5 @@ public class AssetCostHistoryChartGenerator {
         return chart;
     }
 
-    private static BigDecimal nvlCost(BigDecimal cost, BigDecimal defaultCost)
-    {
-        return (cost==null)?defaultCost:cost;
-    }
+   
 }
