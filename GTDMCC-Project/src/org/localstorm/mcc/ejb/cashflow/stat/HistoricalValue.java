@@ -101,12 +101,12 @@ public class HistoricalValue implements Identifiable, Serializable {
         this.val = value;
     }
 
-    public void setValueTag(String valueTag) {
-        this.valueTag = valueTag;
+    public void setValueTag(ValueType valueTag) {
+        this.valueTag = valueTag.toString();
     }
 
-    public String getValueTag() {
-        return valueTag;
+    public ValueType getValueTag() {
+        return ValueType.valueOf(valueTag);
     }
 
     public static class Queries {
