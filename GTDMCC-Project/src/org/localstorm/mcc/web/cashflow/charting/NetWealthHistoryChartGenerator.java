@@ -23,7 +23,7 @@ import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
  *
  * @author localstorm
  */
-public class TotalWealthChartGenerator {
+public class NetWealthHistoryChartGenerator {
 
     public static JFreeChart getChart(User user) {
         SimpleDateFormat sdf = new SimpleDateFormat(Constants.DATE_FORMAT);

@@ -20,7 +20,11 @@
             <table class="reports">
                 <tr>
                     <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
-                    <td><a href="<c:url value="/actions/TotalWealthReport"/>">Total wealth</a></td>
+                    <td><a href="<c:url value="/actions/AssetsStructureReport"/>">Assets structure</a></td>
+                </tr>
+                <tr>
+                    <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
+                    <td><a href="<c:url value="/actions/NetWealthHistoryReport"/>">Net wealth history</a></td>
                 </tr>
             </table>
 </div>

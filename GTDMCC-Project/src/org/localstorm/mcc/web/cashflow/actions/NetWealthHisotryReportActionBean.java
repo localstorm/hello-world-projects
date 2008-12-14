@@ -9,13 +9,13 @@ import net.sourceforge.stripes.action.UrlBinding;
 /**
  * A very simple calculator action.
  */
-@UrlBinding("/actions/TotalWealthReport")
-public class TotalWealthReportActionBean extends CashflowBaseActionBean {
+@UrlBinding("/actions/NetWealthHistoryReport")
+public class NetWealthHisotryReportActionBean extends CashflowBaseActionBean {
 
     @DefaultHandler
     public Resolution filling() {
         
-        return new ForwardResolution(Views.TOTAL_WEALTH);
+        return new ForwardResolution(Views.WEALTH_HISTORY);
     }
 
 }
