@@ -33,11 +33,11 @@ import org.localstorm.mcc.ejb.users.User;
 @NamedQueries({
     @NamedQuery (
         name = HistoricalValue.Queries.FIND_BY_VALUE_TAG,
-        query= "SELECT o FROM HistoricalValue o WHERE o.valueTag=:tag and o.owner=:owner ORDER BY o.fixDate DESC"
+        query= "SELECT o FROM HistoricalValue o WHERE o.valueTag=:tag and o.owner=:owner and o.fixDate>:minDate ORDER BY o.fixDate DESC"
     ),
     @NamedQuery (
         name = HistoricalValue.Queries.FIND_BY_VALUE_AND_OBJECT_ID_TAG,
-        query= "SELECT o FROM HistoricalValue o WHERE o.valueTag=:tag and o.owner=:owner and o.objectId=:objectId ORDER BY o.fixDate DESC"
+        query= "SELECT o FROM HistoricalValue o WHERE o.valueTag=:tag and o.owner=:owner and o.objectId=:objectId and o.fixDate>:minDate ORDER BY o.fixDate DESC"
     )
 })
 public class HistoricalValue implements Identifiable, Serializable {
@@ -116,6 +116,7 @@ public class HistoricalValue implements Identifiable, Serializable {
 
     public static interface Properties
     {
+        public static final String MIN_DATE  = "minDate";
         public static final String VALUE_TAG = "tag";
         public static final String OWNER     = "owner";
         public static final String OBJECT_ID = "objectId";

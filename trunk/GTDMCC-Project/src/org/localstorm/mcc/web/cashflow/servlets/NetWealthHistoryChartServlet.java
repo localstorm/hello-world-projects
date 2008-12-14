@@ -11,7 +11,7 @@ import org.jfree.chart.JFreeChart;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.Constants;
 import org.localstorm.mcc.web.SessionKeys;
-import org.localstorm.mcc.web.cashflow.charting.AssetsStructureChartGenerator;
+import org.localstorm.mcc.web.cashflow.charting.NetWealthHistoryChartGenerator;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
@@ -30,7 +30,7 @@ public class NetWealthHistoryChartServlet extends HttpServlet
             return;
         }
 
-        JFreeChart chart = AssetsStructureChartGenerator.getChart(user);
+        JFreeChart chart = NetWealthHistoryChartGenerator.getChart(user, null, "Net wealth history");
 
         resp.setContentType(Constants.PNG_CONTENT_TYPE);
         ChartUtilities.writeChartAsPNG(resp.getOutputStream(), chart, 640, 480);
