@@ -4,6 +4,15 @@
 <%@ include file="/WEB-INF/jsp/includes/cashflow/hdr.jsp" %>
 
 <h2><span>ASSETS</span> list</h2>
+ <table width="100%">
+    <tr>
+        <td align="right">
+            <c:if test="${actionBean.checkpointUpdateNeeded}">
+                <a href="<c:url value="/actions/MakeCheckpoint" />" title="Net wealth or balance changed. Checkpoint needed."><img src="<c:url value="/images/check.png"/>" border="0" /></a>
+            </c:if>
+        </td>
+    </tr>
+</table>
 <br/>
 <div align="center">
 <table width="80%" border="0px" >

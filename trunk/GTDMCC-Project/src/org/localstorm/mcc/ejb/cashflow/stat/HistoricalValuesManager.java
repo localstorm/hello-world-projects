@@ -1,5 +1,6 @@
 package org.localstorm.mcc.ejb.cashflow.stat;
 
+import java.math.BigDecimal;
 import java.util.Collection;
 import org.localstorm.mcc.ejb.users.User;
 
@@ -13,9 +14,16 @@ public interface HistoricalValuesManager
 {
     public static final String BEAN_NAME="HistoricalValuesManagerBean";
 
+    public HistoricalValue findLastByValueTag(ValueType vt,
+                                              BigDecimal defaultValue,
+                                              User user);
+
     public void log(HistoricalValue hv);
 
-    public Collection<HistoricalValue> findByValueTag(String valueTag, User user);
+    public Collection<HistoricalValue> findByValueTag(ValueType valueTag,
+                                                      User user);
 
-    public Collection<HistoricalValue> findByValueTagAndObjectId(String valueTag, Integer objectId, User user);
+    public Collection<HistoricalValue> findByValueTagAndObjectId(ValueType valueTag, 
+                                                                 Integer objectId,
+                                                                 User user);
 }
