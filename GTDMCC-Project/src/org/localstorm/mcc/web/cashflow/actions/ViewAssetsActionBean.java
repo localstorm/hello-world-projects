@@ -79,7 +79,7 @@ public class ViewAssetsActionBean extends CashflowBaseActionBean {
                                         BigDecimal balance) {
         HistoricalValuesManager hvm = super.getHistoricalValuesManager();
 
-        ValueType twc  = ValueType.TOTAL_WEALTH_CHECKPOINT;
+        ValueType twc  = ValueType.NET_WEALTH_CHECKPOINT;
         ValueType twc2 = ValueType.BALANCE_CHECKPOINT;
 
         HistoricalValue hv  = hvm.findLastByValueTag(twc, BigDecimal.ZERO, user);

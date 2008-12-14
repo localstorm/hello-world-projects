@@ -49,7 +49,7 @@ public class CheckpointMakeActionBean extends CashflowBaseActionBean
             netWealthHV.setFixDate(new Date());
             netWealthHV.setObjectId(null);
             netWealthHV.setOwner(user);
-            netWealthHV.setValueTag(ValueType.TOTAL_WEALTH_CHECKPOINT);
+            netWealthHV.setValueTag(ValueType.NET_WEALTH_CHECKPOINT);
             netWealthHV.setVal(netWealth);
         }
 
