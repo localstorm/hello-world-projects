@@ -21,7 +21,7 @@
                     <a href="<c:url value="/actions/DeadlineLookupReport" />" title="Deadlines are broken!"><img src="<c:url value="/images/deadline.png"/>" border="0" /></a>
                 </c:if>
                 <c:if test="${(not empty actionBean.flightPlanTasks) or (not empty actionBean.awaitedFlightPlanTasks) or (not empty actionBean.archiveFlightPlanTasks)}">
-                    <a href="<c:url value="/actions/UtilizeFlightPlan" />" title="Utilize &amp; build new"><img src="<c:url value="/images/utilize.gif"/>" border="0" /></a>
+                    <a onclick="return confirm('Are you sure?');" href="<c:url value="/actions/UtilizeFlightPlan" />" title="Utilize &amp; build new"><img src="<c:url value="/images/utilize.gif"/>" border="0" /></a>
                 </c:if>
                 <c:if test="${needCleanUp}">
                     <a href="<c:url value="/actions/CleanupFinishedTasks" />" title="Cleanup finished tasks"><img src="<c:url value="/images/cleanup.png"/>" border="0" /></a>
