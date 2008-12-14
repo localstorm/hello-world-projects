@@ -3,11 +3,11 @@
 
 <%@ include file="/WEB-INF/jsp/includes/cashflow/hdr.jsp" %>
 
-<h2><span>TOTAL</span> wealth</h2>
+<h2><span>NET WEALTH</span> history</h2>
 
 <div align="center">
     <br/>
-    <img src="<c:url value="/chart/totalWealth.png"/>"/>
+    <img src="<c:url value="/chart/netWealthHistory.png"/>"/>
 </div>
 
 

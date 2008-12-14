@@ -11,13 +11,13 @@ import org.jfree.chart.JFreeChart;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.Constants;
 import org.localstorm.mcc.web.SessionKeys;
-import org.localstorm.mcc.web.cashflow.charting.TotalWealthChartGenerator;
+import org.localstorm.mcc.web.cashflow.charting.AssetsStructureChartGenerator;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
  * @author localstorm
  */
-public class TotalWealthPieChartServlet extends HttpServlet
+public class NetWealthHistoryChartServlet extends HttpServlet
 {
 
     @Override
@@ -30,7 +30,7 @@ public class TotalWealthPieChartServlet extends HttpServlet
             return;
         }
 
-        JFreeChart chart = TotalWealthChartGenerator.getChart(user);
+        JFreeChart chart = AssetsStructureChartGenerator.getChart(user);
 
         resp.setContentType(Constants.PNG_CONTENT_TYPE);
         ChartUtilities.writeChartAsPNG(resp.getOutputStream(), chart, 640, 480);

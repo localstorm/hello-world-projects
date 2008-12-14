@@ -120,8 +120,14 @@
         </servlet>
 
         <servlet>
-                <servlet-name>TotalWealthPieChartServlet</servlet-name>
-                <servlet-class>org.localstorm.mcc.web.cashflow.servlets.TotalWealthPieChartServlet</servlet-class>
+                <servlet-name>AssetsStructureChartServlet</servlet-name>
+                <servlet-class>org.localstorm.mcc.web.cashflow.servlets.AssetsStructureChartServlet</servlet-class>
+                <load-on-startup>2</load-on-startup>
+        </servlet>
+
+        <servlet>
+                <servlet-name>NetWealthHistoryChartServlet</servlet-name>
+                <servlet-class>org.localstorm.mcc.web.cashflow.servlets.NetWealthHistoryChartServlet</servlet-class>
                 <load-on-startup>2</load-on-startup>
         </servlet>
         
@@ -148,8 +154,13 @@
         </servlet-mapping>
 
         <servlet-mapping>
-                <servlet-name>TotalWealthPieChartServlet</servlet-name>
-                <url-pattern>/chart/totalWealth.png</url-pattern>
+                <servlet-name>AssetsStructureChartServlet</servlet-name>
+                <url-pattern>/chart/assetsStructure.png</url-pattern>
+        </servlet-mapping>
+
+        <servlet-mapping>
+                <servlet-name>NetWealthHistoryChartServlet</servlet-name>
+                <url-pattern>/chart/netWealthHistory.png</url-pattern>
         </servlet-mapping>
 
         <servlet-mapping>
