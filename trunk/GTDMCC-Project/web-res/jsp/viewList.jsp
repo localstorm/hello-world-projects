@@ -165,13 +165,17 @@
     <c:forEach items="${actionBean.awaitedTasks}" var="task" varStatus="status">
     <tr> 
         <td>
-            <p><a href="<c:url value="/actions/ResolveTask">
+            <a href="<c:url value="/actions/ResolveTask">
                             <c:param name="taskId" value="${task.id}" />
                             <c:param name="action" value="UNDELEGATE" />
                         </c:url>" title="Not delegated"><img border="0" src="<c:url value="/images/delegated.png"/>" /></a>
               <a href="<c:url value="/actions/ViewTask">
                             <c:param name="taskId" value="${task.id}" />
-                        </c:url>"><c:out value="${task.summary}"/></a><hr/></p>
+                        </c:url>"><c:out value="${task.summary}"/></a>
+            <c:if test="${not empty task.runtimeNote}">
+                <p><i>&nbsp;Responsibility:&nbsp;</i><c:out value="${task.runtimeNote}"/></p>
+            </c:if>
+            <hr/>
             <c:if test="${status.last}">
                 <p class="more"><a href="#">PRINT</a></p>
             </c:if>
