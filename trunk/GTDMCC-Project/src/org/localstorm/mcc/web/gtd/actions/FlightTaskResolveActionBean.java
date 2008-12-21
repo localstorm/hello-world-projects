@@ -64,25 +64,6 @@ public class FlightTaskResolveActionBean extends GtdBaseActionBean
                                         super.getFlightPlanManager(),
                                         super.getUser());
 
-        try
-        {
-            Task t = super.getTaskManager().findById(this.getTaskId());
-
-            if (t.isCancelled() || t.isFinished()) {
-                TaskResolutionLogic.resolveTask(this.getTaskId(),
-                                                TaskResolutionAction.UNFLIGHT,
-                                                this.getRuntimeNote(),
-                                                super.getCurrentList(),
-                                                super.getClipboard(),
-                                                super.getTaskManager(),
-                                                super.getListManager(),
-                                                super.getFlightPlanManager(),
-                                                super.getUser());
-            }
-        } catch(ObjectNotFoundException e) {
-            /* Ignoring */
-        }
-
         SessionUtil.clear(super.getSession(), SessionKeys.NEED_CLEANUP);
         return new RedirectResolution(IndexActionBean.class);
     }
