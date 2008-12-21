@@ -26,7 +26,7 @@ public class VOPricesUpdateActionBean extends CashflowBaseActionBean {
     @Validate(required=true)
     private Integer valuableId;
 
-     @Validate( required=true )
+    @Validate( required=true )
     private BigDecimal buy;
 
     private BigDecimal buyFx;
@@ -35,6 +35,8 @@ public class VOPricesUpdateActionBean extends CashflowBaseActionBean {
     private BigDecimal sell;
 
     private BigDecimal sellFx;
+
+    private boolean usedInBalance;
 
     public void setBuy(BigDecimal buy) {
         this.buy = buy;
@@ -76,6 +78,14 @@ public class VOPricesUpdateActionBean extends CashflowBaseActionBean {
         this.valuableId = valuableId;
     }
 
+    public boolean isUsedInBalance() {
+        return usedInBalance;
+    }
+
+    public void setUsedInBalance(boolean usedInBalance) {
+        this.usedInBalance = usedInBalance;
+    }
+
     @DefaultHandler
     public Resolution update() throws Exception {
 
@@ -92,7 +102,12 @@ public class VOPricesUpdateActionBean extends CashflowBaseActionBean {
             cost.setExchangeSell(RoundUtil.round(this.getSellFx(), rounding));
         }
         
+        vo.setUsedInBalance(this.isUsedInBalance());
+
+        System.out.println("FUCCK:"+vo.isUsedInBalance());
+
         am.updateCost(vo, cost);
+        am.updateValuableObject(vo);
 
         return NextDestinationUtil.getViewByValuableObject(vo, am);
     }

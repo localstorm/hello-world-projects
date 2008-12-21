@@ -40,7 +40,9 @@ public class CheckpointMakeActionBean extends CashflowBaseActionBean
         {
             AssetWrapper aw = (AssetWrapper) a;
             netWealth = netWealth.add(aw.getNetWealth());
-            balance   = balance.add(aw.getBalance());
+            if (aw.getValuable().isUsedInBalance()) {
+                balance   = balance.add(aw.getBalance());
+            }
         }
 
 

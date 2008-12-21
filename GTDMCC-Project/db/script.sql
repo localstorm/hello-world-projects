@@ -155,6 +155,7 @@ create table VALUABLE_OBJECTS
 (
     id INT NOT NULL AUTO_INCREMENT,
     user_id INT not null,
+    is_used_in_balance  SMALLINT NOT NULL, 
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES USERS(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
