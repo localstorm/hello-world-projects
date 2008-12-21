@@ -69,8 +69,12 @@
         <td align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${asset.revenuAmount}"/></td>
     </tr>
     <tr bgColor="#FBFFBD">
-        <td align="right" >Balance:</td>
-        <td align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${asset.balance}"/></td>
+        <td align="right" ><c:choose>
+                <c:when test="${not asset.valuable.usedInBalance}"><s>Balance</s></c:when><c:otherwise>Balance</c:otherwise></c:choose>:
+        </td>
+        <td align="right" >
+            <fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${asset.balance}"/>
+        </td>
     </tr>
 </table>
 </c:forEach>

@@ -64,7 +64,10 @@ public class ViewAssetsActionBean extends CashflowBaseActionBean {
         {
             AssetWrapper aw = (AssetWrapper) a;
             this.netWealth = this.netWealth.add(aw.getNetWealth());
-            this.balance   = this.balance.add(aw.getBalance());
+
+            if (aw.getValuable().isUsedInBalance()) {
+                this.balance   = this.balance.add(aw.getBalance());
+            }
         }
 
         this.checkpointUpdateNeeded = this.getCheckpointStatus(user,

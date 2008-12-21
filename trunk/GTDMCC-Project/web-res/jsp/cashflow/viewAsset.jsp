@@ -226,6 +226,10 @@
         <td align="right" >Balance:</td>
         <td align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${actionBean.assetResult.balance}"/></td>
     </tr>
+    <tr bgColor="#DFFFBF">
+        <td align="right" >Use in total balance:</td>
+        <td align="right" ><stripes:checkbox name="usedInBalance" checked="${actionBean.assetResult.valuable.usedInBalance}" /></td>
+    </tr>
     <tr bgColor="#FBFFBD">
         <td colspan="2" align="center"><stripes:submit name="upd" value="Update"/>&nbsp;<stripes:reset name="rst" /></td>
     </tr>

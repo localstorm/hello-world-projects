@@ -99,5 +99,7 @@ public class AssetWrapper extends Asset {
     public BigDecimal getRevenuAmount() {
         return revenuAmount;
     }
+
+
     
 }

@@ -6,6 +6,7 @@
 package org.localstorm.mcc.ejb.cashflow.asset;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -41,6 +42,9 @@ public class ValuableObject implements Identifiable, Serializable {
     @ManyToOne(fetch=FetchType.LAZY)
     private User owner;
 
+    @Column(name="is_used_in_balance", updatable=true, nullable=false )
+    private boolean usedInBalance;
+
 
     public ValuableObject()
     {
@@ -58,6 +62,14 @@ public class ValuableObject implements Identifiable, Serializable {
 
     public User getOwner() {
         return owner;
+    }
+
+    public boolean isUsedInBalance() {
+        return usedInBalance;
+    }
+
+    public void setUsedInBalance(boolean usedInBalance) {
+        this.usedInBalance = usedInBalance;
     }
 
     public static interface Queries
