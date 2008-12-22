@@ -33,7 +33,7 @@ public class TimeIntervalBitMask
        Shifts mask and makes it up-to-date. Returns false if right edge minute is
        less than NOW-sizeInMinutes
      */
-    public synchronized boolean timeShift()
+    public boolean timeShift()
     {
         // getting difference between now and right
         int diff= (int) ((System.currentTimeMillis() - right.getTimeInMillis()) / 60000);
@@ -45,7 +45,7 @@ public class TimeIntervalBitMask
 
     }
 
-    public synchronized void setBits(DateInterval interval)
+    public void setBits(DateInterval interval)
     {
         this.timeShift();
 
@@ -72,24 +72,24 @@ public class TimeIntervalBitMask
      * @param minuteDate
      * @return <code>true</code> if bit that corresponds to given minute is 1
      */
-    public synchronized boolean getBitByMinute(Date minuteDate)
+    public boolean getBitByMinute(Date minuteDate)
     {
         int point = (int) ((right.getTimeInMillis() - minuteDate.getTime()) / 60000);
         return (point>=0 && point<size && bitMask.get(point));
     }
 
     @Override
-    public synchronized String toString()
+    public String toString()
     {
         return bitMask.toString() + ":" + right.getTime();
     }
 
-    public synchronized Date getRight()
+    public Date getRight()
     {
         return this.right.getTime();
     }
 
-    public synchronized Date getLeft()
+    public Date getLeft()
     {
         Calendar cal = (Calendar) this.right.clone();
         cal.add(Calendar.MINUTE, -size);
