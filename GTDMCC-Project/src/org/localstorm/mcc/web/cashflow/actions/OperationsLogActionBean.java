@@ -25,6 +25,7 @@ import org.localstorm.mcc.web.cashflow.Views;
 @UrlBinding("/actions/ViewOperations")
 public class OperationsLogActionBean extends CashflowBaseActionBean {
 
+
     @Validate(required=true)
     private Integer assetId;
 
@@ -71,5 +72,8 @@ public class OperationsLogActionBean extends CashflowBaseActionBean {
         return new ForwardResolution(Views.OPS_LOG);
     }
 
+    public static interface IncomingParameters {
+        public static final String ASSET_ID = "assetId";
+    }
 
 }

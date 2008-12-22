@@ -15,6 +15,7 @@
         <th>Amount</th>
         <th width="50%">Comment</th>
         <th>Date</th>
+        <th>Action</th>
     </tr>
 <c:forEach items="${actionBean.operations}" var="op">
     <tr bgcolor="#FBFFBD">
@@ -22,6 +23,9 @@
         <td align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${op.amount}"/></td>
         <td align="right" ><c:out value="${op.comment}" /></td>
         <td align="right" ><c:out value="${op.operationDate}" /></td>
+        <td align="center" ><a title="Revoke operation" href="<c:url value="/actions/RevokeOperation">
+                                        <c:param name="operationId" value="${op.id}" />
+                                     </c:url>"><img border="0" src="<c:url value="/images/revoke.png"/>" /></a></td>
     </tr>
 </c:forEach>
 </table>

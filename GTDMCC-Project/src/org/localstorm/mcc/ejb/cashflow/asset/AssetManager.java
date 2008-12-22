@@ -19,13 +19,15 @@ public interface AssetManager
 
     public Collection<Asset> findArchivedAssetsByOwner(User user);
 
-    public Asset findAssetsByValuable(ValuableObject vo);
+    public Asset findAssetByValuable(ValuableObject vo);
     
     public Collection<Asset> findAssetsByOwner(User user);
 
     public Asset findAssetById(int assetId);
 
     public void createTarget(Target newTarget, Cost targetCost);
+
+    public Operation findOperationById(Integer operationId);
 
     public BigDecimal getBalance(ValuableObject vo);
 
@@ -42,6 +44,8 @@ public interface AssetManager
     public Cost getCurrentCost(ValuableObject vo);
 
     public void remove(Asset asset);
+
+    public void remove(Operation op);
 
     public void update(Asset asset);
 

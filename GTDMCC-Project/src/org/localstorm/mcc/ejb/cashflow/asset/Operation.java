@@ -75,7 +75,7 @@ public class Operation implements Identifiable, Serializable {
     
     @Override
     public Integer getId() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return id;
     }
 
     public BigDecimal getAmount() {
