@@ -9,7 +9,7 @@
                                          </c:url>"><c:out value="${actionBean.asset.name}"/></a>)</div>
 <br/>
 <div align="center">
-<table width="80%" border="0px" >
+<table width="90%" border="0px" >
     <tr bgcolor="#DFFFBF">
         <th>Type</th>
         <th>Amount</th>
