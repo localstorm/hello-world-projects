@@ -17,7 +17,7 @@ import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
 public class NextDestinationUtil {
     public static RedirectResolution getViewByValuableObject(ValuableObject vo, AssetManager am)
     {
-        Asset asset = am.findAssetsByValuable(vo);
+        Asset asset = am.findAssetByValuable(vo);
         if (asset!=null)
         {
 //            RedirectResolution rr = new RedirectResolution(AssetViewActionBean.class);

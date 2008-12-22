@@ -57,8 +57,15 @@ public class AssetManagerBean implements AssetManagerLocal,
 
     @Override
     public void remove(Asset asset) {
-        asset = (Asset) em.find(Asset.class, asset.getId() );
+//      asset = (Asset) em.find(Asset.class, asset.getId() );
+        asset = (Asset) em.getReference(Asset.class, asset.getId() );
         em.remove(asset);
+    }
+
+    @Override
+    public void remove(Operation op) {
+        op = em.getReference(Operation.class, op.getId());
+        em.remove(op);
     }
 
     @Override
@@ -223,13 +230,17 @@ public class AssetManagerBean implements AssetManagerLocal,
     }
 
     @Override
-    public Asset findAssetsByValuable(ValuableObject vo) {
+    public Asset findAssetByValuable(ValuableObject vo) {
         Query uq = em.createNamedQuery(Asset.Queries.FIND_BY_VALUABLE);
         uq.setParameter(Asset.Properties.VALUABLE, vo);
 
         return (Asset) uq.getSingleResult();
     }
 
+    @Override
+    public Operation findOperationById(Integer operationId) {
+        return (Operation) em.find(Operation.class, operationId);
+    }
 
     @Override
     public Asset findAssetById(int assetId) {
