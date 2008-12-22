@@ -17,8 +17,9 @@ public class Main {
 
         
         TimelineCache tlc = new TimelineCache(5);
-        tlc.put(1, false);
-        CacheEntry ce = tlc.get(1);
+        
+        CacheSegment cs = tlc.getCacheSegment(1, true);
+        CacheEntry   ce = cs.getCacheEntry(2, true);
 
         TimeIntervalBitMask tbm = ce.getTbm();
 
@@ -47,7 +48,7 @@ public class Main {
         tlc.clearJunkEntries();
         tlc.clearJunkEntries();
 
-        if (tlc.get(1)!=null)
+        if (tlc.getCacheSegment(1, false)!=null)
         {
             throw new RuntimeException();
         }

@@ -6,25 +6,30 @@ package org.localstorm.bitmask;
  */
 public class CacheEntry 
 {
-    private Integer             apsId;
+    private Integer             psrId;
     private TimeIntervalBitMask tbm;
     private boolean             resumption;
 
-    CacheEntry(Integer apsId, TimeIntervalBitMask tbm, boolean resumption)
+    CacheEntry(Integer psrId, TimeIntervalBitMask tbm, boolean resumption)
     {
-        this.tbm = tbm;
         this.resumption = resumption;
-        this.apsId = apsId;
+        this.psrId = psrId;
+        this.tbm   = tbm;
     }
 
-    public Integer getApsId()
+    public Integer getResourceId()
     {
-        return apsId;
+        return psrId;
     }
 
     public TimeIntervalBitMask getTbm()
     {
         return tbm;
+    }
+
+    public void setTbm(TimeIntervalBitMask tbm)
+    {
+        this.tbm = tbm;
     }
 
     public boolean isResumption()
