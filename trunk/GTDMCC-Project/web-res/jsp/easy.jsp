@@ -29,7 +29,8 @@
         </c:if>
 </p>
 <div id="<c:out value="delegate-${task.id}" />" style="display: none;" >
-    <stripes:form action="/actions/ResolveEasyTask" >
+    <stripes:form action="/actions/ResolveTask" >
+        <stripes:hidden name="returnPage" value="EASY_REPORT" />
         <stripes:hidden name="taskId" value="${task.id}" />
         <stripes:hidden name="action" value="DELEGATE" />
         <table width="100%" style="background:#FFFFD0; border:1px dotted #DADADA;">
@@ -49,11 +50,13 @@
             <a href="<c:url value="/actions/ViewList" >
                 <c:param name="listId" value="${task.list.id}" />
             </c:url>" title="Open affected list"><img alt="toList" border="0" src="<c:url value="/images/toList.png"/>"/></a>
-            <a href="<c:url value="/actions/ResolveEasyTask" >
+            <a href="<c:url value="/actions/ResolveTask" >
+                <c:param name="returnPage" value="EASY_REPORT" />
                 <c:param name="taskId" value="${task.id}" />
                 <c:param name="action" value="FINISH" />
             </c:url>" title="Finish"><img alt="finish" border="0" src="<c:url value="/images/finish.png"/>"/></a>
-            <a href="<c:url value="/actions/ResolveEasyTask" >
+            <a href="<c:url value="/actions/ResolveTask" >
+                <c:param name="returnPage" value="EASY_REPORT" /> 
                 <c:param name="taskId" value="${task.id}" />
                 <c:param name="action" value="CANCEL" />
             </c:url>" title="Cancel"><img alt="cancel" border="0" src="<c:url value="/images/cancel.png"/>"/></a>

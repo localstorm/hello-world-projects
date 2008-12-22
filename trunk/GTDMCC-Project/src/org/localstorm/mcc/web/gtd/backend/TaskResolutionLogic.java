@@ -55,6 +55,7 @@ public class TaskResolutionLogic
                 break;
             case UNRESOLVE:
                 t.setFinished(false);
+                t.setRuntimeNote(null);
                 t.setDelegated(false);
                 t.setPaused(false);
                 t.setAwaited(false);
@@ -74,11 +75,15 @@ public class TaskResolutionLogic
                 break;
             case CANCEL:
                 // Cancelling tasks
+                t.setDelegated(false);
+                t.setRuntimeNote(null);
                 t.setCancelled(true);
                 t.setFinished(false);
                 break;
             case FINISH:
                 // Finishing tasks
+                t.setDelegated(false);
+                t.setRuntimeNote(null);
                 t.setFinished(true);
                 t.setCancelled(false);
                 break;
