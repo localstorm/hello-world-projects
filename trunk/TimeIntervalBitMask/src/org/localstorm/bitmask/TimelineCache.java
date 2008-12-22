@@ -1,6 +1,7 @@
 package org.localstorm.bitmask;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -9,34 +10,43 @@ import java.util.Map;
  */
 public class TimelineCache
 {
-    private Map<Integer, CacheEntry> store;
+    private Map<Integer, CacheSegment> store;
     private int tbmSizeInMinutes;
 
 
     public TimelineCache(int tbmSizeInMinutes) {
-        store = new HashMap<Integer, CacheEntry>();
+        store = new HashMap<Integer, CacheSegment>();
         this.tbmSizeInMinutes = tbmSizeInMinutes;
     }
 
-    public void put( Integer apsId, boolean state ) {
-        TimeIntervalBitMask tbm = new TimeIntervalBitMask(tbmSizeInMinutes);
-        CacheEntry ce = new CacheEntry(apsId, tbm, state);
-        store.put(apsId, ce);
+    public void putCacheSegment( Integer apsId, CacheSegment cs ) {
+        store.put(apsId, cs);
     }
 
-    public CacheEntry get( Integer apsId )
+    public CacheSegment getCacheSegment( Integer apsId, boolean createIfNone )
     {
-        return store.get(apsId);
+        CacheSegment cs = store.get(apsId);
+        
+        if (createIfNone && cs==null)
+        {
+            cs = new CacheSegment(this.tbmSizeInMinutes);
+            store.put(apsId, cs);
+        }
+
+        return cs;
     }
 
     public void clearJunkEntries()
     {
-        for (Map.Entry<Integer, CacheEntry> entry : store.entrySet())
+        for (Iterator<Map.Entry<Integer, CacheSegment>> it = store.entrySet().iterator(); it.hasNext(); )
         {
-            if (!entry.getValue().getTbm().timeShift()) {
-                store.remove(entry.getKey());
+            Map.Entry<Integer, CacheSegment> entry = it.next();
+            if (!entry.getValue().timeShift())
+            {
+                it.remove(); // Iterator?
             }
         }
     }
 
+   
 }
