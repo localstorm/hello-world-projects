@@ -1,5 +1,6 @@
 package org.localstorm.mcc.web.cashflow.actions;
 
+import java.math.BigDecimal;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
@@ -10,6 +11,8 @@ import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
 
 import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
+import org.localstorm.mcc.web.cashflow.actions.wrap.AssetWrapper;
+import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
@@ -33,10 +36,15 @@ public class AssetToggleStateActionBean extends CashflowBaseActionBean
     
     @DefaultHandler
     public Resolution toggle() throws Exception {
-        
+
         AssetManager am = super.getAssetManager();
         Asset asset = am.findAssetById(this.getAssetId());
 
+        AssetWrapper aw = (AssetWrapper) WrapUtil.wrapAsset(asset, am);
+        if (aw.getAmount().compareTo(BigDecimal.ZERO)==1) {
+            throw new RuntimeException("Attempt to delete non sold amount!");
+        }
+        
         asset.setArchived(!asset.isArchived());
         
         am.update(asset);

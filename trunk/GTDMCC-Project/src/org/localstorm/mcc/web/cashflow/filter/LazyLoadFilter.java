@@ -11,6 +11,7 @@ import org.localstorm.mcc.ejb.cashflow.asset.Asset;
 import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
@@ -51,6 +52,7 @@ public class LazyLoadFilter implements Filter
                                                    AssetManager.BEAN_NAME);
 
             Collection<Asset> assets = am.findAssetsByOwner(user);
+            assets = WrapUtil.wrapAssets(assets, am);
             SessionUtil.fill(sess, SessionKeys.ASSETS, assets);
         }
     }
