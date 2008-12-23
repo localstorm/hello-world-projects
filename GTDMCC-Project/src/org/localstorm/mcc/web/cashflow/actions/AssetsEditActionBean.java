@@ -9,8 +9,10 @@ import net.sourceforge.stripes.action.UrlBinding;
 
 import org.localstorm.mcc.ejb.cashflow.asset.Asset;
 import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
+import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
 import org.localstorm.mcc.web.cashflow.Views;
+import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
 
 /**
  *
@@ -19,16 +21,7 @@ import org.localstorm.mcc.web.cashflow.Views;
 @UrlBinding("/actions/EditAssets")
 public class AssetsEditActionBean extends CashflowBaseActionBean {
 
-    private Collection<Asset> assets;
     private Collection<Asset> archiveAssets;
-
-    public Collection<Asset> getAssets() {
-        return assets;
-    }
-
-    public void setAssets(Collection<Asset> assets) {
-        this.assets = assets;
-    }
 
     public Collection<Asset> getArchiveAssets() {
         return archiveAssets;
@@ -42,8 +35,9 @@ public class AssetsEditActionBean extends CashflowBaseActionBean {
     public Resolution filling() {
         
         AssetManager am = super.getAssetManager();
-        this.setAssets(am.findAssetsByOwner(super.getUser()));
-        this.setArchiveAssets(am.findArchivedAssetsByOwner(super.getUser()));
+        User user = super.getUser();
+
+        this.setArchiveAssets(WrapUtil.wrapAssets(am.findArchivedAssetsByOwner(user), am));
         
         return new ForwardResolution(Views.EDIT_ASSETS);
     }

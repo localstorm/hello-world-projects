@@ -23,7 +23,7 @@
         <td align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${op.amount}"/></td>
         <td align="right" ><c:out value="${op.comment}" /></td>
         <td align="right" ><c:out value="${op.operationDate}" /></td>
-        <td align="center" ><a title="Revoke operation" href="<c:url value="/actions/RevokeOperation">
+        <td align="center" ><a onclick="return confirm('Are you sure?');" title="Revoke operation" href="<c:url value="/actions/RevokeOperation">
                                         <c:param name="operationId" value="${op.id}" />
                                      </c:url>"><img border="0" src="<c:url value="/images/revoke.png"/>" /></a></td>
     </tr>
