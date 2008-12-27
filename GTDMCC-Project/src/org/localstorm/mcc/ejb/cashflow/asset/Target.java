@@ -14,6 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import org.localstorm.mcc.ejb.Identifiable;
 
@@ -23,6 +25,12 @@ import org.localstorm.mcc.ejb.Identifiable;
  */
 @Entity
 @Table(name="TARGETS")
+@NamedQueries({
+    @NamedQuery(
+        name = Target.Queries.FIND_BY_OWNER,
+        query= "SELECT o FROM Target o WHERE o.valuable.owner=:owner and o.archived = false ORDER BY o.name"
+    )
+})
 public class Target implements Identifiable, Serializable {
 
     @Id
@@ -36,12 +44,15 @@ public class Target implements Identifiable, Serializable {
     @ManyToOne(fetch=FetchType.EAGER)
     private ValuableObject valuable;
 
+    @Column(name="is_archived", updatable=true, nullable=false )
+    private boolean archived;
+
     public Target() {
     }
 
     @Override
     public Integer getId() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.id;
     }
 
     public String getName() {
@@ -60,4 +71,21 @@ public class Target implements Identifiable, Serializable {
         this.valuable = valuable;
     }
 
+    public boolean isArchived() {
+        return archived;
+    }
+
+    public void setArchived(boolean archived) {
+        this.archived = archived;
+    }
+
+    public static interface Queries
+    {
+        public static final String FIND_BY_OWNER = "findTargetsByOwner";
+    }
+
+    public static interface Properties
+    {
+        public static final String OWNER = "owner";
+    }
 }

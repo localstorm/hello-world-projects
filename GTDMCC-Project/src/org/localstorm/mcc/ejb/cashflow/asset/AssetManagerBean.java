@@ -26,7 +26,7 @@ public class AssetManagerBean implements AssetManagerLocal,
     }
 
     @Override
-    public void createAsset(Asset newAsset, Cost assetCost) {
+    public void create(Asset newAsset, Cost assetCost) {
         ValuableObject vo = newAsset.getValuable();
         em.persist(vo);
         em.persist(newAsset);
@@ -57,7 +57,6 @@ public class AssetManagerBean implements AssetManagerLocal,
 
     @Override
     public void remove(Asset asset) {
-//      asset = (Asset) em.find(Asset.class, asset.getId() );
         asset = (Asset) em.getReference(Asset.class, asset.getId() );
         em.remove(asset);
     }
@@ -66,16 +65,6 @@ public class AssetManagerBean implements AssetManagerLocal,
     public void remove(Operation op) {
         op = em.getReference(Operation.class, op.getId());
         em.remove(op);
-    }
-
-    @Override
-    public void createTarget(Target newTarget, Cost targetCost) {
-       ValuableObject vo = newTarget.getValuable();
-       em.persist(vo);
-       em.persist(newTarget);
-
-       targetCost.setValuable(vo);
-       em.persist(targetCost);
     }
 
     @Override

@@ -10,8 +10,8 @@ import net.sourceforge.stripes.action.UrlBinding;
 
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.cashflow.asset.Asset;
 import org.localstorm.mcc.ejb.cashflow.asset.Cost;
+import org.localstorm.mcc.ejb.cashflow.asset.Target;
 import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
 import org.localstorm.mcc.ejb.users.*;
 import org.localstorm.mcc.web.SessionKeys;
@@ -22,8 +22,8 @@ import org.localstorm.mcc.web.util.SessionUtil;
  *
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/AddAsset")
-public class AssetAddActionBean extends AssetsEditActionBean {
+@UrlBinding("/actions/AddTarget")
+public class TargetAddActionBean extends TargetsEditActionBean {
 
     @Validate( required=true )
     private String name;
@@ -32,22 +32,12 @@ public class AssetAddActionBean extends AssetsEditActionBean {
     public void doPostValidationStuff() {
         if ( getContext().getValidationErrors().hasFieldErrors() )
         {
-            System.out.println("Forced Filling contextlist");
             super.filling();
         }
     }
 
     @Validate( required=true )
     private BigDecimal buy;
-
-    private BigDecimal buyFx;
-
-    @Validate( required=true )
-    private BigDecimal sell;
-
-    private BigDecimal sellFx;
-    
-    //Adding context
     
     public String getName() {
         return this.name;
@@ -61,64 +51,38 @@ public class AssetAddActionBean extends AssetsEditActionBean {
         this.buy = buy;
     }
 
-    public void setBuyFx(BigDecimal buyFx) {
-        this.buyFx = buyFx;
-    }
-
-    public void setSell(BigDecimal sell) {
-        this.sell = sell;
-    }
-
-    public void setSellFx(BigDecimal sellFx) {
-        this.sellFx = sellFx;
-    }
-
     public BigDecimal getBuy() {
         return buy;
     }
 
-    public BigDecimal getBuyFx() {
-        return buyFx;
-    }
-
-    public BigDecimal getSell() {
-        return sell;
-    }
-
-    public BigDecimal getSellFx() {
-        return sellFx;
-    }
-    
     @DefaultHandler
     public Resolution addContext() {
         
         try {
             User user = super.getUser();
             
-            Asset asset = new Asset();
+            Target target = new Target();
             ValuableObject vo = new ValuableObject(user);
 
-            asset.setName(name);
-            asset.setValuable(vo);
+            target.setName(name);
+            target.setValuable(vo);
             
             MathContext rounding = new MathContext(5);
             
             Cost cost = new Cost(vo);
             cost.setBuy(RoundUtil.round(this.getBuy(), rounding));
-            cost.setExchangeBuy(RoundUtil.round(this.getBuyFx(), rounding));
-            cost.setSell(RoundUtil.round(this.getSell(), rounding));
-            cost.setExchangeSell(RoundUtil.round(this.getSellFx(), rounding));
+            cost.setSell(RoundUtil.round(this.getBuy(), rounding));
 
-            super.getAssetManager().create(asset, cost);
+            super.getTargetManager().create(target, cost);
             
-            SessionUtil.clear(super.getSession(), SessionKeys.ASSETS);
+            SessionUtil.clear(super.getSession(), SessionKeys.TARGETS);
             
         } catch(Exception e) 
         {
             e.printStackTrace();
         }
         
-        return new RedirectResolution( AssetsEditActionBean.class );
+        return new RedirectResolution( TargetsEditActionBean.class );
     }
     
 }
