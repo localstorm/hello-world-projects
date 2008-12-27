@@ -127,7 +127,7 @@ public class NetWealthHistoryChartGenerator {
 
         JFreeChart chart = ChartFactory.createTimeSeriesChart(name,
                                                               "Time line",
-                                                              "Costs",
+                                                              "Money",
                                                               dataset,
                                                               true,
                                                               true,

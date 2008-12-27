@@ -24,6 +24,7 @@ public class OperateAssetActionBean extends AssetViewActionBean {
     public void doPostValidationStuff() throws Exception {
         if ( getContext().getValidationErrors().hasFieldErrors() )
         {
+            getContext().getRequest().setAttribute("operationName", this.getOperationName());
             super.filling();
         }
     }
@@ -36,8 +37,6 @@ public class OperateAssetActionBean extends AssetViewActionBean {
 
     @Validate( required=true )
     private String comment;
-
-   
 
     public String getOperationName() {
         return operationName;

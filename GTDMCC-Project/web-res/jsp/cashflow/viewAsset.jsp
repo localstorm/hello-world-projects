@@ -13,7 +13,7 @@
 
 <div align="center">
     <div id="buyDiv" width="80%" style="display: <c:choose>
-             <c:when test="${not empty actionBean.context.validationErrors and actionBean.operationName eq 'BUY'}">inline</c:when>
+             <c:when test="${not empty actionBean.context.validationErrors and operationName eq 'BUY'}">inline</c:when>
              <c:otherwise>none</c:otherwise>
     </c:choose>;">
         <stripes:form action="/actions/OperateAsset">
@@ -55,7 +55,7 @@
         </stripes:form>
     </div>
     <div id="sellDiv" width="80%" style="display: <c:choose>
-             <c:when test="${not empty actionBean.context.validationErrors and actionBean.operationName eq 'SELL'}">inline</c:when>
+             <c:when test="${not empty actionBean.context.validationErrors and operationName eq 'SELL'}">inline</c:when>
              <c:otherwise>none</c:otherwise>
     </c:choose>;">
         <stripes:form action="/actions/OperateAsset">
@@ -97,7 +97,7 @@
         </stripes:form>
     </div>
     <div id="sellFxDiv" width="80%" style="display: <c:choose>
-             <c:when test="${not empty actionBean.context.validationErrors and actionBean.operationName eq 'SELL_FX'}">inline</c:when>
+             <c:when test="${not empty actionBean.context.validationErrors and operationName eq 'SELL_FX'}">inline</c:when>
              <c:otherwise>none</c:otherwise>
     </c:choose>;">
         <stripes:form action="/actions/OperateAsset">
@@ -139,7 +139,7 @@
         </stripes:form>
     </div>
     <div id="buyFxDiv" width="80%" style="display: <c:choose>
-             <c:when test="${not empty actionBean.context.validationErrors and actionBean.operationName eq 'BUY_FX'}">inline</c:when>
+             <c:when test="${not empty actionBean.context.validationErrors and operationName eq 'BUY_FX'}">inline</c:when>
              <c:otherwise>none</c:otherwise>
     </c:choose>;">
         <stripes:form action="/actions/OperateAsset">
@@ -182,7 +182,7 @@
     </div>
 </div>
 
-<stripes:form action="/actions/UpdateAssetPrices">
+<stripes:form action="/actions/UpdateAsset">
     <stripes:errors/>
     <stripes:hidden name="assetId" value="${actionBean.assetResult.id}" />
 
@@ -190,6 +190,10 @@
     <tr><th colspan="2" align="center"><c:out value="${actionBean.assetResult.name}"/> (<a href="<c:url value="/actions/ViewOperations">
                                                                                             <c:param name="assetId" value="${actionBean.assetResult.id}" />
                                                                                         </c:url>">Operations</a>)</th></tr>
+    <tr bgColor="#DFFFBF">
+        <td align="right">Asset name:</td>
+        <td align="right"><stripes:text name="name" id="name-id" value="${actionBean.assetResult.name}" style="width: 95%"/></td>
+    </tr>
     <tr bgcolor="#FBFFBD">
         <td width="50%" align="right" >Buy cost (1 piece):</td>
         <td width="50%" align="right" ><stripes:text name="buy" id="buy-id" value="${buyCost}" style="width: 95%"/></td>
