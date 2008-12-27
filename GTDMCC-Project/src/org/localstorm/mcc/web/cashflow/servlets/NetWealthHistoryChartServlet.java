@@ -30,7 +30,14 @@ public class NetWealthHistoryChartServlet extends HttpServlet
             return;
         }
 
-        JFreeChart chart = NetWealthHistoryChartGenerator.getChart(user, null, "Net wealth history");
+        String sstgt = req.getParameter("showTargets");
+        boolean showTgts = false;
+        if (sstgt!=null) {
+            showTgts = Boolean.parseBoolean(sstgt);
+        }
+
+        String name = (showTgts) ? "Net wealth history (with targets)" : "Net wealth history";
+        JFreeChart chart = NetWealthHistoryChartGenerator.getChart(user, null, name, showTgts);
 
         resp.setContentType(Constants.PNG_CONTENT_TYPE);
         ChartUtilities.writeChartAsPNG(resp.getOutputStream(), chart, 640, 480);

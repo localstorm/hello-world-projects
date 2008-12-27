@@ -15,11 +15,17 @@ import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.xy.XYDataset;
 import org.localstorm.mcc.ejb.ContextLookup;
+import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
+import org.localstorm.mcc.ejb.cashflow.asset.Cost;
+import org.localstorm.mcc.ejb.cashflow.asset.Target;
+import org.localstorm.mcc.ejb.cashflow.asset.TargetManager;
 import org.localstorm.mcc.ejb.cashflow.stat.HistoricalValue;
 import org.localstorm.mcc.ejb.cashflow.stat.HistoricalValuesManager;
 import org.localstorm.mcc.ejb.cashflow.stat.ValueType;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.Constants;
+import org.localstorm.mcc.web.cashflow.actions.wrap.TargetWrapper;
+import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
 
 /**
  *
@@ -27,7 +33,7 @@ import org.localstorm.mcc.web.Constants;
  */
 public class NetWealthHistoryChartGenerator {
 
-     private static XYDataset getNetWealthDataset(User user, Integer daysPeriod) {
+     private static XYDataset getNetWealthDataset(User user, Integer daysPeriod, boolean showTargets) {
 
         Calendar cal = Calendar.getInstance();
 
@@ -47,6 +53,8 @@ public class NetWealthHistoryChartGenerator {
         HistoricalValue last  = hvm.findLastByValueTag(ValueType.NET_WEALTH_CHECKPOINT, 
                                                        BigDecimal.ZERO,
                                                        user);
+
+        Date minDate = new Date();
 
         if (hvs.isEmpty()) {
             HistoricalValue first = new HistoricalValue();
@@ -78,15 +86,44 @@ public class NetWealthHistoryChartGenerator {
         for (HistoricalValue hv : hvs) {
             Date fixDate = hv.getFixDate();
             netWealth.addOrUpdate(new Day(fixDate), hv.getVal());
+
+            if (minDate.after(fixDate))
+            {
+                minDate = fixDate;
+            }
         }
 
         tsc.addSeries(netWealth);
 
+        if (showTargets) {
+            AssetManager  am = ContextLookup.lookup(AssetManager.class,
+                                                    AssetManager.BEAN_NAME);
+
+            TargetManager tm = ContextLookup.lookup(TargetManager.class,
+                                                    TargetManager.BEAN_NAME);
+            Collection<Target> tgts = tm.findTargetsByOwner(user);
+            for (Target tgt: tgts)
+            {
+                TargetWrapper tgtw = (TargetWrapper) WrapUtil.wrapTarget(tgt, am);
+                Cost c = tgtw.getCurrentCost();
+
+                TimeSeries ts = new TimeSeries(tgtw.getName());
+                {
+                    ts.addOrUpdate(new Day(minDate), c.getBuy());
+                    ts.addOrUpdate(new Day(new Date()),    c.getBuy());
+                }
+                
+                tsc.addSeries(ts);
+            }
+
+            
+        }
+
         return tsc;
     }
 
-    public static JFreeChart getChart(User user, Integer daysOffset, String name) {
-        XYDataset dataset = getNetWealthDataset(user, daysOffset);
+    public static JFreeChart getChart(User user, Integer daysOffset, String name, boolean showTargets) {
+        XYDataset dataset = getNetWealthDataset(user, daysOffset, showTargets);
 
         JFreeChart chart = ChartFactory.createTimeSeriesChart(name,
                                                               "Time line",

@@ -7,7 +7,13 @@
 
 <div align="center">
     <br/>
-    <img src="<c:url value="/chart/netWealthHistory.png"/>"/>
+    <img src="<c:url value="/chart/netWealthHistory.png">
+                    <c:param name="showTargets" value="false" />
+              </c:url>"/>
+    <br/><br/>
+    <img src="<c:url value="/chart/netWealthHistory.png">
+                    <c:param name="showTargets" value="true" />
+              </c:url>"/>
 </div>
 
 
