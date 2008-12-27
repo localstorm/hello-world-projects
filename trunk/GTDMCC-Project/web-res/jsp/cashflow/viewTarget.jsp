@@ -26,7 +26,7 @@
         <td colspan="2" align="center"><stripes:submit name="upd" value="Update"/>&nbsp;<stripes:reset name="rst" /></td>
     </tr>
     
-    <tr bgcolor="#FFEABD">
+    <%--tr bgcolor="#FFEABD">
         <td colspan="2">
         <table width="100%" border="0px">
             <tr>
@@ -38,7 +38,7 @@
             </tr>
         </table>
         </td>
-    </tr>
+    </tr--%>
 </table>
 </stripes:form>
 </div>
