@@ -182,9 +182,9 @@
     </div>
 </div>
 
-<stripes:form action="/actions/UpdateVOPrices">
+<stripes:form action="/actions/UpdateAssetPrices">
     <stripes:errors/>
-    <stripes:hidden name="valuableId" value="${actionBean.assetResult.valuable.id}" />
+    <stripes:hidden name="assetId" value="${actionBean.assetResult.id}" />
 
 <table width="80%" border="0px" >
     <tr><th colspan="2" align="center"><c:out value="${actionBean.assetResult.name}"/> (<a href="<c:url value="/actions/ViewOperations">

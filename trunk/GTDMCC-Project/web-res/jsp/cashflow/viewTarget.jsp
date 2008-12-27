@@ -8,14 +8,14 @@
 <div align="center">
 <fmt:formatNumber var="buyCost" maxFractionDigits="2" minFractionDigits="2" value="${actionBean.targetResult.currentCost.buy}"/>
 
-<stripes:form action="/actions/UpdateVOPrices">
+<stripes:form action="/actions/UpdateTargetPrice">
     <stripes:errors/>
-    <stripes:hidden name="valuableId" value="${actionBean.targetResult.valuable.id}" />
+    <stripes:hidden name="targetId" value="${actionBean.targetResult.id}" />
 
 <table width="80%" border="0px" >
     <tr><th colspan="2" align="center"><c:out value="${actionBean.targetResult.name}"/></th></tr>
     <tr bgcolor="#FBFFBD">
-        <td width="50%" align="right" >Buy cost (1 piece):</td>
+        <td width="50%" align="right" >Buy cost:</td>
         <td width="50%" align="right" ><stripes:text name="buy" id="buy-id" value="${buyCost}" style="width: 95%"/></td>
     </tr>
     <tr bgColor="#FBFFBD">

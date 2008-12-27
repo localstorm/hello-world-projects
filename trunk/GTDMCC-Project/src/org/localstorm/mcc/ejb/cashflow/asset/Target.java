@@ -28,7 +28,7 @@ import org.localstorm.mcc.ejb.Identifiable;
 @NamedQueries({
     @NamedQuery(
         name = Target.Queries.FIND_BY_OWNER,
-        query= "SELECT o FROM Target o WHERE o.valuable.owner=:owner and o.archived = false ORDER BY o.name"
+        query= "SELECT o FROM Target o WHERE o.valuable.owner=:owner and o.archived = false"
     )
 })
 public class Target implements Identifiable, Serializable {
