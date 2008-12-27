@@ -12,7 +12,7 @@ import javax.transaction.Status;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 import org.localstorm.mcc.ejb.ContextLookup;
-import org.localstorm.mcc.web.gtd.Views;
+import org.localstorm.mcc.web.Views;
 import org.localstorm.mcc.web.util.RequestUtil;
 
 /**

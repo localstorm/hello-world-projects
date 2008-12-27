@@ -10,6 +10,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.Views;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
@@ -31,7 +32,7 @@ public class AuthFilter implements Filter
         HttpSession sess = req.getSession();
             
         if (SessionUtil.isEmpty(sess, SessionKeys.USER)) {
-            req.getRequestDispatcher("/jsp/login.jsp").forward(_req, _res);
+            req.getRequestDispatcher(Views.LOGIN).forward(_req, _res);
             return;
         }
         
