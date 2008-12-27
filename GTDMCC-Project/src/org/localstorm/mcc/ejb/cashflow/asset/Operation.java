@@ -27,7 +27,7 @@ import org.localstorm.mcc.ejb.Identifiable;
 @NamedQueries({
     @NamedQuery(
         name = Operation.Queries.FIND_BY_VO_DESC,
-        query= "SELECT o FROM Operation o WHERE o.cost.valuable=:valuable ORDER BY o.cost.actuationDate DESC"
+        query= "SELECT o FROM Operation o WHERE o.cost.valuable=:valuable ORDER BY o.operationDate DESC"
     ),
     @NamedQuery(
         name = Operation.Queries.SUM_BOUGHT_BY_VO,
