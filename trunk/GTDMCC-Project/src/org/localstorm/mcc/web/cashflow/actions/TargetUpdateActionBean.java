@@ -19,6 +19,8 @@ import org.localstorm.mcc.ejb.cashflow.asset.Cost;
 import org.localstorm.mcc.ejb.cashflow.asset.Target;
 import org.localstorm.mcc.ejb.cashflow.asset.TargetManager;
 import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
+import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
  *
@@ -81,6 +83,8 @@ public class TargetUpdateActionBean extends TargetViewActionBean {
         am.updateCost(vo, cost);
         am.updateValuableObject(vo);
 
+        SessionUtil.clear(super.getSession(), SessionKeys.TARGETS);
+        
         RedirectResolution rr = new RedirectResolution(TargetViewActionBean.class);
         {
             rr.addParameter(TargetViewActionBean.IncommingParameters.TARGET_ID, this.getTargetId());
