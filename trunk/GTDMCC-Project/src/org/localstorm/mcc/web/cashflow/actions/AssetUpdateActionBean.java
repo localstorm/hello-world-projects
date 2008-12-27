@@ -7,26 +7,24 @@ package org.localstorm.mcc.web.cashflow.actions;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
+import net.sourceforge.stripes.action.After;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
+import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.cashflow.asset.Asset;
 import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
 import org.localstorm.mcc.ejb.cashflow.asset.Cost;
 import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
-import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
 
 /**
  *
  * @author localstorm
  */
-@UrlBinding("/actions/UpdateAssetPrices")
-public class AssetPricesUpdateActionBean extends CashflowBaseActionBean {
-
-    @Validate(required=true)
-    private Integer assetId;
+@UrlBinding("/actions/UpdateAsset")
+public class AssetUpdateActionBean extends AssetViewActionBean {
 
     @Validate( required=true )
     private BigDecimal buy;
@@ -38,8 +36,19 @@ public class AssetPricesUpdateActionBean extends CashflowBaseActionBean {
 
     private BigDecimal sellFx;
 
+    @Validate( required=true )
+    private String name;
+
     private boolean usedInBalance;
 
+    @After( LifecycleStage.BindingAndValidation )
+    public void doPostValidationStuff() throws Exception {
+        if ( getContext().getValidationErrors().hasFieldErrors() )
+        {
+            super.filling();
+        }
+    }
+    
     public void setBuy(BigDecimal buy) {
         this.buy = buy;
     }
@@ -72,14 +81,6 @@ public class AssetPricesUpdateActionBean extends CashflowBaseActionBean {
         return sellFx;
     }
 
-    public Integer getAssetId() {
-        return assetId;
-    }
-
-    public void setAssetId(Integer assetId) {
-        this.assetId = assetId;
-    }
-
     public boolean isUsedInBalance() {
         return usedInBalance;
     }
@@ -88,6 +89,14 @@ public class AssetPricesUpdateActionBean extends CashflowBaseActionBean {
         this.usedInBalance = usedInBalance;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
     @DefaultHandler
     public Resolution update() throws Exception {
 
@@ -106,9 +115,12 @@ public class AssetPricesUpdateActionBean extends CashflowBaseActionBean {
         }
         
         vo.setUsedInBalance(this.isUsedInBalance());
+        asset.setName(this.getName());
 
+        am.update(asset);
         am.updateCost(vo, cost);
         am.updateValuableObject(vo);
+
 
         RedirectResolution rr = new RedirectResolution(AssetViewActionBean.class);
         {

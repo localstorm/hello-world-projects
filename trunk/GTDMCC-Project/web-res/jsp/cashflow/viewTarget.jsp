@@ -8,12 +8,16 @@
 <div align="center">
 <fmt:formatNumber var="buyCost" maxFractionDigits="2" minFractionDigits="2" value="${actionBean.targetResult.currentCost.buy}"/>
 
-<stripes:form action="/actions/UpdateTargetPrice">
+<stripes:form action="/actions/UpdateTarget">
     <stripes:errors/>
     <stripes:hidden name="targetId" value="${actionBean.targetResult.id}" />
 
 <table width="80%" border="0px" >
     <tr><th colspan="2" align="center"><c:out value="${actionBean.targetResult.name}"/></th></tr>
+    <tr bgColor="#DFFFBF">
+        <td align="right">Target name:</td>
+        <td align="right"><stripes:text name="name" id="name-id" value="${actionBean.targetResult.name}" style="width: 95%"/></td>
+    </tr>
     <tr bgcolor="#FBFFBD">
         <td width="50%" align="right" >Buy cost:</td>
         <td width="50%" align="right" ><stripes:text name="buy" id="buy-id" value="${buyCost}" style="width: 95%"/></td>
