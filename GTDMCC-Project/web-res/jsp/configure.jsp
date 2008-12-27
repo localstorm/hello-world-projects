@@ -1,15 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/jsp/includes/include.jsp" %>
 
-<%@ include file="/WEB-INF/jsp/includes/hdr.jsp" %>
+<%@ include file="/WEB-INF/jsp/includes/loginhdr.jsp" %>
 
-<h2><span>CONFIGURE</span> world</h2>
-  
+
 <br/><br/><br/>
 <stripes:form action="/actions/UpdateConfig" focus="oldPassword" name="changePassForm" >
-<stripes:errors/>
 <div align="center">
-<table width="80%" bgColor="#CCCCEE" >
+<stripes:errors/>
+<table width="40%" bgColor="#CCCCEE" >
 	<tr>
 		<th colspan="2" bgColor="#7777EE"><font color="white">Change password</font></th>
 	</tr>
@@ -41,5 +40,4 @@
 </div>
 </stripes:form>
   
-<%@ include file="/WEB-INF/jsp/includes/rightpan.jsp" %>
 <%@ include file="/WEB-INF/jsp/includes/foot.jsp" %>
