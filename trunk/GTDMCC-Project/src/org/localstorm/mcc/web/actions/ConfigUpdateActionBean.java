@@ -1,4 +1,4 @@
-package org.localstorm.mcc.web.gtd.actions;
+package org.localstorm.mcc.web.actions;
 
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
@@ -10,7 +10,9 @@ import net.sourceforge.stripes.validation.ValidationErrors;
 import net.sourceforge.stripes.validation.ValidationMethod;
 import net.sourceforge.stripes.validation.ValidationState;
 import org.localstorm.mcc.ejb.users.UserManager;
-import org.localstorm.mcc.web.gtd.Views;
+import org.localstorm.mcc.web.BaseActionBean;
+import org.localstorm.mcc.web.Views;
+
 
 
 /**
@@ -18,7 +20,7 @@ import org.localstorm.mcc.web.gtd.Views;
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/UpdateConfig")
-public class ConfigUpdateActionBean extends ContextsEditActionBean {
+public class ConfigUpdateActionBean extends BaseActionBean {
 
     @Validate(required=true)
     private String oldPassword;
