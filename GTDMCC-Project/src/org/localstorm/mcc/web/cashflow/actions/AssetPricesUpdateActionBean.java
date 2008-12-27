@@ -8,9 +8,11 @@ package org.localstorm.mcc.web.cashflow.actions;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import net.sourceforge.stripes.action.DefaultHandler;
+import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
+import org.localstorm.mcc.ejb.cashflow.asset.Asset;
 import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
 import org.localstorm.mcc.ejb.cashflow.asset.Cost;
 import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
@@ -20,11 +22,11 @@ import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
  *
  * @author localstorm
  */
-@UrlBinding("/actions/UpdateVOPrices")
-public class VOPricesUpdateActionBean extends CashflowBaseActionBean {
+@UrlBinding("/actions/UpdateAssetPrices")
+public class AssetPricesUpdateActionBean extends CashflowBaseActionBean {
 
     @Validate(required=true)
-    private Integer valuableId;
+    private Integer assetId;
 
     @Validate( required=true )
     private BigDecimal buy;
@@ -70,12 +72,12 @@ public class VOPricesUpdateActionBean extends CashflowBaseActionBean {
         return sellFx;
     }
 
-    public Integer getValuableId() {
-        return valuableId;
+    public Integer getAssetId() {
+        return assetId;
     }
 
-    public void setValuableId(Integer valuableId) {
-        this.valuableId = valuableId;
+    public void setAssetId(Integer assetId) {
+        this.assetId = assetId;
     }
 
     public boolean isUsedInBalance() {
@@ -90,7 +92,8 @@ public class VOPricesUpdateActionBean extends CashflowBaseActionBean {
     public Resolution update() throws Exception {
 
         AssetManager am = super.getAssetManager();
-        ValuableObject vo = am.findValuableById(this.getValuableId());
+        Asset asset = am.findAssetById(this.getAssetId());
+        ValuableObject vo = asset.getValuable();
 
         MathContext rounding = new MathContext(5);
 
@@ -104,12 +107,15 @@ public class VOPricesUpdateActionBean extends CashflowBaseActionBean {
         
         vo.setUsedInBalance(this.isUsedInBalance());
 
-        System.out.println("FUCCK:"+vo.isUsedInBalance());
-
         am.updateCost(vo, cost);
         am.updateValuableObject(vo);
 
-        return NextDestinationUtil.getViewByValuableObject(vo, am);
+        RedirectResolution rr = new RedirectResolution(AssetViewActionBean.class);
+        {
+            rr.addParameter(AssetViewActionBean.IncommingParameters.ASSET_ID, this.getAssetId());
+        }
+
+        return rr;
     }
     
 
