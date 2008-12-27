@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import org.localstorm.mcc.ejb.cashflow.asset.Asset;
 import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
+import org.localstorm.mcc.ejb.cashflow.asset.Target;
 import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
 
 /**
@@ -31,6 +32,25 @@ public class WrapUtil {
         for (Asset ass: assets)
         {
             result.add(wrapAsset(ass, am));
+        }
+
+        return result;
+    }
+
+     public static Target wrapTarget(Target tgt,
+                                  AssetManager am)
+    {
+        ValuableObject vo = tgt.getValuable();
+        return new TargetWrapper(tgt, am.getCurrentCost(vo));
+    }
+
+    public static Collection<Target> wrapTargets(Collection<Target> targets,
+                                               AssetManager am)
+    {
+        Collection<Target> result = new ArrayList<Target>(targets.size());
+        for (Target tgt: targets)
+        {
+            result.add(wrapTarget(tgt, am));
         }
 
         return result;

@@ -174,6 +174,7 @@ create table TARGETS
 (
     id INT NOT NULL AUTO_INCREMENT,
     name        TEXT NOT NULL,
+    is_archived SMALLINT NOT NULL,        
     valuable_id INT NOT NULL,
     PRIMARY KEY (id),    
     FOREIGN KEY (valuable_id) REFERENCES VALUABLE_OBJECTS(id)  ON DELETE CASCADE

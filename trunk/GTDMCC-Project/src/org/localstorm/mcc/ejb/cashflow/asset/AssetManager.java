@@ -15,7 +15,7 @@ public interface AssetManager
 {
     public static final String BEAN_NAME="AssetManagerBean";
     
-    public void createAsset(Asset newAsset, Cost assetCost);
+    public void create(Asset newAsset, Cost assetCost);
 
     public Collection<Asset> findArchivedAssetsByOwner(User user);
 
@@ -24,8 +24,6 @@ public interface AssetManager
     public Collection<Asset> findAssetsByOwner(User user);
 
     public Asset findAssetById(int assetId);
-
-    public void createTarget(Target newTarget, Cost targetCost);
 
     public Operation findOperationById(Integer operationId);
 

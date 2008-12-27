@@ -17,4 +17,5 @@ public class SessionKeys
     public static final String FILTER_CONTEXT="filterCtx";
     public static final String ASSETS    = "assets";
     public static final String NEED_CLEANUP = "needCleanUp";
+    public static final String TARGETS   = "targets";
 }
