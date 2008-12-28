@@ -42,13 +42,13 @@
                     <td width="18px" valign="top"><img src="<c:url value="/images/search.png"/>"/></td>
                     <td><a href="<c:url value="/actions/SearchTasks"/>">Search tasks</a></td>
                 </tr>
-                <tr>
+                <%--tr>
                     <td width="18px" valign="top"><img src="<c:url value="/images/search.png"/>"/></td>
                     <td><a href="#">Search lists</a></td>
                 </tr>
                 <tr>
                     <td width="18px" valign="top"><img src="<c:url value="/images/search.png"/>"/></td>
                     <td><a href="#">Search reference</a></td>
-                </tr>
+                </tr--%>
             </table>
 </div>
