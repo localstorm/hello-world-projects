@@ -208,8 +208,8 @@
         </td>
     </tr>
 </c:forEach>
-</table>
 </c:if>	
 </table>
+
 <%@ include file="/WEB-INF/jsp/includes/rightpan.jsp" %>
 <%@ include file="/WEB-INF/jsp/includes/foot.jsp" %>

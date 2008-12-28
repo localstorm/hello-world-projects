@@ -57,7 +57,6 @@ public class TaskManagerBean extends AbstractManager<Task>
         tq.setParameter(Task.Properties.LIST, l);
         
         List<Task> list = tq.getResultList();
-        System.out.println("RETURNED: "+list.size());
         return list;
     }
 
@@ -67,7 +66,6 @@ public class TaskManagerBean extends AbstractManager<Task>
         tq.setParameter(Task.Properties.USER, u);
         
         List<Task> list = tq.getResultList();
-        System.out.println("RETURNED: "+list.size());
         return list;
     }
 
@@ -97,6 +95,15 @@ public class TaskManagerBean extends AbstractManager<Task>
                 
         tq.setParameter(Task.Properties.USER, user);
         tq.setParameter(Task.Properties.EFFORT, effort.getEffort());
+        List<Task> list = tq.getResultList();
+        return list;
+    }
+
+    @Override
+    public Collection<Task> findAllByUser(User user) {
+        Query tq = em.createNamedQuery(Task.Queries.FIND_BY_USER);
+
+        tq.setParameter(Task.Properties.USER, user);
         List<Task> list = tq.getResultList();
         return list;
     }

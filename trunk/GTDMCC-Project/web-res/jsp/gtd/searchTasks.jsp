@@ -40,21 +40,94 @@
     <br/>
     <c:if test="${actionBean.found}">
 	<table width="100%">
-        <c:if test="${not empty actionBean.operativeTasks}">
-            <tr>
-                <th colspan="2">Operative</th>
-            </tr>
-        </c:if>
-        <c:if test="${not empty actionBean.awaitedTasks}">
-            <tr>
-                <th colspan="2">Awaited</th>
-            </tr>
-        </c:if>
-        <c:if test="${not empty actionBean.archiveTasks}">
-            <tr>
-                <th colspan="2">Archived</th>
-            </tr>
-        </c:if>
+
+    <c:if test="${not empty actionBean.operativeTasks}" >
+    <tr>
+        <th colspan="2">Operative</th>
+    </tr>
+    <c:forEach items="${actionBean.operativeTasks}" var="task" varStatus="status">
+    <tr>
+        <td>
+            <p><img src="<c:url value="/images/loe${task.effort}.png"/>"/>&nbsp;<a href="<c:url value="/actions/ViewTask">
+                            <c:param name="taskId" value="${task.id}" />
+                        </c:url>"><c:out value="${task.summary}" /></a></p>
+            <table width="100%">
+                <tr>
+                    <td width="90%" ><hr/></td>
+                    <td width="10%" >
+                    <nobr>
+                        <a href="<c:url value="/actions/ViewList">
+                                    <c:param name="listId" value="${task.list.id}" />
+                                 </c:url>" title="Open affected list"><img alt="list" src="<c:url value="/images/toList.png"/>" border="0" /></a>
+                    </nobr>
+                    </td>
+                </tr>
+
+            </table>
+        </td>
+    </tr>
+    </c:forEach>
+</c:if>
+
+
+<c:if test="${not empty actionBean.awaitedTasks}">
+    <tr>
+        <th colspan="2">Awaited</th>
+    </tr>
+    <c:forEach items="${actionBean.awaitedTasks}" var="task" varStatus="status">
+    <tr>
+        <td>
+            <p><img src="<c:url value="/images/loe${task.effort}.png"/>"/>&nbsp;<a href="<c:url value="/actions/ViewTask">
+                            <c:param name="taskId" value="${task.id}" />
+                        </c:url>"><c:out value="${task.summary}" /></a></p>
+            <c:if test="${not empty task.runtimeNote}">
+                <p><i>&nbsp;Responsibility:&nbsp;</i><c:out value="${task.runtimeNote}"/></p>
+            </c:if>
+            <table width="100%">
+                <tr>
+                    <td width="90%" ><hr/></td>
+                    <td width="10%" >
+                    <nobr>
+                        <a href="<c:url value="/actions/ViewList">
+                                    <c:param name="listId" value="${task.list.id}" />
+                                 </c:url>" title="Open affected list"><img alt="list" src="<c:url value="/images/toList.png"/>" border="0" /></a>
+                    </nobr>
+                    </td>
+                </tr>
+
+            </table>
+        </td>
+    </tr>
+    </c:forEach>
+</c:if>
+
+<c:if test="${not empty actionBean.archiveTasks}" >
+<tr>
+    <th colspan="2">Archive</th>
+</tr>
+
+<c:forEach items="${actionBean.archiveTasks}" var="task" varStatus="status">
+    <tr>
+        <td>
+            <p><img src="<c:url value="/images/loe${task.effort}.png"/>"/>&nbsp;<a href="<c:url value="/actions/ViewTask">
+                            <c:param name="taskId" value="${task.id}" />
+                        </c:url>"><c:out value="${task.summary}" /></a></p>
+            <table width="100%">
+                <tr>
+                    <td width="90%" ><hr/></td>
+                    <td width="10%" >
+                    <nobr>
+                        <a href="<c:url value="/actions/ViewList">
+                                    <c:param name="listId" value="${task.list.id}" />
+                                 </c:url>" title="Open affected list"><img alt="list" src="<c:url value="/images/toList.png"/>" border="0" /></a>
+                    </nobr>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</c:forEach>
+</c:if>
     </table>
     </c:if>
 
