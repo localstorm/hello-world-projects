@@ -28,8 +28,11 @@
             <tr>
                 <td>&nbsp;</td>
                 <td colspan="2" align="center">
-                    <stripes:submit name="submit" value="Search" style="width: 7em;"/>&nbsp;
-                    <stripes:submit name="cancel" value="Cancel" style="width: 7em;" onclick="hide('tsDiv'); return false" />
+                    <stripes:submit name="submit" value="Search" style="width: 7em;"/>
+                    <c:if test="${actionBean.found}">
+                        <stripes:submit name="cancel" value="Cancel" style="width: 7em;" onclick="hide('tsDiv'); return false" />
+                    </c:if>
+
                 </td>
                 <td>&nbsp;</td>
             </tr>
