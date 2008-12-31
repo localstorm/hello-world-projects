@@ -3,7 +3,7 @@
 
 <%@ include file="/WEB-INF/jsp/includes/gtd/hdr.jsp" %>
 
-<h2><span>DEADLINES</span> report</h2>
+<h2><span>TASK</span> deadlines</h2>
  <table width="100%">
     <tr>
         <td align="left">
