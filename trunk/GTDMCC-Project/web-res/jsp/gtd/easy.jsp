@@ -3,8 +3,7 @@
 
 <%@ include file="/WEB-INF/jsp/includes/gtd/hdr.jsp" %>
 
-<%@ include file="clipboard.jsp" %>
-<h2><span>EASY TASKS</span> report</h2>
+<h2><span>EASY</span> tasks</h2>
 <table width="100%">
     <tr>
         <td align="left">

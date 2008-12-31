@@ -17,6 +17,6 @@ public class Views
     public static final String VIEW_RO   = "/jsp/gtd/viewRefObject.jsp";
     public static final String VIEW_AW   = "/jsp/gtd/awaitings.jsp";
     public static final String VIEW_OLD  = "/jsp/gtd/oldTasks.jsp";
-    public static final String VIEW_DLR  = "/jsp/gtd/deadlinesLookup.jsp";
+    public static final String VIEW_DLR  = "/jsp/gtd/deadlines.jsp";
     public static final String VIEW_EASY = "/jsp/gtd/easy.jsp";
 }
