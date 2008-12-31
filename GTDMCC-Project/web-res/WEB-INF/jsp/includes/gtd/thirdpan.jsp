@@ -1,5 +1,5 @@
 <%@ page pageEncoding="UTF-8" language="java" %>
-<%@ include file="include.jsp" %>
+<%@ include file="/WEB-INF/jsp/includes/include.jsp" %>
 
 <div id="bodyThirdPan">
     <h2><span>Reference</span> pane</h2>       

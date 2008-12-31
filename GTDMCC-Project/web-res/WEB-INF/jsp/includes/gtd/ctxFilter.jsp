@@ -1,6 +1,6 @@
 <%@ page pageEncoding="UTF-8" language="java" %>
 
-<%@ include file="include.jsp" %>
+<%@ include file="/WEB-INF/jsp/includes/include.jsp" %>
 
 <stripes:form action="/actions/SetContextFilter" >
     <stripes:hidden name="returnPage" value="${param.returnPage}" />

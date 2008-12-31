@@ -1,15 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/jsp/includes/include.jsp" %>
 
-<%@ include file="/WEB-INF/jsp/includes/hdr.jsp" %>
-
-
-<script language="javascript1.2">
-
-var rlinec = new CodeThatCalendar(caldef1);
-var dlinec = new CodeThatCalendar(caldef1);
-
-</script>
+<%@ include file="/WEB-INF/jsp/includes/gtd/hdr.jsp" %>
 
 <h2><span>TASK</span> details</h2>
 
@@ -81,5 +73,5 @@ var dlinec = new CodeThatCalendar(caldef1);
 
 
 
-<%@ include file="/WEB-INF/jsp/includes/rightpan.jsp" %>
+<%@ include file="/WEB-INF/jsp/includes/gtd/rightpan.jsp" %>
 <%@ include file="/WEB-INF/jsp/includes/foot.jsp" %>
