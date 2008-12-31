@@ -8,8 +8,9 @@ public class Views
 {
     public static final String IDX       = "/jsp/gtd/index.jsp";
     
-    public static final String SEARCH_TASKS  = "/jsp/gtd/searchTasks.jsp";
-    public static final String VIEW_CTX      = "/jsp/gtd/viewContext.jsp";
+    public static final String TASKS_STRUCTURE  = "/jsp/gtd/tasksStructure.jsp";
+    public static final String SEARCH_TASKS     = "/jsp/gtd/searchTasks.jsp";
+    public static final String VIEW_CTX         = "/jsp/gtd/viewContext.jsp";
     public static final String VIEW_LIST = "/jsp/gtd/viewList.jsp";
     public static final String VIEW_TASK = "/jsp/gtd/viewTask.jsp";
     public static final String EDIT_CTXS = "/jsp/gtd/editContexts.jsp";
