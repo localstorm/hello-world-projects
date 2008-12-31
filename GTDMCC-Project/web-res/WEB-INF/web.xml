@@ -120,6 +120,18 @@
         </servlet>
 
         <servlet>
+                <servlet-name>TaskContextsStructureChartServlet</servlet-name>
+                <servlet-class>org.localstorm.mcc.web.gtd.servlets.TaskContextsStructureChartServlet</servlet-class>
+                <load-on-startup>2</load-on-startup>
+        </servlet>
+
+        <servlet>
+                <servlet-name>TasksStructureChartServlet</servlet-name>
+                <servlet-class>org.localstorm.mcc.web.gtd.servlets.TasksStructureChartServlet</servlet-class>
+                <load-on-startup>2</load-on-startup>
+        </servlet>
+
+        <servlet>
                 <servlet-name>AssetsStructureChartServlet</servlet-name>
                 <servlet-class>org.localstorm.mcc.web.cashflow.servlets.AssetsStructureChartServlet</servlet-class>
                 <load-on-startup>2</load-on-startup>
@@ -151,6 +163,17 @@
         <servlet-mapping>
                 <servlet-name>AuthServlet</servlet-name>
                 <url-pattern>/auth</url-pattern>
+        </servlet-mapping>
+
+
+        <servlet-mapping>
+                <servlet-name>TaskContextsStructureChartServlet</servlet-name>
+                <url-pattern>/chart/tasksCtxStructure.png</url-pattern>
+        </servlet-mapping>
+
+        <servlet-mapping>
+                <servlet-name>TasksStructureChartServlet</servlet-name>
+                <url-pattern>/chart/tasksStructure.png</url-pattern>
         </servlet-mapping>
 
         <servlet-mapping>

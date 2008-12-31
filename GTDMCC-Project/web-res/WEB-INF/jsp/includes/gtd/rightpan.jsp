@@ -20,7 +20,7 @@
             <table class="reports">
                 <tr>
                     <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
-                    <td><a href="<c:url value="/actions/OldTasksReport" />">Tasks structure</a></td>
+                    <td><a href="<c:url value="/actions/TaskStructureReport" />">Tasks structure</a></td>
                 </tr>
                 <tr>
                     <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
