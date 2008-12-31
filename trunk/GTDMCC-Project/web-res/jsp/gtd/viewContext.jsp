@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/jsp/includes/include.jsp" %>
 
-<%@ include file="/WEB-INF/jsp/includes/hdr.jsp" %>
+<%@ include file="/WEB-INF/jsp/includes/gtd/hdr.jsp" %>
 
-<%@ include file="clipboard.jsp" %>
+<%@ include file="/WEB-INF/jsp/includes/gtd/clipboard.jsp" %>
 <h2><span>CONTEXT</span> details</h2>
 <div align="right" width="80%"><a href="#" onclick="show('addLISTDiv', 'name-id'); hide('renameDiv'); return false">Add list</a> (<a onclick="show('renameDiv', 'newname-id'); hide('addLISTDiv');  return false" href="#"><c:out value="${actionBean.contextResult.name}"/></a>)</div>
 <div align="center">
@@ -159,5 +159,5 @@
 </c:if>
 </table>
 
-<%@ include file="/WEB-INF/jsp/includes/rightpan.jsp" %>
+<%@ include file="/WEB-INF/jsp/includes/gtd/rightpan.jsp" %>
 <%@ include file="/WEB-INF/jsp/includes/foot.jsp" %>

@@ -2,5 +2,5 @@
 <%@ include file="/WEB-INF/jsp/includes/include.jsp" %>
 
 <%@ include file="/WEB-INF/jsp/includes/basehdr.jsp" %>
-<%@ include file="/WEB-INF/jsp/includes/thirdpan.jsp" %>
+<%@ include file="/WEB-INF/jsp/includes/gtd/thirdpan.jsp" %>
 <div id="bodyLeftPan">

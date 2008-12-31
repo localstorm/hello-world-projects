@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/jsp/includes/include.jsp" %>
 
-<%@ include file="/WEB-INF/jsp/includes/hdr.jsp" %>
+<%@ include file="/WEB-INF/jsp/includes/gtd/hdr.jsp" %>
 
 
 <h2><span>CONTEXT</span> list</h2>
@@ -82,5 +82,5 @@
 	</table>
     	<br/><br/>
 
-<%@ include file="/WEB-INF/jsp/includes/rightpan.jsp" %>
+<%@ include file="/WEB-INF/jsp/includes/gtd/rightpan.jsp" %>
 <%@ include file="/WEB-INF/jsp/includes/foot.jsp" %>

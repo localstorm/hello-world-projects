@@ -1,13 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/jsp/includes/include.jsp" %>
 
-<%@ include file="/WEB-INF/jsp/includes/hdr.jsp" %>
+<%@ include file="/WEB-INF/jsp/includes/gtd/hdr.jsp" %>
 
 <h2><span>AWAITINGS</span> report</h2>
 <table width="100%">
     <tr>
         <td align="left">
-            <jsp:include page="/WEB-INF/jsp/includes/ctxFilter.jsp">
+            <jsp:include page="/WEB-INF/jsp/includes/gtd/ctxFilter.jsp">
                 <jsp:param name="returnPage" value="AW_REPORT" />
             </jsp:include>
         </td>
@@ -67,5 +67,5 @@
 </c:forEach>
 </table>
 
-<%@ include file="/WEB-INF/jsp/includes/rightpan.jsp" %>
+<%@ include file="/WEB-INF/jsp/includes/gtd/rightpan.jsp" %>
 <%@ include file="/WEB-INF/jsp/includes/foot.jsp" %>

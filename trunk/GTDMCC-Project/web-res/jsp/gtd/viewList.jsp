@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/jsp/includes/include.jsp" %>
 
-<%@ include file="/WEB-INF/jsp/includes/hdr.jsp" %>
+<%@ include file="/WEB-INF/jsp/includes/gtd/hdr.jsp" %>
 
-<%@ include file="clipboard.jsp" %>
+<%@ include file="/WEB-INF/jsp/includes/gtd/clipboard.jsp" %>
 <h2><span>LIST</span> tasks</h2>
 <div align="right" ><a href="<c:url value="/actions/ViewContext" >
                                <c:param name="contextId" value="${actionBean.listResult.context.id}" />
@@ -211,5 +211,5 @@
 </c:if>	
 </table>
 
-<%@ include file="/WEB-INF/jsp/includes/rightpan.jsp" %>
+<%@ include file="/WEB-INF/jsp/includes/gtd/rightpan.jsp" %>
 <%@ include file="/WEB-INF/jsp/includes/foot.jsp" %>
