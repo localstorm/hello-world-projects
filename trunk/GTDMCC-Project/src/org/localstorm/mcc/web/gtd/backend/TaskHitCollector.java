@@ -28,7 +28,7 @@ public class TaskHitCollector extends HitCollector {
     private Collection<Task> tasks;
     private String idFieldName;
     private Map<Integer, Task> tMap;
-    private List<Relevance> result;
+    private List<RelevantObject<Task>> result;
 
     public TaskHitCollector(IndexSearcher is, String idFieldName, Collection<Task> ts) {
         this.searcher    = is;
@@ -40,7 +40,7 @@ public class TaskHitCollector extends HitCollector {
             tMap.put(t.getId(), t);
         }
 
-        result = new LinkedList<Relevance>();
+        result = new LinkedList<RelevantObject<Task>>();
     }
 
     @Override
@@ -53,11 +53,10 @@ public class TaskHitCollector extends HitCollector {
             int tid = Integer.parseInt(taskId);
 
             Task t = this.tMap.get(tid);
-            this.result.add(new Relevance(t, relevance));
+            this.result.add(new RelevantObject(t, relevance));
             
         } catch(Exception e) {
-            e.printStackTrace();
-            // LOG?
+            throw new RuntimeException(e);
         }
     }
 
@@ -66,40 +65,12 @@ public class TaskHitCollector extends HitCollector {
         
         List<Task> ordered = new ArrayList<Task>();
 
-        for (Relevance r: this.result) {
-            ordered.add(r.getTask());
+        for (RelevantObject<Task> r: this.result) {
+            ordered.add(r.getObject());
         }
 
         return ordered;
     }
 
-    private final static class Relevance implements Comparable<Relevance>
-    {
-        private Task task;
-        private float relevance;
-
-        public Relevance(Task task, float relevance) {
-            this.task = task;
-            this.relevance = relevance;
-        }
-
-        public float getRelevance() {
-            return relevance;
-        }
-
-        public Task getTask() {
-            return task;
-        }
-
-        @Override
-        public int compareTo(Relevance o) {
-            if (this.relevance<o.getRelevance()) {
-                return 1;
-            }
-            if (this.relevance>o.getRelevance()) {
-                return -1;
-            }
-            return 0;
-        }
-    }
+    
 }
