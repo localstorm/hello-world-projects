@@ -11,7 +11,7 @@
              <c:when test="${not actionBean.found}">inline</c:when>
              <c:otherwise>none</c:otherwise>
     </c:choose>;">
-        <stripes:form action="/actions/SubmitTaskSearch">
+        <stripes:form action="/actions/SubmitTaskSearch" focus="text">
         <stripes:errors/>
         <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
             <tr>
