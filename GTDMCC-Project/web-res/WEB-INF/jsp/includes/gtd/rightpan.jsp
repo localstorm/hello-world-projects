@@ -46,13 +46,9 @@
                     <td width="18px" valign="top"><img src="<c:url value="/images/search.png"/>"/></td>
                     <td><a href="<c:url value="/actions/SearchTasks"/>">Search tasks</a></td>
                 </tr>
-                <%--tr>
-                    <td width="18px" valign="top"><img src="<c:url value="/images/search.png"/>"/></td>
-                    <td><a href="#">Search lists</a></td>
-                </tr>
                 <tr>
                     <td width="18px" valign="top"><img src="<c:url value="/images/search.png"/>"/></td>
-                    <td><a href="#">Search reference</a></td>
-                </tr--%>
+                    <td><a href="<c:url value="/actions/SearchRefObjAttach"/>">Search reference</a></td>
+                </tr>
             </table>
 </div>
