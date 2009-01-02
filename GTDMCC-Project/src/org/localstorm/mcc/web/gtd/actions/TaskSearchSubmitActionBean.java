@@ -109,7 +109,7 @@ public class TaskSearchSubmitActionBean extends GtdBaseActionBean
                     archive.add(t);
                     continue;
                 }
-                if (t.isAwaited())
+                if (t.isAwaited() || t.isDelegated())
                 {
                     it.remove();
                     awaited.add(t);
@@ -176,6 +176,7 @@ public class TaskSearchSubmitActionBean extends GtdBaseActionBean
         TaskHitCollector hc = new TaskHitCollector(is, ID_FIELD, ts);
 
         is.search(query, hc);
+        hc.close();
 
         return hc.getTasks();
     }

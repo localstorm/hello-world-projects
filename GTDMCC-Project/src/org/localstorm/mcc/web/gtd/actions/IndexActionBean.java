@@ -83,7 +83,7 @@ public class IndexActionBean extends GtdBaseActionBean {
                 archiveFlightPlanTasks.add(t);
                 continue;
             }
-            if (t.isAwaited())
+            if (t.isAwaited() || t.isDelegated())
             {
                 it.remove();
                 awaitedFlightPlanTasks.add(t);
