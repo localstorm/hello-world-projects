@@ -13,7 +13,10 @@
                 </init-param>
                 <init-param>
                     <param-name>ActionResolver.PackageFilters</param-name>
-                    <param-value>org.localstorm.mcc.web.actions,org.localstorm.mcc.web.gtd.actions,org.localstorm.mcc.web.cashflow.actions</param-value>
+                    <param-value>org.localstorm.mcc.web.actions,
+                                 org.localstorm.mcc.web.dashboard.actions,
+                                 org.localstorm.mcc.web.gtd.actions,
+                                 org.localstorm.mcc.web.cashflow.actions</param-value>
                 </init-param>
                 <init-param>
                     <param-name>LocalePicker.Locales</param-name>
