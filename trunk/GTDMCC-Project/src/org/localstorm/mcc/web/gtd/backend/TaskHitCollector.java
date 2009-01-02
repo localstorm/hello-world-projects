@@ -60,9 +60,12 @@ public class TaskHitCollector extends HitCollector {
         }
     }
 
-    public Collection<Task> getTasks() {
+    public void close()
+    {
         Collections.sort(this.result);
-        
+    }
+
+    public Collection<Task> getTasks() {
         List<Task> ordered = new ArrayList<Task>();
 
         for (RelevantObject<Task> r: this.result) {

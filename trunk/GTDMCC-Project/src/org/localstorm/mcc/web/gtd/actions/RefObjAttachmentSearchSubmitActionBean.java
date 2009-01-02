@@ -42,12 +42,10 @@ import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
 public class RefObjAttachmentSearchSubmitActionBean extends GtdBaseActionBean
 {
     private static final String FILE_TYPE     = "FILE";
-    private static final String RO_ID_FIELD   = "ro_id";
-    private static final String RO_NAME_FIELD = "ro_name";
     private static final String TYPE_FIELD    = "type";
-    private static final String ID_FIELD   = "id";
-    private static final String SEARCHABLE = "text";
-    private static final char   SPACE      = ' ';
+    private static final String ID_FIELD      = "id";
+    private static final String SEARCHABLE    = "text";
+    private static final char   SPACE         = ' ';
     
     private boolean found;
 
@@ -153,8 +151,6 @@ public class RefObjAttachmentSearchSubmitActionBean extends GtdBaseActionBean
                 {
                     doc.add(new Field(SEARCHABLE, searchable, Field.Store.YES, Field.Index.ANALYZED));
                     doc.add(new Field(ID_FIELD,   note.getId().toString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
-                    doc.add(new Field(RO_NAME_FIELD, ro.getName(), Field.Store.YES, Field.Index.NOT_ANALYZED));
-                    doc.add(new Field(RO_ID_FIELD, ro.getId().toString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
                     doc.add(new Field(TYPE_FIELD, note.getType(), Field.Store.YES, Field.Index.NOT_ANALYZED));
                 }
                 
@@ -170,8 +166,6 @@ public class RefObjAttachmentSearchSubmitActionBean extends GtdBaseActionBean
                     String searchable = this.getSearchable(file, ro);
                     doc.add(new Field(SEARCHABLE, searchable, Field.Store.YES, Field.Index.ANALYZED));
                     doc.add(new Field(ID_FIELD,   file.getId().toString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
-                    doc.add(new Field(RO_NAME_FIELD, ro.getName(), Field.Store.YES, Field.Index.NOT_ANALYZED));
-                    doc.add(new Field(RO_ID_FIELD, ro.getId().toString(), Field.Store.YES, Field.Index.NOT_ANALYZED));
                     doc.add(new Field(TYPE_FIELD, FILE_TYPE, Field.Store.YES, Field.Index.NOT_ANALYZED));
                 }
 
