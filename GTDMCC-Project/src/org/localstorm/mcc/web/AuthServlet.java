@@ -34,7 +34,7 @@ public class AuthServlet extends HttpServlet
 
         if (u!=null) {
             sess.setAttribute(SessionKeys.USER, u);
-            res.sendRedirect("actions/Index");
+            res.sendRedirect(Views.DASH_REDIRECT);
         } else {
             req.getRequestDispatcher(Views.LOGIN).forward(req, res);
             return;
