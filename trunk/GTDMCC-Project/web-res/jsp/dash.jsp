@@ -3,7 +3,67 @@
 
 <%@ include file="/WEB-INF/jsp/includes/dashhdr.jsp" %>
 
-<h2>Dashboard</h2>
+<div id="dashBirthdaysPan">
+    <h2><span>Birthdays</span> pane</h2>
+	<div id="redDashPane">
+		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+2)</p>
+		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Пафнутьев Ш. И.</a> (+3)</p>
+		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+7)</p>
+	</div>
+	<div id="yellowDashPane">
+		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+8)</p>
+		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Пафнутьев Ш. И.</a> (+14)</p>
+		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+21)</p>
+		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+8)</p>
+		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Пафнутьев Ш. И.</a> (+14)</p>
+		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+21)</p>
+	</div>
+	<div id="greenDashPane">
+		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+22)</p>
+		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Пафнутьев Ш. И.</a> (+54)</p>
+		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+90)</p>
+		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+22)</p>
+		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Пафнутьев Ш. И.</a> (+54)</p>
+		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+90)</p>
+		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+22)</p>
+		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Пафнутьев Ш. И.</a> (+54)</p>
+		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+90)</p>
+	</div>
+</div>
+
+<div id="dashGTDPan">
+    <h2><span>GTD Battle Map</span> pane</h2>
+	<div align="center">
+		<table border="1" width="80%" class="dash">
+			<tr class="dashHdr" ><th colspan="6">Consolidated Tasks Report</th></tr>
+			<tr class="dashHdr">
+                <th width="40%">Context name</th>
+                <th width="10%">Total</th>
+                <th width="10%">Awaited</th>
+                <th width="10%">Flight plan</th>
+                <th width="10%"><img src="<c:url value="/images/redline.png"/>" /></th>
+                <th width="10%"><img src="<c:url value="/images/deadline.png" />"/></th></tr>
+			<tr><td>Context name</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+			<tr><td>Context name</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+			<tr><td>Context name</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+			<tr><td>Context name</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+			<tr><td>Context name</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+			<tr><td>Context name</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+			<tr class="dashHdr"><th>Total</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
+		</table>
+ 		</div>
+
+</div>
+
+<div id="dashGTD2Pan">
+    <h2><span>Daily Tasks</span> pane</h2>
+	<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+22)</p>
+		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Пафнутьев Ш. И.</a> (+54)</p>
+		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+90)</p>
+		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+22)</p>
+		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Пафнутьев Ш. И.</a> (+54)</p>
+		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+90)</p>
+</div>
 
 <%@ include file="/WEB-INF/jsp/includes/foot.jsp" %>
 
