@@ -45,7 +45,9 @@
                 <th width="10%"><img src="<c:url value="/images/deadline.png" />"/></th></tr>
                 <c:forEach items="${gtdDashReport.rows}" var="row">
                     <tr>
-                        <td><c:out value="${row.contextName}" /></td>
+                        <td onClick="document.location.href='<c:url value="/actions/ViewContext">
+                                                    <c:param name="contextId" value="${row.contextId}" />
+                                                </c:url>';"><c:out value="${row.contextName}" /></td>
                         <td><c:out value="${row.total}" /></td>
                         <td><c:out value="${row.awaited}" /></td>
                         <td><c:out value="${row.flightPlan}" /></td>

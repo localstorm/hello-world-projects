@@ -198,6 +198,19 @@ ul{list-style-type:none;}
   background:#FFFDCD;
 }
 
+#dashGTDPan table td {
+	border: 1px solid #DADADA;
+    border-collapse: collapse;
+    cursor: pointer;
+}
+
+#dashGTDPan table td:hover {
+	border: 1px solid #DADADA;
+    border-collapse: collapse;
+    cursor: pointer;
+    background: #FEECFF;
+}
+
 
 #dashGTD2Pan{width:930px; float:right; border:1px solid #DADADA; background:#F3F3F3; color:#1A1A1A; padding:0 0 28px; margin:10px 0 0 25px;}
 #dashGTD2Pan h2{width:893px; height:35px; display:block; border:1px solid #DADADA; background:#fff; color:#00111A; font:24px/34px Georgia, "Times New Roman", Times, serif; margin:6px 8px 16px; padding:0 0 0 20px;}
@@ -211,7 +224,6 @@ ul{list-style-type:none;}
 #dashGTD2Pan p.more a:hover{display:block; width:44px; height:11px; background:#E0DEDE; color:#003D5C; text-decoration:none;}
 
 
-
 #greenDashPane{border:1px solid #DADADA; background:#D0EED0; margin:4px 8px 8px 8px; padding:4px 0 4px;}
 #greenDashPane p{padding:0px 0px 0px 5px;}
 #yellowDashPane{border:1px solid #DADADA; background:#FFFFD0; margin:4px 8px 8px 8px; padding:4px 0 4px;}
@@ -219,3 +231,4 @@ ul{list-style-type:none;}
 #redDashPane{border:1px solid #DADADA; background:#EEB0B0; margin:4px 8px 8px 8px; padding:4px 0 4px;}
 #redDashPane p{padding:0px 0px 0px 5px;}
 #redDashPane p img{border: 0px}
+
