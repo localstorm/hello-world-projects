@@ -6,7 +6,7 @@ package org.localstorm.mcc.web.gtd.actions;
  */
 public enum ReturnPages 
 {
-    IDX,         //Index
+    FPV,         //Index
     AW_REPORT,   // Awaitings report
     DL_REPORT,   // Deadlines report
     EASY_REPORT, // Easy tasks report

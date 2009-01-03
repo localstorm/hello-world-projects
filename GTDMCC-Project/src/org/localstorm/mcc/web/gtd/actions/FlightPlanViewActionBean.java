@@ -15,11 +15,8 @@ import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.mcc.web.util.FilterUtil;
 
-/**
- * A very simple calculator action.
- */
-@UrlBinding("/actions/Index")
-public class IndexActionBean extends GtdBaseActionBean {
+@UrlBinding("/actions/ViewFlightPlan")
+public class FlightPlanViewActionBean extends GtdBaseActionBean {
 
     private FlightPlan flightPlan;
     private Collection<Task> flightPlanTasks;
@@ -104,7 +101,7 @@ public class IndexActionBean extends GtdBaseActionBean {
                                  this.awaitedFlightPlanTasks,
                                  this.archiveFlightPlanTasks);
 
-        return new ForwardResolution(Views.IDX);
+        return new ForwardResolution(Views.FPV);
     }
 
 }

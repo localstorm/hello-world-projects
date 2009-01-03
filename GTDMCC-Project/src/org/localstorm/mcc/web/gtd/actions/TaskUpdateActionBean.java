@@ -85,8 +85,8 @@ public class TaskUpdateActionBean extends TaskViewActionBean
         
         switch (rp)
         {
-            case IDX:
-                rr = new RedirectResolution(IndexActionBean.class);    
+            case FPV:
+                rr = new RedirectResolution(FlightPlanViewActionBean.class);
                 break;
             case AW_REPORT:
                 rr = new RedirectResolution(AwaitingsReportActionBean.class);

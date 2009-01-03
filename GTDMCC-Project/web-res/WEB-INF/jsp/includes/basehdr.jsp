@@ -29,8 +29,8 @@ setActiveStyleSheet(this, 'blue');
     <div id="topMenuLeftPan"></div>
     <div id="topMenuMiddlePan">
         <ul>
-            <li class="home"><a href="<c:url value="/" />">&nbsp;Dash&nbsp;</a></li>
-            <li><a href="<c:url value="/actions/Index" />">&nbsp;GTD&nbsp;</a></li>
+            <li class="home"><a href="<c:url value="/actions/Dashboard" />">&nbsp;Dash&nbsp;</a></li>
+            <li><a href="<c:url value="/actions/ViewFlightPlan" />">&nbsp;GTD&nbsp;</a></li>
             <li><a href="<c:url value="/actions/ViewAssets" />">&nbsp;Cash&nbsp;</a></li>
             <li><a href="#">People</a></li>
             <li><a href="<c:url value="/actions/Configure" />">&nbsp;Tweak&nbsp;</a></li>

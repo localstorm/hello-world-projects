@@ -6,9 +6,6 @@ import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 
-/**
- * A very simple calculator action.
- */
 @UrlBinding("/actions/NetWealthHistoryReport")
 public class NetWealthHisotryReportActionBean extends CashflowBaseActionBean {
 

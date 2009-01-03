@@ -27,8 +27,8 @@ public class NextDestinationUtil
             case OLD_REPORT:
                 return new RedirectResolution(OldTasksReportActionBean.class);
             default:
-            case IDX:
-                return new RedirectResolution(IndexActionBean.class);
+            case FPV:
+                return new RedirectResolution(FlightPlanViewActionBean.class);
 
         }
     }

@@ -43,19 +43,30 @@
                 <th width="10%">Flight plan</th>
                 <th width="10%"><img src="<c:url value="/images/redline.png"/>" /></th>
                 <th width="10%"><img src="<c:url value="/images/deadline.png" />"/></th></tr>
-			<tr><td>Context name</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
-			<tr><td>Context name</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
-			<tr><td>Context name</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
-			<tr><td>Context name</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
-			<tr><td>Context name</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
-			<tr><td>Context name</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
-			<tr class="dashHdr"><th>Total</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
+                <c:forEach items="${gtdDashReport.rows}" var="row">
+                    <tr>
+                        <td><c:out value="${row.contextName}" /></td>
+                        <td><c:out value="${row.total}" /></td>
+                        <td><c:out value="${row.awaited}" /></td>
+                        <td><c:out value="${row.flightPlan}" /></td>
+                        <td><c:out value="${row.red}" /></td>
+                        <td><c:out value="${row.dead}" /></td>
+                    </tr>
+                </c:forEach>
+			<tr class="dashHdr">
+                <th>Total</th>
+                <th><c:out value="${gtdDashReport.totals.total}" /></th>
+                <th><c:out value="${gtdDashReport.totals.awaited}" /></th>
+                <th><c:out value="${gtdDashReport.totals.flightPlan}" /></th>
+                <th><c:out value="${gtdDashReport.totals.red}" /></th>
+                <th><c:out value="${gtdDashReport.totals.dead}" /></th>
+            </tr>
 		</table>
  		</div>
 
 </div>
 
-<div id="dashGTD2Pan">
+<%--div id="dashGTD2Pan">
     <h2><span>Daily Tasks</span> pane</h2>
 	<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+22)</p>
 		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Пафнутьев Ш. И.</a> (+54)</p>
@@ -63,7 +74,7 @@
 		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+22)</p>
 		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Пафнутьев Ш. И.</a> (+54)</p>
 		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+90)</p>
-</div>
+</div--%>
 
 <%@ include file="/WEB-INF/jsp/includes/foot.jsp" %>
 

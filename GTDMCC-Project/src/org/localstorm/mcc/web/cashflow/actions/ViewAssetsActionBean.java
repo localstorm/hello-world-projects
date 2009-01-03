@@ -16,9 +16,6 @@ import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.cashflow.actions.wrap.AssetWrapper;
 import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
 
-/**
- * A very simple calculator action.
- */
 @UrlBinding("/actions/ViewAssets")
 public class ViewAssetsActionBean extends CashflowBaseActionBean {
 

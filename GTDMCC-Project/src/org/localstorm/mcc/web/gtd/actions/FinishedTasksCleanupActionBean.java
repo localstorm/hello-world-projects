@@ -22,7 +22,7 @@ public class FinishedTasksCleanupActionBean extends GtdBaseActionBean {
         tm.cleanup(this.getUser());
 
         SessionUtil.clear(super.getSession(), SessionKeys.NEED_CLEANUP);
-        return new RedirectResolution( IndexActionBean.class );
+        return new RedirectResolution( FlightPlanViewActionBean.class );
     }
     
 }
