@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 import javax.sql.DataSource;
 import org.localstorm.mcc.ejb.dao.QueriesLoader;
 import org.localstorm.mcc.ejb.users.User;
@@ -13,6 +12,14 @@ import org.localstorm.mcc.ejb.users.User;
  * @author localstorm
  */
 public class GtdReportsDao {
+    public static final String AWAITED_TASKS    = "awaited";
+    public static final String CONTEXT_ID       = "cid";
+    public static final String CONTEXT_NAME     = "cname";
+    public static final String DEADLINE_TASK    = "dead";
+    public static final String FLIGHT_PLAN_TASKS = "flight";
+    public static final String REDLINE_TASKS    = "red";
+    public static final String TOTAL_TASKS      = "total";
+
     private DataSource ds;
 
     public GtdReportsDao(DataSource ds)
@@ -38,15 +45,11 @@ public class GtdReportsDao {
             }
 
             PreparedStatement ps = conn.prepareStatement(rptSql);
-            
 
-            ps.setInt(1, u.getId());
-            ps.setInt(2, u.getId());
-            ps.setInt(3, u.getId());
-            ps.setInt(4, u.getId());
-            ps.setInt(5, u.getId());
-            ps.setInt(6, u.getId());
-            
+            for (int i=1; i<=6; i++) {
+                ps.setInt(i, u.getId());
+            }
+
             ResultSet rs = ps.executeQuery();
 
             DashboardReportBean drb = new DashboardReportBean();
@@ -55,13 +58,13 @@ public class GtdReportsDao {
             {
                 // Null is impossible here
 
-                String ctxName = rs.getString("cname");
-                int ctxId      = rs.getInt("cid");
-                int total      = rs.getInt("total");
-                int awaited    = rs.getInt("awaited");
-                int flight     = rs.getInt("flight");
-                int red        = rs.getInt("red");
-                int dead       = rs.getInt("dead");
+                String ctxName = rs.getString(CONTEXT_NAME);
+                int ctxId      = rs.getInt(CONTEXT_ID);
+                int total      = rs.getInt(TOTAL_TASKS);
+                int awaited    = rs.getInt(AWAITED_TASKS);
+                int flight     = rs.getInt(FLIGHT_PLAN_TASKS);
+                int red        = rs.getInt(REDLINE_TASKS);
+                int dead       = rs.getInt(DEADLINE_TASK);
 
                 // Interpreting
                 DashboardReportRow row = new DashboardReportRow();
