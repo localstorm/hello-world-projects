@@ -14,7 +14,7 @@ public class FlightPlanUtilizeActionBean extends GtdBaseActionBean
     @DefaultHandler
     public Resolution utilization() throws Exception {
         this.getFlightPlanManager().utilizeCurrent(this.getUser());
-        return new RedirectResolution(IndexActionBean.class);
+        return new RedirectResolution(FlightPlanViewActionBean.class);
     }
 
 }

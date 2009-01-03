@@ -6,4 +6,5 @@ package org.localstorm.mcc.web.gtd;
  */
 public class RequestAttributes {
     public static final String AFFECTED_CONTEXTS = "affectedContexts";
+    
 }

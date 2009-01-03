@@ -9,6 +9,7 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import org.localstorm.mcc.ejb.gtd.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
+import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
 import org.localstorm.mcc.web.util.FilterUtil;
@@ -34,9 +35,12 @@ public class AwaitingsReportActionBean extends GtdBaseActionBean
 
     @DefaultHandler
     public Resolution filling() throws Exception {
-        FlightPlanManager fp = this.getFlightPlanManager();
-        Collection<Task> awaited = this.getTaskManager().findAllAwaited(this.getUser());
-        Collection<Task> fpt = fp.getTasksFromFlightPlan(fp.findCurrent(this.getUser()));
+
+        User user = super.getUser();
+
+        FlightPlanManager fp = super.getFlightPlanManager();
+        Collection<Task> awaited = super.getTaskManager().findAllAwaited(user);
+        Collection<Task> fpt = fp.getTasksFromFlightPlan(fp.findCurrent(user));
 
         FilterUtil.applyContextFilter(awaited, super.getContextIdFilter());
         this.setAwaitedTasks(WrapUtil.genWrappers(awaited, fpt));

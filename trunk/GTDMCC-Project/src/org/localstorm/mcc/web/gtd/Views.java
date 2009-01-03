@@ -6,7 +6,7 @@ package org.localstorm.mcc.web.gtd;
  */
 public class Views 
 {
-    public static final String IDX       = "/jsp/gtd/index.jsp";
+    public static final String FPV       = "/jsp/gtd/index.jsp";
 
     public static final String SEARCH_RO_ATTACH = "/jsp/gtd/searchRefObjAttach.jsp";
     public static final String TASKS_STRUCTURE  = "/jsp/gtd/tasksStructure.jsp";

@@ -54,7 +54,6 @@ public class FileManagerBean implements FileManagerLocal
         uq.setParameter(FileToRefObject.Properties.OBJECT, ro);  
         
         List<FileAttachment> list = uq.getResultList();
-        System.out.println("RETURNED: "+list.size());
         return list;
     }
 

@@ -43,7 +43,6 @@ public class RefObjectManagerBean extends AbstractManager<ReferencedObject>
         lq.setParameter(ReferencedObject.Properties.OWNER, user);
         
         List<ReferencedObject> list = lq.getResultList();
-        System.out.println("RETURNED: "+list.size());
         return list;
     }
 
@@ -53,16 +52,15 @@ public class RefObjectManagerBean extends AbstractManager<ReferencedObject>
         lq.setParameter(ReferencedObject.Properties.OWNER, user);
         
         List<ReferencedObject> list = lq.getResultList();
-        System.out.println("RETURNED: "+list.size());
         return list;
     }
     
+    @Override
     public Collection<ReferencedObject> findAllArchivedByOwner(User user) {
         Query lq = em.createNamedQuery(ReferencedObject.Queries.FIND_ARCHIVED_BY_OWNER);
         lq.setParameter(ReferencedObject.Properties.OWNER, user);
         
         List<ReferencedObject> list = lq.getResultList();
-        System.out.println("RETURNED: "+list.size());
         return list;
     }
     
