@@ -1,6 +1,8 @@
 select totals.name cname, totals.cid cid, total pending, awaited, flight, red, dead from (
-        (
-            select c.name name, c.id cid, total from (
+    (
+            select c.name name, c.id cid, IF(total IS NULL, 0, total) total from (
+                (select name, id from CONTEXTS where user_id=?) c                
+                LEFT OUTER JOIN
                 (
                     select context_id, SUM(lcnt) total from
                     (
@@ -15,12 +17,14 @@ select totals.name cname, totals.cid cid, total pending, awaited, flight, red, d
                         ON l.id=tc.list_id
                     ) GROUP BY context_id
                 ) co
-                JOIN (select name, id from CONTEXTS where user_id=?) c ON co.context_id=c.id
+                ON c.id=co.context_id
             )
         ) totals
         JOIN
         (
             select c.id cid, IF(total IS NULL, 0, total) awaited  from (
+                (select name, id from CONTEXTS where user_id=?) c
+                LEFT OUTER JOIN
                 (
                     select context_id, SUM(lcnt) total from
                     (
@@ -32,8 +36,8 @@ select totals.name cname, totals.cid cid, total pending, awaited, flight, red, d
                         ON l.id=tc.list_id
                     ) GROUP BY context_id
                 ) co
-                RIGHT OUTER JOIN
-                (select name, id from CONTEXTS where user_id=?) c ON co.context_id=c.id
+                
+                ON c.id=co.context_id
             )
         ) awaitings
         ON totals.cid=awaitings.cid
