@@ -15,6 +15,7 @@ import org.localstorm.mcc.ejb.gtd.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.web.Constants;
+import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.mcc.web.gtd.actions.wrap.TaskWrapper;
 import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
@@ -75,7 +76,9 @@ public class OldTasksReportActionBean extends GtdBaseActionBean
         }
 
         this.setTasksResult(res);
+
         super.setAffectedContexts(affected);
+        super.setReturnPageBean(new ReturnPageBean(Pages.OLD_REPORT.toString()));
 
         return new ForwardResolution(Views.VIEW_OLD);
     }

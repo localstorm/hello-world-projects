@@ -48,11 +48,26 @@
                         <td onClick="document.location.href='<c:url value="/actions/ViewContext">
                                                     <c:param name="contextId" value="${row.contextId}" />
                                                 </c:url>';"><c:out value="${row.contextName}" /></td>
-                        <td><c:out value="${row.total}" /></td>
-                        <td><c:out value="${row.awaited}" /></td>
-                        <td><c:out value="${row.flightPlan}" /></td>
-                        <td><c:out value="${row.red}" /></td>
-                        <td><c:out value="${row.dead}" /></td>
+                        <td onClick="document.location.href='<c:url value="/actions/BattleMapSupport">
+                                                    <c:param name="contextId" value="${row.contextId}" />
+                                                    <c:param name="filter" value="ALL" />
+                                                </c:url>';"><c:out value="${row.total}" /></td>
+                        <td onClick="document.location.href='<c:url value="/actions/BattleMapSupport">
+                                                    <c:param name="contextId" value="${row.contextId}" />
+                                                    <c:param name="filter" value="AWAITED" />
+                                                </c:url>';"><c:out value="${row.awaited}" /></td>
+                        <td onClick="document.location.href='<c:url value="/actions/BattleMapSupport">
+                                                    <c:param name="contextId" value="${row.contextId}" />
+                                                    <c:param name="filter" value="FLIGHT" />
+                                                </c:url>';"><c:out value="${row.flightPlan}" /></td>
+                        <td onClick="document.location.href='<c:url value="/actions/BattleMapSupport">
+                                                    <c:param name="contextId" value="${row.contextId}" />
+                                                    <c:param name="filter" value="REDLINE" />
+                                                </c:url>';"><c:out value="${row.red}" /></td>
+                        <td onClick="document.location.href='<c:url value="/actions/BattleMapSupport">
+                                                    <c:param name="contextId" value="${row.contextId}" />
+                                                    <c:param name="filter" value="DEADLINE" />
+                                                </c:url>';"><c:out value="${row.dead}" /></td>
                     </tr>
                 </c:forEach>
 			<tr class="dashHdr">

@@ -8,7 +8,7 @@
 <stripes:form action="/actions/UpdateTask" focus="summary" name="taskForm" >
 <stripes:errors/>
 <stripes:hidden name="taskId" value="${actionBean.taskResult.id}" />
-<stripes:hidden name="returnPage" value="${actionBean.returnPage}" />
+<stripes:hidden name="returnPageToken" value="${param.returnPageToken}" />
 <table width="100%">
 
 <c:if test="${not empty actionBean.taskResult.runtimeNote}"><tr>

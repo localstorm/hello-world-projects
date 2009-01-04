@@ -18,6 +18,7 @@ import org.localstorm.mcc.ejb.gtd.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.ejb.users.User;
+import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.gtd.RequestAttributes;
 import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.mcc.web.gtd.actions.wrap.TaskMarker;
@@ -97,7 +98,9 @@ public class DeadlineLookupReportActionBean extends GtdBaseActionBean
 
         this.setAffectedContextsByMarkers(this.broken,
                                           this.following);
-        
+
+        super.setReturnPageBean(new ReturnPageBean(Pages.DL_REPORT.toString()));
+
         return new ForwardResolution(Views.VIEW_DLR);
     }
 

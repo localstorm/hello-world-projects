@@ -11,9 +11,6 @@ public class SetContextFilterActionBean extends GtdBaseActionBean {
     @Validate(required=true)
     private Integer contextId;
 
-    @Validate(required=true)
-    private String returnPage;
-
     public void setContextId(Integer ctxId) {
         this.contextId = ctxId;
     }
@@ -22,19 +19,10 @@ public class SetContextFilterActionBean extends GtdBaseActionBean {
         return contextId;
     }
 
-    public String getReturnPage() {
-        return returnPage;
-    }
-
-    public void setReturnPage(String returnPage) {
-        this.returnPage = returnPage;
-    }
-
-    
     @DefaultHandler
     public Resolution filling() {
        super.setContextIdFilter(contextId);
-       return NextDestinationUtil.getRedirectionByReturnPageName(this.getReturnPage());
+       return NextDestinationUtil.getRedirection(this.getReturnPageBean());
     }
 
 }

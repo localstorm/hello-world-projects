@@ -3,26 +3,29 @@
 
 <%@ include file="/WEB-INF/jsp/includes/gtd/hdr.jsp" %>
 
-<h2><span>OLD</span> tasks</h2>
- <table width="100%">
-    <tr>
-        <td align="left">
-            <jsp:include page="/WEB-INF/jsp/includes/gtd/ctxFilter.jsp">
-                <jsp:param name="returnPageToken" value="${returnPageToken}" />
-            </jsp:include>
-        </td>
-    </tr>
- </table>
+<c:choose>
+    <c:when test="${actionBean.filter eq 'ALL'}">
+        <h2><span>TASKS</span> scope</h2>
+    </c:when>
+    <c:when test="${actionBean.filter eq 'AWAITED'}">
+        <h2><span>AWAITED</span> tasks</h2>
+    </c:when>
+    <c:when test="${actionBean.filter eq 'FLIGHT'}">
+        <h2><span>FLIGHT PLAN</span> tasks</h2>
+    </c:when>
+    <c:when test="${actionBean.filter eq 'REDLINE'}">
+        <h2><span>BROKEN</span> red line tasks</h2>
+    </c:when>
+    <c:when test="${actionBean.filter eq 'DEADLINE'}">
+        <h2><span>BROKEN</span> dead line tasks</h2>
+    </c:when>
+    <c:otherwise>
+        <h2><span>????</span> tasks</h2>
+    </c:otherwise>
+</c:choose>
 
-<c:forEach items="${contexts}" var="ctx">
-<c:if test="${not empty actionBean.tasksResult[ctx.id]}">
-    <table width="100%">
-        <tr>
-            <th colspan="2"><c:out value="${ctx.name}" /></th>
-        </tr>
-    </table>
-</c:if>
-<c:forEach items="${actionBean.tasksResult[ctx.id]}" var="task">
+<br/><br/>
+<c:forEach items="${actionBean.tasks}" var="task">
     <p><span><img src="<c:url value="/images/loe${task.effort}.png"/>"/>&nbsp;<c:out value="${task.list.name}" />:</span><br/>
         <div align="center">
             <a href="<c:url value="/actions/ViewTask">
@@ -78,10 +81,6 @@
         </td>
     </tr>
 </table>
-</c:forEach>
-<c:if test="${not empty actionBean.tasksResult[ctx.id]}">
-    <br/><br/>
-</c:if>
 </c:forEach>
 <br/>
 

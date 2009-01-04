@@ -14,6 +14,7 @@ import net.sourceforge.stripes.validation.Validate;
 
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
+import org.localstorm.mcc.web.ReturnPageBean;
 
 /**
  *
@@ -80,32 +81,17 @@ public class TaskUpdateActionBean extends TaskViewActionBean
         
         RedirectResolution rr;
         
-        String returnPage = super.getReturnPage();
-        ReturnPages rp = (returnPage==null) ? ReturnPages.LIST_VIEW : ReturnPages.valueOf(returnPage);
-        
-        switch (rp)
-        {
-            case FPV:
-                rr = new RedirectResolution(FlightPlanViewActionBean.class);
-                break;
-            case AW_REPORT:
-                rr = new RedirectResolution(AwaitingsReportActionBean.class);
-                 break;
-            case DL_REPORT:
-                rr = new RedirectResolution(DeadlineLookupReportActionBean.class);
-                break;
-            case EASY_REPORT:
-                rr = new RedirectResolution(EasyTasksReportActionBean.class);
-                break;
-            case OLD_REPORT:
-                rr = new RedirectResolution(OldTasksReportActionBean.class);
-                break;
+        ReturnPageBean rpb = super.getReturnPageBean();
 
-            default:
-            case LIST_VIEW:
-                rr = new RedirectResolution(ListViewActionBean.class);
-                rr.addParameter(ListViewActionBean.IncommingParameters.LIST_ID, t.getList().getId());
-                break;
+        if (rpb==null)
+        {
+            System.out.println("RPB is NULL!");
+            rr = new RedirectResolution(ListViewActionBean.class);
+            rr.addParameter(ListViewActionBean.IncommingParameters.LIST_ID, t.getList().getId());
+            return rr;
+        } else {
+            System.out.println("RPB is NOT NULL!");
+            rr = NextDestinationUtil.getRedirection(rpb);
         }
             
         return rr;

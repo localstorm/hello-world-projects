@@ -61,29 +61,67 @@ public class TaskManagerBean extends AbstractManager<Task>
     }
 
     @Override
-    public Collection<Task> findAllAwaited(User u) {
-        Query tq = em.createNamedQuery(Task.Queries.FIND_ALL_AWAITED);
-        tq.setParameter(Task.Properties.USER, u);
+    public Collection<Task> findAwaited(User u, Context ctx) {
+        Query tq;
+        if (ctx==null) {
+            tq = em.createNamedQuery(Task.Queries.FIND_AWAITED);
+            tq.setParameter(Task.Properties.USER, u);
+        } else {
+            tq = em.createNamedQuery(Task.Queries.FIND_AWAITED_BY_CTX);
+            tq.setParameter(Task.Properties.CTX, ctx);
+        }
         
         List<Task> list = tq.getResultList();
         return list;
     }
 
     @Override
-    public Collection<Task> findRedlinedTasks(User user) {
-        Query tq = em.createNamedQuery(Task.Queries.FIND_REDLINED);
-        tq.setParameter(Task.Properties.USER, user);
-        tq.setParameter(Task.Properties.NOW, new Date());
+    public Collection<Task> findRedlinedTasks(User user, Context ctx) {
+        
+        Query tq;
+        if (ctx==null) {
+            tq = em.createNamedQuery(Task.Queries.FIND_REDLINED);
+            tq.setParameter(Task.Properties.USER, user);
+            tq.setParameter(Task.Properties.NOW, new Date());
+        } else {
+            tq = em.createNamedQuery(Task.Queries.FIND_REDLINED_BY_CTX);
+            tq.setParameter(Task.Properties.CTX, ctx);
+            tq.setParameter(Task.Properties.NOW, new Date());
+        }
         
         List<Task> list = tq.getResultList();
         return list;
     }
 
     @Override
-    public Collection<Task> findDeadlinedTasks(User user) {
-        Query tq = em.createNamedQuery(Task.Queries.FIND_DEADLINED);
-        tq.setParameter(Task.Properties.USER, user);
-        tq.setParameter(Task.Properties.NOW, new Date());
+    public Collection<Task> findUnfinished(User user, Context ctx) {
+        Query tq;
+        if (ctx==null) {
+            tq = em.createNamedQuery(Task.Queries.FIND_UNFINISHED);
+            tq.setParameter(Task.Properties.USER, user);
+        } else {
+            tq = em.createNamedQuery(Task.Queries.FIND_UNFINISHED_BY_CTX);
+            tq.setParameter(Task.Properties.CTX, ctx);
+        }
+
+        List<Task> list = tq.getResultList();
+        return list;
+    }
+
+
+
+    @Override
+    public Collection<Task> findDeadlinedTasks(User user, Context ctx) {
+        Query tq;
+        if (ctx==null) {
+            tq = em.createNamedQuery(Task.Queries.FIND_DEADLINED);
+            tq.setParameter(Task.Properties.USER, user);
+            tq.setParameter(Task.Properties.NOW, new Date());
+        } else {
+            tq = em.createNamedQuery(Task.Queries.FIND_DEADLINED_BY_CTX);
+            tq.setParameter(Task.Properties.CTX, ctx);
+            tq.setParameter(Task.Properties.NOW, new Date());
+        }
         
         List<Task> list = tq.getResultList();
         return list;

@@ -17,7 +17,7 @@ public class Views
     public static final String EDIT_CTXS = "/jsp/gtd/editContexts.jsp";
     public static final String EDIT_RO   = "/jsp/gtd/editRefObjects.jsp";
     public static final String VIEW_RO   = "/jsp/gtd/viewRefObject.jsp";
-    public static final String VIEW_AW   = "/jsp/gtd/awaitings.jsp";
+    public static final String VIEW_BMS  = "/jsp/gtd/bms.jsp";
     public static final String VIEW_OLD  = "/jsp/gtd/oldTasks.jsp";
     public static final String VIEW_DLR  = "/jsp/gtd/deadlines.jsp";
     public static final String VIEW_EASY = "/jsp/gtd/easy.jsp";

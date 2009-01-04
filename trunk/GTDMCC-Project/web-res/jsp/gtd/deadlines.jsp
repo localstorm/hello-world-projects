@@ -8,7 +8,7 @@
     <tr>
         <td align="left">
             <jsp:include page="/WEB-INF/jsp/includes/gtd/ctxFilter.jsp">
-                <jsp:param name="returnPage" value="DL_REPORT" />
+                <jsp:param name="returnPageToken" value="${returnPageToken}" />
             </jsp:include>
         </td>
     </tr>
@@ -23,7 +23,7 @@
         <div align="center">
             <a href="<c:url value="/actions/ViewTask">
                             <c:param name="taskId" value="${taskMarker.task.id}" />
-                            <c:param name="returnPage" value="DL_REPORT" /> 
+                            <c:param name="returnPageToken" value="${returnPageToken}" />
                     </c:url>"><c:out value="${taskMarker.task.summary}" /></a>
         </div>
         <c:if test="${not empty taskMarker.task.details}" >
@@ -44,7 +44,7 @@
                     <c:if test="${not taskMarker.task.inFlightPlan}">
                     <a href="<c:url value="/actions/ResolveTask">
                                 <c:param name="taskId" value="${taskMarker.task.id}" />
-                                <c:param name="returnPage" value="DL_REPORT" /> 
+                                <c:param name="returnPageToken" value="${returnPageToken}" />
                                 <c:param name="action" value="FLIGHT" />
                              </c:url>" title="Append To Flight Plan"><img alt="flight" border="0" src="<c:url value="/images/flight.png"/>"/></a>
                     </c:if>
@@ -52,12 +52,12 @@
                         <c:param name="listId" value="${taskMarker.task.list.id}" />
                     </c:url>" title="Open affected list"><img alt="toList" border="0" src="<c:url value="/images/toList.png"/>"/></a>
                     <a href="<c:url value="/actions/ResolveTask">
-                                <c:param name="returnPage" value="DL_REPORT" />
+                                <c:param name="returnPageToken" value="${returnPageToken}" />
                                 <c:param name="taskId" value="${taskMarker.task.id}" />
                                 <c:param name="action" value="FINISH" />
                              </c:url>" title="Finish"><img alt="finish" border="0" src="<c:url value="/images/finish.png"/>"/></a>
                     <a href="<c:url value="/actions/ResolveTask">
-                                <c:param name="returnPage" value="DL_REPORT" />
+                                <c:param name="returnPageToken" value="${returnPageToken}" />
                                 <c:param name="taskId" value="${taskMarker.task.id}" />
                                 <c:param name="action" value="CANCEL" />
                              </c:url>" title="Cancel"><img alt="cancel" border="0" src="<c:url value="/images/cancel.png"/>"/></a>
@@ -87,7 +87,7 @@
         <div align="center">
             <a href="<c:url value="/actions/ViewTask">
                             <c:param name="taskId" value="${taskMarker.task.id}" />
-                            <c:param name="returnPage" value="DL_REPORT" />
+                            <c:param name="returnPageToken" value="${returnPageToken}" />
                     </c:url>"><c:out value="${taskMarker.task.summary}" /></a>
         </div>
         <c:if test="${not empty taskMarker.task.details}" >
@@ -107,7 +107,7 @@
                 <nobr>
                     <c:if test="${not taskMarker.task.inFlightPlan}">
                     <a href="<c:url value="/actions/ResolveTask">
-                                <c:param name="returnPage" value="DL_REPORT" />
+                                <c:param name="returnPageToken" value="${returnPageToken}" />
                                 <c:param name="taskId" value="${taskMarker.task.id}" />
                                 <c:param name="action" value="FLIGHT" />
                              </c:url>" title="Append To Flight Plan"><img alt="flight" border="0" src="<c:url value="/images/flight.png"/>"/></a>
@@ -116,12 +116,12 @@
                         <c:param name="listId" value="${taskMarker.task.list.id}" />
                     </c:url>" title="Open affected list"><img alt="toList" border="0" src="<c:url value="/images/toList.png"/>"/></a>
                     <a href="<c:url value="/actions/ResolveTask">
-                                <c:param name="returnPage" value="DL_REPORT" />
+                                <c:param name="returnPageToken" value="${returnPageToken}" />
                                 <c:param name="taskId" value="${taskMarker.task.id}" />
                                 <c:param name="action" value="FINISH" />
                              </c:url>" title="Finish"><img alt="finish" border="0" src="<c:url value="/images/finish.png"/>"/></a>
                     <a href="<c:url value="/actions/ResolveTask">
-                                <c:param name="returnPage" value="DL_REPORT" /> 
+                                <c:param name="returnPageToken" value="${returnPageToken}" />
                                 <c:param name="taskId" value="${taskMarker.task.id}" />
                                 <c:param name="action" value="CANCEL" />
                              </c:url>" title="Cancel"><img alt="cancel" border="0" src="<c:url value="/images/cancel.png"/>"/></a>

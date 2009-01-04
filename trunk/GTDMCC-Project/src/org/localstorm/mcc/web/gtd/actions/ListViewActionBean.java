@@ -11,6 +11,7 @@ import org.localstorm.mcc.ejb.gtd.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.gtd.lists.GTDList;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
+import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.mcc.web.gtd.actions.wrap.TaskWrapper;
 import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
@@ -76,11 +77,9 @@ public class ListViewActionBean extends GtdBaseActionBean
         
         GTDList list = getListManager().findById(getListId());
         
-        
         super.setCurrent(list);
         
         this.setListResult( list );
-        
         
         TaskManager tm        = this.getTaskManager();
         FlightPlanManager fpm = this.getFlightPlanManager();
@@ -91,8 +90,6 @@ public class ListViewActionBean extends GtdBaseActionBean
         this.setAwaitedTasks(WrapUtil.genWrappers(tm.findAwaitedByList(list), currentFp));
         this.setArchiveTasks(WrapUtil.genWrappers(tm.findArchiveByList(list), currentFp));
         
-        System.out.println("Current list: "+list.getName());
-        System.out.println("Viewing list:" +listId);
         return new ForwardResolution(Views.VIEW_LIST);
     }
 

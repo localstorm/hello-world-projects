@@ -26,6 +26,24 @@ import org.localstorm.mcc.ejb.Identifiable;
 @Table(name="TASKS")
 @NamedQueries({
     @NamedQuery(
+        name = Task.Queries.FIND_AWAITED_BY_CTX,
+        query= "SELECT o FROM Task o WHERE o.cancelled=false and o.finished=false and o.delegated=true and o.list.context=:ctx" +
+        " ORDER BY o.list.name, o.effort"
+    ),
+    @NamedQuery(
+        name = Task.Queries.FIND_AWAITED,
+        query= "SELECT o FROM Task o WHERE o.cancelled=false and o.finished=false and o.delegated=true and o.list.context.owner=:user" +
+        " ORDER BY o.list.context.name, o.list.name"
+    ),
+    @NamedQuery(
+        name = Task.Queries.FIND_UNFINISHED,
+        query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false ORDER BY o.list.context.name, o.list.name ASC"
+    ),
+    @NamedQuery(
+        name = Task.Queries.FIND_UNFINISHED_BY_CTX,
+        query= "SELECT o FROM Task o WHERE o.list.context=:ctx and o.finished=false and o.cancelled=false ORDER BY o.list.name, o.effort ASC"
+    ),
+    @NamedQuery(
         name = Task.Queries.FIND_BY_USER,
         query= "SELECT o FROM Task o WHERE o.list.context.owner=:user"
     ),
@@ -56,9 +74,19 @@ import org.localstorm.mcc.ejb.Identifiable;
         " ORDER BY o.list.context.name, o.list.name"
     ),
     @NamedQuery(
+        name = Task.Queries.FIND_DEADLINED_BY_CTX,
+        query= "SELECT o FROM Task o WHERE o.list.context=:ctx and o.finished=false and o.cancelled=false and o.deadline<=:now" +
+        " ORDER BY o.list.name, o.effort"
+    ),
+    @NamedQuery(
         name = Task.Queries.FIND_REDLINED,
         query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and o.redline<=:now and (o.deadline>:now or o.deadline is NULL)" +
         "  ORDER BY o.list.context.name, o.list.name"
+    ),
+    @NamedQuery(
+        name = Task.Queries.FIND_REDLINED_BY_CTX,
+        query= "SELECT o FROM Task o WHERE o.list.context=:ctx and o.finished=false and o.cancelled=false and o.redline<=:now and (o.deadline>:now or o.deadline is NULL)" +
+        "  ORDER BY o.list.name, o.effort"
     ),
     @NamedQuery(
         name = Task.Queries.FIND_BY_LIST,
@@ -71,11 +99,6 @@ import org.localstorm.mcc.ejb.Identifiable;
     @NamedQuery(
         name = Task.Queries.FIND_BY_LIST_AWAITED,
         query= "SELECT o FROM Task o WHERE o.list=:list and o.finished=false and o.delegated=true  ORDER BY o.summary"
-    ),
-    @NamedQuery(
-        name = Task.Queries.FIND_ALL_AWAITED,
-        query= "SELECT o FROM Task o WHERE o.finished=false and o.delegated=true and o.list.context.owner=:user" +
-        " ORDER BY o.list.context.name, o.list.name"
     )
 })
 public class Task implements Identifiable, Serializable 
@@ -273,18 +296,26 @@ public class Task implements Identifiable, Serializable
     }
     
     public static interface Queries {
+        public static final String FIND_UNFINISHED        = "findUnfinished";
+        public static final String FIND_UNFINISHED_BY_CTX = "findUnfinishedByCtx";
         public static final String FIND_BY_MAX_EFFORT    = "findByMaxEffort";
-        public static final String FIND_ALL_AWAITED      = "findAllAwaitedTasks";
+        public static final String FIND_AWAITED          = "findAwaitedTasks";
+        public static final String FIND_AWAITED_BY_CTX   = "findAwaitedTasksByCtx";
         public static final String FIND_BY_LIST          = "findByList";
         public static final String FIND_BY_LIST_ARCHIVED = "findByListArchived";
         public static final String FIND_BY_LIST_AWAITED  = "findByListAwaited";
         public static final String FIND_REDLINED         = "findRedlined";
+        public static final String FIND_REDLINED_BY_CTX  = "findRedlinedByCtx";
         public static final String FIND_DEADLINED        = "findDeadlined";
+        public static final String FIND_DEADLINED_BY_CTX = "findDeadlinedByCtx";
         public static final String FIND_CLEANABLE_BY_USER= "findCleanableTasksUpByUser";
         public static final String COUNT_CLEANABLE_BY_USER = "countCleanableTasksByUser";
         public static final String FIND_SCHEDULED_BY_USER = "findScheduledTasksByUser";
         public static final String FIND_OLDEST_BY_CTX    = "finOldestTasksByCtx";
         public static final String FIND_BY_USER          = "findAllTasksByUser";
+
+        
+        
     }
     
     public static interface Properties

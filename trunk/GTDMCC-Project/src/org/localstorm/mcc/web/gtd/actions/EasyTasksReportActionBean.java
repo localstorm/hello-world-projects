@@ -12,6 +12,7 @@ import org.localstorm.mcc.ejb.gtd.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.gtd.tasks.Effort;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
+import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
 import org.localstorm.mcc.web.util.FilterUtil;
@@ -50,6 +51,8 @@ public class EasyTasksReportActionBean extends GtdBaseActionBean
         this.setTasks(WrapUtil.genWrappers(easy, fpTasks));
 
         super.setAffectedContexts(this.getTasks());
+
+        super.setReturnPageBean(new ReturnPageBean(Pages.EASY_REPORT.toString()));
 
         return new ForwardResolution(Views.VIEW_EASY);
     }
