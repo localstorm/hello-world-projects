@@ -22,7 +22,7 @@ public interface TaskManager extends BaseManager<Task>
 
     public Collection<Task> findRedlinedTasks(User user, Context ctx);
 
-    public Collection<Task> findUnfinished(User user, Context ctx);
+    public Collection<Task> findPending(User user, Context ctx);
 
     public boolean isCleanupNeeded(User user);
 

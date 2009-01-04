@@ -18,7 +18,7 @@ public class GtdReportsDao {
     public static final String DEADLINE_TASK    = "dead";
     public static final String FLIGHT_PLAN_TASKS = "flight";
     public static final String REDLINE_TASKS    = "red";
-    public static final String TOTAL_TASKS      = "total";
+    public static final String PENDING_TASKS    = "pending";
 
     private DataSource ds;
 
@@ -60,7 +60,7 @@ public class GtdReportsDao {
 
                 String ctxName = rs.getString(CONTEXT_NAME);
                 int ctxId      = rs.getInt(CONTEXT_ID);
-                int total      = rs.getInt(TOTAL_TASKS);
+                int pending    = rs.getInt(PENDING_TASKS);
                 int awaited    = rs.getInt(AWAITED_TASKS);
                 int flight     = rs.getInt(FLIGHT_PLAN_TASKS);
                 int red        = rs.getInt(REDLINE_TASKS);
@@ -70,7 +70,7 @@ public class GtdReportsDao {
                 DashboardReportRow row = new DashboardReportRow();
                 {
                     row.setAwaited(awaited);
-                    row.setTotal(total);
+                    row.setPending(pending);
                     row.setContextName(ctxName);
                     row.setContextId(ctxId);
                     row.setFlightPlan(flight);

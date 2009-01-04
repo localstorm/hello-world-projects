@@ -4,8 +4,8 @@
 <%@ include file="/WEB-INF/jsp/includes/gtd/hdr.jsp" %>
 
 <c:choose>
-    <c:when test="${actionBean.filter eq 'ALL'}">
-        <h2><span>TASKS</span> scope</h2>
+    <c:when test="${actionBean.filter eq 'PENDING'}">
+        <h2><span>PENDING</span> tasks</h2>
     </c:when>
     <c:when test="${actionBean.filter eq 'AWAITED'}">
         <h2><span>AWAITED</span> tasks</h2>
@@ -24,7 +24,13 @@
     </c:otherwise>
 </c:choose>
 
-<br/><br/>
+<br/>
+<div align="center">
+    <h4><a href="<c:url value="/actions/ViewContext">
+        <c:param name="contextId" value="${actionBean.contextResult.id}" />
+    </c:url>"><c:out value="${actionBean.contextResult.name}"/></a></h4>
+</div>
+
 <c:forEach items="${actionBean.tasks}" var="task">
     <p><span><img src="<c:url value="/images/loe${task.effort}.png"/>"/>&nbsp;<c:out value="${task.list.name}" />:</span><br/>
         <div align="center">

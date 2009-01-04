@@ -37,11 +37,13 @@ import org.localstorm.mcc.ejb.Identifiable;
     ),
     @NamedQuery(
         name = Task.Queries.FIND_UNFINISHED,
-        query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false ORDER BY o.list.context.name, o.list.name ASC"
+        query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and o.delegated=false and " +
+        "o.awaited=false ORDER BY o.list.context.name, o.list.name ASC"
     ),
     @NamedQuery(
         name = Task.Queries.FIND_UNFINISHED_BY_CTX,
-        query= "SELECT o FROM Task o WHERE o.list.context=:ctx and o.finished=false and o.cancelled=false ORDER BY o.list.name, o.effort ASC"
+        query= "SELECT o FROM Task o WHERE o.list.context=:ctx and o.finished=false and o.cancelled=false and o.delegated=false " +
+        "and o.awaited=false ORDER BY o.list.name, o.effort ASC"
     ),
     @NamedQuery(
         name = Task.Queries.FIND_BY_USER,

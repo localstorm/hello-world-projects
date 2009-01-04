@@ -28,7 +28,7 @@ public class DashboardReportBean {
     }
 
     public void addReportRow(DashboardReportRow row) {
-        totals.setTotal(totals.getTotal()+row.getTotal());
+        totals.setPending(totals.getPending()+row.getPending());
         totals.setAwaited(totals.getAwaited()+row.getAwaited());
         totals.setFlightPlan(totals.getFlightPlan()+row.getFlightPlan());
         totals.setRed(totals.getRed()+row.getRed());

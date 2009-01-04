@@ -38,7 +38,7 @@
 			<tr class="dashHdr" ><th colspan="6">Consolidated Tasks Report</th></tr>
 			<tr class="dashHdr">
                 <th width="40%">Context name</th>
-                <th width="10%">Total</th>
+                <th width="10%">Pending</th>
                 <th width="10%">Awaited</th>
                 <th width="10%">Flight plan</th>
                 <th width="10%"><img src="<c:url value="/images/redline.png"/>" /></th>
@@ -50,8 +50,8 @@
                                                 </c:url>';"><c:out value="${row.contextName}" /></td>
                         <td onClick="document.location.href='<c:url value="/actions/BattleMapSupport">
                                                     <c:param name="contextId" value="${row.contextId}" />
-                                                    <c:param name="filter" value="ALL" />
-                                                </c:url>';"><c:out value="${row.total}" /></td>
+                                                    <c:param name="filter" value="PENDING" />
+                                                </c:url>';"><c:out value="${row.pending}" /></td>
                         <td onClick="document.location.href='<c:url value="/actions/BattleMapSupport">
                                                     <c:param name="contextId" value="${row.contextId}" />
                                                     <c:param name="filter" value="AWAITED" />
@@ -72,7 +72,7 @@
                 </c:forEach>
 			<tr class="dashHdr">
                 <th>Total</th>
-                <th><c:out value="${gtdDashReport.totals.total}" /></th>
+                <th><c:out value="${gtdDashReport.totals.pending}" /></th>
                 <th><c:out value="${gtdDashReport.totals.awaited}" /></th>
                 <th><c:out value="${gtdDashReport.totals.flightPlan}" /></th>
                 <th><c:out value="${gtdDashReport.totals.red}" /></th>

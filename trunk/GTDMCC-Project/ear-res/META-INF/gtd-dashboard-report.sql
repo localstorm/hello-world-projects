@@ -1,4 +1,4 @@
-select totals.name cname, totals.cid cid, total, awaited, flight, red, dead from (
+select totals.name cname, totals.cid cid, total pending, awaited, flight, red, dead from (
         (
             select c.name name, c.id cid, total from (
                 (
@@ -6,7 +6,12 @@ select totals.name cname, totals.cid cid, total, awaited, flight, red, dead from
                     (
                         LISTS l
                         join
-                            (select list_id, COUNT(id) lcnt from TASKS where is_cancelled=false and is_finished=false GROUP BY list_id) tc
+                            (select list_id, COUNT(id) lcnt from TASKS where 
+                                is_cancelled=false and
+                                is_finished=false and
+                                is_awaited=false and
+                                is_delegated=false
+                            GROUP BY list_id) tc
                         ON l.id=tc.list_id
                     ) GROUP BY context_id
                 ) co

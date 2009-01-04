@@ -34,6 +34,17 @@ public class BattleMapSupportActionBean extends GtdBaseActionBean
 
     private List<Task> tasks;
 
+    private Context ctx;
+
+
+    public Context getContextResult() {
+        return this.ctx;
+    }
+
+    public void setContextResult(Context ctx) {
+        this.ctx = ctx;
+    }
+
     public List<Task> getTasks() {
         return tasks;
     }
@@ -68,29 +79,31 @@ public class BattleMapSupportActionBean extends GtdBaseActionBean
         FlightPlanManager fp = super.getFlightPlanManager();
 
         Filter    f = Filter.valueOf(this.getFilter());
-        Context ctx = cm.findById(this.getContextId());
+        Context context = cm.findById(this.getContextId());
+
+        this.setContextResult(context);
 
         Collection<Task> _tasks = null;
 
         Collection<Task> fpt = fp.getTasksFromFlightPlan(fp.findCurrent(user));
 
         switch( f ) {
-            case ALL:
-                _tasks = tm.findUnfinished(user, ctx);
+            case PENDING:
+                _tasks = tm.findPending(user, context);
                 break;
             case AWAITED:
-                _tasks = tm.findAwaited(user, ctx);
+                _tasks = tm.findAwaited(user, context);
                 break;
             case REDLINE:
-                _tasks = tm.findRedlinedTasks(user, ctx);
+                _tasks = tm.findRedlinedTasks(user, context);
                 break;
             case DEADLINE:
-                _tasks = tm.findDeadlinedTasks(user, ctx);
+                _tasks = tm.findDeadlinedTasks(user, context);
                 break;
             case FLIGHT:
                 _tasks = new ArrayList<Task>(fpt.size());
                 _tasks.addAll(fpt);
-                FilterUtil.applyContextFilter(_tasks, contextId);
+                FilterUtil.applyContextFilter(_tasks, contextId, true);
                 break;
             default:
                 throw new RuntimeException("Unexpected case!");
@@ -117,7 +130,7 @@ public class BattleMapSupportActionBean extends GtdBaseActionBean
 
     private static enum Filter
     {
-        ALL,
+        PENDING,
         AWAITED,
         FLIGHT,
         REDLINE,
