@@ -94,7 +94,7 @@ public class TaskManagerBean extends AbstractManager<Task>
     }
 
     @Override
-    public Collection<Task> findUnfinished(User user, Context ctx) {
+    public Collection<Task> findPending(User user, Context ctx) {
         Query tq;
         if (ctx==null) {
             tq = em.createNamedQuery(Task.Queries.FIND_UNFINISHED);

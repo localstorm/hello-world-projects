@@ -7,7 +7,7 @@ package org.localstorm.mcc.ejb.gtd.dao;
 public class DashboardReportRow {
     private String contextName;
     private int contextId;
-    private int total;
+    private int pending;
     private int awaited;
     private int flightPlan;
     private int red;
@@ -37,8 +37,8 @@ public class DashboardReportRow {
         return red;
     }
 
-    public int getTotal() {
-        return total;
+    public int getPending() {
+        return pending;
     }
 
     public void setAwaited(int awaited) {
@@ -65,8 +65,8 @@ public class DashboardReportRow {
         this.red = red;
     }
 
-    public void setTotal(int total) {
-        this.total = total;
+    public void setPending(int total) {
+        this.pending = total;
     }
     
 }

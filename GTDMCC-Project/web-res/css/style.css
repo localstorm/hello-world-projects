@@ -58,22 +58,6 @@ ul{list-style-type:none;}
 #bodyLeftPan p.next a{display:block; width:44px; height:11px; background:#fff; color:#003D5C; text-decoration:none; margin:0 0 0 502px; line-height:11px; text-align:center; padding:0px; text-transform:uppercase;}
 #bodyLeftPan p.next a:hover{display:block; width:44px; height:11px; background:#E0DEDE; color:#003D5C; text-decoration:none;}
 
-#affectedlists{width:654px; position:relative; margin:0 auto; padding:5px 0 0;}
-#namePan{width:156px; float:left; background:url(../images/name-dot.gif) 100% 85% no-repeat #fff; color:#4F4F4F; font-size:14px; text-transform:uppercase;}
-#nameonePan{width:100%; float:left;}
-#nameonePan ul{width:100%;}
-#nameonePan ul li{width:90%; height:20px; color:#03537D; padding:0 0 0 10px;}
-
-#pricePan{width:106px; float:left; background:url(../images/price-dot.gif) 100% 85% no-repeat #fff; color:#4F4F4F; font-size:14px; text-transform:uppercase;}
-#priceonePan{width:143px; float:left;}
-#priceonePan ul{width:143px;}
-#priceonePan ul li{width:133px; height:20px; background:url(../images/price-border.gif) 100% 50% no-repeat #fff; color:#00111A; line-height:20px; font-size:12px; font-weight:bold; padding:0 0 0 10px;}
-
-#discountPan{width:126px; float:left; background:url(../images/discount-dot.gif) 100% 85% no-repeat #fff; color:#4F4F4F; font-size:14px; text-transform:uppercase; padding:0 0 0 12px;}
-#discountonePan{width:110px; float:left;}
-#discountonePan ul{width:110px;}
-#discountonePan ul li{width:100px; height:20px; background:url(../images/dicount-border.gif) 100% 50% no-repeat #fff; color:#00111A; font-size:12px; font-weight:bold; padding:0 0 0 10px;}
-
 /*----/BODY LEFT PANEL----*/
 /*----BODY RIGHT PANEL----*/
 #bodyRightPan{width:235px; float:left; border:1px solid #DADADA; background:#F3F3F3; color:#1A1A1A; padding:0 0 28px;}

@@ -6,7 +6,7 @@ package org.localstorm.mcc.web.gtd.actions;
  */
 public enum Pages
 {
-    FPV,         //Index
+    FPV,         // GTD Flight plan
     DL_REPORT,   // Deadlines report
     EASY_REPORT, // Easy tasks report
     OLD_REPORT,  // Old tasks report
