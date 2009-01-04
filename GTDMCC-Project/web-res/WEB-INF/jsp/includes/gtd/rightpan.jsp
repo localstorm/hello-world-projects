@@ -28,10 +28,6 @@
                 </tr>
                 <tr>
                     <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
-                    <td><a href="<c:url value="/actions/AwaitedReport" />">Awaited tasks</a></td>
-                </tr>
-                <tr>
-                    <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
                     <td><a href="<c:url value="/actions/DeadlineLookupReport" />">Task deadlines</a></td>
                 </tr>
                 <tr>

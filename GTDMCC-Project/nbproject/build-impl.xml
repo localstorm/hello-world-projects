@@ -506,9 +506,10 @@ exists or setup the property manually. For example like this:
         <copyfiles files="${file.reference.commons-io-1.3.2.jar-1}" iftldtodir="${build.web.dir}/WEB-INF" manifestproperty="manifest.file.reference.commons-io-1.3.2.jar-1" todir="${dist.ear.dir}"/>
         <copyfiles files="${file.reference.stripes.jar-1}" iftldtodir="${build.web.dir}/WEB-INF" manifestproperty="manifest.file.reference.stripes.jar-1" todir="${dist.ear.dir}"/>
         <copyfiles files="${file.reference.lucene-core-2.4.0.jar}" iftldtodir="${build.web.dir}/WEB-INF" manifestproperty="manifest.file.reference.lucene-core-2.4.0.jar" todir="${dist.ear.dir}"/>
+        <copyfiles files="${file.reference.commons-lang-2.3.jar}" iftldtodir="${build.web.dir}/WEB-INF" manifestproperty="manifest.file.reference.commons-lang-2.3.jar" todir="${dist.ear.dir}"/>
         <mkdir dir="${build.web.dir}/META-INF"/>
         <manifest file="${build.web.dir}/META-INF/MANIFEST.MF" mode="update">
-            <attribute name="Class-Path" value="${manifest.file.reference.jstl-1.2.jar} ${manifest.file.reference.j2ee.jar} ${manifest.file.reference.javaee.jar} ${manifest.file.reference.commons-logging.jar} ${manifest.file.reference.cos.jar} ${manifest.file.reference.log4j-1.2.11.jar} ${manifest.file.reference.stripes.jar} ${manifest.file.reference.commons-io-1.3.2.jar} ${manifest.file.reference.jcommon-1.0.13.jar} ${manifest.file.reference.jfreechart-1.0.10.jar} ${manifest.file.reference.j2ee.jar-1} ${manifest.file.reference.javaee.jar-1} ${manifest.file.reference.commons-io-1.3.2.jar-1} ${manifest.file.reference.stripes.jar-1} ${manifest.file.reference.lucene-core-2.4.0.jar} "/>
+            <attribute name="Class-Path" value="${manifest.file.reference.jstl-1.2.jar} ${manifest.file.reference.j2ee.jar} ${manifest.file.reference.javaee.jar} ${manifest.file.reference.commons-logging.jar} ${manifest.file.reference.cos.jar} ${manifest.file.reference.log4j-1.2.11.jar} ${manifest.file.reference.stripes.jar} ${manifest.file.reference.commons-io-1.3.2.jar} ${manifest.file.reference.jcommon-1.0.13.jar} ${manifest.file.reference.jfreechart-1.0.10.jar} ${manifest.file.reference.j2ee.jar-1} ${manifest.file.reference.javaee.jar-1} ${manifest.file.reference.commons-io-1.3.2.jar-1} ${manifest.file.reference.stripes.jar-1} ${manifest.file.reference.lucene-core-2.4.0.jar} ${manifest.file.reference.commons-lang-2.3.jar} "/>
         </manifest>
     </target>
     <target depends="init" name="library-inclusion-in-archive" unless="dist.ear.dir">
@@ -527,6 +528,7 @@ exists or setup the property manually. For example like this:
         <copyfiles files="${file.reference.commons-io-1.3.2.jar-1}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${file.reference.stripes.jar-1}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${file.reference.lucene-core-2.4.0.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${file.reference.commons-lang-2.3.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
     </target>
     <target depends="init,compile,compile-jsps,-pre-dist,library-inclusion-in-manifest" name="do-ear-dist">
         <dirname file="${dist.ear.war}" property="dist.jar.dir"/>

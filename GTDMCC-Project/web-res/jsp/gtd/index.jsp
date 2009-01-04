@@ -8,7 +8,7 @@
         <tr>
             <td align="left">
                 <jsp:include page="/WEB-INF/jsp/includes/gtd/ctxFilter.jsp">
-                    <jsp:param name="returnPage" value="FPV" />
+                    <jsp:param name="returnPageToken" value="${returnPageToken}" />
                 </jsp:include>
             </td>
                 
@@ -37,13 +37,13 @@
     <div align="center">
         <a href="<c:url value="/actions/ViewTask">
                         <c:param name="taskId" value="${task.id}" />
-                        <c:param name="returnPage" value="FPV" />
+                        <c:param name="returnPageToken" value="${returnPageToken}" />
                 </c:url>" title="Expand"><c:out value="${task.summary}" /></a>
     </div>
     </p>
 <div id="<c:out value="delegate-${task.id}" />" style="display: none;" >
     <stripes:form action="/actions/ResolveTask" >
-        <stripes:hidden name="returnPage" value="FPV" />
+        <stripes:hidden name="returnPageToken" value="${returnPageToken}" />
         <stripes:hidden name="taskId" value="${task.id}" />
         <stripes:hidden name="action" value="DELEGATE" />
         <table width="100%" style="background:#FFFFD0; border:1px dotted #DADADA;">
@@ -61,7 +61,7 @@
         <td width="20%" >
         <nobr>
             <a href="<c:url value="/actions/ResolveTask" >
-                <c:param name="returnPage" value="FPV" />
+                <c:param name="returnPageToken" value="${returnPageToken}" />
                 <c:param name="taskId" value="${task.id}" />
                 <c:param name="action" value="UNFLIGHT" />
             </c:url>" title="Remove from flight plan"><img alt="unflight" border="0" src="<c:url value="/images/unflight.png"/>"/></a>
@@ -69,12 +69,12 @@
                 <c:param name="listId" value="${task.list.id}" />
             </c:url>" title="Open affected list"><img alt="toList" border="0" src="<c:url value="/images/toList.png"/>"/></a>
             <a href="<c:url value="/actions/ResolveTask" >
-                <c:param name="returnPage" value="FPV" />
+                <c:param name="returnPageToken" value="${returnPageToken}" />
                 <c:param name="taskId" value="${task.id}" />
                 <c:param name="action" value="FINISH" />
             </c:url>" title="Finish"><img alt="finish" border="0" src="<c:url value="/images/finish.png"/>"/></a>
             <a href="<c:url value="/actions/ResolveTask" >
-                <c:param name="returnPage" value="FPV" />
+                <c:param name="returnPageToken" value="${returnPageToken}" />
                 <c:param name="taskId" value="${task.id}" />
                 <c:param name="action" value="CANCEL" />
             </c:url>" title="Cancel"><img alt="cancel" border="0" src="<c:url value="/images/cancel.png"/>"/></a>
@@ -91,12 +91,12 @@
 <c:forEach items="${actionBean.awaitedFlightPlanTasks}" var="task">
 
     <p><a href="<c:url value="/actions/ResolveTask">
-                            <c:param name="returnPage" value="FPV" />
+                            <c:param name="returnPageToken" value="${returnPageToken}" />
                             <c:param name="taskId" value="${task.id}" />
                             <c:param name="action" value="UNDELEGATE" />
                         </c:url>" title="Not delegated"><img border="0" src="<c:url value="/images/delegated.png"/>" /></a>
                         <a href="<c:url value="/actions/ResolveTask" >
-                            <c:param name="returnPage" value="FPV" />
+                            <c:param name="returnPageToken" value="${returnPageToken}" />
                             <c:param name="taskId" value="${task.id}" />
                             <c:param name="action" value="UNFLIGHT" />
                         </c:url>" title="Remove from flight plan"><img alt="unflight" border="0" src="<c:url value="/images/unflight.png"/>"/></a>
@@ -104,7 +104,7 @@
                         <div align="center">
                             <a href="<c:url value="/actions/ViewTask">
                                 <c:param name="taskId" value="${task.id}" />
-                                <c:param name="returnPage" value="FPV" />
+                                <c:param name="returnPageToken" value="${returnPageToken}" />
                             </c:url>"><c:out value="${task.summary}"/></a>
                         </div>
                         <c:if test="${not empty task.runtimeNote}">
@@ -125,12 +125,12 @@
 <c:forEach items="${actionBean.archiveFlightPlanTasks}" var="task" >
 <p>
     <a href="<c:url value="/actions/ResolveTask" >
-                <c:param name="returnPage" value="FPV" />
+                <c:param name="returnPageToken" value="${returnPageToken}" />
                 <c:param name="taskId" value="${task.id}" />
                 <c:param name="action" value="UNRESOLVE" />
             </c:url>" title="Unresolve"><img border="0" src="<c:choose><c:when test="${task.finished}"><c:url value="/images/done.png"/></c:when><c:when test="${task.cancelled}"><c:url value="/images/cancelled.png"/></c:when></c:choose>" /></a>
     <a href="<c:url value="/actions/ResolveTask" >
-                <c:param name="returnPage" value="FPV" />
+                <c:param name="returnPageToken" value="${returnPageToken}" />
                 <c:param name="taskId" value="${task.id}" />
                 <c:param name="action" value="UNFLIGHT" />
             </c:url>" title="Remove from flight plan"><img alt="unflight" border="0" src="<c:url value="/images/unflight.png"/>"/></a>            
@@ -138,7 +138,7 @@
         <div align="center">
             <a href="<c:url value="/actions/ViewTask">
                         <c:param name="taskId" value="${task.id}" />
-                        <c:param name="returnPage" value="FPV" />
+                        <c:param name="returnPageToken" value="${returnPageToken}" />
                 </c:url>"><c:out value="${task.summary} "/></a>
         </div>
     <hr/>

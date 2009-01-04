@@ -27,8 +27,7 @@ public class TaskViewActionBean extends GtdBaseActionBean
     private Task taskResult;
     private String deadline;
     private String redline;
-    private String returnPage;
-    
+
     public int getTaskId() {
         return taskId;
     }
@@ -61,13 +60,6 @@ public class TaskViewActionBean extends GtdBaseActionBean
         this.redline = redline;
     }
 
-    public String getReturnPage() {
-        return returnPage;
-    }
-
-    public void setReturnPage(String returnPage) {
-        this.returnPage = returnPage;
-    }
     
     @DefaultHandler
     public Resolution filling() throws Exception {

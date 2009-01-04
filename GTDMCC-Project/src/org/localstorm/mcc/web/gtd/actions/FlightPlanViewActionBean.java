@@ -12,6 +12,7 @@ import net.sourceforge.stripes.action.UrlBinding;
 import org.localstorm.mcc.ejb.gtd.flight.FlightPlan;
 import org.localstorm.mcc.ejb.gtd.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.users.User;
+import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.mcc.web.util.FilterUtil;
 
@@ -94,12 +95,14 @@ public class FlightPlanViewActionBean extends GtdBaseActionBean {
         FilterUtil.applyContextFilter(awaitedFlightPlanTasks, ctxId);
         
         TaskManager tm = this.getTaskManager();
-        this.setRedlinesBroken(!tm.findRedlinedTasks(user).isEmpty());
-        this.setDeadlinesBroken(!tm.findDeadlinedTasks(user).isEmpty());
+        this.setRedlinesBroken(!tm.findRedlinedTasks(user, null).isEmpty());
+        this.setDeadlinesBroken(!tm.findDeadlinedTasks(user, null).isEmpty());
 
         this.setAffectedContexts(this.flightPlanTasks,
                                  this.awaitedFlightPlanTasks,
                                  this.archiveFlightPlanTasks);
+
+        this.setReturnPageBean(new ReturnPageBean(Pages.FPV.toString()));
 
         return new ForwardResolution(Views.FPV);
     }

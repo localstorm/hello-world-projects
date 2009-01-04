@@ -8,6 +8,7 @@ import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.gtd.lists.GTDList;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
+import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.gtd.backend.TaskResolutionLogic;
 import org.localstorm.mcc.web.util.SessionUtil;
@@ -25,7 +26,7 @@ public class TaskResolveActionBean extends GtdBaseActionBean
     @Validate( required=true )
     private String action;
 
-    private String returnPage;
+    //private String returnPage;
 
     private String runtimeNote;
 
@@ -36,14 +37,14 @@ public class TaskResolveActionBean extends GtdBaseActionBean
     public void setRuntimeNote(String runtimeNote) {
         this.runtimeNote = runtimeNote;
     }
-
-    public String getReturnPage() {
-        return returnPage;
-    }
-
-    public void setReturnPage(String returnPage) {
-        this.returnPage = returnPage;
-    }
+//
+//    public String getReturnPage() {
+//        return returnPage;
+//    }
+//
+//    public void setReturnPage(String returnPage) {
+//        this.returnPage = returnPage;
+//    }
 
     public int getTaskId() {
         return taskId;
@@ -81,8 +82,10 @@ public class TaskResolveActionBean extends GtdBaseActionBean
 
         SessionUtil.clear(super.getSession(), SessionKeys.NEED_CLEANUP);
 
-        if (this.getReturnPage()!=null) {
-            return NextDestinationUtil.getRedirectionByReturnPageName(this.getReturnPage());
+        ReturnPageBean rpb = super.getReturnPageBean();
+
+        if (rpb!=null) {
+            return NextDestinationUtil.getRedirection(rpb);
         } else {
             return NextDestinationUtil.taskResolveActionResolution(resolveAction,
                                                                    list,
