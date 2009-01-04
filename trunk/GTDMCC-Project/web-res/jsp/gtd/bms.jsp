@@ -32,7 +32,18 @@
 </div>
 
 <c:forEach items="${actionBean.tasks}" var="task">
-    <p><span><img src="<c:url value="/images/loe${task.effort}.png"/>"/>&nbsp;<c:out value="${task.list.name}" />:</span><br/>
+    <p><span><c:choose>
+                <c:when test="${not task.delegated}">
+                    <img src="<c:url value="/images/loe${task.effort}.png"/>"/>
+                </c:when>
+                <c:otherwise>
+                    <a href="<c:url value="/actions/ResolveTask" >
+                        <c:param name="returnPageToken" value="${returnPageToken}" />
+                        <c:param name="taskId" value="${task.id}" />
+                        <c:param name="action" value="UNDELEGATE" />
+                    </c:url>" title="Not delegated"><img border="0" src="<c:url value="/images/delegated.png"/>"/></a>
+                </c:otherwise>
+            </c:choose><c:out value="${task.list.name}" />:</span><br/>
         <div align="center">
             <a href="<c:url value="/actions/ViewTask">
                             <c:param name="taskId" value="${task.id}" />
@@ -57,9 +68,14 @@
         </table>
     </stripes:form>
 </div>
+<c:if test="${not empty task.runtimeNote}">
+    <p><i>&nbsp;Responsibility:&nbsp;</i><c:out value="${task.runtimeNote}"/></p>
+</c:if>
 <table width="100%">
     <tr>
-        <td width="80%" ><hr/></td>
+        <td width="80%" >
+            <hr/>
+        </td>
         <td width="20%" >
         <nobr>
             <c:if test="${not task.inFlightPlan}">
@@ -82,7 +98,9 @@
                 <c:param name="taskId" value="${task.id}" />
                 <c:param name="action" value="CANCEL" />
             </c:url>" title="Cancel"><img alt="cancel" border="0" src="<c:url value="/images/cancel.png"/>"/></a>
-            <a href="#" onclick="show('<c:out value="delegate-${task.id}" />', '<c:out value="rtn-${task.id}" />'); return false" title="Delegate"><img alt="delegate" border="0" src="<c:url value="/images/delegate.png"/>"/></a>
+            <c:if test="${not task.delegated}">
+                <a href="#" onclick="show('<c:out value="delegate-${task.id}" />', '<c:out value="rtn-${task.id}" />'); return false" title="Delegate"><img alt="delegate" border="0" src="<c:url value="/images/delegate.png"/>"/></a>
+            </c:if>
         </nobr>
         </td>
     </tr>
