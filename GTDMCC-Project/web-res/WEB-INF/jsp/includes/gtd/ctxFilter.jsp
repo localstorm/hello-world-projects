@@ -3,7 +3,7 @@
 <%@ include file="/WEB-INF/jsp/includes/include.jsp" %>
 
 <stripes:form action="/actions/SetContextFilter" >
-    <stripes:hidden name="returnPage" value="${param.returnPage}" />
+    <stripes:hidden name="returnPageToken" value="${param.returnPageToken}" />
     <stripes:select name="contextId" value="${filterCtx}" onchange="submit();">
         <stripes:option value="-1" >[Show all]</stripes:option>
         <c:forEach items="${contexts}" var="ctx" >
