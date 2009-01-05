@@ -183,13 +183,13 @@ ul{list-style-type:none;}
 }
 
 #dashGTDPan table td {
-	border: 1px solid #DADADA;
+    border: 1px solid #DADADA;
     border-collapse: collapse;
     cursor: pointer;
 }
 
 #dashGTDPan table td:hover {
-	border: 1px solid #DADADA;
+    border: 1px solid #DADADA;
     border-collapse: collapse;
     cursor: pointer;
     background: #FEECFF;
