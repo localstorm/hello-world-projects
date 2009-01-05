@@ -88,6 +88,9 @@ public class BattleMapSupportActionBean extends GtdBaseActionBean
         Collection<Task> fpt = fp.getTasksFromFlightPlan(fp.findCurrent(user));
 
         switch( f ) {
+            case FIN:
+                _tasks = tm.findFinished(user, context);
+                break;
             case PENDING:
                 _tasks = tm.findPending(user, context);
                 break;
@@ -134,6 +137,7 @@ public class BattleMapSupportActionBean extends GtdBaseActionBean
         AWAITED,
         FLIGHT,
         REDLINE,
-        DEADLINE
+        DEADLINE,
+        FIN
     }
 }

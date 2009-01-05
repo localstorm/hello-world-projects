@@ -19,6 +19,7 @@ public class GtdReportsDao {
     public static final String FLIGHT_PLAN_TASKS = "flight";
     public static final String REDLINE_TASKS    = "red";
     public static final String PENDING_TASKS    = "pending";
+    public static final String DONE_TASKS       = "done";
 
     private DataSource ds;
 
@@ -46,7 +47,7 @@ public class GtdReportsDao {
 
             PreparedStatement ps = conn.prepareStatement(rptSql);
 
-            for (int i=1; i<=6; i++) {
+            for (int i=1; i<=7; i++) {
                 ps.setInt(i, u.getId());
             }
 
@@ -65,6 +66,7 @@ public class GtdReportsDao {
                 int flight     = rs.getInt(FLIGHT_PLAN_TASKS);
                 int red        = rs.getInt(REDLINE_TASKS);
                 int dead       = rs.getInt(DEADLINE_TASK);
+                int done       = rs.getInt(DONE_TASKS);
 
                 // Interpreting
                 DashboardReportRow row = new DashboardReportRow();
@@ -76,6 +78,7 @@ public class GtdReportsDao {
                     row.setFlightPlan(flight);
                     row.setRed(red);
                     row.setDead(dead);
+                    row.setDone(done);
                 }
 
                 drb.addReportRow(row);

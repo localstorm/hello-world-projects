@@ -20,6 +20,8 @@ public interface TaskManager extends BaseManager<Task>
 
     public Collection<Task> findDeadlinedTasks(User user, Context ctx);
 
+    public Collection<Task> findFinished(User user, Context context);
+
     public Collection<Task> findRedlinedTasks(User user, Context ctx);
 
     public Collection<Task> findPending(User user, Context ctx);

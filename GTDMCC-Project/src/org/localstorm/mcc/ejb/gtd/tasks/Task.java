@@ -26,6 +26,16 @@ import org.localstorm.mcc.ejb.Identifiable;
 @Table(name="TASKS")
 @NamedQueries({
     @NamedQuery(
+        name = Task.Queries.FIND_FINISHED_BY_CTX,
+        query= "SELECT o FROM Task o WHERE (o.cancelled=true or o.finished=true) and o.list.context=:ctx" +
+        " ORDER BY o.list.name, o.effort"
+    ),
+    @NamedQuery(
+        name = Task.Queries.FIND_FINISHED,
+        query= "SELECT o FROM Task o WHERE (o.cancelled=true or o.finished=true) and o.list.context.owner=:user" +
+        " ORDER BY o.list.context.name, o.list.name"
+    ),
+            @NamedQuery(
         name = Task.Queries.FIND_AWAITED_BY_CTX,
         query= "SELECT o FROM Task o WHERE o.cancelled=false and o.finished=false and o.delegated=true and o.list.context=:ctx" +
         " ORDER BY o.list.name, o.effort"
@@ -315,17 +325,16 @@ public class Task implements Identifiable, Serializable
         public static final String FIND_SCHEDULED_BY_USER = "findScheduledTasksByUser";
         public static final String FIND_OLDEST_BY_CTX    = "finOldestTasksByCtx";
         public static final String FIND_BY_USER          = "findAllTasksByUser";
-
-        
-        
+        public static final String FIND_FINISHED         = "findFinished";
+        public static final String FIND_FINISHED_BY_CTX  = "findFinishedByCtx";
     }
     
     public static interface Properties
     {
-        public static final String CTX  = "ctx";
-        public static final String LIST = "list";
-        public static final String USER = "user";
-        public static final String NOW  = "now";
+        public static final String CTX    = "ctx";
+        public static final String LIST   = "list";
+        public static final String USER   = "user";
+        public static final String NOW    = "now";
         public static final String EFFORT = "effort";
     }
 

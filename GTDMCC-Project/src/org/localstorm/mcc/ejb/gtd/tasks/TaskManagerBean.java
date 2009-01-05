@@ -22,6 +22,8 @@ public class TaskManagerBean extends AbstractManager<Task>
         super(Task.class);
     }
 
+
+
     @Override
     public Collection<Task> findOldestOperative(Context ctx, int max) {
         Query tq = em.createNamedQuery(Task.Queries.FIND_OLDEST_BY_CTX);
@@ -109,6 +111,20 @@ public class TaskManagerBean extends AbstractManager<Task>
     }
 
 
+    @Override
+    public Collection<Task> findFinished(User user, Context ctx) {
+        Query tq;
+        if (ctx==null) {
+            tq = em.createNamedQuery(Task.Queries.FIND_FINISHED);
+            tq.setParameter(Task.Properties.USER, user);
+        } else {
+            tq = em.createNamedQuery(Task.Queries.FIND_FINISHED_BY_CTX);
+            tq.setParameter(Task.Properties.CTX, ctx);
+        }
+
+        List<Task> list = tq.getResultList();
+        return list;
+    }
 
     @Override
     public Collection<Task> findDeadlinedTasks(User user, Context ctx) {

@@ -34,42 +34,48 @@
 <div id="dashGTDPan">
     <h2><span>GTD Battle Map</span> pane</h2>
 	<div align="center">
-		<table border="1" width="80%" class="dash">
-			<tr class="dashHdr" ><th colspan="6">Consolidated Tasks Report</th></tr>
+		<table border="1" width="90%" class="dash">
+			<tr class="dashHdr" ><th colspan="7">Consolidated Tasks Report</th></tr>
 			<tr class="dashHdr">
                 <th width="40%">Context name</th>
                 <th width="10%">Pending</th>
                 <th width="10%">Awaited</th>
                 <th width="10%">Flight plan</th>
                 <th width="10%"><img src="<c:url value="/images/redline.png"/>" /></th>
-                <th width="10%"><img src="<c:url value="/images/deadline.png" />"/></th></tr>
-                <c:forEach items="${gtdDashReport.rows}" var="row">
-                    <tr>
-                        <td onClick="document.location.href='<c:url value="/actions/ViewContext">
-                                                    <c:param name="contextId" value="${row.contextId}" />
-                                                </c:url>';"><c:out value="${row.contextName}" /></td>
-                        <td onClick="document.location.href='<c:url value="/actions/BattleMapSupport">
-                                                    <c:param name="contextId" value="${row.contextId}" />
-                                                    <c:param name="filter" value="PENDING" />
-                                                </c:url>';"><c:out value="${row.pending}" /></td>
-                        <td onClick="document.location.href='<c:url value="/actions/BattleMapSupport">
-                                                    <c:param name="contextId" value="${row.contextId}" />
-                                                    <c:param name="filter" value="AWAITED" />
-                                                </c:url>';"><c:out value="${row.awaited}" /></td>
-                        <td onClick="document.location.href='<c:url value="/actions/BattleMapSupport">
-                                                    <c:param name="contextId" value="${row.contextId}" />
-                                                    <c:param name="filter" value="FLIGHT" />
-                                                </c:url>';"><c:out value="${row.flightPlan}" /></td>
-                        <td onClick="document.location.href='<c:url value="/actions/BattleMapSupport">
-                                                    <c:param name="contextId" value="${row.contextId}" />
-                                                    <c:param name="filter" value="REDLINE" />
-                                                </c:url>';"><c:out value="${row.red}" /></td>
-                        <td onClick="document.location.href='<c:url value="/actions/BattleMapSupport">
-                                                    <c:param name="contextId" value="${row.contextId}" />
-                                                    <c:param name="filter" value="DEADLINE" />
-                                                </c:url>';"><c:out value="${row.dead}" /></td>
-                    </tr>
-                </c:forEach>
+                <th width="10%"><img src="<c:url value="/images/deadline.png" />"/></th>
+                <th width="10%"><img src="<c:url value="/images/check.png" />"/></th>
+            </tr>
+            <c:forEach items="${gtdDashReport.rows}" var="row">
+                <tr>
+                    <td onClick="document.location.href='<c:url value="/actions/ViewContext">
+                                                <c:param name="contextId" value="${row.contextId}" />
+                                            </c:url>';"><c:out value="${row.contextName}" /></td>
+                    <td onClick="document.location.href='<c:url value="/actions/BattleMapSupport">
+                                                <c:param name="contextId" value="${row.contextId}" />
+                                                <c:param name="filter" value="PENDING" />
+                                            </c:url>';"><c:out value="${row.pending}" /></td>
+                    <td onClick="document.location.href='<c:url value="/actions/BattleMapSupport">
+                                                <c:param name="contextId" value="${row.contextId}" />
+                                                <c:param name="filter" value="AWAITED" />
+                                            </c:url>';"><c:out value="${row.awaited}" /></td>
+                    <td onClick="document.location.href='<c:url value="/actions/BattleMapSupport">
+                                                <c:param name="contextId" value="${row.contextId}" />
+                                                <c:param name="filter" value="FLIGHT" />
+                                            </c:url>';"><c:out value="${row.flightPlan}" /></td>
+                    <td onClick="document.location.href='<c:url value="/actions/BattleMapSupport">
+                                                <c:param name="contextId" value="${row.contextId}" />
+                                                <c:param name="filter" value="REDLINE" />
+                                            </c:url>';"><c:out value="${row.red}" /></td>
+                    <td onClick="document.location.href='<c:url value="/actions/BattleMapSupport">
+                                                <c:param name="contextId" value="${row.contextId}" />
+                                                <c:param name="filter" value="DEADLINE" />
+                                            </c:url>';"><c:out value="${row.dead}" /></td>
+                    <td onClick="document.location.href='<c:url value="/actions/BattleMapSupport">
+                                                <c:param name="contextId" value="${row.contextId}" />
+                                                <c:param name="filter" value="FIN" />
+                                            </c:url>';"><c:out value="${row.done}" /></td>
+                </tr>
+            </c:forEach>
 			<tr class="dashHdr">
                 <th>Total</th>
                 <th><c:out value="${gtdDashReport.totals.pending}" /></th>
@@ -77,6 +83,7 @@
                 <th><c:out value="${gtdDashReport.totals.flightPlan}" /></th>
                 <th><c:out value="${gtdDashReport.totals.red}" /></th>
                 <th><c:out value="${gtdDashReport.totals.dead}" /></th>
+                <th><c:out value="${gtdDashReport.totals.done}" /></th>
             </tr>
 		</table>
  		</div>
