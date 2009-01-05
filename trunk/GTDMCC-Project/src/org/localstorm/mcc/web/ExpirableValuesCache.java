@@ -22,6 +22,7 @@ public class ExpirableValuesCache<K, T> {
     private ReferenceQueue<Object> rq;
     private Map<K, Logged<T>> store;
     private long expiration;
+    private long lastCleanup;
 
     public ExpirableValuesCache(long expirationMillis)
     {
@@ -53,7 +54,7 @@ public class ExpirableValuesCache<K, T> {
 
     private void checkLog() {
         Reference<? extends Object> ref = rq.poll();
-        if (ref!=null)
+        if (ref!=null && lastCleanup<(System.currentTimeMillis()-expiration))
         {
             this.reloadTrigger();
 
