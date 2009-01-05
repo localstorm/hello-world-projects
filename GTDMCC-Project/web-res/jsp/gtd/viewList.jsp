@@ -129,12 +129,20 @@
                                     <c:param name="taskId" value="${task.id}" />
                                     <c:param name="action" value="COPY" />
                                  </c:url>" title="Cut"><img alt="cut" src="<c:url value="/images/cut.png"/>" border="0" /></a>
-                        <c:if test="${not task.inFlightPlan}">
-                        <a href="<c:url value="/actions/ResolveTask">
-                                    <c:param name="taskId" value="${task.id}" />
-                                    <c:param name="action" value="FLIGHT" />
-                                 </c:url>" title="Append To Flight Plan"><img alt="flight" border="0" src="<c:url value="/images/flight.png"/>"/></a>
-                        </c:if>
+                    <c:choose>
+                        <c:when test="${not task.inFlightPlan}">
+                            <a href="<c:url value="/actions/ResolveTask">
+                                <c:param name="taskId" value="${task.id}" />
+                                <c:param name="action" value="FLIGHT" />
+                             </c:url>" title="Append To Flight Plan"><img alt="Flight" border="0" src="<c:url value="/images/flight.png"/>"/></a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="<c:url value="/actions/ResolveTask">
+                                <c:param name="taskId" value="${task.id}" />
+                                <c:param name="action" value="UNFLIGHT" />
+                             </c:url>" title="Remove From Flight Plan"><img alt="Unflight" border="0" src="<c:url value="/images/unflight.png"/>"/></a>
+                        </c:otherwise>
+                    </c:choose>
                         <a href="<c:url value="/actions/ResolveTask">
                                     <c:param name="taskId" value="${task.id}" />
                                     <c:param name="action" value="FINISH" />

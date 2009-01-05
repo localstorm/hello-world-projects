@@ -24,6 +24,7 @@ import org.localstorm.mcc.ejb.gtd.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.ejb.users.User;
+import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.mcc.web.gtd.actions.wrap.TaskWrapper;
 import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
@@ -122,6 +123,12 @@ public class TaskSearchSubmitActionBean extends GtdBaseActionBean
             this.setFound(true);
         }
 
+        ReturnPageBean rpb = new ReturnPageBean(Pages.TASK_SEARCH_SUBMIT.toString());
+        {
+            rpb.setParam(IncommingParameters.TEXT, this.getText());
+        }
+        super.setReturnPageBean(rpb);
+
         return new ForwardResolution(Views.SEARCH_TASKS);
     }
 
@@ -179,6 +186,10 @@ public class TaskSearchSubmitActionBean extends GtdBaseActionBean
         hc.close();
 
         return hc.getTasks();
+    }
+
+    public static interface IncommingParameters {
+        public static final String TEXT = "text";
     }
 
     

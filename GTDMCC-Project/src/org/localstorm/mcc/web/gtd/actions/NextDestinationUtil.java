@@ -13,27 +13,6 @@ import org.localstorm.mcc.web.ReturnPageBean;
 public class NextDestinationUtil 
 {
 
-//    public static Resolution getRedirectionByReturnPageName(String returnPage)
-//    {
-//        ReturnPages rp = ReturnPages.valueOf(returnPage);
-//
-//        switch(rp)
-//        {
-//            case AW_REPORT:
-//                return new RedirectResolution(AwaitingsReportActionBean.class);
-//            case DL_REPORT:
-//                return new RedirectResolution(DeadlineLookupReportActionBean.class);
-//            case EASY_REPORT:
-//                return new RedirectResolution(EasyTasksReportActionBean.class);
-//            case OLD_REPORT:
-//                return new RedirectResolution(OldTasksReportActionBean.class);
-//            default:
-//            case FPV:
-//                return new RedirectResolution(FlightPlanViewActionBean.class);
-//
-//        }
-//    }
-
     public static Resolution taskResolveActionResolution(TaskResolutionAction action, 
                                                          GTDList list, 
                                                          GTDList currentList)
@@ -71,6 +50,9 @@ public class NextDestinationUtil
         RedirectResolution rr;
         switch(rp)
         {
+            case TASK_SEARCH_SUBMIT:
+                rr = new RedirectResolution(TaskSearchSubmitActionBean.class);
+                break;
             case BMS_VIEW:
                 rr = new RedirectResolution(BattleMapSupportActionBean.class);
                 break;
