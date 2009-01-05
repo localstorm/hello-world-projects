@@ -12,6 +12,7 @@ public class DashboardReportRow {
     private int flightPlan;
     private int red;
     private int dead;
+    private int done;
 
     public int getAwaited() {
         return awaited;
@@ -41,6 +42,10 @@ public class DashboardReportRow {
         return pending;
     }
 
+    public int getDone() {
+        return done;
+    }
+
     public void setAwaited(int awaited) {
         this.awaited = awaited;
     }
@@ -67,6 +72,10 @@ public class DashboardReportRow {
 
     public void setPending(int total) {
         this.pending = total;
+    }
+
+    public void setDone(int done) {
+        this.done = done;
     }
     
 }

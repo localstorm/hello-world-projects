@@ -33,6 +33,7 @@ public class DashboardReportBean {
         totals.setFlightPlan(totals.getFlightPlan()+row.getFlightPlan());
         totals.setRed(totals.getRed()+row.getRed());
         totals.setDead(totals.getDead()+row.getDead());
+        totals.setDone(totals.getDone()+row.getDone());
         rows.add(row);
     }
     

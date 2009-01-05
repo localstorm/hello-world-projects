@@ -1,4 +1,4 @@
-select totals.name cname, totals.cid cid, total pending, awaited, flight, red, dead from (
+select totals.name cname, totals.cid cid, total pending, awaited, flight, red, dead, done from (
     (
             select c.name name, c.id cid, IF(total IS NULL, 0, total) total from (
                 (select name, id from CONTEXTS where user_id=?) c                
@@ -118,4 +118,27 @@ select totals.name cname, totals.cid cid, total pending, awaited, flight, red, d
             )
         ) deadlined
         ON redlined.cid=deadlined.cid
+        JOIN
+        (
+            select id cid, IF(total IS NULL, 0, total) done  from (
+                    (select name, id from CONTEXTS where user_id=?) c
+                    LEFT OUTER JOIN
+                    (
+                        select context_id, SUM(lcnt) total from
+                        (
+                            select context_id, lcnt from
+                            (
+                                LISTS lst
+                                JOIN (
+                                    select list_id, SUM(1) lcnt from TASKS where
+                                        is_cancelled=true or is_finished=true
+                                    GROUP BY list_id
+                                ) lc ON lst.id=lc.list_id
+                            )
+                        ) ctx GROUP BY ctx.context_id
+                    ) co
+                    ON c.id=co.context_id
+            )
+        ) finished
+        ON deadlined.cid=finished.cid
 ) ORDER BY cname
