@@ -20,5 +20,4 @@ public class Views
     public static final String VIEW_BMS  = "/jsp/gtd/bms.jsp";
     public static final String VIEW_OLD  = "/jsp/gtd/oldTasks.jsp";
     public static final String VIEW_DLR  = "/jsp/gtd/deadlines.jsp";
-    public static final String VIEW_EASY = "/jsp/gtd/easy.jsp";
 }

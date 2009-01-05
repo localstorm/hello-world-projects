@@ -28,10 +28,6 @@
                 </tr>
                 <tr>
                     <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
-                    <td><a href="<c:url value="/actions/EasyTasksReport" />">Easy tasks</a></td>
-                </tr>
-                <tr>
-                    <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
                     <td><a href="<c:url value="/actions/OldTasksReport" />">Old tasks</a></td>
                 </tr>
             </table>

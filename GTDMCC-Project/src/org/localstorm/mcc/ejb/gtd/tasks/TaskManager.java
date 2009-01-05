@@ -42,10 +42,4 @@ public interface TaskManager extends BaseManager<Task>
 
     public Collection<Task> findScheduledNonFinishedTasks(User user);
 
-    /**
-     * @param ctx May be null!
-     */
-    public Collection<Task> findByMaxEffort(Effort effort, User user);
-    
-    
 }
