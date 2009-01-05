@@ -76,11 +76,6 @@ import org.localstorm.mcc.ejb.Identifiable;
         query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and (o.finished=true or o.cancelled=true)"
     ),
     @NamedQuery(
-        name = Task.Queries.FIND_BY_MAX_EFFORT,
-        query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and" +
-        " o.effort<=:effort and o.delegated=false ORDER BY o.list.context.name, o.list.name"
-    ),
-    @NamedQuery(
         name = Task.Queries.FIND_DEADLINED,
         query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and o.deadline<=:now" +
         " ORDER BY o.list.context.name, o.list.name"
@@ -310,7 +305,6 @@ public class Task implements Identifiable, Serializable
     public static interface Queries {
         public static final String FIND_UNFINISHED        = "findUnfinished";
         public static final String FIND_UNFINISHED_BY_CTX = "findUnfinishedByCtx";
-        public static final String FIND_BY_MAX_EFFORT    = "findByMaxEffort";
         public static final String FIND_AWAITED          = "findAwaitedTasks";
         public static final String FIND_AWAITED_BY_CTX   = "findAwaitedTasksByCtx";
         public static final String FIND_BY_LIST          = "findByList";
