@@ -11,5 +11,6 @@ public enum Pages
     EASY_REPORT, // Easy tasks report
     OLD_REPORT,  // Old tasks report
     LIST_VIEW,
-    BMS_VIEW
+    BMS_VIEW,   
+    TASK_SEARCH_SUBMIT
 }
