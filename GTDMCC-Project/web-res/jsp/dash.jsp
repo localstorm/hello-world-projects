@@ -133,14 +133,10 @@
             </c:url>" >Some tasks need your attention</a> (<c:out value="${gtdDashReport.totals.dead+gtdDashReport.totals.red}"/>)</c:if>
  		</div>
         </c:if>
-        <c:if test="">
-        <div align="left" class="dashToolBox">
-            
- 		</div>
-        </c:if>
+    </div>
 </div>
 
-<%--div id="dashGTD2Pan">
+<div id="dashGTD2Pan">
     <h2><span>Daily Tasks</span> pane</h2>
 	<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+22)</p>
 		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Пафнутьев Ш. И.</a> (+54)</p>
@@ -148,7 +144,7 @@
 		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+22)</p>
 		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Пафнутьев Ш. И.</a> (+54)</p>
 		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+90)</p>
-</div--%>
+</div>
 
 <%@ include file="/WEB-INF/jsp/includes/foot.jsp" %>
 
