@@ -7,10 +7,10 @@ import javax.persistence.PersistenceContext;
  *
  * @author Alexey Kuznetsov
  */
-public abstract class AbstractSingletonManager <T extends Identifiable & Retireable, E> 
+public abstract class AbstractSingletonManager <T extends Identifiable, E> 
                                                implements BaseSingletonManager<T, E>
 {
-    protected abstract T createNewCurrent(E owner);
+    protected abstract T create(E owner);
 
     @Override
     public void update( T o ) 
@@ -20,10 +20,10 @@ public abstract class AbstractSingletonManager <T extends Identifiable & Retirea
 
     @Override
     public void utilizeCurrent( E e ) {
-        T current = this.findCurrent(e);
-        current.setArchived(true);
-        this.update(current);
-        this.createNewCurrent( e );
+        T current = this.findByUser(e);
+        em.remove(current);
+        em.flush();
+        this.create( e );
     }
     
     

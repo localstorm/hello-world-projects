@@ -30,7 +30,7 @@ public class TaskResolutionLogic
     {
         Task t = tm.findById(taskId);
         
-        FlightPlan fp = fpm.findCurrent(u);
+        FlightPlan fp = fpm.findByUser(u);
         
         boolean update = true;
         

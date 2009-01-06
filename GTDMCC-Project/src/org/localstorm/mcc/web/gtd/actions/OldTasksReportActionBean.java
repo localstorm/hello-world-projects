@@ -55,7 +55,7 @@ public class OldTasksReportActionBean extends GtdBaseActionBean
             ctxs = cm.findByOwner(super.getUser());
         }
 
-        FlightPlan       fp      = fpm.findCurrent(super.getUser());
+        FlightPlan       fp      = fpm.findByUser(super.getUser());
         Collection<Task> fpTasks = fpm.getTasksFromFlightPlan(fp);
 
         Map<Integer, Collection<TaskWrapper>> res  = new HashMap<Integer, Collection<TaskWrapper>>();

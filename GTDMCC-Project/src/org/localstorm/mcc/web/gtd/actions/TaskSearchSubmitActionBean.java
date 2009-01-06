@@ -99,7 +99,7 @@ public class TaskSearchSubmitActionBean extends GtdBaseActionBean
 
         if (result.size()>0) {
             FlightPlanManager fp = this.getFlightPlanManager();
-            Collection<Task> fpt = fp.getTasksFromFlightPlan(fp.findCurrent(user));
+            Collection<Task> fpt = fp.getTasksFromFlightPlan(fp.findByUser(user));
             Collection<TaskWrapper> r1 = WrapUtil.genWrappers(result, fpt);
 
             for (Iterator<TaskWrapper> it = r1.iterator(); it.hasNext(); )

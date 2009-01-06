@@ -84,7 +84,7 @@ public class ListViewActionBean extends GtdBaseActionBean
         TaskManager tm        = this.getTaskManager();
         FlightPlanManager fpm = this.getFlightPlanManager();
         
-        Collection<Task> currentFp = fpm.getTasksFromFlightPlan(fpm.findCurrent(this.getUser()));
+        Collection<Task> currentFp = fpm.getTasksFromFlightPlan(fpm.findByUser(this.getUser()));
         
         this.setTasks(WrapUtil.genWrappers(tm.findOpeartiveByList(list), currentFp));
         this.setAwaitedTasks(WrapUtil.genWrappers(tm.findAwaitedByList(list), currentFp));

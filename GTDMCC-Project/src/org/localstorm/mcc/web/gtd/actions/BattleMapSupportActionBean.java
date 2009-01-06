@@ -86,7 +86,7 @@ public class BattleMapSupportActionBean extends GtdBaseActionBean
 
         Collection<Task> _tasks = null;
 
-        Collection<Task> fpt = fp.getTasksFromFlightPlan(fp.findCurrent(user));
+        Collection<Task> fpt = fp.getTasksFromFlightPlan(fp.findByUser(user));
 
         switch( f ) {
             case ELEMENTARY:
