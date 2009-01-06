@@ -27,7 +27,12 @@ import org.localstorm.mcc.ejb.gtd.tasks.Task;
     @NamedQuery(
         name = FlightPlanToTask.Queries.FIND_TASKS_BY_PLAN,
         query= "SELECT o.task FROM FlightPlanToTask o WHERE o.flightPlan=:flightPlan" +
-               " ORDER BY o.task.list.context.name, o.task.list.name"
+               " ORDER BY o.task.list.context.name, o.task.list.name, o.task.effort"
+    ),
+    @NamedQuery(
+        name = FlightPlanToTask.Queries.FIND_TASKS_BY_PLAN_AND_CTX,
+        query= "SELECT o.task FROM FlightPlanToTask o WHERE o.flightPlan=:flightPlan and o.task.list.context=:ctx" +
+               " ORDER BY o.task.list.name, o.task.effort"
     )
 })
 public class FlightPlanToTask implements Serializable
@@ -78,12 +83,14 @@ public class FlightPlanToTask implements Serializable
     {
         public static final String FIND_CONNECTORS_BY_TASK_AND_PLAN = "findByTaskAndPlan";
         public static final String FIND_TASKS_BY_PLAN               = "findByPlan";
+        public static final String FIND_TASKS_BY_PLAN_AND_CTX       = "findByPlanAndCtx";
     }
     
     public static interface Properties 
     {
         public static final String TASK = "task";
         public static final String FLIGHT_PLAN = "flightPlan";
+        public static final String CONTEXT = "ctx";
     }
     
 }

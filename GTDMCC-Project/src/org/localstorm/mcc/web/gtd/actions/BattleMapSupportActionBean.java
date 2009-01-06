@@ -10,6 +10,7 @@ import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.gtd.contexts.Context;
 import org.localstorm.mcc.ejb.gtd.contexts.ContextManager;
+import org.localstorm.mcc.ejb.gtd.flight.FlightPlan;
 import org.localstorm.mcc.ejb.gtd.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.gtd.tasks.Effort;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
@@ -77,7 +78,7 @@ public class BattleMapSupportActionBean extends GtdBaseActionBean
         User            user = super.getUser();
         ContextManager    cm = super.getContextManager();
         TaskManager       tm = super.getTaskManager();
-        FlightPlanManager fp = super.getFlightPlanManager();
+        FlightPlanManager fpm = super.getFlightPlanManager();
 
         Filter    f = Filter.valueOf(this.getFilter());
         Context context = cm.findById(this.getContextId());
@@ -86,7 +87,8 @@ public class BattleMapSupportActionBean extends GtdBaseActionBean
 
         Collection<Task> _tasks = null;
 
-        Collection<Task> fpt = fp.getTasksFromFlightPlan(fp.findByUser(user));
+        FlightPlan fp        = fpm.findByUser(user);
+        Collection<Task> fpt = fpm.getTasksFromFlightPlan(fp);
 
         switch( f ) {
             case ELEMENTARY:
@@ -120,9 +122,7 @@ public class BattleMapSupportActionBean extends GtdBaseActionBean
                 _tasks = tm.findDeadlinedTasks(user, context);
                 break;
             case FLIGHT:
-                _tasks = new ArrayList<Task>(fpt.size());
-                _tasks.addAll(fpt);
-                FilterUtil.applyContextFilter(_tasks, contextId, true);
+                _tasks = fpm.getTasksFromFlightPlan(fp, context);
                 break;
             default:
                 throw new RuntimeException("Unexpected case!");
