@@ -92,19 +92,11 @@ public class BattleMapSupportActionBean extends GtdBaseActionBean
 
         switch( f ) {
             case ELEMENTARY:
-                _tasks = tm.findByLoE(user, context, Effort.ELEMENTARY);
-                break;
             case EASY:
-                _tasks = tm.findByLoE(user, context, Effort.EASY);
-                break;
             case MEDIUM:
-                _tasks = tm.findByLoE(user, context, Effort.MEDIUM);
-                break;
             case DIFFICULT:
-                _tasks = tm.findByLoE(user, context, Effort.DIFFICULT);
-                break;
             case VERY_DIFFICULT:
-                _tasks = tm.findByLoE(user, context, Effort.VERY_DIFFICULT);
+                _tasks = tm.findByLoE(user, context, Effort.valueOf(this.getFilter()));
                 break;
             case FIN:
                 _tasks = tm.findFinished(user, context);
