@@ -123,6 +123,7 @@ public class BattleMapSupportActionBean extends GtdBaseActionBean
                 break;
             case FLIGHT:
                 _tasks = fpm.getTasksFromFlightPlan(fp, context);
+                FilterUtil.applyContextFilter(_tasks, this.getContextId(), true);
                 break;
             default:
                 throw new RuntimeException("Unexpected case!");
