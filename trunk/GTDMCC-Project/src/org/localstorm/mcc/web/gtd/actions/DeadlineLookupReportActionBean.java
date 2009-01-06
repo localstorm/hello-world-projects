@@ -36,6 +36,7 @@ public class DeadlineLookupReportActionBean extends GtdBaseActionBean
     private Date today;
     private List<TaskMarker> broken;
     private List<TaskMarker> following;
+    private boolean noFilter;
 
     public Date getToday() {
         return today;
@@ -61,6 +62,13 @@ public class DeadlineLookupReportActionBean extends GtdBaseActionBean
         this.following = following;
     }
 
+    public boolean isNoFilter() {
+        return noFilter;
+    }
+
+    public void setNoFilter(boolean noFilter) {
+        this.noFilter = noFilter;
+    }
 
     @DefaultHandler
     public Resolution filling() throws Exception {
@@ -77,6 +85,10 @@ public class DeadlineLookupReportActionBean extends GtdBaseActionBean
         FlightPlan fp = fpm.findCurrent(user);
         Collection<Task> fpt   = fpm.getTasksFromFlightPlan(fp);
         Collection<Task> tasks = tm.findScheduledNonFinishedTasks(user);
+
+        if (this.isNoFilter()) {
+            super.setContextIdFilter(-1);
+        }
 
         FilterUtil.applyContextFilter(tasks, super.getContextIdFilter());
 
