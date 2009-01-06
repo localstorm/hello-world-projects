@@ -14,6 +14,5 @@ public enum TaskResolutionAction
         FLIGHT,
         UNFLIGHT,
         COPY,
-        PASTE,
-        REMOVE
+        PASTE
 }

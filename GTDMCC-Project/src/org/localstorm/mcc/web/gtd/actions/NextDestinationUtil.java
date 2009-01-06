@@ -19,7 +19,7 @@ public class NextDestinationUtil
     {
         RedirectResolution rr = null;
 
-        if (list.isArchived() && (!TaskResolutionAction.REMOVE.equals(action))) {
+        if (list.isArchived()) {
             rr = new RedirectResolution(ContextViewActionBean.class);
             {
                 rr.addParameter(ContextViewActionBean.IncommingParameters.CTX_ID, list.getContext().getId());

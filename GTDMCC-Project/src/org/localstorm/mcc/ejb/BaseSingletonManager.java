@@ -1,9 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package org.localstorm.mcc.ejb;
+
+import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
+
 
 /**
  *
@@ -14,6 +12,8 @@ public interface BaseSingletonManager<T, E>
     public void update( T o );
     
     public T findByUser( E owner );
+
+    public T findByUser( E owner, boolean createIfNone ) throws ObjectNotFoundException;
     
     public void utilizeCurrent( E owner );
 }
