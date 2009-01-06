@@ -34,6 +34,11 @@ public class DashboardReportBean {
         totals.setRed(totals.getRed()+row.getRed());
         totals.setDead(totals.getDead()+row.getDead());
         totals.setDone(totals.getDone()+row.getDone());
+        totals.setElementary(totals.getElementary()+row.getElementary());
+        totals.setEasy(totals.getEasy()+row.getEasy());
+        totals.setMedium(totals.getMedium()+row.getMedium());
+        totals.setDifficult(totals.getDifficult()+row.getDifficult());
+        totals.setVeryDifficult(totals.getVeryDifficult()+row.getVeryDifficult());
         rows.add(row);
     }
     

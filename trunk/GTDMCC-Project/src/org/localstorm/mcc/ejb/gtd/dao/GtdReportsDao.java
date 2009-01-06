@@ -20,6 +20,11 @@ public class GtdReportsDao {
     public static final String REDLINE_TASKS    = "red";
     public static final String PENDING_TASKS    = "pending";
     public static final String DONE_TASKS       = "done";
+    public static final String ELEMENTARY_TASKS = "effort1";
+    public static final String EASY_TASKS       = "effort2";
+    public static final String MEDIUM_TASKS     = "effort3";
+    public static final String DIFFICULT_TASKS  = "effort4";
+    public static final String VERY_DIFFICULT_TASKS  = "effort5";
 
     private DataSource ds;
 
@@ -47,7 +52,7 @@ public class GtdReportsDao {
 
             PreparedStatement ps = conn.prepareStatement(rptSql);
 
-            for (int i=1; i<=7; i++) {
+            for (int i=1; i<=12; i++) {
                 ps.setInt(i, u.getId());
             }
 
@@ -67,6 +72,11 @@ public class GtdReportsDao {
                 int red        = rs.getInt(REDLINE_TASKS);
                 int dead       = rs.getInt(DEADLINE_TASK);
                 int done       = rs.getInt(DONE_TASKS);
+                int elementary = rs.getInt(ELEMENTARY_TASKS);
+                int easy       = rs.getInt(EASY_TASKS);
+                int medium     = rs.getInt(MEDIUM_TASKS);
+                int difficult  = rs.getInt(DIFFICULT_TASKS);
+                int vd         = rs.getInt(VERY_DIFFICULT_TASKS);
 
                 // Interpreting
                 DashboardReportRow row = new DashboardReportRow();
@@ -79,6 +89,11 @@ public class GtdReportsDao {
                     row.setRed(red);
                     row.setDead(dead);
                     row.setDone(done);
+                    row.setEasy(easy);
+                    row.setElementary(elementary);
+                    row.setMedium(medium);
+                    row.setDifficult(difficult);
+                    row.setVeryDifficult(vd);
                 }
 
                 drb.addReportRow(row);

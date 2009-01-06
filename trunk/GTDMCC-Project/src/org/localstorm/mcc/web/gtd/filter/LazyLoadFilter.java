@@ -80,14 +80,6 @@ public class LazyLoadFilter implements Filter
             SessionUtil.fill(sess, SessionKeys.REFERENCE_OBJECTS, rom.findOperativeByOwner(user, false));
         }
 
-        if ( SessionUtil.isEmpty(sess, SessionKeys.NEED_CLEANUP ) ) {
-            TaskManager tm = ContextLookup.lookup(TaskManager.class,
-                                                  TaskManager.BEAN_NAME);
-
-            SessionUtil.fill(sess, SessionKeys.NEED_CLEANUP, tm.isCleanupNeeded(user));
-        }
-
-            
     }
     
 

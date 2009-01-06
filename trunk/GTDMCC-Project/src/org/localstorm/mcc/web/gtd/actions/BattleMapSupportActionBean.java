@@ -11,6 +11,7 @@ import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.gtd.contexts.Context;
 import org.localstorm.mcc.ejb.gtd.contexts.ContextManager;
 import org.localstorm.mcc.ejb.gtd.flight.FlightPlanManager;
+import org.localstorm.mcc.ejb.gtd.tasks.Effort;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.ejb.users.User;
@@ -88,6 +89,21 @@ public class BattleMapSupportActionBean extends GtdBaseActionBean
         Collection<Task> fpt = fp.getTasksFromFlightPlan(fp.findCurrent(user));
 
         switch( f ) {
+            case ELEMENTARY:
+                _tasks = tm.findByLoE(user, context, Effort.ELEMENTARY);
+                break;
+            case EASY:
+                _tasks = tm.findByLoE(user, context, Effort.EASY);
+                break;
+            case MEDIUM:
+                _tasks = tm.findByLoE(user, context, Effort.MEDIUM);
+                break;
+            case DIFFICULT:
+                _tasks = tm.findByLoE(user, context, Effort.DIFFICULT);
+                break;
+            case VERY_DIFFICULT:
+                _tasks = tm.findByLoE(user, context, Effort.VERY_DIFFICULT);
+                break;
             case FIN:
                 _tasks = tm.findFinished(user, context);
                 break;
@@ -112,6 +128,7 @@ public class BattleMapSupportActionBean extends GtdBaseActionBean
                 throw new RuntimeException("Unexpected case!");
         }
 
+        super.setAffectedContexts(_tasks);
         this.setTasks(WrapUtil.genWrappers(_tasks, fpt));
 
         ReturnPageBean rpb = new ReturnPageBean(Pages.BMS_VIEW.toString());
@@ -138,6 +155,11 @@ public class BattleMapSupportActionBean extends GtdBaseActionBean
         FLIGHT,
         REDLINE,
         DEADLINE,
-        FIN
+        FIN,
+        ELEMENTARY,
+        EASY,
+        MEDIUM,
+        DIFFICULT,
+        VERY_DIFFICULT
     }
 }

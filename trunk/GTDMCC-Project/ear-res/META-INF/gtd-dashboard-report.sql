@@ -1,4 +1,4 @@
-select totals.name cname, totals.cid cid, total pending, awaited, flight, red, dead, done from (
+select totals.name cname, totals.cid cid, total pending, awaited, flight, red, dead, done, effort1, effort2, effort3, effort4, effort5 from (
     (
             select c.name name, c.id cid, IF(total IS NULL, 0, total) total from (
                 (select name, id from CONTEXTS where user_id=?) c                
@@ -141,4 +141,139 @@ select totals.name cname, totals.cid cid, total pending, awaited, flight, red, d
             )
         ) finished
         ON deadlined.cid=finished.cid
+        JOIN
+        (
+            select id cid, IF(total IS NULL, 0, total) effort1  from (
+                    (select name, id from CONTEXTS where user_id=?) c
+                    LEFT OUTER JOIN
+                    (
+                        select context_id, SUM(lcnt) total from
+                        (
+                            select context_id, lcnt from
+                            (
+                                LISTS lst
+                                JOIN (
+                                    select list_id, SUM(1) lcnt from TASKS where
+                                        is_cancelled=false and
+                                        is_finished=false and
+                                        is_awaited=false and
+                                        is_delegated=false and
+                                        effort=1
+                                    GROUP BY list_id
+                                ) lc ON lst.id=lc.list_id
+                            )
+                        ) ctx GROUP BY ctx.context_id
+                    ) co
+                    ON c.id=co.context_id
+            )
+        ) elementary
+        ON finished.cid=elementary.cid
+        JOIN
+        (
+            select id cid, IF(total IS NULL, 0, total) effort2  from (
+                    (select name, id from CONTEXTS where user_id=?) c
+                    LEFT OUTER JOIN
+                    (
+                        select context_id, SUM(lcnt) total from
+                        (
+                            select context_id, lcnt from
+                            (
+                                LISTS lst
+                                JOIN (
+                                    select list_id, SUM(1) lcnt from TASKS where
+                                        is_cancelled=false and
+                                        is_finished=false and
+                                        is_awaited=false and
+                                        is_delegated=false and
+                                        effort=2
+                                    GROUP BY list_id
+                                ) lc ON lst.id=lc.list_id
+                            )
+                        ) ctx GROUP BY ctx.context_id
+                    ) co
+                    ON c.id=co.context_id
+            )
+        ) easy
+        ON elementary.cid=easy.cid
+        JOIN
+        (
+            select id cid, IF(total IS NULL, 0, total) effort3  from (
+                    (select name, id from CONTEXTS where user_id=?) c
+                    LEFT OUTER JOIN
+                    (
+                        select context_id, SUM(lcnt) total from
+                        (
+                            select context_id, lcnt from
+                            (
+                                LISTS lst
+                                JOIN (
+                                    select list_id, SUM(1) lcnt from TASKS where
+                                        is_cancelled=false and
+                                        is_finished=false and
+                                        is_awaited=false and
+                                        is_delegated=false and
+                                        effort=3
+                                    GROUP BY list_id
+                                ) lc ON lst.id=lc.list_id
+                            )
+                        ) ctx GROUP BY ctx.context_id
+                    ) co
+                    ON c.id=co.context_id
+            )
+        ) medium
+        ON easy.cid=medium.cid
+        JOIN
+        (
+            select id cid, IF(total IS NULL, 0, total) effort4  from (
+                    (select name, id from CONTEXTS where user_id=?) c
+                    LEFT OUTER JOIN
+                    (
+                        select context_id, SUM(lcnt) total from
+                        (
+                            select context_id, lcnt from
+                            (
+                                LISTS lst
+                                JOIN (
+                                    select list_id, SUM(1) lcnt from TASKS where
+                                        is_cancelled=false and
+                                        is_finished=false and
+                                        is_awaited=false and
+                                        is_delegated=false and
+                                        effort=4
+                                    GROUP BY list_id
+                                ) lc ON lst.id=lc.list_id
+                            )
+                        ) ctx GROUP BY ctx.context_id
+                    ) co
+                    ON c.id=co.context_id
+            )
+        ) difficult
+        ON medium.cid=difficult.cid
+        JOIN
+        (
+            select id cid, IF(total IS NULL, 0, total) effort5  from (
+                    (select name, id from CONTEXTS where user_id=?) c
+                    LEFT OUTER JOIN
+                    (
+                        select context_id, SUM(lcnt) total from
+                        (
+                            select context_id, lcnt from
+                            (
+                                LISTS lst
+                                JOIN (
+                                    select list_id, SUM(1) lcnt from TASKS where
+                                        is_cancelled=false and
+                                        is_finished=false and
+                                        is_awaited=false and
+                                        is_delegated=false and
+                                        effort=5
+                                    GROUP BY list_id
+                                ) lc ON lst.id=lc.list_id
+                            )
+                        ) ctx GROUP BY ctx.context_id
+                    ) co
+                    ON c.id=co.context_id
+            )
+        ) vd
+        ON difficult.cid=vd.cid
 ) ORDER BY cname

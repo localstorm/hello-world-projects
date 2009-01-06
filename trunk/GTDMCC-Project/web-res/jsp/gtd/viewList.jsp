@@ -205,11 +205,6 @@
                             <c:param name="action" value="UNRESOLVE" />
                         </c:url>" title="<c:choose><c:when test="${task.finished}">Not finished</c:when><c:when test="${task.cancelled}">Not cancelled</c:when><c:otherwise>Unresolve</c:otherwise></c:choose>">
                         <img border="0" src="<c:choose><c:when test="${task.finished}"><c:url value="/images/done.png"/></c:when><c:when test="${task.cancelled}"><c:url value="/images/cancelled.png"/></c:when></c:choose>" /></a>
-                <a href="<c:url value="/actions/ResolveTask">
-                            <c:param name="taskId" value="${task.id}" />
-                            <c:param name="action" value="REMOVE" />
-                        </c:url>" title="Erase">
-                        <img border="0" src="<c:url value="/images/erase.png"/>" /></a>
               <a href="<c:url value="/actions/ViewTask">
                             <c:param name="taskId" value="${task.id}" />
                         </c:url>"><c:out value="${task.summary}"/></a><hr/></p>

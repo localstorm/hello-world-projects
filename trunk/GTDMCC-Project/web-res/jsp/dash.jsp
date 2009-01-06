@@ -34,21 +34,21 @@
 <div id="dashGTDPan">
     <h2><span>GTD Battle Map</span> pane</h2>
 	<div align="center">
-		<table border="1" width="90%" class="dash">
+		<table class="dash">
 			<tr class="dashHdr" ><th colspan="12">Consolidated Tasks Report</th></tr>
 			<tr class="dashHdr">
-                <th width="45%">Context name</th>
-                <th width="5%"><img src="<c:url value="/images/loex.png"/>" /></th>
-                <th width="5%"><img src="<c:url value="/images/loe1.png"/>" /></th>
-                <th width="5%"><img src="<c:url value="/images/loe2.png"/>" /></th>
-                <th width="5%"><img src="<c:url value="/images/loe3.png"/>" /></th>
-                <th width="5%"><img src="<c:url value="/images/loe4.png"/>" /></th>
-                <th width="5%"><img src="<c:url value="/images/loe5.png"/>" /></th>
-                <th width="5%"><img src="<c:url value="/images/awaited_dash.png"/>" /></th>
-                <th width="5%"><img src="<c:url value="/images/flight_dash.png"/>" /></th>
-                <th width="5%"><img src="<c:url value="/images/redline.png"/>" /></th>
-                <th width="5%"><img src="<c:url value="/images/deadline.png" />"/></th>
-                <th width="5%"><img src="<c:url value="/images/check.png" />"/></th>
+                <th width="34%">Context name</th>
+                <th width="6%"><img src="<c:url value="/images/loex.png"/>" /></th>
+                <th width="6%"><img src="<c:url value="/images/loe1.png"/>" /></th>
+                <th width="6%"><img src="<c:url value="/images/loe2.png"/>" /></th>
+                <th width="6%"><img src="<c:url value="/images/loe3.png"/>" /></th>
+                <th width="6%"><img src="<c:url value="/images/loe4.png"/>" /></th>
+                <th width="6%"><img src="<c:url value="/images/loe5.png"/>" /></th>
+                <th width="6%"><img src="<c:url value="/images/awaited_dash.png"/>" /></th>
+                <th width="6%"><img src="<c:url value="/images/flight_dash.png"/>" /></th>
+                <th width="6%"><img src="<c:url value="/images/redline.png"/>" /></th>
+                <th width="6%"><img src="<c:url value="/images/deadline.png" />"/></th>
+                <th width="6%"><img src="<c:url value="/images/check.png" />"/></th>
             </tr>
             <c:set var="color" value="#FFFFFF" />
             <c:forEach items="${gtdDashReport.rows}" var="row">
@@ -63,23 +63,23 @@
                     <td onClick="document.location.href='<c:url value="/actions/BattleMapSupport">
                                                 <c:param name="contextId" value="${row.contextId}" />
                                                 <c:param name="filter" value="ELEMENTARY" />
-                                            </c:url>';"><c:out value="--" /></td>
+                                            </c:url>';"><c:out value="${row.elementary}" /></td>
                     <td onClick="document.location.href='<c:url value="/actions/BattleMapSupport">
                                                 <c:param name="contextId" value="${row.contextId}" />
                                                 <c:param name="filter" value="EASY" />
-                                            </c:url>';"><c:out value="--" /></td>
+                                            </c:url>';"><c:out value="${row.easy}" /></td>
                     <td onClick="document.location.href='<c:url value="/actions/BattleMapSupport">
                                                 <c:param name="contextId" value="${row.contextId}" />
                                                 <c:param name="filter" value="MEDIUM" />
-                                            </c:url>';"><c:out value="--" /></td>
+                                            </c:url>';"><c:out value="${row.medium}" /></td>
                     <td onClick="document.location.href='<c:url value="/actions/BattleMapSupport">
                                                 <c:param name="contextId" value="${row.contextId}" />
                                                 <c:param name="filter" value="DIFFICULT" />
-                                            </c:url>';"><c:out value="--" /></td>
+                                            </c:url>';"><c:out value="${row.difficult}" /></td>
                     <td onClick="document.location.href='<c:url value="/actions/BattleMapSupport">
                                                 <c:param name="contextId" value="${row.contextId}" />
                                                 <c:param name="filter" value="VERY_DIFFICULT" />
-                                            </c:url>';"><c:out value="--" /></td>
+                                            </c:url>';"><c:out value="${row.veryDifficult}" /></td>
                     <td onClick="document.location.href='<c:url value="/actions/BattleMapSupport">
                                                 <c:param name="contextId" value="${row.contextId}" />
                                                 <c:param name="filter" value="AWAITED" />
@@ -113,11 +113,11 @@
 			<tr class="dashHdr">
                 <th>Total</th>
                 <th><c:out value="${gtdDashReport.totals.pending}" /></th>
-                <th><c:out value="--" /></th>
-                <th><c:out value="--" /></th>
-                <th><c:out value="--" /></th>
-                <th><c:out value="--" /></th>
-                <th><c:out value="--" /></th>
+                <th><c:out value="${gtdDashReport.totals.elementary}" /></th>
+                <th><c:out value="${gtdDashReport.totals.easy}" /></th>
+                <th><c:out value="${gtdDashReport.totals.medium}" /></th>
+                <th><c:out value="${gtdDashReport.totals.difficult}" /></th>
+                <th><c:out value="${gtdDashReport.totals.veryDifficult}" /></th>
                 <th><c:out value="${gtdDashReport.totals.awaited}" /></th>
                 <th><c:out value="${gtdDashReport.totals.flightPlan}" /></th>
                 <th><c:out value="${gtdDashReport.totals.red}" /></th>
@@ -125,8 +125,17 @@
                 <th><c:out value="${gtdDashReport.totals.done}" /></th>
             </tr>
 		</table>
+        <c:if test="${gtdDashReport.totals.done>0 or gtdDashReport.totals.red>0 or gtdDashReport.totals.dead>0}">
+        <div align="left" class="dashToolBox">
+            <c:if test="${gtdDashReport.totals.done>0}"><img src="<c:url value="/images/cleanup.png"/>" border="0" />&nbsp;<a href="<c:url value="/actions/CleanupFinishedTasks" />" >Remove finished tasks</a> (<c:out value="${gtdDashReport.totals.done}"/>)&nbsp;&nbsp;&nbsp;&nbsp;</c:if>
+            <c:if test="${gtdDashReport.totals.red>0 or gtdDashReport.totals.dead>0}"><img src="<c:url value="/images/warning.png"/>" border="0" />&nbsp;<a href="<c:url value="/actions/DeadlineLookupReport" />" >Some tasks need your attention</a> (<c:out value="${gtdDashReport.totals.dead+gtdDashReport.totals.red}"/>)</c:if>
  		</div>
-
+        </c:if>
+        <c:if test="">
+        <div align="left" class="dashToolBox">
+            
+ 		</div>
+        </c:if>
 </div>
 
 <%--div id="dashGTD2Pan">
