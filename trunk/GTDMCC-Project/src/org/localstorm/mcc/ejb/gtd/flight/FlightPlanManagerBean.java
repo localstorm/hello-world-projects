@@ -7,6 +7,7 @@ import javax.persistence.EntityExistsException;
 import javax.persistence.Query;
 import org.localstorm.mcc.ejb.AbstractSingletonManager;
 import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
+import org.localstorm.mcc.ejb.gtd.contexts.Context;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.ejb.users.User;
 
@@ -60,14 +61,30 @@ public  class FlightPlanManagerBean extends AbstractSingletonManager<FlightPlan,
             em.remove(fp2t);
         }
     }
-    
+
+    @Override
+    public Collection<Task> getTasksFromFlightPlan(FlightPlan fp, Context context) {
+        Query uq;
+
+        if (context==null) {
+            uq = em.createNamedQuery(FlightPlanToTask.Queries.FIND_TASKS_BY_PLAN);
+            {
+                uq.setParameter(FlightPlanToTask.Properties.FLIGHT_PLAN, fp);
+            }
+            return uq.getResultList();
+        } else {
+            uq = em.createNamedQuery(FlightPlanToTask.Queries.FIND_TASKS_BY_PLAN_AND_CTX);
+            {
+                uq.setParameter(FlightPlanToTask.Properties.FLIGHT_PLAN, fp);
+                uq.setParameter(FlightPlanToTask.Properties.CONTEXT, context);
+            }
+            return uq.getResultList();
+        }
+    }
+
     @Override
     public Collection<Task> getTasksFromFlightPlan(FlightPlan fp) {
-        Query uq = em.createNamedQuery(FlightPlanToTask.Queries.FIND_TASKS_BY_PLAN);
-        {
-            uq.setParameter(FlightPlanToTask.Properties.FLIGHT_PLAN, fp);
-        }
-        return uq.getResultList();
+        return this.getTasksFromFlightPlan(fp, null);
     }
 
     @Override
