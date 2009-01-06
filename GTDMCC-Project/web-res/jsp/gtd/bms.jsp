@@ -22,6 +22,21 @@
     <c:when test="${actionBean.filter eq 'FIN'}">
         <h2><span>FINISHED</span> tasks</h2>
     </c:when>
+    <c:when test="${actionBean.filter eq 'EASY'}">
+        <h2><span>EASY</span> tasks</h2>
+    </c:when>
+    <c:when test="${actionBean.filter eq 'ELEMENTARY'}">
+        <h2><span>ELEMENTARY</span> tasks</h2>
+    </c:when>
+    <c:when test="${actionBean.filter eq 'MEDIUM'}">
+        <h2><span>MEDIUM</span> tasks</h2>
+    </c:when>
+    <c:when test="${actionBean.filter eq 'DIFFICULT'}">
+        <h2><span>DIFFICULT</span> tasks</h2>
+    </c:when>
+    <c:when test="${actionBean.filter eq 'VERY_DIFFICULT'}">
+        <h2><span>VERY DIFFICULT</span> tasks</h2>
+    </c:when>
     <c:otherwise>
         <h2><span>????</span> tasks</h2>
     </c:otherwise>

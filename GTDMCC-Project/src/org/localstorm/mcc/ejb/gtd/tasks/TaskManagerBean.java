@@ -22,7 +22,21 @@ public class TaskManagerBean extends AbstractManager<Task>
         super(Task.class);
     }
 
+    @Override
+    public Collection<Task> findByLoE(User user, Context ctx, Effort effort) {
+        Query tq;
+        if (ctx==null) {
+            tq = em.createNamedQuery(Task.Queries.FIND_LOE);
+            tq.setParameter(Task.Properties.USER, user);
+        } else {
+            tq = em.createNamedQuery(Task.Queries.FIND_LOE_BY_CTX);
+            tq.setParameter(Task.Properties.CTX, ctx);
+        }
+        tq.setParameter(Task.Properties.EFFORT, effort.getEffort());
 
+        List<Task> list = tq.getResultList();
+        return list;
+    }
 
     @Override
     public Collection<Task> findOldestOperative(Context ctx, int max) {
@@ -153,7 +167,7 @@ public class TaskManagerBean extends AbstractManager<Task>
     }
 
     @Override
-    public void cleanup(User user) {
+    public void removeFinishedTasks(User user) {
         Query tq = em.createNamedQuery(Task.Queries.FIND_CLEANABLE_BY_USER);
         tq.setParameter(Task.Properties.USER, user);
         List<Task> list = tq.getResultList();
@@ -162,15 +176,6 @@ public class TaskManagerBean extends AbstractManager<Task>
         {
             em.remove(t);
         }
-    }
-
-    @Override
-    public boolean isCleanupNeeded(User user) {
-        Query tq = em.createNamedQuery(Task.Queries.COUNT_CLEANABLE_BY_USER);
-        tq.setParameter(Task.Properties.USER, user);
-        Long count = (Long) tq.getSingleResult();
-
-        return count>0;
     }
 
     @Override

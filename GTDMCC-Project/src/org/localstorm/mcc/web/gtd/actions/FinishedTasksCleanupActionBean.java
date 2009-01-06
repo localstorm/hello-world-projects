@@ -5,8 +5,7 @@ import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
-import org.localstorm.mcc.web.SessionKeys;
-import org.localstorm.mcc.web.util.SessionUtil;
+import org.localstorm.mcc.web.dashboard.actions.DashboardActionBean;
 
 /**
  *
@@ -19,10 +18,9 @@ public class FinishedTasksCleanupActionBean extends GtdBaseActionBean {
     public Resolution cleanup() {
         
         TaskManager tm = super.getTaskManager();
-        tm.cleanup(this.getUser());
+        tm.removeFinishedTasks(this.getUser());
 
-        SessionUtil.clear(super.getSession(), SessionKeys.NEED_CLEANUP);
-        return new RedirectResolution( FlightPlanViewActionBean.class );
+        return new RedirectResolution( DashboardActionBean.class );
     }
     
 }

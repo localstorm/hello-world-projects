@@ -16,6 +16,8 @@ public interface TaskManager extends BaseManager<Task>
 
     public Collection<Task> findAllByUser(User user);
 
+    public Collection<Task> findByLoE(User user, Context ctx, Effort effort);
+
     public Collection<Task> findAwaited(User user, Context ctx);
 
     public Collection<Task> findDeadlinedTasks(User user, Context ctx);
@@ -26,9 +28,7 @@ public interface TaskManager extends BaseManager<Task>
 
     public Collection<Task> findPending(User user, Context ctx);
 
-    public boolean isCleanupNeeded(User user);
-
-    public void cleanup(User user);
+    public void removeFinishedTasks(User user);
     
     public Collection<Task> findOpeartiveByList(GTDList l);
     
@@ -41,5 +41,7 @@ public interface TaskManager extends BaseManager<Task>
     public Collection<Task> findOldestOperative(Context ctx, int maxOldestTasks);
 
     public Collection<Task> findScheduledNonFinishedTasks(User user);
+
+
 
 }

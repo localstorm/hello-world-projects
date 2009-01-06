@@ -26,6 +26,16 @@ import org.localstorm.mcc.ejb.Identifiable;
 @Table(name="TASKS")
 @NamedQueries({
     @NamedQuery(
+        name = Task.Queries.FIND_LOE,
+        query= "SELECT o FROM Task o WHERE o.cancelled=false and o.finished=false and o.awaited=false and o.delegated=false and o.list.context.owner=:user and o.effort=:effort" +
+        " ORDER BY o.list.name"
+    ),
+    @NamedQuery(
+        name = Task.Queries.FIND_LOE_BY_CTX,
+        query= "SELECT o FROM Task o WHERE o.cancelled=false and o.finished=false and o.awaited=false and o.delegated=false and o.list.context=:ctx and o.effort=:effort" +
+        " ORDER BY o.list.name"
+    ),
+    @NamedQuery(
         name = Task.Queries.FIND_FINISHED_BY_CTX,
         query= "SELECT o FROM Task o WHERE (o.cancelled=true or o.finished=true) and o.list.context=:ctx" +
         " ORDER BY o.list.name, o.effort"
@@ -66,10 +76,6 @@ import org.localstorm.mcc.ejb.Identifiable;
     @NamedQuery(
         name = Task.Queries.FIND_SCHEDULED_BY_USER,
         query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and (o.redline IS NOT NULL or o.deadline IS NOT NULL)"
-    ),
-    @NamedQuery(
-        name = Task.Queries.COUNT_CLEANABLE_BY_USER,
-        query= "SELECT COUNT(o) FROM Task o WHERE o.list.context.owner=:user and (o.finished=true or o.cancelled=true)"
     ),
     @NamedQuery(
         name = Task.Queries.FIND_CLEANABLE_BY_USER,
@@ -315,12 +321,13 @@ public class Task implements Identifiable, Serializable
         public static final String FIND_DEADLINED        = "findDeadlined";
         public static final String FIND_DEADLINED_BY_CTX = "findDeadlinedByCtx";
         public static final String FIND_CLEANABLE_BY_USER= "findCleanableTasksUpByUser";
-        public static final String COUNT_CLEANABLE_BY_USER = "countCleanableTasksByUser";
         public static final String FIND_SCHEDULED_BY_USER = "findScheduledTasksByUser";
         public static final String FIND_OLDEST_BY_CTX    = "finOldestTasksByCtx";
         public static final String FIND_BY_USER          = "findAllTasksByUser";
         public static final String FIND_FINISHED         = "findFinished";
         public static final String FIND_FINISHED_BY_CTX  = "findFinishedByCtx";
+        public static final String FIND_LOE              = "findLoE";
+        public static final String FIND_LOE_BY_CTX       = "findLoEByCtx";
     }
     
     public static interface Properties

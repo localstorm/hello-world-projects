@@ -13,6 +13,11 @@ public class DashboardReportRow {
     private int red;
     private int dead;
     private int done;
+    private int elementary;
+    private int easy;
+    private int medium;
+    private int difficult;
+    private int veryDifficult;
 
     public int getAwaited() {
         return awaited;
@@ -46,6 +51,27 @@ public class DashboardReportRow {
         return done;
     }
 
+    public int getDifficult() {
+        return difficult;
+    }
+
+    public int getEasy() {
+        return easy;
+    }
+
+    public int getElementary() {
+        return elementary;
+    }
+
+    public int getMedium() {
+        return medium;
+    }
+
+    public int getVeryDifficult() {
+        return veryDifficult;
+    }
+
+
     public void setAwaited(int awaited) {
         this.awaited = awaited;
     }
@@ -76,6 +102,26 @@ public class DashboardReportRow {
 
     public void setDone(int done) {
         this.done = done;
+    }
+
+    public void setDifficult(int difficult) {
+        this.difficult = difficult;
+    }
+
+    public void setEasy(int easy) {
+        this.easy = easy;
+    }
+
+    public void setElementary(int elementary) {
+        this.elementary = elementary;
+    }
+
+    public void setMedium(int medium) {
+        this.medium = medium;
+    }
+
+    public void setVeryDifficult(int veryDifficult) {
+        this.veryDifficult = veryDifficult;
     }
     
 }
