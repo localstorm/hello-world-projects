@@ -67,7 +67,7 @@ public class FlightPlanViewActionBean extends GtdBaseActionBean {
         FlightPlanManager fpm = this.getFlightPlanManager();
 
         User user = super.getUser();
-        this.flightPlan      = fpm.findCurrent(user);
+        this.flightPlan      = fpm.findByUser(user);
         this.flightPlanTasks = fpm.getTasksFromFlightPlan(flightPlan);
         
         archiveFlightPlanTasks = new LinkedList<Task>();

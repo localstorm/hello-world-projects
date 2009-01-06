@@ -43,8 +43,7 @@ public abstract class AbstractManager<T extends Identifiable> implements BaseMan
     public T findById( int id ) throws ObjectNotFoundException
     {
         T t = em.find(cl, id);
-        if (t==null)
-        {
+        if (t==null) {
             throw new ObjectNotFoundException();
         }
         
@@ -58,7 +57,7 @@ public abstract class AbstractManager<T extends Identifiable> implements BaseMan
 
     @Override
     public void remove(T obj) {
-        obj = em.find(cl, obj.getId() );
+        obj = em.getReference( cl, obj.getId() );
         em.remove(obj);
     }
     

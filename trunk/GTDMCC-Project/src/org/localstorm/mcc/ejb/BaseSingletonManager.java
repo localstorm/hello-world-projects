@@ -13,7 +13,7 @@ public interface BaseSingletonManager<T, E>
 {
     public void update( T o );
     
-    public T findCurrent( E owner );
+    public T findByUser( E owner );
     
     public void utilizeCurrent( E owner );
 }

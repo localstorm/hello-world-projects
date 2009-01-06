@@ -82,7 +82,7 @@ public class DeadlineLookupReportActionBean extends GtdBaseActionBean
 
         User user = super.getUser();
 
-        FlightPlan fp = fpm.findCurrent(user);
+        FlightPlan fp = fpm.findByUser(user);
         Collection<Task> fpt   = fpm.getTasksFromFlightPlan(fp);
         Collection<Task> tasks = tm.findScheduledNonFinishedTasks(user);
 

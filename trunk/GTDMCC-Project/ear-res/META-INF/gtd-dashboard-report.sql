@@ -56,7 +56,7 @@ select totals.name cname, totals.cid cid, total pending, awaited, flight, red, d
                                 JOIN (
                                     select list_id, SUM(1) lcnt from TASKS where 
                                         id IN (
-                                            select task_id from TASKS_TO_FLIGHT_PLANS where plan_id = (select id from FLIGHT_PLANS where is_archive=0 and user_id=?)
+                                            select task_id from TASKS_TO_FLIGHT_PLANS where plan_id = (select id from FLIGHT_PLANS where user_id=?)
                                         )
                                         and is_cancelled=false and is_finished=false
                                     GROUP BY list_id

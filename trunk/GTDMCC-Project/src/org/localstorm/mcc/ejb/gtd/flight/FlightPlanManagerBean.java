@@ -1,7 +1,6 @@
 package org.localstorm.mcc.ejb.gtd.flight;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityExistsException;
@@ -71,7 +70,7 @@ public  class FlightPlanManagerBean extends AbstractSingletonManager<FlightPlan,
     }
     
     @Override
-    public FlightPlan findCurrent(User u) {
+    public FlightPlan findByUser(User u) {
         Query uq = em.createNamedQuery(FlightPlan.Queries.FIND_CURRENT_BY_USER);
         uq.setParameter(FlightPlan.Properties.OWNER, u);
         
@@ -81,40 +80,43 @@ public  class FlightPlanManagerBean extends AbstractSingletonManager<FlightPlan,
         switch (list.size())
         {
             case 0: 
-                result = this.createNewCurrent(u);
+                result = this.create(u);
+                break;
+            case 1:
+                result = list.get(0);
                 break;
             default:
-            
-                Iterator<FlightPlan> it = list.iterator();
-                
-                while ( it.hasNext() ) {
-                    FlightPlan fp = it.next();
-                    if ( it.hasNext() ) {
-                        fp.setArchived(true);
-                        this.update(result);
-                    }
-                }
-                
-            /* No break here! :) */
-            case 1:
-                result = list.get(list.size()-1); 
-                break;
+                throw new RuntimeException("Unexpected case: two or more flight plans found!");
         }
+
         return result;
     }
 
     @Override
-    protected FlightPlan createNewCurrent(User u) {
+    protected FlightPlan create(User u) {
         
         try 
         {
+            Query uq = em.createNamedQuery(FlightPlan.Queries.FIND_CURRENT_BY_USER);
+            uq.setParameter(FlightPlan.Properties.OWNER, u);
+
+            List<FlightPlan> list = uq.getResultList();
+
+            if ( list.size()>0 ) {
+                for (FlightPlan fp : list) {
+                    em.remove(fp);
+                }
+
+                em.flush();
+            }
+
             FlightPlan result = new FlightPlan(u);
             em.persist(result);
             return result;
+            
         } catch(EntityExistsException e) 
         {
             throw new RuntimeException(e);
         }
-        
     }
 }

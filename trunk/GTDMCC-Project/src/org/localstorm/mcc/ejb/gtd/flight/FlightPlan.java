@@ -16,7 +16,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.localstorm.mcc.ejb.Identifiable;
-import org.localstorm.mcc.ejb.Retireable;
 import org.localstorm.mcc.ejb.users.User;
 
 /**
@@ -28,10 +27,10 @@ import org.localstorm.mcc.ejb.users.User;
 @NamedQueries({
     @NamedQuery(
         name = FlightPlan.Queries.FIND_CURRENT_BY_USER,
-        query= "SELECT o FROM FlightPlan o WHERE o.owner=:owner and o.archived=false"
+        query= "SELECT o FROM FlightPlan o WHERE o.owner=:owner"
     )
 })
-public class FlightPlan implements Identifiable, Retireable, Serializable
+public class FlightPlan implements Identifiable, Serializable
 {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -45,9 +44,6 @@ public class FlightPlan implements Identifiable, Retireable, Serializable
     @Temporal(TemporalType.TIMESTAMP)
     private Date creation;
     
-    @Column(name="is_archive", unique=false, updatable=true, nullable=false )    
-    private boolean archived;
-
     public FlightPlan() {
     }
 
@@ -55,7 +51,6 @@ public class FlightPlan implements Identifiable, Retireable, Serializable
         this.id = null;
         this.owner = owner;
         this.creation = new Date();
-        this.archived = false;
     }
     
     
@@ -71,16 +66,6 @@ public class FlightPlan implements Identifiable, Retireable, Serializable
 
     public void setCreation(Date creation) {
         this.creation = creation;
-    }
-
-    @Override
-    public boolean isArchived() {
-        return archived;
-    }
-
-    @Override
-    public void setArchived(boolean archived) {
-        this.archived = archived;
     }
 
     public User getOwner() {
