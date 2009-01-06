@@ -2,6 +2,7 @@ package org.localstorm.mcc.ejb;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 
 /**
  *
@@ -20,9 +21,13 @@ public abstract class AbstractSingletonManager <T extends Identifiable, E>
 
     @Override
     public void utilizeCurrent( E e ) {
-        T current = this.findByUser(e);
-        em.remove(current);
-        em.flush();
+        try {
+            T current = this.findByUser(e, false);
+            em.remove(current);
+            em.flush();
+        } catch(ObjectNotFoundException ex) {
+           /* ignoring */
+        }
         this.create( e );
     }
     

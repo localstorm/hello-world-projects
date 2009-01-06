@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityExistsException;
 import javax.persistence.Query;
 import org.localstorm.mcc.ejb.AbstractSingletonManager;
+import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.ejb.users.User;
 
@@ -68,9 +69,18 @@ public  class FlightPlanManagerBean extends AbstractSingletonManager<FlightPlan,
         }
         return uq.getResultList();
     }
-    
+
     @Override
-    public FlightPlan findByUser(User u) {
+    public FlightPlan findByUser(User owner) {
+        try {
+            return this.findByUser(owner, true);
+        } catch(ObjectNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public FlightPlan findByUser(User u, boolean createIfNone) throws ObjectNotFoundException {
         Query uq = em.createNamedQuery(FlightPlan.Queries.FIND_CURRENT_BY_USER);
         uq.setParameter(FlightPlan.Properties.OWNER, u);
         
@@ -79,8 +89,12 @@ public  class FlightPlanManagerBean extends AbstractSingletonManager<FlightPlan,
         
         switch (list.size())
         {
-            case 0: 
-                result = this.create(u);
+            case 0:
+                if (createIfNone) {
+                    result = this.create(u);
+                } else {
+                    throw new ObjectNotFoundException();
+                }
                 break;
             case 1:
                 result = list.get(0);
@@ -102,12 +116,13 @@ public  class FlightPlanManagerBean extends AbstractSingletonManager<FlightPlan,
 
             List<FlightPlan> list = uq.getResultList();
 
-            if ( list.size()>0 ) {
-                for (FlightPlan fp : list) {
-                    em.remove(fp);
+            if ( list.size()==1 ) {
+                FlightPlan fp = list.iterator().next();
+                Collection<Task> tasks = this.getTasksFromFlightPlan(fp);
+                for (Task t: tasks) {
+                    this.removeTaskFromFlightPlan(t, fp);
                 }
-
-                em.flush();
+                return fp;
             }
 
             FlightPlan result = new FlightPlan(u);

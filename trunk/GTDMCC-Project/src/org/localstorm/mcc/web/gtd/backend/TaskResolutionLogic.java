@@ -32,8 +32,6 @@ public class TaskResolutionLogic
         
         FlightPlan fp = fpm.findByUser(u);
         
-        boolean update = true;
-        
         switch (action) {
             case COPY:
                 clip.copyTask(t);
@@ -87,45 +85,22 @@ public class TaskResolutionLogic
                 t.setFinished(true);
                 t.setCancelled(false);
                 break;
-            case REMOVE:
-                update = false;
-                break;
             default:
                 throw new RuntimeException("Unexpected action:"+action);
         }
 
         GTDList list = t.getList();
 
-        if (update)
-        {
-            tm.update(t);
-        } else {
-            tm.remove(t);
-        }
+        tm.update(t);
 
         // List retirement?
         list.setArchived( (!list.isPinned()) && noMoreTasksPending(tm, list) );
         lm.update(list);
         
-        if (noMoreFlightTasksPending(fpm, fp))
-        {
-           fpm.utilizeCurrent(u);
-        }
-        
         return list;
     }
     
-     private static boolean noMoreFlightTasksPending(FlightPlanManager fpm, FlightPlan fp) {
-        Collection<Task> tasks = fpm.getTasksFromFlightPlan(fp);
-        
-        for (Task t: tasks) {
-            if (!t.isFinished() && !t.isCancelled()) {
-                return false;
-            }
-        }
-        
-        return true;
-    }
+     
 
     private static boolean noMoreTasksPending(TaskManager tm, GTDList list) {
         return ( tm.findAwaitedByList(list).isEmpty() 
