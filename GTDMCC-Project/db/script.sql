@@ -234,8 +234,9 @@ create table PERSONS
 (
     id INT NOT NULL AUTO_INCREMENT,
     name   TEXT NOT NULL,
-    lname   TEXT NOT NULL,
-    birth_date DATETIME NOT NULL,
+    lname   TEXT,
+    pname   TEXT,
+    birth_date DATETIME,
     PRIMARY KEY (id)
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
@@ -246,6 +247,7 @@ create table PERSON_GROUPS
     id INT NOT NULL AUTO_INCREMENT,
     owner INT NOT NULL,
     name   TEXT NOT NULL,
+    is_archived SMALLINT NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (owner) REFERENCES USERS(id)  ON DELETE CASCADE    
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
