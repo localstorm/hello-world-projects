@@ -229,7 +229,8 @@ create table PERSONS
 (
     id INT NOT NULL AUTO_INCREMENT,
     owner INT NOT NULL,
-    name   TEXT,
+    name   TEXT NOT NULL,
+    lname   TEXT NOT NULL,
     birth_date DATETIME NOT NULL,
     PRIMARY KEY (id),    
     FOREIGN KEY (owner) REFERENCES USERS(id)  ON DELETE CASCADE
@@ -254,6 +255,7 @@ create table PERSONS_TO_GROUPS
     FOREIGN KEY (group_id) REFERENCES PERSON_GROUPS(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
+ALTER TABLE PERSONS_TO_GROUPS ADD UNIQUE (person_id, group_id);
 
 create table ATTRIBUTE_TYPES
 (
