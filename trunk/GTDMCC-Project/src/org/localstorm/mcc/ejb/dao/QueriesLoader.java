@@ -20,8 +20,7 @@ public class QueriesLoader {
 
     private final Map<String, String> queries;
 
-    private QueriesLoader()
-    {
+    private QueriesLoader() {
         this.queries = new HashMap<String, String>();
 
         for (String res : GTD_QUERIES_RESOURCES) {
@@ -34,13 +33,11 @@ public class QueriesLoader {
         }
     }
 
-    public static QueriesLoader getInstance()
-    {
+    public static QueriesLoader getInstance() {
         return QueriesLoader.loader;
     }
 
-    public String getQuery(String key)
-    {
+    public String getQuery(String key) {
         return this.queries.get(key);
     }
 

@@ -120,6 +120,7 @@
                 <servlet-name>StripesDispatcher</servlet-name>
                 <servlet-class>net.sourceforge.stripes.controller.DispatcherServlet</servlet-class>
                 <load-on-startup>1</load-on-startup>
+
         </servlet>
 
         <servlet>
@@ -195,4 +196,7 @@
         </servlet-mapping>
 
 
+    <session-config>
+        <session-timeout>60</session-timeout>
+    </session-config>
 </web-app>
