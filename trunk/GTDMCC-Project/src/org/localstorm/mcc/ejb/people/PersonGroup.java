@@ -24,7 +24,11 @@ import org.localstorm.mcc.ejb.users.User;
 @NamedQueries({
     @NamedQuery(
         name = PersonGroup.Queries.FIND_BY_OWNER,
-        query= "SELECT o FROM PersonGroup o WHERE o.owner=:owner ORDER BY o.name"
+        query= "SELECT o FROM PersonGroup o WHERE o.owner=:owner and o.archived=false ORDER BY o.name"
+    ),
+    @NamedQuery(
+        name = PersonGroup.Queries.FIND_ARCHIVED_BY_OWNER,
+        query= "SELECT o FROM PersonGroup o WHERE o.owner=:owner and o.archived=true ORDER BY o.name"
     )
 })
 public class PersonGroup implements Serializable, Identifiable {
@@ -35,6 +39,9 @@ public class PersonGroup implements Serializable, Identifiable {
 
     @Column(name="name", unique=false, updatable=true, nullable=false )
     private String name;
+
+    @Column(name="is_archived", unique=false, updatable=true, nullable=false )
+    private boolean archived;
 
     @JoinColumn(name="owner", nullable=false)
     @ManyToOne(fetch=FetchType.LAZY)
@@ -68,8 +75,17 @@ public class PersonGroup implements Serializable, Identifiable {
         this.owner = owner;
     }
 
+    public void setArchived(boolean archived) {
+        this.archived = archived;
+    }
+
+    public boolean isArchived() {
+        return archived;
+    }
+
     public static interface Queries {
         public static final String FIND_BY_OWNER = "findPGroupsByOwner";
+        public static final String FIND_ARCHIVED_BY_OWNER = "findPGArchivedByOwner";
     }
 
     public static interface Properties {

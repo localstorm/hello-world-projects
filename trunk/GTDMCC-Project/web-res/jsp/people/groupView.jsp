@@ -19,8 +19,20 @@
         <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
             <tr>
                 <td>&nbsp;</td>
-                <td>Name: </td>
-                <td><stripes:text name="name" id="name-id" style="width: 100%;" /></td>
+                <td>First Name: </td>
+                <td><stripes:text name="firstName" id="name-id" style="width: 100%;" /></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>Last Name: </td>
+                <td><stripes:text name="lastName" id="lname-id" style="width: 100%;" /></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>Patronymic Name: </td>
+                <td><stripes:text name="patronymicName" id="pname-id" style="width: 100%;" /></td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
@@ -75,7 +87,7 @@
     <p><img src="<c:url value="/images/person.png"/>"/><span>
             <a href="<c:url value="/actions/ViewPerson">
                 <c:param name="personId" value="${person.id}" />
-            </c:url>"><c:out value="${person.lastName} ${person.name}" /></a>
+            </c:url>"><c:out value="${person.fullName}" /></a>
        </span></p>
 </c:forEach>
 

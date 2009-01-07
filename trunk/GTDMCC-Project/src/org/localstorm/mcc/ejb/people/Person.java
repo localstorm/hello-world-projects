@@ -12,6 +12,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.apache.commons.lang.StringUtils;
 import org.localstorm.mcc.ejb.Identifiable;
 
 /**
@@ -36,10 +37,14 @@ public class Person implements Identifiable, Serializable {
     @Column(name="name", unique=false, updatable=true, nullable=false )
     private String name;
 
-    @Column(name="lname", unique=false, updatable=true, nullable=false )
+    @Column(name="lname", unique=false, updatable=true, nullable=true )
     private String lastName;
 
-    @Column(name="birth_date", unique=false, updatable=true, nullable=false )
+    @Column(name="pname", unique=false, updatable=true, nullable=true )
+    private String pName;
+
+
+    @Column(name="birth_date", unique=false, updatable=true, nullable=true )
     @Temporal(TemporalType.DATE)
     private Date birthDate;
 
@@ -61,12 +66,54 @@ public class Person implements Identifiable, Serializable {
     }
 
     public String getShortName() {
-        if ( name.length()>0 ) {
-            return lastName+' '+name.charAt(0)+'.';
-        } else {
-            return lastName;
+        StringBuilder sb = new StringBuilder();
+
+        if (StringUtils.isNotEmpty(lastName)) {
+            sb.append(this.lastName);
+            sb.append(' ');
+            sb.append(name.charAt(0));
+            sb.append('.');
+
+            if (StringUtils.isNotEmpty(pName)) {
+                sb.append(' ');
+                sb.append(pName.charAt(0));
+                sb.append('.');
+            }
+
+            return sb.toString();
         }
+
+        if (StringUtils.isNotEmpty(pName)) {
+
+            sb.append(name);
+            sb.append(' ');
+            sb.append(pName);
+
+            return sb.toString();
+        }
+
+        return name;
     }
+
+    public String getFullName() {
+        StringBuilder sb = new StringBuilder();
+
+        if (StringUtils.isNotEmpty(lastName)) {
+            sb.append(this.lastName);
+            sb.append(' ');
+        }
+
+        sb.append(this.name);
+        
+        if (StringUtils.isNotEmpty(pName)) {
+            sb.append(' ');
+            sb.append(this.pName);
+
+        }
+
+        return sb.toString();
+    }
+
 
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
@@ -78,6 +125,14 @@ public class Person implements Identifiable, Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPatronymicName() {
+        return pName;
+    }
+
+    public void setPatronymicName(String pName) {
+        this.pName = pName;
     }
 
     public static interface Properties {

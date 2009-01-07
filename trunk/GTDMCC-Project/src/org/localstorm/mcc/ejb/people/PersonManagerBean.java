@@ -49,7 +49,35 @@ public class PersonManagerBean implements PersonManagerLocal,
         return pg;
     }
 
+    @Override
+    public Collection<PersonGroup> findArchivedGroupsByOwner(User user) {
+        Query q = em.createNamedQuery(PersonGroup.Queries.FIND_ARCHIVED_BY_OWNER);
+        q.setParameter(PersonGroup.Properties.OWNER, user);
 
+        return (Collection<PersonGroup>) q.getResultList();
+    }
+
+    @Override
+    public void remove(PersonGroup g) {
+        g = em.getReference(PersonGroup.class, g.getId());
+        em.remove(g);
+    }
+
+    @Override
+    public void create(Person p, PersonGroup g) {
+        em.persist(p);
+        em.persist(new PersonToGroup(p, g));
+    }
+
+    @Override
+    public void create(PersonGroup g) {
+        em.persist(g);
+    }
+
+    @Override
+    public void update(PersonGroup g) {
+        em.merge(g);
+    }
 
     @PersistenceContext(unitName=Constants.DEFAULT_PU)
     protected EntityManager em;

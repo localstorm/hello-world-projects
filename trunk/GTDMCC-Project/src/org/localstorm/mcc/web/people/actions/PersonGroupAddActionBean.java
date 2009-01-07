@@ -1,5 +1,6 @@
-package org.localstorm.mcc.web.gtd.actions;
+package org.localstorm.mcc.web.people.actions;
 
+import org.localstorm.mcc.ejb.people.*;
 import net.sourceforge.stripes.action.After;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
@@ -8,7 +9,6 @@ import net.sourceforge.stripes.action.UrlBinding;
 
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.gtd.contexts.Context;
 import org.localstorm.mcc.ejb.users.*;
 import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
@@ -18,8 +18,8 @@ import org.localstorm.mcc.web.util.SessionUtil;
  *
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/AddContext")
-public class ContextAddActionBean extends ContextsEditActionBean {
+@UrlBinding("/actions/AddPersonGroup")
+public class PersonGroupAddActionBean extends PersonGroupsEditActionBean {
 
     @Validate( required=true )
     private String name;
@@ -28,12 +28,9 @@ public class ContextAddActionBean extends ContextsEditActionBean {
     public void doPostValidationStuff() {
         if ( getContext().getValidationErrors().hasFieldErrors() )
         {
-            System.out.println("Forced Filling contextlist");
             super.filling();
         }
     }
-    
-    //Adding context
     
     public String getName() {
         return this.name;
@@ -44,17 +41,18 @@ public class ContextAddActionBean extends ContextsEditActionBean {
     }
     
     @DefaultHandler
-    public Resolution addContext() throws Exception {
+    public Resolution addPg() throws Exception {
         User user = super.getUser();
 
-        Context ctx = new Context(this.getName(), user);
-        ctx.setSortOrder(1);
+        PersonGroup g = new PersonGroup(this.getName());
+        g.setOwner(user);
+        g.setArchived(false);
 
-        super.getContextManager().create(ctx);
+        super.getPersonManager().create(g);
 
-        SessionUtil.clear(super.getSession(), SessionKeys.CONTEXTS);
-
-        return new RedirectResolution( ContextsEditActionBean.class );
+        SessionUtil.clear(super.getSession(), SessionKeys.PERSON_GROUPS);
+   
+        return new RedirectResolution( PersonGroupsEditActionBean.class );
     }
     
 }

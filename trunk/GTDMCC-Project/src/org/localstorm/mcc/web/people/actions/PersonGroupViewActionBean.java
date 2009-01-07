@@ -56,4 +56,8 @@ public class PersonGroupViewActionBean extends PeopleBaseActionBean {
         return new ForwardResolution(Views.PERSON_GROUP);
     }
 
+    public static interface IncommingParameters {
+        public static final String GROUP_ID = "groupId";
+    }
+
 }
