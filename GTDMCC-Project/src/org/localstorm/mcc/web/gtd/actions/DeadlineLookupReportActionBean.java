@@ -1,5 +1,6 @@
 package org.localstorm.mcc.web.gtd.actions;
 
+import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;

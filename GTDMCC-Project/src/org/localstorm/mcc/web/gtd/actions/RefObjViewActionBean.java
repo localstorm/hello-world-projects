@@ -1,5 +1,6 @@
 package org.localstorm.mcc.web.gtd.actions;
 
+import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
 import org.localstorm.mcc.web.BaseActionBean;
 import java.util.Collection;
 import java.util.LinkedList;

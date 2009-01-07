@@ -224,25 +224,30 @@ create table HISTORICAL_VALUES
     FOREIGN KEY (user_id) REFERENCES USERS(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
--- drop table PERSONS
+--drop table PERSONS_TO_GROUPS;
+--drop table PERSON_GROUPS;
+--drop table ATTRIBUTES;
+--drop table ATTRIBUTE_TYPES;
+--drop table PERSONS;
+
 create table PERSONS
 (
     id INT NOT NULL AUTO_INCREMENT,
-    owner INT NOT NULL,
     name   TEXT NOT NULL,
     lname   TEXT NOT NULL,
     birth_date DATETIME NOT NULL,
-    PRIMARY KEY (id),    
-    FOREIGN KEY (owner) REFERENCES USERS(id)  ON DELETE CASCADE
+    PRIMARY KEY (id)
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
--- drop table PERSON_GROUPS
+
 
 create table PERSON_GROUPS
 (
     id INT NOT NULL AUTO_INCREMENT,
-    name   TEXT,
-    PRIMARY KEY (id)    
+    owner INT NOT NULL,
+    name   TEXT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (owner) REFERENCES USERS(id)  ON DELETE CASCADE    
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 create table PERSONS_TO_GROUPS
@@ -257,6 +262,7 @@ create table PERSONS_TO_GROUPS
 
 ALTER TABLE PERSONS_TO_GROUPS ADD UNIQUE (person_id, group_id);
 
+/*
 create table ATTRIBUTE_TYPES
 (
     id INT NOT NULL AUTO_INCREMENT,
@@ -276,3 +282,4 @@ create table ATTRIBUTES
     FOREIGN KEY (type_id) REFERENCES ATTRIBUTE_TYPES(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
+*/

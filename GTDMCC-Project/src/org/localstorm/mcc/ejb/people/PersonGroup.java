@@ -1,18 +1,19 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package org.localstorm.mcc.ejb.people;
 
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import org.localstorm.mcc.ejb.Identifiable;
+import org.localstorm.mcc.ejb.users.User;
 
 /**
  *
@@ -20,14 +21,24 @@ import org.localstorm.mcc.ejb.Identifiable;
  */
 @Entity
 @Table(name="PERSON_GROUPS")
+@NamedQueries({
+    @NamedQuery(
+        name = PersonGroup.Queries.FIND_BY_OWNER,
+        query= "SELECT o FROM PersonGroup o WHERE o.owner=:owner ORDER BY o.name"
+    )
+})
 public class PersonGroup implements Serializable, Identifiable {
-    
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 
     @Column(name="name", unique=false, updatable=true, nullable=false )
     private String name;
+
+    @JoinColumn(name="owner", nullable=false)
+    @ManyToOne(fetch=FetchType.LAZY)
+    private User owner;
 
     public PersonGroup() {
     }
@@ -49,4 +60,19 @@ public class PersonGroup implements Serializable, Identifiable {
         this.name = name;
     }
 
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public static interface Queries {
+        public static final String FIND_BY_OWNER = "findPGroupsByOwner";
+    }
+
+    public static interface Properties {
+        public static final String OWNER = "owner";
+    }
 }

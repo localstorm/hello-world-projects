@@ -19,7 +19,7 @@
     </c:choose>;">
         <stripes:form action="/actions/AddTask" >
         <stripes:errors/>
-        <stripes:hidden name="listId" value="1" />
+        <stripes:hidden name="listId" value="${actionBean.listResult.id}" />
         <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
             <tr>
                 <td>&nbsp;</td>
@@ -70,7 +70,7 @@
     </c:choose>;">
         <stripes:form action="/actions/RenameList" >
         <stripes:errors/>
-        <stripes:hidden name="listId" value="1" />
+        <stripes:hidden name="listId" value="${actionBean.listResult.id}" />
         <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
             <tr>
                 <td>&nbsp;</td>

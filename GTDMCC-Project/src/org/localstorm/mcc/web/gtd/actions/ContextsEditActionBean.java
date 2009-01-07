@@ -1,5 +1,6 @@
 package org.localstorm.mcc.web.gtd.actions;
 
+import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
 import org.localstorm.mcc.web.BaseActionBean;
 import org.localstorm.mcc.ejb.gtd.contexts.Context;
 import java.util.List;

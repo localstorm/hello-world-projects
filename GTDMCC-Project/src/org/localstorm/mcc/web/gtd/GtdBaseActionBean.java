@@ -1,9 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-package org.localstorm.mcc.web.gtd.actions;
+package org.localstorm.mcc.web.gtd;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -27,7 +22,6 @@ import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.web.BaseActionBean;
 import org.localstorm.mcc.web.Clipboard;
 import org.localstorm.mcc.web.SessionKeys;
-import org.localstorm.mcc.web.gtd.RequestAttributes;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
