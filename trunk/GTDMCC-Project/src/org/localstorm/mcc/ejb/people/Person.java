@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -18,6 +20,13 @@ import org.localstorm.mcc.ejb.Identifiable;
  */
 @Entity
 @Table(name="PERSONS")
+@NamedQueries({
+    @NamedQuery(
+        name = Person.Queries.FIND_BY_GROUP,
+        query= "SELECT o.person FROM PersonToGroup o WHERE o.group=:group " +
+        "ORDER BY o.person.lastName, o.person.name"
+    )
+})
 public class Person implements Identifiable, Serializable {
 
     @Id
@@ -53,7 +62,7 @@ public class Person implements Identifiable, Serializable {
 
     public String getShortName() {
         if ( name.length()>0 ) {
-            return lastName+" "+name.charAt(0);
+            return lastName+' '+name.charAt(0)+'.';
         } else {
             return lastName;
         }
@@ -70,4 +79,13 @@ public class Person implements Identifiable, Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+    public static interface Properties {
+        public static final String GROUP = "group";
+    }
+
+    public static interface Queries {
+        public static String FIND_BY_GROUP = "findPersonsToGroups";
+    }
+
 }

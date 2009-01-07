@@ -16,7 +16,8 @@
                     <param-value>org.localstorm.mcc.web.actions,
                                  org.localstorm.mcc.web.dashboard.actions,
                                  org.localstorm.mcc.web.gtd.actions,
-                                 org.localstorm.mcc.web.cashflow.actions</param-value>
+                                 org.localstorm.mcc.web.cashflow.actions,
+                                 org.localstorm.mcc.web.people.actions</param-value>
                 </init-param>
                 <init-param>
                     <param-name>LocalePicker.Locales</param-name>
@@ -58,6 +59,12 @@
                 <display-name>Cashflow Lazy Load Filter</display-name>
                 <filter-name>CfLazyLoadFilter</filter-name>
                 <filter-class>org.localstorm.mcc.web.cashflow.filter.LazyLoadFilter</filter-class>
+        </filter>
+
+        <filter>
+                <display-name>People's Lazy Load Filter</display-name>
+                <filter-name>PplLazyLoadFilter</filter-name>
+                <filter-class>org.localstorm.mcc.web.people.filter.LazyLoadFilter</filter-class>
         </filter>
 
         <!-- Mapping -->
@@ -106,6 +113,12 @@
 
         <filter-mapping>
                 <filter-name>CfLazyLoadFilter</filter-name>
+                <servlet-name>StripesDispatcher</servlet-name>
+                <dispatcher>REQUEST</dispatcher>
+        </filter-mapping>
+
+        <filter-mapping>
+                <filter-name>PplLazyLoadFilter</filter-name>
                 <servlet-name>StripesDispatcher</servlet-name>
                 <dispatcher>REQUEST</dispatcher>
         </filter-mapping>

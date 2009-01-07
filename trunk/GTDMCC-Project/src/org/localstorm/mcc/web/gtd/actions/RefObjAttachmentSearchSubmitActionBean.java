@@ -1,5 +1,6 @@
 package org.localstorm.mcc.web.gtd.actions;
 
+import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
 import org.localstorm.mcc.web.gtd.backend.RefObjectCollector;
 import java.io.IOException;
 
