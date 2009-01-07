@@ -16,15 +16,15 @@
             </c:forEach>
         </table>            
 	
-        <%--h2><span>Reports</span> pane</h2>
+        <h2><span>Search</span> pane</h2>
             <table class="reports">
                 <tr>
-                    <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
-                    <td><a href="<c:url value="/actions/AssetsStructureReport"/>">Assets structure</a></td>
+                    <td width="18px" valign="top"><img src="<c:url value="/images/search.png"/>"/></td>
+                    <td><a href="<c:url value="/actions/SearchTasks"/>">Search people</a></td>
                 </tr>
-                <tr>
-                    <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
-                    <td><a href="<c:url value="/actions/NetWealthHistoryReport"/>">Net wealth history</a></td>
-                </tr>
-            </table--%>
+                <%--tr>
+                    <td width="18px" valign="top"><img src="<c:url value="/images/search.png"/>"/></td>
+                    <td><a href="<c:url value="/actions/SearchRefObjAttach"/>">Search reference</a></td>
+                </tr--%>
+            </table>
 </div>
