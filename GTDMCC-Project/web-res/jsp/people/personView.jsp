@@ -13,7 +13,7 @@
     <div align="center">
 
     <div id="editPersonDiv" width="80%" style="display: <c:choose>
-             <c:when test="${not empty actionBean.context.validationErrors}">inline</c:when>
+             <c:when test="${not empty actionBean.context.validationErrors and not empty updateForm}">inline</c:when>
              <c:otherwise>none</c:otherwise>
     </c:choose>;">
         <stripes:form action="/actions/UpdatePerson" >
@@ -63,7 +63,79 @@
 
 </div>
 <br/><br/>
-<c:out value="${actionBean.person.fullName}" />
+<div align="center" style="padding: 4px; border: 1px dotted; margin: 0px 60px 0px 60px; background:#FFFDCD;">
+<p><span><img src="<c:url value="/images/person.png"/>"/> <c:out value="${actionBean.person.fullName}" />
+<c:if test="${not empty actionBean.person.birthDate}">
+    (<fmt:formatDate value="${actionBean.person.birthDate}"/>)
+</c:if></span><hr/></p>
+<table width="100%" >
+    <c:forEach items="${actionBean.attributes}" var="attribute">
+    <tr>
+		<td width="5%" >
+			<nobr><a href="<c:url value="/actions/RemovePersonAttribute">
+                <c:param name="personId" value="${actionBean.person.id}"/>
+                <c:param name="attributeId" value="${attribute.id}"/>
+                <c:param name="groupId" value="${actionBean.groupId}" />
+            </c:url>"><img border="0" src="<c:url value="/images/cleanup.png"/>"/></a><img src="<c:url value="/images/attr/${attribute.type.token}.png"/>"/></nobr>
+		</td>
+		<td width="20%" align="left" valign="top">
+			<c:out value="${attribute.type.name}" />:
+		</td>
+		<td align="left">
+            <c:choose>
+                <c:when test="${attribute.type.viewType eq 'text'}">
+                    <c:out value="${attribute.val}"/>
+                </c:when>
+                <c:when test="${attribute.type.viewType eq 'href'}">
+                    <a target="_blank" href="<c:out value="${attribute.val}"/>"><c:out value="${attribute.val}"/></a>
+                </c:when>
+                <c:when test="${attribute.type.viewType eq 'mailto'}">
+                    <a href="mailto:<c:out value="${attribute.val}"/>"><c:out value="${attribute.val}"/></a>
+                </c:when>
+                <c:otherwise>
+                    <c:out value="${attribute.val}"/>
+                </c:otherwise>
+            </c:choose>
+        </td>
+	</tr>
+    </c:forEach>
+	<tr>
+		<td colspan="3">
+			<hr/>
+		</td>
+	</tr>
+    <stripes:form action="/actions/AddPersonAttribute">
+        <c:if test="${not empty actionBean.context.validationErrors}">
+            <tr colspan="3">
+                <td><stripes:errors/></td>
+            </tr>
+        </c:if>
+        <stripes:hidden name="groupId" value="${actionBean.groupId}" />
+        <stripes:hidden name="personId" value="${actionBean.person.id}" />
+        <tr valign="top">
+            <td width="25%" colspan="2">
+                <stripes:select name="typeId">
+                    <c:forEach items="${actionBean.attributeTypes}" var="type">
+                        <stripes:option value="${type.id}"><c:out value="${type.name}"/></stripes:option>
+                    </c:forEach>
+                </stripes:select>
+            </td>
+
+            <td align="left"><stripes:text style="width: 98%;" name="value"/></td>
+        </tr>
+        <tr>
+            <td colspan="3" align="center">
+                <stripes:submit name="submit" value="Add"/>&nbsp;
+                <stripes:reset name="reset"   value="Reset"/>
+            </td>
+        </tr>
+    </stripes:form>
+</table>
+</div>
+
+
+
+
 
 <%@ include file="/WEB-INF/jsp/includes/people/rightpan.jsp" %>
 <%@ include file="/WEB-INF/jsp/includes/foot.jsp" %>

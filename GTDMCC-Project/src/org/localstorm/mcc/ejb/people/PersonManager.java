@@ -19,6 +19,10 @@ public interface PersonManager
 
     public Collection<PersonGroup> findArchivedGroupsByOwner(User user);
 
+    public Attribute findAttribute(int attributeId)  throws ObjectNotFoundException;
+
+    public AttributeType findAttributeType(Integer typeId) throws ObjectNotFoundException;
+
     public PersonGroup findGroup(Integer groupId) throws ObjectNotFoundException;
 
     public Person findPerson(Integer personId) throws ObjectNotFoundException;
@@ -27,7 +31,15 @@ public interface PersonManager
 
     public Collection<Person> findPersonsByGroup(PersonGroup g);
 
+    public Collection<AttributeType> getAllAttributeTypes();
+
+    public Collection<Attribute> getAttributes(Person p);
+
+    public void remove(Attribute a);
+
     public void remove(PersonGroup g);
+
+    public void setAttributeForPerson(Person p, Attribute attribute);
 
     public void update(PersonGroup g);
 
