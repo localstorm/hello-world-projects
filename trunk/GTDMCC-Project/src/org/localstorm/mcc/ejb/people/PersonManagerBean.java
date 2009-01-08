@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import org.localstorm.mcc.ejb.Constants;
+import org.localstorm.mcc.ejb.NullResultGuard;
 import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 import org.localstorm.mcc.ejb.users.User;
 
@@ -42,11 +43,13 @@ public class PersonManagerBean implements PersonManagerLocal,
     public PersonGroup findGroup(Integer groupId) throws ObjectNotFoundException {
         
         PersonGroup pg = em.find(PersonGroup.class, groupId);
-        if (pg==null) {
-            throw new ObjectNotFoundException();
-        }
+        return NullResultGuard.checkNotNull(pg);
+    }
 
-        return pg;
+    @Override
+    public Person findPerson(Integer personId) throws ObjectNotFoundException {
+        Person p = em.find(Person.class, personId);
+        return NullResultGuard.checkNotNull(p);
     }
 
     @Override
