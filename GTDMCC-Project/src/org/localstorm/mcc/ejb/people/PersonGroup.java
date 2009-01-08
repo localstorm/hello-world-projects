@@ -29,6 +29,10 @@ import org.localstorm.mcc.ejb.users.User;
     @NamedQuery(
         name = PersonGroup.Queries.FIND_ARCHIVED_BY_OWNER,
         query= "SELECT o FROM PersonGroup o WHERE o.owner=:owner and o.archived=true ORDER BY o.name"
+    ),
+    @NamedQuery(
+        name = PersonGroup.Queries.DELETE_ORPHAN_PERSONS,
+        query= "DELETE Person p WHERE p IN (SELECT o.person FROM PersonToGroup o WHERE o.group=:group) AND p NOT IN (SELECT o.person FROM PersonToGroup o WHERE o.group<>:group)"
     )
 })
 public class PersonGroup implements Serializable, Identifiable {
@@ -84,11 +88,13 @@ public class PersonGroup implements Serializable, Identifiable {
     }
 
     public static interface Queries {
-        public static final String FIND_BY_OWNER = "findPGroupsByOwner";
+        public static final String FIND_BY_OWNER          = "findPGroupsByOwner";
         public static final String FIND_ARCHIVED_BY_OWNER = "findPGArchivedByOwner";
+        public static final String DELETE_ORPHAN_PERSONS  = "deleteOrphanPersons";
     }
 
     public static interface Properties {
         public static final String OWNER = "owner";
+        public static final String GROUP = "group";
     }
 }

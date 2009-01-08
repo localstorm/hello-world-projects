@@ -60,6 +60,11 @@ public class PersonManagerBean implements PersonManagerLocal,
     @Override
     public void remove(PersonGroup g) {
         g = em.getReference(PersonGroup.class, g.getId());
+
+        Query q = em.createNamedQuery(PersonGroup.Queries.DELETE_ORPHAN_PERSONS);
+        q.setParameter(PersonGroup.Properties.GROUP, g);
+        q.executeUpdate();
+
         em.remove(g);
     }
 
