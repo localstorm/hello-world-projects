@@ -106,8 +106,8 @@
 	</tr>
     <stripes:form action="/actions/AddPersonAttribute">
         <c:if test="${not empty actionBean.context.validationErrors}">
-            <tr colspan="3">
-                <td><stripes:errors/></td>
+            <tr>
+                <td colspan="3"><stripes:errors/></td>
             </tr>
         </c:if>
         <stripes:hidden name="groupId" value="${actionBean.groupId}" />

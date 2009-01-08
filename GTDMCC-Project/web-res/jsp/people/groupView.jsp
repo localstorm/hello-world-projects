@@ -4,7 +4,7 @@
 <%@ include file="/WEB-INF/jsp/includes/people/hdr.jsp" %>
 
 <h2><span>GROUP</span> view</h2>
-<div align="right" ><a href="#" title="Go to parent"><img src="<c:url value="/images/parent.png" />" border="0" /></a>&nbsp;<a href="#" onclick="show('addPersonDiv', 'name-id'); hide('renameDiv'); return false">Add person</a>
+<div align="right" ><a href="#" onclick="show('addPersonDiv', 'name-id'); hide('renameDiv'); return false">Add person</a>
                             (<a href="#" onclick="show('renameDiv', 'newname-id'); hide('addPersonDiv'); return false"><c:out value="${actionBean.group.name}"/></a>)</div>
 
     <div align="center">
