@@ -11,16 +11,28 @@ import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 import org.localstorm.mcc.ejb.users.User;
 
 /**
- *
  * @author localstorm
  */
 @Stateless
 public class PersonManagerBean implements PersonManagerLocal,
                                           PersonManagerRemote
 {
-
     public PersonManagerBean() {
+        
+    }
 
+    @Override
+    public Collection<AttributeType> getAllAttributeTypes() {
+        Query q = em.createNamedQuery(AttributeType.Queries.FIND_ALL);
+        return (Collection<AttributeType>) q.getResultList();
+    }
+
+    @Override
+    public Collection<Attribute> getAttributes(Person p) {
+        Query q = em.createNamedQuery(Attribute.Queries.FIND_BY_PERSON);
+        q.setParameter(Attribute.Properties.PERSON, p);
+
+        return (Collection<Attribute>) q.getResultList();
     }
 
     @Override
@@ -72,6 +84,18 @@ public class PersonManagerBean implements PersonManagerLocal,
     }
 
     @Override
+    public void remove(Attribute a) {
+        a = em.getReference(Attribute.class, a.getId());
+        em.remove(a);
+    }
+
+    @Override
+    public Attribute findAttribute(int attributeId) throws ObjectNotFoundException {
+        Attribute a = em.find(Attribute.class, attributeId);
+        return NullResultGuard.checkNotNull(a);
+    }
+
+    @Override
     public void create(Person p, PersonGroup g) {
         em.persist(p);
         em.persist(new PersonToGroup(p, g));
@@ -86,6 +110,20 @@ public class PersonManagerBean implements PersonManagerLocal,
     public void update(PersonGroup g) {
         em.merge(g);
     }
+
+    @Override
+    public void setAttributeForPerson(Person p, Attribute attribute) {
+        attribute.setPerson(p);
+        em.persist(attribute);
+    }
+
+    @Override
+    public AttributeType findAttributeType(Integer typeId) throws ObjectNotFoundException {
+        AttributeType t = em.find(AttributeType.class, typeId);
+        return NullResultGuard.checkNotNull(t);
+    }
+
+
 
     @PersistenceContext(unitName=Constants.DEFAULT_PU)
     protected EntityManager em;

@@ -264,11 +264,12 @@ create table PERSONS_TO_GROUPS
 
 ALTER TABLE PERSONS_TO_GROUPS ADD UNIQUE (person_id, group_id);
 
-/*
 create table ATTRIBUTE_TYPES
 (
-    id INT NOT NULL AUTO_INCREMENT,
-    name   TEXT NOT NULL,
+    id          INT NOT NULL AUTO_INCREMENT,
+    name        TEXT NOT NULL,
+    token       TEXT NOT NULL,
+    view_type   TEXT NOT NULL,
     PRIMARY KEY (id)
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
@@ -278,10 +279,29 @@ create table ATTRIBUTES
     id INT NOT NULL AUTO_INCREMENT,
     person_id INT NOT NULL,
     type_id INT NOT NULL,
-    value   TEXT,
+    val   TEXT,
     PRIMARY KEY (id),
     FOREIGN KEY (person_id) REFERENCES PERSONS(id)  ON DELETE CASCADE,
     FOREIGN KEY (type_id) REFERENCES ATTRIBUTE_TYPES(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-*/
+insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Address', 'text', 'address');
+insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'AOL IM',  'text', 'aim');
+insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Blog', 'href', 'blog');
+insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'E-Mail',  'mailto', 'email');
+insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'ICQ',  'text', 'icq');
+insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Jabber',  'text', 'jabber');
+insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Mobile',  'text', 'mobile');
+insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Mobile (Work)',  'text', 'mobile');
+insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Moi Krug',  'href', 'moi_krug');
+insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'MSN IM',  'text', 'msn');
+insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Orkut',  'href', 'orkut');
+insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Phone',  'text', 'phone');
+insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Phone (Work)',  'text', 'phone');
+insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Position',  'text', 'position');
+insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'RSS Feed',  'href', 'rss');
+insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Skype',  'text', 'skype');
+insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Textual note',  'text', 'info');
+insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'VKontakte',  'href', 'vkontakte');
+insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Home Page',  'href', 'web_page');
+insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Yahoo! IM',  'text', 'yahoo');
