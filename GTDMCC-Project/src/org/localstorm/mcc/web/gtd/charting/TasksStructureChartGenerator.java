@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import org.jfree.chart.ChartFactory;
@@ -15,9 +17,10 @@ import org.jfree.util.Rotation;
 import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.gtd.contexts.Context;
 import org.localstorm.mcc.ejb.gtd.contexts.ContextManager;
+import org.localstorm.mcc.ejb.gtd.dao.DashboardReportBean;
+import org.localstorm.mcc.ejb.gtd.dao.DashboardReportRow;
+import org.localstorm.mcc.ejb.gtd.reports.GtdReporter;
 import org.localstorm.mcc.ejb.gtd.tasks.Effort;
-import org.localstorm.mcc.ejb.gtd.tasks.Task;
-import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.Constants;
 
@@ -99,38 +102,26 @@ public class TasksStructureChartGenerator {
 
     private static PieDataset getTasksContextStructureDataset(User user) {
         ContextManager cm = ContextLookup.lookup(ContextManager.class, ContextManager.BEAN_NAME);
-        TaskManager    tm = ContextLookup.lookup(TaskManager.class, TaskManager.BEAN_NAME);
-
-        Collection<Task> tasks = tm.findAllByUser(user);
-        Collection<Context> ctxs = cm.findByOwner(user);
+        
+        Collection<Context> ctxs     = cm.findByOwner(user);
         Map<Integer, Integer> ctxMap = new TreeMap<Integer, Integer>();
 
+        GtdReporter reporter = ContextLookup.lookup(GtdReporter.class, GtdReporter.BEAN_NAME);
+        DashboardReportBean report = reporter.getDashboardReport(user);
+
+        int[] ctxSpread = new int[ctxs.size()];
+        
         int i=0;
-        for (Context ctx: ctxs)
-        {
+        List<DashboardReportRow>   rows = report.getRows();
+        Iterator<DashboardReportRow> it = rows.iterator();
+        for (Context ctx: ctxs) {
+            ctxSpread[i] = it.next().getPending();
             ctxMap.put(ctx.getId(), i++);
         }
 
-        int[] ctxSpread = new int[ctxs.size()];
-
         DefaultPieDataset result = new DefaultPieDataset();
 
-        for (Task t: tasks) {
-
-            if (t.isFinished()  ||
-                t.isAwaited()   ||
-                t.isCancelled() ||
-                t.isDelegated())
-            {
-                continue;
-            }
-
-            // TODO: Bottleneck! t.getList().getContext().getId() (Too slow)
-            ctxSpread[ctxMap.get(t.getList().getContext().getId())]++; 
-        }
-
-        for (Context ctx: ctxs)
-        {
+        for (Context ctx: ctxs) {
             int val = ctxSpread[ctxMap.get(ctx.getId())];
             result.setValue(ctx.getName()+" ("+val+")", val);
         }
@@ -140,33 +131,34 @@ public class TasksStructureChartGenerator {
 
     private static PieDataset getTasksStructureDataset(User user) {
 
-        TaskManager tm = ContextLookup.lookup(TaskManager.class, TaskManager.BEAN_NAME);
-        
-        Collection<Task> tasks = tm.findAllByUser(user);
         int[] loeSpread = new int[Effort.values().length+1];
 
         DefaultPieDataset result = new DefaultPieDataset();
 
-        for (Task t: tasks) {
+        GtdReporter reporter = ContextLookup.lookup(GtdReporter.class, GtdReporter.BEAN_NAME);
+        DashboardReportBean report = reporter.getDashboardReport(user);
+        DashboardReportRow totals = report.getTotals();
 
-            if (t.isFinished()  ||
-                t.isAwaited()   ||
-                t.isCancelled() ||
-                t.isDelegated())
-            {
-                continue;
-            }
+        loeSpread[Effort.ELEMENTARY.getEffort()] = totals.getElementary();
+        loeSpread[Effort.EASY.getEffort()]       = totals.getEasy();
+        loeSpread[Effort.MEDIUM.getEffort()]     = totals.getMedium();
+        loeSpread[Effort.DIFFICULT.getEffort()]  = totals.getDifficult();
+        loeSpread[Effort.VERY_DIFFICULT.getEffort()] = totals.getVeryDifficult();
 
-            
-            loeSpread[t.getEffort()]++;
-        }
-
-        for (Effort effort : Effort.values())
-        {
+        for (Effort effort : Effort.values()) {
             result.setValue(effort.getLatinName()+" ("+loeSpread[effort.getEffort()]+")", loeSpread[effort.getEffort()]);
         }
 
         return result;
+    }
+
+    private static int getTasksCount(DashboardReportRow row) {
+        
+        return row.getElementary()+
+               row.getEasy()+
+               row.getMedium()+
+               row.getDifficult()+
+               row.getVeryDifficult();
     }
    
 }
