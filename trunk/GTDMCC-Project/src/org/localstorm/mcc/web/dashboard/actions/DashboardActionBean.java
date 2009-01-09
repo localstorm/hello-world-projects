@@ -9,6 +9,7 @@ import org.localstorm.mcc.web.BaseActionBean;
 import org.localstorm.mcc.web.Views;
 
 import org.localstorm.mcc.web.gtd.GtdDashboardAgent;
+import org.localstorm.mcc.web.people.PeopleDashboardAgent;
 
 @UrlBinding("/actions/Dashboard")
 public class DashboardActionBean extends BaseActionBean {
@@ -20,6 +21,7 @@ public class DashboardActionBean extends BaseActionBean {
         ActionBeanContext ctx = super.getContext();
 
         GtdDashboardAgent.prepare(ctx);
+        PeopleDashboardAgent.prepare(ctx);
         
         return new ForwardResolution(Views.DASH);
     }

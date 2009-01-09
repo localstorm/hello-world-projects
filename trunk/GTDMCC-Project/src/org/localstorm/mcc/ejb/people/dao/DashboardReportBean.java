@@ -1,0 +1,52 @@
+package org.localstorm.mcc.ejb.people.dao;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+
+/**
+ *
+ * @author localstorm
+ */
+public class DashboardReportBean {
+
+    private List<PersonWrapper> red;
+    private List<PersonWrapper> yellow;
+    private List<PersonWrapper> green;
+
+    public DashboardReportBean() {
+        red    = new LinkedList<PersonWrapper>();
+        yellow = new LinkedList<PersonWrapper>();
+        green  = new LinkedList<PersonWrapper>();
+    }
+
+    public void addPerson(PersonWrapper pw) {
+        if (pw.getRemains()<8) {
+            red.add(pw);
+            return;
+        }
+        if (pw.getRemains()<22) {
+            yellow.add(pw);
+            return;
+        }
+        if (pw.getRemains()<90) {
+            green.add(pw);
+            return;
+        }
+    }
+
+    public Collection<PersonWrapper> getRedPersons() {
+        return Collections.unmodifiableList(red);
+    }
+
+    public Collection<PersonWrapper> getYellowPersons() {
+        return Collections.unmodifiableList(yellow);
+    }
+
+    public Collection<PersonWrapper> getGreenPersons() {
+        return Collections.unmodifiableList(green);
+    }
+
+
+}
