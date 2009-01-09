@@ -90,6 +90,12 @@ public class PersonManagerBean implements PersonManagerLocal,
     }
 
     @Override
+    public void remove(Person a) {
+        a = em.getReference(Person.class, a.getId());
+        em.remove(a);
+    }
+
+    @Override
     public Attribute findAttribute(int attributeId) throws ObjectNotFoundException {
         Attribute a = em.find(Attribute.class, attributeId);
         return NullResultGuard.checkNotNull(a);

@@ -125,8 +125,8 @@ public class TasksStructureChartGenerator {
                 continue;
             }
 
-
-            ctxSpread[ctxMap.get(t.getList().getContext().getId())]++;
+            // TODO: Bottleneck! t.getList().getContext().getId() (Too slow)
+            ctxSpread[ctxMap.get(t.getList().getContext().getId())]++; 
         }
 
         for (Context ctx: ctxs)

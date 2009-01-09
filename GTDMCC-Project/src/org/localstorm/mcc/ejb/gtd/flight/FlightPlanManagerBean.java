@@ -4,11 +4,13 @@ import java.util.Collection;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityExistsException;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import org.localstorm.mcc.ejb.AbstractSingletonManager;
 import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 import org.localstorm.mcc.ejb.gtd.contexts.Context;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
+import org.localstorm.mcc.ejb.memcached.MemcachedFasade;
 import org.localstorm.mcc.ejb.users.User;
 
 /**
@@ -18,6 +20,11 @@ import org.localstorm.mcc.ejb.users.User;
 public  class FlightPlanManagerBean extends AbstractSingletonManager<FlightPlan, User> 
                                     implements FlightPlanManagerLocal, FlightPlanManagerRemote
 {
+
+    public FlightPlanManagerBean() {
+        super(FlightPlan.class);
+    }
+
 
     @Override
     public void addTaskToFlightPlan(Task t, FlightPlan fp, boolean newTask) {
@@ -98,29 +105,18 @@ public  class FlightPlanManagerBean extends AbstractSingletonManager<FlightPlan,
 
     @Override
     public FlightPlan findByUser(User u, boolean createIfNone) throws ObjectNotFoundException {
-        Query uq = em.createNamedQuery(FlightPlan.Queries.FIND_CURRENT_BY_USER);
-        uq.setParameter(FlightPlan.Properties.OWNER, u);
-        
-        List<FlightPlan> list = uq.getResultList();
-        FlightPlan result = null;
-        
-        switch (list.size())
-        {
-            case 0:
-                if (createIfNone) {
-                    result = this.create(u);
-                } else {
-                    throw new ObjectNotFoundException();
-                }
-                break;
-            case 1:
-                result = list.get(0);
-                break;
-            default:
-                throw new RuntimeException("Unexpected case: two or more flight plans found!");
+
+        FlightPlan fp = this.findCurrentFlightPlan(u);
+
+        if (fp==null) {
+            if (createIfNone) {
+                fp = this.create(u);
+            } else {
+                throw new ObjectNotFoundException();
+            }
         }
 
-        return result;
+        return fp;
     }
 
     @Override
@@ -128,27 +124,43 @@ public  class FlightPlanManagerBean extends AbstractSingletonManager<FlightPlan,
         
         try 
         {
-            Query uq = em.createNamedQuery(FlightPlan.Queries.FIND_CURRENT_BY_USER);
-            uq.setParameter(FlightPlan.Properties.OWNER, u);
-
-            List<FlightPlan> list = uq.getResultList();
-
-            if ( list.size()==1 ) {
-                FlightPlan fp = list.iterator().next();
-                Collection<Task> tasks = this.getTasksFromFlightPlan(fp);
-                for (Task t: tasks) {
-                    this.removeTaskFromFlightPlan(t, fp);
-                }
-                return fp;
-            }
-
             FlightPlan result = new FlightPlan(u);
             em.persist(result);
+
+            MemcachedFasade mf = MemcachedFasade.getInstance();
+            mf.put(super.keyGen(u), result);
+
             return result;
             
         } catch(EntityExistsException e) 
         {
             throw new RuntimeException(e);
+        }
+    }
+
+    private FlightPlan findCurrentFlightPlan(User u) {
+        MemcachedFasade mf = MemcachedFasade.getInstance();
+        String key = super.keyGen(u);
+
+        FlightPlan fp = (FlightPlan) mf.get(key);
+        if (fp==null) {
+            fp = this.findCurrentFlightPlanInDb(u);
+            if (fp!=null) {
+                mf.put(key, fp);
+            }
+        }
+
+        return fp;
+    }
+
+    private FlightPlan findCurrentFlightPlanInDb(User u) {
+        try {
+            Query uq = em.createNamedQuery(FlightPlan.Queries.FIND_CURRENT_BY_USER);
+            uq.setParameter(FlightPlan.Properties.OWNER, u);
+            FlightPlan fp = (FlightPlan) uq.getSingleResult();
+            return fp;
+        } catch(NoResultException e) {
+            return null;
         }
     }
 }

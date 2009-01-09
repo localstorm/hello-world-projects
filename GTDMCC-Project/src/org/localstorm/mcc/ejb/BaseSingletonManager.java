@@ -9,7 +9,7 @@ import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
  */
 public interface BaseSingletonManager<T, E> 
 {
-    public void update( T o );
+    public void update( T o, E e );
     
     public T findByUser( E owner );
 
