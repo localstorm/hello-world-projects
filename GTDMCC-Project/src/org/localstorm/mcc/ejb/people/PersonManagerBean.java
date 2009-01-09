@@ -118,6 +118,11 @@ public class PersonManagerBean implements PersonManagerLocal,
     }
 
     @Override
+    public void update(Person p) {
+        em.merge(p);
+    }
+
+    @Override
     public void setAttributeForPerson(Person p, Attribute attribute) {
         attribute.setPerson(p);
         em.persist(attribute);
@@ -128,8 +133,6 @@ public class PersonManagerBean implements PersonManagerLocal,
         AttributeType t = em.find(AttributeType.class, typeId);
         return NullResultGuard.checkNotNull(t);
     }
-
-
 
     @PersistenceContext(unitName=Constants.DEFAULT_PU)
     protected EntityManager em;

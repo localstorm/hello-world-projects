@@ -3,7 +3,6 @@ package org.localstorm.mcc.web.gtd.actions;
 import org.localstorm.mcc.web.Constants;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import net.sourceforge.stripes.action.After;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
@@ -14,6 +13,7 @@ import net.sourceforge.stripes.validation.Validate;
 
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
+import org.localstorm.mcc.web.DateUtil;
 import org.localstorm.mcc.web.ReturnPageBean;
 
 /**
@@ -73,8 +73,8 @@ public class TaskUpdateActionBean extends TaskViewActionBean
         t.setSummary(this.getSummary());
         t.setDetails(this.getDetails());
 
-        t.setRedline(this.parse(this.getRedline(), sdf));
-        t.setDeadline(this.parse(this.getDeadline(), sdf));
+        t.setRedline(DateUtil.parse(this.getRedline(), sdf));
+        t.setDeadline(DateUtil.parse(this.getDeadline(), sdf));
         t.setEffort(this.getEffort());
         
         tm.update(t);
@@ -85,22 +85,14 @@ public class TaskUpdateActionBean extends TaskViewActionBean
 
         if (rpb==null)
         {
-            System.out.println("RPB is NULL!");
             rr = new RedirectResolution(ListViewActionBean.class);
             rr.addParameter(ListViewActionBean.IncommingParameters.LIST_ID, t.getList().getId());
             return rr;
         } else {
-            System.out.println("RPB is NOT NULL!");
             rr = NextDestinationUtil.getRedirection(rpb);
         }
             
         return rr;
     }
-    
-    private Date parse(String s, DateFormat df) throws Exception {
-        if (s!=null) {
-            return df.parse(s);
-        }
-        return null;
-    }
+   
 }

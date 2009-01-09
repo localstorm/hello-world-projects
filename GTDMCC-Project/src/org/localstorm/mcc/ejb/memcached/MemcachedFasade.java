@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import net.spy.memcached.AddrUtil;
-import net.spy.memcached.BinaryConnectionFactory;
 import net.spy.memcached.MemcachedClient;
 import net.spy.memcached.MemcachedClientIF;
 import org.apache.commons.lang.StringUtils;
@@ -31,9 +30,9 @@ public class MemcachedFasade {
     // Shutdown?
     public MemcachedFasade() {
         try {
-            String addresses = System.getProperty("memcached.server.instances");
+            String addresses = System.getProperty("memcached.server.instance");
 
-            log.info("MEMCACHED SERVERS: "+((!StringUtils.isEmpty(addresses)) ? addresses : "NONE"));
+            log.info("MEMCACHED SERVER: "+((!StringUtils.isEmpty(addresses)) ? addresses : "NONE"));
 
             if (StringUtils.isEmpty(addresses)) {
                 this.client = null;
