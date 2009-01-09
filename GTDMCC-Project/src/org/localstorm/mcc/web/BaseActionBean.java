@@ -63,10 +63,8 @@ public class BaseActionBean implements ActionBean
         }
         
         if (token!=null) {
-            System.out.println("TOKEN="+token);
             return (ReturnPageBean) SessionUtil.getSoftValue(sess, SessionKeys.RETURN_PAGE_BEAN_REFIX+token);
         } else {
-            System.out.println("TOKEN is NULL");
             return null;
         }
     }
@@ -80,13 +78,6 @@ public class BaseActionBean implements ActionBean
 
         req.setAttribute(RequestAttributes.RETURN_PAGE_TOKEN, token);
         SessionUtil.softFill(sess, SessionKeys.RETURN_PAGE_BEAN_REFIX+token, rpb);
-        
-        if (SessionUtil.getSoftValue(sess, SessionKeys.RETURN_PAGE_BEAN_REFIX+token)==null)
-        {
-            System.out.println("SOFT VALUE WAS SET: "+SessionKeys.RETURN_PAGE_BEAN_REFIX+token);
-        }
-
-
     }
 
     

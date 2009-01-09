@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Status;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
+import org.apache.log4j.Logger;
 import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.web.Views;
 import org.localstorm.mcc.web.util.RequestUtil;
@@ -21,24 +22,29 @@ import org.localstorm.mcc.web.util.RequestUtil;
  */
 public class TxFilter implements Filter 
 {
+    private static final Logger log = Logger.getLogger(TxFilter.class);
 
     public TxFilter() {
     }
 
     @Override
-    public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest _req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
         
         UserTransaction ut = null;
+        HttpServletRequest req = (HttpServletRequest) _req;
         
         try
         {
+            long t1 = System.currentTimeMillis();
             try {
+
                 ut = ContextLookup.lookupTransaction();
                 ut.begin();
                     chain.doFilter( req, resp );
                 ut.commit();
+
             } catch (Exception e) {
-                e.printStackTrace();
+                log.error("Transaction failed:", e);
 
                 ut.setRollbackOnly();
                 
@@ -52,6 +58,7 @@ public class TxFilter implements Filter
                 {
                     ut.rollback();
                 }
+                log.info("Transaction ["+req.getRequestURL()+"] processed in "+(System.currentTimeMillis()-t1)+" ms.");
             }
         } catch(SystemException e) {
             RequestUtil.setException((HttpServletRequest) req, e);
