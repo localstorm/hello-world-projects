@@ -33,7 +33,7 @@ public class MemcachedFasade {
         try {
             String addresses = System.getProperty("memcached.server.instances");
 
-            log.info("MEMCACHED SERVERS: "+(StringUtils.isEmpty(addresses) ? addresses : "NONE"));
+            log.info("MEMCACHED SERVERS: "+((!StringUtils.isEmpty(addresses)) ? addresses : "NONE"));
 
             if (StringUtils.isEmpty(addresses)) {
                 this.client = null;
