@@ -35,6 +35,7 @@ public class TaskManagerBean extends AbstractManager<Task>
         tq.setParameter(Task.Properties.EFFORT, effort.getEffort());
 
         List<Task> list = tq.getResultList();
+        super.updateObjectsMap(list);
         return list;
     }
 
@@ -45,6 +46,7 @@ public class TaskManagerBean extends AbstractManager<Task>
         tq.setMaxResults(max);
 
         List<Task> list = tq.getResultList();
+        super.updateObjectsMap(list);
         return list;
     }
 
@@ -54,6 +56,7 @@ public class TaskManagerBean extends AbstractManager<Task>
         tq.setParameter(Task.Properties.LIST, l);
         
         List<Task> list = tq.getResultList();
+        super.updateObjectsMap(list);
         return list;
     }
     
@@ -64,6 +67,7 @@ public class TaskManagerBean extends AbstractManager<Task>
         tq.setParameter(Task.Properties.LIST, l);
         
         List<Task> list = tq.getResultList();
+        super.updateObjectsMap(list);
         return list;
     }
 
@@ -73,6 +77,7 @@ public class TaskManagerBean extends AbstractManager<Task>
         tq.setParameter(Task.Properties.LIST, l);
         
         List<Task> list = tq.getResultList();
+        super.updateObjectsMap(list);
         return list;
     }
 
@@ -88,6 +93,7 @@ public class TaskManagerBean extends AbstractManager<Task>
         }
         
         List<Task> list = tq.getResultList();
+        super.updateObjectsMap(list);
         return list;
     }
 
@@ -106,6 +112,7 @@ public class TaskManagerBean extends AbstractManager<Task>
         }
         
         List<Task> list = tq.getResultList();
+        super.updateObjectsMap(list);
         return list;
     }
 
@@ -121,6 +128,7 @@ public class TaskManagerBean extends AbstractManager<Task>
         }
 
         List<Task> list = tq.getResultList();
+        super.updateObjectsMap(list);
         return list;
     }
 
@@ -137,6 +145,7 @@ public class TaskManagerBean extends AbstractManager<Task>
         }
 
         List<Task> list = tq.getResultList();
+        super.updateObjectsMap(list);
         return list;
     }
 
@@ -154,6 +163,7 @@ public class TaskManagerBean extends AbstractManager<Task>
         }
         
         List<Task> list = tq.getResultList();
+        super.updateObjectsMap(list);
         return list;
     }
 
@@ -163,6 +173,7 @@ public class TaskManagerBean extends AbstractManager<Task>
 
         tq.setParameter(Task.Properties.USER, user);
         List<Task> list = tq.getResultList();
+        super.updateObjectsMap(list);
         return list;
     }
 
@@ -174,7 +185,7 @@ public class TaskManagerBean extends AbstractManager<Task>
 
         for (Task t: list)
         {
-            em.remove(t);
+            super.remove(t);
         }
     }
 
@@ -184,6 +195,7 @@ public class TaskManagerBean extends AbstractManager<Task>
         tq.setParameter(Task.Properties.USER, user);
 
         List<Task> list = tq.getResultList();
+        super.updateObjectsMap(list);
         return list;
     }
 

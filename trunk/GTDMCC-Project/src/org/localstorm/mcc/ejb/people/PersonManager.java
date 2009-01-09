@@ -37,6 +37,8 @@ public interface PersonManager
 
     public void remove(Attribute a);
 
+    public void remove(Person p);
+
     public void remove(PersonGroup g);
 
     public void setAttributeForPerson(Person p, Attribute attribute);

@@ -10,6 +10,7 @@ import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.people.Person;
 import org.localstorm.mcc.ejb.people.PersonGroup;
 import org.localstorm.mcc.ejb.people.PersonManager;
+import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.people.Views;
 
 @UrlBinding("/actions/ViewPersonGroup")
@@ -52,6 +53,13 @@ public class PersonGroupViewActionBean extends PeopleBaseActionBean {
 
         this.setGroup(g);
         this.setPersons(pm.findPersonsByGroup(g));
+
+        ReturnPageBean rpb = new ReturnPageBean(Pages.GROUP_VIEW.toString());
+        {
+            rpb.setParam(IncommingParameters.GROUP_ID, this.groupId.toString());
+        }
+        
+        super.setReturnPageBean(rpb);
 
         return new ForwardResolution(Views.PERSON_GROUP);
     }
