@@ -21,9 +21,11 @@
              <c:when test="${not empty actionBean.context.validationErrors and not empty updateForm}">inline</c:when>
              <c:otherwise>none</c:otherwise>
     </c:choose>;">
-        <stripes:form action="/actions/UpdatePerson" >
+        <stripes:form action="/actions/UpdatePerson" name="editForm">
         <stripes:errors/>
+        <stripes:hidden name="groupId" value="${actionBean.groupId}" />
         <stripes:hidden name="personId" value="${actionBean.person.id}" />
+        
         <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
             <tr>
                 <td>&nbsp;</td>
@@ -46,7 +48,8 @@
             <tr>
                 <td>&nbsp;</td>
                 <td>Birth date: </td>
-                <td>--</td>
+                <fmt:formatDate value="${actionBean.person.birthDate}" pattern="dd.MM.yyyy" var="birthDate" />
+                <td><stripes:text readonly="true" name="birthDate" id="d1" size="10" value="${birthDate}"/><img onclick="showCalendar('d1', '%d.%m.%Y', false, true);" border="0px" src="<c:url value="/images/calendar.png"/>" />&nbsp;<img onclick="document.editForm.birthDate.value = '';" border="0px" src="<c:url value="/images/nocalendar.png"/>" /></td>
                 <td>&nbsp;</td>
             </tr>
             <tr>

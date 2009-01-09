@@ -43,6 +43,8 @@ public interface PersonManager
 
     public void setAttributeForPerson(Person p, Attribute attribute);
 
+    public void update(Person p);
+
     public void update(PersonGroup g);
 
 }
