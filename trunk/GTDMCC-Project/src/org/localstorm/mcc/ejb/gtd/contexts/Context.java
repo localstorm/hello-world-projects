@@ -30,7 +30,7 @@ import org.localstorm.mcc.ejb.users.User;
 @NamedQueries({
     @NamedQuery(
         name = Context.Queries.FIND_BY_OWNER,
-        query= "SELECT o FROM Context o WHERE o.owner=:owner and o.archived=false"
+        query= "SELECT o FROM Context o WHERE o.owner=:owner and o.archived=false ORDER BY o.name"
     ),
     @NamedQuery(
         name = Context.Queries.FIND_BY_OWNER_ARCHIVED,
