@@ -5,30 +5,32 @@
 
 <div id="dashBirthdaysPan">
     <h2><span>Birthdays</span> pane</h2>
-	<div id="redDashPane">
-		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+2)</p>
-		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Пафнутьев Ш. И.</a> (+3)</p>
-		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+7)</p>
-	</div>
-	<div id="yellowDashPane">
-		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+8)</p>
-		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Пафнутьев Ш. И.</a> (+14)</p>
-		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+21)</p>
-		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+8)</p>
-		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Пафнутьев Ш. И.</a> (+14)</p>
-		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+21)</p>
-	</div>
-	<div id="greenDashPane">
-		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+22)</p>
-		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Пафнутьев Ш. И.</a> (+54)</p>
-		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+90)</p>
-		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+22)</p>
-		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Пафнутьев Ш. И.</a> (+54)</p>
-		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+90)</p>
-		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+22)</p>
-		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Пафнутьев Ш. И.</a> (+54)</p>
-		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+90)</p>
-	</div>
+    <c:if test="${not empty peopleDashReport.redPersons}">
+        <div id="redDashPane">
+            <c:forEach items="${peopleDashReport.redPersons}" var="pw">
+                <p><img src="<c:url value="/images/person.png" />" /> <c:out value="${pw.shortName}"/> 
+                <c:choose>
+                    <c:when test="${pw.remains>0}">(+<c:out value="${pw.remains}"/>)</c:when>
+                    <c:otherwise>(Today!)</c:otherwise>
+                </c:choose>
+                </p>
+            </c:forEach>
+        </div>
+    </c:if>
+    <c:if test="${not empty peopleDashReport.yellowPersons}">
+        <div id="yellowDashPane">
+                <c:forEach items="${peopleDashReport.yellowPersons}" var="pw">
+                    <p><img src="<c:url value="/images/person.png" />" /> <c:out value="${pw.shortName}"/> (+<c:out value="${pw.remains}"/>)</p>
+                </c:forEach>
+        </div>
+    </c:if>
+    <c:if test="${not empty peopleDashReport.greenPersons}">
+        <div id="greenDashPane">
+                <c:forEach items="${peopleDashReport.greenPersons}" var="pw">
+                    <p><img src="<c:url value="/images/person.png" />" /> <c:out value="${pw.shortName}"/> (+<c:out value="${pw.remains}"/>)</p>
+                </c:forEach>
+        </div>
+    </c:if>
 </div>
 
 <div id="dashGTDPan">

@@ -53,9 +53,11 @@ public class QueriesLoader {
     }
 
     public static final String GTD_DASHBOARD_REPORT = "/META-INF/gtd-dashboard-report.sql";
+    public static final String PPL_DASHBOARD_REPORT = "/META-INF/people-dashboard-report.sql";
 
     private static final String[] GTD_QUERIES_RESOURCES = new String[] {
-        GTD_DASHBOARD_REPORT
+        GTD_DASHBOARD_REPORT,
+        PPL_DASHBOARD_REPORT
     };
 
     private static final QueriesLoader loader = new QueriesLoader();

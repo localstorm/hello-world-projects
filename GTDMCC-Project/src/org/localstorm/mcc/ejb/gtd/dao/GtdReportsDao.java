@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.sql.DataSource;
+import org.apache.log4j.Logger;
+import org.localstorm.mcc.ejb.dao.JdbcDaoHelper;
 import org.localstorm.mcc.ejb.dao.QueriesLoader;
 import org.localstorm.mcc.ejb.users.User;
 
@@ -12,6 +14,9 @@ import org.localstorm.mcc.ejb.users.User;
  * @author localstorm
  */
 public class GtdReportsDao {
+
+    private static final Logger log = Logger.getLogger(GtdReportsDao.class);
+
     public static final String AWAITED_TASKS    = "awaited";
     public static final String CONTEXT_ID       = "cid";
     public static final String CONTEXT_NAME     = "cname";
@@ -53,7 +58,7 @@ public class GtdReportsDao {
             PreparedStatement ps = conn.prepareStatement(rptSql);
 
             for (int i=1; i<=12; i++) {
-                ps.setInt(i, u.getId());
+                JdbcDaoHelper.setInteger(ps, i, u.getId());
             }
 
             ResultSet rs = ps.executeQuery();
@@ -64,19 +69,19 @@ public class GtdReportsDao {
             {
                 // Null is impossible here
 
-                String ctxName = rs.getString(CONTEXT_NAME);
-                int ctxId      = rs.getInt(CONTEXT_ID);
-                int pending    = rs.getInt(PENDING_TASKS);
-                int awaited    = rs.getInt(AWAITED_TASKS);
-                int flight     = rs.getInt(FLIGHT_PLAN_TASKS);
-                int red        = rs.getInt(REDLINE_TASKS);
-                int dead       = rs.getInt(DEADLINE_TASK);
-                int done       = rs.getInt(DONE_TASKS);
-                int elementary = rs.getInt(ELEMENTARY_TASKS);
-                int easy       = rs.getInt(EASY_TASKS);
-                int medium     = rs.getInt(MEDIUM_TASKS);
-                int difficult  = rs.getInt(DIFFICULT_TASKS);
-                int vd         = rs.getInt(VERY_DIFFICULT_TASKS);
+                String ctxName = JdbcDaoHelper.getString(rs, CONTEXT_NAME);
+                int ctxId      = JdbcDaoHelper.getInteger(rs, CONTEXT_ID);
+                int pending    = JdbcDaoHelper.getInteger(rs, PENDING_TASKS);
+                int awaited    = JdbcDaoHelper.getInteger(rs, AWAITED_TASKS);
+                int flight     = JdbcDaoHelper.getInteger(rs, FLIGHT_PLAN_TASKS);
+                int red        = JdbcDaoHelper.getInteger(rs, REDLINE_TASKS);
+                int dead       = JdbcDaoHelper.getInteger(rs, DEADLINE_TASK);
+                int done       = JdbcDaoHelper.getInteger(rs, DONE_TASKS);
+                int elementary = JdbcDaoHelper.getInteger(rs, ELEMENTARY_TASKS);
+                int easy       = JdbcDaoHelper.getInteger(rs, EASY_TASKS);
+                int medium     = JdbcDaoHelper.getInteger(rs, MEDIUM_TASKS);
+                int difficult  = JdbcDaoHelper.getInteger(rs, DIFFICULT_TASKS);
+                int vd         = JdbcDaoHelper.getInteger(rs, VERY_DIFFICULT_TASKS);
 
                 // Interpreting
                 DashboardReportRow row = new DashboardReportRow();
@@ -101,10 +106,7 @@ public class GtdReportsDao {
 
             return drb;
         } finally {
-            if (conn!=null)
-            {
-                conn.close();
-            }
+            JdbcDaoHelper.safeClose(conn, log);
         }
     }
 }
