@@ -1,5 +1,6 @@
 package org.localstorm.mcc.web.cashflow.actions;
 
+import org.localstorm.mcc.web.util.RoundUtil;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import net.sourceforge.stripes.action.After;
@@ -30,9 +31,7 @@ public class AssetAddActionBean extends AssetsEditActionBean {
 
     @After( LifecycleStage.BindingAndValidation ) 
     public void doPostValidationStuff() {
-        if ( getContext().getValidationErrors().hasFieldErrors() )
-        {
-            System.out.println("Forced Filling contextlist");
+        if ( getContext().getValidationErrors().hasFieldErrors() ) {
             super.filling();
         }
     }
@@ -46,8 +45,6 @@ public class AssetAddActionBean extends AssetsEditActionBean {
     private BigDecimal sell;
 
     private BigDecimal sellFx;
-    
-    //Adding context
     
     public String getName() {
         return this.name;

@@ -56,8 +56,7 @@ public class TaskAddActionBean extends ListViewActionBean
     
     @After( LifecycleStage.BindingAndValidation ) 
     public void doPostValidationStuff() throws Exception {
-        if ( getContext().getValidationErrors().hasFieldErrors() )
-        {
+        if ( getContext().getValidationErrors().hasFieldErrors() ) {
             super.filling();
         }
     }

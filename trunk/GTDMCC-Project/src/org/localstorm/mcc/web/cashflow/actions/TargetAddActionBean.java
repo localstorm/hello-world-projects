@@ -1,5 +1,6 @@
 package org.localstorm.mcc.web.cashflow.actions;
 
+import org.localstorm.mcc.web.util.RoundUtil;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import net.sourceforge.stripes.action.After;
@@ -56,31 +57,26 @@ public class TargetAddActionBean extends TargetsEditActionBean {
     }
 
     @DefaultHandler
-    public Resolution addContext() {
+    public Resolution addContext() throws Exception {
         
-        try {
-            User user = super.getUser();
-            
-            Target target = new Target();
-            ValuableObject vo = new ValuableObject(user);
+        User user = super.getUser();
 
-            target.setName(name);
-            target.setValuable(vo);
-            
-            MathContext rounding = new MathContext(5);
-            
-            Cost cost = new Cost(vo);
-            cost.setBuy(RoundUtil.round(this.getBuy(), rounding));
-            cost.setSell(RoundUtil.round(this.getBuy(), rounding));
+        Target target = new Target();
+        ValuableObject vo = new ValuableObject(user);
 
-            super.getTargetManager().create(target, cost);
+        target.setName(name);
+        target.setValuable(vo);
+
+        MathContext rounding = new MathContext(5);
+
+        Cost cost = new Cost(vo);
+        cost.setBuy(RoundUtil.round(this.getBuy(), rounding));
+        cost.setSell(RoundUtil.round(this.getBuy(), rounding));
+
+        super.getTargetManager().create(target, cost);
+
+        SessionUtil.clear(super.getSession(), SessionKeys.TARGETS);
             
-            SessionUtil.clear(super.getSession(), SessionKeys.TARGETS);
-            
-        } catch(Exception e) 
-        {
-            e.printStackTrace();
-        }
         
         return new RedirectResolution( TargetsEditActionBean.class );
     }

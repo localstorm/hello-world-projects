@@ -12,7 +12,6 @@ import org.localstorm.mcc.ejb.gtd.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.gtd.lists.GTDList;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
-import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.mcc.web.gtd.actions.wrap.TaskWrapper;
 import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;

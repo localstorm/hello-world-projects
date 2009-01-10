@@ -13,7 +13,7 @@ import net.sourceforge.stripes.validation.Validate;
 
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
-import org.localstorm.mcc.web.DateUtil;
+import org.localstorm.mcc.web.util.DateUtil;
 import org.localstorm.mcc.web.ReturnPageBean;
 
 /**

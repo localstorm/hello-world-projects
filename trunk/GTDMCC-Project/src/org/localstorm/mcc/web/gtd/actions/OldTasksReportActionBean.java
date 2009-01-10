@@ -15,8 +15,8 @@ import org.localstorm.mcc.ejb.gtd.flight.FlightPlan;
 import org.localstorm.mcc.ejb.gtd.flight.FlightPlanManager;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
-import org.localstorm.mcc.web.Constants;
 import org.localstorm.mcc.web.ReturnPageBean;
+import org.localstorm.mcc.web.gtd.GtdConstants;
 import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.mcc.web.gtd.actions.wrap.TaskWrapper;
 import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
@@ -63,7 +63,7 @@ public class OldTasksReportActionBean extends GtdBaseActionBean
         Collection<Context> affected = new ArrayList<Context>();
         for (Context ctx : ctxs) {
             Collection<Task> old = tm.findOldestOperative(ctx,
-                                                          Constants.MAX_OLDEST_TASKS);
+                                                          GtdConstants.MAX_OLDEST_TASKS);
             Collection<TaskWrapper> tasks = WrapUtil.genWrappers(old, fpTasks);
             res.put(ctx.getId(), tasks);
 

@@ -1,4 +1,4 @@
-package org.localstorm.mcc.web.cashflow.actions;
+package org.localstorm.mcc.web.util;
 
 import java.math.BigDecimal;
 import java.math.MathContext;

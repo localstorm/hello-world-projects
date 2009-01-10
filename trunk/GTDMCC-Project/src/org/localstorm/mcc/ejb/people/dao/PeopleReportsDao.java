@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import javax.sql.DataSource;
 import org.apache.log4j.Logger;
+import org.localstorm.mcc.ejb.dao.Guard;
 import org.localstorm.mcc.ejb.dao.JdbcDaoHelper;
 import org.localstorm.mcc.ejb.dao.QueriesLoader;
 import org.localstorm.mcc.ejb.users.User;
@@ -29,11 +30,8 @@ public class PeopleReportsDao {
 
     public PeopleReportsDao(DataSource ds)
     {
+        Guard.checkDataSourceNotNull(ds);
         this.ds = ds;
-        if (ds==null)
-        {
-            throw new NullPointerException("Given DataSource is null!");
-        }
     }
 
     public DashboardReportBean getDashboardReport(User u) throws SQLException
@@ -44,10 +42,7 @@ public class PeopleReportsDao {
         Connection conn = null;
         try {
             conn = ds.getConnection();
-
-            if (conn==null) {
-                throw new SQLException("Can't obtain a connection.");
-            }
+            Guard.checkConnectionNotNull(conn);
 
             PreparedStatement ps = conn.prepareStatement(rptSql);
             ps.setInt(1, u.getId());

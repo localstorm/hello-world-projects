@@ -33,8 +33,6 @@ public class RefObjToggleStateActionBean extends GtdBaseActionBean
     @DefaultHandler
     public Resolution toggle() throws Exception {
         
-        System.out.println("Deleting/Undeleting referenced object:" +objectId);
-        
         RefObjectManager rom = super.getRefObjectManager();
         ReferencedObject ro = rom.findById(this.getObjectId());
         ro.setArchived( !ro.isArchived() );

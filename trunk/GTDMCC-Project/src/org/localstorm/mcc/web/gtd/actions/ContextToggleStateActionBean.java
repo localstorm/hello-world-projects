@@ -31,8 +31,6 @@ public class ContextToggleStateActionBean extends GtdBaseActionBean
     @DefaultHandler
     public Resolution toggle() throws Exception {
         
-        System.out.println("Deleting/Undeleting context:" +contextId);
-        
         ContextManager cm = getContextManager();
         Context ctx = cm.findById(getContextId());
         ctx.setArchived( !ctx.isArchived() );

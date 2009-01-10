@@ -13,7 +13,7 @@ import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.people.Person;
 import org.localstorm.mcc.ejb.people.PersonManager;
 import org.localstorm.mcc.web.Constants;
-import org.localstorm.mcc.web.DateUtil;
+import org.localstorm.mcc.web.util.DateUtil;
 
 /**
  *

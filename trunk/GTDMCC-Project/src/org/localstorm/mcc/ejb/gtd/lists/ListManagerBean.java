@@ -30,7 +30,6 @@ public class ListManagerBean extends AbstractManager<GTDList>
         lq.setParameter(GTDList.Properties.CONTEXT, ctx);
         
         List<GTDList> list = lq.getResultList();
-        System.out.println("RETURNED: "+list.size());
         return list;
     }
 
@@ -40,7 +39,6 @@ public class ListManagerBean extends AbstractManager<GTDList>
         lq.setParameter(GTDList.Properties.CONTEXT, ctx);
         
         List<GTDList> list = lq.getResultList();
-        System.out.println("RETURNED: "+list.size());
         return list;
     }
     
