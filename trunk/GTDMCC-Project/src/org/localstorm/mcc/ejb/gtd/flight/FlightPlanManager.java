@@ -14,7 +14,6 @@ public interface FlightPlanManager extends BaseSingletonManager<FlightPlan, User
 {
     public static final String BEAN_NAME = "FlightPlanManagerBean";
     
-    public void addTaskToFlightPlan(Task t, FlightPlan fp, boolean newTask);
     public void addTaskToFlightPlan(Task t, FlightPlan fp);
 
     public Collection<Task> getTasksFromFlightPlan(FlightPlan fp, Context context);

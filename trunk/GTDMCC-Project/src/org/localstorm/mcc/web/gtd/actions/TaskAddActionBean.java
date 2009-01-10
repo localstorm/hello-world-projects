@@ -78,7 +78,7 @@ public class TaskAddActionBean extends ListViewActionBean
         if (t.getId() !=null && this.isFlight()) {
             FlightPlanManager fpm = super.getFlightPlanManager();
             FlightPlan fp         = fpm.findByUser(super.getUser());
-            fpm.addTaskToFlightPlan(t, fp, true);
+            fpm.addTaskToFlightPlan(t, fp);
         }
         
         RedirectResolution rr = new RedirectResolution( ListViewActionBean.class );
