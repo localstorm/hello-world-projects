@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package org.localstorm.mcc.web.util;
 
 import java.util.Collection;
@@ -23,6 +18,8 @@ public class FilterUtil {
 
         for (Iterator<Task> it = tasks.iterator(); it.hasNext(); ) {
             Task t = it.next();
+            
+            // This "t.getList().getContext().getId()" is a bottleneck
             if (!ctxId.equals(t.getList().getContext().getId())) {
                 it.remove();
             }
@@ -38,6 +35,7 @@ public class FilterUtil {
         for (Iterator<Task> it = tasks.iterator(); it.hasNext(); ) {
             Task t = it.next();
             if (ctxId>=0) {
+                // This "t.getList().getContext().getId()" is a bottleneck
                 if (!ctxId.equals(t.getList().getContext().getId())) {
                     it.remove();
                     continue;

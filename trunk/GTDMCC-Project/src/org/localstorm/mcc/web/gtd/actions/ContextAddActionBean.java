@@ -48,7 +48,6 @@ public class ContextAddActionBean extends ContextsEditActionBean {
         User user = super.getUser();
 
         Context ctx = new Context(this.getName(), user);
-        ctx.setSortOrder(1);
 
         super.getContextManager().create(ctx);
 

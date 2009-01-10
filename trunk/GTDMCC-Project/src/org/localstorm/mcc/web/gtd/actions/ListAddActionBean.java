@@ -47,7 +47,6 @@ public class ListAddActionBean extends ContextViewActionBean
         this.contextResult = getContextManager().findById(super.getContextId());
         
         GTDList list = new GTDList(getName(), contextResult);
-        list.setSortOrder(1);
         
         getListManager().create(list);
         
