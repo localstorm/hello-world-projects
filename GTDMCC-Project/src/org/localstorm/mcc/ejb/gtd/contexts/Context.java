@@ -46,9 +46,6 @@ public class Context implements Identifiable, Retireable, Serializable {
     @Column(name="name", unique=false, updatable=true, nullable=false )
     private String name;
     
-    @Column(name="sort_order", unique=false, updatable=true, nullable=false )    
-    private Integer sortOrder;
-    
     @JoinColumn(name="user_id", nullable=false)
     @ManyToOne(fetch=FetchType.LAZY)
     private User owner;
@@ -80,10 +77,6 @@ public class Context implements Identifiable, Retireable, Serializable {
         return owner;
     }
 
-    public Integer getSortOrder() {
-        return sortOrder;
-    }
-
     @Override
     public boolean isArchived() {
         return archived;
@@ -91,10 +84,6 @@ public class Context implements Identifiable, Retireable, Serializable {
     
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setSortOrder(Integer sortOrder) {
-        this.sortOrder = sortOrder;
     }
 
     @Override

@@ -17,20 +17,17 @@ CREATE UNIQUE INDEX idx_users_login
 create table CONTEXTS (
      id INT NOT NULL AUTO_INCREMENT,
      name TEXT NOT NULL,
-     sort_order INT not null,
      user_id INT not null,
      is_archived SMALLINT not NULL,
      PRIMARY KEY (id),
      FOREIGN KEY (user_id) REFERENCES USERS(id)  ON DELETE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-
 create table LISTS (
      id INT NOT NULL AUTO_INCREMENT,
      name TEXT NOT NULL,
      creation DATETIME not null,  
      context_id INT NOT NULL,
-     sort_order INT not null,
      is_archived SMALLINT NOT NULL,
      is_pinned SMALLINT NOT NULL,
      PRIMARY KEY (id),
@@ -59,12 +56,12 @@ create table TASKS (
      is_paused SMALLINT not null,
      is_delegated SMALLINT not null,
      runtime_note TEXT,
-     sort_order INT not null,
      list_id INT not null,
      effort INT NOT NULL,
      PRIMARY KEY (id),
      FOREIGN KEY (list_id) REFERENCES LISTS(id) ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
+
 
 create table TASKS_TO_FLIGHT_PLANS 
 (
@@ -83,7 +80,6 @@ create table REFERENCED_OBJECTS
     id INT NOT NULL AUTO_INCREMENT,
     name        TEXT NOT NULL,
     creation DATETIME NOT NULL,
-    sort_order INT not null,
     is_archived SMALLINT NOT NULL,
     context_id INT NOT NULL,
     PRIMARY KEY (id),

@@ -43,9 +43,6 @@ public class GTDList implements Identifiable, Serializable {
     @Column(name="name", unique=false, updatable=true, nullable=false )
     private String name;
     
-    @Column(name="sort_order", unique=false, updatable=true, nullable=false )    
-    private Integer sortOrder;
-    
     @JoinColumn(name="context_id", nullable=false)
     @ManyToOne(fetch=FetchType.EAGER)
     private Context context;
@@ -82,10 +79,6 @@ public class GTDList implements Identifiable, Serializable {
         return name;
     }
 
-    public Integer getSortOrder() {
-        return sortOrder;
-    }
-
     public Context getContext() {
         return context;
     }
@@ -100,10 +93,6 @@ public class GTDList implements Identifiable, Serializable {
     
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setSortOrder(Integer sortOrder) {
-        this.sortOrder = sortOrder;
     }
 
     public void setArchived(boolean archived) {

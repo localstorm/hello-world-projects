@@ -70,7 +70,6 @@ public class TaskAddActionBean extends ListViewActionBean
         
         Task t = new Task(this.getSummary(), "", list, null, null);
         t.setEffort(this.getEffort());
-        t.setSortOrder(1);
         
         TaskManager tm = getTaskManager();
 

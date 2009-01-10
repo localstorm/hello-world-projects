@@ -67,11 +67,6 @@ public class TaskWrapper extends Task
     }
 
     @Override
-    public Integer getSortOrder() {
-        return t.getSortOrder();
-    }
-
-    @Override
     public String getSummary() {
         return t.getSummary();
     }
@@ -160,11 +155,6 @@ public class TaskWrapper extends Task
     @Override
     public void setRuntimeNote(String runtimeNote) {
         t.setRuntimeNote(runtimeNote);
-    }
-
-    @Override
-    public void setSortOrder(Integer sortOrder) {
-        t.setSortOrder(sortOrder);
     }
 
     @Override

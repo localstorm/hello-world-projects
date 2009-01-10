@@ -63,9 +63,6 @@ public class ReferencedObject implements Serializable, Identifiable
     @ManyToOne(fetch=FetchType.EAGER)
     private Context context;
     
-    @Column(name="sort_order", unique=false, updatable=true, nullable=false )    
-    private Integer sortOrder;
-
     
     public ReferencedObject() 
     {
@@ -77,9 +74,9 @@ public class ReferencedObject implements Serializable, Identifiable
         this.archived  = false;
         this.creation  = new Date();
         this.context   = ctx;
-        this.sortOrder = Integer.valueOf(1);
     }
     
+    @Override
     public Integer getId() {
         return id;
     }

@@ -130,9 +130,6 @@ public class Task implements Identifiable, Serializable
     @Column(name="runtime_note", unique=false, updatable=true, nullable=true )
     private String runtimeNote;
     
-    @Column(name="sort_order", unique=false, updatable=true, nullable=false )    
-    private Integer sortOrder;
-    
     @Column(name="effort", unique=false, updatable=true, nullable=false )    
     private int effort;
     
@@ -196,10 +193,6 @@ public class Task implements Identifiable, Serializable
         this.id = id;
     }
 
-    public Integer getSortOrder() {
-        return sortOrder;
-    }
-
     public Date getCreation() {
         return creation;
     }
@@ -258,10 +251,6 @@ public class Task implements Identifiable, Serializable
 
     public void setFinished(boolean accomplished) {
         this.finished = accomplished;
-    }
-
-    public void setSortOrder(Integer sortOrder) {
-        this.sortOrder = sortOrder;
     }
 
     public void setCreation(Date creation) {
