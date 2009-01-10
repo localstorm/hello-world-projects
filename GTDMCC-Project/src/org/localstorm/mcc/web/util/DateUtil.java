@@ -1,4 +1,4 @@
-package org.localstorm.mcc.web;
+package org.localstorm.mcc.web.util;
 
 import java.text.DateFormat;
 import java.util.Date;

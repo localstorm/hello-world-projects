@@ -11,21 +11,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.sql.DataSource;
 import org.apache.commons.io.IOUtils;
+import org.apache.log4j.Logger;
+import org.localstorm.mcc.ejb.dao.JdbcDaoHelper;
+import org.localstorm.mcc.ejb.dao.Guard;
 
 /**
  * @author Alexey Kuznetsov
  */
 public class FileDao 
 {
+    private final static Logger log = Logger.getLogger(FileDao.class);
     private DataSource ds;
     
     public FileDao(DataSource ds)
     {
+        Guard.checkDataSourceNotNull(ds);
         this.ds = ds;
-        if (ds==null)
-        {
-            throw new NullPointerException("Given DataSource is null!");
-        }
     }
 
     public void deleteBody(Integer fileId) throws SQLException
@@ -33,21 +34,14 @@ public class FileDao
         Connection conn = null;
         try {
             conn = ds.getConnection();
-            
-            if (conn==null)
-            {
-                throw new SQLException("Can't obtain a connection.");
-            }
+            Guard.checkConnectionNotNull(conn);
             
             PreparedStatement ps = conn.prepareStatement("delete from FILE_BODIES where id=?");
             ps.setInt(1, fileId);
             ps.execute();
             
         } finally {
-            if (conn!=null)
-            {
-                conn.close();
-            }
+            JdbcDaoHelper.safeClose(conn, log);
         }
     }
     
@@ -56,11 +50,7 @@ public class FileDao
         Connection conn = null;
         try {
             conn = ds.getConnection();
-            
-            if (conn==null)
-            {
-                throw new SQLException("Can't obtain a connection.");
-            }
+            Guard.checkConnectionNotNull(conn);
             
             PreparedStatement ps = conn.prepareStatement("insert into FILE_BODIES (id, file_id, data) " +
                                                          "values (null, ?,?)");
@@ -70,18 +60,15 @@ public class FileDao
             
             ps.execute();
             ResultSet rs = ps.getGeneratedKeys();
-            if (!rs.next())
-            {
+
+            if (!rs.next()) {
                 throw new SQLException("Hmm.. No keys were generated!");
             }
             
             return rs.getInt(1);
             
         } finally {
-            if (conn!=null)
-            {
-                conn.close();
-            }
+            JdbcDaoHelper.safeClose(conn, log);
         }
     }
     
@@ -90,14 +77,15 @@ public class FileDao
         Connection conn = null;
         try {
             conn = ds.getConnection();
+            Guard.checkConnectionNotNull(conn);
+
             PreparedStatement ps = conn.prepareStatement("select * from FILE_BODIES where file_id=?");
             
             ps.setInt(1, fileId);
             
             ResultSet rs = ps.executeQuery();
             
-            if (!rs.next())
-            {
+            if (!rs.next()) {
                 throw new FileNotFoundException("File with id="+fileId+" not found!");
             }
             
@@ -106,11 +94,10 @@ public class FileDao
             IOUtils.copyLarge(is, os);
             
         } finally {
-            if (conn!=null)
-            {
-                conn.close();
-            }
+            JdbcDaoHelper.safeClose(conn, log);
         }
     }
+
+
 
 }

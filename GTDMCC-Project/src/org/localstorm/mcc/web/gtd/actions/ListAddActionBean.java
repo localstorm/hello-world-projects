@@ -29,7 +29,6 @@ public class ListAddActionBean extends ContextViewActionBean
     public void doPostValidationStuff() throws Exception {
         if ( getContext().getValidationErrors().hasFieldErrors() )
         {
-            System.out.println("Forced Filling contextlist");
             super.filling();
         }
     }

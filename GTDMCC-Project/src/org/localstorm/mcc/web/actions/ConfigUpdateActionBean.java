@@ -34,13 +34,13 @@ public class ConfigUpdateActionBean extends BaseActionBean {
     @ValidationMethod(when=ValidationState.NO_ERRORS) 
     public void validatePassword(ValidationErrors errors) { 
         UserManager um = this.getUserManager();
-        if (um.login(this.getUser().getLogin(), oldPassword)==null)
-        {
+
+        if (um.login(this.getUser().getLogin(), oldPassword)==null) {
             errors.add(IncommingParameters.OLD_PASSW, 
                        new SimpleError("Old passwrod is not valid."));
         }
-        if (!password.equals(password2))
-        {
+
+        if (!password.equals(password2)) {
             errors.add(IncommingParameters.PASSWORD, 
                        new SimpleError("New password values are not the same."));
         }

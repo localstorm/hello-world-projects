@@ -32,8 +32,6 @@ public class ContextEraseActionBean extends GtdBaseActionBean
     @DefaultHandler
     public Resolution deletingContext() throws Exception {
         
-        System.out.println("Deleting/Undeleting context:" +contextId);
-        
         ContextManager cm = getContextManager();
         Context ctx = cm.findById(getContextId());
         cm.remove(ctx);

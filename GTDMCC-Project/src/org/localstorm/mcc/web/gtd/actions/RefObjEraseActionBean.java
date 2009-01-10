@@ -33,8 +33,6 @@ public class RefObjEraseActionBean extends GtdBaseActionBean
     @DefaultHandler
     public Resolution deletingRefObj() throws Exception {
         
-       System.out.println("Deleting/Undeleting reference object:" +objectId);
-        
        RefObjectManager rom = super.getRefObjectManager();
        ReferencedObject ro = rom.findById(this.getObjectId());
        rom.remove(ro);

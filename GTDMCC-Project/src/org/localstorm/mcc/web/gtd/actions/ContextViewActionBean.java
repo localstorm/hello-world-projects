@@ -87,8 +87,6 @@ public class ContextViewActionBean extends GtdBaseActionBean
             }
         }
     
-        
-        System.out.println("Viewing context:" +contextId);
         return new ForwardResolution(Views.VIEW_CTX);
     }
     

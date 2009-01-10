@@ -28,7 +28,6 @@ public class ContextAddActionBean extends ContextsEditActionBean {
     public void doPostValidationStuff() {
         if ( getContext().getValidationErrors().hasFieldErrors() )
         {
-            System.out.println("Forced Filling contextlist");
             super.filling();
         }
     }
