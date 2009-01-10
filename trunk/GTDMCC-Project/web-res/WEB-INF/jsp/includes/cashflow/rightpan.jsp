@@ -26,5 +26,9 @@
                     <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
                     <td><a href="<c:url value="/actions/NetWealthHistoryReport"/>">Net wealth history</a></td>
                 </tr>
+                <tr>
+                    <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
+                    <td><a href="<c:url value="/actions/BalanceHistoryReport"/>">Balance history</a></td>
+                </tr>
             </table>
 </div>

@@ -159,6 +159,12 @@
                 <servlet-class>org.localstorm.mcc.web.cashflow.servlets.NetWealthHistoryChartServlet</servlet-class>
                 <load-on-startup>2</load-on-startup>
         </servlet>
+
+        <servlet>
+                <servlet-name>BalanceHistoryChartServlet</servlet-name>
+                <servlet-class>org.localstorm.mcc.web.cashflow.servlets.BalanceHistoryChartServlet</servlet-class>
+                <load-on-startup>2</load-on-startup>
+        </servlet>
         
         <servlet>
                 <servlet-name>AssetCostChartServlet</servlet-name>
@@ -201,6 +207,11 @@
         <servlet-mapping>
                 <servlet-name>NetWealthHistoryChartServlet</servlet-name>
                 <url-pattern>/chart/netWealthHistory.png</url-pattern>
+        </servlet-mapping>
+
+        <servlet-mapping>
+                <servlet-name>BalanceHistoryChartServlet</servlet-name>
+                <url-pattern>/chart/balanceHistory.png</url-pattern>
         </servlet-mapping>
 
         <servlet-mapping>
