@@ -71,11 +71,11 @@ import org.localstorm.mcc.ejb.Identifiable;
     ),
     @NamedQuery(
         name = Task.Queries.FIND_OLDEST_BY_CTX,
-        query= "SELECT o FROM Task o WHERE o.list.context=:ctx and o.finished=false and o.cancelled=false and o.delegated=false ORDER BY o.creation ASC"
+        query= "SELECT o FROM Task o JOIN FETCH o.list JOIN FETCH o.list.context WHERE o.list.context=:ctx and o.finished=false and o.cancelled=false and o.delegated=false ORDER BY o.creation ASC"
     ),
     @NamedQuery(
-        name = Task.Queries.FIND_SCHEDULED_BY_USER,
-        query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and (o.redline IS NOT NULL or o.deadline IS NOT NULL)"
+        name = Task.Queries.FIND_SCHEDULED_BY_USER, 
+        query= "SELECT o FROM Task o JOIN FETCH o.list JOIN FETCH o.list.context WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and (o.redline IS NOT NULL or o.deadline IS NOT NULL)"
     ),
     @NamedQuery(
         name = Task.Queries.FIND_CLEANABLE_BY_USER,
@@ -83,22 +83,22 @@ import org.localstorm.mcc.ejb.Identifiable;
     ),
     @NamedQuery(
         name = Task.Queries.FIND_DEADLINED,
-        query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and o.deadline<=:now" +
+        query= "SELECT o FROM Task o  JOIN FETCH o.list JOIN FETCH o.list.context WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and o.deadline<=:now" +
         " ORDER BY o.list.context.name, o.list.name"
     ),
     @NamedQuery(
         name = Task.Queries.FIND_DEADLINED_BY_CTX,
-        query= "SELECT o FROM Task o WHERE o.list.context=:ctx and o.finished=false and o.cancelled=false and o.deadline<=:now" +
+        query= "SELECT o FROM Task o  JOIN FETCH o.list JOIN FETCH o.list.context WHERE o.list.context=:ctx and o.finished=false and o.cancelled=false and o.deadline<=:now" +
         " ORDER BY o.list.name, o.effort"
     ),
     @NamedQuery(
         name = Task.Queries.FIND_REDLINED,
-        query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and o.redline<=:now and (o.deadline>:now or o.deadline is NULL)" +
+        query= "SELECT o FROM Task o JOIN FETCH o.list JOIN FETCH o.list.context WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and o.redline<=:now and (o.deadline>:now or o.deadline is NULL)" +
         "  ORDER BY o.list.context.name, o.list.name"
     ),
     @NamedQuery(
         name = Task.Queries.FIND_REDLINED_BY_CTX,
-        query= "SELECT o FROM Task o WHERE o.list.context=:ctx and o.finished=false and o.cancelled=false and o.redline<=:now and (o.deadline>:now or o.deadline is NULL)" +
+        query= "SELECT o FROM Task o JOIN FETCH o.list JOIN FETCH o.list.context WHERE o.list.context=:ctx and o.finished=false and o.cancelled=false and o.redline<=:now and (o.deadline>:now or o.deadline is NULL)" +
         "  ORDER BY o.list.name, o.effort"
     ),
     @NamedQuery(

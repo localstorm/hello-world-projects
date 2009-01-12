@@ -26,12 +26,12 @@ import org.localstorm.mcc.ejb.gtd.tasks.Task;
     ),
     @NamedQuery(
         name = FlightPlanToTask.Queries.FIND_TASKS_BY_PLAN,
-        query= "SELECT o.task FROM FlightPlanToTask o WHERE o.flightPlan=:flightPlan" +
+        query= "SELECT o.task FROM FlightPlanToTask o JOIN FETCH o.task.list JOIN FETCH o.task.list.context WHERE o.flightPlan=:flightPlan" +
                " ORDER BY o.task.list.context.name, o.task.list.name, o.task.effort"
     ),
     @NamedQuery(
         name = FlightPlanToTask.Queries.FIND_TASKS_BY_PLAN_AND_CTX,
-        query= "SELECT o.task FROM FlightPlanToTask o WHERE o.flightPlan=:flightPlan and o.task.list.context=:ctx" +
+        query= "SELECT o.task FROM FlightPlanToTask o JOIN FETCH o.task.list JOIN FETCH o.task.list.context WHERE o.flightPlan=:flightPlan and o.task.list.context=:ctx" +
                " ORDER BY o.task.list.name, o.task.effort"
     )
 })
