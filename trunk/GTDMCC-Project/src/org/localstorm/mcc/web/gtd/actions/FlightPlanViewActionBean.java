@@ -25,25 +25,6 @@ public class FlightPlanViewActionBean extends GtdBaseActionBean {
     private Collection<Task> archiveFlightPlanTasks;
     private Collection<Task> awaitedFlightPlanTasks;
     
-    private boolean redlinesBroken;
-    private boolean deadlinesBroken;
-
-    public boolean isDeadlinesBroken() {
-        return deadlinesBroken;
-    }
-
-    public boolean isRedlinesBroken() {
-        return redlinesBroken;
-    }
-
-    public void setRedlinesBroken(boolean redlinesBroken) {
-        this.redlinesBroken = redlinesBroken;
-    }
-
-    public void setDeadlinesBroken(boolean deadlinesBroken) {
-        this.deadlinesBroken = deadlinesBroken;
-    }
-
     public FlightPlan getFlightPlan() {
         return flightPlan;
     }
@@ -95,16 +76,12 @@ public class FlightPlanViewActionBean extends GtdBaseActionBean {
         FilterUtil.applyContextFilter(archiveFlightPlanTasks, ctxId);
         FilterUtil.applyContextFilter(awaitedFlightPlanTasks, ctxId);
         
-        TaskManager tm = this.getTaskManager();
-        this.setRedlinesBroken(!tm.findRedlinedTasks(user, null).isEmpty());
-        this.setDeadlinesBroken(!tm.findDeadlinedTasks(user, null).isEmpty());
-
         this.setAffectedContexts(this.flightPlanTasks,
                                  this.awaitedFlightPlanTasks,
                                  this.archiveFlightPlanTasks);
 
         this.setReturnPageBean(new ReturnPageBean(Pages.FPV.toString()));
-
+        
         return new ForwardResolution(Views.FPV);
     }
 
