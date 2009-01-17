@@ -15,6 +15,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.localstorm.mcc.ejb.AbstractEntity;
 import org.localstorm.mcc.ejb.Identifiable;
 import org.localstorm.mcc.ejb.gtd.contexts.Context;
 
@@ -34,7 +35,7 @@ import org.localstorm.mcc.ejb.gtd.contexts.Context;
         query= "SELECT o FROM GTDList o WHERE o.context=:context and o.archived=true  ORDER BY o.name"
     )
 })
-public class GTDList implements Identifiable, Serializable {   
+public class GTDList extends AbstractEntity implements Identifiable, Serializable {
     
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)

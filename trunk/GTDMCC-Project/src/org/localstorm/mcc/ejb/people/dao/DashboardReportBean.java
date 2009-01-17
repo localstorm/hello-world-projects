@@ -4,12 +4,14 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import org.localstorm.mcc.ejb.AbstractEntity;
 
 /**
  *
  * @author localstorm
  */
-public class DashboardReportBean {
+public class DashboardReportBean  extends AbstractEntity
+{
 
     private List<PersonWrapper> red;
     private List<PersonWrapper> yellow;

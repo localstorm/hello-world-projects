@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.localstorm.mcc.ejb.AbstractEntity;
 import org.localstorm.mcc.ejb.Identifiable;
 
 /**
@@ -18,7 +19,7 @@ import org.localstorm.mcc.ejb.Identifiable;
  */
 @Entity
 @Table(name="FILES")
-public class FileAttachment implements Identifiable, Serializable
+public class FileAttachment extends AbstractEntity implements Identifiable, Serializable
 {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)

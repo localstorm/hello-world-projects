@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import org.localstorm.mcc.ejb.AbstractEntity;
 import org.localstorm.mcc.ejb.Identifiable;
 
 /**
@@ -25,7 +26,7 @@ import org.localstorm.mcc.ejb.Identifiable;
         query= "SELECT o FROM User o WHERE o.login=:login"
     )
 })
-public class User implements Identifiable, Serializable 
+public class User  extends AbstractEntity implements Identifiable, Serializable
 {
     @Id
     @Column(name="id", unique=true, updatable=false )

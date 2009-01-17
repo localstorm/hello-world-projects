@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.localstorm.mcc.ejb.AbstractEntity;
 
 
 /**
@@ -17,7 +18,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name="NOTES")
-public class Note implements Serializable {   
+public class Note extends AbstractEntity implements Serializable {
     
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)

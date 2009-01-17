@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import org.localstorm.mcc.ejb.AbstractEntity;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 
 /**
@@ -35,7 +36,7 @@ import org.localstorm.mcc.ejb.gtd.tasks.Task;
                " ORDER BY o.task.list.name, o.task.effort"
     )
 })
-public class FlightPlanToTask implements Serializable
+public class FlightPlanToTask extends AbstractEntity implements Serializable
 {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)

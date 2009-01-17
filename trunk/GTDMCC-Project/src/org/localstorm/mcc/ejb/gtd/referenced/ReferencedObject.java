@@ -15,6 +15,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.localstorm.mcc.ejb.AbstractEntity;
 import org.localstorm.mcc.ejb.Identifiable;
 import org.localstorm.mcc.ejb.gtd.contexts.Context;
 
@@ -42,7 +43,7 @@ import org.localstorm.mcc.ejb.gtd.contexts.Context;
         query= "SELECT o FROM ReferencedObject o WHERE o.context.owner=:owner and (o.archived=true or o.context.archived=true) ORDER BY o.context.name, o.name"
     )
 })
-public class ReferencedObject implements Serializable, Identifiable 
+public class ReferencedObject extends AbstractEntity implements Serializable, Identifiable
 {   
     
     @Id

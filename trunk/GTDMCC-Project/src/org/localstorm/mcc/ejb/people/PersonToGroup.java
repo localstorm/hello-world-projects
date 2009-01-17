@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.localstorm.mcc.ejb.AbstractEntity;
 import org.localstorm.mcc.ejb.Identifiable;
 
 /**
@@ -17,7 +18,7 @@ import org.localstorm.mcc.ejb.Identifiable;
  */
 @Entity
 @Table(name="PERSONS_TO_GROUPS")
-public class PersonToGroup implements Identifiable, Serializable {
+public class PersonToGroup extends AbstractEntity implements Identifiable, Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)

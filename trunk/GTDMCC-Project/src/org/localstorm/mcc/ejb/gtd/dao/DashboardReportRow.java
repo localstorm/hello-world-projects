@@ -1,10 +1,12 @@
 package org.localstorm.mcc.ejb.gtd.dao;
 
+import org.localstorm.mcc.ejb.AbstractEntity;
+
 /**
  *
  * @author localstorm
  */
-public class DashboardReportRow {
+public class DashboardReportRow extends AbstractEntity {
     private String contextName;
     private int contextId;
     private int pending;

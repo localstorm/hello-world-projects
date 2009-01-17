@@ -3,7 +3,6 @@ package org.localstorm.mcc.web.cashflow.actions;
 import org.localstorm.mcc.web.util.RoundUtil;
 import java.math.BigDecimal;
 import java.math.MathContext;
-import java.math.RoundingMode;
 import net.sourceforge.stripes.action.After;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
@@ -11,7 +10,6 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
-import org.apache.log4j.Logger;
 import org.localstorm.mcc.ejb.cashflow.asset.Asset;
 import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
 import org.localstorm.mcc.ejb.cashflow.asset.Cost;
@@ -27,18 +25,16 @@ import org.localstorm.mcc.web.util.SessionUtil;
 @UrlBinding("/actions/UpdateAsset")
 public class AssetUpdateActionBean extends AssetViewActionBean {
 
-    private static final Logger log = Logger.getLogger(AssetUpdateActionBean.class);
-
-    @Validate( required=true)
+    @Validate( required=true, minvalue=0, maxvalue=9999999999L )
     private BigDecimal buy;
 
-    @Validate( required=false)
+    @Validate( minvalue=0, maxvalue=9999999999L )
     private BigDecimal buyFx;
 
-    @Validate( required=true)
+    @Validate( required=true, minvalue=0, maxvalue=9999999999L )
     private BigDecimal sell;
 
-    @Validate( required=false)
+    @Validate( minvalue=0, maxvalue=9999999999L )
     private BigDecimal sellFx;
 
     @Validate( required=true )

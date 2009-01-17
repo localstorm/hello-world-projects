@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import org.localstorm.mcc.ejb.AbstractEntity;
 import org.localstorm.mcc.ejb.Identifiable;
 import org.localstorm.mcc.ejb.users.User;
 
@@ -32,7 +33,7 @@ import org.localstorm.mcc.ejb.users.User;
         query= "SELECT o FROM ValuableObject o WHERE o.owner=:owner"
     )
 })
-public class ValuableObject implements Identifiable, Serializable {
+public class ValuableObject extends AbstractEntity implements Identifiable, Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)

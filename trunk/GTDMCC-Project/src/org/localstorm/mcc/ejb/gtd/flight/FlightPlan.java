@@ -15,6 +15,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.localstorm.mcc.ejb.AbstractEntity;
 import org.localstorm.mcc.ejb.Identifiable;
 import org.localstorm.mcc.ejb.users.User;
 
@@ -30,7 +31,7 @@ import org.localstorm.mcc.ejb.users.User;
         query= "SELECT o FROM FlightPlan o WHERE o.owner=:owner"
     )
 })
-public class FlightPlan implements Identifiable, Serializable
+public class FlightPlan extends AbstractEntity implements Identifiable, Serializable
 {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)

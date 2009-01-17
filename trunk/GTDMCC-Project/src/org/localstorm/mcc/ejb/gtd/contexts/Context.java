@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import org.localstorm.mcc.ejb.AbstractEntity;
 import org.localstorm.mcc.ejb.Identifiable;
 import org.localstorm.mcc.ejb.Retireable;
 import org.localstorm.mcc.ejb.users.User;
@@ -37,7 +38,7 @@ import org.localstorm.mcc.ejb.users.User;
         query= "SELECT o FROM Context o WHERE o.owner=:owner and o.archived=true"
     )
 })
-public class Context implements Identifiable, Retireable, Serializable {   
+public class Context extends AbstractEntity implements Identifiable, Retireable, Serializable {
     
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)

@@ -16,6 +16,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.localstorm.mcc.ejb.AbstractEntity;
 import org.localstorm.mcc.ejb.Identifiable;
 
 /**
@@ -50,7 +51,7 @@ import org.localstorm.mcc.ejb.Identifiable;
         query= "SELECT SUM(o.amount) FROM Operation o WHERE o.cost.valuable=:valuable"
     )
 })
-public class Operation implements Identifiable, Serializable {
+public class Operation extends AbstractEntity implements Identifiable, Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)

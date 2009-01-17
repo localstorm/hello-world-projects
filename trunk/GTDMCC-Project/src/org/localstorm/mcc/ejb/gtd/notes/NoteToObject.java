@@ -11,6 +11,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import org.localstorm.mcc.ejb.AbstractEntity;
 import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
 
 /**
@@ -29,7 +30,7 @@ import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
         query= "SELECT o FROM NoteToObject o WHERE o.refObject=:obj and o.note=:note"
     )
 })
-public class NoteToObject implements Serializable 
+public class NoteToObject extends AbstractEntity implements Serializable
 {
 
     @Id
