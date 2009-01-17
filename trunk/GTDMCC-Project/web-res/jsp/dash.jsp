@@ -132,7 +132,10 @@
             <c:if test="${gtdDashReport.totals.done>0}"><img src="<c:url value="/images/cleanup.png"/>" border="0" />&nbsp;<a onclick="return confirm('Are you sure?');" href="<c:url value="/actions/CleanupFinishedTasks" />" >Remove finished tasks</a> (<c:out value="${gtdDashReport.totals.done}"/>)&nbsp;&nbsp;&nbsp;&nbsp;</c:if>
             <c:if test="${gtdDashReport.totals.red>0 or gtdDashReport.totals.dead>0}"><img src="<c:url value="/images/warning.png"/>" border="0" />&nbsp;<a href="<c:url value="/actions/DeadlineLookupReport" >
                 <c:param name="noFilter" value="true" />
-            </c:url>" >Some tasks need your attention</a> (<c:out value="${gtdDashReport.totals.dead+gtdDashReport.totals.red}"/>)</c:if>
+            </c:url>" >Some tasks need your attention</a> (<c:out value="${gtdDashReport.totals.dead+gtdDashReport.totals.red}"/>)&nbsp;&nbsp;&nbsp;&nbsp;</c:if>
+            <c:if test="${gtdDashReport.totals.flightPlan>0}"><img src="<c:url value="/images/flight_dash.png"/>" border="0" />&nbsp;<a href="<c:url value="/actions/ViewFlightPlan">
+                <c:param name="noFilter" value="true" />
+            </c:url>" >Some tasks were appointed</a> (<c:out value="${gtdDashReport.totals.flightPlan}"/>)</c:if>
  		</div>
         </c:if>
     </div>

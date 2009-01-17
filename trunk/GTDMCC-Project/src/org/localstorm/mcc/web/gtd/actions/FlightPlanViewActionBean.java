@@ -1,7 +1,6 @@
 package org.localstorm.mcc.web.gtd.actions;
 
 import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
-import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import java.util.Collection;
 import java.util.Iterator;
@@ -24,6 +23,7 @@ public class FlightPlanViewActionBean extends GtdBaseActionBean {
     private Collection<Task> flightPlanTasks;
     private Collection<Task> archiveFlightPlanTasks;
     private Collection<Task> awaitedFlightPlanTasks;
+    private boolean noFilter;
     
     public FlightPlan getFlightPlan() {
         return flightPlan;
@@ -40,7 +40,14 @@ public class FlightPlanViewActionBean extends GtdBaseActionBean {
     public Collection<Task> getAwaitedFlightPlanTasks() {
         return awaitedFlightPlanTasks;
     }
-    
+
+    public boolean isNoFilter() {
+        return noFilter;
+    }
+
+    public void setNoFilter(boolean noFilter) {
+        this.noFilter = noFilter;
+    }
     
     @DefaultHandler
     public Resolution filling() {
@@ -70,6 +77,10 @@ public class FlightPlanViewActionBean extends GtdBaseActionBean {
             }
         }
 
+        if (this.isNoFilter()) {
+            super.setContextIdFilter(-1);
+        }
+        
         Integer ctxId = super.getContextIdFilter();
         
         FilterUtil.applyContextFilter(flightPlanTasks, ctxId);
