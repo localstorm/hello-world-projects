@@ -12,6 +12,7 @@ import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.cashflow.asset.Asset;
 import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
+import org.localstorm.mcc.ejb.cashflow.asset.MoneyMathContext;
 import org.localstorm.mcc.ejb.cashflow.asset.OperationType;
 import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
 
@@ -70,7 +71,7 @@ public class OperateAssetActionBean extends AssetViewActionBean {
         Asset     asset = am.findAssetById(super.getAssetId());
         ValuableObject vo = asset.getValuable();
 
-        MathContext rounding = new MathContext(5);
+        MathContext rounding = MoneyMathContext.ROUNDING;
 
         boolean exchange = false;
         switch (OperationType.valueOf(this.getOperationName()))

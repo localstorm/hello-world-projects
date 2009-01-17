@@ -13,6 +13,7 @@ import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.cashflow.asset.Asset;
 import org.localstorm.mcc.ejb.cashflow.asset.Cost;
+import org.localstorm.mcc.ejb.cashflow.asset.MoneyMathContext;
 import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
 import org.localstorm.mcc.ejb.users.*;
 import org.localstorm.mcc.web.SessionKeys;
@@ -98,7 +99,7 @@ public class AssetAddActionBean extends AssetsEditActionBean {
             asset.setName(name);
             asset.setValuable(vo);
             
-            MathContext rounding = new MathContext(5);
+            MathContext rounding = MoneyMathContext.ROUNDING;
             
             Cost cost = new Cost(vo);
             cost.setBuy(RoundUtil.round(this.getBuy(), rounding));

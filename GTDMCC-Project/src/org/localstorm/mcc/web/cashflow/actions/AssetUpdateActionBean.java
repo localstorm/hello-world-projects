@@ -3,6 +3,7 @@ package org.localstorm.mcc.web.cashflow.actions;
 import org.localstorm.mcc.web.util.RoundUtil;
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.math.RoundingMode;
 import net.sourceforge.stripes.action.After;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
@@ -10,9 +11,11 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
+import org.apache.log4j.Logger;
 import org.localstorm.mcc.ejb.cashflow.asset.Asset;
 import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
 import org.localstorm.mcc.ejb.cashflow.asset.Cost;
+import org.localstorm.mcc.ejb.cashflow.asset.MoneyMathContext;
 import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
 import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
@@ -24,14 +27,18 @@ import org.localstorm.mcc.web.util.SessionUtil;
 @UrlBinding("/actions/UpdateAsset")
 public class AssetUpdateActionBean extends AssetViewActionBean {
 
-    @Validate( required=true )
+    private static final Logger log = Logger.getLogger(AssetUpdateActionBean.class);
+
+    @Validate( required=true)
     private BigDecimal buy;
 
+    @Validate( required=false)
     private BigDecimal buyFx;
 
-    @Validate( required=true )
+    @Validate( required=true)
     private BigDecimal sell;
 
+    @Validate( required=false)
     private BigDecimal sellFx;
 
     @Validate( required=true )
@@ -102,7 +109,8 @@ public class AssetUpdateActionBean extends AssetViewActionBean {
         Asset asset = am.findAssetById(this.getAssetId());
         ValuableObject vo = asset.getValuable();
 
-        MathContext rounding = new MathContext(5);
+        
+        MathContext rounding = MoneyMathContext.ROUNDING;
 
         Cost cost = new Cost(vo);
         {
@@ -111,7 +119,7 @@ public class AssetUpdateActionBean extends AssetViewActionBean {
             cost.setSell(RoundUtil.round(this.getSell(), rounding));
             cost.setExchangeSell(RoundUtil.round(this.getSellFx(), rounding));
         }
-        
+
         vo.setUsedInBalance(this.isUsedInBalance());
         asset.setName(this.getName());
 

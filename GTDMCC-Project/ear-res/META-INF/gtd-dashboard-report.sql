@@ -107,7 +107,7 @@ select totals.name cname, totals.cid cid, total pending, awaited, flight, red, d
                                 JOIN (
                                     select list_id, SUM(1) lcnt from TASKS where 
                                         ((deadline is not null) and (deadline<CURRENT_TIMESTAMP)) and
-                                        ((redline is null) or (deadline>redline))
+                                        ((redline is null) or (deadline>=redline))
                                         and is_cancelled=false and is_finished=false
                                     GROUP BY list_id
                                 ) lc ON lst.id=lc.list_id
