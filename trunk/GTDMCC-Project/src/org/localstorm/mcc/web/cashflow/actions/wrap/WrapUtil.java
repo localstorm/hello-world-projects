@@ -17,6 +17,7 @@ public class WrapUtil {
                                   AssetManager am)
     {
         ValuableObject vo = ass.getValuable();
+
         return new AssetWrapper(ass, 
                                 am.getTotalAmount(vo),
                                 am.getCurrentCost(vo),

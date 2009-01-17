@@ -1,10 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package org.localstorm.mcc.ejb.cashflow.asset;
 
+import org.localstorm.mcc.ejb.AbstractEntity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -35,7 +31,7 @@ import org.localstorm.mcc.ejb.Identifiable;
         query= "SELECT o FROM Cost o WHERE o.valuable=:valuable and o.actuationDate>:minDate ORDER BY o.actuationDate DESC"
     )
 })
-public class Cost implements Identifiable, Serializable {
+public class Cost extends AbstractEntity implements Identifiable, Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)

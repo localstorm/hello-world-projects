@@ -12,6 +12,7 @@ import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
 import org.localstorm.mcc.ejb.cashflow.asset.Cost;
+import org.localstorm.mcc.ejb.cashflow.asset.MoneyMathContext;
 import org.localstorm.mcc.ejb.cashflow.asset.Target;
 import org.localstorm.mcc.ejb.cashflow.asset.TargetManager;
 import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
@@ -64,7 +65,7 @@ public class TargetUpdateActionBean extends TargetViewActionBean {
 
         ValuableObject vo = target.getValuable();
 
-        MathContext rounding = new MathContext(5);
+        MathContext rounding = MoneyMathContext.ROUNDING;
 
         Cost cost = new Cost(vo);
         {
