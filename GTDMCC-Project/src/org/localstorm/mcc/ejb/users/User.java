@@ -1,13 +1,13 @@
 package org.localstorm.mcc.ejb.users;
 
 import java.io.Serializable;
-import java.util.Random;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import org.apache.commons.lang.math.RandomUtils;
 import org.localstorm.mcc.ejb.AbstractEntity;
 import org.localstorm.mcc.ejb.Identifiable;
 
@@ -59,7 +59,7 @@ public class User  extends AbstractEntity implements Identifiable, Serializable
         this.passHash  = passHash;
         this.blocked   = false;
         this.login     = login;
-        this.id        = (new Random()).nextInt();
+        this.id        = RandomUtils.nextInt();
     }
      
     public String getFirstName() 

@@ -10,17 +10,15 @@ import org.localstorm.mcc.ejb.gtd.tasks.Task;
 public class TaskMarker {
 
     private Task task;
-    private Date date;
     private Boolean redCrossed;
     private Boolean redNonCrossed;
     private int timeRemainsCrossed;
     private int timeRemainsNonCrossed;
     private static final long MILLISECS_PER_DAY = 1000*60*60*24;
 
-    public TaskMarker(Task t, Date date)
+    public TaskMarker(Task t)
     {
         this.task = t;
-        this.date = date;
         this.redCrossed    = this.checkRedCrossed();
         this.redNonCrossed = this.checkRedNonCrossed();
         this.timeRemainsCrossed      = this.checkRemainsCrossed();

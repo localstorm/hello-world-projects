@@ -97,7 +97,7 @@ public class DeadlineLookupReportActionBean extends GtdBaseActionBean
 
         for (Task t: wrapped) {
 
-            TaskMarker tmarker = new TaskMarker(t, today);
+            TaskMarker tmarker = new TaskMarker(t);
             if (tmarker.getRedCrossed()!=null) {
                 broken.add(tmarker);
             }

@@ -65,6 +65,7 @@ public class OperateAssetActionBean extends AssetViewActionBean {
     }
 
     @DefaultHandler
+    @SuppressWarnings("fallthrough")
     public Resolution operate() throws Exception {
 
         AssetManager am = super.getAssetManager();

@@ -69,7 +69,7 @@ public final class JdbcDaoHelper
         throws SQLException
     {
         assert (rs != null && index > 0);
-        Integer value = new Integer(rs.getInt(index));
+        Integer value = rs.getInt(index);
 
         if (rs.wasNull())
         {
@@ -84,7 +84,7 @@ public final class JdbcDaoHelper
         throws SQLException
     {
         assert (rs != null && colName != null && colName.length() > 0);
-        Integer value = new Integer(rs.getInt(colName));
+        Integer value = rs.getInt(colName);
 
         if (rs.wasNull())
         {
@@ -124,7 +124,7 @@ public final class JdbcDaoHelper
         throws SQLException
     {
         assert (rs != null && index > 0);
-        Long value = new Long(rs.getLong(index));
+        Long value = rs.getLong(index);
 
         if (rs.wasNull())
         {
@@ -139,7 +139,7 @@ public final class JdbcDaoHelper
         throws SQLException
     {
         assert (rs != null && colName != null && colName.length() > 0);
-        Long value = new Long(rs.getLong(colName));
+        Long value = rs.getLong(colName);
 
         if (rs.wasNull())
         {
