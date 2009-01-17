@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import org.localstorm.mcc.ejb.AbstractEntity;
 import org.localstorm.mcc.ejb.Identifiable;
 
 /**
@@ -23,7 +24,7 @@ import org.localstorm.mcc.ejb.Identifiable;
         query= "SELECT o FROM AttributeType o ORDER BY o.name"
     )
 })
-public class AttributeType implements Identifiable, Serializable {
+public class AttributeType extends AbstractEntity implements Identifiable, Serializable {
 
 
     @Id

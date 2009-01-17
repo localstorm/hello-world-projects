@@ -37,14 +37,17 @@ public class AssetAddActionBean extends AssetsEditActionBean {
         }
     }
 
-    @Validate( required=true )
+    @Validate( required=true, minvalue=0, maxvalue=9999999999L )
     private BigDecimal buy;
 
+    @Validate( minvalue=0, maxvalue=9999999999L )
     private BigDecimal buyFx;
 
-    @Validate( required=true )
+
+    @Validate( required=true, minvalue=0, maxvalue=9999999999L )
     private BigDecimal sell;
 
+    @Validate( minvalue=0, maxvalue=9999999999L )
     private BigDecimal sellFx;
     
     public String getName() {

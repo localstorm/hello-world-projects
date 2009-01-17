@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.apache.commons.lang.StringUtils;
+import org.localstorm.mcc.ejb.AbstractEntity;
 import org.localstorm.mcc.ejb.Identifiable;
 
 /**
@@ -28,7 +29,7 @@ import org.localstorm.mcc.ejb.Identifiable;
         "ORDER BY o.person.lastName, o.person.name"
     )
 })
-public class Person implements Identifiable, Serializable {
+public class Person extends AbstractEntity implements Identifiable, Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)

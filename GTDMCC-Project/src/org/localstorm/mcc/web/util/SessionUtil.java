@@ -11,7 +11,7 @@ import org.localstorm.mcc.web.ExpirableValuesCache;
 public class SessionUtil 
 {
     private static final String EXPIRABLE_MAP = "$expAttributes$";
-    private static final long VALUE_EXPIRATION = 30*60*1000;
+    private static final long VALUE_EXPIRATION = 3600000;
 
 
     public static void clear(HttpSession sess, String key) {

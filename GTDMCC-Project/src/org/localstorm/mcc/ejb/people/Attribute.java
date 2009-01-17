@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import org.localstorm.mcc.ejb.AbstractEntity;
 import org.localstorm.mcc.ejb.Identifiable;
 
 /**
@@ -26,7 +27,7 @@ import org.localstorm.mcc.ejb.Identifiable;
         query= "SELECT o FROM Attribute o WHERE o.person=:person ORDER BY o.type.name"
     )
 })
-public class Attribute implements Identifiable, Serializable {
+public class Attribute extends AbstractEntity implements Identifiable, Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)

@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import org.localstorm.mcc.ejb.AbstractEntity;
 import org.localstorm.mcc.ejb.Identifiable;
 import org.localstorm.mcc.ejb.users.User;
 
@@ -35,7 +36,7 @@ import org.localstorm.mcc.ejb.users.User;
         query= "DELETE Person p WHERE p IN (SELECT o.person FROM PersonToGroup o WHERE o.group=:group) AND p NOT IN (SELECT o.person FROM PersonToGroup o WHERE o.group<>:group)"
     )
 })
-public class PersonGroup implements Serializable, Identifiable {
+public class PersonGroup extends AbstractEntity implements Serializable, Identifiable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)

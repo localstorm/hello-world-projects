@@ -1,20 +1,12 @@
 package org.localstorm.mcc.web.people.filter;
 
-
-import org.localstorm.mcc.ejb.gtd.referenced.RefObjectManager;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.localstorm.mcc.ejb.ContextLookup;
-import org.localstorm.mcc.ejb.gtd.contexts.Context;
-import org.localstorm.mcc.ejb.gtd.contexts.ContextManager;
 import org.localstorm.mcc.ejb.people.PersonGroup;
 import org.localstorm.mcc.ejb.people.PersonManager;
 import org.localstorm.mcc.ejb.users.User;

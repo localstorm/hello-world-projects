@@ -34,7 +34,7 @@ public class OperateAssetActionBean extends AssetViewActionBean {
     @Validate( required=true )
     private String operationName;
 
-    @Validate( required=true )
+    @Validate( required=true, minvalue=-9999999999L, maxvalue=9999999999L )
     private BigDecimal amount;
 
     @Validate( required=true )

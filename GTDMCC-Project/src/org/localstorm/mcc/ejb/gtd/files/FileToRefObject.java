@@ -11,8 +11,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import org.localstorm.mcc.ejb.AbstractEntity;
 import org.localstorm.mcc.ejb.Identifiable;
-import org.localstorm.mcc.ejb.gtd.files.FileAttachment;
 import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
 
 /**
@@ -33,7 +33,7 @@ import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
                 FileToRefObject.Properties.FILE
     )
 })
-public class FileToRefObject implements Serializable, Identifiable
+public class FileToRefObject extends AbstractEntity implements Serializable, Identifiable
 {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)

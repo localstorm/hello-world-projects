@@ -144,13 +144,6 @@ ALTER TABLE FILES_TO_OBJECTS ADD UNIQUE (file_id, object_id);
 
 ---- CASH FLOW
 
---drop table ASSETS;
---drop table TARGETS;
---drop table OPERATIONS;
---drop table COSTS;
---drop table VALUABLE_OBJECTS;
-
-
 create table VALUABLE_OBJECTS
 (
     id INT NOT NULL AUTO_INCREMENT,
@@ -205,9 +198,6 @@ create table OPERATIONS
     FOREIGN KEY (cost_id) REFERENCES COSTS(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-
---drop table HISTORICAL_VALUES
-
 create table HISTORICAL_VALUES
 (
     id INT NOT NULL AUTO_INCREMENT,
@@ -220,11 +210,7 @@ create table HISTORICAL_VALUES
     FOREIGN KEY (user_id) REFERENCES USERS(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
---drop table PERSONS_TO_GROUPS;
---drop table PERSON_GROUPS;
---drop table ATTRIBUTES;
---drop table ATTRIBUTE_TYPES;
---drop table PERSONS;
+-- PEOPLE 
 
 create table PERSONS
 (

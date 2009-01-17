@@ -16,6 +16,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.localstorm.mcc.ejb.AbstractEntity;
 import org.localstorm.mcc.ejb.Identifiable;
 
 
@@ -114,7 +115,7 @@ import org.localstorm.mcc.ejb.Identifiable;
         query= "SELECT o FROM Task o WHERE o.list=:list and o.finished=false and o.delegated=true  ORDER BY o.summary"
     )
 })
-public class Task implements Identifiable, Serializable 
+public class Task extends AbstractEntity implements Identifiable, Serializable
 {   
     
     @Id

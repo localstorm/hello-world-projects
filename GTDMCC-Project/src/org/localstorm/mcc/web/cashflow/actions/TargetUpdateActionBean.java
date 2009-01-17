@@ -29,7 +29,7 @@ public class TargetUpdateActionBean extends TargetViewActionBean {
     @Validate(required=true)
     private String name;
 
-    @Validate( required=true )
+    @Validate( required=true, minvalue=0, maxvalue=9999999999L )
     private BigDecimal buy;
 
     public void setBuy(BigDecimal buy) {

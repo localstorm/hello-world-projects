@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
+import org.localstorm.mcc.ejb.AbstractEntity;
 import org.localstorm.mcc.ejb.Identifiable;
 
 /**
@@ -33,7 +35,7 @@ import org.localstorm.mcc.ejb.Identifiable;
         query= "SELECT o FROM Asset o WHERE o.valuable.owner=:owner and o.archived = true ORDER BY o.name"
     )
 })
-public class Asset implements Identifiable, Serializable {
+public class Asset extends AbstractEntity implements Identifiable, Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)

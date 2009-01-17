@@ -49,7 +49,7 @@ public class ExpirableValuesCache<K, T> {
 
     private void checkLog() {
         Reference<? extends Object> ref = rq.poll();
-        if (ref!=null && lastCleanup<(System.currentTimeMillis()-expiration))
+        if (ref!=null && lastCleanup<(System.currentTimeMillis()-(expiration*10)))
         {
             this.reloadTrigger();
 
