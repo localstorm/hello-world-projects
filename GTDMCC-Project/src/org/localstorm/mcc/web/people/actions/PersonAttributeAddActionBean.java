@@ -33,6 +33,9 @@ public class PersonAttributeAddActionBean extends PersonViewActionBean
 
     public void setValue(String value) {
         this.value = value;
+        if (this.value!=null) {
+            this.value = this.value.trim();
+        }
     }
 
     public Integer getTypeId() {
