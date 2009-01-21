@@ -67,6 +67,15 @@
                 <filter-class>org.localstorm.mcc.web.people.filter.LazyLoadFilter</filter-class>
         </filter>
 
+        <filter>
+            <filter-name>CompressingFilter</filter-name>
+            <filter-class>org.localstorm.mcc.web.filter.compressing.CompressingFilter</filter-class>
+            <init-param>
+                <param-name>debug</param-name>
+                <param-value>true</param-value>
+            </init-param>
+        </filter>
+ 
         <!-- Mapping -->
 
         <filter-mapping>
@@ -128,6 +137,12 @@
                 <servlet-name>StripesDispatcher</servlet-name>
                 <dispatcher>REQUEST</dispatcher>
         </filter-mapping>
+
+        <filter-mapping>
+            <filter-name>CompressingFilter</filter-name>
+            <servlet-name>StripesDispatcher</servlet-name>
+        </filter-mapping>
+
 
         <servlet>
                 <servlet-name>StripesDispatcher</servlet-name>
@@ -218,7 +233,6 @@
                 <servlet-name>AssetCostChartServlet</servlet-name>
                 <url-pattern>/chart/assetCost.png</url-pattern>
         </servlet-mapping>
-
 
     <session-config>
         <session-timeout>60</session-timeout>
