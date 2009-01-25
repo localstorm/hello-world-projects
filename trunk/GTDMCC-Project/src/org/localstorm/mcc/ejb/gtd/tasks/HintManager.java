@@ -13,6 +13,7 @@ public interface HintManager extends BaseManager<Hint>
 {
     public static final String BEAN_NAME = "HintManagerBean";
 
+    public void discardHintsForTask(Task t);
     public Collection<Hint> getHintsForTask(Task t);
     public FiredHintsReportBean getFiredHintsReport(User user);
     public void updateHintsForTask(Task t);

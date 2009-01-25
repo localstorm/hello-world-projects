@@ -1,8 +1,10 @@
 package org.localstorm.mcc.web.gtd.actions;
 
 import org.localstorm.mcc.web.Constants;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Collection;
+import java.util.Map;
+import java.util.TreeMap;
 import net.sourceforge.stripes.action.After;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
@@ -11,6 +13,9 @@ import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
 
+import org.localstorm.mcc.ejb.gtd.tasks.Hint;
+import org.localstorm.mcc.ejb.gtd.tasks.HintCondition;
+import org.localstorm.mcc.ejb.gtd.tasks.HintManager;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.web.util.DateUtil;
@@ -30,6 +35,11 @@ public class TaskUpdateActionBean extends TaskViewActionBean
     
     @Validate( required=true )
     private Integer effort;
+
+    @Validate( required=true )
+    private String mode;
+
+    private String[] hints;
 
     public String getSummary() {
         return summary;
@@ -55,6 +65,22 @@ public class TaskUpdateActionBean extends TaskViewActionBean
         return effort;
     }
 
+    public String getMode() {
+        return mode;
+    }
+
+    public void setMode(String mode) {
+        this.mode = mode;
+    }
+
+    public String[] getHints() {
+        return hints;
+    }
+
+    public void setHints(String[] hints) {
+        this.hints = hints;
+    }
+    
     @After( LifecycleStage.BindingAndValidation )
     public void doPostValidationStuff() throws Exception {
         if ( getContext().getValidationErrors().hasFieldErrors() )
@@ -67,14 +93,30 @@ public class TaskUpdateActionBean extends TaskViewActionBean
     public Resolution updatingTask() throws Exception {
         SimpleDateFormat sdf = new SimpleDateFormat(Constants.DATE_FORMAT);
         
-        TaskManager tm = getTaskManager();
+        HintManager hm = super.getHintManager();
+        TaskManager tm = super.getTaskManager();
         Task t = tm.findById(super.getTaskId());
         
         t.setSummary(this.getSummary());
         t.setDetails(this.getDetails());
 
-        t.setRedline(DateUtil.parse(this.getRedline(), sdf));
-        t.setDeadline(DateUtil.parse(this.getDeadline(), sdf));
+        Mode m = Mode.valueOf(this.getMode());
+        switch(m)
+        {
+            case DATES:
+                t.setRedline(DateUtil.parse(this.getRedline(), sdf));
+                t.setDeadline(DateUtil.parse(this.getDeadline(), sdf));
+                hm.discardHintsForTask(t);
+                break;
+            case HINTS:
+                t.setRedline(null);
+                t.setDeadline(null);
+                this.setUpHints(hm, t);
+                break;
+            default:
+                throw new RuntimeException("Unexpected case!");
+        }
+
         t.setEffort(this.getEffort());
         
         tm.update(t);
@@ -94,5 +136,42 @@ public class TaskUpdateActionBean extends TaskViewActionBean
             
         return rr;
     }
-   
+
+    private void setUpHints(HintManager hm, Task t) throws Exception
+    {
+        Collection<Hint> oldHints = hm.getHintsForTask(t);
+        String[]         newHints = this.getHints();
+        if (newHints==null)
+        {
+            newHints = new String[]{};
+        }
+
+        Map<String, Boolean> newHMap = new TreeMap<String, Boolean>();
+        for (String nh: newHints)
+        {
+            newHMap.put(nh, Boolean.TRUE);
+        }
+        
+        for (Hint old: oldHints)
+        {
+            String oldHc = old.getHintCondition().toString();
+            if (!newHMap.containsKey(oldHc))
+            {
+                hm.remove(old);
+            } else {
+                newHMap.remove(oldHc);
+            }
+        }
+
+        for (String hc : newHMap.keySet())
+        {
+            hm.create(new Hint(t, HintCondition.valueOf(hc)));
+        }
+    }
+
+    public static enum Mode
+    {
+        DATES,
+        HINTS
+    }
 }
