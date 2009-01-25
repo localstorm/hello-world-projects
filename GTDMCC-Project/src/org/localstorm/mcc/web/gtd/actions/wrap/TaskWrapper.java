@@ -2,6 +2,8 @@ package org.localstorm.mcc.web.gtd.actions.wrap;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.Map;
+import java.util.TreeMap;
 import org.localstorm.mcc.ejb.gtd.lists.GTDList;
 import org.localstorm.mcc.ejb.gtd.tasks.Hint;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
@@ -16,6 +18,7 @@ public class TaskWrapper extends Task
     private Task t;
     private boolean inFlightPlan;
     private boolean hinted;
+    private Map<String, String> hints;
     
     public TaskWrapper(Task t) {
         this.t = t;
@@ -33,6 +36,13 @@ public class TaskWrapper extends Task
         this(t);
         this.setInFlightPlan(inFp);
         this.setHinted(!hints.isEmpty());
+        this.hints = new TreeMap<String, String>();
+
+        for (Hint h: hints)
+        {
+            String hc = h.getHintCondition().toString();
+            this.hints.put(hc, hc);
+        }
     }
 
     public boolean isHinted() {
@@ -192,5 +202,8 @@ public class TaskWrapper extends Task
         return EscapeUtil.forHTML(this.getDetails());
     }
 
+    public Map<String, String> getHints() {
+        return hints;
+    }
     
 }

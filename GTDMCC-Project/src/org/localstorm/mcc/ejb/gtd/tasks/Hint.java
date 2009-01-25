@@ -32,6 +32,10 @@ import org.localstorm.mcc.ejb.Identifiable;
     @NamedQuery(
         name = Hint.Queries.UPDATE_BY_TASK,
         query= "UPDATE Hint h SET h.lastUpdate=:lastUpdate WHERE h.task=:task"
+    ),
+    @NamedQuery(
+        name = Hint.Queries.DISCARD_BY_TASK,
+        query= "DELETE Hint h WHERE h.task=:task"
     )
 })
 public class Hint extends AbstractEntity implements Identifiable
@@ -51,16 +55,13 @@ public class Hint extends AbstractEntity implements Identifiable
     @Temporal(TemporalType.TIMESTAMP)
     private Date   lastUpdate;
 
-    @Transient
-    private HintCondition hintCondition;
-
     public Hint() {
     }
 
     public Hint(Task t, HintCondition hc)
     {
-        this.hintCondition = hc;
-        this.hc            = hc.toString();
+        this.task = t;
+        this.hc   = hc.toString();
         
         Calendar cal = Calendar.getInstance();
         {
@@ -71,7 +72,7 @@ public class Hint extends AbstractEntity implements Identifiable
     }
 
     public HintCondition getHintCondition() {
-        return hintCondition;
+        return HintCondition.valueOf(hc);
     }
 
     public Date getLastUpdate() {
@@ -86,16 +87,20 @@ public class Hint extends AbstractEntity implements Identifiable
         return task;
     }
 
-
     @Override
     public Integer getId() {
         return this.id;
     }
 
+    protected void setHc(String hc) {
+        this.hc = hc;
+    }
+
     public static interface Queries
     {
-        public static String FIND_BY_TASK = "findHintsByTask";
-        public static String UPDATE_BY_TASK = "updateHintsByTask";
+        public static String FIND_BY_TASK    = "findHintsByTask";
+        public static String UPDATE_BY_TASK  = "updateHintsByTask";
+        public static String DISCARD_BY_TASK = "discardHintsByTask";
     }
 
     public static interface Properties

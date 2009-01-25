@@ -61,4 +61,14 @@ public class HintManagerBean extends AbstractManager<Hint>
         tq.setParameter(Hint.Properties.TASK, t);
         tq.executeUpdate();
     }
+
+    @Override
+    public void discardHintsForTask(Task t) {
+        Query tq = em.createNamedQuery(Hint.Queries.DISCARD_BY_TASK);
+
+        tq.setParameter(Hint.Properties.TASK, t);
+        tq.executeUpdate();
+    }
+
+
 }
