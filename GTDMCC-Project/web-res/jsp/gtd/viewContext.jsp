@@ -78,7 +78,7 @@
     <p><a title="Pin/Unpin" href="<c:url value="/actions/ResolveList">
                     <c:param name="listId" value="${list.id}" />
                     <c:param name="action" value="PIN" />
-                 </c:url>"><img border="0" src="<c:url value="/images/pin_on.png"/>"/></a>&nbsp;<span><a href="<c:url value="/actions/ViewList">
+                 </c:url>"><img src="<c:url value="/images/pin_on.png"/>"/></a>&nbsp;<span><a href="<c:url value="/actions/ViewList">
                                 <c:param name="listId" value="${list.id}" />
                  </c:url>"><c:out value="${list.name}"/></a></span></p>
 </c:forEach>    
@@ -96,7 +96,7 @@
         <p><a href="<c:url value="/actions/ResolveList">
                         <c:param name="listId" value="${list.id}" />
                         <c:param name="action" value="PIN" />
-                    </c:url>"><img border="0" src="<c:url value="/images/pin_off.png"/>"/></a>&nbsp;<span><a href="<c:url value="/actions/ViewList">
+                    </c:url>"><img src="<c:url value="/images/pin_off.png"/>"/></a>&nbsp;<span><a href="<c:url value="/actions/ViewList">
                                 <c:param name="listId" value="${list.id}" />
                     </c:url>"><c:out value="${list.name}"/></a></span></p>
         <table width="100%">
@@ -107,15 +107,15 @@
                     <a href="<c:url value="/actions/ResolveList">
                                 <c:param name="listId" value="${list.id}" />
                                 <c:param name="action" value="COPY" />
-                             </c:url>" title="Cut"><img alt="cut" src="<c:url value="/images/cut.png"/>" border="0" /></a>
+                             </c:url>" title="Cut"><img alt="cut" src="<c:url value="/images/cut.png"/>" /></a>
                     <a href="<c:url value="/actions/ResolveList">
                                 <c:param name="listId" value="${list.id}" />
                                 <c:param name="action" value="FINISH" />
-                             </c:url>" title="Finish all tasks"><img alt="finish" border="0" src="<c:url value="/images/finish.png"/>"/></a>
+                             </c:url>" title="Finish all tasks"><img alt="finish" src="<c:url value="/images/finish.png"/>"/></a>
                     <a href="<c:url value="/actions/ResolveList">
                                 <c:param name="listId" value="${list.id}" />
                                 <c:param name="action" value="CANCEL" />
-                             </c:url>" title="Cancel all tasks"><img alt="cancel" border="0" src="<c:url value="/images/cancel.png"/>"/></a>
+                             </c:url>" title="Cancel all tasks"><img alt="cancel" src="<c:url value="/images/cancel.png"/>"/></a>
                 </nobr>
                 </td>
             </tr>
@@ -135,7 +135,7 @@
         <p><a href="<c:url value="/actions/ResolveList">
                         <c:param name="listId" value="${list.id}" />
                         <c:param name="action" value="UNRESOLVE" />
-                    </c:url>" title="Undo"><img alt="Undo" border="0" src="<c:url value="/images/deleted.png"/>"/></a>
+                    </c:url>" title="Undo"><img alt="Undo" src="<c:url value="/images/deleted.png"/>"/></a>
                     <span><a href="<c:url value="/images/partially-finished.png"/>" />&nbsp;<a href="<c:url value="/actions/ViewList">
                                 <c:param name="listId" value="${list.id}" />
                     </c:url>"><c:out value="${list.name}"/></a></span></p>
@@ -144,11 +144,11 @@
                 <td width="80%" ><hr/></td>
                 <td width="10%" >
                 <nobr>
-                    <a href="#" title="Cut"><img alt="cut" src="<c:url value="/images/cut.png"/>" border="0" /></a>
+                    <a href="#" title="Cut"><img alt="cut" src="<c:url value="/images/cut.png"/>" /></a>
                     <a href="<c:url value="/actions/ResolveList">
                                 <c:param name="listId" value="${list.id}" />
                                 <c:param name="action" value="ERASE" />
-                            </c:url>" title="Delete Permanently"><img alt="delete" src="<c:url value="/images/erase.png"/>" border="0" /></a>
+                            </c:url>" title="Delete Permanently"><img alt="delete" src="<c:url value="/images/erase.png"/>" /></a>
                 </nobr>
                 </td>
             </tr>

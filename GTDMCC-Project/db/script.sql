@@ -62,6 +62,15 @@ create table TASKS (
      FOREIGN KEY (list_id) REFERENCES LISTS(id) ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
+create table HINTS 
+(
+    id             INT NOT NULL AUTO_INCREMENT,
+    task_id        INT NOT NULL,
+    last_update    DATETIME not null,  
+    hint_condition TEXT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (task_id) REFERENCES TASKS(id) ON DELETE CASCADE 
+)  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 create table TASKS_TO_FLIGHT_PLANS 
 (

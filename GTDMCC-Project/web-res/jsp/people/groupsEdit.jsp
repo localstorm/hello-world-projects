@@ -47,14 +47,14 @@
         <c:forEach items="${groups}" var="group">
             <tr>
                 <td width="95%">
-                    <p><img border="0" src="<c:url value="/images/arrow.gif" />"/>
+                    <p><img src="<c:url value="/images/arrow.gif" />"/>
                                 <span><a href="<c:url value="/actions/ViewPersonGroup">
                                                     <c:param name="groupId" value="${group.id}" />
                                                </c:url>"><c:out value="${group.name}"/></a></span>
                 </td>
                 <td width="5%"> <a href="<c:url value="/actions/ToggleStatePersonGroup">
                                                     <c:param name="groupId" value="${group.id}" />
-                                               </c:url>" title="Archive"><img border="0" src="<c:url value="/images/trash.png"/>" /></a></p></td>
+                                               </c:url>" title="Archive"><img src="<c:url value="/images/trash.png"/>" /></a></p></td>
             </tr>
         </c:forEach>
     </c:if>
@@ -65,17 +65,17 @@
         <c:forEach items="${actionBean.archiveGroups}" var="group" >
         <tr>
                 <td width="95%">
-                        <p><img border="0" src="<c:url value="/images/arrow.gif"/>"/> <span><a href="<c:url
+                        <p><img src="<c:url value="/images/arrow.gif"/>"/> <span><a href="<c:url
                                     value="/actions/ViewPersonGroup">
                                         <c:param name="groupId" value="${group.id}" />
                                     </c:url>"><c:out value="${group.name}"/></a></span>
                 </td>
                 <td width="5%"><nobr><a href="<c:url value="/actions/ToggleStatePersonGroup">
                                             <c:param name="groupId" value="${group.id}" />
-                                       </c:url>" title="Unarchive"><img border="0" src="<c:url value="/images/deleted.png"/>" /></a>
+                                       </c:url>" title="Unarchive"><img src="<c:url value="/images/deleted.png"/>" /></a>
                                        <a href="<c:url value="/actions/ErasePersonGroup">
                                             <c:param name="groupId" value="${group.id}" />
-                                       </c:url>" title="Delete permanently"><img border="0" src="<c:url value="/images/erase.png"/>" /></a>
+                                       </c:url>" title="Delete permanently"><img src="<c:url value="/images/erase.png"/>" /></a>
                 </nobr>
                 </td>
         </tr>

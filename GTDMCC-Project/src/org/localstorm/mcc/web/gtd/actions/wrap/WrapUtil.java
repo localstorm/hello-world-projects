@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import org.localstorm.mcc.ejb.gtd.notes.Note;
+import org.localstorm.mcc.ejb.gtd.tasks.Hint;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 
 /**
@@ -29,6 +30,21 @@ public class WrapUtil
         }
         
         return result;
+    }
+
+    public static TaskWrapper genWrapper(Task t, Collection<Task> currentFp, Collection<Hint> hints)
+    {
+        boolean fp = false;
+        for (Task task: currentFp)
+        {
+            if (task.getId().equals(t.getId()))
+            {
+                fp = true;
+                break;
+            }
+        }
+
+        return new TaskWrapper(t, fp, hints);
     }
     
     public static Collection<NoteWrapper> genWrappers(Collection<Note> notes) 

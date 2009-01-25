@@ -54,7 +54,7 @@
         <c:forEach items="${targets}" var="target">
         <tr>
             <td width="95%">
-                <p><img border="0" src="<c:url value="/images/arrow.gif" />"/>
+                <p><img src="<c:url value="/images/arrow.gif" />"/>
                             <span><a href="<c:url value="/actions/ViewTarget">
                                                 <c:param name="targetId" value="${target.id}" />
                                            </c:url>"><c:out value="${target.name}"/></a></p></span>
@@ -62,7 +62,7 @@
             <td width="5%">
                 <a href="<c:url value="/actions/ToggleStateTarget">
                                                 <c:param name="targetId" value="${target.id}" />
-                                           </c:url>" title="Archive"><img border="0" src="<c:url value="/images/trash.png"/>" /></a>
+                                           </c:url>" title="Archive"><img src="<c:url value="/images/trash.png"/>" /></a>
             </td>
         </tr>
         </c:forEach>
@@ -75,7 +75,7 @@
         <c:forEach items="${actionBean.archiveAssets}" var="asset">
          <tr>
                     <td width="95%">
-                            <p><img border="0" src="<c:url value="/images/arrow.gif"/>"/> <span><a href="<c:url
+                            <p><img src="<c:url value="/images/arrow.gif"/>"/> <span><a href="<c:url
                                         value="/actions/ViewAsset">
                                             <c:param name="assetId" value="${asset.id}" />
                                         </c:url>"><c:out value="${asset.name}"/></a></span>
@@ -83,10 +83,10 @@
                     <td width="5%"><c:if test="${asset.amount eq 0}">
                                         <nobr><a href="<c:url value="/actions/ToggleStateAsset">
                                                 <c:param name="assetId" value="${asset.id}" />
-                                           </c:url>" title="Unarchive"><img border="0" src="<c:url value="/images/deleted.png"/>" /></a>
+                                           </c:url>" title="Unarchive"><img src="<c:url value="/images/deleted.png"/>" /></a>
                                            <a href="<c:url value="/actions/EraseAsset">
                                                 <c:param name="assetId" value="${asset.id}" />
-                                           </c:url>" title="Delete permanently"><img border="0" src="<c:url value="/images/erase.png"/>" /></a>
+                                           </c:url>" title="Delete permanently"><img src="<c:url value="/images/erase.png"/>" /></a>
                                         </nobr>
                                     </c:if>
                     </td>

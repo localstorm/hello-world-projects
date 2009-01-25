@@ -22,13 +22,16 @@ public class GtdReporterBean implements GtdReporterLocal, GtdReporterRemote {
     public DashboardReportBean getDashboardReport(User user) {
 
         GtdReportsDao grd = new GtdReportsDao(ds);
-
+        
         try {
-            return grd.getDashboardReport(user);
+            long t1 = System.currentTimeMillis();
+            DashboardReportBean drb = grd.getDashboardReport(user);
+            System.out.println("FUZZ:"+(System.currentTimeMillis()-t1));
+            return drb;
         }catch(SQLException e) {
             throw new RuntimeException(e);
         }
+        
     }
-
     
 }

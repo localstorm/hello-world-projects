@@ -2,7 +2,7 @@
 body{padding:0px; margin:0px; background:url(../images/mainbg.gif) 0 0 repeat-x #fff; color:#5E5E5E; font:13px/18px Arial, Helvetica, sans-serif;}
 div, p, ul, h2, h3, img{padding:0px; margin:0px;}
 ul{list-style-type:none;}
-
+img{border:none;}
 /*----TOP PANEL----*/
 #topPan{width:1250px; height:158px; position:relative; margin:0 auto; background:url(../images/topPan-bg.gif) 0 0 repeat-x #15AEFD; color:#fff; padding:0px;}
 #topPan img.logo{width:245px; height:37px; position:absolute; top:33px; left:43px;}
@@ -220,3 +220,6 @@ ul{list-style-type:none;}
 div.dashToolBox {
 	margin: 6px 0px 0px 16px;
 }
+
+table tr.show {}
+table tr.hide {display:none;}

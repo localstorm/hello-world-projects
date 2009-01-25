@@ -59,5 +59,24 @@ function show(id, focusId)
   focus(focusId);
 }
 
+function show_tr(id) {
+  if (browserType == "gecko" || browserType == "opera")
+     document.poppedLayer = eval('document.getElementById("'+id+'")');
+  else if (browserType == "ie")
+     document.poppedLayer = eval('document.getElementById("'+id+'")');
+  else
+     document.poppedLayer = eval('document.layers["'+id+'"]');
+  document.poppedLayer.style.display = '';
+}
+
+function hide_tr(id) {
+  if (browserType == "gecko" || browserType == "opera")
+     document.poppedLayer = eval('document.getElementById("'+id+'")');
+  else if (browserType == "ie")
+     document.poppedLayer = eval('document.getElementById("'+id+'")');
+  else
+     document.poppedLayer = eval('document.layers["'+id+'"]');
+  document.poppedLayer.style.display = 'none';
+}
 
 

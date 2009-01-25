@@ -25,7 +25,7 @@
         <td align="right" ><c:out value="${op.operationDate}" /></td>
         <td align="center" ><a onclick="return confirm('Are you sure?');" title="Revoke operation" href="<c:url value="/actions/RevokeOperation">
                                         <c:param name="operationId" value="${op.id}" />
-                                     </c:url>"><img border="0" src="<c:url value="/images/revoke.png"/>" /></a></td>
+                                     </c:url>"><img src="<c:url value="/images/revoke.png"/>" /></a></td>
     </tr>
 </c:forEach>
 </table>

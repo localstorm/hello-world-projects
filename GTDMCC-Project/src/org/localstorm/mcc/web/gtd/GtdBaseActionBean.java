@@ -17,6 +17,7 @@ import org.localstorm.mcc.ejb.gtd.lists.ListManager;
 import org.localstorm.mcc.ejb.gtd.notes.NoteManager;
 import org.localstorm.mcc.ejb.gtd.referenced.RefObjectManager;
 import org.localstorm.mcc.ejb.gtd.tasks.Effort;
+import org.localstorm.mcc.ejb.gtd.tasks.HintManager;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.web.BaseActionBean;
@@ -32,6 +33,10 @@ public class GtdBaseActionBean extends BaseActionBean {
 
     public Effort[] getEfforts() {
         return Effort.values();
+    }
+
+    public HintManager getHintManager() {
+        return ContextLookup.lookup(HintManager.class, HintManager.BEAN_NAME);
     }
 
     protected ContextManager getContextManager() {

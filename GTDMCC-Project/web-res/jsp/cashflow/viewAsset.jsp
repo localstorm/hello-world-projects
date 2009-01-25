@@ -243,19 +243,19 @@
         <table width="100%" border="0px">
             <tr>
                 <td align="left" border="0px">
-                    <a href="#" onclick="show('buyDiv', 'buy-amount-id'); hide('buyFxDiv'); hide('sellFxDiv'); hide('sellDiv'); return false"><img border="0" src="<c:url value="/images/buy.png"/>"/></a>
+                    <a href="#" onclick="show('buyDiv', 'buy-amount-id'); hide('buyFxDiv'); hide('sellFxDiv'); hide('sellDiv'); return false"><img src="<c:url value="/images/buy.png"/>"/></a>
                     <c:if test="${not empty actionBean.assetResult.currentCost.exchangeBuy}">
-                        <a href="#" onclick="show('buyFxDiv', 'buyFx-amount-id'); hide('buyDiv'); hide('sellFxDiv'); hide('sellDiv'); return false"><img border="0" src="<c:url value="/images/exchange_buy.png"/>"/></a>
+                        <a href="#" onclick="show('buyFxDiv', 'buyFx-amount-id'); hide('buyDiv'); hide('sellFxDiv'); hide('sellDiv'); return false"><img src="<c:url value="/images/exchange_buy.png"/>"/></a>
                     </c:if>
-                    <a href="#" onclick="show('sellDiv', 'sell-amount-id'); hide('buyFxDiv'); hide('sellFxDiv'); hide('buyDiv');  return false"><img border="0"src="<c:url value="/images/sell.png"/>"/></a>
+                    <a href="#" onclick="show('sellDiv', 'sell-amount-id'); hide('buyFxDiv'); hide('sellFxDiv'); hide('buyDiv');  return false"><img src="<c:url value="/images/sell.png"/>"/></a>
                     <c:if test="${not empty actionBean.assetResult.currentCost.exchangeSell}">
-                        <a href="#" onclick="show('sellFxDiv', 'sellFx-amount-id'); hide('buyFxDiv'); hide('buyDiv'); hide('sellDiv'); return false"><img border="0" src="<c:url value="/images/exchange_sell.png"/>"/></a>
+                        <a href="#" onclick="show('sellFxDiv', 'sellFx-amount-id'); hide('buyFxDiv'); hide('buyDiv'); hide('sellDiv'); return false"><img src="<c:url value="/images/exchange_sell.png"/>"/></a>
                     </c:if>
                 </td>
                 <td align="right"  border="0px">
                     <a href="<c:url value="/actions/ViewAssetCostHistory">
                                 <c:param name="assetId" value="${actionBean.assetResult.id}"/>
-                        </c:url>"><img border="0" src="<c:url value="/images/history.png"/>"/></a>
+                        </c:url>"><img src="<c:url value="/images/history.png"/>"/></a>
                 </td>
             </tr>
         </table>

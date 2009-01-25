@@ -5,6 +5,21 @@
 
 <h2><span>TASK</span> details</h2>
 
+<script type="text/javascript">
+    function hints()
+    {
+        show('hintsDiv');
+        hide('datesDiv');
+        /*hide('dates2Div');*/
+    }
+
+    function dates()
+    {
+        hide('hintsDiv');
+        show('datesDiv');
+        /*show('dates2Div');*/
+    }
+</script>
 <stripes:form action="/actions/UpdateTask" focus="summary" name="taskForm" >
 <stripes:errors/>
 <stripes:hidden name="taskId" value="${actionBean.taskResult.id}" />
@@ -32,17 +47,57 @@
     </th>
 </tr>
 <tr>
-    <td colspan="2"> <stripes:textarea rows="4" style="width: 100%;" name="summary" value="${actionBean.taskResult.summary}"/></td>
+    <td colspan="2"><stripes:textarea rows="4" style="width: 100%;" name="summary" value="${actionBean.taskResult.summary}"/></td>
 </tr>
 <tr>
     <th colspan="2" align="left">Details:</th>
 </tr>
 <tr>
-    <td colspan="2"><stripes:textarea rows="10" style="width: 100%;" name="details" value="${actionBean.taskResult.details}"/></td>
+    <td colspan="2"><stripes:textarea rows="6" style="width: 100%;" name="details" value="${actionBean.taskResult.details}"/></td>
 </tr>
 <tr>
-    <th colspan="2" align="left">Dates:</th>
+    <th colspan="2" align="left">
+        Dates (<a href="#">Hints</a>):
+    </th>
 </tr>
+<%--tr <c:if test="${not actionBean.taskResult.hinted}">style="display: none;"</c:if> id="hintsTR">
+    <td colspan="2">
+        <table width="100%" border="1px">
+            <tr>
+                <td><stripes:checkbox name="hints" />&nbsp;Hint every year</td>
+                <td><stripes:checkbox name="hints" />&nbsp;Hint every Sunday</td>
+            </tr>
+            <tr>
+                <td><stripes:checkbox name="hints" />&nbsp;Hint every month</td>
+                <td><stripes:checkbox name="hints" />&nbsp;Hint every Monday</td>
+            </tr>
+            <tr>
+                <td><stripes:checkbox name="hints" />&nbsp;Hint every week</td>
+                <td><stripes:checkbox name="hints" />&nbsp;Hint every Tuesday</td>
+            </tr>
+            <tr>
+                <td><stripes:checkbox name="hints" />&nbsp;Hint every day</td>
+                <td><stripes:checkbox name="hints" />&nbsp;Hint every Wednesday</td>
+            </tr>
+            <tr>
+                <td><stripes:checkbox name="hints" />&nbsp;Hint after the weekend</td>
+                <td><stripes:checkbox name="hints" />&nbsp;Hint every Thursday</td>
+            </tr>
+            <tr>
+                <td><stripes:checkbox name="hints" />&nbsp;Hint at the weekend</td>
+                <td><stripes:checkbox name="hints" />&nbsp;Hint every Friday</td>
+            </tr>
+            <tr>
+                <td><stripes:checkbox name="hints" />&nbsp;Hint at Sun,Sat.</td>
+                <td><stripes:checkbox name="hints" />&nbsp;Hint every Saturday</td>
+            </tr>
+            <tr>
+                <td><stripes:checkbox name="hints" />&nbsp;Hint at Mon-Fri</td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+    </td>
+</tr--%>
 <tr>
     <td>
         <table width="100%">

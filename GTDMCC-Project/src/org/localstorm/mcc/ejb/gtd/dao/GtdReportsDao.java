@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 import org.apache.log4j.Logger;
 import org.localstorm.mcc.ejb.dao.Guard;
 import org.localstorm.mcc.ejb.dao.JdbcDaoHelper;
+import org.localstorm.mcc.ejb.dao.PreparedStatementsCache;
 import org.localstorm.mcc.ejb.dao.QueriesLoader;
 import org.localstorm.mcc.ejb.users.User;
 
@@ -17,6 +18,7 @@ import org.localstorm.mcc.ejb.users.User;
 public class GtdReportsDao {
 
     private static final Logger log = Logger.getLogger(GtdReportsDao.class);
+    private static final PreparedStatementsCache cache = new PreparedStatementsCache();
 
     public static final String AWAITED_TASKS    = "awaited";
     public static final String CONTEXT_ID       = "cid";
@@ -32,6 +34,8 @@ public class GtdReportsDao {
     public static final String DIFFICULT_TASKS  = "effort4";
     public static final String VERY_DIFFICULT_TASKS  = "effort5";
 
+    
+
     private DataSource ds;
 
     public GtdReportsDao(DataSource ds)
@@ -42,6 +46,7 @@ public class GtdReportsDao {
 
     public DashboardReportBean getDashboardReport(User u) throws SQLException
     {
+
         QueriesLoader ql = QueriesLoader.getInstance();
         String    rptSql = ql.getQuery(QueriesLoader.GTD_DASHBOARD_REPORT);
 
@@ -49,6 +54,7 @@ public class GtdReportsDao {
         try {
             conn = ds.getConnection();
             Guard.checkConnectionNotNull(conn);
+
 
             PreparedStatement ps = conn.prepareStatement(rptSql);
 
@@ -98,7 +104,7 @@ public class GtdReportsDao {
 
                 drb.addReportRow(row);
             }
-
+            
             return drb;
         } finally {
             JdbcDaoHelper.safeClose(conn, log);

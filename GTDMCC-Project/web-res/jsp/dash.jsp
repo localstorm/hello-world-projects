@@ -132,11 +132,11 @@
                       gtdDashReport.totals.dead>0 or
                       gtdDashReport.totals.flightPlan>0}">
         <div align="left" class="dashToolBox">
-            <c:if test="${gtdDashReport.totals.done>0}"><img src="<c:url value="/images/cleanup.png"/>" border="0" />&nbsp;<a onclick="return confirm('Are you sure?');" href="<c:url value="/actions/CleanupFinishedTasks" />" >Remove finished tasks</a> (<c:out value="${gtdDashReport.totals.done}"/>)&nbsp;&nbsp;&nbsp;&nbsp;</c:if>
-            <c:if test="${gtdDashReport.totals.red>0 or gtdDashReport.totals.dead>0}"><img src="<c:url value="/images/warning.png"/>" border="0" />&nbsp;<a href="<c:url value="/actions/DeadlineLookupReport" >
+            <c:if test="${gtdDashReport.totals.done>0}"><img src="<c:url value="/images/cleanup.png"/>" />&nbsp;<a onclick="return confirm('Are you sure?');" href="<c:url value="/actions/CleanupFinishedTasks" />" >Remove finished tasks</a> (<c:out value="${gtdDashReport.totals.done}"/>)&nbsp;&nbsp;&nbsp;&nbsp;</c:if>
+            <c:if test="${gtdDashReport.totals.red>0 or gtdDashReport.totals.dead>0}"><img src="<c:url value="/images/warning.png"/>" />&nbsp;<a href="<c:url value="/actions/DeadlineLookupReport" >
                 <c:param name="noFilter" value="true" />
             </c:url>" >Some tasks need your attention</a> (<c:out value="${gtdDashReport.totals.dead+gtdDashReport.totals.red}"/>)&nbsp;&nbsp;&nbsp;&nbsp;</c:if>
-            <c:if test="${gtdDashReport.totals.flightPlan>0}"><img src="<c:url value="/images/flight_dash.png"/>" border="0" />&nbsp;<a href="<c:url value="/actions/ViewFlightPlan">
+            <c:if test="${gtdDashReport.totals.flightPlan>0}"><img src="<c:url value="/images/flight_dash.png"/>" />&nbsp;<a href="<c:url value="/actions/ViewFlightPlan">
                 <c:param name="noFilter" value="true" />
             </c:url>" >Some tasks were appointed</a> (<c:out value="${gtdDashReport.totals.flightPlan}"/>)</c:if>
  		</div>
@@ -144,15 +144,20 @@
     </div>
 </div>
 
-<%--div id="dashGTD2Pan">
-    <h2><span>Daily Tasks</span> pane</h2>
-	<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+22)</p>
-		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Пафнутьев Ш. И.</a> (+54)</p>
-		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+90)</p>
-		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+22)</p>
-		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Пафнутьев Ш. И.</a> (+54)</p>
-		<p><img src="<c:url value="/images/person.png" />" /> <a href="#">Ваня Пупкин</a> (+90)</p>
-</div--%>
+<c:if test="${not empty firedHintsReport.fired}">
+    <div id="dashGTD2Pan">
+        <h2><span>Hinted Tasks</span> pane</h2>
+        <c:forEach items="${firedHintsReport.fired}" var="taskStub">
+            <p><a href="<c:url value="/actions/UnhintTask">
+                <c:param name="taskId" value="${taskStub.id}" />
+                <c:param name="returnPageToken" value="${returnPageToken}" />
+            </c:url>"><img src="<c:url value="/images/unhint.png"/>"/></a>&nbsp;<a href="<c:url value="/actions/ViewTask">
+                <c:param name="taskId" value="${taskStub.id}" />
+                <c:param name="returnPageToken" value="${returnPageToken}" />
+            </c:url>"><c:out value="${taskStub.summary}"/></a></p>
+        </c:forEach>
+    </div>
+</c:if>
 
 <%@ include file="/WEB-INF/jsp/includes/foot.jsp" %>
 
