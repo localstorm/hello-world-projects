@@ -7,7 +7,7 @@
 <div align="right" >
     <a href="<c:url value="/actions/ViewPersonGroup">
         <c:param name="groupId" value="${actionBean.groupId}" />
-    </c:url>" title="Go to parent"><img src="<c:url value="/images/parent.png" />" border="0" /></a>&nbsp;<a href="#" onclick="show('editPersonDiv', 'name-id'); return false">Edit person</a>
+    </c:url>" title="Go to parent"><img src="<c:url value="/images/parent.png" />" /></a>&nbsp;<a href="#" onclick="show('editPersonDiv', 'name-id'); return false">Edit person</a>
     <a href="<c:url value="/actions/RemovePerson">
         <c:param name="groupId" value="${actionBean.groupId}" />
         <c:param name="personId" value="${actionBean.person.id}" />
@@ -84,7 +84,7 @@
                 <c:param name="personId" value="${actionBean.person.id}"/>
                 <c:param name="attributeId" value="${attribute.id}"/>
                 <c:param name="groupId" value="${actionBean.groupId}" />
-            </c:url>"><img border="0" src="<c:url value="/images/cleanup.png"/>"/></a><img src="<c:url value="/images/attr/${attribute.type.token}.png"/>"/></nobr>
+            </c:url>"><img src="<c:url value="/images/cleanup.png"/>"/></a><img src="<c:url value="/images/attr/${attribute.type.token}.png"/>"/></nobr>
 		</td>
 		<td width="20%" align="left" valign="top">
 			<c:out value="${attribute.type.name}" />:

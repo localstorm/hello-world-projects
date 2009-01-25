@@ -8,7 +8,7 @@
     <tr>
         <td align="right">
             <c:if test="${actionBean.checkpointUpdateNeeded}">
-                <a href="<c:url value="/actions/MakeCheckpoint" />" title="Net wealth or balance changed. Checkpoint needed."><img src="<c:url value="/images/check.png"/>" border="0" /></a>
+                <a href="<c:url value="/actions/MakeCheckpoint" />" title="Net wealth or balance changed. Checkpoint needed."><img src="<c:url value="/images/check.png"/>" /></a>
             </c:if>
         </td>
     </tr>

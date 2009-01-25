@@ -1,7 +1,9 @@
 package org.localstorm.mcc.web.gtd.actions.wrap;
 
+import java.util.Collection;
 import java.util.Date;
 import org.localstorm.mcc.ejb.gtd.lists.GTDList;
+import org.localstorm.mcc.ejb.gtd.tasks.Hint;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.web.util.EscapeUtil;
 
@@ -13,16 +15,34 @@ public class TaskWrapper extends Task
 {
     private Task t;
     private boolean inFlightPlan;
+    private boolean hinted;
     
     public TaskWrapper(Task t) {
         this.t = t;
+        this.hinted = false;
+        this.inFlightPlan = false;
     }
 
     public TaskWrapper(Task t, boolean inFp) {
         this(t);
         this.setInFlightPlan(inFp);
+        this.hinted = false;
     }
 
+    public TaskWrapper(Task t, boolean inFp, Collection<Hint> hints) {
+        this(t);
+        this.setInFlightPlan(inFp);
+        this.setHinted(!hints.isEmpty());
+    }
+
+    public boolean isHinted() {
+        return hinted;
+    }
+
+    public void setHinted(boolean hinted) {
+        this.hinted = hinted;
+    }
+    
     public boolean isInFlightPlan() {
         return inFlightPlan;
     }

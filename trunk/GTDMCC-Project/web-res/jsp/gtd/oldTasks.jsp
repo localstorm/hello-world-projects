@@ -58,22 +58,22 @@
                                 <c:param name="returnPageToken" value="${returnPageToken}" />
                                 <c:param name="taskId" value="${task.id}" />
                                 <c:param name="action" value="FLIGHT" />
-                             </c:url>" title="Append To Flight Plan"><img alt="flight" border="0" src="<c:url value="/images/flight.png"/>"/></a>
+                             </c:url>" title="Append To Flight Plan"><img alt="flight" src="<c:url value="/images/flight.png"/>"/></a>
             </c:if>
             <a href="<c:url value="/actions/ViewList" >
                 <c:param name="listId" value="${task.list.id}" />
-            </c:url>" title="Open affected list"><img alt="toList" border="0" src="<c:url value="/images/toList.png"/>"/></a>
+            </c:url>" title="Open affected list"><img alt="toList" src="<c:url value="/images/toList.png"/>"/></a>
             <a href="<c:url value="/actions/ResolveTask" >
                 <c:param name="returnPageToken" value="${returnPageToken}" />
                 <c:param name="taskId" value="${task.id}" />
                 <c:param name="action" value="FINISH" />
-            </c:url>" title="Finish"><img alt="finish" border="0" src="<c:url value="/images/finish.png"/>"/></a>
+            </c:url>" title="Finish"><img alt="finish" src="<c:url value="/images/finish.png"/>"/></a>
             <a href="<c:url value="/actions/ResolveTask" >
                 <c:param name="returnPageToken" value="${returnPageToken}" />
                 <c:param name="taskId" value="${task.id}" />
                 <c:param name="action" value="CANCEL" />
-            </c:url>" title="Cancel"><img alt="cancel" border="0" src="<c:url value="/images/cancel.png"/>"/></a>
-            <a href="#" onclick="show('<c:out value="delegate-${task.id}" />', '<c:out value="rtn-${task.id}" />'); return false" title="Delegate"><img alt="delegate" border="0" src="<c:url value="/images/delegate.png"/>"/></a>
+            </c:url>" title="Cancel"><img alt="cancel" src="<c:url value="/images/cancel.png"/>"/></a>
+            <a href="#" onclick="show('<c:out value="delegate-${task.id}" />', '<c:out value="rtn-${task.id}" />'); return false" title="Delegate"><img alt="delegate" src="<c:url value="/images/delegate.png"/>"/></a>
         </nobr>
         </td>
     </tr>

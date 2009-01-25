@@ -33,7 +33,7 @@
                 <td align="right"  border="0px">
                     <a href="<c:url value="/actions/ViewTargetCostHistory">
                                 <c:param name="assetId" value="${actionBean.targetResult.id}"/>
-                        </c:url>"><img border="0" src="<c:url value="/images/history.png"/>"/></a>
+                        </c:url>"><img src="<c:url value="/images/history.png"/>"/></a>
                 </td>
             </tr>
         </table>

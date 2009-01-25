@@ -7,7 +7,7 @@
 <h2><span>LIST</span> tasks</h2>
 <div align="right" ><a href="<c:url value="/actions/ViewContext" >
                                <c:param name="contextId" value="${actionBean.listResult.context.id}" />
-                             </c:url>" title="Go to parent"><img src="<c:url value="/images/parent.png" />" border="0" /></a>&nbsp;<a href="#" onclick="show('addTaskDiv', 'summary-id'); hide('renameDiv'); return false">Add task</a>
+                             </c:url>" title="Go to parent"><img src="<c:url value="/images/parent.png" />" /></a>&nbsp;<a href="#" onclick="show('addTaskDiv', 'summary-id'); hide('renameDiv'); return false">Add task</a>
                             (<a href="#" onclick="show('renameDiv', 'newname-id'); hide('addTaskDiv'); return false"><c:out value="${actionBean.listResult.name}"/></a>)</div> 
 
 
@@ -128,30 +128,30 @@
                         <a href="<c:url value="/actions/ResolveTask">
                                     <c:param name="taskId" value="${task.id}" />
                                     <c:param name="action" value="COPY" />
-                                 </c:url>" title="Cut"><img alt="cut" src="<c:url value="/images/cut.png"/>" border="0" /></a>
+                                 </c:url>" title="Cut"><img alt="cut" src="<c:url value="/images/cut.png"/>" /></a>
                     <c:choose>
                         <c:when test="${not task.inFlightPlan}">
                             <a href="<c:url value="/actions/ResolveTask">
                                 <c:param name="taskId" value="${task.id}" />
                                 <c:param name="action" value="FLIGHT" />
-                             </c:url>" title="Append To Flight Plan"><img alt="Flight" border="0" src="<c:url value="/images/flight.png"/>"/></a>
+                             </c:url>" title="Append To Flight Plan"><img alt="Flight" src="<c:url value="/images/flight.png"/>"/></a>
                         </c:when>
                         <c:otherwise>
                             <a href="<c:url value="/actions/ResolveTask">
                                 <c:param name="taskId" value="${task.id}" />
                                 <c:param name="action" value="UNFLIGHT" />
-                             </c:url>" title="Remove From Flight Plan"><img alt="Unflight" border="0" src="<c:url value="/images/unflight.png"/>"/></a>
+                             </c:url>" title="Remove From Flight Plan"><img alt="Unflight" src="<c:url value="/images/unflight.png"/>"/></a>
                         </c:otherwise>
                     </c:choose>
                         <a href="<c:url value="/actions/ResolveTask">
                                     <c:param name="taskId" value="${task.id}" />
                                     <c:param name="action" value="FINISH" />
-                                 </c:url>" title="Finish"><img alt="finish" border="0" src="<c:url value="/images/finish.png"/>"/></a>
+                                 </c:url>" title="Finish"><img alt="finish" src="<c:url value="/images/finish.png"/>"/></a>
                         <a href="<c:url value="/actions/ResolveTask">
                                     <c:param name="taskId" value="${task.id}" />
                                     <c:param name="action" value="CANCEL" />
-                                 </c:url>" title="Cancel"><img alt="cancel" border="0" src="<c:url value="/images/cancel.png"/>"/></a>
-                        <a href="#" onclick="show('<c:out value="delegate-${task.id}" />', '<c:out value="rtn-${task.id}" />'); return false" title="Delegate"><img alt="delegate" border="0" src="<c:url value="/images/delegate.png"/>"/></a>
+                                 </c:url>" title="Cancel"><img alt="cancel" src="<c:url value="/images/cancel.png"/>"/></a>
+                        <a href="#" onclick="show('<c:out value="delegate-${task.id}" />', '<c:out value="rtn-${task.id}" />'); return false" title="Delegate"><img alt="delegate" src="<c:url value="/images/delegate.png"/>"/></a>
                     </nobr>
                     </td>
                 </tr>
@@ -176,7 +176,7 @@
             <a href="<c:url value="/actions/ResolveTask">
                             <c:param name="taskId" value="${task.id}" />
                             <c:param name="action" value="UNDELEGATE" />
-                        </c:url>" title="Not delegated"><img border="0" src="<c:url value="/images/delegated.png"/>" /></a>
+                        </c:url>" title="Not delegated"><img src="<c:url value="/images/delegated.png"/>" /></a>
               <a href="<c:url value="/actions/ViewTask">
                             <c:param name="taskId" value="${task.id}" />
                         </c:url>"><c:out value="${task.summary}"/></a>
@@ -204,7 +204,7 @@
                             <c:param name="taskId" value="${task.id}" />
                             <c:param name="action" value="UNRESOLVE" />
                         </c:url>" title="<c:choose><c:when test="${task.finished}">Not finished</c:when><c:when test="${task.cancelled}">Not cancelled</c:when><c:otherwise>Unresolve</c:otherwise></c:choose>">
-                        <img border="0" src="<c:choose><c:when test="${task.finished}"><c:url value="/images/done.png"/></c:when><c:when test="${task.cancelled}"><c:url value="/images/cancelled.png"/></c:when></c:choose>" /></a>
+                        <img src="<c:choose><c:when test="${task.finished}"><c:url value="/images/done.png"/></c:when><c:when test="${task.cancelled}"><c:url value="/images/cancelled.png"/></c:when></c:choose>" /></a>
               <a href="<c:url value="/actions/ViewTask">
                             <c:param name="taskId" value="${task.id}" />
                         </c:url>"><c:out value="${task.summary}"/></a><hr/></p>

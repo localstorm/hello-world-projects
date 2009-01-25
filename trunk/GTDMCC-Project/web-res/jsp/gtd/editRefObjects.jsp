@@ -58,14 +58,14 @@
             
 	<tr>
 		<td width="95%">
-			<p><img border="0" src="<c:url value="/images/arrow.gif" />"/>
+			<p><img src="<c:url value="/images/arrow.gif" />"/>
                         <span><c:out value="${ro.context.name}"/>:&nbsp;<a href="<c:url value="/actions/ViewRefObj">
                                             <c:param name="objectId" value="${ro.id}" />
                                        </c:url>"><c:out value="${ro.name}"/></a></span>
 		</td>
 		<td width="5%"> <a href="<c:url value="/actions/ToggleStateRefObj">
                                             <c:param name="objectId" value="${ro.id}" />
-                                       </c:url>" title="Archive"><img border="0" src="<c:url value="/images/trash.png"/>" /></a></p></td>
+                                       </c:url>" title="Archive"><img src="<c:url value="/images/trash.png"/>" /></a></p></td>
 	</tr>
         </c:forEach>
         </c:if>
@@ -76,17 +76,17 @@
             <c:forEach items="${actionBean.archiveObjects}" var="ro" >
             <tr>
                     <td width="95%">
-                            <p><img border="0" src="<c:url value="/images/arrow.gif"/>"/> 
+                            <p><img src="<c:url value="/images/arrow.gif"/>"/> 
                             <span><a href="<c:url value="/actions/ViewRefObj">
                                             <c:param name="contextId" value="${ro.id}" />
                                         </c:url>"><c:out value="${ro.name}"/></a></span>
                     </td>
                     <td width="5%"><nobr><a href="<c:url value="/actions/ToggleStateRefObj">
                                                 <c:param name="objectId" value="${ro.id}" />
-                                           </c:url>" title="Unarchive"><img border="0" src="<c:url value="/images/deleted.png"/>" /></a>
+                                           </c:url>" title="Unarchive"><img src="<c:url value="/images/deleted.png"/>" /></a>
                                            <a href="<c:url value="/actions/EraseRefObj">
                                                 <c:param name="objectId" value="${ro.id}" />
-                                           </c:url>" title="Delete permanently"><img border="0" src="<c:url value="/images/erase.png"/>" /></a>
+                                           </c:url>" title="Delete permanently"><img src="<c:url value="/images/erase.png"/>" /></a>
                     </nobr>
                     </td>
             </tr>

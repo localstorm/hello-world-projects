@@ -11,5 +11,7 @@ public enum Pages
     OLD_REPORT,  // Old tasks report
     LIST_VIEW,
     BMS_VIEW,   
-    TASK_SEARCH_SUBMIT
+    TASK_SEARCH_SUBMIT,
+    DASH
+
 }

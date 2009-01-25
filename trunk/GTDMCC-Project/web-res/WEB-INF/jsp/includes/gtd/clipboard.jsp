@@ -10,7 +10,7 @@
             &nbsp;<a href="<c:url value="/actions/ResolveList" >
                 <c:param name="listId" value="${list.id}" />
                 <c:param name="action" value="PASTE" />
-            </c:url>"><img src="<c:url value="/images/paste.png"/>" border="0" alt="paste"/></a><c:out value="${list.name}"/><br/>
+            </c:url>"><img src="<c:url value="/images/paste.png"/>" alt="paste"/></a><c:out value="${list.name}"/><br/>
         </c:forEach>
         <c:if test="${(not empty clipboard.tasks) and (not empty currList and (not empty clipboard.lists))}"><hr/></c:if>
     </c:if>
@@ -19,7 +19,7 @@
             &nbsp;<a href="<c:url value="/actions/ResolveTask" >
                 <c:param name="taskId" value="${task.id}" />
                 <c:param name="action" value="PASTE" />
-            </c:url>"><img src="<c:url value="/images/paste.png"/>" border="0" alt="paste"/></a><c:out value="${task.summary}"/><br/>
+            </c:url>"><img src="<c:url value="/images/paste.png"/>" alt="paste"/></a><c:out value="${task.summary}"/><br/>
         </c:forEach>
     </c:if>
 </div>

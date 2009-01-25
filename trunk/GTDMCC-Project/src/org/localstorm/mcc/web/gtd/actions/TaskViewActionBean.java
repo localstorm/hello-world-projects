@@ -3,16 +3,22 @@ package org.localstorm.mcc.web.gtd.actions;
 import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
 import org.localstorm.mcc.web.Constants;
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 
+import org.localstorm.mcc.ejb.gtd.flight.FlightPlan;
+import org.localstorm.mcc.ejb.gtd.flight.FlightPlanManager;
+import org.localstorm.mcc.ejb.gtd.tasks.Hint;
+import org.localstorm.mcc.ejb.gtd.tasks.HintManager;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.web.util.DateUtil;
 import org.localstorm.mcc.web.gtd.Views;
+import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
 
 /**
  *
@@ -65,9 +71,17 @@ public class TaskViewActionBean extends GtdBaseActionBean
     public Resolution filling() throws Exception {
         SimpleDateFormat sdf = new SimpleDateFormat(Constants.DATE_FORMAT);
         
-        TaskManager tm = getTaskManager();
-        
+        TaskManager        tm = super.getTaskManager();
+        FlightPlanManager fpm = super.getFlightPlanManager();
+        HintManager        hm = super.getHintManager();
+
         Task task = tm.findById(this.getTaskId());
+
+        FlightPlan        fp  = fpm.findByUser(super.getUser());
+        Collection<Task> cfpt = fpm.getTasksFromFlightPlan(fp);
+        Collection<Hint> hints=hm.getHintsForTask(task);
+
+        task = WrapUtil.genWrapper(task, cfpt, hints);
         
         super.setCurrent(task);
         

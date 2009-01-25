@@ -5,6 +5,7 @@ import net.sourceforge.stripes.action.Resolution;
 import org.localstorm.mcc.ejb.gtd.lists.GTDList;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskResolutionAction;
 import org.localstorm.mcc.web.ReturnPageBean;
+import org.localstorm.mcc.web.dashboard.actions.DashboardActionBean;
 
 /**
  *
@@ -61,6 +62,9 @@ public class NextDestinationUtil
                 break;
             case OLD_REPORT:
                 rr = new RedirectResolution(OldTasksReportActionBean.class);
+                break;
+            case DASH:
+                rr = new RedirectResolution(DashboardActionBean.class);
                 break;
             case FPV:
                 rr = new RedirectResolution(FlightPlanViewActionBean.class);
