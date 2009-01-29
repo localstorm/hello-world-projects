@@ -32,7 +32,7 @@
         </div>
         <%--c:if test="${not empty task.details}" >
              <c:out escapeXml="false" value="${task.detailsHtmlEscaped}"/>
-        </c:if-->
+        </c:if--%>
 </p>
 <div id="<c:out value="delegate-${task.id}" />" style="display: none;" >
     <stripes:form action="/actions/ResolveTask" >
