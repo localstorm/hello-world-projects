@@ -68,9 +68,9 @@
                                     <c:param name="returnPageToken" value="${returnPageToken}" />
                             </c:url>" title="Expand"><c:out value="${task.summary}" /></a>
                 </div>
-                <c:if test="${not empty task.details}" >
+                <%--c:if test="${not empty task.details}" >
                      <c:out escapeXml="false" value="${task.detailsHtmlEscaped}"/>
-                </c:if>
+                </c:if--%>
         </p>
         <div id="<c:out value="delegate-${task.id}" />" style="display: none;" >
             <stripes:form action="/actions/ResolveTask" >
@@ -155,9 +155,9 @@
                                     <c:param name="returnPageToken" value="${returnPageToken}" />
                             </c:url>" title="Expand"><c:out value="${task.summary}" /></a>
                 </div>
-                <c:if test="${not empty task.details}" >
+                <%--c:if test="${not empty task.details}" >
                      <c:out escapeXml="false" value="${task.detailsHtmlEscaped}"/>
-                </c:if>
+                </c:if-->
         </p>
         <div id="<c:out value="delegate-${task.id}" />" style="display: none;" >
             <stripes:form action="/actions/ResolveTask" >

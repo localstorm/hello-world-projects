@@ -26,11 +26,11 @@
                             <c:param name="returnPageToken" value="${returnPageToken}" />
                     </c:url>"><c:out value="${taskMarker.task.summary}" /></a>
         </div>
-        <c:if test="${not empty taskMarker.task.details}" >
+        <%--c:if test="${not empty taskMarker.task.details}" >
             <div align="center">
                 <c:out escapeXml="false" value="${taskMarker.task.detailsHtmlEscaped}"/>
             </div>
-        </c:if>
+        </c:if--%>
         </p>
         
         <c:if test="${not empty taskMarker.task.runtimeNote}" >
@@ -90,11 +90,11 @@
                             <c:param name="returnPageToken" value="${returnPageToken}" />
                     </c:url>"><c:out value="${taskMarker.task.summary}" /></a>
         </div>
-        <c:if test="${not empty taskMarker.task.details}" >
+        <%--c:if test="${not empty taskMarker.task.details}" >
             <div align="center">
                 <c:out escapeXml="false" value="${taskMarker.task.detailsHtmlEscaped}"/>
             </div>
-        </c:if>
+        </c:if--%>
         </p>
 
         <c:if test="${not empty taskMarker.task.runtimeNote}" >
