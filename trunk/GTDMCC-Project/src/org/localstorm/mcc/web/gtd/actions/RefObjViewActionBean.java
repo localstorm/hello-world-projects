@@ -1,7 +1,6 @@
 package org.localstorm.mcc.web.gtd.actions;
 
 import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
-import org.localstorm.mcc.web.BaseActionBean;
 import java.util.Collection;
 import java.util.LinkedList;
 import net.sourceforge.stripes.action.DefaultHandler;
@@ -65,8 +64,8 @@ public class RefObjViewActionBean extends GtdBaseActionBean
         Collection<Note> urlNotes     = new LinkedList<Note>();
         Collection<Note> textualNotes = new LinkedList<Note>();
         
-        this.objectFiles  = super.getFileManager().findAllAttachmentsByObject(objectResult);
-        Collection<? extends Note> notes = super.getNoteManager().findByObject(objectResult);
+        this.objectFiles  = super.getFileManager().findAllByObject(objectResult);
+        Collection<? extends Note> notes = super.getNoteManager().findAllByObject(objectResult);
         
         for (Note note: notes) {
             if (Types.TXT.equalsIgnoreCase(note.getType()))
@@ -79,10 +78,10 @@ public class RefObjViewActionBean extends GtdBaseActionBean
             }
         }
         
-        this.objectTextualNotes = WrapUtil.genWrappers(textualNotes);;
+        this.objectTextualNotes = WrapUtil.genWrappers(textualNotes);
         this.objectUrlNotes     = WrapUtil.genWrappers(urlNotes);
         
-        super.setCurrent(objectResult.getContext());
+        super.setCurrent(objectResult);
         
         return new ForwardResolution(Views.VIEW_RO);
     }

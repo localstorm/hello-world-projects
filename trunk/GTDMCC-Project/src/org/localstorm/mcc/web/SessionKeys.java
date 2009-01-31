@@ -19,4 +19,5 @@ public class SessionKeys
     public static final String TARGETS              = "targets";
     public static final String RETURN_PAGE_BEAN_REFIX = "rpb-";
     public static final String PERSON_GROUPS        = "groups";
+    public static final String CURR_OBJ             = "currRefObject";
 }

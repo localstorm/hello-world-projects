@@ -1,14 +1,15 @@
 package org.localstorm.mcc.web.gtd.actions;
 
 import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
-import org.localstorm.mcc.web.BaseActionBean;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.gtd.notes.Note;
+import org.localstorm.mcc.ejb.gtd.notes.NoteManager;
 import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
+import org.localstorm.mcc.web.Clipboard;
 
 /**
  *
@@ -43,14 +44,17 @@ public class RefObjDetachActionBean extends GtdBaseActionBean
     @DefaultHandler
     public Resolution handling() throws Exception {
         
-        ReferencedObject ro = this.getRefObjectManager().findById(this.objectId);
-        Note note           = this.getNoteManager().findById(this.noteId);
-        
-        this.getNoteManager().detachNote(note, ro);
+        ReferencedObject ro = super.getRefObjectManager().findById(this.getObjectId());
+        NoteManager nm      = super.getNoteManager();
+        Note note           = nm.findById(this.getNoteId());
+        Clipboard clip      = super.getClipboard();
+
+        clip.pickNote(this.getNoteId());
+        nm.detach(note, ro);
         
         RedirectResolution rr = new RedirectResolution(RefObjViewActionBean.class);
         {
-            rr.addParameter(RefObjViewActionBean.IncommingParameters.OBJECT_ID, this.objectId);
+            rr.addParameter(RefObjViewActionBean.IncommingParameters.OBJECT_ID, this.getObjectId());
         }
         return rr;
     }
