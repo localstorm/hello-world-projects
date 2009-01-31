@@ -12,7 +12,13 @@
                 <c:param name="action" value="PASTE" />
             </c:url>"><img src="<c:url value="/images/paste.png"/>" alt="paste"/></a><c:out value="${list.name}"/><br/>
         </c:forEach>
-        <c:if test="${(not empty clipboard.tasks) and (not empty currList and (not empty clipboard.lists))}"><hr/></c:if>
+        <c:if test="${fn:length(clipboard.lists)>1}">
+            <div align="right">
+                <a href="<c:url value="/actions/BulkPasteList" >
+                    <c:param name="contextId" value="${currContext.id}" />
+                </c:url>">Paste all</a>&nbsp;
+            </div>
+        </c:if>
     </c:if>
     <c:if test="${not empty currList}">
         <c:forEach items="${clipboard.tasks}" var="task" >
@@ -21,7 +27,16 @@
                 <c:param name="action" value="PASTE" />
             </c:url>"><img src="<c:url value="/images/paste.png"/>" alt="paste"/></a><c:out value="${task.summary}"/><br/>
         </c:forEach>
+
+        <c:if test="${fn:length(clipboard.tasks)>1}">
+            <div align="right">
+                <a href="<c:url value="/actions/BulkPasteTask" >
+                    <c:param name="listId" value="${currList.id}"/>
+                </c:url>">Paste all</a>&nbsp;
+            </div>
+        </c:if>
     </c:if>
+
 </div>
 <br/>
 </c:if>

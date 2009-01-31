@@ -48,4 +48,14 @@ public class Clipboard
     {
         this.lists.put(l.getId(), l);
     }
+
+    public void clearLists()
+    {
+        this.lists.clear();
+    }
+
+    public void clearTasks()
+    {
+        this.tasks.clear();
+    }
 }

@@ -151,7 +151,9 @@
             <p><a href="<c:url value="/actions/UnhintTask">
                 <c:param name="taskId" value="${taskStub.id}" />
                 <c:param name="returnPageToken" value="${returnPageToken}" />
-            </c:url>"><img src="<c:url value="/images/unhint.png"/>"/></a>&nbsp;<a href="<c:url value="/actions/ViewTask">
+            </c:url>"><img src="<c:url value="/images/unhint.png"/>"/></a><a href="<c:url value="/actions/ViewList">
+                <c:param name="listId" value="${taskStub.listId}" />
+            </c:url>"><img src="<c:url value="/images/gotoList.png"/>" /></a>&nbsp;<a href="<c:url value="/actions/ViewTask">
                 <c:param name="taskId" value="${taskStub.id}" />
                 <c:param name="returnPageToken" value="${returnPageToken}" />
             </c:url>"><c:out value="${taskStub.summary}"/></a></p>

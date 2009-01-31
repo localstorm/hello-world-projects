@@ -1,7 +1,6 @@
 package org.localstorm.mcc.web.gtd.actions;
 
 import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
-import org.localstorm.mcc.web.BaseActionBean;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import java.util.Collection;
