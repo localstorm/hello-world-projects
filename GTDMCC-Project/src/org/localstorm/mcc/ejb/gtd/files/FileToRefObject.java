@@ -28,7 +28,7 @@ import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
                 FileToRefObject.Properties.OBJECT
     ),
     @NamedQuery(
-        name = FileToRefObject.Queries.FIND_BY_FILE,
+        name = FileToRefObject.Queries.FIND_LINKS_BY_FILE,
         query= "SELECT o FROM FileToRefObject o WHERE o.file=:"+
                 FileToRefObject.Properties.FILE
     )
@@ -80,7 +80,7 @@ public class FileToRefObject extends AbstractEntity implements Serializable, Ide
     public static interface Queries
     {
         public static final String FIND_FILES_BY_OBJECT = "findFilesByObject";
-        public static final String FIND_BY_FILE         = "findLinksByFile";
+        public static final String FIND_LINKS_BY_FILE   = "findLinksByFile";
     }
     
     public static interface Properties 

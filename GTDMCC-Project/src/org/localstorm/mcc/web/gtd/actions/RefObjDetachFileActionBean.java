@@ -9,6 +9,7 @@ import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.gtd.files.FileAttachment;
 import org.localstorm.mcc.ejb.gtd.files.FileManager;
 import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
+import org.localstorm.mcc.web.Clipboard;
 
 /**
  *
@@ -43,15 +44,17 @@ public class RefObjDetachFileActionBean extends GtdBaseActionBean
     @DefaultHandler
     public Resolution handling() throws Exception {
         
-        FileManager fm = this.getFileManager();
-        ReferencedObject ro = this.getRefObjectManager().findById(this.objectId);
-        
-        FileAttachment fa = fm.findAttachmentById(this.getFileId());
+        FileManager fm      = super.getFileManager();
+        FileAttachment fa   = fm.findById(this.getFileId());
+        ReferencedObject ro = super.getRefObjectManager().findById(this.getObjectId());
+        Clipboard      clip = super.getClipboard();
+
+        clip.pickFile(this.getFileId());
         fm.detach(fa, ro);
         
         RedirectResolution rr = new RedirectResolution(RefObjViewActionBean.class);
         {
-            rr.addParameter(RefObjViewActionBean.IncommingParameters.OBJECT_ID, this.objectId);
+            rr.addParameter(RefObjViewActionBean.IncommingParameters.OBJECT_ID, this.getObjectId());
         }
         return rr;
     }

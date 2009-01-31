@@ -16,6 +16,7 @@ import org.localstorm.mcc.ejb.gtd.lists.GTDList;
 import org.localstorm.mcc.ejb.gtd.lists.ListManager;
 import org.localstorm.mcc.ejb.gtd.notes.NoteManager;
 import org.localstorm.mcc.ejb.gtd.referenced.RefObjectManager;
+import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
 import org.localstorm.mcc.ejb.gtd.tasks.Effort;
 import org.localstorm.mcc.ejb.gtd.tasks.HintManager;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
@@ -67,6 +68,12 @@ public class GtdBaseActionBean extends BaseActionBean {
         return ContextLookup.lookup(NoteManager.class, NoteManager.BEAN_NAME);
     }
 
+    public void setCurrent(ReferencedObject objectResult)
+    {
+        HttpSession sess = this.getSession();
+        SessionUtil.fill(sess, SessionKeys.CURR_CTX, objectResult.getContext());
+        SessionUtil.fill(sess, SessionKeys.CURR_OBJ, objectResult);
+    }
 
     protected void setCurrent(GTDList list)
     {

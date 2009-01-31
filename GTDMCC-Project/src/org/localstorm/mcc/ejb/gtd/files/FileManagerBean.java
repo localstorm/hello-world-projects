@@ -49,7 +49,7 @@ public class FileManagerBean implements FileManagerLocal
     }
 
     @Override
-    public Collection<FileAttachment> findAllAttachmentsByObject(ReferencedObject ro) {
+    public Collection<FileAttachment> findAllByObject(ReferencedObject ro) {
         Query uq = em.createNamedQuery(FileToRefObject.Queries.FIND_FILES_BY_OBJECT);
         uq.setParameter(FileToRefObject.Properties.OBJECT, ro);  
         
@@ -58,7 +58,7 @@ public class FileManagerBean implements FileManagerLocal
     }
 
     @Override
-    public FileAttachment findAttachmentById(Integer id) 
+    public FileAttachment findById(Integer id)
     {
         return em.find(FileAttachment.class, id);
     }
@@ -82,7 +82,7 @@ public class FileManagerBean implements FileManagerLocal
             FileDao fileDao = new FileDao(ds);
             fileDao.deleteBody(fa.getId());
 
-            Query uq = em.createNamedQuery(FileToRefObject.Queries.FIND_BY_FILE);
+            Query uq = em.createNamedQuery(FileToRefObject.Queries.FIND_LINKS_BY_FILE);
             uq.setParameter(FileToRefObject.Properties.FILE, fa);  
             List<FileToRefObject> links = (List<FileToRefObject>) uq.getResultList();
             
@@ -95,7 +95,22 @@ public class FileManagerBean implements FileManagerLocal
             throw new RuntimeException(e);
         }
     }
-    
+
+    @Override
+    public void reattach(FileAttachment att, ReferencedObject ro)
+    {
+        Query lq = em.createNamedQuery(FileToRefObject.Queries.FIND_LINKS_BY_FILE);
+        lq.setParameter(FileToRefObject.Properties.FILE,   att);
+
+        List<FileToRefObject> list = lq.getResultList();
+
+        for (FileToRefObject n: list)
+        {
+            n.setRefObject(ro);
+            em.merge(ro);
+        }
+    }
+
     @PersistenceContext(unitName=Constants.DEFAULT_PU)
     protected EntityManager em;
 }

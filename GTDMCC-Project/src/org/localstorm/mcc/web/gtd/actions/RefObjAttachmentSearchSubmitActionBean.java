@@ -181,11 +181,11 @@ public class RefObjAttachmentSearchSubmitActionBean extends GtdBaseActionBean
     }
 
     private Collection<FileAttachment> getFileAttachmentsByRo(ReferencedObject ro, FileManager fm) {
-        return fm.findAllAttachmentsByObject(ro);
+        return fm.findAllByObject(ro);
     }
 
     private Collection<Note> getNotesByRo(ReferencedObject ro, NoteManager nm) {
-        return nm.findByObject(ro);
+        return nm.findAllByObject(ro);
     }
 
     private String getSearchable(FileAttachment file, ReferencedObject ro) {

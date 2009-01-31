@@ -93,7 +93,7 @@ public class RefObjAttachActionBean extends RefObjViewActionBean
         
         Note note = new Note(text, this.getType());
         note.setDescription(description);
-        this.getNoteManager().createAttachedNote(note, ro);
+        this.getNoteManager().attachToObject(note, ro);
         
         RedirectResolution rr = new RedirectResolution(RefObjViewActionBean.class);
         {

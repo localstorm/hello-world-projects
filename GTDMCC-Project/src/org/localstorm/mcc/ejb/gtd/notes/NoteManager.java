@@ -12,13 +12,13 @@ public interface NoteManager
     public static final String BEAN_NAME = "NoteManagerBean";
 
     public Note findById(int noteId);
+
+    public void reattach(Note note, ReferencedObject ro);
     
-    public void updateNote(Note note);
+    public void attachToObject(Note note, ReferencedObject obj);
     
-    public void createAttachedNote(Note note, ReferencedObject obj);
+    public void detach(Note note, ReferencedObject obj);
     
-    public void detachNote(Note note, ReferencedObject obj);
-    
-    public Collection<Note> findByObject(ReferencedObject obj);
+    public Collection<Note> findAllByObject(ReferencedObject obj);
     
 }

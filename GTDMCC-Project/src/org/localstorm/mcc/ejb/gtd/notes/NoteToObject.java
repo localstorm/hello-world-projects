@@ -28,6 +28,10 @@ import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
     @NamedQuery(
         name = NoteToObject.Queries.FIND_LINKS_BY_OBJECT_AND_NOTE,
         query= "SELECT o FROM NoteToObject o WHERE o.refObject=:obj and o.note=:note"
+    ),
+    @NamedQuery(
+        name = NoteToObject.Queries.FIND_LINKS_BY_NOTE,
+        query= "SELECT o FROM NoteToObject o WHERE o.note=:note"
     )
 })
 public class NoteToObject extends AbstractEntity implements Serializable
@@ -62,9 +66,15 @@ public class NoteToObject extends AbstractEntity implements Serializable
         return refObject;
     }
 
+    public void setRefObject(ReferencedObject ro)
+    {
+        this.refObject = ro;
+    }
+
     public static class Queries {
         public static final String FIND_NOTES_BY_OBJECT = "findNotesByObject";
         public static final String FIND_LINKS_BY_OBJECT_AND_NOTE = "findLinksByObjectAndNote";
+        public static final String FIND_LINKS_BY_NOTE   = "findLinksByNote";
     }
 
     public static interface Properties

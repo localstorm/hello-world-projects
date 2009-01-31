@@ -29,7 +29,7 @@ public class FileDownloadActionBean extends GtdBaseActionBean
         HttpServletResponse resp = this.getContext().getResponse();
         FileManager fm           = this.getFileManager();
         
-        FileAttachment fa = fm.findAttachmentById(fileId);
+        FileAttachment fa = fm.findById(fileId);
         if (fa==null)
         {
             resp.sendError(HttpServletResponse.SC_NOT_FOUND);
