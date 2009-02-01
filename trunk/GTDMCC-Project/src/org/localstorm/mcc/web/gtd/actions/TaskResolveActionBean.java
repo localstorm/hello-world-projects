@@ -13,6 +13,7 @@ import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.gtd.backend.TaskResolutionLogic;
 
 /**
+ * @secure-by task Id parameter
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/ResolveTask")

@@ -28,7 +28,7 @@ import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
 import org.localstorm.mcc.web.util.FilterUtil;
 
 /**
- *
+ * @secure-by session (no security check)
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/DeadlineLookupReport")

@@ -14,9 +14,8 @@ import org.localstorm.mcc.web.cashflow.actions.wrap.AssetWrapper;
 import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
 import org.localstorm.mcc.web.util.SessionUtil;
 
-
 /**
- *
+ * @secure-by assetId parameter
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/EraseAsset")

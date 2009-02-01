@@ -18,7 +18,7 @@ import org.localstorm.mcc.web.cashflow.actions.wrap.AssetWrapper;
 import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
 
 /**
- *
+ * @secure-by session (no security checks)
  * @author localstorm
  */
 @UrlBinding("/actions/MakeCheckpoint")

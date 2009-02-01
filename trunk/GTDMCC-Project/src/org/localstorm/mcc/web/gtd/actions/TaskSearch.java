@@ -9,7 +9,7 @@ import org.localstorm.mcc.web.gtd.Views;
 
 
 /**
- *
+ * @secure-by session (no security check)
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/SearchTasks")

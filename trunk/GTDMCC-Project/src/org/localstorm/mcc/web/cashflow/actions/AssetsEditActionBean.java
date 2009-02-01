@@ -15,7 +15,7 @@ import org.localstorm.mcc.web.cashflow.Views;
 import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
 
 /**
- *
+ * @secure-by session (no security check)
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/EditAssets")

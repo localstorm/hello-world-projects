@@ -19,7 +19,7 @@ import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
- *
+ * @secure-by assetId parameter
  * @author localstorm
  */
 @UrlBinding("/actions/UpdateAsset")

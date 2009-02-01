@@ -16,7 +16,7 @@ import org.localstorm.mcc.ejb.gtd.lists.ListManager;
 import org.localstorm.mcc.web.gtd.Views;
 
 /**
- *
+ * @secure-by context id parameter
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/ViewContext")

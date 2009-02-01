@@ -6,6 +6,10 @@ import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 
+/**
+ * @secure-by session (no security checks)
+ * @author localstorm
+ */
 @UrlBinding("/actions/NetWealthHistoryReport")
 public class NetWealthHisotryReportActionBean extends CashflowBaseActionBean {
 

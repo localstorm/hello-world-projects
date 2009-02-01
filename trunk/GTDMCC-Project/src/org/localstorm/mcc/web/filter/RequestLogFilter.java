@@ -1,36 +1,30 @@
 package org.localstorm.mcc.web.filter;
 
 import java.io.IOException;
+import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-import org.localstorm.mcc.ejb.users.User;
-import org.localstorm.mcc.web.Views;
+import org.apache.log4j.Logger;
 
 /**
  *
  * @author Alexey Kuznetsov
  */
-public class AuthFilter extends SecurityCheckFilter
+public class RequestLogFilter implements Filter
 {
+    private static final Logger log = Logger.getLogger(RequestLogFilter.class);
     
-    
-    
-    public AuthFilter() {
+    public RequestLogFilter() {
     
     }
 
     @Override
     public void doFilter(ServletRequest _req, ServletResponse _res, FilterChain chain) throws IOException, ServletException {
-        User user  = super.getUser((HttpServletRequest) _req);
-            
-        if (user==null) {
-            _req.getRequestDispatcher(Views.LOGIN).forward(_req, _res);
-            return;
-        }
+        log.info("Request URI: "+((HttpServletRequest)_req).getRequestURI());
         
         chain.doFilter(_req, _res);
     }

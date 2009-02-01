@@ -11,7 +11,7 @@ import org.localstorm.mcc.ejb.cashflow.asset.Operation;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
 
 /**
- *
+ * @secure-by operationId parameter
  * @author localstorm
  */
 @UrlBinding("/actions/RevokeOperation")

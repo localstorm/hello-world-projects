@@ -11,6 +11,7 @@ import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.web.ReturnPageBean;
 
 /**
+ * @secure-by task Id parameter
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/UnhintTask")

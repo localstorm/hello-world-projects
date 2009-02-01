@@ -20,7 +20,7 @@ import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
- *
+ * @secure-by target Id
  * @author localstorm
  */
 @UrlBinding("/actions/UpdateTarget")

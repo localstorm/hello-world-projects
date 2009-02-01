@@ -13,7 +13,7 @@ import org.localstorm.mcc.web.util.SessionUtil;
 
 
 /**
- *
+ * @secure-by object Id parameter
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/EraseRefObj")

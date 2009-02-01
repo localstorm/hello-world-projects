@@ -12,7 +12,7 @@ import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
 import org.localstorm.mcc.web.Clipboard;
 
 /**
- *
+ * @secure-by fileId parameter
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/DetachFileRefObj")
@@ -61,7 +61,7 @@ public class RefObjDetachFileActionBean extends GtdBaseActionBean
 
     public static interface IncommingParameters {
         public static final String OBJECT_ID = "objectId";
-        public static final String FILE_ID = "fileId";
+        public static final String FILE_ID   = "fileId";
     }
     
 }

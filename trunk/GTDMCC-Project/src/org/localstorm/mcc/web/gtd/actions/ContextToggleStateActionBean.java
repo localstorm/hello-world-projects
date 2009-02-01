@@ -11,7 +11,7 @@ import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
- *
+ * @secure-by context id parameter
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/ToggleStateContext")
