@@ -21,7 +21,7 @@ import org.localstorm.mcc.web.util.SessionUtil;
 
 
 /**
- *
+ * @secure-by session
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/AddTarget")

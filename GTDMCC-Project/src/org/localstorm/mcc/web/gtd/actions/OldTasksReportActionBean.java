@@ -23,7 +23,7 @@ import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
 
 
 /**
- *
+ * @secure-by session (no security check)
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/OldTasksReport")

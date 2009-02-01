@@ -11,7 +11,7 @@ import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.gtd.lists.GTDList;
 
 /**
- *
+ * @secure-by context id parameter
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/AddList")

@@ -50,6 +50,12 @@
         </filter>
 
         <filter>
+                <display-name>ForceCache Filter</display-name>
+                <filter-name>ForceCacheFilter</filter-name>
+                <filter-class>org.localstorm.mcc.web.filter.ForceCacheFilter</filter-class>
+        </filter>
+
+        <filter>
                 <display-name>Lazy Load Filter</display-name>
                 <filter-name>LazyLoadFilter</filter-name>
                 <filter-class>org.localstorm.mcc.web.gtd.filter.LazyLoadFilter</filter-class>
@@ -75,8 +81,21 @@
                 <param-value>true</param-value>
             </init-param>
         </filter>
+
+        <filter>
+            <filter-name>RequestLogFilter</filter-name>
+            <filter-class>org.localstorm.mcc.web.filter.RequestLogFilter</filter-class>
+        </filter>
+
  
         <!-- Mapping -->
+
+        <filter-mapping>
+                <filter-name>RequestLogFilter</filter-name>
+                <url-pattern>/*</url-pattern>
+                <dispatcher>REQUEST</dispatcher>
+        </filter-mapping>
+
 
         <filter-mapping>
                 <filter-name>RestrictionFilter</filter-name>
@@ -111,6 +130,30 @@
         <filter-mapping>
                 <filter-name>NoCacheFilter</filter-name>
                 <url-pattern>/chart/*</url-pattern>
+                <dispatcher>REQUEST</dispatcher>
+        </filter-mapping>
+
+        <filter-mapping>
+                <filter-name>ForceCacheFilter</filter-name>
+                <url-pattern>/images/*</url-pattern>
+                <dispatcher>REQUEST</dispatcher>
+        </filter-mapping>
+
+        <filter-mapping>
+                <filter-name>ForceCacheFilter</filter-name>
+                <url-pattern>/lang/*</url-pattern>
+                <dispatcher>REQUEST</dispatcher>
+        </filter-mapping>
+
+        <filter-mapping>
+                <filter-name>ForceCacheFilter</filter-name>
+                <url-pattern>/js/*</url-pattern>
+                <dispatcher>REQUEST</dispatcher>
+        </filter-mapping>
+
+        <filter-mapping>
+                <filter-name>ForceCacheFilter</filter-name>
+                <url-pattern>/css/*</url-pattern>
                 <dispatcher>REQUEST</dispatcher>
         </filter-mapping>
 

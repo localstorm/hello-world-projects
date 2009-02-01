@@ -8,7 +8,7 @@ import net.sourceforge.stripes.action.UrlBinding;
 import org.localstorm.mcc.web.gtd.Views;
 
 /**
- *
+ * @secure-by session (no security check)
  * @author localstorm
  */
 @UrlBinding("/actions/TaskStructureReport")

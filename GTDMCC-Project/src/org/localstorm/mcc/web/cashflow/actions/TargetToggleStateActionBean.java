@@ -13,7 +13,7 @@ import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
- *
+ * @secure-by target Id
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/ToggleStateTarget")

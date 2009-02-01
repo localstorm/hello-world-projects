@@ -12,7 +12,7 @@ import org.localstorm.mcc.ejb.gtd.lists.ListManager;
 
 
 /**
- *
+ * @secure-by list id parameter
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/RenameList")

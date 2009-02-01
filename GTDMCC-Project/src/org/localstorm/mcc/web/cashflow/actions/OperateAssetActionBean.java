@@ -17,6 +17,7 @@ import org.localstorm.mcc.ejb.cashflow.asset.OperationType;
 import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
 
 /**
+ * @secure-by assetId parameter
  * @author localstorm
  */
 @UrlBinding("/actions/OperateAsset")

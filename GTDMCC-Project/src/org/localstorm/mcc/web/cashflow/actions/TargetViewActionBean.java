@@ -13,7 +13,7 @@ import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
 
 
 /**
- *
+ * @secure-by target Id
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/ViewTarget")

@@ -1,7 +1,6 @@
 package org.localstorm.mcc.web.gtd.actions;
 
 import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
-import org.localstorm.mcc.web.BaseActionBean;
 import org.localstorm.mcc.ejb.gtd.contexts.Context;
 import java.util.List;
 import net.sourceforge.stripes.action.DefaultHandler;
@@ -12,7 +11,7 @@ import net.sourceforge.stripes.action.UrlBinding;
 import org.localstorm.mcc.web.gtd.Views;
 
 /**
- *
+ * @secure-by session (no security check)
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/EditContexts")

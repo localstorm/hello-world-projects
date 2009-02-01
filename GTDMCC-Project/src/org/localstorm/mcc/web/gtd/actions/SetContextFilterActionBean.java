@@ -6,6 +6,10 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 
+/**
+ * @secure-by context Id parameter
+ * @author localstorm
+ */
 @UrlBinding("/actions/SetContextFilter")
 public class SetContextFilterActionBean extends GtdBaseActionBean {
 

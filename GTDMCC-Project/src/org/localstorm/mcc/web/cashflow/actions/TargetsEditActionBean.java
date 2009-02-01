@@ -14,7 +14,7 @@ import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
 import org.localstorm.mcc.web.cashflow.Views;
 
 /**
- *
+ * @secure-by session
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/EditTargets")

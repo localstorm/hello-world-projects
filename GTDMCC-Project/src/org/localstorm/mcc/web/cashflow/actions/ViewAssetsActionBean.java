@@ -16,6 +16,10 @@ import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.cashflow.actions.wrap.AssetWrapper;
 import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
 
+/**
+ * @secure-by session (no security check)
+ * @author localstorm
+ */
 @UrlBinding("/actions/ViewAssets")
 public class ViewAssetsActionBean extends CashflowBaseActionBean {
 

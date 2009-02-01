@@ -9,7 +9,6 @@ import org.localstorm.mcc.ejb.gtd.notes.Note;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 
 /**
- *
  * @author Alexey Kuznetsov
  */
 public class Clipboard 

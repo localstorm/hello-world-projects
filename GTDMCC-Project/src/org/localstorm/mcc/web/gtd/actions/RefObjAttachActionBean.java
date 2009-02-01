@@ -15,7 +15,7 @@ import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
 import org.localstorm.mcc.web.gtd.Types;
 
 /**
- *
+ * @secure-by object id parameter
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/AttachRefObj")

@@ -21,7 +21,7 @@ import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
 
 /**
- *
+ * @secure-by task Id parameter
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/ViewTask")

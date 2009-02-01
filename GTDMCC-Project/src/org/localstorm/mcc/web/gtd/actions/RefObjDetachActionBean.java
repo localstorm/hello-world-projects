@@ -12,7 +12,7 @@ import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
 import org.localstorm.mcc.web.Clipboard;
 
 /**
- *
+ * @secure-by object Id parameter
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/DetachRefObj")

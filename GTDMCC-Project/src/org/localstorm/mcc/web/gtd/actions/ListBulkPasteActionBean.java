@@ -13,7 +13,7 @@ import org.localstorm.mcc.ejb.gtd.lists.ListManager;
 import org.localstorm.mcc.web.Clipboard;
 
 /**
- *
+ * @secure-by context id parameter
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/BulkPasteList")

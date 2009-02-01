@@ -15,7 +15,8 @@ import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
 import org.localstorm.mcc.web.Clipboard;
 
 /**
- *
+ * Special checks for instanceId!!!
+ * @secure-by object Id parameter
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/ResolveRefObj")

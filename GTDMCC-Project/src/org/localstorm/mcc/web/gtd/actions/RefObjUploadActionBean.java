@@ -13,7 +13,7 @@ import org.localstorm.mcc.ejb.gtd.files.FileManager;
 import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
 
 /**
- *
+ * @secure-by object Id parameter
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/UploadRefObj")
