@@ -1,5 +1,6 @@
 package org.localstorm.mcc.web.cashflow.charting;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
@@ -142,6 +143,7 @@ public class NetWealthHistoryChartGenerator {
             plot.setRangeGridlinePaint(Color.WHITE);
             plot.setDomainGridlinePaint(Color.WHITE);
             plot.setBackgroundPaint(Color.LIGHT_GRAY);
+            plot.getRenderer().setSeriesStroke(0, new BasicStroke(2.0f));
         }
 
         return chart;

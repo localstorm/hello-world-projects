@@ -1,5 +1,6 @@
 package org.localstorm.mcc.web.cashflow.charting;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -19,7 +20,6 @@ import org.localstorm.mcc.ejb.cashflow.asset.Asset;
 import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
 import org.localstorm.mcc.ejb.cashflow.asset.Cost;
 import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
-import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.Constants;
 
@@ -133,6 +133,7 @@ public class AssetCostHistoryChartGenerator {
             plot.setRangeGridlinePaint(Color.WHITE);
             plot.setDomainGridlinePaint(Color.WHITE);
             plot.setBackgroundPaint(Color.LIGHT_GRAY);
+            plot.getRenderer().setSeriesStroke(0, new BasicStroke(2.0f));
         }
         
         return chart;
