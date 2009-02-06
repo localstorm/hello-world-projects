@@ -11,6 +11,7 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.DateAxis;
 import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.XYItemRenderer;
 import org.jfree.data.time.Day;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
@@ -113,7 +114,9 @@ public class BalanceHistoryChartGenerator {
             plot.setRangeGridlinePaint(Color.WHITE);
             plot.setDomainGridlinePaint(Color.WHITE);
             plot.setBackgroundPaint(Color.LIGHT_GRAY);
-            plot.getRenderer().setSeriesStroke(0, new BasicStroke(2.0f));
+
+            XYItemRenderer ir = plot.getRenderer();
+            ir.setBaseStroke(new BasicStroke(2.0f));
         }
 
         return chart;
