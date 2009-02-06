@@ -32,7 +32,7 @@ public class DashboardReportBean  extends AbstractEntity
             yellow.add(pw);
             return;
         }
-        if (pw.getRemains()<90) {
+        if (pw.getRemains()<91) {
             green.add(pw);
             return;
         }
