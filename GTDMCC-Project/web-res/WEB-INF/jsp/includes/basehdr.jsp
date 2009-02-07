@@ -10,6 +10,7 @@
 <link href="<c:url value="/css/style.css" />" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<c:url value="/js/calendar.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/lang/calendar-en.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/jquery.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/showhide.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/calendarSupport.js"/>"></script>
 </head>

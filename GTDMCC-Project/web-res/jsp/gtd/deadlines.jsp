@@ -26,15 +26,16 @@
                             <c:param name="returnPageToken" value="${returnPageToken}" />
                     </c:url>"><c:out value="${taskMarker.task.summary}" /></a>
         </div>
-        <%--c:if test="${not empty taskMarker.task.details}" >
-            <div align="center">
+        <c:if test="${not empty taskMarker.task.details}" >
+            &nbsp;<a href="#" onclick="$('#details_<c:out value="${taskMarker.task.id}"/>').animate({height:'toggle',opacity:'toggle'}, 'fast'); return false">Details (click to view/hide)</a>
+            <div align="justify" id="details_<c:out value="${taskMarker.task.id}"/>" style="display: none;" >
                 <c:out escapeXml="false" value="${taskMarker.task.detailsHtmlEscaped}"/>
             </div>
-        </c:if--%>
+        </c:if>
         </p>
         
         <c:if test="${not empty taskMarker.task.runtimeNote}" >
-            <p><i>Responsibility:&nbsp;</i><c:out value="${taskMarker.task.runtimeNote}"/></p>
+            <p><i>&nbsp;Responsibility:&nbsp;</i><c:out value="${taskMarker.task.runtimeNote}"/></p>
         </c:if>
         <table width="100%">
             <tr>
@@ -90,15 +91,16 @@
                             <c:param name="returnPageToken" value="${returnPageToken}" />
                     </c:url>"><c:out value="${taskMarker.task.summary}" /></a>
         </div>
-        <%--c:if test="${not empty taskMarker.task.details}" >
-            <div align="center">
+        <c:if test="${not empty taskMarker.task.details}" >
+            &nbsp;<a href="#" onclick="$('#details_<c:out value="${taskMarker.task.id}"/>').animate({height:'toggle',opacity:'toggle'}, 'fast'); return false">Details (click to view/hide)</a>
+            <div align="justify" id="details_<c:out value="${taskMarker.task.id}"/>" style="display: none;" >
                 <c:out escapeXml="false" value="${taskMarker.task.detailsHtmlEscaped}"/>
             </div>
-        </c:if--%>
+        </c:if>
         </p>
 
         <c:if test="${not empty taskMarker.task.runtimeNote}" >
-            <p><i>Responsibility:&nbsp;</i><c:out value="${taskMarker.task.runtimeNote}"/></p>
+            <p><i>&nbsp;Responsibility:&nbsp;</i><c:out value="${taskMarker.task.runtimeNote}"/></p>
         </c:if>
         <table width="100%">
             <tr>
