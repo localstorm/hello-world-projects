@@ -30,9 +30,13 @@
                             <c:param name="returnPageToken" value="${returnPageToken}" />
                     </c:url>" title="Expand"><c:out value="${task.summary}" /></a>
         </div>
-        <%--c:if test="${not empty task.details}" >
-             <c:out escapeXml="false" value="${task.detailsHtmlEscaped}"/>
-        </c:if--%>
+
+        <c:if test="${not empty task.details}" >
+            &nbsp;<a href="#" onclick="$('#details_<c:out value="${task.id}"/>').animate({height:'toggle',opacity:'toggle'}, 'fast'); return false">Details (click to view/hide)</a>
+            <div align="justify" id="details_<c:out value="${task.id}"/>" style="display: none;" >
+                <c:out escapeXml="false" value="${task.detailsHtmlEscaped}"/>
+            </div>
+        </c:if>
 </p>
 <div id="<c:out value="delegate-${task.id}" />" style="display: none;" >
     <stripes:form action="/actions/ResolveTask" >
