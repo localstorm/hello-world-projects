@@ -131,9 +131,9 @@ public class AssetCostHistoryChartGenerator {
             axis.setDateFormatOverride(new SimpleDateFormat(Constants.REDUCED_DATE_FORMAT));
             plot.setForegroundAlpha(0.7f);
             plot.setNoDataMessage("No data to display");
-            plot.setRangeGridlinePaint(Color.WHITE);
-            plot.setDomainGridlinePaint(Color.WHITE);
-            plot.setBackgroundPaint(Color.LIGHT_GRAY);
+            plot.setRangeGridlinePaint(Color.BLUE);
+            plot.setDomainGridlinePaint(Color.LIGHT_GRAY);
+            plot.setBackgroundPaint(Color.WHITE);
 
             XYItemRenderer ir = plot.getRenderer();
             ir.setBaseStroke(new BasicStroke(2.0f));
