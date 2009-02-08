@@ -13,10 +13,6 @@ import org.localstorm.mcc.ejb.users.User;
  */
 public class GtdContextSecurityCheckFilter extends SecurityCheckFilter
 {
-    public GtdContextSecurityCheckFilter() {
-    
-    }
-
     @Override
     @SuppressWarnings("unchecked")
     public void doFilter(HttpServletRequest req, HttpServletResponse res, User user)
@@ -24,16 +20,6 @@ public class GtdContextSecurityCheckFilter extends SecurityCheckFilter
                    ServletException
     {
         SecurityUtil.checkContextSecurity(req, user, log);
-    }
-
-
-    @Override
-    public void destroy() {
-    }
-
-    @Override
-    public void init(FilterConfig arg0) throws ServletException {
-        
     }
 
 }

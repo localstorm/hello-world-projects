@@ -12,7 +12,7 @@ import org.localstorm.mcc.web.util.SessionUtil;
  *
  * @author Alexey Kuznetsov
  */
-public class SecurityUtil 
+class SecurityUtil 
 {
     public static final String CONTEXT_ID_PARAM = "contextId";
     
@@ -32,6 +32,26 @@ public class SecurityUtil
 
             throw new SecurityRuntimeException("Access denied!");
         }
+    }
+
+    public static void checkFileSecurity(HttpServletRequest req, User user, Logger log)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    public static void checkListSecurity(HttpServletRequest req, User user, Logger log)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    public static void checkObjectSecurity(HttpServletRequest req, User user, Logger log)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    public static void checkTaskSecurity(HttpServletRequest req, User user, Logger log)
+    {
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 
 }
