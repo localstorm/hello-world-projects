@@ -106,9 +106,7 @@
         <!-- Stripes -->
         <filter-mapping>
                 <filter-name>StripesFilter</filter-name>
-                <!--servlet-name>StripesDispatcher</servlet-name-->
                 <url-pattern>/actions/*</url-pattern>
-                <!--dispatcher>REQUEST</dispatcher-->
         </filter-mapping>
 
         <!-- Logging -->
@@ -118,14 +116,21 @@
                 <dispatcher>REQUEST</dispatcher>
         </filter-mapping>
 
-        <!-- Basic Security -->
+        <!-- Transactions -->
 
         <filter-mapping>
-                <filter-name>AuthFilter</filter-name>
-                <servlet-name>StripesDispatcher</servlet-name>
+                <filter-name>TxFilter</filter-name>
+                <servlet-name>/actions/*</servlet-name>
                 <dispatcher>REQUEST</dispatcher>
         </filter-mapping>
 
+        <filter-mapping>
+                <filter-name>TxFilter</filter-name>
+                <url-pattern>/chart/*</url-pattern>
+                <dispatcher>REQUEST</dispatcher>
+        </filter-mapping>
+
+        <!-- Basic Security -->
         <filter-mapping>
                 <filter-name>RestrictionFilter</filter-name>
                 <url-pattern>*.jsp</url-pattern>
@@ -134,23 +139,16 @@
 
         <filter-mapping>
                 <filter-name>AuthFilter</filter-name>
-                <url-pattern>/chart/*</url-pattern>
-                <dispatcher>REQUEST</dispatcher>
-        </filter-mapping>
-
-        <!-- Transactions -->
-        
-        <filter-mapping>
-                <filter-name>TxFilter</filter-name>
-                <servlet-name>StripesDispatcher</servlet-name>
+                <url-pattern>/actions/*</url-pattern>
                 <dispatcher>REQUEST</dispatcher>
         </filter-mapping>
 
         <filter-mapping>
-                <filter-name>TxFilter</filter-name>
+                <filter-name>AuthFilter</filter-name>
                 <url-pattern>/chart/*</url-pattern>
                 <dispatcher>REQUEST</dispatcher>
         </filter-mapping>
+
 
         <!-- Caching -->
 

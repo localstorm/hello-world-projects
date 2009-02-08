@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.Views;
+import org.localstorm.mcc.web.util.RequestUtil;
 
 /**
  *
@@ -36,8 +38,13 @@ public abstract class SecurityCheckFilter implements Filter
         User user = this.getUser((HttpServletRequest) req);
         HttpServletRequest  _req = (HttpServletRequest) req;
         HttpServletResponse _res = (HttpServletResponse) res;
-        
-        this.doFilter(_req, _res,user);
+
+        try {
+            this.doFilter(_req, _res,user);
+        } catch(Exception e) {
+            RequestUtil.setException((HttpServletRequest) req, e);
+            req.getRequestDispatcher( Views.ERROR ).forward( req, res );
+        }
 
         if (!res.isCommitted())
         {
