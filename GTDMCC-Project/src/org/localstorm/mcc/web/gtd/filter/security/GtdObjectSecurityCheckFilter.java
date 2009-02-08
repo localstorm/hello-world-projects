@@ -22,5 +22,4 @@ public class GtdObjectSecurityCheckFilter extends SecurityCheckFilter
         SecurityUtil.checkObjectSecurity(req, user, log);
     }
 
-
 }

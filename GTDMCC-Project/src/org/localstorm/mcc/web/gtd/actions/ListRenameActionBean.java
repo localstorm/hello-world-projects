@@ -12,10 +12,9 @@ import org.localstorm.mcc.ejb.gtd.lists.ListManager;
 
 
 /**
- * @secure-by list id parameter
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/RenameList")
+@UrlBinding("/actions/gtd/list/RenameList")
 public class ListRenameActionBean extends ListViewActionBean
 {
     @Validate( required=true )

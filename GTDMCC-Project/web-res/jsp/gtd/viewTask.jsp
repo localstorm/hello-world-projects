@@ -26,7 +26,7 @@
     <c:when test="${not actionBean.taskResult.hinted}"><c:set var="initialMode" value="DATES"/></c:when>
     <c:otherwise><c:set var="initialMode" value="HINTS"/></c:otherwise>
 </c:choose>
-<stripes:form action="/actions/UpdateTask" focus="summary" name="taskForm" >
+<stripes:form action="/actions/gtd/task/UpdateTask" focus="summary" name="taskForm" >
 <stripes:errors/>
 <stripes:hidden name="mode"   value="${initialMode}" />
 <stripes:hidden name="taskId" value="${actionBean.taskResult.id}" />

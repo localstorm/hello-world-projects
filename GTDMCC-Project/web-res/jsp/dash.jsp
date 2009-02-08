@@ -148,12 +148,12 @@
     <div id="dashGTD2Pan">
         <h2><span>Hinted Tasks</span> pane</h2>
         <c:forEach items="${firedHintsReport.fired}" var="taskStub">
-            <p><a href="<c:url value="/actions/UnhintTask">
+            <p><a href="<c:url value="/actions/gtd/task/UpdateTask">
                 <c:param name="taskId" value="${taskStub.id}" />
                 <c:param name="returnPageToken" value="${returnPageToken}" />
-            </c:url>"><img src="<c:url value="/images/unhint.png"/>"/></a><a href="<c:url value="/actions/ViewList">
+            </c:url>"><img src="<c:url value="/images/unhint.png"/>"/></a><a href="<c:url value="/actions/gtd/list/ViewList">
                 <c:param name="listId" value="${taskStub.listId}" />
-            </c:url>"><img src="<c:url value="/images/gotoList.png"/>" /></a>&nbsp;<a href="<c:url value="/actions/ViewTask">
+            </c:url>"><img src="<c:url value="/images/gotoList.png"/>" /></a>&nbsp;<a href="<c:url value="/actions/gtd/task/ViewTask">
                 <c:param name="taskId" value="${taskStub.id}" />
                 <c:param name="returnPageToken" value="${returnPageToken}" />
             </c:url>"><c:out value="${taskStub.summary}"/></a></p>

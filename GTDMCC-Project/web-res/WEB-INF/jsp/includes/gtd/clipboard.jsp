@@ -7,7 +7,7 @@
 <div id="clipboard">
     <c:if test="${(not empty currContext) and (empty currList)}">
         <c:forEach items="${clipboard.lists}" var="list" >
-            &nbsp;<a href="<c:url value="/actions/ResolveList" >
+            &nbsp;<a href="<c:url value="/actions/gtd/list/ResolveList" >
                 <c:param name="listId" value="${list.id}" />
                 <c:param name="action" value="PASTE" />
             </c:url>"><img src="<c:url value="/images/paste.png"/>" alt="paste"/></a><c:out value="${list.name}"/><br/>
@@ -22,7 +22,7 @@
     </c:if>
     <c:if test="${not empty currList}">
         <c:forEach items="${clipboard.tasks}" var="task" >
-            &nbsp;<a href="<c:url value="/actions/ResolveTask" >
+            &nbsp;<a href="<c:url value="/actions/gtd/task/ResolveTask" >
                 <c:param name="taskId" value="${task.id}" />
                 <c:param name="action" value="PASTE" />
             </c:url>"><img src="<c:url value="/images/paste.png"/>" alt="paste"/></a><c:out value="${task.summary}"/><br/>
@@ -30,7 +30,7 @@
 
         <c:if test="${fn:length(clipboard.tasks)>1}">
             <div align="right">
-                <a href="<c:url value="/actions/BulkPasteTask" >
+                <a href="<c:url value="/actions/gtd/list/BulkPasteTask" >
                     <c:param name="listId" value="${currList.id}"/>
                 </c:url>">Paste all</a>&nbsp;
             </div>

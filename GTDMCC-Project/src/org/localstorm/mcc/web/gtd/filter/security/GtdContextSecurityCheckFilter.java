@@ -13,13 +13,21 @@ import org.localstorm.mcc.ejb.users.User;
  */
 public class GtdContextSecurityCheckFilter extends SecurityCheckFilter
 {
+    public static final String CONTEXT_ID_PARAM = "contextId";
+
     @Override
     @SuppressWarnings("unchecked")
     public void doFilter(HttpServletRequest req, HttpServletResponse res, User user)
             throws IOException,
                    ServletException
     {
-        SecurityUtil.checkContextSecurity(req, user, log);
+        String cid = req.getParameter(CONTEXT_ID_PARAM);
+
+        if (cid!=null)
+        {
+            Integer contextId = Integer.parseInt(cid);
+            SecurityUtil.checkContextSecurity(req.getSession(true), contextId, user, log);
+        }
     }
 
 }

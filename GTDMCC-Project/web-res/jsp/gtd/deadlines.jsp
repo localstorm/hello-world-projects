@@ -21,7 +21,7 @@
     <td>
         <p><img src="<c:url value="/images/loe${taskMarker.task.effort}.png"/>"/>&nbsp;(<c:out value="${taskMarker.timeRemainsCrossed}"/>)&nbsp;<span><c:out value="${taskMarker.task.list.context.name}, ${taskMarker.task.list.name}"/>&nbsp;(Since: <fmt:formatDate value="${taskMarker.task.creation}"/>):</span><br/>
         <div align="center">
-            <a href="<c:url value="/actions/ViewTask">
+            <a href="<c:url value="/actions/gtd/task/ViewTask">
                             <c:param name="taskId" value="${taskMarker.task.id}" />
                             <c:param name="returnPageToken" value="${returnPageToken}" />
                     </c:url>"><c:out value="${taskMarker.task.summary}" /></a>
@@ -43,21 +43,21 @@
                 <td width="1%" >
                 <nobr>
                     <c:if test="${not taskMarker.task.inFlightPlan}">
-                    <a href="<c:url value="/actions/ResolveTask">
+                    <a href="<c:url value="/actions/gtd/task/ResolveTask">
                                 <c:param name="taskId" value="${taskMarker.task.id}" />
                                 <c:param name="returnPageToken" value="${returnPageToken}" />
                                 <c:param name="action" value="FLIGHT" />
                              </c:url>" title="Append To Flight Plan"><img alt="flight" src="<c:url value="/images/flight.png"/>"/></a>
                     </c:if>
-                    <a href="<c:url value="/actions/ViewList" >
+                    <a href="<c:url value="/actions/gtd/list/ViewList" >
                         <c:param name="listId" value="${taskMarker.task.list.id}" />
                     </c:url>" title="Open affected list"><img alt="toList" src="<c:url value="/images/toList.png"/>"/></a>
-                    <a href="<c:url value="/actions/ResolveTask">
+                    <a href="<c:url value="/actions/gtd/task/ResolveTask">
                                 <c:param name="returnPageToken" value="${returnPageToken}" />
                                 <c:param name="taskId" value="${taskMarker.task.id}" />
                                 <c:param name="action" value="FINISH" />
                              </c:url>" title="Finish"><img alt="finish" src="<c:url value="/images/finish.png"/>"/></a>
-                    <a href="<c:url value="/actions/ResolveTask">
+                    <a href="<c:url value="/actions/gtd/task/ResolveTask">
                                 <c:param name="returnPageToken" value="${returnPageToken}" />
                                 <c:param name="taskId" value="${taskMarker.task.id}" />
                                 <c:param name="action" value="CANCEL" />
@@ -86,7 +86,7 @@
     <td>
         <p><img src="<c:url value="/images/loe${taskMarker.task.effort}.png"/>"/>&nbsp;(<c:out value="${taskMarker.timeRemainsNonCrossed}"/>)&nbsp;<span><c:out value="${taskMarker.task.list.context.name}, ${taskMarker.task.list.name}"/>&nbsp;(Since: <fmt:formatDate value="${taskMarker.task.creation}"/>):</span><br/>
         <div align="center">
-            <a href="<c:url value="/actions/ViewTask">
+            <a href="<c:url value="/actions/gtd/task/ViewTask">
                             <c:param name="taskId" value="${taskMarker.task.id}" />
                             <c:param name="returnPageToken" value="${returnPageToken}" />
                     </c:url>"><c:out value="${taskMarker.task.summary}" /></a>
@@ -108,21 +108,21 @@
                 <td width="1%" >
                 <nobr>
                     <c:if test="${not taskMarker.task.inFlightPlan}">
-                    <a href="<c:url value="/actions/ResolveTask">
+                    <a href="<c:url value="/actions/gtd/task/ResolveTask">
                                 <c:param name="returnPageToken" value="${returnPageToken}" />
                                 <c:param name="taskId" value="${taskMarker.task.id}" />
                                 <c:param name="action" value="FLIGHT" />
                              </c:url>" title="Append To Flight Plan"><img alt="flight" src="<c:url value="/images/flight.png"/>"/></a>
                     </c:if>
-                    <a href="<c:url value="/actions/ViewList" >
+                    <a href="<c:url value="/actions/gtd/list/ViewList" >
                         <c:param name="listId" value="${taskMarker.task.list.id}" />
                     </c:url>" title="Open affected list"><img alt="toList" src="<c:url value="/images/toList.png"/>"/></a>
-                    <a href="<c:url value="/actions/ResolveTask">
+                    <a href="<c:url value="/actions/gtd/task/ResolveTask">
                                 <c:param name="returnPageToken" value="${returnPageToken}" />
                                 <c:param name="taskId" value="${taskMarker.task.id}" />
                                 <c:param name="action" value="FINISH" />
                              </c:url>" title="Finish"><img alt="finish" src="<c:url value="/images/finish.png"/>"/></a>
-                    <a href="<c:url value="/actions/ResolveTask">
+                    <a href="<c:url value="/actions/gtd/task/ResolveTask">
                                 <c:param name="returnPageToken" value="${returnPageToken}" />
                                 <c:param name="taskId" value="${taskMarker.task.id}" />
                                 <c:param name="action" value="CANCEL" />

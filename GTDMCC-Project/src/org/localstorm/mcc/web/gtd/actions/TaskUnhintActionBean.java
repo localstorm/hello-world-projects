@@ -11,10 +11,9 @@ import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.web.ReturnPageBean;
 
 /**
- * @secure-by task Id parameter
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/UnhintTask")
+@UrlBinding("/actions/gtd/task/UpdateTask")
 public class TaskUnhintActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )

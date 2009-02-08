@@ -13,10 +13,9 @@ import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.web.Clipboard;
 
 /**
- * @secure-by list Id parameter
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/BulkPasteTask")
+@UrlBinding("/actions/gtd/list/BulkPasteTask")
 public class TaskBulkPasteActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )
