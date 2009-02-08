@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -71,6 +73,13 @@ public class LazyLoadFilter implements Filter
             });
             
             SessionUtil.fill(sess, SessionKeys.CONTEXTS, ctxs);
+
+            Map<Integer, Boolean> acm = new HashMap<Integer, Boolean>();
+            for (Context ctx : ctxs) {
+                acm.put(ctx.getId(), Boolean.TRUE);
+            }
+
+            SessionUtil.fill(sess, SessionKeys.ACCESSIBLE_CONTEXTS_MAP, acm);
         }
         
         if ( SessionUtil.isEmpty(sess, SessionKeys.REFERENCE_OBJECTS) ) {
