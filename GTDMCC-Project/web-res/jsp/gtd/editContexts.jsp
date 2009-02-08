@@ -47,11 +47,11 @@
 	<tr>
 		<td width="95%">
 			<p><img src="<c:url value="/images/arrow.gif" />"/>
-                        <span><a href="<c:url value="/actions/ViewContext">
+                        <span><a href="<c:url value="/actions/gtd/ctx/ViewContext">
                                             <c:param name="contextId" value="${ctx.id}" />
                                        </c:url>"><c:out value="${ctx.name}"/></a></span>
 		</td>
-		<td width="5%"> <a href="<c:url value="/actions/ToggleStateContext">
+		<td width="5%"> <a href="<c:url value="/actions/gtd/ctx/ToggleStateContext">
                                             <c:param name="contextId" value="${ctx.id}" />
                                        </c:url>" title="Archive"><img src="<c:url value="/images/trash.png"/>" /></a></p></td>
 	</tr>
@@ -64,14 +64,14 @@
             <tr>
                     <td width="95%">
                             <p><img src="<c:url value="/images/arrow.gif"/>"/> <span><a href="<c:url 
-                                        value="/actions/ViewContext">
+                                        value="/actions/gtd/ctx/ViewContext">
                                             <c:param name="contextId" value="${ctx.id}" />
                                         </c:url>"><c:out value="${ctx.name}"/></a></span>
                     </td>
-                    <td width="5%"><nobr><a href="<c:url value="/actions/ToggleStateContext">
+                    <td width="5%"><nobr><a href="<c:url value="/actions/gtd/ctx/ToggleStateContext">
                                                 <c:param name="contextId" value="${ctx.id}" />
                                            </c:url>" title="Unarchive"><img src="<c:url value="/images/deleted.png"/>" /></a>
-                                           <a href="<c:url value="/actions/EraseContext">
+                                           <a href="<c:url value="/actions/gtd/ctx/EraseContext">
                                                 <c:param name="contextId" value="${ctx.id}" />
                                            </c:url>" title="Delete permanently"><img src="<c:url value="/images/erase.png"/>" /></a>
                     </nobr>

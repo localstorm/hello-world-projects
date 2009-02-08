@@ -10,7 +10,7 @@ import net.sourceforge.stripes.validation.Validate;
  * @secure-by context Id parameter
  * @author localstorm
  */
-@UrlBinding("/actions/SetContextFilter")
+@UrlBinding("/actions/gtd/ctx/SetContextFilter")
 public class SetContextFilterActionBean extends GtdBaseActionBean {
 
     @Validate(required=true)

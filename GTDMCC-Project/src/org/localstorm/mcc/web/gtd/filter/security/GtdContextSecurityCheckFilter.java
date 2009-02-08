@@ -1,10 +1,16 @@
 package org.localstorm.mcc.web.gtd.filter.security;
 
+import org.localstorm.mcc.web.SecurityRuntimeException;
+import javax.servlet.http.HttpServletResponse;
 import org.localstorm.mcc.web.filter.SecurityCheckFilter;
 import java.io.IOException;
+import java.util.Collection;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
+import org.localstorm.mcc.ejb.gtd.contexts.Context;
 import org.localstorm.mcc.ejb.users.User;
+import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
  *
@@ -12,23 +18,38 @@ import org.localstorm.mcc.ejb.users.User;
  */
 public class GtdContextSecurityCheckFilter extends SecurityCheckFilter
 {
-    
+    public static final String CONTEXT_ID_PARAM = "contextId";
+
     public GtdContextSecurityCheckFilter() {
     
     }
 
     @Override
-    public void doFilter(ServletRequest _req, 
-                         ServletResponse _res, 
-                         FilterChain chain) throws IOException, ServletException 
+    @SuppressWarnings("unchecked")
+    public void doFilter(HttpServletRequest req, HttpServletResponse res, User user)
+            throws IOException,
+                   ServletException
     {
-        HttpServletRequest req = (HttpServletRequest) _req;
-        User user = super.getUser(req);
+        String cid = req.getParameter(CONTEXT_ID_PARAM);
 
-        //SessionUtil.isEmpty(sess, SessionKeys.CONTEXTS)
+        if (cid!=null) {
+            Integer contextId = Integer.parseInt(cid);
 
-        chain.doFilter(_req, _res);
+            log.info("Checking access to context="+cid+" for user="+user.getLogin());
+
+            Collection<Context> ctxs = (Collection<Context>) SessionUtil.getValue(req.getSession(true), SessionKeys.CONTEXTS);
+            for ( Context c: ctxs ) {
+                if ( c.getId().equals(contextId) ) {
+                    return;
+                }
+            }
+
+            log.info("Access denied!");
+
+            throw new SecurityRuntimeException();
+        }
     }
+
 
     @Override
     public void destroy() {

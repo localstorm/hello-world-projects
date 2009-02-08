@@ -12,7 +12,7 @@
              <c:when test="${not empty actionBean.context.validationErrors and empty renameForm}">inline</c:when>
              <c:otherwise>none</c:otherwise>
     </c:choose>;">
-    <stripes:form action="/actions/AddList" >
+    <stripes:form action="/actions/gtd/ctx/AddList" >
         <stripes:hidden name="contextId" value="${actionBean.contextResult.id}" />
         <stripes:errors/>
         <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
@@ -43,7 +43,7 @@
              <c:when test="${not empty actionBean.context.validationErrors and not empty renameForm}">inline</c:when>
              <c:otherwise>none</c:otherwise>
     </c:choose>;">
-    <stripes:form action="/actions/RenameContext" >
+    <stripes:form action="/actions/gtd/ctx/RenameContext" >
         <stripes:hidden name="contextId" value="${actionBean.contextResult.id}" />
         <stripes:errors/>
         <table style="background:#FFFFD0; border:1px dotted #DADADA;" >

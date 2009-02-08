@@ -2,7 +2,7 @@
 
 <%@ include file="/WEB-INF/jsp/includes/include.jsp" %>
 
-<stripes:form action="/actions/SetContextFilter" >
+<stripes:form action="/actions/gtd/ctx/SetContextFilter" >
     <stripes:hidden name="returnPageToken" value="${param.returnPageToken}" />
     <stripes:select name="contextId" value="${filterCtx}" onchange="submit();">
         <stripes:option value="-1" >[Show all]</stripes:option>

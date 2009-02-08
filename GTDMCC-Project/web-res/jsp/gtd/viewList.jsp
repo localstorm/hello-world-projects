@@ -5,7 +5,7 @@
 
 <%@ include file="/WEB-INF/jsp/includes/gtd/clipboard.jsp" %>
 <h2><span>LIST</span> tasks</h2>
-<div align="right" ><a href="<c:url value="/actions/ViewContext" >
+<div align="right" ><a href="<c:url value="/actions/gtd/ctx/ViewContext" >
                                <c:param name="contextId" value="${actionBean.listResult.context.id}" />
                              </c:url>" title="Go to parent"><img src="<c:url value="/images/parent.png" />" /></a>&nbsp;<a href="#" onclick="show('addTaskDiv', 'summary-id'); hide('renameDiv'); return false">Add task</a>
                             (<a href="#" onclick="show('renameDiv', 'newname-id'); hide('addTaskDiv'); return false"><c:out value="${actionBean.listResult.name}"/></a>)</div> 
