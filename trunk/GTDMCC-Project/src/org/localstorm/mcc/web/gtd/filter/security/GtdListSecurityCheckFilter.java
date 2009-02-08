@@ -13,27 +13,14 @@ import org.localstorm.mcc.ejb.users.User;
  */
 public class GtdListSecurityCheckFilter extends SecurityCheckFilter
 {
-    
-    public GtdListSecurityCheckFilter() {
-    
-    }
-
+ 
     @Override
     public void doFilter(HttpServletRequest req, HttpServletResponse res, User user)
             throws IOException,
                    ServletException
     {
-        throw new UnsupportedOperationException("Not supported yet.");
+        SecurityUtil.checkListSecurity(req, user, log);
     }
 
-   
 
-    @Override
-    public void destroy() {
-    }
-
-    @Override
-    public void init(FilterConfig arg) throws ServletException {
-        
-    }
 }
