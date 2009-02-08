@@ -4,7 +4,6 @@
         <display-name>GTD Personal Task Manager</display-name>
 
         <filter>
-                <display-name>Stripes Filter</display-name>
                 <filter-name>StripesFilter</filter-name>
                 <filter-class>net.sourceforge.stripes.controller.StripesFilter</filter-class>
                 <init-param>
@@ -104,6 +103,14 @@
  
         <!-- =========== Filter Mapping ============ -->
 
+        <!-- Stripes -->
+        <filter-mapping>
+                <filter-name>StripesFilter</filter-name>
+                <!--servlet-name>StripesDispatcher</servlet-name-->
+                <url-pattern>/actions/*</url-pattern>
+                <!--dispatcher>REQUEST</dispatcher-->
+        </filter-mapping>
+
         <!-- Logging -->
         <filter-mapping>
                 <filter-name>RequestLogFilter</filter-name>
@@ -202,28 +209,18 @@
         <filter-mapping>
                 <filter-name>GtdContextSecurityCheckFilter</filter-name>
                 <url-pattern>/actions/gtd/ctx/*</url-pattern>
-                <dispatcher>REQUEST</dispatcher>
         </filter-mapping>
 
         <filter-mapping>
                 <filter-name>GtdListSecurityCheckFilter</filter-name>
                 <url-pattern>/actions/gtd/list/*</url-pattern>
-                <dispatcher>REQUEST</dispatcher>
         </filter-mapping>
 
         <filter-mapping>
                 <filter-name>GtdTaskSecurityCheckFilter</filter-name>
                 <url-pattern>/actions/gtd/task/*</url-pattern>
-                <dispatcher>REQUEST</dispatcher>
         </filter-mapping>
 
-        <!-- Stripes -->
-
-        <filter-mapping>
-                <filter-name>StripesFilter</filter-name>
-                <servlet-name>StripesDispatcher</servlet-name>
-                <dispatcher>REQUEST</dispatcher>
-        </filter-mapping>
 
         <!-- Compression -->
 

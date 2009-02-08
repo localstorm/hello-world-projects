@@ -12,10 +12,9 @@ import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.gtd.Views;
 
 /**
- * @secure-by session (no security check)
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/EditRefObj")
+@UrlBinding("/actions/gtd/EditRefObj")
 public class RefObjEditActionBean extends GtdBaseActionBean {
 
     private Collection<ReferencedObject> refObjects;

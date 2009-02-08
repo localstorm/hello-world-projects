@@ -32,10 +32,9 @@ import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
 
 
 /**
- * @secure-by session (no security check)
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/SubmitTaskSearch")
+@UrlBinding("/actions/gtd/SubmitTaskSearch")
 public class TaskSearchSubmitActionBean extends GtdBaseActionBean
 {
     private static final String ID_FIELD   = "id";

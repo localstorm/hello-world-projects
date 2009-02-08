@@ -15,10 +15,9 @@ import org.localstorm.mcc.web.util.SessionUtil;
 
 
 /**
- * @secure-by session (no security check)
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/AddContext")
+@UrlBinding("/actions/gtd/AddContext")
 public class ContextAddActionBean extends ContextsEditActionBean {
 
     @Validate( required=true )

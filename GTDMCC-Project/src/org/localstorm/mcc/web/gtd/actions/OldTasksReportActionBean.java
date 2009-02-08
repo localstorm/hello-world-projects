@@ -23,10 +23,9 @@ import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
 
 
 /**
- * @secure-by session (no security check)
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/OldTasksReport")
+@UrlBinding("/actions/gtd/OldTasksReport")
 public class OldTasksReportActionBean extends GtdBaseActionBean
 {
     private Map<Integer, Collection<TaskWrapper>> tasksResult;

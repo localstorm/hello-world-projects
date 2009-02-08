@@ -11,10 +11,9 @@ import net.sourceforge.stripes.action.UrlBinding;
 import org.localstorm.mcc.web.gtd.Views;
 
 /**
- * @secure-by session (no security check)
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/EditContexts")
+@UrlBinding("/actions/gtd/EditContexts")
 public class ContextsEditActionBean extends GtdBaseActionBean {
 
     private List<Context> result;

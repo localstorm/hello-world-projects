@@ -31,7 +31,7 @@ setActiveStyleSheet(this, 'blue');
     <div id="topMenuMiddlePan">
         <ul>
             <li class="home"><a href="<c:url value="/actions/Dashboard" />">&nbsp;Dash&nbsp;</a></li>
-            <li><a href="<c:url value="/actions/ViewFlightPlan" />">&nbsp;GTD&nbsp;</a></li>
+            <li><a href="<c:url value="/actions/gtd/ViewFlightPlan" />">&nbsp;GTD&nbsp;</a></li>
             <li><a href="<c:url value="/actions/ViewAssets" />">&nbsp;Cash&nbsp;</a></li>
             <li><a href="<c:url value="/actions/ViewPeople" />">People</a></li>
             <li><a href="<c:url value="/actions/Configure" />">&nbsp;Tweak&nbsp;</a></li>

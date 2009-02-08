@@ -13,7 +13,7 @@ import org.localstorm.mcc.web.ReturnPageBean;
 /**
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/gtd/task/UpdateTask")
+@UrlBinding("/actions/gtd/task/UnhintTask")
 public class TaskUnhintActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )
