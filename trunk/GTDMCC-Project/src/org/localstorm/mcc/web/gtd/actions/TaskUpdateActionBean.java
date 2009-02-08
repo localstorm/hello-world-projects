@@ -22,10 +22,9 @@ import org.localstorm.mcc.web.util.DateUtil;
 import org.localstorm.mcc.web.ReturnPageBean;
 
 /**
- * @secure-by task Id parameter
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/UpdateTask")
+@UrlBinding("/actions/gtd/task/UpdateTask")
 public class TaskUpdateActionBean extends TaskViewActionBean
 {
     @Validate( required=true )

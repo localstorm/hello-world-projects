@@ -13,13 +13,20 @@ import org.localstorm.mcc.ejb.users.User;
  */
 public class GtdTaskSecurityCheckFilter extends SecurityCheckFilter
 {
+    private static final String TASK_ID_PARAM = "taskId";
 
     @Override
     public void doFilter(HttpServletRequest req, HttpServletResponse res, User user)
             throws IOException,
                    ServletException
     {
-        SecurityUtil.checkTaskSecurity(req, user, log);
+        String tid = req.getParameter(TASK_ID_PARAM);
+
+        if (tid!=null)
+        {
+            Integer taskId = Integer.parseInt(tid);
+            SecurityUtil.checkTaskSecurity(req.getSession(true), taskId, user, log);
+        }
     }
 
 

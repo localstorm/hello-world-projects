@@ -15,10 +15,9 @@ import org.localstorm.mcc.ejb.gtd.lists.GTDList;
 import org.localstorm.mcc.ejb.gtd.lists.ListManager;
 
 /**
- * @secure-by list Id parameter
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/AddTask")
+@UrlBinding("/actions/gtd/list/AddTask")
 public class TaskAddActionBean extends ListViewActionBean
 {
 

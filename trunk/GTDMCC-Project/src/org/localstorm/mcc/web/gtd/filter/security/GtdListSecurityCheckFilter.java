@@ -13,13 +13,20 @@ import org.localstorm.mcc.ejb.users.User;
  */
 public class GtdListSecurityCheckFilter extends SecurityCheckFilter
 {
+    private static final String LIST_ID_PARAM = "listId";
  
     @Override
     public void doFilter(HttpServletRequest req, HttpServletResponse res, User user)
             throws IOException,
                    ServletException
     {
-        SecurityUtil.checkListSecurity(req, user, log);
+        String lid = req.getParameter(LIST_ID_PARAM);
+
+        if (lid!=null)
+        {
+            Integer listId = Integer.parseInt(lid);
+            SecurityUtil.checkListSecurity(req.getSession(true), listId, user, log);
+        }
     }
 
 

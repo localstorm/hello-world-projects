@@ -21,10 +21,9 @@ import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
 
 /**
- * @secure-by task Id parameter
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/ViewTask")
+@UrlBinding("/actions/gtd/task/ViewTask")
 public class TaskViewActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )

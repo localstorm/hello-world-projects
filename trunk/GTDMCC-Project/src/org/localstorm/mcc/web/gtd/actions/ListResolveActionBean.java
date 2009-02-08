@@ -15,10 +15,9 @@ import org.localstorm.mcc.ejb.gtd.lists.ListManager;
 import org.localstorm.mcc.web.Clipboard;
 
 /**
- * @secure-by list id parameter
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/ResolveList")
+@UrlBinding("/actions/gtd/list/ResolveList")
 public class ListResolveActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )
