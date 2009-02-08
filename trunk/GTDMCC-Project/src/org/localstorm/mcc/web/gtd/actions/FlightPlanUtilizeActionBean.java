@@ -8,10 +8,9 @@ import net.sourceforge.stripes.action.UrlBinding;
 
 
 /**
- * @secure-by session (no security check)
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/UtilizeFlightPlan")
+@UrlBinding("/actions/gtd/UtilizeFlightPlan")
 public class FlightPlanUtilizeActionBean extends GtdBaseActionBean
 {
     @DefaultHandler

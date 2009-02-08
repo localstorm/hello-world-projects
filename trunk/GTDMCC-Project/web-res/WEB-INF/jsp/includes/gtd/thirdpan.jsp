@@ -3,7 +3,7 @@
 
 <div id="bodyThirdPan">
     <h2><span>Reference</span> pane</h2>       
-    <p class="more"><a href="<c:url value="/actions/EditRefObj"/>">EDIT</a></p>
+    <p class="more"><a href="<c:url value="/actions/gtd/EditRefObj"/>">EDIT</a></p>
     <table class="refobjs">
         <c:forEach items="${refObjects}" var="ro">
             <c:choose>

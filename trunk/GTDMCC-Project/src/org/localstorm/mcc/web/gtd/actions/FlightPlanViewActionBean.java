@@ -17,10 +17,9 @@ import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.mcc.web.util.FilterUtil;
 
 /**
- * @secure-by session (no security check)
  * @author localstorm
  */
-@UrlBinding("/actions/ViewFlightPlan")
+@UrlBinding("/actions/gtd/ViewFlightPlan")
 public class FlightPlanViewActionBean extends GtdBaseActionBean {
 
     private FlightPlan flightPlan;

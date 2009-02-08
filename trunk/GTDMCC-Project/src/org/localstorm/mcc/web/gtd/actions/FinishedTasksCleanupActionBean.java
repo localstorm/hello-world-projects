@@ -9,10 +9,9 @@ import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.web.dashboard.actions.DashboardActionBean;
 
 /**
- * @secure-by session (no security check)
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/CleanupFinishedTasks")
+@UrlBinding("/actions/gtd/CleanupFinishedTasks")
 public class FinishedTasksCleanupActionBean extends GtdBaseActionBean {
 
     @DefaultHandler
