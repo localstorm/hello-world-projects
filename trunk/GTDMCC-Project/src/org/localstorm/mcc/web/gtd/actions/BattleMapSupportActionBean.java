@@ -23,10 +23,9 @@ import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
 import org.localstorm.mcc.web.util.FilterUtil;
 
 /**
- * @secure-by context id parameter
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/BattleMapSupport")
+@UrlBinding("/actions/gtd/ctx/BattleMapSupport")
 public class BattleMapSupportActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )

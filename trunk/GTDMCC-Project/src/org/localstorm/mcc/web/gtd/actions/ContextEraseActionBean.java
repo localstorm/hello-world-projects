@@ -12,10 +12,9 @@ import org.localstorm.mcc.web.util.SessionUtil;
 
 
 /**
- * @secure-by context id parameter
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/EraseContext")
+@UrlBinding("/actions/gtd/ctx/EraseContext")
 public class ContextEraseActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )

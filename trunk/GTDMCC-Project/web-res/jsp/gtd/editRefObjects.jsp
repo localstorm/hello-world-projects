@@ -12,7 +12,7 @@
              <c:when test="${not empty actionBean.context.validationErrors}">inline</c:when>
              <c:otherwise>none</c:otherwise>
     </c:choose>;">
-        <stripes:form action="/actions/AddRefObj" >
+        <stripes:form action="/actions/gtd/ctx/AddRefObj" >
         <stripes:errors/>
         <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
             <tr>

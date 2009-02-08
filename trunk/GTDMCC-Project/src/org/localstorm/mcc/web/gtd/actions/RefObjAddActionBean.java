@@ -14,10 +14,9 @@ import org.localstorm.mcc.web.util.SessionUtil;
 
 
 /**
- * @secure-by context id parameter
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/AddRefObj")
+@UrlBinding("/actions/gtd/ctx/AddRefObj")
 public class RefObjAddActionBean extends RefObjEditActionBean
 {
     // TODO: Type

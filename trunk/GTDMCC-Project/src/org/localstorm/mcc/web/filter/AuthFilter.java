@@ -1,12 +1,10 @@
 package org.localstorm.mcc.web.filter;
 
 import java.io.IOException;
-import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.Views;
 
@@ -24,15 +22,14 @@ public class AuthFilter extends SecurityCheckFilter
     }
 
     @Override
-    public void doFilter(ServletRequest _req, ServletResponse _res, FilterChain chain) throws IOException, ServletException {
-        User user  = super.getUser((HttpServletRequest) _req);
-            
+    public void doFilter(HttpServletRequest req, HttpServletResponse res, User user)
+            throws IOException,
+                   ServletException
+    {
         if (user==null) {
-            _req.getRequestDispatcher(Views.LOGIN).forward(_req, _res);
+            req.getRequestDispatcher(Views.LOGIN).forward(req, res);
             return;
         }
-        
-        chain.doFilter(_req, _res);
     }
 
     @Override

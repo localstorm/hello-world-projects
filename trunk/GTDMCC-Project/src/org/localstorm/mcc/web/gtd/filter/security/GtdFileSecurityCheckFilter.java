@@ -1,5 +1,6 @@
 package org.localstorm.mcc.web.gtd.filter.security;
 
+import javax.servlet.http.HttpServletResponse;
 import org.localstorm.mcc.web.filter.SecurityCheckFilter;
 import java.io.IOException;
 import javax.servlet.*;
@@ -18,17 +19,13 @@ public class GtdFileSecurityCheckFilter extends SecurityCheckFilter
     }
 
     @Override
-    public void doFilter(ServletRequest _req, 
-                         ServletResponse _res, 
-                         FilterChain chain) throws IOException, ServletException 
+    public void doFilter(HttpServletRequest req, HttpServletResponse res, User user)
+            throws IOException,
+                   ServletException
     {
-        HttpServletRequest req = (HttpServletRequest) _req;
-        User user = super.getUser(req);
-
-        //SessionUtil.isEmpty(sess, SessionKeys.CONTEXTS)
-
-        chain.doFilter(_req, _res);
+        throw new UnsupportedOperationException("Not supported yet.");
     }
+    
 
     @Override
     public void destroy() {

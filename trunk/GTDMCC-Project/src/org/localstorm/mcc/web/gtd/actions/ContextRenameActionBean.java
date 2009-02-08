@@ -14,10 +14,9 @@ import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
- * @secure-by context id parameter
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/RenameContext")
+@UrlBinding("/actions/gtd/ctx/RenameContext")
 public class ContextRenameActionBean extends ContextViewActionBean {
 
     @Validate( required=true )

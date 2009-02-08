@@ -44,7 +44,7 @@
 
 <br/>
 <div align="center">
-    <h4><a href="<c:url value="/actions/ViewContext">
+    <h4><a href="<c:url value="/actions/gtd/ctx/ViewContext">
         <c:param name="contextId" value="${actionBean.contextResult.id}" />
     </c:url>"><c:out value="${actionBean.contextResult.name}"/></a></h4>
 </div>

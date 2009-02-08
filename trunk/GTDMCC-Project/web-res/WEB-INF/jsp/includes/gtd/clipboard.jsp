@@ -14,7 +14,7 @@
         </c:forEach>
         <c:if test="${fn:length(clipboard.lists)>1}">
             <div align="right">
-                <a href="<c:url value="/actions/BulkPasteList" >
+                <a href="<c:url value="/actions/gtd/ctx/BulkPasteList" >
                     <c:param name="contextId" value="${currContext.id}" />
                 </c:url>">Paste all</a>&nbsp;
             </div>

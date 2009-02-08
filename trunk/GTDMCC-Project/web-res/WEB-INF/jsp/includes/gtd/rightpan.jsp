@@ -9,7 +9,7 @@
         <c:forEach items="${contexts}" var="ctx" >            
             <tr>
                 <td width="18px" valign="top"><img src="<c:url value="/images/button.png"/>"/></td>
-                <td><a href="<c:url value="/actions/ViewContext">
+                <td><a href="<c:url value="/actions/gtd/ctx/ViewContext">
                        <c:param name="contextId" value="${ctx.id}" />
                      </c:url>"><c:out value="${ctx.name}"/></a></td>
             </tr>

@@ -14,7 +14,7 @@ import org.localstorm.mcc.web.util.SessionUtil;
  * @secure-by context id parameter
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/ToggleStateContext")
+@UrlBinding("/actions/gtd/ctx/ToggleStateContext")
 public class ContextToggleStateActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )
