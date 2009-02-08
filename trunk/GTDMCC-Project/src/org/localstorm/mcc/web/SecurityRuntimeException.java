@@ -7,8 +7,9 @@ package org.localstorm.mcc.web;
 public class SecurityRuntimeException extends RuntimeException
 {
 
-    public SecurityRuntimeException()
+    public SecurityRuntimeException(String msg)
     {
+        super(msg);
     }
 
 }
