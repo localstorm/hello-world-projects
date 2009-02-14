@@ -95,7 +95,7 @@ public class PersonGroup extends AbstractEntity implements Serializable, Identif
     }
 
     public static interface Properties {
-        public static final String OWNER = "owner";
-        public static final String GROUP = "group";
+        public static final String OWNER  = "owner";
+        public static final String GROUP  = "group";
     }
 }

@@ -24,6 +24,10 @@ import org.localstorm.mcc.ejb.Identifiable;
     @NamedQuery(
         name = PersonToGroup.Queries.FIND_GROUP_BY_PERSON,
         query= "SELECT o.group FROM PersonToGroup o WHERE o.person=:person"
+    ),
+    @NamedQuery(
+        name = PersonToGroup.Queries.MOVE_PERSON_TO_GROUP,
+        query= "update PersonToGroup o set o.group = :group where o.person = :person"
     )
 })
 public class PersonToGroup extends AbstractEntity implements Identifiable, Serializable {
@@ -72,11 +76,13 @@ public class PersonToGroup extends AbstractEntity implements Identifiable, Seria
     public static interface Queries
     {
         public static final String FIND_GROUP_BY_PERSON = "findPGroupByPerson";
+        public static final String MOVE_PERSON_TO_GROUP = "movePersonToGroup";
     }
 
     public static interface Properties
     {
         public static final String PERSON = "person";
+        public static final String GROUP  = "group";
     }
 
 }

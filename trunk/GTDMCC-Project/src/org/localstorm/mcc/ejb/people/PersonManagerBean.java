@@ -81,6 +81,17 @@ public class PersonManagerBean implements PersonManagerLocal,
     }
 
     @Override
+    public void movePersonToGroup(Person p, PersonGroup newGroup)
+    {
+        Query q = em.createNamedQuery(PersonToGroup.Queries.MOVE_PERSON_TO_GROUP);
+        
+        q.setParameter(PersonToGroup.Properties.PERSON, p);
+        q.setParameter(PersonToGroup.Properties.GROUP, newGroup);
+
+        q.executeUpdate();
+    }
+
+    @Override
     public void remove(PersonGroup g) {
         g = em.getReference(PersonGroup.class, g.getId());
 
