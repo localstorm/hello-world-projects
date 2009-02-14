@@ -2,7 +2,6 @@ package org.localstorm.mcc.ejb.gtd.referenced;
 
 import java.util.Collection;
 import org.localstorm.mcc.ejb.BaseManager;
-import org.localstorm.mcc.ejb.gtd.contexts.Context;
 import org.localstorm.mcc.ejb.users.User;
 
 /**
@@ -17,7 +16,4 @@ public interface RefObjectManager  extends BaseManager<ReferencedObject>
     public Collection<ReferencedObject> findAllByOwner( User user );
     
     public Collection<ReferencedObject> findOperativeByOwner( User user, boolean orderByContext );
-    
-    public Collection<ReferencedObject> findOperativeByContext( Context ctx );
-    
 }

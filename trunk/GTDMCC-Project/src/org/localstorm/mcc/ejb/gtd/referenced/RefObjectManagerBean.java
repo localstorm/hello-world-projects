@@ -5,7 +5,6 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
 import org.localstorm.mcc.ejb.AbstractManager;
-import org.localstorm.mcc.ejb.gtd.contexts.Context;
 import org.localstorm.mcc.ejb.users.User;
 
 /**
@@ -21,11 +20,6 @@ public class RefObjectManagerBean extends AbstractManager<ReferencedObject>
         super(ReferencedObject.class);
     }
     
-    @Override
-    public Collection<ReferencedObject> findOperativeByContext(Context ctx) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
     @Override
     public Collection<ReferencedObject> findOperativeByOwner(User user, boolean sortByContext) {
         String queryName;

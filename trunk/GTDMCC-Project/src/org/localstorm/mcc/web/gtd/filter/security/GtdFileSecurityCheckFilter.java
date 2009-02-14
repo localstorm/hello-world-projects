@@ -13,7 +13,7 @@ import org.localstorm.mcc.ejb.users.User;
  */
 public class GtdFileSecurityCheckFilter extends SecurityCheckFilter
 {
-    private static final String FILE_ID_PARAM="file_id";
+    private static final String FILE_ID_PARAM="fileId";
   
     @Override
     public void doFilter(HttpServletRequest req, HttpServletResponse res, User user)
@@ -24,6 +24,7 @@ public class GtdFileSecurityCheckFilter extends SecurityCheckFilter
 
         if (fid!=null)
         {
+
             Integer fileId = Integer.parseInt(fid);
             SecurityUtil.checkFileSecurity(req.getSession(true), fileId, user, log);
         }
