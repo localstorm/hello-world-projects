@@ -11,8 +11,10 @@ import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
 
 import org.localstorm.mcc.ejb.people.Person;
+import org.localstorm.mcc.ejb.people.PersonGroup;
 import org.localstorm.mcc.ejb.people.PersonManager;
 import org.localstorm.mcc.web.Constants;
+import org.localstorm.mcc.web.people.actions.wrap.WrapUtil;
 import org.localstorm.mcc.web.util.DateUtil;
 
 /**
@@ -24,6 +26,9 @@ public class PersonUpdateActionBean extends PersonViewActionBean
 {
     @Validate(required=true)
     private String firstName;
+
+    @Validate(required=true)
+    private Integer groupId;
 
     private String lastName;
 
@@ -64,6 +69,16 @@ public class PersonUpdateActionBean extends PersonViewActionBean
         this.birthDate = birthDate;
     }
 
+    public Integer getGroupId()
+    {
+        return groupId;
+    }
+
+    public void setGroupId(Integer groupId)
+    {
+        this.groupId = groupId;
+    }
+
     @After( LifecycleStage.BindingAndValidation )
     public void doPostValidationStuff() throws Exception {
         if ( getContext().getValidationErrors().hasFieldErrors() ) {
@@ -87,6 +102,12 @@ public class PersonUpdateActionBean extends PersonViewActionBean
         }
 
         pm.update(p);
+
+        PersonGroup pg = pm.findGroupByPerson(p);
+        if (!pg.getId().equals(this.getGroupId()))
+        {
+            pm.movePersonToGroup(p, pm.findGroup(this.getGroupId()));
+        }
 
         RedirectResolution rr = new RedirectResolution(PersonViewActionBean.class);
         {

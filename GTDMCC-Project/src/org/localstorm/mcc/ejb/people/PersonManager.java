@@ -37,6 +37,8 @@ public interface PersonManager
 
     public Collection<Attribute> getAttributes(Person p);
 
+    public void movePersonToGroup(Person p, PersonGroup findGroup);
+
     public void remove(Attribute a);
 
     public void remove(Person p);

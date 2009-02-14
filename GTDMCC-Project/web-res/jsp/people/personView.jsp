@@ -45,6 +45,18 @@
             </tr>
             <tr>
                 <td>&nbsp;</td>
+                <td>Person Group: </td>
+                <td>
+                    <stripes:select name="groupId" value="${actionBean.person.group.id}" style="width: 100%">
+                        <c:forEach items="${groups}" var="group">
+                            <stripes:option value="${group.id}" ><c:out escapeXml="false" value="${group.name}"/></stripes:option>
+                        </c:forEach>
+                    </stripes:select>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
                 <td>Birth date: </td>
                 <fmt:formatDate value="${actionBean.person.birthDate}" pattern="dd.MM.yyyy" var="birthDate" />
                 <td><stripes:text readonly="true" name="birthDate" id="d1" size="10" value="${birthDate}"/><img onclick="showCalendar('d1', '%d.%m.%Y', false, true);" border="0px" src="<c:url value="/images/calendar.png"/>" />&nbsp;<img onclick="document.editForm.birthDate.value = '';" border="0px" src="<c:url value="/images/nocalendar.png"/>" /></td>
