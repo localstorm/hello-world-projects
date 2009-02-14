@@ -19,8 +19,10 @@ public interface FileManager
     public void detach(FileAttachment fa, ReferencedObject ro);
     
     public Collection<FileAttachment> findAllByObject(ReferencedObject ro);
+    
     public FileAttachment findById(Integer id);
 
+    public ReferencedObject findByFileAttachment(FileAttachment fa);
+
     public void reattach(FileAttachment att, ReferencedObject ro);
-    
 }

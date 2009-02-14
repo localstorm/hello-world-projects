@@ -18,10 +18,9 @@ import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
 
 
 /**
- * @secure-by object Id parameter
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/ViewRefObj")
+@UrlBinding("/actions/gtd/ctx/obj/ViewRefObj")
 public class RefObjViewActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )

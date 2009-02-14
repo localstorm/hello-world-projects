@@ -19,7 +19,7 @@ import org.localstorm.mcc.web.util.FilterUtil;
 /**
  * @author localstorm
  */
-@UrlBinding("/actions/gtd/ViewFlightPlan")
+@UrlBinding("/actions/gtd/nil/ViewFlightPlan")
 public class FlightPlanViewActionBean extends GtdBaseActionBean {
 
     private FlightPlan flightPlan;

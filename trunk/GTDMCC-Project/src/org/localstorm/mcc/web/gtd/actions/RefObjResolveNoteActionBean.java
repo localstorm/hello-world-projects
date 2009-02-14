@@ -6,8 +6,6 @@ import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.gtd.files.FileAttachment;
-import org.localstorm.mcc.ejb.gtd.files.FileManager;
 import org.localstorm.mcc.ejb.gtd.notes.Note;
 import org.localstorm.mcc.ejb.gtd.notes.NoteManager;
 import org.localstorm.mcc.ejb.gtd.referenced.RefObjectManager;
@@ -15,12 +13,10 @@ import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
 import org.localstorm.mcc.web.Clipboard;
 
 /**
- * Special checks for instanceId!!!
- * @secure-by object Id parameter
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/ResolveRefObj")
-public class RefObjResolveActionBean extends GtdBaseActionBean
+@UrlBinding("/actions/gtd/ctx/obj/note/ResolveRefObjNote")
+public class RefObjResolveNoteActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )
     private String action;
@@ -29,7 +25,7 @@ public class RefObjResolveActionBean extends GtdBaseActionBean
     private Integer objectId;
 
     @Validate( required=true )
-    private Integer instanceId;
+    private Integer noteId;
 
     public String getAction()
     {
@@ -50,15 +46,15 @@ public class RefObjResolveActionBean extends GtdBaseActionBean
     {
         this.objectId = objectId;
     }
-   
-    public Integer getInstanceId()
+
+    public Integer getNoteId()
     {
-        return instanceId;
+        return noteId;
     }
 
-    public void setInstanceId(Integer instanceId)
+    public void setNoteId(Integer noteId)
     {
-        this.instanceId = instanceId;
+        this.noteId = noteId;
     }
     
     @DefaultHandler
@@ -67,29 +63,17 @@ public class RefObjResolveActionBean extends GtdBaseActionBean
         Action      a  = Action.valueOf(this.getAction());
         
         RefObjectManager rom = super.getRefObjectManager();
-        FileManager fm = super.getFileManager();
         NoteManager nm = super.getNoteManager();
         Clipboard clip = super.getClipboard();
 
-        FileAttachment   fa = null;
         Note             no = null;
         ReferencedObject ro = rom.findById(this.getObjectId());
         
         switch (a)
         {
-            case CUT_FILE:
-                fa = fm.findById(this.getInstanceId());
-                clip.copyFile(fa);
-                break;
             case CUT_NOTE:
-                no = nm.findById(this.getInstanceId());
+                no = nm.findById(this.getNoteId());
                 clip.copyNote(no);
-                break;
-            case PASTE_FILES:
-                for (FileAttachment att : clip.getFiles()) {
-                    fm.reattach(att, ro);
-                }
-                clip.clearFiles();
                 break;
             case PASTE_NOTES:
                 for (Note note : clip.getNotes()) {
@@ -111,16 +95,14 @@ public class RefObjResolveActionBean extends GtdBaseActionBean
 
     public static interface IncommingParameters {
         public static final String OBJECT_ID     = "destId";
-        public static final String INSTANCE_ID   = "instanceId";
+        public static final String NOTE_ID       = "noteId";
         public static final String ACTION        = "action";
     }
 
     private static enum Action
     {
         CUT_NOTE,
-        CUT_FILE,
-        PASTE_NOTES,
-        PASTE_FILES
+        PASTE_NOTES
     }
     
 }

@@ -15,7 +15,7 @@ import org.localstorm.mcc.web.Clipboard;
 /**
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/gtd/list/BulkPasteTask")
+@UrlBinding("/actions/gtd/ctx/list/BulkPasteTask")
 public class TaskBulkPasteActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )

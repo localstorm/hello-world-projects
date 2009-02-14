@@ -23,7 +23,7 @@ import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
 /**
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/gtd/task/ViewTask")
+@UrlBinding("/actions/gtd/ctx/list/task/ViewTask")
 public class TaskViewActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )

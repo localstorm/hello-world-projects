@@ -62,7 +62,15 @@ public class FileManagerBean implements FileManagerLocal
     {
         return em.find(FileAttachment.class, id);
     }
-    
+
+    @Override
+    public ReferencedObject findByFileAttachment(FileAttachment fa)
+    {
+        Query uq = em.createNamedQuery(FileToRefObject.Queries.FIND_OBJECT_BY_FILE);
+        uq.setParameter(FileToRefObject.Properties.FILE, fa);
+        return (ReferencedObject) uq.getSingleResult();
+    }
+
     @Override
     public void download(FileAttachment fa, OutputStream os) throws IOException 
     {

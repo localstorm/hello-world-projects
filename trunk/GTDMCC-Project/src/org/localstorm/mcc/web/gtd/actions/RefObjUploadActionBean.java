@@ -16,7 +16,7 @@ import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
  * @secure-by object Id parameter
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/UploadRefObj")
+@UrlBinding("/actions/ctx/obj/UploadRefObj")
 public class RefObjUploadActionBean extends RefObjViewActionBean
 {
     @Validate( required=true )

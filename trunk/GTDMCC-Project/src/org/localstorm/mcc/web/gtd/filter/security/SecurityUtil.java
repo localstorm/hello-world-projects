@@ -1,12 +1,17 @@
 package org.localstorm.mcc.web.gtd.filter.security;
 
 import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.localstorm.mcc.ejb.ContextLookup;
+import org.localstorm.mcc.ejb.gtd.files.FileAttachment;
+import org.localstorm.mcc.ejb.gtd.files.FileManager;
 import org.localstorm.mcc.ejb.gtd.lists.GTDList;
 import org.localstorm.mcc.ejb.gtd.lists.ListManager;
+import org.localstorm.mcc.ejb.gtd.notes.Note;
+import org.localstorm.mcc.ejb.gtd.notes.NoteManager;
+import org.localstorm.mcc.ejb.gtd.referenced.RefObjectManager;
+import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.ejb.users.User;
@@ -23,8 +28,6 @@ class SecurityUtil
     public static final String ACCESS_DENIED = "Access denied!";
     
     public static void checkContextSecurity(HttpSession sess, Integer contextId, User user, Logger log)
-            throws SecurityRuntimeException,
-                   NumberFormatException
     {
         if (contextId!=null)
         {
@@ -39,14 +42,8 @@ class SecurityUtil
         }
     }
 
-    public static void checkFileSecurity(HttpServletRequest req, User user, Logger log)
-    {
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
-
     public static void checkListSecurity(HttpSession sess, Integer listId, User user, Logger log)
-            throws SecurityRuntimeException,
-                   NumberFormatException
+            throws SecurityRuntimeException
     {
         if (listId!=null)
         {
@@ -68,14 +65,29 @@ class SecurityUtil
         }
     }
 
-    public static void checkObjectSecurity(HttpServletRequest req, User user, Logger log)
+    public static void checkObjectSecurity(HttpSession sess, Integer objectId, User user, Logger log)
     {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if (objectId!=null)
+        {
+            log.info("Checking access to object=" + objectId + " for user=" + user.getLogin());
+            Integer contextId;
+
+            try {
+
+                RefObjectManager rm = ContextLookup.lookup(RefObjectManager.class, RefObjectManager.BEAN_NAME);
+                ReferencedObject ro = rm.findById(objectId);
+                contextId = ro.getContext().getId();
+
+            } catch(Exception e) {
+                log.error(e);
+                throw new SecurityRuntimeException(ACCESS_DENIED);
+            }
+
+            checkContextSecurity(sess, contextId, user, log);
+        }
     }
 
     public static void checkTaskSecurity(HttpSession sess, Integer taskId, User user, Logger log)
-            throws SecurityRuntimeException,
-                   NumberFormatException
     {
         if (taskId!=null)
         {
@@ -94,6 +106,53 @@ class SecurityUtil
             }
 
             checkListSecurity(sess, listId, user, log);
+        }
+    }
+
+    public static void checkFileSecurity(HttpSession sess, Integer fileId, User user, Logger log)
+    {
+        if (fileId!=null)
+        {
+            log.info("Checking access to file=" + fileId + " for user=" + user.getLogin());
+            Integer objectId;
+
+            try {
+
+                FileManager    fm = ContextLookup.lookup(FileManager.class, FileManager.BEAN_NAME);
+                FileAttachment fa = fm.findById(fileId);
+                ReferencedObject o = fm.findByFileAttachment(fa);
+                objectId           = o.getId();
+
+            } catch(Exception e) {
+                log.error(e);
+                throw new SecurityRuntimeException(ACCESS_DENIED);
+            }
+
+            checkObjectSecurity(sess, objectId, user, log);
+        }
+    }
+
+    public static void checkNoteSecurity(HttpSession sess, Integer noteId, User user, Logger log)
+    {
+        if (noteId!=null)
+        {
+            log.info("Checking access to note=" + noteId + " for user=" + user.getLogin());
+            Integer objectId;
+
+            try {
+
+                NoteManager    nm = ContextLookup.lookup(NoteManager.class, NoteManager.BEAN_NAME);
+                Note         note = nm.findById(noteId);
+                ReferencedObject o = nm.findByNote(note);
+
+                objectId           = o.getId();
+
+            } catch(Exception e) {
+                log.error(e);
+                throw new SecurityRuntimeException(ACCESS_DENIED);
+            }
+
+            checkObjectSecurity(sess, objectId, user, log);
         }
     }
 

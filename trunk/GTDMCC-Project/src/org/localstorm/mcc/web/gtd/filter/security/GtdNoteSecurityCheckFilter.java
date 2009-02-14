@@ -11,21 +11,21 @@ import org.localstorm.mcc.ejb.users.User;
  *
  * @author Alexey Kuznetsov
  */
-public class GtdObjectSecurityCheckFilter extends SecurityCheckFilter
+public class GtdNoteSecurityCheckFilter extends SecurityCheckFilter
 {
-    private static final String OBJECT_ID_PARAM = "objectId";
+    private static final String NOTE_ID_PARAM = "noteId";
 
     @Override
     public void doFilter(HttpServletRequest req, HttpServletResponse res, User user)
             throws IOException,
                    ServletException
     {
-        String oid = req.getParameter(OBJECT_ID_PARAM);
+        String nid = req.getParameter(NOTE_ID_PARAM);
 
-        if (oid!=null)
+        if (nid!=null)
         {
-            Integer objectId = Integer.parseInt(oid);
-            SecurityUtil.checkObjectSecurity(req.getSession(true), objectId, user, log);
+            Integer noteId = Integer.parseInt(nid);
+            SecurityUtil.checkNoteSecurity(req.getSession(true), noteId, user, log);
         }
     }
 

@@ -38,7 +38,7 @@ import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
 /**
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/gtd/SubmitRefObjAttachSearch")
+@UrlBinding("/actions/gtd/nil/SubmitRefObjAttachSearch")
 public class RefObjAttachmentSearchSubmitActionBean extends GtdBaseActionBean
 {
     private static final String FILE_TYPE     = "FILE";

@@ -10,7 +10,7 @@ import net.sourceforge.stripes.action.UrlBinding;
 /**
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/gtd/UtilizeFlightPlan")
+@UrlBinding("/actions/gtd/nil/UtilizeFlightPlan")
 public class FlightPlanUtilizeActionBean extends GtdBaseActionBean
 {
     @DefaultHandler

@@ -18,7 +18,7 @@
                              and not empty updateForm}">inline</c:when>
              <c:otherwise>none</c:otherwise>
     </c:choose>;">
-        <stripes:form action="/actions/UpdateRefObj" >
+        <stripes:form action="/actions/ctx/obj/UpdateRefObj" >
         <stripes:hidden name="objectId" value="${actionBean.objectResult.id}"/>
         <stripes:errors/>
         <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
@@ -61,7 +61,7 @@
                              and empty urlForm and empty fileForm}">inline</c:when>
              <c:otherwise>none</c:otherwise>
             </c:choose>;">
-        <stripes:form name="textForm" action="/actions/AttachRefObj" > 
+        <stripes:form name="textForm" action="/actions/gtd/ctx/obj/AttachRefObj" > 
             <stripes:hidden name="type" value="TEXT" />
             <stripes:hidden name="objectId" value="${actionBean.objectResult.id}" />
             <stripes:hidden name="description" value="--"/>
@@ -100,7 +100,7 @@
                              and not empty urlForm and empty fileForm}">inline</c:when>
              <c:otherwise>none</c:otherwise>
             </c:choose>;">
-        <stripes:form name="urlForm" action="/actions/AttachRefObj" > 
+        <stripes:form name="urlForm" action="/actions/gtd/ctx/obj/AttachRefObj" > 
             <stripes:hidden name="type" value="URL" />
             <stripes:hidden name="objectId" value="${actionBean.objectResult.id}" />
             <stripes:errors/>
@@ -139,7 +139,7 @@
                              and not empty fileForm and empty urlForm}">inline</c:when>
              <c:otherwise>none</c:otherwise>
             </c:choose>;">
-        <stripes:form action="/actions/UploadRefObj" >
+        <stripes:form action="/actions/ctx/obj/UploadRefObj" >
             <stripes:hidden name="objectId" value="${actionBean.objectResult.id}" />
             <stripes:errors/>
         <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
@@ -173,13 +173,13 @@
     </div>
     </div>
     <c:forEach var="note" items="${actionBean.objectTextualNotes}">    
-        <p><span><a title="Detach" onclick="return confirm('Are you sure?')" href="<c:url value="/actions/DetachRefObj" >
+        <p><span><a title="Detach" onclick="return confirm('Are you sure?')" href="<c:url value="/actions/gtd/ctx/obj/note/DetachNoteRefObj" >
             <c:param name="objectId" value="${actionBean.objectResult.id}" />
             <c:param name="noteId" value="${note.id}" />
-        </c:url>"><img src="<c:url value="/images/trash.png"/>" alt="detach" /></a><a title="Cut" href="<c:url value="/actions/ResolveRefObj" >
+        </c:url>"><img src="<c:url value="/images/trash.png"/>" alt="detach" /></a><a title="Cut" href="<c:url value="/actions/gtd/ctx/obj/note/ResolveRefObjNote" >
             <c:param name="action"     value="CUT_NOTE" />
             <c:param name="objectId"   value="${actionBean.objectResult.id}" />
-            <c:param name="instanceId" value="${note.id}" />
+            <c:param name="noteId" value="${note.id}" />
         </c:url>"><img src="<c:url value="/images/cut.png"/>" alt="detach" /></a>&nbsp;Text: </span>&nbsp;<br/>
             <table width="100%">
                 <tr><td><c:out escapeXml="false" value="${note.noteHtmlEscaped}" /></td></tr>
@@ -192,13 +192,13 @@
             <hr/>
         </c:if>
         <c:forEach var="note" items="${actionBean.objectUrlNotes}">    
-            <p><span><a title="Detach" onclick="return confirm('Are you sure?')" href="<c:url value="/actions/DetachRefObj" >
+            <p><span><a title="Detach" onclick="return confirm('Are you sure?')" href="<c:url value="/actions/gtd/ctx/obj/note/DetachNoteRefObj" >
                 <c:param name="objectId" value="${actionBean.objectResult.id}" />
                 <c:param name="noteId"   value="${note.id}" />
-            </c:url>"><img src="<c:url value="/images/trash.png"/>" alt="detach" /></a><a title="Cut" href="<c:url value="/actions/ResolveRefObj" >
+            </c:url>"><img src="<c:url value="/images/trash.png"/>" alt="detach" /></a><a title="Cut" href="<c:url value="/actions/gtd/ctx/obj/note/ResolveRefObjNote" >
             <c:param name="action"   value="CUT_NOTE" />
             <c:param name="objectId"   value="${actionBean.objectResult.id}" />
-            <c:param name="instanceId"   value="${note.id}" />
+            <c:param name="noteId"   value="${note.id}" />
         </c:url>"><img src="<c:url value="/images/cut.png"/>" alt="detach" /></a>&nbsp;Link</span>: <a href="<c:out value="${note.note}" />"><c:out value="${note.description}" /></a></p>
         </c:forEach>
     </c:if>
@@ -208,14 +208,14 @@
             <hr/>
         </c:if>
         <c:forEach var="file" items="${actionBean.objectFiles}">    
-            <p><span><a title="Detach" onclick="return confirm('Are you sure?')" href="<c:url value="/actions/DetachFileRefObj" >
+            <p><span><a title="Detach" onclick="return confirm('Are you sure?')" href="<c:url value="/actions/gtd/ctx/obj/file/DetachFileRefObj" >
                 <c:param name="objectId" value="${actionBean.objectResult.id}" />
                 <c:param name="fileId"   value="${file.id}" />
-        </c:url>"><img src="<c:url value="/images/trash.png"/>" alt="detach" /></a><a title="Cut" href="<c:url value="/actions/ResolveRefObj" >
+        </c:url>"><img src="<c:url value="/images/trash.png"/>" alt="detach" /></a><a title="Cut" href="<c:url value="/actions/gtd/ctx/obj/file/ResolveRefObjFile" >
             <c:param name="action"     value="CUT_FILE" />
             <c:param name="objectId"   value="${actionBean.objectResult.id}" />
-            <c:param name="instanceId" value="${file.id}" />
-        </c:url>"><img src="<c:url value="/images/cut.png"/>" alt="detach" /></a>&nbsp;File</span>: <a href="<c:url value="/actions/DownloadFile">
+            <c:param name="fileId"     value="${file.id}" />
+        </c:url>"><img src="<c:url value="/images/cut.png"/>" alt="detach" /></a>&nbsp;File</span>: <a href="<c:url value="/actions/gtd/ctx/obj/file/DownloadFile">
                 <c:param name="fileId" value="${file.id}" />        
         </c:url>"><c:out value="${file.name}"/></a> (<c:out value="${file.description}" />)</p>
         </c:forEach>

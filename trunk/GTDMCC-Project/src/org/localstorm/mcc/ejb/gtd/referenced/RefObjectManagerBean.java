@@ -12,11 +12,6 @@ import org.localstorm.mcc.ejb.users.User;
  *
  * @author Alexey Kuznetsov
  */
-
-/**
- *
- * @author Alexey Kuznetsov
- */
 @Stateless
 public class RefObjectManagerBean extends AbstractManager<ReferencedObject>
                                   implements RefObjectManagerLocal, RefObjectManagerRemote

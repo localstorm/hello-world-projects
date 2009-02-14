@@ -25,7 +25,7 @@
 <c:forEach items="${actionBean.tasksResult[ctx.id]}" var="task">
     <p><span><img src="<c:url value="/images/loe${task.effort}.png"/>"/>&nbsp;<c:out value="${task.list.name}" />:</span><br/>
         <div align="center">
-            <a href="<c:url value="/actions/gtd/task/ViewTask">
+            <a href="<c:url value="/actions/gtd/ctx/list/task/ViewTask">
                             <c:param name="taskId" value="${task.id}" />
                             <c:param name="returnPageToken" value="${returnPageToken}" />
                     </c:url>" title="Expand"><c:out value="${task.summary}" /></a>
@@ -39,7 +39,7 @@
         </c:if>
 </p>
 <div id="<c:out value="delegate-${task.id}" />" style="display: none;" >
-    <stripes:form action="/actions/gtd/task/ResolveTask" >
+    <stripes:form action="/actions/gtd/ctx/list/task/ResolveTask" >
         <stripes:hidden name="returnPageToken" value="${returnPageToken}" />
         <stripes:hidden name="taskId" value="${task.id}" />
         <stripes:hidden name="action" value="DELEGATE" />
@@ -58,21 +58,21 @@
         <td width="20%" >
         <nobr>
             <c:if test="${not task.inFlightPlan}">
-                    <a href="<c:url value="/actions/gtd/task/ResolveTask">
+                    <a href="<c:url value="/actions/gtd/ctx/list/task/ResolveTask">
                                 <c:param name="returnPageToken" value="${returnPageToken}" />
                                 <c:param name="taskId" value="${task.id}" />
                                 <c:param name="action" value="FLIGHT" />
                              </c:url>" title="Append To Flight Plan"><img alt="flight" src="<c:url value="/images/flight.png"/>"/></a>
             </c:if>
-            <a href="<c:url value="/actions/gtd/list/ViewList" >
+            <a href="<c:url value="/actions/gtd/ctx/list/ViewList" >
                 <c:param name="listId" value="${task.list.id}" />
             </c:url>" title="Open affected list"><img alt="toList" src="<c:url value="/images/toList.png"/>"/></a>
-            <a href="<c:url value="/actions/gtd/task/ResolveTask" >
+            <a href="<c:url value="/actions/gtd/ctx/list/task/ResolveTask" >
                 <c:param name="returnPageToken" value="${returnPageToken}" />
                 <c:param name="taskId" value="${task.id}" />
                 <c:param name="action" value="FINISH" />
             </c:url>" title="Finish"><img alt="finish" src="<c:url value="/images/finish.png"/>"/></a>
-            <a href="<c:url value="/actions/gtd/task/ResolveTask" >
+            <a href="<c:url value="/actions/gtd/ctx/list/task/ResolveTask" >
                 <c:param name="returnPageToken" value="${returnPageToken}" />
                 <c:param name="taskId" value="${task.id}" />
                 <c:param name="action" value="CANCEL" />

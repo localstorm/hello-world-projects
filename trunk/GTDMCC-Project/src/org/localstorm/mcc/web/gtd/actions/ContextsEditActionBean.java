@@ -13,7 +13,7 @@ import org.localstorm.mcc.web.gtd.Views;
 /**
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/gtd/EditContexts")
+@UrlBinding("/actions/gtd/nil/EditContexts")
 public class ContextsEditActionBean extends GtdBaseActionBean {
 
     private List<Context> result;

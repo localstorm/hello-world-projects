@@ -17,7 +17,7 @@ import org.localstorm.mcc.ejb.gtd.lists.ListManager;
 /**
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/gtd/list/AddTask")
+@UrlBinding("/actions/gtd/ctx/list/AddTask")
 public class TaskAddActionBean extends ListViewActionBean
 {
 

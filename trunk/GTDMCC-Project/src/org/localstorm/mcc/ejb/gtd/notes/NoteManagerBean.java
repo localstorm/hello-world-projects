@@ -70,6 +70,13 @@ public class NoteManagerBean implements NoteManagerLocal, NoteManagerRemote
         }
     }
 
+    @Override
+    public ReferencedObject findByNote(Note note)
+    {
+        Query uq = em.createNamedQuery(NoteToObject.Queries.FIND_OBJECT_BY_NOTE);
+        uq.setParameter(NoteToObject.Properties.NOTE, note);
+        return (ReferencedObject) uq.getSingleResult();
+    }
 
     @PersistenceContext(unitName=Constants.DEFAULT_PU)
     private EntityManager em;

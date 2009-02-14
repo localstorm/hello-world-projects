@@ -11,7 +11,7 @@ import org.localstorm.mcc.web.dashboard.actions.DashboardActionBean;
 /**
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/gtd/CleanupFinishedTasks")
+@UrlBinding("/actions/gtd/nil/CleanupFinishedTasks")
 public class FinishedTasksCleanupActionBean extends GtdBaseActionBean {
 
     @DefaultHandler
