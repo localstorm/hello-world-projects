@@ -49,6 +49,15 @@ public class Person extends AbstractEntity implements Identifiable, Serializable
     @Temporal(TemporalType.DATE)
     private Date birthDate;
 
+    public Person()
+    {
+    }
+
+    public Person(Integer id)
+    {
+        this.id = id;
+    }
+
     @Override
     public Integer getId() {
         return this.id;

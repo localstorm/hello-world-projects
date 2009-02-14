@@ -6,10 +6,13 @@ import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.people.Person;
+import org.localstorm.mcc.ejb.people.PersonGroup;
 import org.localstorm.mcc.ejb.people.PersonManager;
+import org.localstorm.mcc.web.people.PeopleBaseActionBean;
+
 
 @UrlBinding("/actions/RemovePerson")
-public class PersonRemoveActionBean extends PersonGroupViewActionBean {
+public class PersonRemoveActionBean extends PeopleBaseActionBean {
 
     @Validate(required=true)
     private Integer personId;
@@ -22,19 +25,19 @@ public class PersonRemoveActionBean extends PersonGroupViewActionBean {
         this.personId = personId;
     }
 
-    @Override
     @DefaultHandler
     public Resolution filling() throws Exception {
         
         PersonManager pm = super.getPersonManager();
         Person         p = pm.findPerson(this.getPersonId());
+        PersonGroup group= pm.findGroupByPerson(p);
 
         pm.remove(p);
 
         RedirectResolution rr = new RedirectResolution(PersonGroupViewActionBean.class);
         {
             rr.addParameter(PersonGroupViewActionBean.IncommingParameters.GROUP_ID,
-                            this.getGroupId());
+                            group.getId());
         }
 
         return rr;

@@ -52,6 +52,14 @@ public class PersonManagerBean implements PersonManagerLocal,
     }
 
     @Override
+    public PersonGroup findGroupByPerson(Person p) {
+        Query q = em.createNamedQuery(PersonToGroup.Queries.FIND_GROUP_BY_PERSON);
+        q.setParameter(PersonToGroup.Properties.PERSON, p);
+
+        return (PersonGroup) q.getSingleResult();
+    }
+
+    @Override
     public PersonGroup findGroup(Integer groupId) throws ObjectNotFoundException {
         
         PersonGroup pg = em.find(PersonGroup.class, groupId);

@@ -25,6 +25,8 @@ public interface PersonManager
 
     public PersonGroup findGroup(Integer groupId) throws ObjectNotFoundException;
 
+    public PersonGroup findGroupByPerson(Person p);
+
     public Person findPerson(Integer personId) throws ObjectNotFoundException;
 
     public Collection<PersonGroup> findGroupsByOwner(User user);

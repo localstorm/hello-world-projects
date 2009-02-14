@@ -8,7 +8,9 @@
     <c:if test="${not empty peopleDashReport.redPersons}">
         <div id="redDashPane">
             <c:forEach items="${peopleDashReport.redPersons}" var="pw">
-                <p><img src="<c:url value="/images/person.png" />" /> <c:out value="${pw.shortName}"/> 
+                <p><img src="<c:url value="/images/person.png" />" /> <a href="<c:url value="/actions/ViewPerson">
+                    <c:param name="personId" value="${pw.id}"/>
+                </c:url>"><c:out value="${pw.shortName}"/></a>
                 <c:choose>
                     <c:when test="${pw.remains>0}">(+<c:out value="${pw.remains}"/>)</c:when>
                     <c:otherwise>(Today!)</c:otherwise>
@@ -20,14 +22,18 @@
     <c:if test="${not empty peopleDashReport.yellowPersons}">
         <div id="yellowDashPane">
                 <c:forEach items="${peopleDashReport.yellowPersons}" var="pw">
-                    <p><img src="<c:url value="/images/person.png" />" /> <c:out value="${pw.shortName}"/> (+<c:out value="${pw.remains}"/>)</p>
+                    <p><img src="<c:url value="/images/person.png" />" /> <a href="<c:url value="/actions/ViewPerson">
+                    <c:param name="personId" value="${pw.id}"/>
+                </c:url>"><c:out value="${pw.shortName}"/></a> (+<c:out value="${pw.remains}"/>)</p>
                 </c:forEach>
         </div>
     </c:if>
     <c:if test="${not empty peopleDashReport.greenPersons}">
         <div id="greenDashPane">
                 <c:forEach items="${peopleDashReport.greenPersons}" var="pw">
-                    <p><img src="<c:url value="/images/person.png" />" /> <c:out value="${pw.shortName}"/> (+<c:out value="${pw.remains}"/>)</p>
+                    <p><img src="<c:url value="/images/person.png" />" /> <a href="<c:url value="/actions/ViewPerson">
+                    <c:param name="personId" value="${pw.id}"/>
+                </c:url>"><c:out value="${pw.shortName}"/></a> (+<c:out value="${pw.remains}"/>)</p>
                 </c:forEach>
         </div>
     </c:if>
