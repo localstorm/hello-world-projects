@@ -100,7 +100,22 @@
             <filter-name>GtdTaskSecurityCheckFilter</filter-name>
             <filter-class>org.localstorm.mcc.web.gtd.filter.security.GtdTaskSecurityCheckFilter</filter-class>
         </filter>
+
+        <filter>
+            <filter-name>GtdObjectSecurityCheckFilter</filter-name>
+            <filter-class>org.localstorm.mcc.web.gtd.filter.security.GtdObjectSecurityCheckFilter</filter-class>
+        </filter>
+
+        <filter>
+            <filter-name>GtdFileSecurityCheckFilter</filter-name>
+            <filter-class>org.localstorm.mcc.web.gtd.filter.security.GtdFileSecurityCheckFilter</filter-class>
+        </filter>
  
+        <filter>
+            <filter-name>GtdNoteSecurityCheckFilter</filter-name>
+            <filter-class>org.localstorm.mcc.web.gtd.filter.security.GtdNoteSecurityCheckFilter</filter-class>
+        </filter>
+
         <!-- =========== Filter Mapping ============ -->
 
         <!-- Stripes -->
@@ -211,14 +226,28 @@
 
         <filter-mapping>
                 <filter-name>GtdListSecurityCheckFilter</filter-name>
-                <url-pattern>/actions/gtd/list/*</url-pattern>
+                <url-pattern>/actions/gtd/ctx/list/*</url-pattern>
+        </filter-mapping>
+
+        <filter-mapping>
+                <filter-name>GtdObjectSecurityCheckFilter</filter-name>
+                <url-pattern>/actions/gtd/ctx/obj/*</url-pattern>
         </filter-mapping>
 
         <filter-mapping>
                 <filter-name>GtdTaskSecurityCheckFilter</filter-name>
-                <url-pattern>/actions/gtd/task/*</url-pattern>
+                <url-pattern>/actions/gtd/ctx/list/task/*</url-pattern>
         </filter-mapping>
 
+        <filter-mapping>
+                <filter-name>GtdFileSecurityCheckFilter</filter-name>
+                <url-pattern>/actions/gtd/ctx/obj/file/*</url-pattern>
+        </filter-mapping>
+
+        <filter-mapping>
+                <filter-name>GtdNoteSecurityCheckFilter</filter-name>
+                <url-pattern>/actions/gtd/ctx/obj/note/*</url-pattern>
+        </filter-mapping>
 
         <!-- Compression -->
 

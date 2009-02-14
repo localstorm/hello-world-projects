@@ -17,7 +17,7 @@ import org.localstorm.mcc.web.Clipboard;
 /**
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/gtd/list/ResolveList")
+@UrlBinding("/actions/gtd/ctx/list/ResolveList")
 public class ListResolveActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )

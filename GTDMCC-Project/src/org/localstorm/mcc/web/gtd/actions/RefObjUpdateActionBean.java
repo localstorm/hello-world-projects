@@ -19,7 +19,7 @@ import org.localstorm.mcc.web.util.SessionUtil;
  * @secure-by object Id parameter, context Id parameter
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/UpdateRefObj")
+@UrlBinding("/actions/ctx/obj/UpdateRefObj")
 public class RefObjUpdateActionBean extends RefObjViewActionBean
 {
     @Validate( required=true )

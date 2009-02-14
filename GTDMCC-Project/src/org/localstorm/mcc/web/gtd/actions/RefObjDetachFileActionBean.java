@@ -12,10 +12,9 @@ import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
 import org.localstorm.mcc.web.Clipboard;
 
 /**
- * @secure-by fileId parameter
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/DetachFileRefObj")
+@UrlBinding("/actions/gtd/ctx/obj/file/DetachFileRefObj")
 public class RefObjDetachFileActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )

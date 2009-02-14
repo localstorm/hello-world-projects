@@ -14,7 +14,7 @@ import org.localstorm.mcc.web.gtd.Views;
 /**
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/gtd/EditRefObj")
+@UrlBinding("/actions/gtd/nil/EditRefObj")
 public class RefObjEditActionBean extends GtdBaseActionBean {
 
     private Collection<ReferencedObject> refObjects;

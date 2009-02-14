@@ -59,11 +59,11 @@
 	<tr>
 		<td width="95%">
 			<p><img src="<c:url value="/images/arrow.gif" />"/>
-                        <span><c:out value="${ro.context.name}"/>:&nbsp;<a href="<c:url value="/actions/ViewRefObj">
+                        <span><c:out value="${ro.context.name}"/>:&nbsp;<a href="<c:url value="/actions/gtd/ctx/obj/ViewRefObj">
                                             <c:param name="objectId" value="${ro.id}" />
                                        </c:url>"><c:out value="${ro.name}"/></a></span>
 		</td>
-		<td width="5%"> <a href="<c:url value="/actions/ToggleStateRefObj">
+		<td width="5%"> <a href="<c:url value="/actions/gtd/ctx/obj/ToggleStateRefObj">
                                             <c:param name="objectId" value="${ro.id}" />
                                        </c:url>" title="Archive"><img src="<c:url value="/images/trash.png"/>" /></a></p></td>
 	</tr>
@@ -77,14 +77,14 @@
             <tr>
                     <td width="95%">
                             <p><img src="<c:url value="/images/arrow.gif"/>"/> 
-                            <span><a href="<c:url value="/actions/ViewRefObj">
+                            <span><a href="<c:url value="/actions/gtd/ctx/obj/ViewRefObj">
                                             <c:param name="contextId" value="${ro.id}" />
                                         </c:url>"><c:out value="${ro.name}"/></a></span>
                     </td>
-                    <td width="5%"><nobr><a href="<c:url value="/actions/ToggleStateRefObj">
+                    <td width="5%"><nobr><a href="<c:url value="/actions/gtd/ctx/obj/ToggleStateRefObj">
                                                 <c:param name="objectId" value="${ro.id}" />
                                            </c:url>" title="Unarchive"><img src="<c:url value="/images/deleted.png"/>" /></a>
-                                           <a href="<c:url value="/actions/EraseRefObj">
+                                           <a href="<c:url value="/actions/gtd/ctx/obj/EraseRefObj">
                                                 <c:param name="objectId" value="${ro.id}" />
                                            </c:url>" title="Delete permanently"><img src="<c:url value="/images/erase.png"/>" /></a>
                     </nobr>

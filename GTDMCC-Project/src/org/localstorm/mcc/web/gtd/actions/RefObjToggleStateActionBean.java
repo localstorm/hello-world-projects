@@ -12,10 +12,9 @@ import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
- * @secure-by object Id parameter
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/ToggleStateRefObj")
+@UrlBinding("/actions/gtd/ctx/obj/ToggleStateRefObj")
 public class RefObjToggleStateActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )

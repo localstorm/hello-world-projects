@@ -12,11 +12,10 @@ import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
 import org.localstorm.mcc.web.Clipboard;
 
 /**
- * @secure-by object Id parameter
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/DetachRefObj")
-public class RefObjDetachActionBean extends GtdBaseActionBean
+@UrlBinding("/actions/gtd/ctx/obj/note/DetachNoteRefObj")
+public class RefObjDetachNoteActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )
     private int objectId;

@@ -14,7 +14,7 @@ import org.localstorm.mcc.ejb.gtd.lists.ListManager;
 /**
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/gtd/list/RenameList")
+@UrlBinding("/actions/gtd/ctx/list/RenameList")
 public class ListRenameActionBean extends ListViewActionBean
 {
     @Validate( required=true )

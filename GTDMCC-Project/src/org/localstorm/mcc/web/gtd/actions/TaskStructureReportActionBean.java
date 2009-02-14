@@ -10,7 +10,7 @@ import org.localstorm.mcc.web.gtd.Views;
 /**
  * @author localstorm
  */
-@UrlBinding("/actions/gtd/TaskStructureReport")
+@UrlBinding("/actions/gtd/nil/TaskStructureReport")
 public class TaskStructureReportActionBean extends GtdBaseActionBean {
 
     @DefaultHandler

@@ -13,7 +13,7 @@ public class LogoutActionBean extends BaseActionBean {
     @DefaultHandler
     public Resolution logout() {
         this.getSession().invalidate();
-        return new RedirectResolution("/actions/gtd/ViewFlightPlan", true);
+        return new RedirectResolution("/actions/gtd/nil/ViewFlightPlan", true);
     }
 
 }

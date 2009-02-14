@@ -13,6 +13,8 @@ public interface NoteManager
 
     public Note findById(int noteId);
 
+    public ReferencedObject findByNote(Note note);
+
     public void reattach(Note note, ReferencedObject ro);
     
     public void attachToObject(Note note, ReferencedObject obj);

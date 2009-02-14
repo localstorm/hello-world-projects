@@ -11,7 +11,7 @@ import org.localstorm.mcc.web.gtd.Views;
 /**
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/gtd/SearchTasks")
+@UrlBinding("/actions/gtd/nil/SearchTasks")
 public class TaskSearch extends GtdBaseActionBean
 {
     public boolean isFound() {

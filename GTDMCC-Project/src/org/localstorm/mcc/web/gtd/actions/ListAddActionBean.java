@@ -22,8 +22,6 @@ public class ListAddActionBean extends ContextViewActionBean
     
     private Context contextResult;
 
-    // TODO: Type
-
     @After( LifecycleStage.BindingAndValidation ) 
     public void doPostValidationStuff() throws Exception {
         if ( getContext().getValidationErrors().hasFieldErrors() )

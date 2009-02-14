@@ -75,10 +75,10 @@
 <br/>
 <div width="100%" style="border:1px dotted #DADADA; padding:0 3px 6px;" >
 <c:forEach items="${actionBean.pinnedLists}" var="list" >
-    <p><a title="Pin/Unpin" href="<c:url value="/actions/gtd/list/ResolveList">
+    <p><a title="Pin/Unpin" href="<c:url value="/actions/gtd/ctx/list/ResolveList">
                     <c:param name="listId" value="${list.id}" />
                     <c:param name="action" value="PIN" />
-                 </c:url>"><img src="<c:url value="/images/pin_on.png"/>"/></a>&nbsp;<span><a href="<c:url value="/actions/gtd/list/ViewList">
+                 </c:url>"><img src="<c:url value="/images/pin_on.png"/>"/></a>&nbsp;<span><a href="<c:url value="/actions/gtd/ctx/list/ViewList">
                                 <c:param name="listId" value="${list.id}" />
                  </c:url>"><c:out value="${list.name}"/></a></span></p>
 </c:forEach>    
@@ -93,10 +93,10 @@
 <c:forEach items="${actionBean.contextLists}" var="list" >
 <tr> 
     <td>
-        <p><a href="<c:url value="/actions/gtd/list/ResolveList">
+        <p><a href="<c:url value="/actions/gtd/ctx/list/ResolveList">
                         <c:param name="listId" value="${list.id}" />
                         <c:param name="action" value="PIN" />
-                    </c:url>"><img src="<c:url value="/images/pin_off.png"/>"/></a>&nbsp;<span><a href="<c:url value="/actions/gtd/list/ViewList">
+                    </c:url>"><img src="<c:url value="/images/pin_off.png"/>"/></a>&nbsp;<span><a href="<c:url value="/actions/gtd/ctx/list/ViewList">
                                 <c:param name="listId" value="${list.id}" />
                     </c:url>"><c:out value="${list.name}"/></a></span></p>
         <table width="100%">
@@ -104,15 +104,15 @@
                 <td width="80%" ><hr/></td>
                 <td width="20%" >
                 <nobr>
-                    <a href="<c:url value="/actions/gtd/list/ResolveList">
+                    <a href="<c:url value="/actions/gtd/ctx/list/ResolveList">
                                 <c:param name="listId" value="${list.id}" />
                                 <c:param name="action" value="COPY" />
                              </c:url>" title="Cut"><img alt="cut" src="<c:url value="/images/cut.png"/>" /></a>
-                    <a href="<c:url value="/actions/gtd/list/ResolveList">
+                    <a href="<c:url value="/actions/gtd/ctx/list/ResolveList">
                                 <c:param name="listId" value="${list.id}" />
                                 <c:param name="action" value="FINISH" />
                              </c:url>" title="Finish all tasks"><img alt="finish" src="<c:url value="/images/finish.png"/>"/></a>
-                    <a href="<c:url value="/actions/gtd/list/ResolveList">
+                    <a href="<c:url value="/actions/gtd/ctx/list/ResolveList">
                                 <c:param name="listId" value="${list.id}" />
                                 <c:param name="action" value="CANCEL" />
                              </c:url>" title="Cancel all tasks"><img alt="cancel" src="<c:url value="/images/cancel.png"/>"/></a>
@@ -132,11 +132,11 @@
 <c:forEach items="${actionBean.archivedLists}" var="list" >
 <tr> 
     <td>
-        <p><a href="<c:url value="/actions/gtd/list/ResolveList">
+        <p><a href="<c:url value="/actions/gtd/ctx/list/ResolveList">
                         <c:param name="listId" value="${list.id}" />
                         <c:param name="action" value="UNRESOLVE" />
                     </c:url>" title="Undo"><img alt="Undo" src="<c:url value="/images/deleted.png"/>"/></a>
-                    <span><a href="<c:url value="/images/partially-finished.png"/>" />&nbsp;<a href="<c:url value="/actions/gtd/list/ViewList">
+                    <span><a href="<c:url value="/images/partially-finished.png"/>" />&nbsp;<a href="<c:url value="/actions/gtd/ctx/list/ViewList">
                                 <c:param name="listId" value="${list.id}" />
                     </c:url>"><c:out value="${list.name}"/></a></span></p>
         <table width="100%">
@@ -145,7 +145,7 @@
                 <td width="10%" >
                 <nobr>
                     <a href="#" title="Cut"><img alt="cut" src="<c:url value="/images/cut.png"/>" /></a>
-                    <a href="<c:url value="/actions/gtd/list/ResolveList">
+                    <a href="<c:url value="/actions/gtd/ctx/list/ResolveList">
                                 <c:param name="listId" value="${list.id}" />
                                 <c:param name="action" value="ERASE" />
                             </c:url>" title="Delete Permanently"><img alt="delete" src="<c:url value="/images/erase.png"/>" /></a>

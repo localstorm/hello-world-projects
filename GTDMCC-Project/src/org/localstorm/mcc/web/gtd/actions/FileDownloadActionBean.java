@@ -11,10 +11,9 @@ import org.localstorm.mcc.ejb.gtd.files.FileAttachment;
 import org.localstorm.mcc.ejb.gtd.files.FileManager;
 
 /**
- * @secure-by file Id parameter
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/DownloadFile")
+@UrlBinding("/actions/gtd/ctx/obj/file/DownloadFile")
 public class FileDownloadActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )

@@ -11,7 +11,7 @@ import org.localstorm.mcc.web.gtd.Views;
 /**
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/gtd/SearchRefObjAttach")
+@UrlBinding("/actions/gtd/nil/SearchRefObjAttach")
 public class RefObjAttachmentSearch extends GtdBaseActionBean
 {
     public boolean isFound() {

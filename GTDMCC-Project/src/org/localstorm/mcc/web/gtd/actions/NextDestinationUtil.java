@@ -58,7 +58,7 @@ public class NextDestinationUtil
                 rr = new RedirectResolution(BattleMapSupportActionBean.class);
                 break;
             case DL_REPORT:
-                rr = new RedirectResolution(DeadlineLookupReportActionBean.class);
+                rr = new RedirectResolution(DeadlineReportActionBean.class);
                 break;
             case OLD_REPORT:
                 rr = new RedirectResolution(OldTasksReportActionBean.class);

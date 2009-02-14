@@ -13,10 +13,9 @@ import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.gtd.backend.TaskResolutionLogic;
 
 /**
- * @secure-by task Id parameter
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/gtd/task/ResolveTask")
+@UrlBinding("/actions/gtd/ctx/list/task/ResolveTask")
 public class TaskResolveActionBean extends GtdBaseActionBean
 {
     @Validate( required=true )

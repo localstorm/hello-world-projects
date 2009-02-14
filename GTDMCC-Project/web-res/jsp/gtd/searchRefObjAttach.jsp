@@ -11,7 +11,7 @@
              <c:when test="${not actionBean.found}">inline</c:when>
              <c:otherwise>none</c:otherwise>
     </c:choose>;">
-        <stripes:form action="/actions/gtd/SubmitRefObjAttachSearch" focus="text">
+        <stripes:form action="/actions/gtd/nil/SubmitRefObjAttachSearch" focus="text">
         <stripes:errors/>
         <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
             <tr>
@@ -64,7 +64,7 @@
                 <hr/>
             </c:if>
             <c:forEach var="file" items="${actionBean.objectFiles}">
-                <p><span>File</span>: <a href="<c:url value="/actions/DownloadFile">
+                <p><span>File</span>: <a href="<c:url value="/actions/gtd/ctx/obj/file/DownloadFile">
                     <c:param name="fileId" value="${file.id}" />
             </c:url>"><c:out value="${file.name}"/></a> (<c:out value="${file.description}" />)</p>
             </c:forEach>

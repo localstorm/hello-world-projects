@@ -24,7 +24,7 @@ import org.localstorm.mcc.web.ReturnPageBean;
 /**
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/gtd/task/UpdateTask")
+@UrlBinding("/actions/gtd/ctx/list/task/UpdateTask")
 public class TaskUpdateActionBean extends TaskViewActionBean
 {
     @Validate( required=true )

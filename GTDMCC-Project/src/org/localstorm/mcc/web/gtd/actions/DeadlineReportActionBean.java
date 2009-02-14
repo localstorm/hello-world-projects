@@ -30,8 +30,8 @@ import org.localstorm.mcc.web.util.FilterUtil;
 /**
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/gtd/DeadlineLookupReport")
-public class DeadlineLookupReportActionBean extends GtdBaseActionBean
+@UrlBinding("/actions/gtd/nil/DeadlineReport")
+public class DeadlineReportActionBean extends GtdBaseActionBean
 {
     private Date today;
     private List<TaskMarker> broken;
