@@ -11,9 +11,11 @@ import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.people.Attribute;
 import org.localstorm.mcc.ejb.people.AttributeType;
 import org.localstorm.mcc.ejb.people.Person;
+import org.localstorm.mcc.ejb.people.PersonGroup;
 import org.localstorm.mcc.ejb.people.PersonManager;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
 import org.localstorm.mcc.web.people.Views;
+import org.localstorm.mcc.web.people.actions.wrap.WrapUtil;
 
 /**
  *
@@ -24,9 +26,6 @@ public class PersonViewActionBean extends PeopleBaseActionBean
 {
     @Validate( required=true )
     private int personId;
-
-    @Validate( required=true )
-    private int groupId;
 
     private Person person;
 
@@ -48,14 +47,6 @@ public class PersonViewActionBean extends PeopleBaseActionBean
 
     public void setPersonId(int personId) {
         this.personId = personId;
-    }
-
-    public int getGroupId() {
-        return groupId;
-    }
-
-    public void setGroupId(int groupId) {
-        this.groupId = groupId;
     }
 
     public Collection<Attribute> getAttributes() {
@@ -80,9 +71,10 @@ public class PersonViewActionBean extends PeopleBaseActionBean
     public Resolution filling() throws Exception {
         PersonManager pm = super.getPersonManager();
         Person p = pm.findPerson(this.getPersonId());
+        PersonGroup group = pm.findGroupByPerson(p);
         
         this.setAttributes(pm.getAttributes(p));
-        this.setPerson(p);
+        this.setPerson(WrapUtil.genWrapper(p, group));
         this.setAttributeTypes(pm.getAllAttributeTypes());
 
         return new ForwardResolution(Views.VIEW_PERSON);

@@ -30,7 +30,7 @@ public class PersonGroupViewActionBean extends PeopleBaseActionBean {
         this.persons = persons;
     }
 
-    public Integer getGroupId() {
+    protected Integer getGroupId() {
         return groupId;
     }
 

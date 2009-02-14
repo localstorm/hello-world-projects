@@ -37,7 +37,6 @@ public class PersonAttributeRemoveActionBean extends PersonViewActionBean
         
         RedirectResolution rr = new RedirectResolution(PersonViewActionBean.class);
         {
-            rr.addParameter(PersonGroupViewActionBean.IncommingParameters.GROUP_ID, this.getGroupId());
             rr.addParameter(PersonViewActionBean.IncommingParameters.PERSON_ID, this.getPersonId());
         }
 

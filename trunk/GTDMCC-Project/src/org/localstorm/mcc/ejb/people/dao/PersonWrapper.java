@@ -10,6 +10,11 @@ public class PersonWrapper extends Person {
 
     private int remains;
 
+    public PersonWrapper(Integer pid)
+    {
+        super(pid);
+    }
+
     public int getRemains() {
         return remains;
     }

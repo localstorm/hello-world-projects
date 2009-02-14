@@ -53,14 +53,15 @@ public class PeopleReportsDao {
 
             while (rs.next())
             {
+                Integer pid  = JdbcDaoHelper.getInteger(rs, ID);
                 String lname = JdbcDaoHelper.getString(rs, LAST_NAME);
                 String fname = JdbcDaoHelper.getString(rs, FIRST_NAME);
                 String pname = JdbcDaoHelper.getString(rs, PATRO_NAME);
-                Date   birth = JdbcDaoHelper.getDate(rs, BIRTH);
+                Date   birth = JdbcDaoHelper.getDate(rs,    BIRTH);
                 int remains  = JdbcDaoHelper.getInteger(rs, REMAINS);
 
                 // Interpreting
-                PersonWrapper pw = new PersonWrapper();
+                PersonWrapper pw = new PersonWrapper(pid);
                 {
                     pw.setLastName(lname);
                     pw.setName(fname);

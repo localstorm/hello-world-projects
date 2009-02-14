@@ -86,7 +86,6 @@
 <c:forEach items="${actionBean.persons}" var="person">
     <p><img src="<c:url value="/images/person.png"/>"/><span>
             <a href="<c:url value="/actions/ViewPerson">
-                <c:param name="groupId" value="${actionBean.group.id}" />
                 <c:param name="personId" value="${person.id}" />
             </c:url>"><c:out value="${person.fullName}" /></a>
        </span></p>

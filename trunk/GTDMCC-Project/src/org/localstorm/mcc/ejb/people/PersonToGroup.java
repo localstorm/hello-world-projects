@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import org.localstorm.mcc.ejb.AbstractEntity;
 import org.localstorm.mcc.ejb.Identifiable;
@@ -18,6 +20,12 @@ import org.localstorm.mcc.ejb.Identifiable;
  */
 @Entity
 @Table(name="PERSONS_TO_GROUPS")
+@NamedQueries({
+    @NamedQuery(
+        name = PersonToGroup.Queries.FIND_GROUP_BY_PERSON,
+        query= "SELECT o.group FROM PersonToGroup o WHERE o.person=:person"
+    )
+})
 public class PersonToGroup extends AbstractEntity implements Identifiable, Serializable {
 
     @Id
@@ -60,5 +68,15 @@ public class PersonToGroup extends AbstractEntity implements Identifiable, Seria
     public void setGroup(PersonGroup group) {
         this.group = group;
     }
-    
+
+    public static interface Queries
+    {
+        public static final String FIND_GROUP_BY_PERSON = "findPGroupByPerson";
+    }
+
+    public static interface Properties
+    {
+        public static final String PERSON = "person";
+    }
+
 }
