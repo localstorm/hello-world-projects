@@ -34,7 +34,7 @@ class SecurityUtil
             log.info("Checking access to context=" + contextId + " for user=" + user.getLogin());
             Map<Integer, Boolean> acm = (Map<Integer, Boolean>) SessionUtil.getValue(sess,
                                                                                      SessionKeys.ACCESSIBLE_CONTEXTS_MAP);
-            if (acm.containsKey(contextId)) {
+            if (contextId==-1 || acm.containsKey(contextId)) {
                 return;
             }
 
