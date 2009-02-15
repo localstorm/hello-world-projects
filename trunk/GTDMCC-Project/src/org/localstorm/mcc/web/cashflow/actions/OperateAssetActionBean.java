@@ -15,6 +15,8 @@ import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
 import org.localstorm.mcc.ejb.cashflow.asset.MoneyMathContext;
 import org.localstorm.mcc.ejb.cashflow.asset.OperationType;
 import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
+import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
  * @secure-by assetId parameter
@@ -92,6 +94,8 @@ public class OperateAssetActionBean extends AssetViewActionBean {
                 throw new RuntimeException("Unexpected operation: "+this.getOperationName());
         }
 
+        SessionUtil.clear(getSession(), SessionKeys.ASSETS);
+        
         RedirectResolution rr = new RedirectResolution(AssetViewActionBean.class);
         {
             rr.addParameter(AssetViewActionBean.IncommingParameters.ASSET_ID, asset.getId());

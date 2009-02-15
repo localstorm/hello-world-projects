@@ -58,7 +58,9 @@ public class AssetManagerBean implements AssetManagerLocal,
     @Override
     public void remove(Asset asset) {
         asset = (Asset) em.getReference(Asset.class, asset.getId() );
+        ValuableObject vo = asset.getValuable();
         em.remove(asset);
+        em.remove(vo);
     }
 
     @Override
