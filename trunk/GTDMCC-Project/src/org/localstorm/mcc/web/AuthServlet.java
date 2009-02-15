@@ -23,9 +23,12 @@ public class AuthServlet extends HttpServlet
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        
+
         String login = req.getParameter(CGIParams.AUTH_LOGIN);
         String pwd   = req.getParameter(CGIParams.AUTH_PASSWORD);
+
+        login = (login!=null) ? login : "";
+        pwd   =  (pwd!=null)  ? pwd   : "";
                 
         UserManager um = ContextLookup.lookup(UserManager.class, 
                                               UserManager.BEAN_NAME);
