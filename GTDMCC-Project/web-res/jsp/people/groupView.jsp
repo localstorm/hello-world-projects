@@ -62,7 +62,7 @@
             <tr>
                 <td>&nbsp;</td>
                 <td>Name: </td>
-                <td><stripes:text name="name" id="newname-id" style="width: 100%;" /></td>
+                <td><stripes:text name="name" id="newname-id" style="width: 100%;" value="${actionBean.group.name}" /></td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
