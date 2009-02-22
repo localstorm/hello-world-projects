@@ -3,6 +3,7 @@
 
 <%@ include file="/WEB-INF/jsp/includes/people/hdr.jsp" %>
 
+<%@ include file="/WEB-INF/jsp/includes/people/clipboard.jsp" %>
 <h2><span>GROUP</span> view</h2>
 <div align="right" ><a href="#" onclick="show('addPersonDiv', 'name-id'); hide('renameDiv'); return false">Add person</a>
                             (<a href="#" onclick="show('renameDiv', 'newname-id'); hide('addPersonDiv'); return false"><c:out value="${actionBean.group.name}"/></a>)</div>
@@ -84,7 +85,10 @@
 </div>
 <br/><br/>
 <c:forEach items="${actionBean.persons}" var="person">
-    <p><img src="<c:url value="/images/person.png"/>"/><span>
+    <p><img src="<c:url value="/images/person.png"/>"/><a href="<c:url value="/actions/ClipPerson">
+        <c:param name="personId" value="${person.id}" />
+    </c:url>"><img
+    src="<c:url value="/images/add2ml.png"/>"/></a><span>
             <a href="<c:url value="/actions/ViewPerson">
                 <c:param name="personId" value="${person.id}" />
             </c:url>"><c:out value="${person.fullName}" /></a>

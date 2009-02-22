@@ -9,7 +9,7 @@ import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.gtd.files.FileAttachment;
 import org.localstorm.mcc.ejb.gtd.files.FileManager;
 import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
-import org.localstorm.mcc.web.Clipboard;
+import org.localstorm.mcc.web.gtd.GtdClipboard;
 
 /**
  * @author Alexey Kuznetsov
@@ -46,7 +46,7 @@ public class RefObjDetachFileActionBean extends GtdBaseActionBean
         FileManager fm      = super.getFileManager();
         FileAttachment fa   = fm.findById(this.getFileId());
         ReferencedObject ro = super.getRefObjectManager().findById(this.getObjectId());
-        Clipboard      clip = super.getClipboard();
+        GtdClipboard      clip = super.getClipboard();
 
         clip.pickFile(this.getFileId());
         fm.detach(fa, ro);

@@ -10,11 +10,11 @@ import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
 
-import org.localstorm.mcc.ejb.people.Person;
-import org.localstorm.mcc.ejb.people.PersonGroup;
-import org.localstorm.mcc.ejb.people.PersonManager;
+import org.localstorm.mcc.ejb.people.persons.Person;
+import org.localstorm.mcc.ejb.people.persons.PersonGroup;
+import org.localstorm.mcc.ejb.people.persons.PersonManager;
 import org.localstorm.mcc.web.Constants;
-import org.localstorm.mcc.web.people.actions.wrap.WrapUtil;
+import org.localstorm.mcc.web.people.PeopleClipboard;
 import org.localstorm.mcc.web.util.DateUtil;
 
 /**
@@ -99,6 +99,12 @@ public class PersonUpdateActionBean extends PersonViewActionBean
             p.setName(this.getFirstName());
             p.setLastName(this.getLastName());
             p.setBirthDate(DateUtil.parse(this.getBirthDate(), sdf));
+        }
+
+        PeopleClipboard clip = super.getClipboard();
+        if (clip.isPersonInClipboard(p))
+        {
+            clip.copyPerson(p);
         }
 
         pm.update(p);

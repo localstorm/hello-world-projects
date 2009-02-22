@@ -3,6 +3,7 @@ package org.localstorm.mcc.web.gtd.actions;
 import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskResolutionAction;
 import net.sourceforge.stripes.action.DefaultHandler;
+import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
@@ -73,9 +74,11 @@ public class TaskResolveActionBean extends GtdBaseActionBean
         if (rpb!=null) {
             return NextDestinationUtil.getRedirection(rpb);
         } else {
-            return NextDestinationUtil.taskResolveActionResolution(resolveAction,
-                                                                   list,
-                                                                   super.getCurrentList());
+            RedirectResolution rr = new RedirectResolution(ListViewActionBean.class);
+            {
+                rr.addParameter(ListViewActionBean.IncommingParameters.LIST_ID, list.getId());
+            }
+            return rr;
         }
     }
 

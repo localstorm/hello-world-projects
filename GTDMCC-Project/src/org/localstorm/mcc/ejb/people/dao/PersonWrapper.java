@@ -1,6 +1,6 @@
 package org.localstorm.mcc.ejb.people.dao;
 
-import org.localstorm.mcc.ejb.people.Person;
+import org.localstorm.mcc.ejb.people.persons.Person;
 
 /**
  *

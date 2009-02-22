@@ -270,7 +270,7 @@ create table ATTRIBUTES
     id INT NOT NULL AUTO_INCREMENT,
     person_id INT NOT NULL,
     type_id INT NOT NULL,
-    val   TEXT,
+    val   TEXT NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (person_id) REFERENCES PERSONS(id)  ON DELETE CASCADE,
     FOREIGN KEY (type_id) REFERENCES ATTRIBUTE_TYPES(id)  ON DELETE CASCADE
@@ -296,3 +296,28 @@ insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Textual 
 insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'VKontakte',  'href', 'vkontakte');
 insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Home Page',  'href', 'web_page');
 insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Yahoo! IM',  'text', 'yahoo');
+
+--drop table MAIL_LISTS
+create table MAIL_LISTS
+(
+    id INT NOT NULL AUTO_INCREMENT,
+    owner INT NOT NULL,
+    is_invalid SMALLINT NOT NULL,        
+    name   TEXT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (owner) REFERENCES USERS(id)  ON DELETE CASCADE
+)  ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+--drop table PERSONS_TO_MAIL_LISTS
+create table PERSONS_TO_MAIL_LISTS
+(
+    id INT NOT NULL AUTO_INCREMENT,
+    person_id INT NOT NULL,
+    mail_list_id INT NOT NULL,
+    attribute_value TEXT,
+    attribute_id INT,
+    PRIMARY KEY (id),    
+    FOREIGN KEY (person_id) REFERENCES PERSONS(id)  ON DELETE CASCADE,
+    FOREIGN KEY (mail_list_id) REFERENCES MAIL_LISTS(id)  ON DELETE CASCADE,
+    FOREIGN KEY (attribute_id) REFERENCES ATTRIBUTES(id) ON DELETE SET NULL ON UPDATE RESTRICT
+)  ENGINE=INNODB DEFAULT CHARSET=utf8;

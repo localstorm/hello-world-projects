@@ -3,7 +3,6 @@
 
 <%@ include file="/WEB-INF/jsp/includes/people/hdr.jsp" %>
 
-
 <h2><span>GROUPS</span> list</h2>
     <div align="right" width="80%"><a href="#" onclick="show('addPGDiv', 'name-id'); return false">Add group</a></div>
     <div align="center">

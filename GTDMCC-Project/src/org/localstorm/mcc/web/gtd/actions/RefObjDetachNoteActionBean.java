@@ -9,7 +9,7 @@ import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.gtd.notes.Note;
 import org.localstorm.mcc.ejb.gtd.notes.NoteManager;
 import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
-import org.localstorm.mcc.web.Clipboard;
+import org.localstorm.mcc.web.gtd.GtdClipboard;
 
 /**
  * @author Alexey Kuznetsov
@@ -46,7 +46,7 @@ public class RefObjDetachNoteActionBean extends GtdBaseActionBean
         ReferencedObject ro = super.getRefObjectManager().findById(this.getObjectId());
         NoteManager nm      = super.getNoteManager();
         Note note           = nm.findById(this.getNoteId());
-        Clipboard clip      = super.getClipboard();
+        GtdClipboard clip      = super.getClipboard();
 
         clip.pickNote(this.getNoteId());
         nm.detach(note, ro);

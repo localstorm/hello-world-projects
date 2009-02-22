@@ -9,4 +9,5 @@ public class Views
     public static final String PERSON_GROUP = "/jsp/people/groupView.jsp";
     public static final String EDIT_GROUPS  = "/jsp/people/groupsEdit.jsp";
     public static final String VIEW_PERSON  = "/jsp/people/personView.jsp";
+    public static final String VIEW_RESOLVE_EMAILS = "/jsp/people/resolveEmails.jsp";
 }

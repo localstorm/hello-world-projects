@@ -13,7 +13,10 @@ public class SessionKeys
     public static final String CURR_CTX             = "currContext";
     public static final String CURR_LIST            = "currList";
     public static final String CURR_TASK            = "currTask";
-    public static final String CLIPBOARD            = "clipboard";
+
+    public static final String GTD_CLIPBOARD        = "clipboard";
+    public static final String PEOPLE_CLIPBOARD     = "pclipboard";
+
     public static final String FILTER_CONTEXT       = "filterCtx";
     public static final String ASSETS               = "assets";
     public static final String TARGETS              = "targets";
@@ -21,4 +24,5 @@ public class SessionKeys
     public static final String PERSON_GROUPS        = "groups";
     public static final String CURR_OBJ             = "currRefObject";
     public static final String ACCESSIBLE_CONTEXTS_MAP = "accessibleContexts";
+    public static final String MAIL_LISTS           = "mailLists";
 }

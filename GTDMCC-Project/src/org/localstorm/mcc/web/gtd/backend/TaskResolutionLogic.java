@@ -1,6 +1,5 @@
 package org.localstorm.mcc.web.gtd.backend;
 
-import java.util.Collection;
 import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 import org.localstorm.mcc.ejb.gtd.flight.FlightPlan;
 import org.localstorm.mcc.ejb.gtd.flight.FlightPlanManager;
@@ -10,7 +9,7 @@ import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskResolutionAction;
 import org.localstorm.mcc.ejb.users.User;
-import org.localstorm.mcc.web.Clipboard;
+import org.localstorm.mcc.web.gtd.GtdClipboard;
 
 /**
  *
@@ -22,7 +21,7 @@ public class TaskResolutionLogic
                                        TaskResolutionAction action,
                                        String runtimeNote,
                                        GTDList currentList,
-                                       Clipboard clip,
+                                       GtdClipboard clip,
                                        TaskManager tm,
                                        ListManager lm,
                                        FlightPlanManager fpm,

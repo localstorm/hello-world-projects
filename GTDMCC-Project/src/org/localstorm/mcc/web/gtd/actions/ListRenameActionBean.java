@@ -9,6 +9,7 @@ import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.gtd.lists.GTDList;
 import org.localstorm.mcc.ejb.gtd.lists.ListManager;
+import org.localstorm.mcc.web.gtd.GtdClipboard;
 
 
 /**
@@ -46,7 +47,13 @@ public class ListRenameActionBean extends ListViewActionBean
         GTDList list   = lm.findById(super.getListId());
         list.setName(this.getName());
         lm.update(list);
-        
+
+        GtdClipboard clip = super.getClipboard();
+        if (clip.isListInClipboard(list))
+        {
+            clip.copyList(list);
+        }
+
         RedirectResolution rr = new RedirectResolution(ListViewActionBean.class);
         {
             rr.addParameter(ListViewActionBean.IncommingParameters.LIST_ID, super.getListId());

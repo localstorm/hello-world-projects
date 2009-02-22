@@ -1,4 +1,4 @@
-package org.localstorm.mcc.ejb.people;
+package org.localstorm.mcc.ejb.people.persons;
 
 import java.io.Serializable;
 import javax.persistence.Column;

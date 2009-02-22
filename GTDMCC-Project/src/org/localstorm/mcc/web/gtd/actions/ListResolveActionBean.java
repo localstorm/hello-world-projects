@@ -12,7 +12,7 @@ import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.gtd.contexts.Context;
 import org.localstorm.mcc.ejb.gtd.lists.GTDList;
 import org.localstorm.mcc.ejb.gtd.lists.ListManager;
-import org.localstorm.mcc.web.Clipboard;
+import org.localstorm.mcc.web.gtd.GtdClipboard;
 
 /**
  * @author Alexey Kuznetsov
@@ -53,7 +53,7 @@ public class ListResolveActionBean extends GtdBaseActionBean
         GTDList list   = lm.findById(this.getListId());
         Context ctx    = list.getContext();
         Context dstCtx = ctx;
-        Clipboard clip = super.getClipboard();
+        GtdClipboard clip = super.getClipboard();
         
         switch (ACTIONS.valueOf(this.getAction())) {
             case PIN:
@@ -74,6 +74,7 @@ public class ListResolveActionBean extends GtdBaseActionBean
                 clip.copyList(list);
                 break;
             case ERASE:
+                clip.pickList(this.getListId());
                 lm.remove(list);
                 break;
             case UNRESOLVE:

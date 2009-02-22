@@ -3,6 +3,7 @@
 
 <%@ include file="/WEB-INF/jsp/includes/people/hdr.jsp" %>
 
+<%@ include file="/WEB-INF/jsp/includes/people/clipboard.jsp" %>
 <h2><span>People</span> control</h2>
     <%--table width="100%">
         <tr>

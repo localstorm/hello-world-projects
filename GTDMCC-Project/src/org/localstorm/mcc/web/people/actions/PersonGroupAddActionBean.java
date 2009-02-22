@@ -1,5 +1,6 @@
 package org.localstorm.mcc.web.people.actions;
 
+import org.localstorm.mcc.ejb.people.persons.PersonGroup;
 import org.localstorm.mcc.ejb.people.*;
 import net.sourceforge.stripes.action.After;
 import net.sourceforge.stripes.action.DefaultHandler;

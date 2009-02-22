@@ -10,7 +10,10 @@
             &nbsp;<a href="<c:url value="/actions/gtd/ctx/list/ResolveList" >
                 <c:param name="listId" value="${list.id}" />
                 <c:param name="action" value="PASTE" />
-            </c:url>"><img src="<c:url value="/images/paste.png"/>" alt="paste"/></a><c:out value="${list.name}"/><br/>
+            </c:url>"><img src="<c:url value="/images/paste.png"/>" alt="paste"/></a>
+            <a href="<c:url value="/actions/gtd/ctx/list/ViewList">
+                <c:param name="listId" value="${list.id}" />
+            </c:url>"><c:out value="${list.name}"/></a><br/>
         </c:forEach>
         <c:if test="${fn:length(clipboard.lists)>1}">
             <div align="right">
@@ -25,7 +28,11 @@
             &nbsp;<a href="<c:url value="/actions/gtd/ctx/list/task/ResolveTask" >
                 <c:param name="taskId" value="${task.id}" />
                 <c:param name="action" value="PASTE" />
-            </c:url>"><img src="<c:url value="/images/paste.png"/>" alt="paste"/></a><c:out value="${task.summary}"/><br/>
+            </c:url>"><img src="<c:url value="/images/paste.png"/>" alt="paste"/></a>
+            <a href="<c:url value="/actions/gtd/ctx/list/task/ViewTask">
+                <c:param name="returnPageToken" value="${returnPageToken}" />
+                <c:param name="taskId" value="${task.id}" />
+            </c:url>"><c:out value="${task.summary}"/></a><br/>
         </c:forEach>
 
         <c:if test="${fn:length(clipboard.tasks)>1}">

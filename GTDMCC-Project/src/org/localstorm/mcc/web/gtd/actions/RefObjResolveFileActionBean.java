@@ -10,7 +10,7 @@ import org.localstorm.mcc.ejb.gtd.files.FileAttachment;
 import org.localstorm.mcc.ejb.gtd.files.FileManager;
 import org.localstorm.mcc.ejb.gtd.referenced.RefObjectManager;
 import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
-import org.localstorm.mcc.web.Clipboard;
+import org.localstorm.mcc.web.gtd.GtdClipboard;
 
 /**
  * @author Alexey Kuznetsov
@@ -64,7 +64,7 @@ public class RefObjResolveFileActionBean extends GtdBaseActionBean
         
         RefObjectManager rom = super.getRefObjectManager();
         FileManager fm = super.getFileManager();
-        Clipboard clip = super.getClipboard();
+        GtdClipboard clip = super.getClipboard();
 
         FileAttachment   fa = null;
         ReferencedObject ro = rom.findById(this.getObjectId());

@@ -10,7 +10,7 @@ import org.localstorm.mcc.ejb.gtd.lists.GTDList;
 import org.localstorm.mcc.ejb.gtd.lists.ListManager;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
-import org.localstorm.mcc.web.Clipboard;
+import org.localstorm.mcc.web.gtd.GtdClipboard;
 
 /**
  * @author Alexey Kuznetsov
@@ -35,7 +35,7 @@ public class TaskBulkPasteActionBean extends GtdBaseActionBean
         
         ListManager lm = super.getListManager();
         TaskManager tm = super.getTaskManager();
-        Clipboard clip = super.getClipboard();
+        GtdClipboard clip = super.getClipboard();
 
         GTDList dst = lm.findById(this.getListId());
 

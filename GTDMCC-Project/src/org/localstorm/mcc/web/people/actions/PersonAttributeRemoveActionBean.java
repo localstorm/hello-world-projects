@@ -5,8 +5,8 @@ import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.people.Attribute;
-import org.localstorm.mcc.ejb.people.PersonManager;
+import org.localstorm.mcc.ejb.people.persons.Attribute;
+import org.localstorm.mcc.ejb.people.persons.PersonManager;
 
 /**
  *

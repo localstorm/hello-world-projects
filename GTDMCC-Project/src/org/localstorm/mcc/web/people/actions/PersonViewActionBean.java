@@ -8,11 +8,12 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 
-import org.localstorm.mcc.ejb.people.Attribute;
-import org.localstorm.mcc.ejb.people.AttributeType;
-import org.localstorm.mcc.ejb.people.Person;
-import org.localstorm.mcc.ejb.people.PersonGroup;
-import org.localstorm.mcc.ejb.people.PersonManager;
+import org.localstorm.mcc.ejb.people.persons.Attribute;
+import org.localstorm.mcc.ejb.people.persons.AttributeType;
+import org.localstorm.mcc.ejb.people.persons.Person;
+import org.localstorm.mcc.ejb.people.persons.PersonGroup;
+import org.localstorm.mcc.ejb.people.persons.PersonManager;
+import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
 import org.localstorm.mcc.web.people.Views;
 import org.localstorm.mcc.web.people.actions.wrap.WrapUtil;
@@ -76,6 +77,13 @@ public class PersonViewActionBean extends PeopleBaseActionBean
         this.setAttributes(pm.getAttributes(p));
         this.setPerson(WrapUtil.genWrapper(p, group));
         this.setAttributeTypes(pm.getAllAttributeTypes());
+
+        ReturnPageBean rpb = new ReturnPageBean(Pages.PERSON_VIEW.toString());
+        {
+            rpb.setParam(IncommingParameters.PERSON_ID, Integer.toString(this.personId));
+        }
+
+        super.setReturnPageBean(rpb);
 
         return new ForwardResolution(Views.VIEW_PERSON);
     }
