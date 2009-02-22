@@ -38,6 +38,14 @@ import org.localstorm.mcc.ejb.users.User;
     @NamedQuery (
         name = HistoricalValue.Queries.FIND_BY_VALUE_AND_OBJECT_ID_TAG,
         query= "SELECT o FROM HistoricalValue o WHERE o.valueTag=:tag and o.owner=:owner and o.objectId=:objectId and o.fixDate>:minDate ORDER BY o.fixDate DESC"
+    ),
+    @NamedQuery (
+        name = HistoricalValue.Queries.TRUNCATE_BY_VALUE_TAG_AND_OBJECT_ID,
+        query= "DELETE HistoricalValue o WHERE o.valueTag=:tag and o.owner=:owner and o.objectId=:objectId and o.fixDate<:maxDate"
+    ),
+    @NamedQuery (
+        name = HistoricalValue.Queries.TRUNCATE_BY_VALUE_TAG,
+        query= "DELETE HistoricalValue o WHERE o.valueTag=:tag and o.owner=:owner and o.fixDate<:maxDate"
     )
 })
 public class HistoricalValue implements Identifiable, Serializable {
@@ -112,10 +120,13 @@ public class HistoricalValue implements Identifiable, Serializable {
     public static class Queries {
         public static final String FIND_BY_VALUE_TAG = "findHVByValueTag";
         public static final String FIND_BY_VALUE_AND_OBJECT_ID_TAG = "findHVByValueTagAndObjectId";
+        public static final String TRUNCATE_BY_VALUE_TAG_AND_OBJECT_ID = "trucateHVByValueTagAndObjectId";
+        public static final String TRUNCATE_BY_VALUE_TAG = "trucateHVByValueTag";
     }
 
     public static interface Properties
     {
+        public static final String MAX_DATE  = "maxDate";
         public static final String MIN_DATE  = "minDate";
         public static final String VALUE_TAG = "tag";
         public static final String OWNER     = "owner";

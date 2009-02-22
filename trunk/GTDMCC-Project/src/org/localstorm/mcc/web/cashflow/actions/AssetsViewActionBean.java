@@ -21,7 +21,7 @@ import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
  * @author localstorm
  */
 @UrlBinding("/actions/ViewAssets")
-public class ViewAssetsActionBean extends CashflowBaseActionBean {
+public class AssetsViewActionBean extends CashflowBaseActionBean {
 
     private Collection<Asset> assets;
     private BigDecimal        netWealth;

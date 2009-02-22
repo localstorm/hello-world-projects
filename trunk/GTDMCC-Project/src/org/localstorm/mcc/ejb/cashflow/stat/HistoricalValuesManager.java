@@ -7,10 +7,8 @@ import org.localstorm.mcc.ejb.users.User;
 
 
 /**
- *
  * @author localstorm
  */
-
 public interface HistoricalValuesManager
 {
     public static final String BEAN_NAME="HistoricalValuesManagerBean";
@@ -29,4 +27,9 @@ public interface HistoricalValuesManager
                                                                  Integer objectId,
                                                                  User user,
                                                                  Date minDate);
+
+    public void truncateHistory(ValueType valueTag,
+                                Integer objectId,
+                                User user,
+                                Date maxDate);
 }

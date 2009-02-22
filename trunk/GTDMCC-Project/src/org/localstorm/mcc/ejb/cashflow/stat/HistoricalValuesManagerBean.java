@@ -79,6 +79,29 @@ public class HistoricalValuesManagerBean implements HistoricalValuesManagerLocal
     }
 
     @Override
+    public void truncateHistory(ValueType valueTag,
+                                Integer objectId,
+                                User user,
+                                Date maxDate)
+    {
+        Query q1;
+        if (objectId==null) {
+            q1 = em.createNamedQuery(HistoricalValue.Queries.TRUNCATE_BY_VALUE_TAG);
+        } else {
+            q1 = em.createNamedQuery(HistoricalValue.Queries.TRUNCATE_BY_VALUE_TAG_AND_OBJECT_ID);
+            q1.setParameter(HistoricalValue.Properties.OBJECT_ID, objectId);
+        }
+
+        q1.setParameter(HistoricalValue.Properties.OWNER, user);
+        q1.setParameter(HistoricalValue.Properties.VALUE_TAG, valueTag.toString());
+        q1.setParameter(HistoricalValue.Properties.MAX_DATE, maxDate);
+
+        q1.executeUpdate();
+    }
+
+
+
+    @Override
     public void log(HistoricalValue hv) {
         em.persist(hv);
     }
