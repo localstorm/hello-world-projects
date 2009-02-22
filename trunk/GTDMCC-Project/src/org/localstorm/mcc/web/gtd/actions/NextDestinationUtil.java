@@ -1,9 +1,6 @@
 package org.localstorm.mcc.web.gtd.actions;
 
 import net.sourceforge.stripes.action.RedirectResolution;
-import net.sourceforge.stripes.action.Resolution;
-import org.localstorm.mcc.ejb.gtd.lists.GTDList;
-import org.localstorm.mcc.ejb.gtd.tasks.TaskResolutionAction;
 import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.dashboard.actions.DashboardActionBean;
 
@@ -13,33 +10,6 @@ import org.localstorm.mcc.web.dashboard.actions.DashboardActionBean;
  */
 public class NextDestinationUtil 
 {
-
-    public static Resolution taskResolveActionResolution(TaskResolutionAction action, 
-                                                         GTDList list, 
-                                                         GTDList currentList)
-    {
-        RedirectResolution rr = null;
-
-        if (list.isArchived()) {
-            rr = new RedirectResolution(ContextViewActionBean.class);
-            {
-                rr.addParameter(ContextViewActionBean.IncommingParameters.CTX_ID, list.getContext().getId());
-            }
-        } else {
-            rr = new RedirectResolution(ListViewActionBean.class);
-            {
-                if (currentList!=null)
-                {
-                    Integer id = currentList.getId();
-                    rr.addParameter(ListViewActionBean.IncommingParameters.LIST_ID, id);
-                } else {
-                    rr.addParameter(ListViewActionBean.IncommingParameters.LIST_ID, list.getId());
-                }
-            }
-        }
-
-        return rr;
-    }
 
     public static RedirectResolution getRedirection(ReturnPageBean rpb) {
         if (rpb==null) {
@@ -51,6 +21,9 @@ public class NextDestinationUtil
         RedirectResolution rr;
         switch(rp)
         {
+            case LIST_VIEW:
+                rr = new RedirectResolution(ListViewActionBean.class);
+                break;
             case TASK_SEARCH_SUBMIT:
                 rr = new RedirectResolution(TaskSearchSubmitActionBean.class);
                 break;

@@ -1,10 +1,8 @@
-package org.localstorm.mcc.ejb.people;
+package org.localstorm.mcc.ejb.people.persons;
 
 import java.util.Collection;
 import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 import org.localstorm.mcc.ejb.users.User;
-
-
 
 /**
  * @author localstorm

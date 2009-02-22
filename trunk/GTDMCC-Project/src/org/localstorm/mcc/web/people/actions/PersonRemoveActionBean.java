@@ -5,10 +5,11 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.people.Person;
-import org.localstorm.mcc.ejb.people.PersonGroup;
-import org.localstorm.mcc.ejb.people.PersonManager;
+import org.localstorm.mcc.ejb.people.persons.Person;
+import org.localstorm.mcc.ejb.people.persons.PersonGroup;
+import org.localstorm.mcc.ejb.people.persons.PersonManager;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
+import org.localstorm.mcc.web.people.PeopleClipboard;
 
 
 @UrlBinding("/actions/RemovePerson")
@@ -31,6 +32,9 @@ public class PersonRemoveActionBean extends PeopleBaseActionBean {
         PersonManager pm = super.getPersonManager();
         Person         p = pm.findPerson(this.getPersonId());
         PersonGroup group= pm.findGroupByPerson(p);
+
+        PeopleClipboard clip = super.getClipboard();
+        clip.pickPerson(p.getId());
 
         pm.remove(p);
 

@@ -1,5 +1,5 @@
 
-package org.localstorm.mcc.ejb.people;
+package org.localstorm.mcc.ejb.people.persons;
 
 import javax.ejb.Remote;
 

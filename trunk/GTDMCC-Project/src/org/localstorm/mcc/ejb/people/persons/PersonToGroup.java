@@ -1,7 +1,6 @@
-package org.localstorm.mcc.ejb.people;
+package org.localstorm.mcc.ejb.people.persons;
 
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -20,38 +19,37 @@ import org.localstorm.mcc.ejb.Identifiable;
  * @author localstorm
  */
 @Entity
-@Table(name="ATTRIBUTES")
+@Table(name="PERSONS_TO_GROUPS")
 @NamedQueries({
     @NamedQuery(
-        name = Attribute.Queries.FIND_BY_PERSON,
-        query= "SELECT o FROM Attribute o WHERE o.person=:person ORDER BY o.type.name"
+        name = PersonToGroup.Queries.FIND_GROUP_BY_PERSON,
+        query= "SELECT o.group FROM PersonToGroup o WHERE o.person=:person"
+    ),
+    @NamedQuery(
+        name = PersonToGroup.Queries.MOVE_PERSON_TO_GROUP,
+        query= "update PersonToGroup o set o.group = :group where o.person = :person"
     )
 })
-public class Attribute extends AbstractEntity implements Identifiable, Serializable {
+public class PersonToGroup extends AbstractEntity implements Identifiable, Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 
-    @Column(name="val", unique=false, updatable=true, nullable=false )
-    private String val;
-    
     @JoinColumn(name="person_id", nullable=false)
     @ManyToOne(fetch=FetchType.LAZY)
     private Person person;
 
-    @JoinColumn(name="type_id", nullable=false)
-    @ManyToOne(fetch=FetchType.EAGER)
-    private AttributeType type;
+    @JoinColumn(name="group_id", nullable=false)
+    @ManyToOne(fetch=FetchType.LAZY)
+    private PersonGroup group;
 
-    public Attribute() {
+    public PersonToGroup() {
     }
 
-
-    public Attribute(Person p, AttributeType type, String value) {
+    public PersonToGroup(Person p, PersonGroup g) {
         this.person = p;
-        this.type = type;
-        this.val = value;
+        this.group  = g;
     }
 
     @Override
@@ -63,34 +61,28 @@ public class Attribute extends AbstractEntity implements Identifiable, Serializa
         return person;
     }
 
-    public AttributeType getType() {
-        return type;
-    }
-
-    public String getVal() {
-        return val;
+    public PersonGroup getGroup() {
+        return group;
     }
 
     public void setPerson(Person person) {
         this.person = person;
     }
 
-    public void setType(AttributeType type) {
-        this.type = type;
-    }
-
-    public void setVal(String value) {
-        this.val = value;
+    public void setGroup(PersonGroup group) {
+        this.group = group;
     }
 
     public static interface Queries
     {
-        public static final String FIND_BY_PERSON = "findAttrByPerson";
+        public static final String FIND_GROUP_BY_PERSON = "findPGroupByPerson";
+        public static final String MOVE_PERSON_TO_GROUP = "movePersonToGroup";
     }
 
     public static interface Properties
     {
         public static final String PERSON = "person";
+        public static final String GROUP  = "group";
     }
 
 }

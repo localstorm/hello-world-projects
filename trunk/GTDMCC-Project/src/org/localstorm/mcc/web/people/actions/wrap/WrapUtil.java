@@ -2,8 +2,8 @@ package org.localstorm.mcc.web.people.actions.wrap;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import org.localstorm.mcc.ejb.people.Person;
-import org.localstorm.mcc.ejb.people.PersonGroup;
+import org.localstorm.mcc.ejb.people.persons.Person;
+import org.localstorm.mcc.ejb.people.persons.PersonGroup;
 
 /**
  *

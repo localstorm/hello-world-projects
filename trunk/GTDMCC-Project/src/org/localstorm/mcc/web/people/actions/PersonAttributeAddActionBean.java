@@ -9,10 +9,10 @@ import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
 
-import org.localstorm.mcc.ejb.people.Attribute;
-import org.localstorm.mcc.ejb.people.AttributeType;
-import org.localstorm.mcc.ejb.people.Person;
-import org.localstorm.mcc.ejb.people.PersonManager;
+import org.localstorm.mcc.ejb.people.persons.Attribute;
+import org.localstorm.mcc.ejb.people.persons.AttributeType;
+import org.localstorm.mcc.ejb.people.persons.Person;
+import org.localstorm.mcc.ejb.people.persons.PersonManager;
 
 /**
  *

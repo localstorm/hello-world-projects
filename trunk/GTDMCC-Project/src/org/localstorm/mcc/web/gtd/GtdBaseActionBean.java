@@ -22,7 +22,6 @@ import org.localstorm.mcc.ejb.gtd.tasks.HintManager;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.web.BaseActionBean;
-import org.localstorm.mcc.web.Clipboard;
 import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
@@ -122,13 +121,13 @@ public class GtdBaseActionBean extends BaseActionBean {
         return (Task) SessionUtil.getValue(this.getSession(), SessionKeys.CURR_TASK);
     }
 
-    protected Clipboard getClipboard()
+    protected GtdClipboard getClipboard()
     {
         HttpSession sess = this.getSession();
-        Clipboard clip = (Clipboard) SessionUtil.getValue(sess, SessionKeys.CLIPBOARD);
+        GtdClipboard clip = (GtdClipboard) SessionUtil.getValue(sess, SessionKeys.GTD_CLIPBOARD);
         if (clip==null) {
-            clip = new Clipboard();
-            SessionUtil.fill(sess, SessionKeys.CLIPBOARD, clip);
+            clip = new GtdClipboard();
+            SessionUtil.fill(sess, SessionKeys.GTD_CLIPBOARD, clip);
         }
 
         return clip;

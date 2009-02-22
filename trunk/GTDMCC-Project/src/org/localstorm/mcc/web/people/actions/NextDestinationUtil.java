@@ -20,6 +20,9 @@ public class NextDestinationUtil
         RedirectResolution rr;
         switch(rp)
         {
+            case PEOPLE_INDEX:
+                rr = new RedirectResolution(PeopleViewActionBean.class);
+                break;
             case GROUP_VIEW:
                 rr = new RedirectResolution(PersonGroupViewActionBean.class);
                 break;

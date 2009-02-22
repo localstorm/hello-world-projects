@@ -7,9 +7,9 @@ import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.people.Person;
-import org.localstorm.mcc.ejb.people.PersonGroup;
-import org.localstorm.mcc.ejb.people.PersonManager;
+import org.localstorm.mcc.ejb.people.persons.Person;
+import org.localstorm.mcc.ejb.people.persons.PersonGroup;
+import org.localstorm.mcc.ejb.people.persons.PersonManager;
 
 @UrlBinding("/actions/AddPerson")
 public class PersonAddActionBean extends PersonGroupViewActionBean {

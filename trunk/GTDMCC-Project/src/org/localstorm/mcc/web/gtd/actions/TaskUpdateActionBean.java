@@ -20,6 +20,7 @@ import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.web.util.DateUtil;
 import org.localstorm.mcc.web.ReturnPageBean;
+import org.localstorm.mcc.web.gtd.GtdClipboard;
 
 /**
  * @author Alexey Kuznetsov
@@ -120,6 +121,12 @@ public class TaskUpdateActionBean extends TaskViewActionBean
         
         tm.update(t);
         
+        GtdClipboard clip = super.getClipboard();
+        if (clip.isTaskInClipboard(t))
+        {
+            clip.copyTask(t);
+        }
+
         RedirectResolution rr;
         
         ReturnPageBean rpb = super.getReturnPageBean();

@@ -10,7 +10,7 @@ import org.localstorm.mcc.ejb.gtd.contexts.Context;
 import org.localstorm.mcc.ejb.gtd.contexts.ContextManager;
 import org.localstorm.mcc.ejb.gtd.lists.GTDList;
 import org.localstorm.mcc.ejb.gtd.lists.ListManager;
-import org.localstorm.mcc.web.Clipboard;
+import org.localstorm.mcc.web.gtd.GtdClipboard;
 
 /**
  * @author Alexey Kuznetsov
@@ -35,7 +35,7 @@ public class ListBulkPasteActionBean extends GtdBaseActionBean
         
         ListManager lm    = super.getListManager();
         ContextManager cm = super.getContextManager();
-        Clipboard clip    = super.getClipboard();
+        GtdClipboard clip    = super.getClipboard();
 
         Context dst = cm.findById(this.getContextId());
 

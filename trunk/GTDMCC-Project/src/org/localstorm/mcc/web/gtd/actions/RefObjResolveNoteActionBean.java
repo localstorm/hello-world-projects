@@ -10,7 +10,7 @@ import org.localstorm.mcc.ejb.gtd.notes.Note;
 import org.localstorm.mcc.ejb.gtd.notes.NoteManager;
 import org.localstorm.mcc.ejb.gtd.referenced.RefObjectManager;
 import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
-import org.localstorm.mcc.web.Clipboard;
+import org.localstorm.mcc.web.gtd.GtdClipboard;
 
 /**
  * @author Alexey Kuznetsov
@@ -64,7 +64,7 @@ public class RefObjResolveNoteActionBean extends GtdBaseActionBean
         
         RefObjectManager rom = super.getRefObjectManager();
         NoteManager nm = super.getNoteManager();
-        Clipboard clip = super.getClipboard();
+        GtdClipboard clip = super.getClipboard();
 
         Note             no = null;
         ReferencedObject ro = rom.findById(this.getObjectId());
