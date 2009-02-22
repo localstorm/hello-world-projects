@@ -67,7 +67,7 @@ public class CheckpointMakeActionBean extends CashflowBaseActionBean
         hvm.log(netWealthHV);
         hvm.log(balanceHV);
 
-        return new RedirectResolution(ViewAssetsActionBean.class);
+        return new RedirectResolution(AssetsViewActionBean.class);
     }
 
 }
