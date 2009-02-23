@@ -1,4 +1,4 @@
-package org.localstorm.mcc.ejb.cashflow.asset;
+package org.localstorm.mcc.ejb.cashflow.assets;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
@@ -64,7 +64,7 @@ public class AssetManagerBean implements AssetManagerLocal,
 
 
     @Override
-    public Collection<Asset> findAssetsByOwner(User user) {
+    public Collection<Asset> findAssets(User user) {
         Query uq = em.createNamedQuery(Asset.Queries.FIND_BY_OWNER);
         uq.setParameter(Asset.Properties.OWNER, user);
 
@@ -73,7 +73,7 @@ public class AssetManagerBean implements AssetManagerLocal,
     }
 
     @Override
-    public Collection<Asset> findArchivedAssetsByOwner(User user) {
+    public Collection<Asset> findArchivedAssets(User user) {
         Query uq = em.createNamedQuery(Asset.Queries.FIND_ARCHIVED_BY_OWNER);
         uq.setParameter(Asset.Properties.OWNER, user);
 
@@ -90,16 +90,8 @@ public class AssetManagerBean implements AssetManagerLocal,
     }
 
     @Override
-    public Asset findAssetById(int assetId) {
+    public Asset findById(int assetId) {
         return (Asset) em.find(Asset.class, assetId);
-    }
-
-
-    private BigDecimal nvl(BigDecimal bigDecimal) {
-        if (bigDecimal==null) {
-            return new BigDecimal(0.0);
-        }
-        return bigDecimal;
     }
 
     @PersistenceContext(unitName=Constants.DEFAULT_PU)

@@ -6,8 +6,8 @@ import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.cashflow.asset.Asset;
-import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
+import org.localstorm.mcc.ejb.cashflow.assets.Asset;
+import org.localstorm.mcc.ejb.cashflow.assets.AssetManager;
 
 import org.localstorm.mcc.ejb.cashflow.operations.OperationManager;
 import org.localstorm.mcc.web.SessionKeys;
@@ -40,7 +40,7 @@ public class AssetToggleStateActionBean extends CashflowBaseActionBean
 
         OperationManager om = super.getOperationManager();
         AssetManager     am = super.getAssetManager();
-        Asset asset = am.findAssetById(this.getAssetId());
+        Asset asset = am.findById(this.getAssetId());
 
         AssetWrapper aw = (AssetWrapper) WrapUtil.wrapAsset(asset, om);
         if (aw.getAmount().compareTo(BigDecimal.ZERO)==1) {

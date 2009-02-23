@@ -36,7 +36,7 @@ public class TargetsEditActionBean extends CashflowBaseActionBean {
         TargetManager tm = super.getTargetManager();
         User user = super.getUser();
 
-        this.setArchiveTargets(tm.findTargetsByOwner(user));
+        this.setArchiveTargets(tm.findTargets(user));
         
         return new ForwardResolution(Views.EDIT_TARGETS);
     }

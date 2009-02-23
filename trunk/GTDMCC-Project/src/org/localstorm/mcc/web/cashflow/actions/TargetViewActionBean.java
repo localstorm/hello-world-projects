@@ -42,7 +42,7 @@ public class TargetViewActionBean extends CashflowBaseActionBean
 
     @DefaultHandler
     public Resolution filling() throws Exception {
-        Target target = super.getTargetManager().findTargetById(this.getTargetId());
+        Target target = super.getTargetManager().findById(this.getTargetId());
         
         this.setTargetResult( WrapUtil.wrapTarget(target, super.getOperationManager()) );
         

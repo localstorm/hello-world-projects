@@ -1,4 +1,4 @@
-package org.localstorm.mcc.ejb.cashflow.asset;
+package org.localstorm.mcc.ejb.cashflow.assets;
 
 import java.util.Collection;
 import org.localstorm.mcc.ejb.users.User;
@@ -13,13 +13,13 @@ public interface AssetManager
 {
     public static final String BEAN_NAME="AssetManagerBean";
     
-    public Collection<Asset> findArchivedAssetsByOwner(User user);
+    public Collection<Asset> findArchivedAssets(User user);
 
     public Asset findAssetByValuable(ValuableObject vo);
     
-    public Collection<Asset> findAssetsByOwner(User user);
+    public Collection<Asset> findAssets(User user);
 
-    public Asset findAssetById(int assetId);
+    public Asset findById(int assetId);
 
     public void create(Asset newAsset, Cost assetCost);
 

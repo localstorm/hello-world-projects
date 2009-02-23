@@ -7,8 +7,8 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.UrlBinding;
 
-import org.localstorm.mcc.ejb.cashflow.asset.Asset;
-import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
+import org.localstorm.mcc.ejb.cashflow.assets.Asset;
+import org.localstorm.mcc.ejb.cashflow.assets.AssetManager;
 import org.localstorm.mcc.ejb.cashflow.operations.OperationManager;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
@@ -39,7 +39,7 @@ public class AssetsEditActionBean extends CashflowBaseActionBean {
         AssetManager     am = super.getAssetManager();
         User user = super.getUser();
 
-        this.setArchiveAssets(WrapUtil.wrapAssets(am.findArchivedAssetsByOwner(user), om));
+        this.setArchiveAssets(WrapUtil.wrapAssets(am.findArchivedAssets(user), om));
         
         return new ForwardResolution(Views.EDIT_ASSETS);
     }

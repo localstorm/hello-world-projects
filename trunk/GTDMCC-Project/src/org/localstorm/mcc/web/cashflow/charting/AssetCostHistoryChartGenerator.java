@@ -17,10 +17,10 @@ import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.xy.XYDataset;
 import org.localstorm.mcc.ejb.ContextLookup;
-import org.localstorm.mcc.ejb.cashflow.asset.Asset;
-import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
-import org.localstorm.mcc.ejb.cashflow.asset.Cost;
-import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
+import org.localstorm.mcc.ejb.cashflow.assets.Asset;
+import org.localstorm.mcc.ejb.cashflow.assets.AssetManager;
+import org.localstorm.mcc.ejb.cashflow.assets.Cost;
+import org.localstorm.mcc.ejb.cashflow.assets.ValuableObject;
 import org.localstorm.mcc.ejb.cashflow.operations.OperationManager;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.Constants;
@@ -45,7 +45,7 @@ public class AssetCostHistoryChartGenerator {
 
         OperationManager om = ContextLookup.lookup(OperationManager.class, OperationManager.BEAN_NAME);
         AssetManager     am = ContextLookup.lookup(AssetManager.class, AssetManager.BEAN_NAME);
-        Asset         asset = am.findAssetById(assetId);
+        Asset         asset = am.findById(assetId);
         ValuableObject vo = asset.getValuable();
 
         if (!user.getId().equals(vo.getOwner().getId())) {

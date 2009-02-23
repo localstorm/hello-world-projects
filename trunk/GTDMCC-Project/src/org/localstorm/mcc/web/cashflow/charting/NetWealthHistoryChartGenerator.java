@@ -17,8 +17,8 @@ import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.xy.XYDataset;
 import org.localstorm.mcc.ejb.ContextLookup;
-import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
-import org.localstorm.mcc.ejb.cashflow.asset.Cost;
+import org.localstorm.mcc.ejb.cashflow.assets.AssetManager;
+import org.localstorm.mcc.ejb.cashflow.assets.Cost;
 import org.localstorm.mcc.ejb.cashflow.operations.OperationManager;
 import org.localstorm.mcc.ejb.cashflow.targets.Target;
 import org.localstorm.mcc.ejb.cashflow.targets.TargetManager;
@@ -108,7 +108,7 @@ public class NetWealthHistoryChartGenerator {
             TargetManager tm = ContextLookup.lookup(TargetManager.class,
                                                     TargetManager.BEAN_NAME);
 
-            Collection<Target> tgts = tm.findTargetsByOwner(user);
+            Collection<Target> tgts = tm.findTargets(user);
             for (Target tgt: tgts)
             {
                 TargetWrapper tgtw = (TargetWrapper) WrapUtil.wrapTarget(tgt, om);

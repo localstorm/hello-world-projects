@@ -1,6 +1,6 @@
 package org.localstorm.mcc.ejb.cashflow.targets;
 
-import org.localstorm.mcc.ejb.cashflow.asset.*;
+import org.localstorm.mcc.ejb.cashflow.assets.*;
 import java.util.Collection;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -42,7 +42,7 @@ public class TargetManagerBean implements TargetManagerLocal,
     }
 
     @Override
-    public Collection<Target> findTargetsByOwner(User user) {
+    public Collection<Target> findTargets(User user) {
         Query uq = em.createNamedQuery(Target.Queries.FIND_BY_OWNER);
         uq.setParameter(Asset.Properties.OWNER, user);
 
@@ -51,7 +51,7 @@ public class TargetManagerBean implements TargetManagerLocal,
     }
 
     @Override
-    public Target findTargetById(int targetId) throws ObjectNotFoundException {
+    public Target findById(int targetId) throws ObjectNotFoundException {
         Target t = em.find(Target.class, targetId);
         if (t==null)
         {

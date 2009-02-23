@@ -1,4 +1,4 @@
-package org.localstorm.mcc.ejb.cashflow.asset;
+package org.localstorm.mcc.ejb.cashflow.assets;
 
 import org.localstorm.mcc.ejb.AbstractEntity;
 import java.io.Serializable;
