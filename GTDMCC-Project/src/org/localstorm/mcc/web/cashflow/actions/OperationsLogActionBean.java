@@ -6,10 +6,10 @@ import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.cashflow.asset.Asset;
-import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
+import org.localstorm.mcc.ejb.cashflow.assets.Asset;
+import org.localstorm.mcc.ejb.cashflow.assets.AssetManager;
 import org.localstorm.mcc.ejb.cashflow.operations.Operation;
-import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
+import org.localstorm.mcc.ejb.cashflow.assets.ValuableObject;
 import org.localstorm.mcc.ejb.cashflow.operations.OperationManager;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
 import org.localstorm.mcc.web.cashflow.Views;
@@ -59,7 +59,7 @@ public class OperationsLogActionBean extends CashflowBaseActionBean {
         AssetManager     am = super.getAssetManager();
         OperationManager om = super.getOperationManager();
 
-        Asset           ass = am.findAssetById(this.getAssetId());
+        Asset           ass = am.findById(this.getAssetId());
         ValuableObject   vo = ass.getValuable();
 
         Collection<Operation> ops = om.getOperations(vo);

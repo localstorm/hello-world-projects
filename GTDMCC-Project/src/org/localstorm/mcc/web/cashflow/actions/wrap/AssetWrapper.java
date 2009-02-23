@@ -6,9 +6,9 @@
 package org.localstorm.mcc.web.cashflow.actions.wrap;
 
 import java.math.BigDecimal;
-import org.localstorm.mcc.ejb.cashflow.asset.Asset;
-import org.localstorm.mcc.ejb.cashflow.asset.Cost;
-import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
+import org.localstorm.mcc.ejb.cashflow.assets.Asset;
+import org.localstorm.mcc.ejb.cashflow.assets.Cost;
+import org.localstorm.mcc.ejb.cashflow.assets.ValuableObject;
 
 /**
  *

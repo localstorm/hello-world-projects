@@ -9,8 +9,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import org.localstorm.mcc.ejb.Constants;
-import org.localstorm.mcc.ejb.cashflow.asset.Cost;
-import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
+import org.localstorm.mcc.ejb.cashflow.assets.Cost;
+import org.localstorm.mcc.ejb.cashflow.assets.ValuableObject;
 
 /**
  *

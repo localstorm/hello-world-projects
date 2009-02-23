@@ -10,11 +10,11 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.cashflow.asset.Asset;
-import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
-import org.localstorm.mcc.ejb.cashflow.asset.Cost;
+import org.localstorm.mcc.ejb.cashflow.assets.Asset;
+import org.localstorm.mcc.ejb.cashflow.assets.AssetManager;
+import org.localstorm.mcc.ejb.cashflow.assets.Cost;
 import org.localstorm.mcc.ejb.cashflow.MoneyMathContext;
-import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
+import org.localstorm.mcc.ejb.cashflow.assets.ValuableObject;
 import org.localstorm.mcc.ejb.cashflow.operations.OperationManager;
 import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
@@ -104,7 +104,7 @@ public class AssetUpdateActionBean extends AssetViewActionBean {
 
         AssetManager     am = super.getAssetManager();
         OperationManager om = super.getOperationManager();
-        Asset         asset = am.findAssetById(this.getAssetId());
+        Asset         asset = am.findById(this.getAssetId());
         ValuableObject vo = asset.getValuable();
 
         

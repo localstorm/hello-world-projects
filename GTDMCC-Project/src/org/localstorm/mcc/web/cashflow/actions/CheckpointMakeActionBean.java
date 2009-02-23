@@ -7,8 +7,8 @@ import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
-import org.localstorm.mcc.ejb.cashflow.asset.Asset;
-import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
+import org.localstorm.mcc.ejb.cashflow.assets.Asset;
+import org.localstorm.mcc.ejb.cashflow.assets.AssetManager;
 import org.localstorm.mcc.ejb.cashflow.operations.OperationManager;
 import org.localstorm.mcc.ejb.cashflow.stat.HistoricalValue;
 import org.localstorm.mcc.ejb.cashflow.stat.HistoricalValuesManager;
@@ -33,7 +33,7 @@ public class CheckpointMakeActionBean extends CashflowBaseActionBean
         
         HistoricalValuesManager hvm = super.getHistoricalValuesManager();
 
-        Collection<Asset> assets = am.findAssetsByOwner(user);
+        Collection<Asset> assets = am.findAssets(user);
         assets = WrapUtil.wrapAssets(assets, om);
 
         BigDecimal netWealth = BigDecimal.ZERO;

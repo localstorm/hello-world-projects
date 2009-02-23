@@ -11,8 +11,8 @@ import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 import org.jfree.util.Rotation;
 import org.localstorm.mcc.ejb.ContextLookup;
-import org.localstorm.mcc.ejb.cashflow.asset.Asset;
-import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
+import org.localstorm.mcc.ejb.cashflow.assets.Asset;
+import org.localstorm.mcc.ejb.cashflow.assets.AssetManager;
 import org.localstorm.mcc.ejb.cashflow.operations.OperationManager;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.Constants;
@@ -54,7 +54,7 @@ public class AssetsStructureChartGenerator {
         OperationManager om = ContextLookup.lookup(OperationManager.class, OperationManager.BEAN_NAME);
         AssetManager     am = ContextLookup.lookup(AssetManager.class, AssetManager.BEAN_NAME);
         
-        Collection<Asset> assets = am.findAssetsByOwner(user);
+        Collection<Asset> assets = am.findAssets(user);
         
         assets = WrapUtil.wrapAssets(assets, om);
 

@@ -35,7 +35,7 @@ public class TargetToggleStateActionBean extends CashflowBaseActionBean
     public Resolution toggle() throws Exception {
 
         TargetManager tm = super.getTargetManager();
-        Target target = tm.findTargetById(this.getTargetId());
+        Target target = tm.findById(this.getTargetId());
 
         
         target.setArchived(!target.isArchived());

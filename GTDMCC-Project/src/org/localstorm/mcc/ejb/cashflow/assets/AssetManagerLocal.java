@@ -1,5 +1,5 @@
 
-package org.localstorm.mcc.ejb.cashflow.asset;
+package org.localstorm.mcc.ejb.cashflow.assets;
 
 import javax.ejb.Local;
 

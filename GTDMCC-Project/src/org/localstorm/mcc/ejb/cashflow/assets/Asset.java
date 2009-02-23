@@ -1,4 +1,4 @@
-package org.localstorm.mcc.ejb.cashflow.asset;
+package org.localstorm.mcc.ejb.cashflow.assets;
 
 import java.io.Serializable;
 import javax.persistence.Column;

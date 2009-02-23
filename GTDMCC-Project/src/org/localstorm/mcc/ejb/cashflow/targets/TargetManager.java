@@ -1,6 +1,6 @@
 package org.localstorm.mcc.ejb.cashflow.targets;
 
-import org.localstorm.mcc.ejb.cashflow.asset.*;
+import org.localstorm.mcc.ejb.cashflow.assets.*;
 import java.util.Collection;
 import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 import org.localstorm.mcc.ejb.users.User;
@@ -18,9 +18,9 @@ public interface TargetManager
     
     public void create(Target newTarget, Cost targetCost);
 
-    public Target findTargetById(int targetId) throws ObjectNotFoundException;
+    public Target findById(int targetId) throws ObjectNotFoundException;
 
-    public Collection<Target> findTargetsByOwner(User user);
+    public Collection<Target> findTargets(User user);
 
     public void remove(Target target);
 

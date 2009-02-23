@@ -4,8 +4,8 @@ package org.localstorm.mcc.ejb.cashflow.operations;
 import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Date;
-import org.localstorm.mcc.ejb.cashflow.asset.Cost;
-import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
+import org.localstorm.mcc.ejb.cashflow.assets.Cost;
+import org.localstorm.mcc.ejb.cashflow.assets.ValuableObject;
 
 
 /**
