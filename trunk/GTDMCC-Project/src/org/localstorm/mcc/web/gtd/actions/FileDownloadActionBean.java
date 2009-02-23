@@ -1,11 +1,5 @@
 package org.localstorm.mcc.web.gtd.actions;
 
-import java.net.URLEncoder;
-import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
-import java.nio.charset.CharacterCodingException;
-import java.nio.charset.Charset;
-import java.nio.charset.CharsetDecoder;
 import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
 import javax.servlet.http.HttpServletResponse;
 import net.sourceforge.stripes.action.DefaultHandler;
