@@ -13,6 +13,7 @@ import org.jfree.util.Rotation;
 import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.cashflow.asset.Asset;
 import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
+import org.localstorm.mcc.ejb.cashflow.operations.OperationManager;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.Constants;
 import org.localstorm.mcc.web.cashflow.actions.wrap.AssetWrapper;
@@ -50,9 +51,12 @@ public class AssetsStructureChartGenerator {
 
     private static PieDataset getWealthDataset(User user) {
 
-        AssetManager am = ContextLookup.lookup(AssetManager.class, AssetManager.BEAN_NAME);
+        OperationManager om = ContextLookup.lookup(OperationManager.class, OperationManager.BEAN_NAME);
+        AssetManager     am = ContextLookup.lookup(AssetManager.class, AssetManager.BEAN_NAME);
+        
         Collection<Asset> assets = am.findAssetsByOwner(user);
-        assets = WrapUtil.wrapAssets(assets, am);
+        
+        assets = WrapUtil.wrapAssets(assets, om);
 
         DefaultPieDataset result = new DefaultPieDataset();
 

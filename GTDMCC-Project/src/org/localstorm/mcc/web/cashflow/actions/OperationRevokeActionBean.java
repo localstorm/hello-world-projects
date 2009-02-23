@@ -7,7 +7,8 @@ import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.cashflow.asset.Asset;
 import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
-import org.localstorm.mcc.ejb.cashflow.asset.Operation;
+import org.localstorm.mcc.ejb.cashflow.operations.Operation;
+import org.localstorm.mcc.ejb.cashflow.operations.OperationManager;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
 
 /**
@@ -32,12 +33,13 @@ public class OperationRevokeActionBean extends CashflowBaseActionBean {
     @DefaultHandler
     public Resolution filling() throws Exception {
 
-        AssetManager am = super.getAssetManager();
+        AssetManager     am = super.getAssetManager();
+        OperationManager om = super.getOperationManager();
 
-        Operation op = am.findOperationById(this.getOperationId());
-        Asset asset = am.findAssetByValuable(op.getCost().getValuable());
+        Operation op = om.findOperationById(this.getOperationId());
+        Asset asset  = am.findAssetByValuable(op.getCost().getValuable());
 
-        am.remove(op);
+        om.remove(op);
 
         RedirectResolution rr = new RedirectResolution(OperationsLogActionBean.class);
         {

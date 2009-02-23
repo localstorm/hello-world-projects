@@ -6,7 +6,7 @@ import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.cashflow.asset.Target;
+import org.localstorm.mcc.ejb.cashflow.targets.Target;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
 import org.localstorm.mcc.web.cashflow.Views;
 import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
@@ -44,7 +44,7 @@ public class TargetViewActionBean extends CashflowBaseActionBean
     public Resolution filling() throws Exception {
         Target target = super.getTargetManager().findTargetById(this.getTargetId());
         
-        this.setTargetResult( WrapUtil.wrapTarget(target, super.getAssetManager()) );
+        this.setTargetResult( WrapUtil.wrapTarget(target, super.getOperationManager()) );
         
         return new ForwardResolution(Views.VIEW_TARGET);
     }

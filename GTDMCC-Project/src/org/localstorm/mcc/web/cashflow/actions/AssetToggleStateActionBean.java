@@ -9,6 +9,7 @@ import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.cashflow.asset.Asset;
 import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
 
+import org.localstorm.mcc.ejb.cashflow.operations.OperationManager;
 import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
 import org.localstorm.mcc.web.cashflow.actions.wrap.AssetWrapper;
@@ -37,10 +38,11 @@ public class AssetToggleStateActionBean extends CashflowBaseActionBean
     @DefaultHandler
     public Resolution toggle() throws Exception {
 
-        AssetManager am = super.getAssetManager();
+        OperationManager om = super.getOperationManager();
+        AssetManager     am = super.getAssetManager();
         Asset asset = am.findAssetById(this.getAssetId());
 
-        AssetWrapper aw = (AssetWrapper) WrapUtil.wrapAsset(asset, am);
+        AssetWrapper aw = (AssetWrapper) WrapUtil.wrapAsset(asset, om);
         if (aw.getAmount().compareTo(BigDecimal.ZERO)==1) {
             throw new RuntimeException("Attempt to delete non sold amount!");
         }

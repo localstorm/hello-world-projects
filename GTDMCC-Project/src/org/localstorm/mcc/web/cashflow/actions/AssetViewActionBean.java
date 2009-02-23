@@ -44,7 +44,7 @@ public class AssetViewActionBean extends CashflowBaseActionBean
     public Resolution filling() throws Exception {
         Asset asset = super.getAssetManager().findAssetById(this.getAssetId());
 
-        this.setAssetResult( WrapUtil.wrapAsset(asset, super.getAssetManager()) );
+        this.setAssetResult( WrapUtil.wrapAsset(asset, super.getOperationManager()) );
         
         return new ForwardResolution(Views.VIEW_ASSET);
     }

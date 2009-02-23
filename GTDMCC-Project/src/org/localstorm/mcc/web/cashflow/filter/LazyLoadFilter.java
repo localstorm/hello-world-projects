@@ -9,8 +9,9 @@ import javax.servlet.http.HttpSession;
 import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.cashflow.asset.Asset;
 import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
-import org.localstorm.mcc.ejb.cashflow.asset.Target;
-import org.localstorm.mcc.ejb.cashflow.asset.TargetManager;
+import org.localstorm.mcc.ejb.cashflow.operations.OperationManager;
+import org.localstorm.mcc.ejb.cashflow.targets.Target;
+import org.localstorm.mcc.ejb.cashflow.targets.TargetManager;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
@@ -52,9 +53,11 @@ public class LazyLoadFilter implements Filter
         if ( SessionUtil.isEmpty(sess, SessionKeys.ASSETS) ) {
             AssetManager am = ContextLookup.lookup(AssetManager.class,
                                                    AssetManager.BEAN_NAME);
+            OperationManager om = ContextLookup.lookup(OperationManager.class,
+                                                       OperationManager.BEAN_NAME);
 
             Collection<Asset> assets = am.findAssetsByOwner(user);
-            assets = WrapUtil.wrapAssets(assets, am);
+            assets = WrapUtil.wrapAssets(assets, om);
             SessionUtil.fill(sess, SessionKeys.ASSETS, assets);
         }
 

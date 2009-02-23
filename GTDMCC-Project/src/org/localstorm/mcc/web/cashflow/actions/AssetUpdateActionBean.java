@@ -13,8 +13,9 @@ import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.cashflow.asset.Asset;
 import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
 import org.localstorm.mcc.ejb.cashflow.asset.Cost;
-import org.localstorm.mcc.ejb.cashflow.asset.MoneyMathContext;
+import org.localstorm.mcc.ejb.cashflow.MoneyMathContext;
 import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
+import org.localstorm.mcc.ejb.cashflow.operations.OperationManager;
 import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
@@ -101,8 +102,9 @@ public class AssetUpdateActionBean extends AssetViewActionBean {
     @DefaultHandler
     public Resolution update() throws Exception {
 
-        AssetManager am = super.getAssetManager();
-        Asset asset = am.findAssetById(this.getAssetId());
+        AssetManager     am = super.getAssetManager();
+        OperationManager om = super.getOperationManager();
+        Asset         asset = am.findAssetById(this.getAssetId());
         ValuableObject vo = asset.getValuable();
 
         
@@ -120,8 +122,8 @@ public class AssetUpdateActionBean extends AssetViewActionBean {
         asset.setName(this.getName());
 
         am.update(asset);
-        am.updateCost(vo, cost);
-        am.updateValuableObject(vo);
+        om.updateCost(vo, cost);
+        om.updateValuableObject(vo);
 
         SessionUtil.clear(super.getSession(), SessionKeys.ASSETS);
 

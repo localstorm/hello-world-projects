@@ -1,8 +1,6 @@
 package org.localstorm.mcc.ejb.cashflow.asset;
 
-import java.math.BigDecimal;
 import java.util.Collection;
-import java.util.Date;
 import org.localstorm.mcc.ejb.users.User;
 
 
@@ -15,8 +13,6 @@ public interface AssetManager
 {
     public static final String BEAN_NAME="AssetManagerBean";
     
-    public void create(Asset newAsset, Cost assetCost);
-
     public Collection<Asset> findArchivedAssetsByOwner(User user);
 
     public Asset findAssetByValuable(ValuableObject vo);
@@ -25,39 +21,10 @@ public interface AssetManager
 
     public Asset findAssetById(int assetId);
 
-    public Operation findOperationById(Integer operationId);
-
-    public BigDecimal getBalance(ValuableObject vo);
-
-    public Collection<Cost> getCostHistory(ValuableObject valuable, Date time);
-
-    public BigDecimal getNetWealthSellCost(ValuableObject vo);
-
-    public BigDecimal getInvestmentsCost(ValuableObject vo);
-
-    public BigDecimal getTotalAmount(ValuableObject vo);
-
-    public BigDecimal getRevenuAmount(ValuableObject vo);
-
-    public Cost getCurrentCost(ValuableObject vo);
+    public void create(Asset newAsset, Cost assetCost);
 
     public void remove(Asset asset);
 
-    public void remove(Operation op);
-
     public void update(Asset asset);
-
-    public void updateCost(ValuableObject vo, Cost cost);
-
-    // Operations
-
-    public ValuableObject findValuableById(Integer valuableId);
-
-    public void buy(ValuableObject vo, BigDecimal amount, String comment, boolean exchange);
-
-    public boolean sell(ValuableObject vo, BigDecimal amount, String comment, boolean exchange);
-
-    public Collection<Operation> getOperations(ValuableObject vo);
-
-    public void updateValuableObject(ValuableObject vo);
+    
 }

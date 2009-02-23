@@ -6,8 +6,8 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 
-import org.localstorm.mcc.ejb.cashflow.asset.Target;
-import org.localstorm.mcc.ejb.cashflow.asset.TargetManager;
+import org.localstorm.mcc.ejb.cashflow.targets.Target;
+import org.localstorm.mcc.ejb.cashflow.targets.TargetManager;
 import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
 import org.localstorm.mcc.web.util.SessionUtil;

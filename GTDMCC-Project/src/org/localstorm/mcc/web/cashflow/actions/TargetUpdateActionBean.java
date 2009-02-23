@@ -12,10 +12,11 @@ import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
 import org.localstorm.mcc.ejb.cashflow.asset.Cost;
-import org.localstorm.mcc.ejb.cashflow.asset.MoneyMathContext;
-import org.localstorm.mcc.ejb.cashflow.asset.Target;
-import org.localstorm.mcc.ejb.cashflow.asset.TargetManager;
+import org.localstorm.mcc.ejb.cashflow.MoneyMathContext;
+import org.localstorm.mcc.ejb.cashflow.targets.Target;
+import org.localstorm.mcc.ejb.cashflow.targets.TargetManager;
 import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
+import org.localstorm.mcc.ejb.cashflow.operations.OperationManager;
 import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
@@ -59,7 +60,8 @@ public class TargetUpdateActionBean extends TargetViewActionBean {
     @DefaultHandler
     public Resolution update() throws Exception {
 
-        AssetManager  am = super.getAssetManager();
+        AssetManager     am = super.getAssetManager();
+        OperationManager om = super.getOperationManager();
         TargetManager tm = super.getTargetManager();
         Target target    = tm.findTargetById(this.getTargetId());
 
@@ -77,8 +79,8 @@ public class TargetUpdateActionBean extends TargetViewActionBean {
         target.setName(this.getName());
 
         tm.update(target);
-        am.updateCost(vo, cost);
-        am.updateValuableObject(vo);
+        om.updateCost(vo, cost);
+        om.updateValuableObject(vo);
 
         SessionUtil.clear(super.getSession(), SessionKeys.TARGETS);
         

@@ -12,9 +12,10 @@ import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.cashflow.asset.Asset;
 import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
-import org.localstorm.mcc.ejb.cashflow.asset.MoneyMathContext;
-import org.localstorm.mcc.ejb.cashflow.asset.OperationType;
+import org.localstorm.mcc.ejb.cashflow.MoneyMathContext;
+import org.localstorm.mcc.ejb.cashflow.operations.OperationType;
 import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
+import org.localstorm.mcc.ejb.cashflow.operations.OperationManager;
 import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
@@ -71,9 +72,10 @@ public class OperateAssetActionBean extends AssetViewActionBean {
     @SuppressWarnings("fallthrough")
     public Resolution operate() throws Exception {
 
-        AssetManager am = super.getAssetManager();
-        Asset     asset = am.findAssetById(super.getAssetId());
-        ValuableObject vo = asset.getValuable();
+        AssetManager     am = super.getAssetManager();
+        OperationManager om = super.getOperationManager();
+        Asset         asset = am.findAssetById(super.getAssetId());
+        ValuableObject   vo = asset.getValuable();
 
         MathContext rounding = MoneyMathContext.ROUNDING;
 
@@ -83,12 +85,12 @@ public class OperateAssetActionBean extends AssetViewActionBean {
             case BUY_FX:
                 exchange = true;
             case BUY:
-                am.buy(vo, RoundUtil.round(this.getAmount(), rounding), this.getComment(), exchange);
+                om.buy(vo, RoundUtil.round(this.getAmount(), rounding), this.getComment(), exchange);
                 break;
             case SELL_FX:
                 exchange = true;
             case SELL:
-                am.sell(vo, RoundUtil.round(this.getAmount(), rounding), this.getComment(), exchange);
+                om.sell(vo, RoundUtil.round(this.getAmount(), rounding), this.getComment(), exchange);
                 break;
             default:
                 throw new RuntimeException("Unexpected operation: "+this.getOperationName());

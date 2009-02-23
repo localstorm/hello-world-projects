@@ -1,5 +1,6 @@
-package org.localstorm.mcc.ejb.cashflow.asset;
+package org.localstorm.mcc.ejb.cashflow.targets;
 
+import org.localstorm.mcc.ejb.cashflow.asset.*;
 import java.util.Collection;
 import java.util.List;
 import javax.ejb.Stateless;
