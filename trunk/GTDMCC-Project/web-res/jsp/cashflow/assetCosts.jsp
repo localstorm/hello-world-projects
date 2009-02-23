@@ -4,7 +4,6 @@
 <%@ include file="/WEB-INF/jsp/includes/cashflow/hdr.jsp" %>
 
 <h2><span>ASSET</span> cost history</h2>
-
 <div align="center">
     <br/>
     <img src="<c:url value="/chart/assetCost.png">

@@ -31,7 +31,7 @@ public class OperationManagerBean implements OperationManagerLocal,
         em.remove(op);
     }
 
-    
+      
     @Override
     public BigDecimal getNetWealthSellCost(ValuableObject vo) {
         BigDecimal amount = this.getTotalAmount(vo);
@@ -180,7 +180,7 @@ public class OperationManagerBean implements OperationManagerLocal,
     }
 
     @Override
-    public void updateValuableObject(ValuableObject vo) {
+    public void update(ValuableObject vo) {
         em.merge( vo );
     }
 

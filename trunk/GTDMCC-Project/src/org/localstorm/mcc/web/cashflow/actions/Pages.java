@@ -6,5 +6,6 @@ package org.localstorm.mcc.web.cashflow.actions;
 public enum Pages
 {
     NET_WEALTH_HISTORY,
-    BALANCE_HISTORY
+    BALANCE_HISTORY,
+    ASSET_COST_HISTORY
 }

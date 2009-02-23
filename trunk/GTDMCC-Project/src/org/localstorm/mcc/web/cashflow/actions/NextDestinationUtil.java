@@ -20,6 +20,9 @@ public class NextDestinationUtil
         RedirectResolution rr;
         switch(rp)
         {
+            case ASSET_COST_HISTORY:
+                rr = new RedirectResolution(AssetCostHistoryActionBean.class);
+                break;
             case BALANCE_HISTORY:
                 rr = new RedirectResolution(BalanceHisotryReportActionBean.class);
                 break;

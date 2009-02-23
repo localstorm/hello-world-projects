@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.sql.DataSource;
+import org.apache.log4j.Logger;
 import org.localstorm.mcc.ejb.gtd.dao.FileDao;
 import org.localstorm.mcc.ejb.Constants;
 import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
@@ -23,6 +24,8 @@ import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
 @Stateless 
 public class FileManagerBean implements FileManagerLocal
 {
+    public static final Logger log = Logger.getLogger(FileManagerBean.class);
+    
     @Resource(mappedName=Constants.DEFAULT_DS)
     private DataSource ds;
     
@@ -37,6 +40,7 @@ public class FileManagerBean implements FileManagerLocal
 
         try {
             em.persist(fa);
+            em.flush();
             Integer fileId = fa.getId();
 
             FileToRefObject link = new FileToRefObject(fa, ro);
@@ -44,6 +48,7 @@ public class FileManagerBean implements FileManagerLocal
 
             fileDao.uploadFile(is, fileId);
         } catch(Exception e) {
+            log.error(e);
             throw new RuntimeException(e);
         }
     }

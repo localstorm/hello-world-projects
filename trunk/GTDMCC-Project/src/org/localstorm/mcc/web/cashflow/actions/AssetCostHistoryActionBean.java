@@ -7,6 +7,7 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.cashflow.assets.Asset;
+import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
 import org.localstorm.mcc.web.cashflow.Views;
 import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
@@ -45,6 +46,13 @@ public class AssetCostHistoryActionBean extends CashflowBaseActionBean
         Asset asset = super.getAssetManager().findById(this.getAssetId());
         
         this.setAssetResult( WrapUtil.wrapAsset(asset, super.getOperationManager()) );
+
+        ReturnPageBean rpb = new ReturnPageBean(Pages.ASSET_COST_HISTORY.toString());
+        {
+            rpb.setParam(IncommingParameters.ASSET_ID, Integer.toString(this.getAssetId()));
+        }
+
+        super.setReturnPageBean(rpb);
         
         return new ForwardResolution(Views.VIEW_ASSET_COST_HISTORY);
     }
