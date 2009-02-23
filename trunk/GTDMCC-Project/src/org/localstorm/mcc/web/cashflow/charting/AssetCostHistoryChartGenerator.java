@@ -21,6 +21,7 @@ import org.localstorm.mcc.ejb.cashflow.asset.Asset;
 import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
 import org.localstorm.mcc.ejb.cashflow.asset.Cost;
 import org.localstorm.mcc.ejb.cashflow.asset.ValuableObject;
+import org.localstorm.mcc.ejb.cashflow.operations.OperationManager;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.Constants;
 
@@ -42,16 +43,17 @@ public class AssetCostHistoryChartGenerator {
             cal.add(Calendar.DATE, -daysPeriod);
         }
 
-        AssetManager am = ContextLookup.lookup(AssetManager.class, AssetManager.BEAN_NAME);
-        Asset asset = am.findAssetById(assetId);
+        OperationManager om = ContextLookup.lookup(OperationManager.class, OperationManager.BEAN_NAME);
+        AssetManager     am = ContextLookup.lookup(AssetManager.class, AssetManager.BEAN_NAME);
+        Asset         asset = am.findAssetById(assetId);
         ValuableObject vo = asset.getValuable();
 
         if (!user.getId().equals(vo.getOwner().getId())) {
             return null;
         }
 
-        Collection<Cost> costs = am.getCostHistory(vo, cal.getTime());
-        Cost current = am.getCurrentCost(vo);
+        Collection<Cost> costs = om.getCostHistory(vo, cal.getTime());
+        Cost current = om.getCurrentCost(vo);
 
         if (costs.isEmpty())
         {

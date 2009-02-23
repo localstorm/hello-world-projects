@@ -19,8 +19,9 @@ import org.jfree.data.xy.XYDataset;
 import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
 import org.localstorm.mcc.ejb.cashflow.asset.Cost;
-import org.localstorm.mcc.ejb.cashflow.asset.Target;
-import org.localstorm.mcc.ejb.cashflow.asset.TargetManager;
+import org.localstorm.mcc.ejb.cashflow.operations.OperationManager;
+import org.localstorm.mcc.ejb.cashflow.targets.Target;
+import org.localstorm.mcc.ejb.cashflow.targets.TargetManager;
 import org.localstorm.mcc.ejb.cashflow.stat.HistoricalValue;
 import org.localstorm.mcc.ejb.cashflow.stat.HistoricalValuesManager;
 import org.localstorm.mcc.ejb.cashflow.stat.ValueType;
@@ -98,15 +99,19 @@ public class NetWealthHistoryChartGenerator {
         tsc.addSeries(netWealth);
 
         if (showTargets) {
+            OperationManager om = ContextLookup.lookup(OperationManager.class,
+                                                       OperationManager.BEAN_NAME);
+
             AssetManager  am = ContextLookup.lookup(AssetManager.class,
                                                     AssetManager.BEAN_NAME);
 
             TargetManager tm = ContextLookup.lookup(TargetManager.class,
                                                     TargetManager.BEAN_NAME);
+
             Collection<Target> tgts = tm.findTargetsByOwner(user);
             for (Target tgt: tgts)
             {
-                TargetWrapper tgtw = (TargetWrapper) WrapUtil.wrapTarget(tgt, am);
+                TargetWrapper tgtw = (TargetWrapper) WrapUtil.wrapTarget(tgt, om);
                 Cost c = tgtw.getCurrentCost();
 
                 TimeSeries ts = new TimeSeries(tgtw.getName());

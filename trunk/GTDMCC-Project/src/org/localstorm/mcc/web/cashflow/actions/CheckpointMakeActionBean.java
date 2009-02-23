@@ -9,6 +9,7 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import org.localstorm.mcc.ejb.cashflow.asset.Asset;
 import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
+import org.localstorm.mcc.ejb.cashflow.operations.OperationManager;
 import org.localstorm.mcc.ejb.cashflow.stat.HistoricalValue;
 import org.localstorm.mcc.ejb.cashflow.stat.HistoricalValuesManager;
 import org.localstorm.mcc.ejb.cashflow.stat.ValueType;
@@ -26,12 +27,14 @@ public class CheckpointMakeActionBean extends CashflowBaseActionBean
 {
     @DefaultHandler
     public Resolution filling() {
-        User user                   = super.getUser();
-        AssetManager am             = super.getAssetManager();
+        User             user = super.getUser();
+        AssetManager     am   = super.getAssetManager();
+        OperationManager om   = super.getOperationManager();
+        
         HistoricalValuesManager hvm = super.getHistoricalValuesManager();
 
         Collection<Asset> assets = am.findAssetsByOwner(user);
-        assets = WrapUtil.wrapAssets(assets, am);
+        assets = WrapUtil.wrapAssets(assets, om);
 
         BigDecimal netWealth = BigDecimal.ZERO;
         BigDecimal balance   = BigDecimal.ZERO;

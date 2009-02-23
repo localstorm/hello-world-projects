@@ -1,4 +1,4 @@
-package org.localstorm.mcc.ejb.cashflow.asset;
+package org.localstorm.mcc.ejb.cashflow;
 
 import java.math.MathContext;
 import java.math.RoundingMode;

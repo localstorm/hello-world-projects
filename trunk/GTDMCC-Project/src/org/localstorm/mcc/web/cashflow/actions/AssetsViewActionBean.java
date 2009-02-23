@@ -9,6 +9,7 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import org.localstorm.mcc.ejb.cashflow.asset.Asset;
 import org.localstorm.mcc.ejb.cashflow.asset.AssetManager;
+import org.localstorm.mcc.ejb.cashflow.operations.OperationManager;
 import org.localstorm.mcc.ejb.cashflow.stat.HistoricalValue;
 import org.localstorm.mcc.ejb.cashflow.stat.HistoricalValuesManager;
 import org.localstorm.mcc.ejb.cashflow.stat.ValueType;
@@ -51,12 +52,13 @@ public class AssetsViewActionBean extends CashflowBaseActionBean {
 
     @DefaultHandler
     public Resolution filling() {
-        AssetManager am = super.getAssetManager();
-        User user = super.getUser();
+        AssetManager     am = super.getAssetManager();
+        OperationManager om = super.getOperationManager();
+        User           user = super.getUser();
         
        
         this.assets = am.findAssetsByOwner(user);
-        this.assets = WrapUtil.wrapAssets(assets, am);
+        this.assets = WrapUtil.wrapAssets(assets, om);
 
         this.netWealth = BigDecimal.ZERO;
         this.balance   = BigDecimal.ZERO;
