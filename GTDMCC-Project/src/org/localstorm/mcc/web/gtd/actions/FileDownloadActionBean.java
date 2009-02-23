@@ -1,5 +1,11 @@
 package org.localstorm.mcc.web.gtd.actions;
 
+import java.net.URLEncoder;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.charset.CharacterCodingException;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
 import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
 import javax.servlet.http.HttpServletResponse;
 import net.sourceforge.stripes.action.DefaultHandler;
@@ -36,10 +42,26 @@ public class FileDownloadActionBean extends GtdBaseActionBean
         }
         
         resp.setContentType(fa.getMimeType());
-        resp.addHeader("Content-Disposition", "attachment; filename=\""+fa.getName()+"\"");
+        resp.addHeader("Content-Disposition", "attachment; filename=\""+fixNonAsciiString(fa.getName())+"\"");
         fm.download(fa, resp.getOutputStream());
         
         return null;
+    }
+
+    public static String fixNonAsciiString (String s) throws Exception {
+
+        byte bytearray []  = s.getBytes();
+
+        for (int i=0; i<bytearray.length; i++)
+        {
+            byte b = bytearray[i];
+            if (b<0)
+            {
+                bytearray[i]=95; // underscore
+            }
+        }
+
+        return new String(bytearray);
     }
 
     

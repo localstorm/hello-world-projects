@@ -80,7 +80,7 @@ public class TargetUpdateActionBean extends TargetViewActionBean {
 
         tm.update(target);
         om.updateCost(vo, cost);
-        om.updateValuableObject(vo);
+        om.update(vo);
 
         SessionUtil.clear(super.getSession(), SessionKeys.TARGETS);
         

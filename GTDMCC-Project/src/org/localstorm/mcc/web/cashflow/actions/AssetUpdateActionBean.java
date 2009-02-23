@@ -123,7 +123,7 @@ public class AssetUpdateActionBean extends AssetViewActionBean {
 
         am.update(asset);
         om.updateCost(vo, cost);
-        om.updateValuableObject(vo);
+        om.update(vo);
 
         SessionUtil.clear(super.getSession(), SessionKeys.ASSETS);
 

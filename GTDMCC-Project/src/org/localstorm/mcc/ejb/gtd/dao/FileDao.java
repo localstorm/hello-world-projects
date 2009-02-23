@@ -53,7 +53,7 @@ public class FileDao
             Guard.checkConnectionNotNull(conn);
             
             PreparedStatement ps = conn.prepareStatement("insert into FILE_BODIES (id, file_id, data) " +
-                                                         "values (null, ?,?)");
+                                                         "values (null, ?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
             
             ps.setInt(1, fileId);
             ps.setBlob(2, is);

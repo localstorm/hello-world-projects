@@ -17,16 +17,17 @@ public interface OperationManager
 {
     public static final String BEAN_NAME="OperationManagerBean";
     
+    public ValuableObject findValuableById(Integer valuableId);
+
     public Operation findOperationById(Integer operationId);
-
-    public BigDecimal getBalance(ValuableObject vo);
-
-    public Cost getCurrentCost(ValuableObject vo);
-
-    public Collection<Cost> getCostHistory(ValuableObject valuable, Date time);
-
+    
     public void updateCost(ValuableObject vo, Cost cost);
 
+    public void remove(Operation op);
+
+    public void update(ValuableObject vo);
+
+    // Queries
     public BigDecimal getNetWealthSellCost(ValuableObject vo);
 
     public BigDecimal getInvestmentsCost(ValuableObject vo);
@@ -35,17 +36,17 @@ public interface OperationManager
 
     public BigDecimal getRevenuAmount(ValuableObject vo);
 
-    public void remove(Operation op);
+    public BigDecimal getBalance(ValuableObject vo);
+
+    public Cost getCurrentCost(ValuableObject vo);
+
+    public Collection<Cost> getCostHistory(ValuableObject valuable, Date time);
+
+    public Collection<Operation> getOperations(ValuableObject vo);
 
     // Operations
-
     public void buy(ValuableObject vo, BigDecimal amount, String comment, boolean exchange);
 
     public boolean sell(ValuableObject vo, BigDecimal amount, String comment, boolean exchange);
 
-    public Collection<Operation> getOperations(ValuableObject vo);
-
-    public ValuableObject findValuableById(Integer valuableId);
-
-    public void updateValuableObject(ValuableObject vo);
 }
