@@ -2,16 +2,16 @@ package org.localstorm.mcc.ejb.people.impl;
 
 import org.localstorm.mcc.ejb.people.entity.MailList;
 import org.localstorm.mcc.ejb.people.entity.PregeneratedMailList;
-import org.localstorm.mcc.ejb.people.entity.MailListContent;
 import java.util.Collection;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.xml.registry.infomodel.User;
 import org.localstorm.mcc.ejb.Constants;
 import org.localstorm.mcc.ejb.people.entity.Attribute;
 import org.localstorm.mcc.ejb.people.entity.Person;
 import org.localstorm.mcc.ejb.people.PersonManager;
+import org.localstorm.mcc.ejb.people.entity.PersonToMailList;
+import org.localstorm.mcc.ejb.users.User;
 
 /**
  * @author localstorm
@@ -27,14 +27,33 @@ public class MailListManagerBean extends PeopleStatelessBean implements MailList
     public PregeneratedMailList generateMailList(Collection<Person> persons)
     {
         PersonManager pm = super.getPersonManager();
+        PregeneratedMailList pml = new PregeneratedMailList();
 
-        return new PregeneratedMailList();
+        for (Person p : persons)
+        {
+            Collection<Attribute> attrs = pm.getEmailAttributes(p);
+            
+            if (attrs.isEmpty())
+            {
+                pml.addNoEmailPerson(p);
+                continue;
+            }
+
+            if (attrs.size()==1)
+            {
+                pml.addResolvedPerson(p, attrs.iterator().next());
+                continue;
+            }
+
+            pml.addManyEmailPerson(p, attrs);
+        }
+
+        return pml;
     }
 
     @Override
-    public void create(PregeneratedMailList pml)
+    public void create(PregeneratedMailList pml, String name, User user)
     {
-        
     }
 
     @Override
@@ -45,7 +64,7 @@ public class MailListManagerBean extends PeopleStatelessBean implements MailList
     }
 
     @Override
-    public MailListContent findMailListContent(MailList ml)
+    public Collection<PersonToMailList> findMailListContent(MailList ml)
     {
         throw new UnsupportedOperationException("Not supported yet.");
     }

@@ -25,6 +25,10 @@ import org.localstorm.mcc.ejb.Identifiable;
     @NamedQuery(
         name = Attribute.Queries.FIND_BY_PERSON,
         query= "SELECT o FROM Attribute o WHERE o.person=:person ORDER BY o.type.name"
+    ),
+    @NamedQuery(
+        name = Attribute.Queries.FIND_EMAILS_BY_PERSON,
+        query= "SELECT o FROM Attribute o WHERE o.person=:person AND o.type IN (SELECT t FROM AttributeType t WHERE t.email=true)"
     )
 })
 public class Attribute extends AbstractEntity implements Identifiable, Serializable {
@@ -86,6 +90,7 @@ public class Attribute extends AbstractEntity implements Identifiable, Serializa
     public static interface Queries
     {
         public static final String FIND_BY_PERSON = "findAttrByPerson";
+        public static final String FIND_EMAILS_BY_PERSON = "findEmailAttrsByPerson";
     }
 
     public static interface Properties
