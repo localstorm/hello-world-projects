@@ -8,13 +8,13 @@ import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
 
-import org.localstorm.mcc.ejb.people.persons.PersonGroup;
-import org.localstorm.mcc.ejb.people.persons.PersonManager;
+import org.localstorm.mcc.ejb.people.entity.PersonGroup;
+import org.localstorm.mcc.ejb.people.PersonManager;
 import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
- *
+ * @secure-by group-id
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/RenamePersonGroup")

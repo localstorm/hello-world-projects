@@ -1,5 +1,10 @@
-package org.localstorm.mcc.ejb.people.persons;
+package org.localstorm.mcc.ejb.people.impl;
 
+import org.localstorm.mcc.ejb.people.entity.Attribute;
+import org.localstorm.mcc.ejb.people.entity.PersonToGroup;
+import org.localstorm.mcc.ejb.people.entity.Person;
+import org.localstorm.mcc.ejb.people.entity.PersonGroup;
+import org.localstorm.mcc.ejb.people.entity.AttributeType;
 import java.util.Collection;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -14,8 +19,8 @@ import org.localstorm.mcc.ejb.users.User;
  * @author localstorm
  */
 @Stateless
-public class PersonManagerBean implements PersonManagerLocal,
-                                          PersonManagerRemote
+public class PersonManagerBean extends PeopleStatelessBean implements PersonManagerLocal,
+                                                                      PersonManagerRemote
 {
     public PersonManagerBean() {
         

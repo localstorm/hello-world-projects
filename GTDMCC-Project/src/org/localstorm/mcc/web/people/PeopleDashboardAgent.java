@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import net.sourceforge.stripes.action.ActionBeanContext;
 import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.people.dao.DashboardReportBean;
-import org.localstorm.mcc.ejb.people.reports.PeopleReporter;
+import org.localstorm.mcc.ejb.people.PeopleReporter;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;

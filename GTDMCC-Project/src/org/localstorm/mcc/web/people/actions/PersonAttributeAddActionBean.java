@@ -9,13 +9,13 @@ import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
 
-import org.localstorm.mcc.ejb.people.persons.Attribute;
-import org.localstorm.mcc.ejb.people.persons.AttributeType;
-import org.localstorm.mcc.ejb.people.persons.Person;
-import org.localstorm.mcc.ejb.people.persons.PersonManager;
+import org.localstorm.mcc.ejb.people.entity.Attribute;
+import org.localstorm.mcc.ejb.people.entity.AttributeType;
+import org.localstorm.mcc.ejb.people.entity.Person;
+import org.localstorm.mcc.ejb.people.PersonManager;
 
 /**
- *
+ * @secure-by person id
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/AddPersonAttribute")

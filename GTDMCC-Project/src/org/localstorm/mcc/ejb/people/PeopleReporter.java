@@ -1,4 +1,4 @@
-package org.localstorm.mcc.ejb.people.reports;
+package org.localstorm.mcc.ejb.people;
 
 import org.localstorm.mcc.ejb.people.dao.DashboardReportBean;
 import org.localstorm.mcc.ejb.users.User;

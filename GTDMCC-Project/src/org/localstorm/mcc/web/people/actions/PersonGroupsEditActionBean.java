@@ -6,13 +6,13 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.UrlBinding;
 
-import org.localstorm.mcc.ejb.people.persons.PersonGroup;
-import org.localstorm.mcc.ejb.people.persons.PersonManager;
+import org.localstorm.mcc.ejb.people.entity.PersonGroup;
+import org.localstorm.mcc.ejb.people.PersonManager;
 import org.localstorm.mcc.web.people.Views;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
 
 /**
- *
+ * @secure-by nil
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/EditPersonGroups")

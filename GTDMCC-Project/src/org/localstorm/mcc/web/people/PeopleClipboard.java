@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Map;
 import java.util.TreeMap;
-import org.localstorm.mcc.ejb.people.persons.Person;
+import org.localstorm.mcc.ejb.people.entity.Person;
 
 /**
  * @author Alexey Kuznetsov
