@@ -17,7 +17,7 @@ import org.localstorm.mcc.web.cashflow.Views;
  * @secure-by session
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/EditTargets")
+@UrlBinding("/actions/cash/nil/EditTargets")
 public class TargetsEditActionBean extends CashflowBaseActionBean {
 
     private Collection<Target> archiveTargets;

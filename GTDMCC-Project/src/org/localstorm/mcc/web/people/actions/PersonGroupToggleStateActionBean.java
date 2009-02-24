@@ -15,7 +15,7 @@ import org.localstorm.mcc.web.util.SessionUtil;
  * @secure-by group-id
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/ToggleStatePersonGroup")
+@UrlBinding("/actions/ppl/group/ToggleStatePersonGroup")
 public class PersonGroupToggleStateActionBean extends PeopleBaseActionBean
 {
     @Validate( required=true )

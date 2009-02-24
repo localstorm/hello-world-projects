@@ -14,7 +14,7 @@
              <c:when test="${not empty actionBean.context.validationErrors and empty renameForm}">inline</c:when>
              <c:otherwise>none</c:otherwise>
     </c:choose>;">
-        <stripes:form action="/actions/AddPerson" >
+        <stripes:form action="/actions/ppl/group/AddPerson" >
         <stripes:errors/>
         <stripes:hidden name="groupId" value="${actionBean.group.id}" />
         <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
@@ -56,7 +56,7 @@
              <c:when test="${not empty actionBean.context.validationErrors and not empty renameForm}">inline</c:when>
              <c:otherwise>none</c:otherwise>
     </c:choose>;">
-        <stripes:form action="/actions/RenamePersonGroup" >
+        <stripes:form action="/actions/ppl/group/RenamePersonGroup" >
         <stripes:errors/>
         <stripes:hidden name="groupId" value="${actionBean.group.id}" />
         <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
@@ -85,11 +85,11 @@
 </div>
 <br/><br/>
 <c:forEach items="${actionBean.persons}" var="person">
-    <p><img src="<c:url value="/images/person.png"/>"/><a href="<c:url value="/actions/ClipPerson">
+    <p><img src="<c:url value="/images/person.png"/>"/><a href="<c:url value="/actions/ppl/group/person/ClipPerson">
         <c:param name="personId" value="${person.id}" />
     </c:url>"><img
     src="<c:url value="/images/add2ml.png"/>"/></a><span>
-            <a href="<c:url value="/actions/ViewPerson">
+            <a href="<c:url value="/actions/ppl/group/person/ViewPerson">
                 <c:param name="personId" value="${person.id}" />
             </c:url>"><c:out value="${person.fullName}" /></a>
        </span></p>

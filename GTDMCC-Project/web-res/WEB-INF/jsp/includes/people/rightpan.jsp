@@ -4,12 +4,12 @@
 </div>
 <div id="bodyRightPan">
   	<h2><span>Groups</span> pane</h2>
-	<p class="more"><a href="<c:url value="/actions/EditPersonGroups"/>">EDIT</a></p>
+	<p class="more"><a href="<c:url value="/actions/ppl/nil/EditPersonGroups"/>">EDIT</a></p>
         <table class="contexts">
             <c:forEach items="${groups}" var="group" >
             <tr>
                 <td width="18px" valign="top"><img src="<c:url value="/images/group.png"/>"/></td>
-                <td><a href="<c:url value="/actions/ViewPersonGroup">
+                <td><a href="<c:url value="/actions/ppl/group/ViewPersonGroup">
                        <c:param name="groupId" value="${group.id}" />
                      </c:url>"><c:out value="${group.name}"/></a></td>
             </tr>

@@ -21,7 +21,7 @@ import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
  * @secure-by session (no security check)
  * @author localstorm
  */
-@UrlBinding("/actions/ViewAssets")
+@UrlBinding("/actions/cash/nil/ViewAssets")
 public class AssetsViewActionBean extends CashflowBaseActionBean {
 
     private Collection<Asset> assets;

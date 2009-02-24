@@ -24,7 +24,7 @@ import org.localstorm.mcc.web.util.SessionUtil;
  * @secure-by target Id
  * @author localstorm
  */
-@UrlBinding("/actions/UpdateTarget")
+@UrlBinding("/actions/cash/target/UpdateTarget")
 public class TargetUpdateActionBean extends TargetViewActionBean {
 
     @Validate(required=true)

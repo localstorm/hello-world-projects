@@ -1,7 +1,6 @@
 package org.localstorm.mcc.web.people.actions;
 
 import org.localstorm.mcc.ejb.people.entity.PersonGroup;
-import org.localstorm.mcc.ejb.people.*;
 import net.sourceforge.stripes.action.After;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
@@ -19,7 +18,7 @@ import org.localstorm.mcc.web.util.SessionUtil;
  * @secure-by nil
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/AddPersonGroup")
+@UrlBinding("/actions/ppl/nil/AddPersonGroup")
 public class PersonGroupAddActionBean extends PersonGroupsEditActionBean {
 
     @Validate( required=true )

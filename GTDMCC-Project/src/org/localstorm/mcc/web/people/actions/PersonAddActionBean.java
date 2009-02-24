@@ -12,10 +12,10 @@ import org.localstorm.mcc.ejb.people.entity.PersonGroup;
 import org.localstorm.mcc.ejb.people.PersonManager;
 
 /**
- * @secure-by nil
+ * @secure-by group id
  * @author localstorm
  */
-@UrlBinding("/actions/AddPerson")
+@UrlBinding("/actions/ppl/group/AddPerson")
 public class PersonAddActionBean extends PersonGroupViewActionBean {
 
     @Validate(required=true)

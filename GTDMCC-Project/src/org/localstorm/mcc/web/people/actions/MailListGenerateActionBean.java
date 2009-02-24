@@ -17,10 +17,9 @@ import org.localstorm.mcc.web.util.SessionUtil;
  * @secure-by nil
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/GenerateMailList")
+@UrlBinding("/actions/ppl/nil/GenerateMailList")
 public class MailListGenerateActionBean extends PeopleBaseActionBean
 {
-    
 
     @DefaultHandler
     public Resolution filling() {
@@ -31,7 +30,7 @@ public class MailListGenerateActionBean extends PeopleBaseActionBean
         PregeneratedMailList pml = mlm.generateMailList(clip.getPersons());
 
         if (pml.isReady()) {
-            mlm.create(pml);
+            mlm.create(pml, "Goo-goo", super.getUser());
             clip.clearPersons();
             SessionUtil.clear(super.getSession(), SessionKeys.MAIL_LISTS);
             return NextDestinationUtil.getRedirection(super.getReturnPageBean());

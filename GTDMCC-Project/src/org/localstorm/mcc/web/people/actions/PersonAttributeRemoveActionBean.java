@@ -12,7 +12,7 @@ import org.localstorm.mcc.ejb.people.PersonManager;
  * @secure-by person-id, attribute-id
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/RemovePersonAttribute")
+@UrlBinding("/actions/ppl/group/person/attr/RemovePersonAttribute")
 public class PersonAttributeRemoveActionBean extends PersonViewActionBean
 {
     @Validate( required=true )

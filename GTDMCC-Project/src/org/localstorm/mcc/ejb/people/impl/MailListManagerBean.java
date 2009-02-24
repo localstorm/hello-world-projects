@@ -6,7 +6,9 @@ import java.util.Collection;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import org.localstorm.mcc.ejb.Constants;
+import org.localstorm.mcc.ejb.Pair;
 import org.localstorm.mcc.ejb.people.entity.Attribute;
 import org.localstorm.mcc.ejb.people.entity.Person;
 import org.localstorm.mcc.ejb.people.PersonManager;
@@ -52,15 +54,37 @@ public class MailListManagerBean extends PeopleStatelessBean implements MailList
     }
 
     @Override
-    public void create(PregeneratedMailList pml, String name, User user)
+    public MailList create(PregeneratedMailList pml, String name, User user)
     {
+        if (pml.isReady()) {
+            MailList ml = new MailList();
+            {
+                ml.setName(name);
+                ml.setOwner(user);
+                ml.setInvalid(false);
+            }
+            em.persist(ml);
+
+            for (Pair<Person, Attribute> mlEntry : pml.getResolved())
+            {
+                PersonToMailList p2ml = new PersonToMailList(mlEntry.getFirst(), ml, mlEntry.getSecond());
+                em.persist(p2ml);
+            }
+
+            return ml;
+        } else {
+            throw new RuntimeException("PregeneratedMailList is not ready!");
+        }
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<MailList> findByUser(User u)
     {
-        // TODO: add to lazy loader
-        throw new UnsupportedOperationException("Not supported yet.");
+        Query q = em.createNamedQuery(MailList.Queries.FIND_MLS_BY_OWNER);
+        q.setParameter(MailList.Properties.OWNER, u);
+
+        return (Collection<MailList>) q.getResultList();
     }
 
     @Override

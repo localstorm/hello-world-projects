@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.localstorm.mcc.ejb.ContextLookup;
+import org.localstorm.mcc.ejb.people.MailListManager;
 import org.localstorm.mcc.ejb.people.entity.PersonGroup;
 import org.localstorm.mcc.ejb.people.PersonManager;
+import org.localstorm.mcc.ejb.people.entity.MailList;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
@@ -52,6 +54,14 @@ public class LazyLoadFilter implements Filter
             
             Collection<PersonGroup> pgList = pm.findGroupsByOwner(user);
             SessionUtil.fill(sess, SessionKeys.PERSON_GROUPS, pgList);
+        }
+
+        if ( SessionUtil.isEmpty(sess, SessionKeys.MAIL_LISTS) ) {
+            MailListManager mlm = ContextLookup.lookup(MailListManager.class,
+                                                       MailListManager.BEAN_NAME);
+
+            Collection<MailList> mll = mlm.findByUser(user);
+            SessionUtil.fill(sess, SessionKeys.MAIL_LISTS, mll);
         }
         
     }

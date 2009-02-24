@@ -23,7 +23,7 @@ import org.localstorm.mcc.web.util.SessionUtil;
  * @secure-by assetId parameter
  * @author localstorm
  */
-@UrlBinding("/actions/UpdateAsset")
+@UrlBinding("/actions/cash/asset/UpdateAsset")
 public class AssetUpdateActionBean extends AssetViewActionBean {
 
     @Validate( required=true, minvalue=0, maxvalue=9999999999L )

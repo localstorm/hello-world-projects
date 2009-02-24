@@ -19,7 +19,7 @@ public interface MailListManager
 
     public Collection<PersonToMailList> findMailListContent(MailList ml);
 
-    public void create(PregeneratedMailList pml, String name, User u);
+    public MailList create(PregeneratedMailList pml, String name, User u);
 
     public void remove(MailList ml);
 

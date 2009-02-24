@@ -15,7 +15,7 @@ import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
  * @secure-by operationId parameter
  * @author localstorm
  */
-@UrlBinding("/actions/RevokeOperation")
+@UrlBinding("/actions/cash/op/RevokeOperation")
 public class OperationRevokeActionBean extends CashflowBaseActionBean {
 
     @Validate(required=true)

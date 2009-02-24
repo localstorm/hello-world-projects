@@ -14,7 +14,7 @@ import org.localstorm.mcc.web.people.PeopleClipboard;
  * @secure-by person id
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/UnclipPerson")
+@UrlBinding("/actions/ppl/group/person/UnclipPerson")
 public class PersonUnclipActionBean extends PeopleBaseActionBean
 {
     @Validate( required=true )

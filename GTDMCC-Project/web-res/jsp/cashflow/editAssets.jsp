@@ -11,7 +11,7 @@
              <c:when test="${not empty actionBean.context.validationErrors}">inline</c:when>
              <c:otherwise>none</c:otherwise>
     </c:choose>;">
-        <stripes:form action="/actions/AddAsset">
+        <stripes:form action="/actions/cash/nil/AddAsset">
         <stripes:errors/>
         <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
             <tr>
@@ -73,13 +73,13 @@
         <tr>
             <td width="95%">
                 <p><img src="<c:url value="/images/arrow.gif" />"/>
-                            <span><a href="<c:url value="/actions/ViewAsset">
+                            <span><a href="<c:url value="/actions/cash/asset/ViewAsset">
                                                 <c:param name="assetId" value="${asset.id}" />
                                            </c:url>"><c:out value="${asset.name}"/></a></p></span>
             </td>
             <td width="5%">
                 <c:if test="${asset.amount eq 0}">
-                <a href="<c:url value="/actions/ToggleStateAsset">
+                <a href="<c:url value="/actions/cash/asset/ToggleStateAsset">
                                                 <c:param name="assetId" value="${asset.id}" />
                                            </c:url>" title="Archive"><img src="<c:url value="/images/trash.png"/>" /></a>
                 </c:if>
@@ -96,15 +96,15 @@
          <tr>
                     <td width="95%">
                             <p><img src="<c:url value="/images/arrow.gif"/>"/> <span><a href="<c:url
-                                        value="/actions/ViewAsset">
+                                        value="/actions/cash/asset/ViewAsset">
                                             <c:param name="assetId" value="${asset.id}" />
                                         </c:url>"><c:out value="${asset.name}"/></a></span>
                     </td>
                     <td width="5%"><c:if test="${asset.amount eq 0}">
-                                        <nobr><a href="<c:url value="/actions/ToggleStateAsset">
+                                        <nobr><a href="<c:url value="/actions/cash/asset/ToggleStateAsset">
                                                 <c:param name="assetId" value="${asset.id}" />
                                            </c:url>" title="Unarchive"><img src="<c:url value="/images/deleted.png"/>" /></a>
-                                           <a href="<c:url value="/actions/EraseAsset">
+                                           <a href="<c:url value="/actions/cash/asset/EraseAsset">
                                                 <c:param name="assetId" value="${asset.id}" />
                                            </c:url>" title="Delete permanently"><img src="<c:url value="/images/erase.png"/>" /></a>
                                         </nobr>

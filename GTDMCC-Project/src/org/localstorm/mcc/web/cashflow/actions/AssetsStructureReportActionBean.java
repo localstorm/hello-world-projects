@@ -10,7 +10,7 @@ import net.sourceforge.stripes.action.UrlBinding;
  * @secure-by session (no security checks)
  * @author localstorm
  */
-@UrlBinding("/actions/AssetsStructureReport")
+@UrlBinding("/actions/cash/nil/AssetsStructureReport")
 public class AssetsStructureReportActionBean extends CashflowBaseActionBean {
 
     @DefaultHandler

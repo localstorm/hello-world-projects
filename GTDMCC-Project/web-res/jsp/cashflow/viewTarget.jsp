@@ -8,7 +8,7 @@
 <div align="center">
 <fmt:formatNumber var="buyCost" maxFractionDigits="2" minFractionDigits="2" value="${actionBean.targetResult.currentCost.buy}"/>
 
-<stripes:form action="/actions/UpdateTarget">
+<stripes:form action="/actions/cash/target/UpdateTarget">
     <stripes:errors/>
     <stripes:hidden name="targetId" value="${actionBean.targetResult.id}" />
 
@@ -31,7 +31,7 @@
         <table width="100%" border="0px">
             <tr>
                 <td align="right"  border="0px">
-                    <a href="<c:url value="/actions/ViewTargetCostHistory">
+                    <a href="<c:url value="/actions/cash/target/ViewTargetCostHistory">
                                 <c:param name="assetId" value="${actionBean.targetResult.id}"/>
                         </c:url>"><img src="<c:url value="/images/history.png"/>"/></a>
                 </td>

@@ -8,7 +8,7 @@
     <tr>
         <td align="right">
             <c:if test="${actionBean.checkpointUpdateNeeded}">
-                <a href="<c:url value="/actions/MakeCheckpoint" />" title="Net wealth or balance changed. Checkpoint needed."><img src="<c:url value="/images/check.png"/>" /></a>
+                <a href="<c:url value="/actions/cash/nil/MakeCheckpoint" />" title="Net wealth or balance changed. Checkpoint needed."><img src="<c:url value="/images/check.png"/>" /></a>
             </c:if>
         </td>
     </tr>
@@ -29,7 +29,7 @@
 <hr/>
 <c:forEach items="${actionBean.assets}" var="asset">
 <table width="80%" border="0px" >
-    <tr><th colspan="2" align="center"><a href="<c:url value="/actions/ViewAsset">
+    <tr><th colspan="2" align="center"><a href="<c:url value="/actions/cash/asset/ViewAsset">
                                                     <c:param name="assetId" value="${asset.id}" />
                                                 </c:url>"><c:out value="${asset.name}"/></a></th></tr>
     <tr bgcolor="#F3F3F3">

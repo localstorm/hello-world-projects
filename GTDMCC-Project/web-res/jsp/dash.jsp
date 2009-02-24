@@ -8,7 +8,7 @@
     <c:if test="${not empty peopleDashReport.redPersons}">
         <div id="redDashPane">
             <c:forEach items="${peopleDashReport.redPersons}" var="pw">
-                <p><img src="<c:url value="/images/person.png" />" /> <a href="<c:url value="/actions/ViewPerson">
+                <p><img src="<c:url value="/images/person.png" />" /> <a href="<c:url value="/actions/ppl/group/person/ViewPerson">
                     <c:param name="personId" value="${pw.id}"/>
                 </c:url>"><c:out value="${pw.shortName}"/></a>
                 <c:choose>
@@ -22,7 +22,7 @@
     <c:if test="${not empty peopleDashReport.yellowPersons}">
         <div id="yellowDashPane">
                 <c:forEach items="${peopleDashReport.yellowPersons}" var="pw">
-                    <p><img src="<c:url value="/images/person.png" />" /> <a href="<c:url value="/actions/ViewPerson">
+                    <p><img src="<c:url value="/images/person.png" />" /> <a href="<c:url value="/actions/ppl/group/person/ViewPerson">
                     <c:param name="personId" value="${pw.id}"/>
                 </c:url>"><c:out value="${pw.shortName}"/></a> (+<c:out value="${pw.remains}"/>)</p>
                 </c:forEach>
@@ -31,7 +31,7 @@
     <c:if test="${not empty peopleDashReport.greenPersons}">
         <div id="greenDashPane">
                 <c:forEach items="${peopleDashReport.greenPersons}" var="pw">
-                    <p><img src="<c:url value="/images/person.png" />" /> <a href="<c:url value="/actions/ViewPerson">
+                    <p><img src="<c:url value="/images/person.png" />" /> <a href="<c:url value="/actions/ppl/group/person/ViewPerson">
                     <c:param name="personId" value="${pw.id}"/>
                 </c:url>"><c:out value="${pw.shortName}"/></a> (+<c:out value="${pw.remains}"/>)</p>
                 </c:forEach>

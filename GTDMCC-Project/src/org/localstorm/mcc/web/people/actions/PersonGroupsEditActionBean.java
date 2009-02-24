@@ -15,7 +15,7 @@ import org.localstorm.mcc.web.people.PeopleBaseActionBean;
  * @secure-by nil
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/EditPersonGroups")
+@UrlBinding("/actions/ppl/nil/EditPersonGroups")
 public class PersonGroupsEditActionBean extends PeopleBaseActionBean {
 
     private Collection<PersonGroup> result;

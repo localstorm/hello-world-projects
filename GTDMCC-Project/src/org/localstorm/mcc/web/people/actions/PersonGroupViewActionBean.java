@@ -17,7 +17,7 @@ import org.localstorm.mcc.web.people.Views;
  * @secure-by group id
  * @author localstorm
  */
-@UrlBinding("/actions/ViewPersonGroup")
+@UrlBinding("/actions/ppl/group/ViewPersonGroup")
 public class PersonGroupViewActionBean extends PeopleBaseActionBean {
 
     private Collection<Person> persons;

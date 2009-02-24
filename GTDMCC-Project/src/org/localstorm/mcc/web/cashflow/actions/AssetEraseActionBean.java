@@ -19,7 +19,7 @@ import org.localstorm.mcc.web.util.SessionUtil;
  * @secure-by assetId parameter
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/EraseAsset")
+@UrlBinding("/actions/cash/asset/EraseAsset")
 public class AssetEraseActionBean extends CashflowBaseActionBean
 {
     @Validate( required=true )

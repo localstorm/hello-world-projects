@@ -11,7 +11,7 @@ import org.localstorm.mcc.web.ReturnPageBean;
  * @secure-by session (no security checks)
  * @author localstorm
  */
-@UrlBinding("/actions/NetWealthHistoryReport")
+@UrlBinding("/actions/cash/nil/NetWealthHistoryReport")
 public class NetWealthHisotryReportActionBean extends CashflowBaseActionBean {
 
     @DefaultHandler

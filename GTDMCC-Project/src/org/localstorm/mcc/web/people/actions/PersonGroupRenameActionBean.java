@@ -17,7 +17,7 @@ import org.localstorm.mcc.web.util.SessionUtil;
  * @secure-by group-id
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/RenamePersonGroup")
+@UrlBinding("/actions/ppl/group/RenamePersonGroup")
 public class PersonGroupRenameActionBean extends PersonGroupViewActionBean {
 
     @Validate( required=true )

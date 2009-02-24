@@ -21,7 +21,7 @@ import org.localstorm.mcc.web.util.DateUtil;
  * @secure-by person-id, group-id
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/UpdatePerson")
+@UrlBinding("/actions/ppl/group/person/UpdatePerson")
 public class PersonUpdateActionBean extends PersonViewActionBean
 {
     @Validate(required=true)

@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import org.localstorm.mcc.ejb.AbstractEntity;
 import org.localstorm.mcc.ejb.Identifiable;
@@ -20,6 +22,12 @@ import org.localstorm.mcc.ejb.users.User;
  */
 @Entity
 @Table(name="MAIL_LISTS")
+@NamedQueries({
+    @NamedQuery(
+        name = MailList.Queries.FIND_MLS_BY_OWNER,
+        query= "SELECT ml FROM MailList ml WHERE ml.owner=:owner ORDER BY ml.name ASC"
+    )
+})
 public class MailList  extends AbstractEntity implements Identifiable, Serializable
 {
     @Id
@@ -76,4 +84,13 @@ public class MailList  extends AbstractEntity implements Identifiable, Serializa
         this.invalid = invalid;
     }
 
+    public static interface Queries
+    {
+        public static final String FIND_MLS_BY_OWNER = "findMailListsByOwner";
+    }
+
+    public static interface Properties
+    {
+        public static final String OWNER = "owner";
+    }
 }

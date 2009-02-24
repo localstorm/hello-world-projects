@@ -18,7 +18,7 @@ import org.localstorm.mcc.web.cashflow.Views;
  * @secure-by assetId parameter
  * @author localstorm
  */
-@UrlBinding("/actions/ViewOperations")
+@UrlBinding("/actions/cash/asset/ViewOperations")
 public class OperationsLogActionBean extends CashflowBaseActionBean {
 
 

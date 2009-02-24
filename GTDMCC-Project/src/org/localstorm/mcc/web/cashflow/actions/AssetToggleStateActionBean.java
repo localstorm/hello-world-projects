@@ -20,7 +20,7 @@ import org.localstorm.mcc.web.util.SessionUtil;
  * @secure-by assetId parameter
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/ToggleStateAsset")
+@UrlBinding("/actions/cash/asset/ToggleStateAsset")
 public class AssetToggleStateActionBean extends CashflowBaseActionBean
 {
     @Validate( required=true )
