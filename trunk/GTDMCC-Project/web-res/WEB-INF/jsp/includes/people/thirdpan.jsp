@@ -5,11 +5,11 @@
     <h2><span>Mail</span> lists</h2>
     <p class="more"><a href="<c:url value="/actions/EditMailLists"/>">EDIT</a></p>
     <table class="refobjs">
-        <%--<c:forEach items="${targets}" var="target">--%>
+        <c:forEach items="${mailLists}" var="ml">
             <jsp:include page="/WEB-INF/jsp/includes/people/ml.jsp">
-                <jsp:param name="id"   value="1"   />
-                <jsp:param name="name" value="La la" />
+                <jsp:param name="id"   value="${ml.id}"   />
+                <jsp:param name="name" value="${ml.name}" />
             </jsp:include>
-        <%--</c:forEach>--%>
+        </c:forEach>
     </table>
 </div>
