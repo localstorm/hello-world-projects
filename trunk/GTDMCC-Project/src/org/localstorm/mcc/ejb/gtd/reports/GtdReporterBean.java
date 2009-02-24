@@ -13,7 +13,8 @@ import org.localstorm.mcc.ejb.users.User;
  * @author localstorm
  */
 @Stateless
-public class GtdReporterBean implements GtdReporterLocal, GtdReporterRemote {
+public class GtdReporterBean implements GtdReporterLocal
+{
 
     @Resource(mappedName=Constants.DEFAULT_DS)
     private DataSource ds;

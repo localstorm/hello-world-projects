@@ -20,7 +20,7 @@ import org.localstorm.mcc.ejb.users.User;
  */
 @Stateless
 public class HintManagerBean extends AbstractManager<Hint>
-                             implements HintManagerLocal, HintManagerRemote
+                             implements HintManagerLocal
 {
     @Resource(mappedName=Constants.DEFAULT_DS)
     private DataSource ds;

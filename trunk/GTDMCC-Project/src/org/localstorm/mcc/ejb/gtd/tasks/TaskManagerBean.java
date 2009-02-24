@@ -16,7 +16,7 @@ import org.localstorm.mcc.ejb.users.User;
  */
 @Stateless
 public class TaskManagerBean extends AbstractManager<Task>
-                             implements TaskManagerLocal, TaskManagerRemote 
+                             implements TaskManagerLocal
 {
     public TaskManagerBean() {
         super(Task.class);

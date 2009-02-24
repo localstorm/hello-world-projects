@@ -18,7 +18,7 @@ import org.localstorm.mcc.ejb.users.User;
  */
 @Stateless 
 public  class FlightPlanManagerBean extends AbstractSingletonManager<FlightPlan, User> 
-                                    implements FlightPlanManagerLocal, FlightPlanManagerRemote
+                                    implements FlightPlanManagerLocal
 {
 
     public FlightPlanManagerBean() {

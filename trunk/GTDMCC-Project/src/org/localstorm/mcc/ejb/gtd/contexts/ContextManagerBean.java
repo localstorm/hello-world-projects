@@ -12,8 +12,7 @@ import org.localstorm.mcc.ejb.users.User;
  */
 @Stateless
 public class ContextManagerBean extends AbstractManager<Context>
-                                implements ContextManagerLocal, 
-                                           ContextManagerRemote 
+                                implements ContextManagerLocal
 {
 
     public ContextManagerBean() {

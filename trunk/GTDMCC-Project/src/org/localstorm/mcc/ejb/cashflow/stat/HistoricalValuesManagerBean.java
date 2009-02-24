@@ -18,8 +18,7 @@ import org.localstorm.mcc.ejb.users.User;
  * @author localstorm
  */
 @Stateless
-public class HistoricalValuesManagerBean implements HistoricalValuesManagerLocal,
-                                         HistoricalValuesManagerRemote
+public class HistoricalValuesManagerBean implements HistoricalValuesManagerLocal
 {
 
     @Override
