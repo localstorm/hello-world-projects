@@ -40,6 +40,9 @@ public class AttributeType extends AbstractEntity implements Identifiable, Seria
     @Column(name="token", unique=false, updatable=true, nullable=false )
     private String token;
 
+    @Column(name="is_email", unique=false, updatable=true, nullable=false )
+    private boolean email;
+
     @Override
     public Integer getId() {
         return this.id;
@@ -67,6 +70,16 @@ public class AttributeType extends AbstractEntity implements Identifiable, Seria
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public void setEmail(boolean email)
+    {
+        this.email = email;
+    }
+
+    public boolean isEmail()
+    {
+        return email;
     }
 
     public static interface Queries {

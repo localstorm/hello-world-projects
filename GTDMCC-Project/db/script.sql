@@ -261,6 +261,7 @@ create table ATTRIBUTE_TYPES
     name        TEXT NOT NULL,
     token       TEXT NOT NULL,
     view_type   TEXT NOT NULL,
+    is_email    SMALLINT NOT NULL,
     PRIMARY KEY (id)
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
@@ -276,26 +277,26 @@ create table ATTRIBUTES
     FOREIGN KEY (type_id) REFERENCES ATTRIBUTE_TYPES(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Address', 'text', 'address');
-insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'AOL IM',  'text', 'aim');
-insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Blog', 'href', 'blog');
-insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'E-Mail',  'mailto', 'email');
-insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'ICQ',  'text', 'icq');
-insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Jabber',  'text', 'jabber');
-insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Mobile',  'text', 'mobile');
-insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Mobile (Work)',  'text', 'mobile');
-insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Moi Krug',  'href', 'moi_krug');
-insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'MSN IM',  'text', 'msn');
-insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Orkut',  'href', 'orkut');
-insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Phone',  'text', 'phone');
-insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Phone (Work)',  'text', 'phone');
-insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Position',  'text', 'position');
-insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'RSS Feed',  'href', 'rss');
-insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Skype',  'text', 'skype');
-insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Textual note',  'text', 'info');
-insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'VKontakte',  'href', 'vkontakte');
-insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Home Page',  'href', 'web_page');
-insert into ATTRIBUTE_TYPES (id, name, view_type, token) VALUES (null, 'Yahoo! IM',  'text', 'yahoo');
+insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Address', 'text', 'address', 0);
+insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'AOL IM',  'text', 'aim', 0);
+insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Blog', 'href', 'blog', 0);
+insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'E-Mail',  'mailto', 'email', 1);
+insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'ICQ',  'text', 'icq', 0);
+insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Jabber',  'text', 'jabber', 0);
+insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Mobile',  'text', 'mobile', 0);
+insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Mobile (Work)',  'text', 'mobile', 0);
+insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Moi Krug',  'href', 'moi_krug', 0);
+insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'MSN IM',  'text', 'msn', 0);
+insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Orkut',  'href', 'orkut', 0);
+insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Phone',  'text', 'phone', 0);
+insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Phone (Work)',  'text', 'phone', 0);
+insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Position',  'text', 'position', 0);
+insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'RSS Feed',  'href', 'rss', 0);
+insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Skype',  'text', 'skype', 0);
+insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Textual note',  'text', 'info', 0);
+insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'VKontakte',  'href', 'vkontakte', 0);
+insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Home Page',  'href', 'web_page', 0);
+insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Yahoo! IM',  'text', 'yahoo', 0);
 
 --drop table MAIL_LISTS
 create table MAIL_LISTS

@@ -55,7 +55,7 @@ public class AssetManagerBean implements AssetManagerLocal
 
     @Override
     public void remove(Asset asset) {
-        asset = (Asset) em.getReference(Asset.class, asset.getId() );
+        asset = em.getReference(Asset.class, asset.getId());
         ValuableObject vo = asset.getValuable();
         em.remove(asset);
         em.remove(vo);
@@ -67,6 +67,7 @@ public class AssetManagerBean implements AssetManagerLocal
         Query uq = em.createNamedQuery(Asset.Queries.FIND_BY_OWNER);
         uq.setParameter(Asset.Properties.OWNER, user);
 
+        @SuppressWarnings("unchecked")
         List<Asset> list = uq.getResultList();
         return list;
     }
@@ -76,6 +77,7 @@ public class AssetManagerBean implements AssetManagerLocal
         Query uq = em.createNamedQuery(Asset.Queries.FIND_ARCHIVED_BY_OWNER);
         uq.setParameter(Asset.Properties.OWNER, user);
 
+        @SuppressWarnings("unchecked")
         List<Asset> list = uq.getResultList();
         return list;
     }
@@ -90,7 +92,7 @@ public class AssetManagerBean implements AssetManagerLocal
 
     @Override
     public Asset findById(int assetId) {
-        return (Asset) em.find(Asset.class, assetId);
+        return em.find(Asset.class, assetId);
     }
 
     @PersistenceContext(unitName=Constants.DEFAULT_PU)

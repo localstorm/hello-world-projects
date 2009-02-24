@@ -39,6 +39,8 @@ public interface PersonManager
 
     public Collection<Attribute> getAttributes(Person p);
 
+    public Collection<Attribute> getEmailAttributes(Person p);
+
     public void movePersonToGroup(Person p, PersonGroup findGroup);
 
     public void remove(Attribute a);

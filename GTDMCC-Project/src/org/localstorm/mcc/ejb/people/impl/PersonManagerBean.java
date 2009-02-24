@@ -32,6 +32,15 @@ public class PersonManagerBean extends PeopleStatelessBean implements PersonMana
     }
 
     @Override
+    public Collection<Attribute> getEmailAttributes(Person p)
+    {
+        Query q = em.createNamedQuery(Attribute.Queries.FIND_EMAILS_BY_PERSON);
+        q.setParameter(Attribute.Properties.PERSON, p);
+
+        return (Collection<Attribute>) q.getResultList();
+    }
+
+    @Override
     public Collection<Attribute> getAttributes(Person p) {
         Query q = em.createNamedQuery(Attribute.Queries.FIND_BY_PERSON);
         q.setParameter(Attribute.Properties.PERSON, p);
