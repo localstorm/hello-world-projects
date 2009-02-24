@@ -16,8 +16,7 @@ import org.localstorm.mcc.ejb.users.User;
  * @author localstorm
  */
 @Stateless
-public class TargetManagerBean implements TargetManagerLocal,
-                                          TargetManagerRemote
+public class TargetManagerBean implements TargetManagerLocal
 {
    
     @Override

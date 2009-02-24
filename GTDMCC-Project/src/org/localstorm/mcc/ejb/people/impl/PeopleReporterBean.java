@@ -13,8 +13,8 @@ import org.localstorm.mcc.ejb.users.User;
  * @author localstorm
  */
 @Stateless
-public class PeopleReporterBean extends PeopleStatelessBean implements PeopleReporterLocal,
-                                                                       PeopleReporterRemote {
+public class PeopleReporterBean extends PeopleStatelessBean implements PeopleReporterLocal
+{
 
     @Resource(mappedName=Constants.DEFAULT_DS)
     private DataSource ds;
@@ -30,6 +30,5 @@ public class PeopleReporterBean extends PeopleStatelessBean implements PeopleRep
             throw new RuntimeException(e);
         }
     }
-
-    
+   
 }

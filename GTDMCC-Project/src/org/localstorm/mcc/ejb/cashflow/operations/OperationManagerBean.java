@@ -17,8 +17,7 @@ import org.localstorm.mcc.ejb.cashflow.assets.ValuableObject;
  * @author localstorm
  */
 @Stateless
-public class OperationManagerBean implements OperationManagerLocal,
-                                             OperationManagerRemote
+public class OperationManagerBean implements OperationManagerLocal
 {
 
     public OperationManagerBean() {

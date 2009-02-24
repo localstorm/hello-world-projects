@@ -17,8 +17,7 @@ import org.localstorm.mcc.ejb.people.PersonManager;
  * @author localstorm
  */
 @Stateless
-public class MailListManagerBean extends PeopleStatelessBean implements MailListManagerLocal,
-                                                                        MailListManagerRemote
+public class MailListManagerBean extends PeopleStatelessBean implements MailListManagerLocal
 {
     public MailListManagerBean() {
         

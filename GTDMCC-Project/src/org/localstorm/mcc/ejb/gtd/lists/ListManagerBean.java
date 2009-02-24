@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package org.localstorm.mcc.ejb.gtd.lists;
 
 import javax.ejb.Stateless;
@@ -16,7 +11,7 @@ import java.util.*;
  */
 @Stateless
 public class ListManagerBean extends AbstractManager<GTDList>
-                             implements ListManagerLocal, ListManagerRemote 
+                             implements ListManagerLocal
 {
     public ListManagerBean() {
         super(GTDList.class);

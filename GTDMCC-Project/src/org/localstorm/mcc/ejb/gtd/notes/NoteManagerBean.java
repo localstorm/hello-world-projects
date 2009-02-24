@@ -14,7 +14,7 @@ import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
  * @author localstorm
  */
 @Stateless
-public class NoteManagerBean implements NoteManagerLocal, NoteManagerRemote 
+public class NoteManagerBean implements NoteManagerLocal
 {
 
     @Override

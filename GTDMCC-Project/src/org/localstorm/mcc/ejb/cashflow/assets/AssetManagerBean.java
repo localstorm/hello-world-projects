@@ -16,8 +16,7 @@ import org.localstorm.mcc.ejb.users.User;
  * @author localstorm
  */
 @Stateless
-public class AssetManagerBean implements AssetManagerLocal,
-                                         AssetManagerRemote
+public class AssetManagerBean implements AssetManagerLocal
 {
 
     public AssetManagerBean() {

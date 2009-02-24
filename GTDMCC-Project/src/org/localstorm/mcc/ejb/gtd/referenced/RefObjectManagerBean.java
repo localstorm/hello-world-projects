@@ -13,7 +13,7 @@ import org.localstorm.mcc.ejb.users.User;
  */
 @Stateless
 public class RefObjectManagerBean extends AbstractManager<ReferencedObject>
-                                  implements RefObjectManagerLocal, RefObjectManagerRemote
+                                  implements RefObjectManagerLocal
 {
 
     public RefObjectManagerBean() {
