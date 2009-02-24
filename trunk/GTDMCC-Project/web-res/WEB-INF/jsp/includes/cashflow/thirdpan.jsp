@@ -3,7 +3,7 @@
 
 <div id="bodyThirdPan">
     <h2><span>Targets</span> pane</h2>
-    <p class="more"><a href="<c:url value="/actions/EditTargets"/>">EDIT</a></p>
+    <p class="more"><a href="<c:url value="/actions/cash/nil/EditTargets"/>">EDIT</a></p>
     <table class="refobjs">
         <c:forEach items="${targets}" var="target">
             <jsp:include page="/WEB-INF/jsp/includes/cashflow/target.jsp">

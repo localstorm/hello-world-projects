@@ -23,7 +23,7 @@ import org.localstorm.mcc.web.util.SessionUtil;
  * @secure-by assetId parameter
  * @author localstorm
  */
-@UrlBinding("/actions/OperateAsset")
+@UrlBinding("/actions/cash/asset/OperateAsset")
 public class OperateAssetActionBean extends AssetViewActionBean {
 
     @After( LifecycleStage.BindingAndValidation ) 

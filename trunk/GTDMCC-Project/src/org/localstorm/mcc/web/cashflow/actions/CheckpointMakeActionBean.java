@@ -22,7 +22,7 @@ import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
  * @secure-by session (no security checks)
  * @author localstorm
  */
-@UrlBinding("/actions/MakeCheckpoint")
+@UrlBinding("/actions/cash/nil/MakeCheckpoint")
 public class CheckpointMakeActionBean extends CashflowBaseActionBean
 {
     @DefaultHandler

@@ -15,7 +15,7 @@ import org.localstorm.mcc.web.util.SessionUtil;
  * @secure-by group id
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/ErasePersonGroup")
+@UrlBinding("/actions/ppl/group/ErasePersonGroup")
 public class PersonGroupEraseActionBean extends PeopleBaseActionBean {
 
     @Validate(required = true)

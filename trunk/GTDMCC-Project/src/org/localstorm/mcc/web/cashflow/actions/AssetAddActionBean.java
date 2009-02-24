@@ -24,7 +24,7 @@ import org.localstorm.mcc.web.util.SessionUtil;
  * @secure-by session (no security check)
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/AddAsset")
+@UrlBinding("/actions/cash/nil/AddAsset")
 public class AssetAddActionBean extends AssetsEditActionBean {
 
     @Validate( required=true )

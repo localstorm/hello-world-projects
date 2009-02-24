@@ -4,12 +4,12 @@
 </div>
 <div id="bodyRightPan">
   	<h2><span>Assets</span> pane</h2>
-	<p class="more"><a href="<c:url value="/actions/EditAssets"/>">EDIT</a></p>
+	<p class="more"><a href="<c:url value="/actions/cash/nil/EditAssets"/>">EDIT</a></p>
         <table class="contexts">
             <c:forEach items="${assets}" var="asset" >
             <tr>
                 <td width="18px" valign="top"><img src="<c:url value="/images/button.png"/>"/></td>
-                <td><a href="<c:url value="/actions/ViewAsset">
+                <td><a href="<c:url value="/actions/cash/asset/ViewAsset">
                        <c:param name="assetId" value="${asset.id}" />
                      </c:url>"><c:out value="${asset.name}"/></a></td>
             </tr>
@@ -20,15 +20,15 @@
             <table class="reports">
                 <tr>
                     <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
-                    <td><a href="<c:url value="/actions/AssetsStructureReport"/>">Assets structure</a></td>
+                    <td><a href="<c:url value="/actions/cash/nil/AssetsStructureReport"/>">Assets structure</a></td>
                 </tr>
                 <tr>
                     <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
-                    <td><a href="<c:url value="/actions/NetWealthHistoryReport"/>">Net wealth history</a></td>
+                    <td><a href="<c:url value="/actions/cash/nil/NetWealthHistoryReport"/>">Net wealth history</a></td>
                 </tr>
                 <tr>
                     <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
-                    <td><a href="<c:url value="/actions/BalanceHistoryReport"/>">Balance history</a></td>
+                    <td><a href="<c:url value="/actions/cash/nil/BalanceHistoryReport"/>">Balance history</a></td>
                 </tr>
             </table>
 </div>

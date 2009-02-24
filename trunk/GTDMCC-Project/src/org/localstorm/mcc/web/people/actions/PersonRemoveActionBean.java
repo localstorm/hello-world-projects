@@ -15,7 +15,7 @@ import org.localstorm.mcc.web.people.PeopleClipboard;
  * @secure-by person id
  * @author localstorm
  */
-@UrlBinding("/actions/RemovePerson")
+@UrlBinding("/actions/ppl/group/person/RemovePerson")
 public class PersonRemoveActionBean extends PeopleBaseActionBean {
 
     @Validate(required=true)

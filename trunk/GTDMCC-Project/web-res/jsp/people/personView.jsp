@@ -5,10 +5,10 @@
 
 <h2><span>PERSON</span> view</h2>
 <div align="right" >
-    <a href="<c:url value="/actions/ViewPersonGroup">
+    <a href="<c:url value="/actions/ppl/group/ViewPersonGroup">
         <c:param name="groupId" value="${actionBean.person.group.id}" />
     </c:url>" title="Go to parent"><img src="<c:url value="/images/parent.png" />" /></a>&nbsp;<a href="#" onclick="show('editPersonDiv', 'name-id'); return false">Edit person</a>
-    <a href="<c:url value="/actions/RemovePerson">
+    <a href="<c:url value="/actions/ppl/group/person/RemovePerson">
         <c:param name="personId" value="${actionBean.person.id}" />
     </c:url>" onclick="return confirm('Are you sure?');">Remove person</a>
 
@@ -20,7 +20,7 @@
              <c:when test="${not empty actionBean.context.validationErrors and not empty updateForm}">inline</c:when>
              <c:otherwise>none</c:otherwise>
     </c:choose>;">
-        <stripes:form action="/actions/UpdatePerson" name="editForm">
+        <stripes:form action="/actions/ppl/group/person/UpdatePerson" name="editForm">
         <stripes:errors/>
         <stripes:hidden name="personId" value="${actionBean.person.id}" />
         
@@ -90,7 +90,7 @@
     <c:forEach items="${actionBean.attributes}" var="attribute">
     <tr>
 		<td width="5%" >
-			<nobr><a href="<c:url value="/actions/RemovePersonAttribute">
+			<nobr><a href="<c:url value="/actions/ppl/group/person/attr/RemovePersonAttribute">
                 <c:param name="personId"    value="${actionBean.person.id}"/>
                 <c:param name="attributeId" value="${attribute.id}"/>
             </c:url>"><img src="<c:url value="/images/cleanup.png"/>"/></a><img src="<c:url value="/images/attr/${attribute.type.token}.png"/>"/></nobr>
@@ -121,7 +121,7 @@
 			<hr/>
 		</td>
 	</tr>
-    <stripes:form action="/actions/AddPersonAttribute">
+    <stripes:form action="/actions/ppl/group/person/AddPersonAttribute">
         <c:if test="${not empty actionBean.context.validationErrors}">
             <tr>
                 <td colspan="3"><stripes:errors/></td>

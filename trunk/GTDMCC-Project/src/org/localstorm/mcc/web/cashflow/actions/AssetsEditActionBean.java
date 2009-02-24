@@ -19,7 +19,7 @@ import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
  * @secure-by session (no security check)
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/EditAssets")
+@UrlBinding("/actions/cash/nil/EditAssets")
 public class AssetsEditActionBean extends CashflowBaseActionBean {
 
     private Collection<Asset> archiveAssets;

@@ -16,7 +16,7 @@ import org.localstorm.mcc.web.util.SessionUtil;
  * @secure-by target Id
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/ToggleStateTarget")
+@UrlBinding("/actions/cash/target/ToggleStateTarget")
 public class TargetToggleStateActionBean extends CashflowBaseActionBean
 {
     @Validate( required=true )

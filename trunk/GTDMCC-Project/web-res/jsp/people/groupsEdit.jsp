@@ -11,7 +11,7 @@
              <c:when test="${not empty actionBean.context.validationErrors}">inline</c:when>
              <c:otherwise>none</c:otherwise>
     </c:choose>;">
-        <stripes:form action="/actions/AddPersonGroup">
+        <stripes:form action="/actions/ppl/nil/AddPersonGroup">
         <stripes:errors/>
         <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
             <tr>
@@ -47,11 +47,11 @@
             <tr>
                 <td width="95%">
                     <p><img src="<c:url value="/images/arrow.gif" />"/>
-                                <span><a href="<c:url value="/actions/ViewPersonGroup">
+                                <span><a href="<c:url value="/actions/ppl/group/ViewPersonGroup">
                                                     <c:param name="groupId" value="${group.id}" />
                                                </c:url>"><c:out value="${group.name}"/></a></span>
                 </td>
-                <td width="5%"> <a href="<c:url value="/actions/ToggleStatePersonGroup">
+                <td width="5%"> <a href="<c:url value="/actions/ppl/group/ToggleStatePersonGroup">
                                                     <c:param name="groupId" value="${group.id}" />
                                                </c:url>" title="Archive"><img src="<c:url value="/images/trash.png"/>" /></a></p></td>
             </tr>
@@ -65,14 +65,14 @@
         <tr>
                 <td width="95%">
                         <p><img src="<c:url value="/images/arrow.gif"/>"/> <span><a href="<c:url
-                                    value="/actions/ViewPersonGroup">
+                                    value="/actions/ppl/group/ViewPersonGroup">
                                         <c:param name="groupId" value="${group.id}" />
                                     </c:url>"><c:out value="${group.name}"/></a></span>
                 </td>
-                <td width="5%"><nobr><a href="<c:url value="/actions/ToggleStatePersonGroup">
+                <td width="5%"><nobr><a href="<c:url value="/actions/ppl/group/ToggleStatePersonGroup">
                                             <c:param name="groupId" value="${group.id}" />
                                        </c:url>" title="Unarchive"><img src="<c:url value="/images/deleted.png"/>" /></a>
-                                       <a href="<c:url value="/actions/ErasePersonGroup">
+                                       <a href="<c:url value="/actions/ppl/group/ErasePersonGroup">
                                             <c:param name="groupId" value="${group.id}" />
                                        </c:url>" title="Delete permanently"><img src="<c:url value="/images/erase.png"/>" /></a>
                 </nobr>

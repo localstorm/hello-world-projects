@@ -15,7 +15,7 @@ import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
  * @secure-by session (no security checks)
  * @author localstorm
  */
-@UrlBinding("/actions/TruncateHistory")
+@UrlBinding("/actions/cash/nil/TruncateHistory")
 public class HistoryTruncateActionBean extends CashflowBaseActionBean
 {
     @Validate(required=true)

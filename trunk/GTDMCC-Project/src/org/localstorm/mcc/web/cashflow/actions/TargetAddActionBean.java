@@ -24,7 +24,7 @@ import org.localstorm.mcc.web.util.SessionUtil;
  * @secure-by session
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/AddTarget")
+@UrlBinding("/actions/cash/nil/AddTarget")
 public class TargetAddActionBean extends TargetsEditActionBean {
 
     @Validate( required=true )

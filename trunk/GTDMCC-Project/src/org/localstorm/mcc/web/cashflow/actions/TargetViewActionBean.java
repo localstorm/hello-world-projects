@@ -16,7 +16,7 @@ import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
  * @secure-by target Id
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/ViewTarget")
+@UrlBinding("/actions/cash/target/ViewTarget")
 public class TargetViewActionBean extends CashflowBaseActionBean
 {
     @Validate( required=true )

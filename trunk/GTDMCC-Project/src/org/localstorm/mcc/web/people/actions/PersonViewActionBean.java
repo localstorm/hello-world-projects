@@ -22,7 +22,7 @@ import org.localstorm.mcc.web.people.actions.wrap.WrapUtil;
  * @secure-by personId
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/ViewPerson")
+@UrlBinding("/actions/ppl/group/person/ViewPerson")
 public class PersonViewActionBean extends PeopleBaseActionBean
 {
     @Validate( required=true )

@@ -17,7 +17,7 @@ import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
  * @secure-by assetId parameter
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/ViewAssetCostHistory")
+@UrlBinding("/actions/cash/asset/ViewAssetCostHistory")
 public class AssetCostHistoryActionBean extends CashflowBaseActionBean
 {
     @Validate( required=true )

@@ -18,7 +18,7 @@ import org.localstorm.mcc.ejb.people.PersonManager;
  * @secure-by person id
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/AddPersonAttribute")
+@UrlBinding("/actions/ppl/group/person/AddPersonAttribute")
 public class PersonAttributeAddActionBean extends PersonViewActionBean
 {
     @Validate(required=true)

@@ -45,9 +45,8 @@ public class TxFilter implements Filter
 
             } catch (Exception e) {
                 log.error("Transaction failed:", e);
-
                 ut.setRollbackOnly();
-                
+
                 RequestUtil.setException((HttpServletRequest) req, e);
                 req.getRequestDispatcher( Views.ERROR ).forward( req, resp );
 

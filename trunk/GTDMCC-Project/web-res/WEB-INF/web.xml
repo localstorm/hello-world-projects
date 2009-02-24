@@ -118,12 +118,7 @@
 
         <!-- =========== Filter Mapping ============ -->
 
-        <!-- Stripes -->
-        <filter-mapping>
-                <filter-name>StripesFilter</filter-name>
-                <url-pattern>/actions/*</url-pattern>
-        </filter-mapping>
-
+       
         <!-- Logging -->
         <filter-mapping>
                 <filter-name>RequestLogFilter</filter-name>
@@ -135,7 +130,7 @@
 
         <filter-mapping>
                 <filter-name>TxFilter</filter-name>
-                <servlet-name>/actions/*</servlet-name>
+                <url-pattern>/actions/*</url-pattern>
                 <dispatcher>REQUEST</dispatcher>
         </filter-mapping>
 
@@ -163,7 +158,6 @@
                 <url-pattern>/chart/*</url-pattern>
                 <dispatcher>REQUEST</dispatcher>
         </filter-mapping>
-
 
         <!-- Caching -->
 
@@ -201,19 +195,19 @@
         
         <filter-mapping>
                 <filter-name>LazyLoadFilter</filter-name>
-                <servlet-name>StripesDispatcher</servlet-name>
+                <url-pattern>/actions/gtd/*</url-pattern>
                 <dispatcher>REQUEST</dispatcher>
         </filter-mapping>
 
         <filter-mapping>
                 <filter-name>CfLazyLoadFilter</filter-name>
-                <servlet-name>StripesDispatcher</servlet-name>
+                <url-pattern>/actions/cash/*</url-pattern>
                 <dispatcher>REQUEST</dispatcher>
         </filter-mapping>
 
         <filter-mapping>
                 <filter-name>PplLazyLoadFilter</filter-name>
-                <servlet-name>StripesDispatcher</servlet-name>
+                <url-pattern>/actions/ppl/*</url-pattern>
                 <dispatcher>REQUEST</dispatcher>
         </filter-mapping>
 
@@ -249,11 +243,17 @@
                 <url-pattern>/actions/gtd/ctx/obj/note/*</url-pattern>
         </filter-mapping>
 
+        <!-- Stripes -->
+        <filter-mapping>
+                <filter-name>StripesFilter</filter-name>
+                <url-pattern>/actions/*</url-pattern>
+        </filter-mapping>
+
         <!-- Compression -->
 
         <filter-mapping>
             <filter-name>CompressingFilter</filter-name>
-            <servlet-name>StripesDispatcher</servlet-name>
+            <url-pattern>/actions/*</url-pattern>
         </filter-mapping>
 
         <!-- ============== Servlets ============== -->
@@ -262,7 +262,6 @@
                 <servlet-name>StripesDispatcher</servlet-name>
                 <servlet-class>net.sourceforge.stripes.controller.DispatcherServlet</servlet-class>
                 <load-on-startup>1</load-on-startup>
-
         </servlet>
 
         <servlet>
