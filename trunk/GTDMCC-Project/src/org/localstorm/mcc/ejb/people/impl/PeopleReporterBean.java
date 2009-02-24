@@ -1,4 +1,4 @@
-package org.localstorm.mcc.ejb.people.reports;
+package org.localstorm.mcc.ejb.people.impl;
 
 import java.sql.SQLException;
 import javax.annotation.Resource;
@@ -13,7 +13,8 @@ import org.localstorm.mcc.ejb.users.User;
  * @author localstorm
  */
 @Stateless
-public class PeopleReporterBean implements PeopleReporterLocal, PeopleReporterRemote {
+public class PeopleReporterBean extends PeopleStatelessBean implements PeopleReporterLocal,
+                                                                       PeopleReporterRemote {
 
     @Resource(mappedName=Constants.DEFAULT_DS)
     private DataSource ds;

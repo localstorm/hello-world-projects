@@ -1,6 +1,7 @@
 
-package org.localstorm.mcc.ejb.people.maillists;
+package org.localstorm.mcc.ejb.people.impl;
 
+import org.localstorm.mcc.ejb.people.MailListManager;
 import javax.ejb.Local;
 
 

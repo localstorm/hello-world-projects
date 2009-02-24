@@ -8,6 +8,10 @@ import net.sourceforge.stripes.action.UrlBinding;
 import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.people.Views;
 
+/**
+ * @secure-by person id
+ * @author localstorm
+ */
 @UrlBinding("/actions/ViewPeople")
 public class PeopleViewActionBean extends PeopleBaseActionBean {
 

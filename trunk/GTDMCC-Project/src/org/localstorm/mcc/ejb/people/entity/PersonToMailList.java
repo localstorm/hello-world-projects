@@ -1,6 +1,5 @@
-package org.localstorm.mcc.ejb.people.maillists;
+package org.localstorm.mcc.ejb.people.entity;
 
-import org.localstorm.mcc.ejb.people.persons.*;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;

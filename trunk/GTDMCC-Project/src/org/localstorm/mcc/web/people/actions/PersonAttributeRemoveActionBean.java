@@ -5,11 +5,11 @@ import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.people.persons.Attribute;
-import org.localstorm.mcc.ejb.people.persons.PersonManager;
+import org.localstorm.mcc.ejb.people.entity.Attribute;
+import org.localstorm.mcc.ejb.people.PersonManager;
 
 /**
- *
+ * @secure-by person-id, attribute-id
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/RemovePersonAttribute")

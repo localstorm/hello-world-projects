@@ -1,4 +1,4 @@
-package org.localstorm.mcc.ejb.people.maillists;
+package org.localstorm.mcc.ejb.people.entity;
 
 import java.io.Serializable;
 

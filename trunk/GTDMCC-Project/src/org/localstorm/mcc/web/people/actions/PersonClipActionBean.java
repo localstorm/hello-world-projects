@@ -6,14 +6,14 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 
-import org.localstorm.mcc.ejb.people.persons.Person;
-import org.localstorm.mcc.ejb.people.persons.PersonGroup;
-import org.localstorm.mcc.ejb.people.persons.PersonManager;
+import org.localstorm.mcc.ejb.people.entity.Person;
+import org.localstorm.mcc.ejb.people.entity.PersonGroup;
+import org.localstorm.mcc.ejb.people.PersonManager;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
 import org.localstorm.mcc.web.people.PeopleClipboard;
 
 /**
- *
+ * @secure-by person-id
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/ClipPerson")

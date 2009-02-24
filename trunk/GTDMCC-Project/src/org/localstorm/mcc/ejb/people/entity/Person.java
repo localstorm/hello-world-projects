@@ -1,4 +1,4 @@
-package org.localstorm.mcc.ejb.people.persons;
+package org.localstorm.mcc.ejb.people.entity;
 
 import java.io.Serializable;
 import java.util.Date;

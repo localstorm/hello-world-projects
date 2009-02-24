@@ -4,8 +4,8 @@ import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
-import org.localstorm.mcc.ejb.people.maillists.MailListManager;
-import org.localstorm.mcc.ejb.people.maillists.PregeneratedMailList;
+import org.localstorm.mcc.ejb.people.MailListManager;
+import org.localstorm.mcc.ejb.people.entity.PregeneratedMailList;
 import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
 import org.localstorm.mcc.web.people.PeopleClipboard;
@@ -14,7 +14,7 @@ import org.localstorm.mcc.web.people.Views;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
- *
+ * @secure-by nil
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/GenerateMailList")

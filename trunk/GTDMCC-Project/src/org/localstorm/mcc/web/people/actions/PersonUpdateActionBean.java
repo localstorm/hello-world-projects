@@ -10,15 +10,15 @@ import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
 
-import org.localstorm.mcc.ejb.people.persons.Person;
-import org.localstorm.mcc.ejb.people.persons.PersonGroup;
-import org.localstorm.mcc.ejb.people.persons.PersonManager;
+import org.localstorm.mcc.ejb.people.entity.Person;
+import org.localstorm.mcc.ejb.people.entity.PersonGroup;
+import org.localstorm.mcc.ejb.people.PersonManager;
 import org.localstorm.mcc.web.Constants;
 import org.localstorm.mcc.web.people.PeopleClipboard;
 import org.localstorm.mcc.web.util.DateUtil;
 
 /**
- *
+ * @secure-by person-id, group-id
  * @author Alexey Kuznetsov
  */
 @UrlBinding("/actions/UpdatePerson")
