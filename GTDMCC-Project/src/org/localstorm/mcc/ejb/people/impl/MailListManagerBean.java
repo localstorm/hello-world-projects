@@ -26,6 +26,12 @@ public class MailListManagerBean extends PeopleStatelessBean implements MailList
     }
 
     @Override
+    public MailList find(Integer mailListId)
+    {
+        return em.find(MailList.class, mailListId);
+    }
+
+    @Override
     public PregeneratedMailList generateMailList(Collection<Person> persons)
     {
         PersonManager pm = super.getPersonManager();
