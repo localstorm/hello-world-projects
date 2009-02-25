@@ -15,7 +15,6 @@
 </div>
 
     <div align="center">
-
     <div id="editPersonDiv" width="80%" style="display: <c:choose>
              <c:when test="${not empty actionBean.context.validationErrors and not empty updateForm}">inline</c:when>
              <c:otherwise>none</c:otherwise>
@@ -80,7 +79,13 @@
 </div>
 
 </div>
-<br/><br/>
+<br/>
+<c:if test="${actionBean.needEmail}">
+<div align="center" style="padding: 4px; border: 1px dotted; margin: 0px 60px 0px 60px; background:#FFC953;">
+    <img src="<c:url value="/images/warning2.png"/>"/>&nbsp;<b>Specify e-mail attribute for this person, please.</b>
+</div>
+</c:if>
+<br/>
 <div align="center" style="padding: 4px; border: 1px dotted; margin: 0px 60px 0px 60px; background:#FFFDCD;">
 <p><span><img src="<c:url value="/images/person.png"/>"/> <c:out value="${actionBean.person.fullName}" />
 <c:if test="${not empty actionBean.person.birthDate}">

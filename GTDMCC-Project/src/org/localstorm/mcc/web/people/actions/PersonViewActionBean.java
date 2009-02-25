@@ -28,6 +28,8 @@ public class PersonViewActionBean extends PeopleBaseActionBean
     @Validate( required=true )
     private int personId;
 
+    private boolean needEmail;
+
     private Person person;
 
     private Collection<Attribute> attributes;
@@ -50,6 +52,16 @@ public class PersonViewActionBean extends PeopleBaseActionBean
         this.personId = personId;
     }
 
+    public boolean isNeedEmail()
+    {
+        return needEmail;
+    }
+
+    public void setNeedEmail(boolean needEmail)
+    {
+        this.needEmail = needEmail;
+    }
+
     public Collection<Attribute> getAttributes() {
         return attributes;
     }
@@ -65,8 +77,6 @@ public class PersonViewActionBean extends PeopleBaseActionBean
     public void setAttributeTypes(Collection<AttributeType> attributeTypes) {
         this.attributeTypes = attributeTypes;
     }
-
-
 
     @DefaultHandler
     public Resolution filling() throws Exception {
@@ -90,5 +100,6 @@ public class PersonViewActionBean extends PeopleBaseActionBean
     
     public static interface IncommingParameters {
         public static final String PERSON_ID = "personId";
+        public static final String NEED_EMAIL= "needEmail";
     }
 }
