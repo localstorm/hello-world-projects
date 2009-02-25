@@ -17,13 +17,17 @@ public interface MailListManager
 
     public MailList find(Integer mailListId);
 
-    public Collection<MailList> findByUser(User u);
+    public Collection<MailList> find(User u);
+
+    public Collection<MailList> findArchived(User u);
 
     public Collection<PersonToMailList> getMailListContent(MailList ml);
 
     public MailList create(PregeneratedMailList pml, String name, User u);
 
     public void remove(MailList ml);
+
+    public void update(MailList ml);
 
     public void leaveMailList(MailList ml, Person p);
 
