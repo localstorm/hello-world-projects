@@ -32,23 +32,40 @@ public class MailListManagerBean extends PeopleStatelessBean implements MailList
     }
 
     @Override
+    public void tryAutoResolveBrokenEmails(MailList ml)
+    {
+        PersonManager pm = super.getPersonManager();
+
+        Collection<PersonToMailList> cont = this.getMailListContent(ml);
+        for (PersonToMailList p2ml : cont) {
+            if (p2ml.getAttribute()==null) {
+                Collection<Attribute> emails = pm.getEmailAttributes(p2ml.getPerson());
+
+                if (emails.size()==1) {
+                    p2ml.setAttribute(emails.iterator().next());
+                    em.persist(p2ml);
+                }
+            }
+        }
+    }
+
+    
+
+    @Override
     public PregeneratedMailList generateMailList(Collection<Person> persons)
     {
         PersonManager pm = super.getPersonManager();
         PregeneratedMailList pml = new PregeneratedMailList();
 
-        for (Person p : persons)
-        {
+        for (Person p : persons) {
             Collection<Attribute> attrs = pm.getEmailAttributes(p);
             
-            if (attrs.isEmpty())
-            {
+            if (attrs.isEmpty()) {
                 pml.addNoEmailPerson(p);
                 continue;
             }
 
-            if (attrs.size()==1)
-            {
+            if (attrs.size()==1) {
                 pml.addResolvedPerson(p, attrs.iterator().next());
                 continue;
             }
@@ -96,7 +113,7 @@ public class MailListManagerBean extends PeopleStatelessBean implements MailList
 
     @Override
     @SuppressWarnings("unchecked")
-    public Collection<PersonToMailList> findMailListContent(MailList ml)
+    public Collection<PersonToMailList> getMailListContent(MailList ml)
     {
         Query q = em.createNamedQuery(PersonToMailList.Queries.FIND_P2ML_BY_ML);
         q.setParameter(PersonToMailList.Properties.MAIL_LIST, ml);

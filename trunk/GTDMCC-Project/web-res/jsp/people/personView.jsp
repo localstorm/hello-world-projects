@@ -81,7 +81,7 @@
 </div>
 <br/>
 <c:if test="${actionBean.needEmail}">
-<div align="center" style="padding: 4px; border: 1px dotted; margin: 0px 60px 0px 60px; background:#FFC953;">
+<div align="center" class="warn">
     <img src="<c:url value="/images/warning2.png"/>"/>&nbsp;<b>Specify e-mail attribute for this person, please.</b>
 </div>
 </c:if>

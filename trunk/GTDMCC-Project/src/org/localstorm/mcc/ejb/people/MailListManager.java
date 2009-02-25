@@ -19,7 +19,7 @@ public interface MailListManager
 
     public Collection<MailList> findByUser(User u);
 
-    public Collection<PersonToMailList> findMailListContent(MailList ml);
+    public Collection<PersonToMailList> getMailListContent(MailList ml);
 
     public MailList create(PregeneratedMailList pml, String name, User u);
 
@@ -30,5 +30,7 @@ public interface MailListManager
     public void joinMailList(MailList ml, Person p, Attribute a);
 
     public PregeneratedMailList generateMailList(Collection<Person> persons);
+
+    public void tryAutoResolveBrokenEmails(MailList ml);
     
 }
