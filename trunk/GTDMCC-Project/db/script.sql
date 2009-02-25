@@ -303,11 +303,16 @@ create table MAIL_LISTS
 (
     id INT NOT NULL AUTO_INCREMENT,
     owner INT NOT NULL,
-    is_invalid SMALLINT NOT NULL,        
+    is_archived SMALLINT NOT NULL,
     name   TEXT NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (owner) REFERENCES USERS(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+alter table MAIL_LISTS add column
+(
+    is_archived SMALLINT NOT NULL
+)
 
 --drop table PERSONS_TO_MAIL_LISTS
 create table PERSONS_TO_MAIL_LISTS

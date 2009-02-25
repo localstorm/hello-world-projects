@@ -60,7 +60,7 @@ public class LazyLoadFilter implements Filter
             MailListManager mlm = ContextLookup.lookup(MailListManager.class,
                                                        MailListManager.BEAN_NAME);
 
-            Collection<MailList> mll = mlm.findByUser(user);
+            Collection<MailList> mll = mlm.find(user);
             SessionUtil.fill(sess, SessionKeys.MAIL_LISTS, mll);
         }
         

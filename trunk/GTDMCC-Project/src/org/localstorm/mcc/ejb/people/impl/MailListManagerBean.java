@@ -49,8 +49,6 @@ public class MailListManagerBean extends PeopleStatelessBean implements MailList
         }
     }
 
-    
-
     @Override
     public PregeneratedMailList generateMailList(Collection<Person> persons)
     {
@@ -85,7 +83,7 @@ public class MailListManagerBean extends PeopleStatelessBean implements MailList
             {
                 ml.setName(name);
                 ml.setOwner(user);
-                ml.setInvalid(false);
+                ml.setArchived(false);
             }
             em.persist(ml);
 
@@ -103,9 +101,19 @@ public class MailListManagerBean extends PeopleStatelessBean implements MailList
 
     @Override
     @SuppressWarnings("unchecked")
-    public Collection<MailList> findByUser(User u)
+    public Collection<MailList> find(User u)
     {
         Query q = em.createNamedQuery(MailList.Queries.FIND_MLS_BY_OWNER);
+        q.setParameter(MailList.Properties.OWNER, u);
+
+        return (Collection<MailList>) q.getResultList();
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public Collection<MailList> findArchived(User u)
+    {
+        Query q = em.createNamedQuery(MailList.Queries.FIND_ARCHIVED_MLS_BY_OWNER);
         q.setParameter(MailList.Properties.OWNER, u);
 
         return (Collection<MailList>) q.getResultList();
@@ -147,7 +155,13 @@ public class MailListManagerBean extends PeopleStatelessBean implements MailList
     @Override
     public void remove(MailList ml)
     {
-        em.remove(em.getReference(MailList.class, ml));
+        em.remove(em.getReference(MailList.class, ml.getId()));
+    }
+
+    @Override
+    public void update(MailList ml)
+    {
+        em.merge(ml);
     }
 
     @PersistenceContext(unitName=Constants.DEFAULT_PU)

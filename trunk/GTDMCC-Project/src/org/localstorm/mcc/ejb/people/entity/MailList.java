@@ -25,8 +25,12 @@ import org.localstorm.mcc.ejb.users.User;
 @NamedQueries({
     @NamedQuery(
         name = MailList.Queries.FIND_MLS_BY_OWNER,
-        query= "SELECT ml FROM MailList ml WHERE ml.owner=:owner ORDER BY ml.name ASC"
-    )   
+        query= "SELECT ml FROM MailList ml WHERE ml.archived=false and ml.owner=:owner ORDER BY ml.name ASC"
+    ),
+    @NamedQuery(
+        name = MailList.Queries.FIND_ARCHIVED_MLS_BY_OWNER,
+        query= "SELECT ml FROM MailList ml WHERE ml.archived=true and ml.owner=:owner ORDER BY ml.name ASC"
+    )
 })
 public class MailList  extends AbstractEntity implements Identifiable, Serializable
 {
@@ -41,8 +45,8 @@ public class MailList  extends AbstractEntity implements Identifiable, Serializa
     @ManyToOne(fetch=FetchType.LAZY)
     private User owner;
 
-    @Column(name="is_invalid", unique=false, updatable=true, nullable=false )
-    private boolean invalid;
+    @Column(name="is_archived", unique=false, updatable=true, nullable=false )
+    private boolean archived;
 
     public MailList()
     {
@@ -74,19 +78,20 @@ public class MailList  extends AbstractEntity implements Identifiable, Serializa
         this.name = name;
     }
 
-    public boolean isInvalid()
+    public boolean isArchived()
     {
-        return invalid;
+        return archived;
     }
 
-    public void setInvalid(boolean invalid)
+    public void setArchived(boolean archived)
     {
-        this.invalid = invalid;
+        this.archived = archived;
     }
 
     public static interface Queries
     {
         public static final String FIND_MLS_BY_OWNER = "findMailListsByOwner";
+        public static final String FIND_ARCHIVED_MLS_BY_OWNER = "findArchivedMailListsByOwner";
     }
 
     public static interface Properties

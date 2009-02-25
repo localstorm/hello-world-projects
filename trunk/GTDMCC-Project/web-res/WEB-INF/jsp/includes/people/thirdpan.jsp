@@ -3,7 +3,7 @@
 
 <div id="bodyThirdPan">
     <h2><span>Mail</span> lists</h2>
-    <p class="more"><a href="<c:url value="/actions/EditMailLists"/>">EDIT</a></p>
+    <p class="more"><a href="<c:url value="/actions/ppl/nil/EditMailLists"/>">EDIT</a></p>
     <table class="refobjs">
         <c:forEach items="${mailLists}" var="ml">
             <jsp:include page="/WEB-INF/jsp/includes/people/ml.jsp">
