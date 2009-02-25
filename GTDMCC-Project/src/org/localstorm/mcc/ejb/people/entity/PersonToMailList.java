@@ -29,6 +29,10 @@ import org.localstorm.mcc.ejb.Identifiable;
     @NamedQuery(
         name = PersonToMailList.Queries.FIND_P2ML_BY_ML,
         query= "SELECT o FROM PersonToMailList o JOIN FETCH o.person WHERE o.mailList=:ml"
+    ),
+    @NamedQuery(
+        name = PersonToMailList.Queries.LEAVE_ML,
+        query= "DELETE PersonToMailList o WHERE o.mailList=:ml and o.person=:person"
     )
 })
 public class PersonToMailList extends AbstractEntity implements Identifiable, Serializable {
@@ -108,6 +112,7 @@ public class PersonToMailList extends AbstractEntity implements Identifiable, Se
     {
         public static final String FIND_PERSONS_BY_ML= "findPersonsByMailList";
         public static final String FIND_P2ML_BY_ML   = "findPersonsToMailListByMailList";
+        public static final String LEAVE_ML          = "leaveMailList";
     }
 
     public static interface Properties
