@@ -63,7 +63,7 @@ public class PersonAttributeAddActionBean extends PersonViewActionBean
 
         AttributeType type = pm.findAttributeType(this.getTypeId());
 
-        pm.setAttributeForPerson(p, new Attribute(p, type, this.getValue()));
+        pm.create(new Attribute(p, type, this.getValue()), p);
 
         RedirectResolution rr = new RedirectResolution(PersonViewActionBean.class);
         {

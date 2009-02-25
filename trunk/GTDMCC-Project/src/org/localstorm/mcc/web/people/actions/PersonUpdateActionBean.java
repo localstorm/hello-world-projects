@@ -109,7 +109,7 @@ public class PersonUpdateActionBean extends PersonViewActionBean
 
         pm.update(p);
 
-        PersonGroup pg = pm.findGroupByPerson(p);
+        PersonGroup pg = pm.getGroup(p);
         if (!pg.getId().equals(this.getGroupId()))
         {
             pm.movePersonToGroup(p, pm.findGroup(this.getGroupId()));

@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import org.localstorm.mcc.ejb.AbstractEntity;
 import org.localstorm.mcc.ejb.Identifiable;
@@ -21,6 +22,14 @@ import org.localstorm.mcc.ejb.Identifiable;
 @Entity
 @Table(name="PERSONS_TO_MAIL_LISTS")
 @NamedQueries({
+    @NamedQuery(
+        name = PersonToMailList.Queries.FIND_PERSONS_BY_ML,
+        query= "SELECT o.person FROM PersonToMailList o WHERE o.mailList=:ml"
+    ),
+    @NamedQuery(
+        name = PersonToMailList.Queries.FIND_P2ML_BY_ML,
+        query= "SELECT o FROM PersonToMailList o JOIN FETCH o.person WHERE o.mailList=:ml"
+    )
 })
 public class PersonToMailList extends AbstractEntity implements Identifiable, Serializable {
 
@@ -97,11 +106,14 @@ public class PersonToMailList extends AbstractEntity implements Identifiable, Se
 
     public static interface Queries
     {
+        public static final String FIND_PERSONS_BY_ML= "findPersonsByMailList";
+        public static final String FIND_P2ML_BY_ML   = "findPersonsToMailListByMailList";
     }
 
     public static interface Properties
     {
-        public static final String PERSON = "person";
+        public static final String PERSON    = "person";
+        public static final String MAIL_LIST = "ml";
     }
 
 }

@@ -26,7 +26,7 @@ import org.localstorm.mcc.ejb.users.User;
     @NamedQuery(
         name = MailList.Queries.FIND_MLS_BY_OWNER,
         query= "SELECT ml FROM MailList ml WHERE ml.owner=:owner ORDER BY ml.name ASC"
-    )
+    )   
 })
 public class MailList  extends AbstractEntity implements Identifiable, Serializable
 {

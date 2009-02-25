@@ -31,7 +31,7 @@ public class PersonGroupsEditActionBean extends PeopleBaseActionBean {
     @DefaultHandler
     public Resolution filling() {
         PersonManager pm = super.getPersonManager();
-        result = pm.findArchivedGroupsByOwner(super.getUser());
+        result = pm.getArchivedGroups(super.getUser());
         return new ForwardResolution(Views.EDIT_GROUPS);
     }
     
