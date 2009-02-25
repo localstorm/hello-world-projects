@@ -15,6 +15,8 @@ public interface MailListManager
 {
     public static final String BEAN_NAME="MailListManagerBean";
 
+    public MailList find(Integer mailListId);
+
     public Collection<MailList> findByUser(User u);
 
     public Collection<PersonToMailList> findMailListContent(MailList ml);
