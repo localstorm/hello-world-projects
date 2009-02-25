@@ -35,7 +35,28 @@
         </table--%>
         </stripes:form>
 </div>
-<br/><br/>
+<br/>
+<c:if test="${not empty actionBean.expired}">
+<div align="center" class="warn">
+    <img src="<c:url value="/images/warning2.png"/>"/>&nbsp;<b>Personal e-mail was changed or removed for these persons:</b>
+        <c:forEach items="${actionBean.expired}" var="person">
+            <p><img src="<c:url value="/images/person.png"/>"/><span>
+                    <a href="<c:url value="/actions/ppl/group/person/ViewPerson">
+                        <c:param name="personId" value="${person.id}" />
+                    </c:url>"><c:out value="${person.fullName}" /></a>
+               </span></p>
+        </c:forEach>
+     <hr/>
+     <div align="right">Try <a href="<c:url value="/actions/ppl/ml/AutoResolveMailListProblems">
+                        <c:param name="mailListId" value="${actionBean.mailListId}" />
+     </c:url>">automatic</a> or <a href="#">manual</a> problem resolution&nbsp;</div>
+</div><br/>
+</c:if>
+<div align="center"><textarea rows="8" style="width: 80%;" >
+<c:forEach items="${actionBean.mailListContent}" var="p2ml" varStatus="status"><c:out
+    value="${p2ml.person.fullName}" /> &lt;<c:out value="${p2ml.attributeValue}"/>&gt;<c:if
+        test="${not status.last}">,&nbsp;</c:if></c:forEach>
+</textarea></div><br/>
 <c:forEach items="${actionBean.mailListContent}" var="p2ml">
     <p><img src="<c:url value="/images/person.png"/>"/><span>
             <a href="<c:url value="/actions/ppl/group/person/ViewPerson">
@@ -44,12 +65,6 @@
             &nbsp;(<a href="mailto:<c:out value="${p2ml.attributeValue}"/>"><c:out value="${p2ml.attributeValue}"/></a>)
        </span></p>
 </c:forEach>
-<br/>
-<textarea rows="8" style="width: 80%;" >
-<c:forEach items="${actionBean.mailListContent}" var="p2ml" varStatus="status"><c:out 
-    value="${p2ml.person.fullName}" /> &lt;<c:out value="${p2ml.attributeValue}"/>&gt;<c:if
-        test="${not status.last}">,&nbsp;</c:if></c:forEach>
-</textarea>
 
 <%@ include file="/WEB-INF/jsp/includes/people/rightpan.jsp" %>
 <%@ include file="/WEB-INF/jsp/includes/foot.jsp" %>

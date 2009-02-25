@@ -1,6 +1,7 @@
 package org.localstorm.mcc.web.people.actions;
 
 import java.util.Collection;
+import java.util.LinkedList;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
@@ -8,6 +9,7 @@ import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.people.MailListManager;
 import org.localstorm.mcc.ejb.people.entity.MailList;
+import org.localstorm.mcc.ejb.people.entity.Person;
 import org.localstorm.mcc.ejb.people.entity.PersonToMailList;
 import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
@@ -24,6 +26,18 @@ public class MailListViewActionBean extends PeopleBaseActionBean
     private Integer mailListId;
 
     private Collection<PersonToMailList> mailListContent;
+
+    private Collection<Person> expired;
+
+    public Collection<Person> getExpired()
+    {
+        return expired;
+    }
+
+    public void setExpired(Collection<Person> expired)
+    {
+        this.expired = expired;
+    }
 
     public Integer getMailListId()
     {
@@ -51,7 +65,17 @@ public class MailListViewActionBean extends PeopleBaseActionBean
         MailListManager mlm = super.getMailListManager();
         MailList ml = mlm.find(this.getMailListId());
         
-        this.setMailListContent(mlm.findMailListContent(ml));
+        Collection<PersonToMailList> cont = mlm.getMailListContent(ml);
+        Collection<Person> exp = new LinkedList<Person>();
+        
+        for (PersonToMailList p: cont) {
+            if (p.getAttribute()==null) {
+                exp.add(p.getPerson());
+            }
+        }
+
+        this.setMailListContent(cont);
+        this.setExpired(exp);
 
         ReturnPageBean rpb = new ReturnPageBean(Pages.MAIL_LIST_VIEW.toString());
         {

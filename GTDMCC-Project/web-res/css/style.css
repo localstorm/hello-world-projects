@@ -169,6 +169,13 @@ img{border:none;}
 #dashGTDPan p.more a{display:block; width:44px; height:11px; background:#F3F3F3; color:#003D5C; text-decoration:none; margin:0 0 0 97px; font-size:11px; line-height:11px; text-align:center; text-transform:uppercase;}
 #dashGTDPan p.more a:hover{display:block; width:44px; height:11px; background:#E0DEDE; color:#003D5C; text-decoration:none;}
 
+div.warn {
+    padding: 4px;
+    border: 1px dotted;
+    margin: 0px 60px 0px 60px;
+    background:#FFC953;
+}
+
 #dashGTDPan table.dash {
   width: 98%;
   border: 1px solid #DADADA;
@@ -207,7 +214,6 @@ img{border:none;}
 #dashGTD2Pan p.more{background:#fff; color:#003D5C; width:175px; height:11px; margin:10px 29px 10px; padding:0px; line-height:11px; }
 #dashGTD2Pan p.more a{display:block; width:44px; height:11px; background:#F3F3F3; color:#003D5C; text-decoration:none; margin:0 0 0 97px; font-size:11px; line-height:11px; text-align:center; text-transform:uppercase;}
 #dashGTD2Pan p.more a:hover{display:block; width:44px; height:11px; background:#E0DEDE; color:#003D5C; text-decoration:none;}
-
 
 #greenDashPane{border:1px solid #DADADA; background:#D0EED0; margin:4px 8px 8px 8px; padding:4px 0 4px;}
 #greenDashPane p{padding:0px 0px 0px 5px;}
