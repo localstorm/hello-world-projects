@@ -56,7 +56,7 @@ public class PersonGroupViewActionBean extends PeopleBaseActionBean {
         PersonGroup    g = pm.findGroup(this.getGroupId());
 
         this.setGroup(g);
-        this.setPersons(pm.findPersonsByGroup(g));
+        this.setPersons(pm.getPersons(g));
 
         ReturnPageBean rpb = new ReturnPageBean(Pages.GROUP_VIEW.toString());
         {

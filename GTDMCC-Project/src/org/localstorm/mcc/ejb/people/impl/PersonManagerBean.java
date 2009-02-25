@@ -13,6 +13,8 @@ import javax.persistence.Query;
 import org.localstorm.mcc.ejb.Constants;
 import org.localstorm.mcc.ejb.NullResultGuard;
 import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
+import org.localstorm.mcc.ejb.people.entity.MailList;
+import org.localstorm.mcc.ejb.people.entity.PersonToMailList;
 import org.localstorm.mcc.ejb.users.User;
 
 /**
@@ -26,12 +28,24 @@ public class PersonManagerBean extends PeopleStatelessBean implements PersonMana
     }
 
     @Override
+    @SuppressWarnings("unchecked")
+    public Collection<Person> getPersons(MailList ml)
+    {
+        Query q = em.createNamedQuery(PersonToMailList.Queries.FIND_PERSONS_BY_ML);
+        q.setParameter(PersonToMailList.Properties.MAIL_LIST, ml);
+
+        return (Collection<Person>) q.getResultList();
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
     public Collection<AttributeType> getAllAttributeTypes() {
         Query q = em.createNamedQuery(AttributeType.Queries.FIND_ALL);
         return (Collection<AttributeType>) q.getResultList();
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<Attribute> getEmailAttributes(Person p)
     {
         Query q = em.createNamedQuery(Attribute.Queries.FIND_EMAILS_BY_PERSON);
@@ -41,6 +55,7 @@ public class PersonManagerBean extends PeopleStatelessBean implements PersonMana
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<Attribute> getAttributes(Person p) {
         Query q = em.createNamedQuery(Attribute.Queries.FIND_BY_PERSON);
         q.setParameter(Attribute.Properties.PERSON, p);
@@ -49,7 +64,8 @@ public class PersonManagerBean extends PeopleStatelessBean implements PersonMana
     }
 
     @Override
-    public Collection<PersonGroup> findGroupsByOwner(User user) {
+    @SuppressWarnings("unchecked")
+    public Collection<PersonGroup> getGroups(User user) {
         Query q = em.createNamedQuery(PersonGroup.Queries.FIND_BY_OWNER);
         q.setParameter(PersonGroup.Properties.OWNER, user);
 
@@ -57,7 +73,8 @@ public class PersonManagerBean extends PeopleStatelessBean implements PersonMana
     }
 
     @Override
-    public Collection<Person> findPersonsByGroup(PersonGroup g) {
+    @SuppressWarnings("unchecked")
+    public Collection<Person> getPersons(PersonGroup g) {
         Query q = em.createNamedQuery(Person.Queries.FIND_BY_GROUP);
         q.setParameter(Person.Properties.GROUP, g);
 
@@ -65,7 +82,7 @@ public class PersonManagerBean extends PeopleStatelessBean implements PersonMana
     }
 
     @Override
-    public PersonGroup findGroupByPerson(Person p) {
+    public PersonGroup getGroup(Person p) {
         Query q = em.createNamedQuery(PersonToGroup.Queries.FIND_GROUP_BY_PERSON);
         q.setParameter(PersonToGroup.Properties.PERSON, p);
 
@@ -86,7 +103,8 @@ public class PersonManagerBean extends PeopleStatelessBean implements PersonMana
     }
 
     @Override
-    public Collection<PersonGroup> findArchivedGroupsByOwner(User user) {
+    @SuppressWarnings("unchecked")
+    public Collection<PersonGroup> getArchivedGroups(User user) {
         Query q = em.createNamedQuery(PersonGroup.Queries.FIND_ARCHIVED_BY_OWNER);
         q.setParameter(PersonGroup.Properties.OWNER, user);
 
@@ -155,7 +173,7 @@ public class PersonManagerBean extends PeopleStatelessBean implements PersonMana
     }
 
     @Override
-    public void setAttributeForPerson(Person p, Attribute attribute) {
+    public void create(Attribute attribute, Person p) {
         attribute.setPerson(p);
         em.persist(attribute);
     }

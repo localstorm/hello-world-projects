@@ -26,6 +26,7 @@
     <c:if test="${not empty currList}">
         <c:forEach items="${clipboard.tasks}" var="task" >
             &nbsp;<a href="<c:url value="/actions/gtd/ctx/list/task/ResolveTask" >
+                <c:param name="returnPageToken" value="${returnPageToken}" />
                 <c:param name="taskId" value="${task.id}" />
                 <c:param name="action" value="PASTE" />
             </c:url>"><img src="<c:url value="/images/paste.png"/>" alt="paste"/></a>

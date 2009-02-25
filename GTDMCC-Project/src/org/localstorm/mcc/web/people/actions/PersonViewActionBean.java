@@ -72,7 +72,7 @@ public class PersonViewActionBean extends PeopleBaseActionBean
     public Resolution filling() throws Exception {
         PersonManager pm = super.getPersonManager();
         Person p = pm.findPerson(this.getPersonId());
-        PersonGroup group = pm.findGroupByPerson(p);
+        PersonGroup group = pm.getGroup(p);
         
         this.setAttributes(pm.getAttributes(p));
         this.setPerson(WrapUtil.genWrapper(p, group));

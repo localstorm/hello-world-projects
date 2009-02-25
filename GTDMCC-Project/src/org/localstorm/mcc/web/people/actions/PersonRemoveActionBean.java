@@ -34,7 +34,7 @@ public class PersonRemoveActionBean extends PeopleBaseActionBean {
         
         PersonManager pm = super.getPersonManager();
         Person         p = pm.findPerson(this.getPersonId());
-        PersonGroup group= pm.findGroupByPerson(p);
+        PersonGroup group= pm.getGroup(p);
 
         PeopleClipboard clip = super.getClipboard();
         clip.pickPerson(p.getId());

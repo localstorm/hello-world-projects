@@ -52,7 +52,7 @@ public class LazyLoadFilter implements Filter
             PersonManager pm = ContextLookup.lookup(PersonManager.class,
                                                     PersonManager.BEAN_NAME);
             
-            Collection<PersonGroup> pgList = pm.findGroupsByOwner(user);
+            Collection<PersonGroup> pgList = pm.getGroups(user);
             SessionUtil.fill(sess, SessionKeys.PERSON_GROUPS, pgList);
         }
 

@@ -57,6 +57,7 @@ public class MailListManagerBean extends PeopleStatelessBean implements MailList
     public MailList create(PregeneratedMailList pml, String name, User user)
     {
         if (pml.isReady()) {
+
             MailList ml = new MailList();
             {
                 ml.setName(name);
@@ -65,13 +66,13 @@ public class MailListManagerBean extends PeopleStatelessBean implements MailList
             }
             em.persist(ml);
 
-            for (Pair<Person, Attribute> mlEntry : pml.getResolved())
-            {
+            for (Pair<Person, Attribute> mlEntry : pml.getResolved()) {
                 PersonToMailList p2ml = new PersonToMailList(mlEntry.getFirst(), ml, mlEntry.getSecond());
                 em.persist(p2ml);
             }
 
             return ml;
+            
         } else {
             throw new RuntimeException("PregeneratedMailList is not ready!");
         }
@@ -88,9 +89,13 @@ public class MailListManagerBean extends PeopleStatelessBean implements MailList
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<PersonToMailList> findMailListContent(MailList ml)
     {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Query q = em.createNamedQuery(PersonToMailList.Queries.FIND_P2ML_BY_ML);
+        q.setParameter(PersonToMailList.Properties.MAIL_LIST, ml);
+
+        return (Collection<PersonToMailList>) q.getResultList();
     }
 
     @Override

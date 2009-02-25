@@ -34,7 +34,7 @@ public class PersonClipActionBean extends PeopleBaseActionBean
     public Resolution filling() throws Exception {
         PersonManager  pm = super.getPersonManager();
         Person          p = pm.findPerson(this.getPersonId());
-        PersonGroup group = pm.findGroupByPerson(p);
+        PersonGroup group = pm.getGroup(p);
 
         //pm.getAttributes(p, Att)
 
