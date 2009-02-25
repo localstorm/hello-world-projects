@@ -124,13 +124,24 @@ public class MailListManagerBean extends PeopleStatelessBean implements MailList
     @Override
     public void joinMailList(MailList ml, Person p, Attribute a)
     {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Collection<Person> persons = super.getPersonManager().getPersons(ml);
+        for (Person person: persons)
+        {
+            if (person.getId().equals(p.getId())) {
+                return;
+            }
+        }
+        
+        em.persist(new PersonToMailList(p, ml, a));
     }
 
     @Override
     public void leaveMailList(MailList ml, Person p)
     {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Query q = em.createNamedQuery(PersonToMailList.Queries.LEAVE_ML);
+        q.setParameter(PersonToMailList.Properties.MAIL_LIST, ml);
+        q.setParameter(PersonToMailList.Properties.PERSON, p);
+        q.executeUpdate();
     }
 
     @Override

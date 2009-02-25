@@ -63,7 +63,10 @@
     <p><img src="<c:url value="/images/person.png"/>"/><span>
             <a href="<c:url value="/actions/ppl/group/person/ViewPerson">
                 <c:param name="personId" value="${p2ml.person.id}" />
-            </c:url>"><c:out value="${p2ml.person.fullName}" /></a>
+                </c:url>"><a href="<c:url value="/actions/ppl/ml/person/LeaveMailList">
+                    <c:param name="personId" value="${p2ml.person.id}" />
+                    <c:param name="mailListId" value="${actionBean.mailListId}" />
+                </c:url>"><img src="<c:url value="/images/trash.png"/>"/></a><c:out value="${p2ml.person.fullName}" /></a>
             &nbsp;(<a href="mailto:<c:out value="${p2ml.attributeValue}"/>"><c:out value="${p2ml.attributeValue}"/></a>)
        </span></p>
 </c:forEach>
