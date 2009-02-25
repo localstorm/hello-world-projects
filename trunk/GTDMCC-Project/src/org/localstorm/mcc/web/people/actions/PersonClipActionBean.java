@@ -1,5 +1,6 @@
 package org.localstorm.mcc.web.people.actions;
 
+import java.util.Collection;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
@@ -11,6 +12,7 @@ import org.localstorm.mcc.ejb.people.entity.PersonGroup;
 import org.localstorm.mcc.ejb.people.PersonManager;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
 import org.localstorm.mcc.web.people.PeopleClipboard;
+import org.localstorm.mcc.ejb.people.entity.Attribute;
 
 /**
  * @secure-by person-id
@@ -36,17 +38,28 @@ public class PersonClipActionBean extends PeopleBaseActionBean
         Person          p = pm.findPerson(this.getPersonId());
         PersonGroup group = pm.getGroup(p);
 
-        //pm.getAttributes(p, Att)
+        Collection<Attribute> emails = pm.getEmailAttributes(p);
 
-        PeopleClipboard clip = super.getClipboard();
-        clip.copyPerson(p);
+        if (emails.isEmpty()) {
+            RedirectResolution rr = new RedirectResolution(PersonViewActionBean.class);
+            {
+                rr.addParameter(PersonViewActionBean.IncommingParameters.PERSON_ID, this.getPersonId());
+                rr.addParameter(PersonViewActionBean.IncommingParameters.NEED_EMAIL, Boolean.TRUE);
+            }
 
-        RedirectResolution rr = new RedirectResolution(PersonGroupViewActionBean.class);
-        {
-            rr.addParameter(PersonGroupViewActionBean.IncommingParameters.GROUP_ID, group.getId());
+            return rr;
+        } else {
+
+            PeopleClipboard clip = super.getClipboard();
+            clip.copyPerson(p);
+
+            RedirectResolution rr = new RedirectResolution(PersonGroupViewActionBean.class);
+            {
+                rr.addParameter(PersonGroupViewActionBean.IncommingParameters.GROUP_ID, group.getId());
+            }
+
+            return rr;
         }
-
-        return rr;
     }
     
     public static interface IncommingParameters {
