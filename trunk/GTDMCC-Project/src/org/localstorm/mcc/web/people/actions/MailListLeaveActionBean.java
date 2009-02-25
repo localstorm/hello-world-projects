@@ -55,7 +55,7 @@ public class MailListLeaveActionBean extends PeopleBaseActionBean
         Person p    = pm.findPerson(this.getPersonId());
 
         mlm.leaveMailList(ml, p);
-        
+
         RedirectResolution rr = new RedirectResolution(MailListViewActionBean.class);
         {
             rr.addParameter(MailListViewActionBean.IncommingParameters.MAIL_LIST_ID, this.getMailListId());

@@ -298,7 +298,6 @@ insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null,
 insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Home Page',  'href', 'web_page', 0);
 insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Yahoo! IM',  'text', 'yahoo', 0);
 
---drop table MAIL_LISTS
 create table MAIL_LISTS
 (
     id INT NOT NULL AUTO_INCREMENT,
@@ -309,12 +308,6 @@ create table MAIL_LISTS
     FOREIGN KEY (owner) REFERENCES USERS(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-alter table MAIL_LISTS add column
-(
-    is_archived SMALLINT NOT NULL
-)
-
---drop table PERSONS_TO_MAIL_LISTS
 create table PERSONS_TO_MAIL_LISTS
 (
     id INT NOT NULL AUTO_INCREMENT,
