@@ -52,11 +52,13 @@
      </c:url>">automatic</a> or <a href="#">manual</a> problem resolution&nbsp;</div>
 </div><br/>
 </c:if>
-<div align="center"><textarea rows="8" style="width: 80%;" >
+<div align="center"><textarea rows="8" style="width: 80%;" readonly >
 <c:forEach items="${actionBean.mailListContent}" var="p2ml" varStatus="status"><c:out
     value="${p2ml.person.fullName}" /> &lt;<c:out value="${p2ml.attributeValue}"/>&gt;<c:if
         test="${not status.last}">,&nbsp;</c:if></c:forEach>
-</textarea></div><br/>
+</textarea></div>
+<br/>
+<h2><span>Members</span> view</h2><br/>
 <c:forEach items="${actionBean.mailListContent}" var="p2ml">
     <p><img src="<c:url value="/images/person.png"/>"/><span>
             <a href="<c:url value="/actions/ppl/group/person/ViewPerson">
