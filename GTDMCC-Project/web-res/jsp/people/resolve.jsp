@@ -56,8 +56,8 @@
     <c:forEach items="${pml.manyEmails}" var="pair" varStatus="status">
         <p><img src="<c:url value="/images/person.png"/>"/><span>
             <a href="<c:url value="/actions/ppl/group/person/ViewPerson">
-                <c:param name="personId" value="${person.id}" />
-                </c:url>"><c:out value="${person.fullName}" /></a></span>&nbsp;
+                <c:param name="personId" value="${pair.first.id}" />
+                </c:url>"><c:out value="${pair.first.fullName}" /></a></span>&nbsp;
         <stripes:select name="attributes" style="width: 30%;">
             <c:forEach items="${pair.second}" var="attr">
                 <stripes:option value="${attr.id}"><c:out value="${attr.val}" /></stripes:option>
