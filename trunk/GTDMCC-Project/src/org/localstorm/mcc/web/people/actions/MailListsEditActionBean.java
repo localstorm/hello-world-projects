@@ -31,7 +31,7 @@ public class MailListsEditActionBean extends PeopleBaseActionBean {
     @DefaultHandler
     public Resolution filling() {
         MailListManager mlm = super.getMailListManager();
-        result = mlm.findArchived(super.getUser());
+        result = mlm.getArchivedMailLists(super.getUser());
 
         return new ForwardResolution(Views.EDIT_MAIL_LISTS);
     }

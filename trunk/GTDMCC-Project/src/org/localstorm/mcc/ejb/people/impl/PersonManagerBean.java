@@ -1,5 +1,6 @@
 package org.localstorm.mcc.ejb.people.impl;
 
+import java.util.ArrayList;
 import org.localstorm.mcc.ejb.people.entity.Attribute;
 import org.localstorm.mcc.ejb.people.entity.PersonToGroup;
 import org.localstorm.mcc.ejb.people.entity.Person;
@@ -26,6 +27,19 @@ public class PersonManagerBean extends PeopleStatelessBean implements PersonMana
     public PersonManagerBean() {
         
     }
+
+    @Override
+    public Collection<Person> convertPersonIdToReferences(Collection<Integer> ids)
+    {
+        // Too primitive. Memcached!!!
+        Collection<Person> res = new ArrayList<Person>(ids.size());
+        for (Integer id: ids) {
+            res.add(em.getReference(Person.class, id));
+        }
+        return res;
+    }
+
+
 
     @Override
     @SuppressWarnings("unchecked")

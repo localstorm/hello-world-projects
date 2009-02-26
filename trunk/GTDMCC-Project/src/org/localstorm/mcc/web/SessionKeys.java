@@ -25,4 +25,6 @@ public class SessionKeys
     public static final String CURR_OBJ             = "currRefObject";
     public static final String ACCESSIBLE_CONTEXTS_MAP = "accessibleContexts";
     public static final String MAIL_LISTS           = "mailLists";
+    public static final String ARCHIVE_MAIL_LISTS   = "archivedMailLists";
+    public static final String ARCHIVE_PERSON_GROUPS= "archivedGroups";
 }

@@ -16,6 +16,8 @@ public interface PersonManager
 {
     public static final String BEAN_NAME="PersonManagerBean";
 
+    public Collection<Person> convertPersonIdToReferences(Collection<Integer> ids);
+
     // PersonGroups
     
     public void create(PersonGroup g);

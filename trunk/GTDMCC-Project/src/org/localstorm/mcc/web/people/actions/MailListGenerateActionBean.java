@@ -6,12 +6,10 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import org.localstorm.mcc.ejb.people.MailListManager;
 import org.localstorm.mcc.ejb.people.entity.PregeneratedMailList;
-import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
 import org.localstorm.mcc.web.people.PeopleClipboard;
 import org.localstorm.mcc.web.people.RequestAttributes;
 import org.localstorm.mcc.web.people.Views;
-import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
  * @secure-by nil
@@ -27,16 +25,9 @@ public class MailListGenerateActionBean extends PeopleBaseActionBean
         
         MailListManager mlm = super.getMailListManager();
 
-        PregeneratedMailList pml = mlm.generateMailList(clip.getPersons());
+        PregeneratedMailList pml = mlm.generateMailList(clip.getPersons(), null);
 
-        if (pml.isReady()) {
-            mlm.create(pml, "Goo-goo", super.getUser());
-            clip.clearPersons();
-            SessionUtil.clear(super.getSession(), SessionKeys.MAIL_LISTS);
-            return NextDestinationUtil.getRedirection(super.getReturnPageBean());
-        } else {
-            super.getRequest().setAttribute(RequestAttributes.PREGENERATED_MAIL_LIST, pml);
-            return new ForwardResolution(Views.VIEW_RESOLVE_EMAILS);
-        }
+        super.getRequest().setAttribute(RequestAttributes.PREGENERATED_MAIL_LIST, pml);
+        return new ForwardResolution(Views.VIEW_RESOLVE_EMAILS);
     }
 }

@@ -53,6 +53,7 @@ public class MailListRenameActionBean extends MailListViewActionBean {
         mlm.update(ml);
         
         SessionUtil.clear(getSession(), SessionKeys.MAIL_LISTS);
+        SessionUtil.clear(getSession(), SessionKeys.ARCHIVE_MAIL_LISTS);
         
         RedirectResolution rr = new RedirectResolution(MailListViewActionBean.class);
         {

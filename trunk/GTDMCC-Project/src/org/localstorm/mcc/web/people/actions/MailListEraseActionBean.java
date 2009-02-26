@@ -39,6 +39,8 @@ public class MailListEraseActionBean extends PeopleBaseActionBean {
         mlm.remove(ml);
 
         SessionUtil.clear(getSession(), SessionKeys.MAIL_LISTS);
+        SessionUtil.clear(getSession(), SessionKeys.ARCHIVE_MAIL_LISTS);
+
         return new RedirectResolution(MailListsEditActionBean.class);
     }
 }
