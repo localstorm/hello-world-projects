@@ -52,6 +52,7 @@ public class PersonGroupRenameActionBean extends PersonGroupViewActionBean {
         pm.update(g);
         
         SessionUtil.clear(getSession(), SessionKeys.PERSON_GROUPS);
+        SessionUtil.clear(getSession(), SessionKeys.ARCHIVE_PERSON_GROUPS);
         
         RedirectResolution rr = new RedirectResolution(PersonGroupViewActionBean.class);
         {

@@ -1,8 +1,11 @@
 package org.localstorm.mcc.ejb.people.impl;
 
+import java.util.Arrays;
 import org.localstorm.mcc.ejb.people.entity.MailList;
 import org.localstorm.mcc.ejb.people.entity.PregeneratedMailList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -50,12 +53,17 @@ public class MailListManagerBean extends PeopleStatelessBean implements MailList
     }
 
     @Override
-    public PregeneratedMailList generateMailList(Collection<Person> persons)
+    public PregeneratedMailList generateMailList(Collection<Person> persons, Integer[] attributes)
     {
         PersonManager pm = super.getPersonManager();
         PregeneratedMailList pml = new PregeneratedMailList();
 
-        for (Person p : persons) {
+        Set<Integer> suggested = new HashSet<Integer>();
+        if (attributes!=null) {
+            suggested.addAll(Arrays.asList(attributes));
+        }
+
+        outer: for (Person p : persons) {
             Collection<Attribute> attrs = pm.getEmailAttributes(p);
             
             if (attrs.isEmpty()) {
@@ -66,6 +74,14 @@ public class MailListManagerBean extends PeopleStatelessBean implements MailList
             if (attrs.size()==1) {
                 pml.addResolvedPerson(p, attrs.iterator().next());
                 continue;
+            }
+
+            for (Attribute attr: attrs)
+            {
+                if (suggested.contains(attr.getId())) {
+                    pml.addResolvedPerson(p, attr);
+                    continue outer;
+                }
             }
 
             pml.addManyEmailPerson(p, attrs);
@@ -101,7 +117,7 @@ public class MailListManagerBean extends PeopleStatelessBean implements MailList
 
     @Override
     @SuppressWarnings("unchecked")
-    public Collection<MailList> find(User u)
+    public Collection<MailList> getMailLists(User u)
     {
         Query q = em.createNamedQuery(MailList.Queries.FIND_MLS_BY_OWNER);
         q.setParameter(MailList.Properties.OWNER, u);
@@ -111,7 +127,7 @@ public class MailListManagerBean extends PeopleStatelessBean implements MailList
 
     @Override
     @SuppressWarnings("unchecked")
-    public Collection<MailList> findArchived(User u)
+    public Collection<MailList> getArchivedMailLists(User u)
     {
         Query q = em.createNamedQuery(MailList.Queries.FIND_ARCHIVED_MLS_BY_OWNER);
         q.setParameter(MailList.Properties.OWNER, u);

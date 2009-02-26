@@ -56,12 +56,28 @@ public class LazyLoadFilter implements Filter
             SessionUtil.fill(sess, SessionKeys.PERSON_GROUPS, pgList);
         }
 
+        if ( SessionUtil.isEmpty(sess, SessionKeys.ARCHIVE_PERSON_GROUPS) ) {
+            PersonManager pm = ContextLookup.lookup(PersonManager.class,
+                                                    PersonManager.BEAN_NAME);
+
+            Collection<PersonGroup> pgList = pm.getArchivedGroups(user);
+            SessionUtil.fill(sess, SessionKeys.ARCHIVE_PERSON_GROUPS, pgList);
+        }
+
         if ( SessionUtil.isEmpty(sess, SessionKeys.MAIL_LISTS) ) {
             MailListManager mlm = ContextLookup.lookup(MailListManager.class,
                                                        MailListManager.BEAN_NAME);
 
-            Collection<MailList> mll = mlm.find(user);
+            Collection<MailList> mll = mlm.getMailLists(user);
             SessionUtil.fill(sess, SessionKeys.MAIL_LISTS, mll);
+        }
+
+        if ( SessionUtil.isEmpty(sess, SessionKeys.ARCHIVE_MAIL_LISTS) ) {
+            MailListManager mlm = ContextLookup.lookup(MailListManager.class,
+                                                       MailListManager.BEAN_NAME);
+
+            Collection<MailList> mll = mlm.getArchivedMailLists(user);
+            SessionUtil.fill(sess, SessionKeys.ARCHIVE_MAIL_LISTS, mll);
         }
         
     }

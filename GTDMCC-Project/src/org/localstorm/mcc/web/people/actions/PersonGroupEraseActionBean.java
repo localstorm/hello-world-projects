@@ -37,6 +37,7 @@ public class PersonGroupEraseActionBean extends PeopleBaseActionBean {
         pm.remove(g);
 
         SessionUtil.clear(getSession(), SessionKeys.PERSON_GROUPS);
+        SessionUtil.clear(getSession(), SessionKeys.ARCHIVE_PERSON_GROUPS);
         return new RedirectResolution(PersonGroupsEditActionBean.class);
     }
 }

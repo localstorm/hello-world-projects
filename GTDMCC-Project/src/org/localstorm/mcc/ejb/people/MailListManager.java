@@ -17,9 +17,11 @@ public interface MailListManager
 
     public MailList find(Integer mailListId);
 
-    public Collection<MailList> find(User u);
+    public PregeneratedMailList generateMailList(Collection<Person> resolvedPersons, Integer[] attributes);
 
-    public Collection<MailList> findArchived(User u);
+    public Collection<MailList> getMailLists(User u);
+
+    public Collection<MailList> getArchivedMailLists(User u);
 
     public Collection<PersonToMailList> getMailListContent(MailList ml);
 
@@ -32,8 +34,6 @@ public interface MailListManager
     public void leaveMailList(MailList ml, Person p);
 
     public void joinMailList(MailList ml, Person p, Attribute a);
-
-    public PregeneratedMailList generateMailList(Collection<Person> persons);
 
     public void tryAutoResolveBrokenEmails(MailList ml);
     

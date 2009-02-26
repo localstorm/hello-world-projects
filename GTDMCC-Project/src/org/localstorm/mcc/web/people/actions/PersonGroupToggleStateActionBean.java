@@ -39,6 +39,7 @@ public class PersonGroupToggleStateActionBean extends PeopleBaseActionBean
         pm.update(g);
         
         SessionUtil.clear(getSession(), SessionKeys.PERSON_GROUPS);
+        SessionUtil.clear(getSession(), SessionKeys.ARCHIVE_PERSON_GROUPS);
         return new RedirectResolution(PersonGroupsEditActionBean.class);
     }
 }

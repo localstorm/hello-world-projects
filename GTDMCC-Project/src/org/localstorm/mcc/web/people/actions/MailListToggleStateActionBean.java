@@ -42,6 +42,8 @@ public class MailListToggleStateActionBean extends PeopleBaseActionBean
         mlm.update(ml);
         
         SessionUtil.clear(getSession(), SessionKeys.MAIL_LISTS);
+        SessionUtil.clear(getSession(), SessionKeys.ARCHIVE_MAIL_LISTS);
+
         return new RedirectResolution(MailListsEditActionBean.class);
     }
 }
