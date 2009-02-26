@@ -4,19 +4,20 @@
 <%@ include file="/WEB-INF/jsp/includes/people/hdr.jsp" %>
 
 <h2><span>Mail List</span> view</h2>
-
+<div align="right" >(<a href="#" onclick="show('renameDiv', 'newname-id'); return false"><c:out value="${actionBean.mailList.name}"/></a>)</div>
+<div align="center">
 <div id="renameDiv" width="80%" style="display: <c:choose>
              <c:when test="${not empty actionBean.context.validationErrors}">inline</c:when>
              <c:otherwise>none</c:otherwise>
     </c:choose>;">
-        <stripes:form action="/actions/ppl/group/RenameMailList" >
+        <stripes:form action="/actions/ppl/ml/RenameMailList" >
         <stripes:errors/>
-        <%--stripes:hidden name="groupId" value="${actionBean.group.id}" />
+        <stripes:hidden name="mailListId" value="${actionBean.mailList.id}" />
         <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
             <tr>
                 <td>&nbsp;</td>
                 <td>Name: </td>
-                <td><stripes:text name="name" id="newname-id" style="width: 100%;" value="${actionBean.group.name}" /></td>
+                <td><stripes:text name="name" id="newname-id" style="width: 100%;" value="${actionBean.mailList.name}" /></td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
@@ -32,8 +33,9 @@
                 </td>
                 <td>&nbsp;</td>
             </tr>
-        </table--%>
+        </table>
         </stripes:form>
+</div>
 </div>
 <br/>
 <c:if test="${not empty actionBean.expired}">
@@ -48,7 +50,7 @@
         </c:forEach>
      <hr/>
      <div align="right">Try <a href="<c:url value="/actions/ppl/ml/AutoResolveMailListProblems">
-                        <c:param name="mailListId" value="${actionBean.mailListId}" />
+                        <c:param name="mailListId" value="${actionBean.mailList.id}" />
      </c:url>">automatic</a> or <a href="#">manual</a> problem resolution&nbsp;</div>
 </div><br/>
 </c:if>
@@ -65,7 +67,7 @@
                 <c:param name="personId" value="${p2ml.person.id}" />
                 </c:url>"><a href="<c:url value="/actions/ppl/ml/person/LeaveMailList">
                     <c:param name="personId" value="${p2ml.person.id}" />
-                    <c:param name="mailListId" value="${actionBean.mailListId}" />
+                    <c:param name="mailListId" value="${actionBean.mailList.id}" />
                 </c:url>"><img src="<c:url value="/images/trash.png"/>"/></a><c:out value="${p2ml.person.fullName}" /></a>
             &nbsp;(<a href="mailto:<c:out value="${p2ml.attributeValue}"/>"><c:out value="${p2ml.attributeValue}"/></a>)
        </span></p>
