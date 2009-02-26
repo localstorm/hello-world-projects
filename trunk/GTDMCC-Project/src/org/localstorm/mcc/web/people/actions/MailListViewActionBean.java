@@ -29,6 +29,18 @@ public class MailListViewActionBean extends PeopleBaseActionBean
 
     private Collection<Person> expired;
 
+    private MailList mailList;
+
+    public MailList getMailList()
+    {
+        return mailList;
+    }
+
+    public void setMailList(MailList mailList)
+    {
+        this.mailList = mailList;
+    }
+
     public Collection<Person> getExpired()
     {
         return expired;
@@ -60,7 +72,7 @@ public class MailListViewActionBean extends PeopleBaseActionBean
     }
 
     @DefaultHandler
-    public Resolution filling() {
+    public Resolution filling() throws Exception {
         
         MailListManager mlm = super.getMailListManager();
         MailList ml = mlm.find(this.getMailListId());
@@ -74,6 +86,7 @@ public class MailListViewActionBean extends PeopleBaseActionBean
             }
         }
 
+        this.setMailList(ml);
         this.setMailListContent(cont);
         this.setExpired(exp);
 
