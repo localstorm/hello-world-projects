@@ -1,6 +1,5 @@
 package org.localstorm.mcc.ejb.cashflow.entity;
 
-import org.localstorm.mcc.ejb.cashflow.assets.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
