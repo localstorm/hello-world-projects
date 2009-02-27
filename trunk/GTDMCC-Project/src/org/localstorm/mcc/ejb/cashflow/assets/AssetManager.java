@@ -1,6 +1,7 @@
 package org.localstorm.mcc.ejb.cashflow.assets;
 
 import java.util.Collection;
+import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 import org.localstorm.mcc.ejb.users.User;
 
 
@@ -12,14 +13,14 @@ import org.localstorm.mcc.ejb.users.User;
 public interface AssetManager
 {
     public static final String BEAN_NAME="AssetManagerBean";
-    
-    public Collection<Asset> findArchivedAssets(User user);
 
-    public Asset findAssetByValuable(ValuableObject vo);
-    
-    public Collection<Asset> findAssets(User user);
+    public Collection<Asset> getAssets(User user);
 
-    public Asset findById(int assetId);
+    public Collection<Asset> getArchivedAssets(User user);
+
+    public Asset find(ValuableObject vo) throws ObjectNotFoundException;
+
+    public Asset find(int assetId) throws ObjectNotFoundException;
 
     public void create(Asset newAsset, Cost assetCost);
 

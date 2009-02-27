@@ -52,14 +52,14 @@ public class LazyLoadFilter implements Filter
     private void fillAccessibleContexts(List<Context> ctxs, Collection<Context> actxList, HttpSession sess)
     {
         Map<Integer, Boolean> acm = new HashMap<Integer, Boolean>();
-        for (Context ctx:ctxs)
-        {
+        for (Context ctx:ctxs) {
             acm.put(ctx.getId(), Boolean.TRUE);
         }
-        for (Context ctx:actxList)
-        {
+
+        for (Context ctx:actxList) {
             acm.put(ctx.getId(), Boolean.TRUE);
         }
+        
         SessionUtil.fill(sess, GtdSessionKeys.ACCESSIBLE_CONTEXTS_MAP, acm);
     }
 
@@ -75,8 +75,8 @@ public class LazyLoadFilter implements Filter
             ContextManager cm = ContextLookup.lookup(ContextManager.class, 
                                                      ContextManager.BEAN_NAME);
             
-            Collection<Context> ctxList = cm.find(user);
-            Collection<Context> actxList = cm.findArchived(user);
+            Collection<Context> ctxList = cm.getContexts(user);
+            Collection<Context> actxList = cm.getArchived(user);
 
             List<Context> ctxs = new ArrayList<Context>(ctxList);
             

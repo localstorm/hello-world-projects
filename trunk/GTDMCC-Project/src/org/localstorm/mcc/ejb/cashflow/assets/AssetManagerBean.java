@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import org.localstorm.mcc.ejb.Constants;
+import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 import org.localstorm.mcc.ejb.users.User;
 
 /**
@@ -63,7 +64,7 @@ public class AssetManagerBean implements AssetManagerLocal
 
 
     @Override
-    public Collection<Asset> findAssets(User user) {
+    public Collection<Asset> getAssets(User user) {
         Query uq = em.createNamedQuery(Asset.Queries.FIND_BY_OWNER);
         uq.setParameter(Asset.Properties.OWNER, user);
 
@@ -73,7 +74,7 @@ public class AssetManagerBean implements AssetManagerLocal
     }
 
     @Override
-    public Collection<Asset> findArchivedAssets(User user) {
+    public Collection<Asset> getArchivedAssets(User user) {
         Query uq = em.createNamedQuery(Asset.Queries.FIND_ARCHIVED_BY_OWNER);
         uq.setParameter(Asset.Properties.OWNER, user);
 
@@ -83,16 +84,28 @@ public class AssetManagerBean implements AssetManagerLocal
     }
 
     @Override
-    public Asset findAssetByValuable(ValuableObject vo) {
+    public Asset find(ValuableObject vo) throws ObjectNotFoundException {
         Query uq = em.createNamedQuery(Asset.Queries.FIND_BY_VALUABLE);
         uq.setParameter(Asset.Properties.VALUABLE, vo);
 
-        return (Asset) uq.getSingleResult();
+        Asset a = (Asset) uq.getSingleResult();
+
+        if (a == null) {
+            throw new ObjectNotFoundException();
+        }
+
+        return a;
     }
 
     @Override
-    public Asset findById(int assetId) {
-        return em.find(Asset.class, assetId);
+    public Asset find(int assetId) throws ObjectNotFoundException {
+        Asset a = em.find(Asset.class, assetId);
+
+        if (a == null) {
+            throw new ObjectNotFoundException();
+        }
+
+        return a;
     }
 
     @PersistenceContext(unitName=Constants.DEFAULT_PU)

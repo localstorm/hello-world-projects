@@ -25,34 +25,40 @@ public class AssetCostChartServlet extends HttpServlet
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession sess = req.getSession(true);
-        User user        = (User) SessionUtil.getValue(sess, CashflowSessionKeys.USER);
+        try {
 
-        String said      = req.getParameter(ASSERT_ID_PARAMETER);
-        String period    = req.getParameter(PERIOD);
-        String name      = req.getParameter(NAME);
-        
-        Integer daysOffset = null;
+            HttpSession sess = req.getSession(true);
+            User user        = (User) SessionUtil.getValue(sess, CashflowSessionKeys.USER);
 
-        if (period!=null && period.length()>0) {
-            daysOffset = Integer.parseInt(period);
+            String said      = req.getParameter(ASSERT_ID_PARAMETER);
+            String period    = req.getParameter(PERIOD);
+            String name      = req.getParameter(NAME);
+
+            Integer daysOffset = null;
+
+            if (period!=null && period.length()>0) {
+                daysOffset = Integer.parseInt(period);
+            }
+
+            if (user==null || said==null) {
+                resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+                return;
+            }
+
+            Integer assetId  = new Integer(said);
+            JFreeChart chart = AssetCostHistoryChartGenerator.getChart(user, assetId, daysOffset, name);
+
+            if ( chart==null ) {
+                resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+                return;
+            }
+
+            resp.setContentType(Constants.PNG_CONTENT_TYPE);
+            ChartUtilities.writeChartAsPNG(resp.getOutputStream(), chart, 640, 480);
+
+        } catch(Exception e) {
+            throw new ServletException(e);
         }
-
-        if (user==null || said==null) {
-            resp.sendError(HttpServletResponse.SC_FORBIDDEN);
-            return;
-        }
-
-        Integer assetId  = new Integer(said);
-        JFreeChart chart = AssetCostHistoryChartGenerator.getChart(user, assetId, daysOffset, name);
-
-        if ( chart==null ) {
-            resp.sendError(HttpServletResponse.SC_FORBIDDEN);
-            return;
-        }
-
-        resp.setContentType(Constants.PNG_CONTENT_TYPE);
-        ChartUtilities.writeChartAsPNG(resp.getOutputStream(), chart, 640, 480);
     }
 
     @Override

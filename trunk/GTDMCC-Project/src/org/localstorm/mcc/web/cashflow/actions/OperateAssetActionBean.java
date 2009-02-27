@@ -74,7 +74,7 @@ public class OperateAssetActionBean extends AssetViewActionBean {
 
         AssetManager     am = super.getAssetManager();
         OperationManager om = super.getOperationManager();
-        Asset         asset = am.findById(super.getAssetId());
+        Asset         asset = am.find(super.getAssetId());
         ValuableObject   vo = asset.getValuable();
 
         MathContext rounding = MoneyMathContext.ROUNDING;

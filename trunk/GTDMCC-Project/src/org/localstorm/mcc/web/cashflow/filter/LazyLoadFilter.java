@@ -2,6 +2,8 @@ package org.localstorm.mcc.web.cashflow.filter;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -56,19 +58,52 @@ public class LazyLoadFilter implements Filter
             OperationManager om = ContextLookup.lookup(OperationManager.class,
                                                        OperationManager.BEAN_NAME);
 
-            Collection<Asset> assets = am.findAssets(user);
+            Collection<Asset> assets = am.getAssets(user);
             assets = WrapUtil.wrapAssets(assets, om);
+            
             SessionUtil.fill(sess, CashflowSessionKeys.ASSETS, assets);
+
+            this.fillAccessibleAssets(assets, am.getArchivedAssets(user), sess);
         }
 
         if ( SessionUtil.isEmpty(sess, CashflowSessionKeys.TARGETS) ) {
             TargetManager tm = ContextLookup.lookup(TargetManager.class,
                                                     TargetManager.BEAN_NAME);
 
-            Collection<Target> targets  =tm.findTargets(user);
+            Collection<Target> targets = tm.find(user);
             
             SessionUtil.fill(sess, CashflowSessionKeys.TARGETS, targets);
+
+            this.fillAccessibleTargets(targets, tm.findArchived(user), sess);
         }
+    }
+
+    private void fillAccessibleAssets(Collection<Asset> assets, Collection<Asset> archivedAssets, HttpSession sess)
+    {
+        Map<Integer, Boolean> acm = new HashMap<Integer, Boolean>();
+        for (Asset asset : assets) {
+            acm.put(asset.getId(), Boolean.TRUE);
+        }
+        
+        for (Asset asset : archivedAssets) {
+            acm.put(asset.getId(), Boolean.TRUE);
+        }
+
+        SessionUtil.fill(sess, CashflowSessionKeys.ACCESSIBLE_ASSETS_MAP, acm);
+    }
+
+    private void fillAccessibleTargets(Collection<Target> targets, Collection<Target> archivedTargets, HttpSession sess)
+    {
+        Map<Integer, Boolean> acm = new HashMap<Integer, Boolean>();
+        for (Target t : targets) {
+            acm.put(t.getId(), Boolean.TRUE);
+        }
+        
+        for (Target t : archivedTargets) {
+            acm.put(t.getId(), Boolean.TRUE);
+        }
+
+        SessionUtil.fill(sess, CashflowSessionKeys.ACCESSIBLE_TARGETS_MAP, acm);
     }
     
 

@@ -39,7 +39,7 @@ public class AssetsEditActionBean extends CashflowBaseActionBean {
         AssetManager     am = super.getAssetManager();
         User user = super.getUser();
 
-        this.setArchiveAssets(WrapUtil.wrapAssets(am.findArchivedAssets(user), om));
+        this.setArchiveAssets(WrapUtil.wrapAssets(am.getArchivedAssets(user), om));
         
         return new ForwardResolution(Views.EDIT_ASSETS);
     }

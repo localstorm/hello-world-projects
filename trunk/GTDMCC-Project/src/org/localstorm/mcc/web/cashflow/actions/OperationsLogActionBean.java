@@ -59,7 +59,7 @@ public class OperationsLogActionBean extends CashflowBaseActionBean {
         AssetManager     am = super.getAssetManager();
         OperationManager om = super.getOperationManager();
 
-        Asset           ass = am.findById(this.getAssetId());
+        Asset           ass = am.find(this.getAssetId());
         ValuableObject   vo = ass.getValuable();
 
         Collection<Operation> ops = om.getOperations(vo);

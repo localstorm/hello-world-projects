@@ -63,7 +63,7 @@ public class TargetUpdateActionBean extends TargetViewActionBean {
         AssetManager     am = super.getAssetManager();
         OperationManager om = super.getOperationManager();
         TargetManager tm = super.getTargetManager();
-        Target target    = tm.findById(this.getTargetId());
+        Target target    = tm.find(this.getTargetId());
 
         ValuableObject vo = target.getValuable();
 

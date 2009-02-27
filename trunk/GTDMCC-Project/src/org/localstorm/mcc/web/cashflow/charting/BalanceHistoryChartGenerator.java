@@ -42,11 +42,11 @@ public class BalanceHistoryChartGenerator {
         HistoricalValuesManager hvm = ContextLookup.lookup(HistoricalValuesManager.class,
                                                            HistoricalValuesManager.BEAN_NAME);
         
-        Collection<HistoricalValue> hvs = hvm.findByValueTag(ValueType.BALANCE_CHECKPOINT,
+        Collection<HistoricalValue> hvs = hvm.getHistory(ValueType.BALANCE_CHECKPOINT,
                                                              user,
                                                              cal.getTime());
 
-        HistoricalValue last  = hvm.findLastByValueTag(ValueType.BALANCE_CHECKPOINT,
+        HistoricalValue last  = hvm.getLastHistoricalValue(ValueType.BALANCE_CHECKPOINT,
                                                        BigDecimal.ZERO,
                                                        user);
 

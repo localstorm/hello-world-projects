@@ -36,8 +36,8 @@ public class OperationRevokeActionBean extends CashflowBaseActionBean {
         AssetManager     am = super.getAssetManager();
         OperationManager om = super.getOperationManager();
 
-        Operation op = om.findOperationById(this.getOperationId());
-        Asset asset  = am.findAssetByValuable(op.getCost().getValuable());
+        Operation op = om.findOperation(this.getOperationId());
+        Asset asset  = am.find(op.getCost().getValuable());
 
         om.remove(op);
 

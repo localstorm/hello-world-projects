@@ -30,7 +30,7 @@ public class ContextsEditActionBean extends GtdBaseActionBean {
     public Resolution filling() {
         super.clearCurrent();
         
-        result = getContextManager().findArchived(super.getUser());
+        result = getContextManager().getArchived(super.getUser());
         return new ForwardResolution(Views.EDIT_CTXS);
     }
     

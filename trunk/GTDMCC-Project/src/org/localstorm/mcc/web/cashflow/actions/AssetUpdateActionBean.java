@@ -104,7 +104,7 @@ public class AssetUpdateActionBean extends AssetViewActionBean {
 
         AssetManager     am = super.getAssetManager();
         OperationManager om = super.getOperationManager();
-        Asset         asset = am.findById(this.getAssetId());
+        Asset         asset = am.find(this.getAssetId());
         ValuableObject vo = asset.getValuable();
 
         
