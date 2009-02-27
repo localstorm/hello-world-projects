@@ -1,6 +1,6 @@
 package org.localstorm.mcc.web.gtd.actions;
 
-import org.localstorm.mcc.ejb.gtd.contexts.Context;
+import org.localstorm.mcc.ejb.gtd.entity.Context;
 import net.sourceforge.stripes.action.After;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
@@ -8,7 +8,7 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.gtd.lists.GTDList;
+import org.localstorm.mcc.ejb.gtd.entity.GTDList;
 
 /**
  * @author Alexey Kuznetsov

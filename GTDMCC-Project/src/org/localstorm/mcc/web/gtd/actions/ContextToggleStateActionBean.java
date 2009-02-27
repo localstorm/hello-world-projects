@@ -1,12 +1,14 @@
 package org.localstorm.mcc.web.gtd.actions;
 
+import org.localstorm.mcc.ejb.gtd.ContextManager;
+import org.localstorm.mcc.ejb.gtd.entity.Context;
 import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.gtd.contexts.*;
+import org.localstorm.mcc.ejb.gtd.impl.*;
 import org.localstorm.mcc.web.gtd.GtdSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 

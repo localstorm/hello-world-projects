@@ -7,9 +7,9 @@ import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.search.HitCollector;
 import org.apache.lucene.search.IndexSearcher;
-import org.localstorm.mcc.ejb.gtd.files.FileAttachment;
-import org.localstorm.mcc.ejb.gtd.notes.Note;
-import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
+import org.localstorm.mcc.ejb.gtd.entity.FileAttachment;
+import org.localstorm.mcc.ejb.gtd.entity.Note;
+import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
 import org.localstorm.mcc.web.gtd.actions.wrap.RoSearchResult;
 
 /**

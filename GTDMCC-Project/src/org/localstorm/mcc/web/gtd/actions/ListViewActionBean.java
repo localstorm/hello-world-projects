@@ -8,10 +8,10 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 
-import org.localstorm.mcc.ejb.gtd.flight.FlightPlanManager;
-import org.localstorm.mcc.ejb.gtd.lists.GTDList;
-import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
-import org.localstorm.mcc.ejb.gtd.tasks.Task;
+import org.localstorm.mcc.ejb.gtd.FlightPlanManager;
+import org.localstorm.mcc.ejb.gtd.entity.GTDList;
+import org.localstorm.mcc.ejb.gtd.TaskManager;
+import org.localstorm.mcc.ejb.gtd.entity.Task;
 import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.mcc.web.gtd.actions.wrap.TaskWrapper;

@@ -1,7 +1,7 @@
 package org.localstorm.mcc.web.gtd.actions;
 
-import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
-import org.localstorm.mcc.ejb.gtd.tasks.Task;
+import org.localstorm.mcc.ejb.gtd.TaskManager;
+import org.localstorm.mcc.ejb.gtd.entity.Task;
 import net.sourceforge.stripes.action.After;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
@@ -9,10 +9,10 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.gtd.flight.FlightPlan;
-import org.localstorm.mcc.ejb.gtd.flight.FlightPlanManager;
-import org.localstorm.mcc.ejb.gtd.lists.GTDList;
-import org.localstorm.mcc.ejb.gtd.lists.ListManager;
+import org.localstorm.mcc.ejb.gtd.entity.FlightPlan;
+import org.localstorm.mcc.ejb.gtd.FlightPlanManager;
+import org.localstorm.mcc.ejb.gtd.entity.GTDList;
+import org.localstorm.mcc.ejb.gtd.ListManager;
 
 /**
  * @author Alexey Kuznetsov

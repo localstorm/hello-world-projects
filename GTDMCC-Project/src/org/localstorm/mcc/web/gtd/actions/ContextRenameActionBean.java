@@ -8,8 +8,8 @@ import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
 
-import org.localstorm.mcc.ejb.gtd.contexts.Context;
-import org.localstorm.mcc.ejb.gtd.contexts.ContextManager;
+import org.localstorm.mcc.ejb.gtd.entity.Context;
+import org.localstorm.mcc.ejb.gtd.ContextManager;
 import org.localstorm.mcc.web.gtd.GtdSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 

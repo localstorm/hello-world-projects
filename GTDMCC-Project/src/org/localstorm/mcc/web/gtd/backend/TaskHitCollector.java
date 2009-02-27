@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.TreeMap;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
-import org.localstorm.mcc.ejb.gtd.tasks.Task;
+import org.localstorm.mcc.ejb.gtd.entity.Task;
 import org.apache.lucene.search.HitCollector;
 import org.apache.lucene.search.IndexSearcher;
 

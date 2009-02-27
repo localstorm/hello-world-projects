@@ -1,7 +1,7 @@
 package org.localstorm.mcc.web.gtd.actions.wrap;
 
 import java.util.Date;
-import org.localstorm.mcc.ejb.gtd.notes.Note;
+import org.localstorm.mcc.ejb.gtd.entity.Note;
 import org.localstorm.mcc.web.util.EscapeUtil;
 
 /**

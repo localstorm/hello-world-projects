@@ -3,10 +3,10 @@ package org.localstorm.mcc.web.gtd;
 import java.util.Collection;
 import java.util.Map;
 import java.util.TreeMap;
-import org.localstorm.mcc.ejb.gtd.files.FileAttachment;
-import org.localstorm.mcc.ejb.gtd.lists.GTDList;
-import org.localstorm.mcc.ejb.gtd.notes.Note;
-import org.localstorm.mcc.ejb.gtd.tasks.Task;
+import org.localstorm.mcc.ejb.gtd.entity.FileAttachment;
+import org.localstorm.mcc.ejb.gtd.entity.GTDList;
+import org.localstorm.mcc.ejb.gtd.entity.Note;
+import org.localstorm.mcc.ejb.gtd.entity.Task;
 
 /**
  * @author Alexey Kuznetsov

@@ -4,9 +4,9 @@ import javax.servlet.http.HttpServletRequest;
 import net.sourceforge.stripes.action.ActionBeanContext;
 import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.gtd.dao.DashboardReportBean;
-import org.localstorm.mcc.ejb.gtd.reports.GtdReporter;
-import org.localstorm.mcc.ejb.gtd.tasks.HintManager;
-import org.localstorm.mcc.ejb.gtd.tasks.dao.FiredHintsReportBean;
+import org.localstorm.mcc.ejb.gtd.GtdReporter;
+import org.localstorm.mcc.ejb.gtd.HintManager;
+import org.localstorm.mcc.ejb.gtd.dao.FiredHintsReportBean;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.util.SessionUtil;
 
