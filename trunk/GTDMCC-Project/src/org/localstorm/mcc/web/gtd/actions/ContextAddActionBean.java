@@ -10,7 +10,7 @@ import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.gtd.contexts.Context;
 import org.localstorm.mcc.ejb.users.*;
-import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.gtd.GtdSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 
@@ -49,7 +49,7 @@ public class ContextAddActionBean extends ContextsEditActionBean {
 
         super.getContextManager().create(ctx);
 
-        SessionUtil.clear(super.getSession(), SessionKeys.CONTEXTS);
+        SessionUtil.clear(super.getSession(), GtdSessionKeys.CONTEXTS);
 
         return new RedirectResolution( ContextsEditActionBean.class );
     }

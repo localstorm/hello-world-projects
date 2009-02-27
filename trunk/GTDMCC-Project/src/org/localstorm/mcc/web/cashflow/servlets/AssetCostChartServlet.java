@@ -10,7 +10,7 @@ import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.Constants;
-import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.cashflow.CashflowSessionKeys;
 import org.localstorm.mcc.web.cashflow.charting.AssetCostHistoryChartGenerator;
 import org.localstorm.mcc.web.util.SessionUtil;
 
@@ -26,7 +26,7 @@ public class AssetCostChartServlet extends HttpServlet
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession sess = req.getSession(true);
-        User user        = (User) SessionUtil.getValue(sess, SessionKeys.USER);
+        User user        = (User) SessionUtil.getValue(sess, CashflowSessionKeys.USER);
 
         String said      = req.getParameter(ASSERT_ID_PARAMETER);
         String period    = req.getParameter(PERIOD);

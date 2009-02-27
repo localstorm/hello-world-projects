@@ -10,7 +10,7 @@ import net.sourceforge.stripes.validation.Validate;
 
 import org.localstorm.mcc.ejb.people.MailListManager;
 import org.localstorm.mcc.ejb.people.entity.MailList;
-import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.people.PeopleSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
@@ -52,8 +52,8 @@ public class MailListRenameActionBean extends MailListViewActionBean {
         ml.setName(this.getName());
         mlm.update(ml);
         
-        SessionUtil.clear(getSession(), SessionKeys.MAIL_LISTS);
-        SessionUtil.clear(getSession(), SessionKeys.ARCHIVE_MAIL_LISTS);
+        SessionUtil.clear(getSession(), PeopleSessionKeys.MAIL_LISTS);
+        SessionUtil.clear(getSession(), PeopleSessionKeys.ARCHIVE_MAIL_LISTS);
         
         RedirectResolution rr = new RedirectResolution(MailListViewActionBean.class);
         {

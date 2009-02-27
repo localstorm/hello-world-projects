@@ -8,8 +8,8 @@ import net.sourceforge.stripes.validation.Validate;
 
 import org.localstorm.mcc.ejb.cashflow.targets.Target;
 import org.localstorm.mcc.ejb.cashflow.targets.TargetManager;
-import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
+import org.localstorm.mcc.web.cashflow.CashflowSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
@@ -42,7 +42,7 @@ public class TargetToggleStateActionBean extends CashflowBaseActionBean
         
         tm.update(target);
         
-        SessionUtil.clear(getSession(), SessionKeys.TARGETS);
+        SessionUtil.clear(getSession(), CashflowSessionKeys.TARGETS);
         return new RedirectResolution(TargetsEditActionBean.class);
     }
 }

@@ -16,7 +16,7 @@ import org.localstorm.mcc.ejb.cashflow.assets.Cost;
 import org.localstorm.mcc.ejb.cashflow.MoneyMathContext;
 import org.localstorm.mcc.ejb.cashflow.assets.ValuableObject;
 import org.localstorm.mcc.ejb.users.*;
-import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.cashflow.CashflowSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 
@@ -112,7 +112,7 @@ public class AssetAddActionBean extends AssetsEditActionBean {
 
             super.getAssetManager().create(asset, cost);
             
-            SessionUtil.clear(super.getSession(), SessionKeys.ASSETS);
+            SessionUtil.clear(super.getSession(), CashflowSessionKeys.ASSETS);
             
         } catch(Exception e) 
         {

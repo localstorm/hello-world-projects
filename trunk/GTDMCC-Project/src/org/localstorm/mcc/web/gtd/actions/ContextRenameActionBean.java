@@ -10,7 +10,7 @@ import net.sourceforge.stripes.validation.Validate;
 
 import org.localstorm.mcc.ejb.gtd.contexts.Context;
 import org.localstorm.mcc.ejb.gtd.contexts.ContextManager;
-import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.gtd.GtdSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
@@ -49,7 +49,7 @@ public class ContextRenameActionBean extends ContextViewActionBean {
         ctx.setName(this.getName());
         cm.update(ctx);
         
-        SessionUtil.clear(getSession(), SessionKeys.CONTEXTS);
+        SessionUtil.clear(getSession(), GtdSessionKeys.CONTEXTS);
         
         RedirectResolution rr = new RedirectResolution(ContextViewActionBean.class);
         {

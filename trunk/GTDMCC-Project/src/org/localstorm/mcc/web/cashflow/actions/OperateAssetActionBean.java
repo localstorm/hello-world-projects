@@ -16,7 +16,7 @@ import org.localstorm.mcc.ejb.cashflow.MoneyMathContext;
 import org.localstorm.mcc.ejb.cashflow.operations.OperationType;
 import org.localstorm.mcc.ejb.cashflow.assets.ValuableObject;
 import org.localstorm.mcc.ejb.cashflow.operations.OperationManager;
-import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.cashflow.CashflowSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
@@ -96,7 +96,7 @@ public class OperateAssetActionBean extends AssetViewActionBean {
                 throw new RuntimeException("Unexpected operation: "+this.getOperationName());
         }
 
-        SessionUtil.clear(getSession(), SessionKeys.ASSETS);
+        SessionUtil.clear(getSession(), CashflowSessionKeys.ASSETS);
         
         RedirectResolution rr = new RedirectResolution(AssetViewActionBean.class);
         {

@@ -16,7 +16,7 @@ import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.SecurityRuntimeException;
-import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.gtd.GtdSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
@@ -33,7 +33,7 @@ class SecurityUtil
         {
             log.info("Checking access to context=" + contextId + " for user=" + user.getLogin());
             Map<Integer, Boolean> acm = (Map<Integer, Boolean>) SessionUtil.getValue(sess,
-                                                                                     SessionKeys.ACCESSIBLE_CONTEXTS_MAP);
+                                                                                     GtdSessionKeys.ACCESSIBLE_CONTEXTS_MAP);
             if (contextId==-1 || acm.containsKey(contextId)) {
                 return;
             }

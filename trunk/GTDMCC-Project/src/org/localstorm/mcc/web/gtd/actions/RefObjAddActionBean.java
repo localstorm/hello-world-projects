@@ -9,7 +9,7 @@ import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
-import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.gtd.GtdSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 
@@ -57,7 +57,7 @@ public class RefObjAddActionBean extends RefObjEditActionBean
         ReferencedObject ro = new ReferencedObject(name, ctx);
         super.getRefObjectManager().create(ro);
         
-        SessionUtil.clear(this.getSession(), SessionKeys.REFERENCE_OBJECTS);
+        SessionUtil.clear(this.getSession(), GtdSessionKeys.REFERENCE_OBJECTS);
         return new RedirectResolution( RefObjEditActionBean.class );
     }
     

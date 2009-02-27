@@ -36,7 +36,7 @@ public class AuthServlet extends HttpServlet
         HttpSession sess = req.getSession(true);
 
         if (u!=null) {
-            sess.setAttribute(SessionKeys.USER, u);
+            sess.setAttribute(CommonSessionKeys.USER, u);
             res.sendRedirect(Views.DASH_REDIRECT);
         } else {
             req.getRequestDispatcher(Views.LOGIN).forward(req, res);

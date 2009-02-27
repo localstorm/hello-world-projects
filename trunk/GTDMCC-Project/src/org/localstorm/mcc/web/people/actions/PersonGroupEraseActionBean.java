@@ -7,7 +7,7 @@ import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.people.entity.PersonGroup;
 import org.localstorm.mcc.ejb.people.PersonManager;
-import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.people.PeopleSessionKeys;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
 import org.localstorm.mcc.web.util.SessionUtil;
 
@@ -36,8 +36,8 @@ public class PersonGroupEraseActionBean extends PeopleBaseActionBean {
         PersonGroup    g = pm.findGroup(this.getGroupId());
         pm.remove(g);
 
-        SessionUtil.clear(getSession(), SessionKeys.PERSON_GROUPS);
-        SessionUtil.clear(getSession(), SessionKeys.ARCHIVE_PERSON_GROUPS);
+        SessionUtil.clear(getSession(), PeopleSessionKeys.PERSON_GROUPS);
+        SessionUtil.clear(getSession(), PeopleSessionKeys.ARCHIVE_PERSON_GROUPS);
         return new RedirectResolution(PersonGroupsEditActionBean.class);
     }
 }

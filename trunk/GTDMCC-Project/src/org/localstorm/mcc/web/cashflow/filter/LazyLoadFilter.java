@@ -13,7 +13,7 @@ import org.localstorm.mcc.ejb.cashflow.operations.OperationManager;
 import org.localstorm.mcc.ejb.cashflow.targets.Target;
 import org.localstorm.mcc.ejb.cashflow.targets.TargetManager;
 import org.localstorm.mcc.ejb.users.User;
-import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.cashflow.CashflowSessionKeys;
 import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
 import org.localstorm.mcc.web.util.SessionUtil;
 
@@ -48,9 +48,9 @@ public class LazyLoadFilter implements Filter
 
     private void performLazyLoad(HttpServletRequest req, HttpServletResponse res) {
         HttpSession sess = req.getSession(true);
-        User user = (User) sess.getAttribute(SessionKeys.USER);
+        User user = (User) sess.getAttribute(CashflowSessionKeys.USER);
         
-        if ( SessionUtil.isEmpty(sess, SessionKeys.ASSETS) ) {
+        if ( SessionUtil.isEmpty(sess, CashflowSessionKeys.ASSETS) ) {
             AssetManager am = ContextLookup.lookup(AssetManager.class,
                                                    AssetManager.BEAN_NAME);
             OperationManager om = ContextLookup.lookup(OperationManager.class,
@@ -58,16 +58,16 @@ public class LazyLoadFilter implements Filter
 
             Collection<Asset> assets = am.findAssets(user);
             assets = WrapUtil.wrapAssets(assets, om);
-            SessionUtil.fill(sess, SessionKeys.ASSETS, assets);
+            SessionUtil.fill(sess, CashflowSessionKeys.ASSETS, assets);
         }
 
-        if ( SessionUtil.isEmpty(sess, SessionKeys.TARGETS) ) {
+        if ( SessionUtil.isEmpty(sess, CashflowSessionKeys.TARGETS) ) {
             TargetManager tm = ContextLookup.lookup(TargetManager.class,
                                                     TargetManager.BEAN_NAME);
 
             Collection<Target> targets  =tm.findTargets(user);
             
-            SessionUtil.fill(sess, SessionKeys.TARGETS, targets);
+            SessionUtil.fill(sess, CashflowSessionKeys.TARGETS, targets);
         }
     }
     

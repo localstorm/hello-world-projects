@@ -7,7 +7,7 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.gtd.contexts.*;
-import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.gtd.GtdSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
@@ -35,8 +35,8 @@ public class ContextToggleStateActionBean extends GtdBaseActionBean
         ctx.setArchived( !ctx.isArchived() );
         cm.update(ctx);
         
-        SessionUtil.clear(getSession(), SessionKeys.CONTEXTS);
-        SessionUtil.clear(getSession(), SessionKeys.REFERENCE_OBJECTS);
+        SessionUtil.clear(getSession(), GtdSessionKeys.CONTEXTS);
+        SessionUtil.clear(getSession(), GtdSessionKeys.REFERENCE_OBJECTS);
         return new RedirectResolution(ContextsEditActionBean.class);
     }
 }

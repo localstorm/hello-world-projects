@@ -7,8 +7,8 @@ import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.people.MailListManager;
 import org.localstorm.mcc.ejb.people.entity.MailList;
-import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
+import org.localstorm.mcc.web.people.PeopleSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
@@ -38,8 +38,8 @@ public class MailListEraseActionBean extends PeopleBaseActionBean {
         MailList         ml = mlm.find(this.getMailListId());
         mlm.remove(ml);
 
-        SessionUtil.clear(getSession(), SessionKeys.MAIL_LISTS);
-        SessionUtil.clear(getSession(), SessionKeys.ARCHIVE_MAIL_LISTS);
+        SessionUtil.clear(getSession(), PeopleSessionKeys.MAIL_LISTS);
+        SessionUtil.clear(getSession(), PeopleSessionKeys.ARCHIVE_MAIL_LISTS);
 
         return new RedirectResolution(MailListsEditActionBean.class);
     }
