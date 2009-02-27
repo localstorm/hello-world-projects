@@ -49,11 +49,11 @@ public class NetWealthHistoryChartGenerator {
         HistoricalValuesManager hvm = ContextLookup.lookup(HistoricalValuesManager.class,
                                                            HistoricalValuesManager.BEAN_NAME);
         
-        Collection<HistoricalValue> hvs = hvm.findByValueTag(ValueType.NET_WEALTH_CHECKPOINT,
+        Collection<HistoricalValue> hvs = hvm.getHistory(ValueType.NET_WEALTH_CHECKPOINT,
                                                              user,
                                                              cal.getTime());
 
-        HistoricalValue last  = hvm.findLastByValueTag(ValueType.NET_WEALTH_CHECKPOINT, 
+        HistoricalValue last  = hvm.getLastHistoricalValue(ValueType.NET_WEALTH_CHECKPOINT,
                                                        BigDecimal.ZERO,
                                                        user);
 
@@ -108,7 +108,7 @@ public class NetWealthHistoryChartGenerator {
             TargetManager tm = ContextLookup.lookup(TargetManager.class,
                                                     TargetManager.BEAN_NAME);
 
-            Collection<Target> tgts = tm.findTargets(user);
+            Collection<Target> tgts = tm.find(user);
             for (Target tgt: tgts)
             {
                 TargetWrapper tgtw = (TargetWrapper) WrapUtil.wrapTarget(tgt, om);

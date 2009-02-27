@@ -2,6 +2,7 @@ package org.localstorm.mcc.ejb.cashflow.targets;
 
 import org.localstorm.mcc.ejb.cashflow.assets.*;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -41,16 +42,24 @@ public class TargetManagerBean implements TargetManagerLocal
     }
 
     @Override
-    public Collection<Target> findTargets(User user) {
+    @SuppressWarnings("unchecked")
+    public Collection<Target> find(User user) {
         Query uq = em.createNamedQuery(Target.Queries.FIND_BY_OWNER);
         uq.setParameter(Asset.Properties.OWNER, user);
-
+        
         List<Target> list = uq.getResultList();
         return list;
     }
 
     @Override
-    public Target findById(int targetId) throws ObjectNotFoundException {
+    @SuppressWarnings("unchecked")
+    public Collection<Target> findArchived(User user)
+    {
+        return Collections.EMPTY_LIST;
+    }
+
+    @Override
+    public Target find(int targetId) throws ObjectNotFoundException {
         Target t = em.find(Target.class, targetId);
         if (t==null)
         {

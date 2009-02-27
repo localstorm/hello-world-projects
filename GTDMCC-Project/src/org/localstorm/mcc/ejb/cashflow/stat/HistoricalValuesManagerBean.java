@@ -22,7 +22,7 @@ public class HistoricalValuesManagerBean implements HistoricalValuesManagerLocal
 {
 
     @Override
-    public HistoricalValue findLastByValueTag(ValueType vt, BigDecimal defaultValue, User user) {
+    public HistoricalValue getLastHistoricalValue(ValueType vt, BigDecimal defaultValue, User user) {
         try
         {
             Calendar cal = Calendar.getInstance();
@@ -52,7 +52,7 @@ public class HistoricalValuesManagerBean implements HistoricalValuesManagerLocal
 
 
     @Override
-    public Collection<HistoricalValue> findByValueTag(ValueType valueTag, 
+    public Collection<HistoricalValue> getHistory(ValueType valueTag,
                                                       User user,
                                                       Date minDate) {
         Query s1 = em.createNamedQuery(HistoricalValue.Queries.FIND_BY_VALUE_TAG);
@@ -64,7 +64,7 @@ public class HistoricalValuesManagerBean implements HistoricalValuesManagerLocal
     }
 
     @Override
-    public Collection<HistoricalValue> findByValueTagAndObjectId(ValueType valueTag,
+    public Collection<HistoricalValue> getHistory(ValueType valueTag,
                                                                  Integer objectId,
                                                                  User user,
                                                                  Date minDate) {

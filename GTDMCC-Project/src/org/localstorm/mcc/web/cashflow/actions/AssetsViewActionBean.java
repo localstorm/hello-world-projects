@@ -57,7 +57,7 @@ public class AssetsViewActionBean extends CashflowBaseActionBean {
         User           user = super.getUser();
         
        
-        this.assets = am.findAssets(user);
+        this.assets = am.getAssets(user);
         this.assets = WrapUtil.wrapAssets(assets, om);
 
         this.netWealth = BigDecimal.ZERO;
@@ -88,8 +88,8 @@ public class AssetsViewActionBean extends CashflowBaseActionBean {
         ValueType twc  = ValueType.NET_WEALTH_CHECKPOINT;
         ValueType twc2 = ValueType.BALANCE_CHECKPOINT;
 
-        HistoricalValue hv  = hvm.findLastByValueTag(twc, BigDecimal.ZERO, user);
-        HistoricalValue hv2 = hvm.findLastByValueTag(twc2, BigDecimal.ZERO, user);
+        HistoricalValue hv  = hvm.getLastHistoricalValue(twc, BigDecimal.ZERO, user);
+        HistoricalValue hv2 = hvm.getLastHistoricalValue(twc2, BigDecimal.ZERO, user);
 
         return !hv.getVal().equals(netWealth) ||
                !hv2.getVal().equals(balance);

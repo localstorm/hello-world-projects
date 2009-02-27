@@ -54,7 +54,7 @@ public class AssetsStructureChartGenerator {
         OperationManager om = ContextLookup.lookup(OperationManager.class, OperationManager.BEAN_NAME);
         AssetManager     am = ContextLookup.lookup(AssetManager.class, AssetManager.BEAN_NAME);
         
-        Collection<Asset> assets = am.findAssets(user);
+        Collection<Asset> assets = am.getAssets(user);
         
         assets = WrapUtil.wrapAssets(assets, om);
 

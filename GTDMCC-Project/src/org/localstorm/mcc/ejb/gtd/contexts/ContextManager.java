@@ -16,7 +16,7 @@ public interface ContextManager extends BaseManager<Context>
     public static final String BEAN_NAME="ContextManagerBean";
     
     /* Doesn't return archived contexts */
-    public Collection<Context> find(User u);
+    public Collection<Context> getContexts(User u);
 
-    public List<Context> findArchived(User u);
+    public List<Context> getArchived(User u);
 }

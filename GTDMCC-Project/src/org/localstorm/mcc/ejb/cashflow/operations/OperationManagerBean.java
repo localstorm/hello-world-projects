@@ -11,6 +11,7 @@ import javax.persistence.Query;
 import org.localstorm.mcc.ejb.Constants;
 import org.localstorm.mcc.ejb.cashflow.assets.Cost;
 import org.localstorm.mcc.ejb.cashflow.assets.ValuableObject;
+import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 
 /**
  *
@@ -62,6 +63,7 @@ public class OperationManagerBean implements OperationManagerLocal
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<Cost> getCostHistory(ValuableObject vo, Date minDate) {
         Query uq = em.createNamedQuery(Cost.Queries.FIND_COSTS_BY_VO_DESC);
         uq.setParameter(Cost.Properties.VALUABLE, vo);
@@ -105,7 +107,8 @@ public class OperationManagerBean implements OperationManagerLocal
         return true;
     }
 
-   @Override
+    @Override
+    @SuppressWarnings("unchecked")
     public Collection<Operation> getOperations(ValuableObject vo) {
         Query uq = em.createNamedQuery(Operation.Queries.FIND_BY_VO_DESC);
         uq.setParameter(Cost.Properties.VALUABLE, vo);
@@ -162,8 +165,14 @@ public class OperationManagerBean implements OperationManagerLocal
     }
 
     @Override
-    public Operation findOperationById(Integer operationId) {
-        return (Operation) em.find(Operation.class, operationId);
+    public Operation findOperation(Integer operationId) throws ObjectNotFoundException {
+        Operation o = em.find(Operation.class, operationId);
+
+        if (o==null) {
+            throw new ObjectNotFoundException();
+        }
+
+        return o;
     }
 
     private BigDecimal nvl(BigDecimal bigDecimal) {
@@ -174,8 +183,14 @@ public class OperationManagerBean implements OperationManagerLocal
     }
 
     @Override
-    public ValuableObject findValuableById(Integer valuableId) {
-        return (ValuableObject) em.find(ValuableObject.class, valuableId);
+    public ValuableObject findValuable(Integer valuableId) throws ObjectNotFoundException {
+        ValuableObject vo = em.find(ValuableObject.class, valuableId);
+
+        if (vo==null) {
+            throw new ObjectNotFoundException();
+        }
+
+        return vo;
     }
 
     @Override

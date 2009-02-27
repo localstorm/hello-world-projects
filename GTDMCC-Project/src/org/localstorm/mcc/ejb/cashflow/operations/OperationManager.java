@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.Date;
 import org.localstorm.mcc.ejb.cashflow.assets.Cost;
 import org.localstorm.mcc.ejb.cashflow.assets.ValuableObject;
+import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 
 
 /**
@@ -17,9 +18,9 @@ public interface OperationManager
 {
     public static final String BEAN_NAME="OperationManagerBean";
     
-    public ValuableObject findValuableById(Integer valuableId);
+    public ValuableObject findValuable(Integer valuableId) throws ObjectNotFoundException;
 
-    public Operation findOperationById(Integer operationId);
+    public Operation findOperation(Integer operationId) throws ObjectNotFoundException;
     
     public void updateCost(ValuableObject vo, Cost cost);
 

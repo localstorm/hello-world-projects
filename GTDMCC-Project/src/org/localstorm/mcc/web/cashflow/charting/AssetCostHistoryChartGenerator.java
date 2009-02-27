@@ -33,7 +33,7 @@ import static org.localstorm.mcc.web.cashflow.charting.DecimalUtil.*;
  */
 public class AssetCostHistoryChartGenerator {
 
-    private static XYDataset getAssetCostDataset(User user, Integer assetId, Integer daysPeriod) {
+    private static XYDataset getAssetCostDataset(User user, Integer assetId, Integer daysPeriod) throws Exception {
 
         Calendar cal = Calendar.getInstance();
 
@@ -45,7 +45,7 @@ public class AssetCostHistoryChartGenerator {
 
         OperationManager om = ContextLookup.lookup(OperationManager.class, OperationManager.BEAN_NAME);
         AssetManager     am = ContextLookup.lookup(AssetManager.class, AssetManager.BEAN_NAME);
-        Asset         asset = am.findById(assetId);
+        Asset         asset = am.find(assetId);
         ValuableObject vo = asset.getValuable();
 
         if (!user.getId().equals(vo.getOwner().getId())) {
@@ -112,7 +112,7 @@ public class AssetCostHistoryChartGenerator {
         return tsc;
     }
 
-    public static JFreeChart getChart(User user, Integer assetId, Integer daysOffset, String name) {
+    public static JFreeChart getChart(User user, Integer assetId, Integer daysOffset, String name) throws Exception {
         XYDataset dataset = AssetCostHistoryChartGenerator.getAssetCostDataset(user, assetId, daysOffset);
         
         if (dataset==null) {

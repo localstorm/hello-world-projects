@@ -33,7 +33,7 @@ public class CheckpointMakeActionBean extends CashflowBaseActionBean
         
         HistoricalValuesManager hvm = super.getHistoricalValuesManager();
 
-        Collection<Asset> assets = am.findAssets(user);
+        Collection<Asset> assets = am.getAssets(user);
         assets = WrapUtil.wrapAssets(assets, om);
 
         BigDecimal netWealth = BigDecimal.ZERO;

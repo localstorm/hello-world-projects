@@ -13,20 +13,20 @@ public interface HistoricalValuesManager
 {
     public static final String BEAN_NAME="HistoricalValuesManagerBean";
 
-    public HistoricalValue findLastByValueTag(ValueType vt,
-                                              BigDecimal defaultValue,
-                                              User user);
+    public HistoricalValue getLastHistoricalValue(ValueType vt,
+                                                  BigDecimal defaultValue,
+                                                  User user);
 
     public void log(HistoricalValue hv);
 
-    public Collection<HistoricalValue> findByValueTag(ValueType valueTag,
-                                                      User user,
-                                                      Date minDate);
+    public Collection<HistoricalValue> getHistory(ValueType valueTag,
+                                                  User user,
+                                                  Date minDate);
 
-    public Collection<HistoricalValue> findByValueTagAndObjectId(ValueType valueTag, 
-                                                                 Integer objectId,
-                                                                 User user,
-                                                                 Date minDate);
+    public Collection<HistoricalValue> getHistory(ValueType valueTag,
+                                                  Integer objectId,
+                                                  User user,
+                                                  Date minDate);
 
     public void truncateHistory(ValueType valueTag,
                                 Integer objectId,

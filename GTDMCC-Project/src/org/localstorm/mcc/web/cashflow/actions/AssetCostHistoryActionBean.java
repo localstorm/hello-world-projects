@@ -43,7 +43,7 @@ public class AssetCostHistoryActionBean extends CashflowBaseActionBean
     
     @DefaultHandler
     public Resolution filling() throws Exception {
-        Asset asset = super.getAssetManager().findById(this.getAssetId());
+        Asset asset = super.getAssetManager().find(this.getAssetId());
         
         this.setAssetResult( WrapUtil.wrapAsset(asset, super.getOperationManager()) );
 

@@ -38,7 +38,7 @@ public class AssetEraseActionBean extends CashflowBaseActionBean
         
         OperationManager om = super.getOperationManager();
         AssetManager     am = super.getAssetManager();
-        Asset         asset = am.findById(this.getAssetId());
+        Asset         asset = am.find(this.getAssetId());
 
         AssetWrapper aw = (AssetWrapper) WrapUtil.wrapAsset(asset, om);
         if (aw.getAmount().compareTo(BigDecimal.ZERO)==1) {

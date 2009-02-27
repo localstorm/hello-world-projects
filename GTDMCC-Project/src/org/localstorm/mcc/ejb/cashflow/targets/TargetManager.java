@@ -14,13 +14,16 @@ import org.localstorm.mcc.ejb.users.User;
 
 public interface TargetManager
 {
-    public static final String BEAN_NAME="TargetManagerBean";
+    public static final String BEAN_NAME = "TargetManagerBean";
     
     public void create(Target newTarget, Cost targetCost);
 
-    public Target findById(int targetId) throws ObjectNotFoundException;
+    
+    public Target find(int targetId) throws ObjectNotFoundException;
 
-    public Collection<Target> findTargets(User user);
+    public Collection<Target> find(User user);
+
+    public Collection<Target> findArchived(User user);
 
     public void remove(Target target);
 

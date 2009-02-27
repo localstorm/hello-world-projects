@@ -20,7 +20,8 @@ public class ContextManagerBean extends AbstractManager<Context>
     }
     
     @Override
-    public Collection<Context> find(User u)
+    @SuppressWarnings("unchecked")
+    public Collection<Context> getContexts(User u)
     {
         Query uq = em.createNamedQuery(Context.Queries.FIND_BY_OWNER);
         uq.setParameter(Context.Properties.OWNER, u);
@@ -30,9 +31,10 @@ public class ContextManagerBean extends AbstractManager<Context>
     }
 
     @Override
-    public List<Context> findArchived(User u) {
+    @SuppressWarnings("unchecked")
+    public List<Context> getArchived(User u) {
         Query uq = em.createNamedQuery(Context.Queries.FIND_BY_OWNER_ARCHIVED);
-        uq.setParameter(Context.Properties.OWNER, u); // 
+        uq.setParameter(Context.Properties.OWNER, u);
         
         List<Context> list = uq.getResultList();
         return list;
