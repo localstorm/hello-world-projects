@@ -11,17 +11,17 @@ import org.localstorm.mcc.ejb.people.PersonManager;
  */
 public abstract class PeopleStatelessBean
 {
-    public PersonManager getPersonManager()
+    protected PersonManager getPersonManager()
     {
         return ContextLookup.lookup(PersonManager.class, PersonManager.BEAN_NAME);
     }
 
-    public MailListManager getMailListManager()
+    protected MailListManager getMailListManager()
     {
         return ContextLookup.lookup(MailListManager.class, MailListManager.BEAN_NAME);
     }
 
-    public PeopleReporter getPeopleReporter()
+    protected PeopleReporter getPeopleReporter()
     {
         return ContextLookup.lookup(PeopleReporter.class, PeopleReporter.BEAN_NAME);
     }

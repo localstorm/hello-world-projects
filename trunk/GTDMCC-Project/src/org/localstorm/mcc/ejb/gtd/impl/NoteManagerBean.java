@@ -26,6 +26,7 @@ public class NoteManagerBean implements NoteManagerLocal
     }
    
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<Note> findAllByObject(ReferencedObject obj) {
         Query lq = em.createNamedQuery(NoteToObject.Queries.FIND_NOTES_BY_OBJECT);
         lq.setParameter(NoteToObject.Properties.OBJECT, obj);
@@ -40,6 +41,7 @@ public class NoteManagerBean implements NoteManagerLocal
     }
     
     @Override
+    @SuppressWarnings("unchecked")
     public void detach(Note note, ReferencedObject obj)
     {
         Query lq = em.createNamedQuery(NoteToObject.Queries.FIND_LINKS_BY_OBJECT_AND_NOTE);
@@ -58,6 +60,7 @@ public class NoteManagerBean implements NoteManagerLocal
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void reattach(Note note, ReferencedObject ro)
     {
         Query lq = em.createNamedQuery(NoteToObject.Queries.FIND_LINKS_BY_NOTE);
