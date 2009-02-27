@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import org.localstorm.mcc.ejb.gtd.files.FileAttachment;
-import org.localstorm.mcc.ejb.gtd.notes.Note;
+import org.localstorm.mcc.ejb.gtd.entity.FileAttachment;
+import org.localstorm.mcc.ejb.gtd.entity.Note;
 import org.localstorm.mcc.web.gtd.backend.RelevantObject;
 
 /**

@@ -1,7 +1,7 @@
 package org.localstorm.mcc.web.gtd.actions;
 
 import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
-import org.localstorm.mcc.ejb.gtd.contexts.Context;
+import org.localstorm.mcc.ejb.gtd.entity.Context;
 import java.util.List;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.Resolution;

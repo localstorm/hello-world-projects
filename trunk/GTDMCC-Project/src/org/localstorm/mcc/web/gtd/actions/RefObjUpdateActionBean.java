@@ -8,9 +8,9 @@ import net.sourceforge.stripes.action.UrlBinding;
 
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.gtd.contexts.Context;
-import org.localstorm.mcc.ejb.gtd.referenced.RefObjectManager;
-import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
+import org.localstorm.mcc.ejb.gtd.entity.Context;
+import org.localstorm.mcc.ejb.gtd.RefObjectManager;
+import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
 import org.localstorm.mcc.web.gtd.GtdSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 

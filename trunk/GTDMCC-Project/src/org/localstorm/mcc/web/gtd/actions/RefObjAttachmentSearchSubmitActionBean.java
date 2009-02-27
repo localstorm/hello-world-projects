@@ -23,12 +23,12 @@ import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.store.RAMDirectory;
 
-import org.localstorm.mcc.ejb.gtd.files.FileAttachment;
-import org.localstorm.mcc.ejb.gtd.files.FileManager;
-import org.localstorm.mcc.ejb.gtd.notes.Note;
-import org.localstorm.mcc.ejb.gtd.notes.NoteManager;
-import org.localstorm.mcc.ejb.gtd.referenced.RefObjectManager;
-import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
+import org.localstorm.mcc.ejb.gtd.entity.FileAttachment;
+import org.localstorm.mcc.ejb.gtd.FileManager;
+import org.localstorm.mcc.ejb.gtd.entity.Note;
+import org.localstorm.mcc.ejb.gtd.NoteManager;
+import org.localstorm.mcc.ejb.gtd.RefObjectManager;
+import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.mcc.web.gtd.actions.wrap.RoSearchResult;

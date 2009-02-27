@@ -13,11 +13,11 @@ import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
 
-import org.localstorm.mcc.ejb.gtd.tasks.Hint;
-import org.localstorm.mcc.ejb.gtd.tasks.HintCondition;
-import org.localstorm.mcc.ejb.gtd.tasks.HintManager;
-import org.localstorm.mcc.ejb.gtd.tasks.Task;
-import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
+import org.localstorm.mcc.ejb.gtd.entity.Hint;
+import org.localstorm.mcc.ejb.gtd.entity.HintCondition;
+import org.localstorm.mcc.ejb.gtd.HintManager;
+import org.localstorm.mcc.ejb.gtd.entity.Task;
+import org.localstorm.mcc.ejb.gtd.TaskManager;
 import org.localstorm.mcc.web.util.DateUtil;
 import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.gtd.GtdClipboard;
