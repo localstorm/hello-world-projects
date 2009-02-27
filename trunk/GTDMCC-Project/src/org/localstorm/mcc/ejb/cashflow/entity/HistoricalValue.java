@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package org.localstorm.mcc.ejb.cashflow.stat;
+package org.localstorm.mcc.ejb.cashflow.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

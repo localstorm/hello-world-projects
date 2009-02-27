@@ -1,5 +1,7 @@
-package org.localstorm.mcc.ejb.cashflow.stat;
+package org.localstorm.mcc.ejb.cashflow.impl;
 
+import org.localstorm.mcc.ejb.cashflow.entity.ValueType;
+import org.localstorm.mcc.ejb.cashflow.entity.HistoricalValue;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Collection;

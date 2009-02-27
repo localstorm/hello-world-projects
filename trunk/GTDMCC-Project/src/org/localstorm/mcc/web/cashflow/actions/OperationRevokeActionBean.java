@@ -5,10 +5,10 @@ import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.cashflow.assets.Asset;
-import org.localstorm.mcc.ejb.cashflow.assets.AssetManager;
-import org.localstorm.mcc.ejb.cashflow.operations.Operation;
-import org.localstorm.mcc.ejb.cashflow.operations.OperationManager;
+import org.localstorm.mcc.ejb.cashflow.entity.Asset;
+import org.localstorm.mcc.ejb.cashflow.AssetManager;
+import org.localstorm.mcc.ejb.cashflow.entity.Operation;
+import org.localstorm.mcc.ejb.cashflow.OperationManager;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
 
 /**

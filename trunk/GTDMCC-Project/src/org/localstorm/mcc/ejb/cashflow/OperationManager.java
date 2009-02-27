@@ -1,11 +1,12 @@
-package org.localstorm.mcc.ejb.cashflow.operations;
+package org.localstorm.mcc.ejb.cashflow;
 
 
+import org.localstorm.mcc.ejb.cashflow.entity.Operation;
 import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Date;
-import org.localstorm.mcc.ejb.cashflow.assets.Cost;
-import org.localstorm.mcc.ejb.cashflow.assets.ValuableObject;
+import org.localstorm.mcc.ejb.cashflow.entity.Cost;
+import org.localstorm.mcc.ejb.cashflow.entity.ValuableObject;
 import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 
 

@@ -1,8 +1,8 @@
 package org.localstorm.mcc.web.cashflow.actions.wrap;
 
-import org.localstorm.mcc.ejb.cashflow.assets.Cost;
-import org.localstorm.mcc.ejb.cashflow.targets.Target;
-import org.localstorm.mcc.ejb.cashflow.assets.ValuableObject;
+import org.localstorm.mcc.ejb.cashflow.entity.Cost;
+import org.localstorm.mcc.ejb.cashflow.entity.Target;
+import org.localstorm.mcc.ejb.cashflow.entity.ValuableObject;
 
 /**
  *

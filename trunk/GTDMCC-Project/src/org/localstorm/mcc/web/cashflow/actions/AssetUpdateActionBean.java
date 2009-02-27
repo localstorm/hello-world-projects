@@ -10,12 +10,12 @@ import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.cashflow.assets.Asset;
-import org.localstorm.mcc.ejb.cashflow.assets.AssetManager;
-import org.localstorm.mcc.ejb.cashflow.assets.Cost;
+import org.localstorm.mcc.ejb.cashflow.entity.Asset;
+import org.localstorm.mcc.ejb.cashflow.AssetManager;
+import org.localstorm.mcc.ejb.cashflow.entity.Cost;
 import org.localstorm.mcc.ejb.cashflow.MoneyMathContext;
-import org.localstorm.mcc.ejb.cashflow.assets.ValuableObject;
-import org.localstorm.mcc.ejb.cashflow.operations.OperationManager;
+import org.localstorm.mcc.ejb.cashflow.entity.ValuableObject;
+import org.localstorm.mcc.ejb.cashflow.OperationManager;
 import org.localstorm.mcc.web.cashflow.CashflowSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 

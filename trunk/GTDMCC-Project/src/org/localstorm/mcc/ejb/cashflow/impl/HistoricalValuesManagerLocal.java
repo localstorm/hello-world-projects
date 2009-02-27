@@ -1,6 +1,7 @@
 
-package org.localstorm.mcc.ejb.cashflow.stat;
+package org.localstorm.mcc.ejb.cashflow.impl;
 
+import org.localstorm.mcc.ejb.cashflow.HistoricalValuesManager;
 import javax.ejb.Local;
 
 
