@@ -53,8 +53,8 @@ class SecurityUtil
             try {
 
                 ListManager lm = ContextLookup.lookup(ListManager.class, ListManager.BEAN_NAME);
-                GTDList list = lm.findById(listId);
-                contextId = list.getContext().getId();
+                GTDList   list = lm.findById(listId);
+                contextId      = list.getContext().getId();
                 
             } catch(Exception e) {
                 log.error(e);
@@ -76,7 +76,7 @@ class SecurityUtil
 
                 RefObjectManager rm = ContextLookup.lookup(RefObjectManager.class, RefObjectManager.BEAN_NAME);
                 ReferencedObject ro = rm.findById(objectId);
-                contextId = ro.getContext().getId();
+                contextId           = ro.getContext().getId();
 
             } catch(Exception e) {
                 log.error(e);
@@ -98,7 +98,7 @@ class SecurityUtil
 
                 TaskManager tm = ContextLookup.lookup(TaskManager.class, TaskManager.BEAN_NAME);
                 Task      task = tm.findById(taskId);
-                listId = task.getList().getId();
+                listId         = task.getList().getId();
 
             } catch(Exception e) {
                 log.error(e);
@@ -118,8 +118,8 @@ class SecurityUtil
 
             try {
 
-                FileManager    fm = ContextLookup.lookup(FileManager.class, FileManager.BEAN_NAME);
-                FileAttachment fa = fm.findById(fileId);
+                FileManager     fm = ContextLookup.lookup(FileManager.class, FileManager.BEAN_NAME);
+                FileAttachment  fa = fm.findById(fileId);
                 ReferencedObject o = fm.findByFileAttachment(fa);
                 objectId           = o.getId();
 
@@ -141,10 +141,9 @@ class SecurityUtil
 
             try {
 
-                NoteManager    nm = ContextLookup.lookup(NoteManager.class, NoteManager.BEAN_NAME);
-                Note         note = nm.findById(noteId);
+                NoteManager     nm = ContextLookup.lookup(NoteManager.class, NoteManager.BEAN_NAME);
+                Note          note = nm.findById(noteId);
                 ReferencedObject o = nm.findByNote(note);
-
                 objectId           = o.getId();
 
             } catch(Exception e) {

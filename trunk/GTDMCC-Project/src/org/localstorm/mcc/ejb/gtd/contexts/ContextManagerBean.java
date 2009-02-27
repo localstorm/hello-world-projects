@@ -20,7 +20,7 @@ public class ContextManagerBean extends AbstractManager<Context>
     }
     
     @Override
-    public Collection<Context> findByOwner(User u)
+    public Collection<Context> find(User u)
     {
         Query uq = em.createNamedQuery(Context.Queries.FIND_BY_OWNER);
         uq.setParameter(Context.Properties.OWNER, u);
@@ -30,7 +30,7 @@ public class ContextManagerBean extends AbstractManager<Context>
     }
 
     @Override
-    public List<Context> findByOwnerArchived(User u) {
+    public List<Context> findArchived(User u) {
         Query uq = em.createNamedQuery(Context.Queries.FIND_BY_OWNER_ARCHIVED);
         uq.setParameter(Context.Properties.OWNER, u); // 
         

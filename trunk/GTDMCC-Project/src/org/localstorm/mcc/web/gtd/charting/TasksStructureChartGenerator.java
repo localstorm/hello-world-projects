@@ -103,7 +103,7 @@ public class TasksStructureChartGenerator {
     private static PieDataset getTasksContextStructureDataset(User user) {
         ContextManager cm = ContextLookup.lookup(ContextManager.class, ContextManager.BEAN_NAME);
         
-        Collection<Context> ctxs     = cm.findByOwner(user);
+        Collection<Context> ctxs     = cm.find(user);
         Map<Integer, Integer> ctxMap = new TreeMap<Integer, Integer>();
 
         GtdReporter reporter = ContextLookup.lookup(GtdReporter.class, GtdReporter.BEAN_NAME);

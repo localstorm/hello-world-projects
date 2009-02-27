@@ -52,7 +52,7 @@ public class OldTasksReportActionBean extends GtdBaseActionBean
             ctxs = new ArrayList<Context>(1);
             ctxs.add(cm.findById(ctxIdFilter));
         } else {
-            ctxs = cm.findByOwner(super.getUser());
+            ctxs = cm.find(super.getUser());
         }
 
         FlightPlan       fp      = fpm.findByUser(super.getUser());

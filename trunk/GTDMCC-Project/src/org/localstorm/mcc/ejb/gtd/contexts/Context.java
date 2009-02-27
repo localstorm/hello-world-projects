@@ -6,6 +6,7 @@
 package org.localstorm.mcc.ejb.gtd.contexts;
 
 import java.io.Serializable;
+import java.util.Comparator;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -101,5 +102,13 @@ public class Context extends AbstractEntity implements Identifiable, Retireable,
     public static interface Properties
     {
         public static final String OWNER = "owner";
+    }
+
+    public static final class NameAscComparator implements Comparator<Context>
+    {
+        @Override
+        public int compare(Context o1, Context o2) {
+            return o1.getName().compareTo(o2.getName());
+        }
     }
 }
