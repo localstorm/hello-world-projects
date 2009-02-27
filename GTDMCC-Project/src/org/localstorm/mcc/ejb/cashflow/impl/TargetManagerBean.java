@@ -1,6 +1,9 @@
-package org.localstorm.mcc.ejb.cashflow.targets;
+package org.localstorm.mcc.ejb.cashflow.impl;
 
-import org.localstorm.mcc.ejb.cashflow.assets.*;
+import org.localstorm.mcc.ejb.cashflow.entity.Cost;
+import org.localstorm.mcc.ejb.cashflow.entity.Asset;
+import org.localstorm.mcc.ejb.cashflow.entity.ValuableObject;
+import org.localstorm.mcc.ejb.cashflow.entity.Target;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;

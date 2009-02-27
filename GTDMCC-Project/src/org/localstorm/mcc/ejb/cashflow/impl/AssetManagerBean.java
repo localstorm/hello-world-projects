@@ -1,5 +1,8 @@
-package org.localstorm.mcc.ejb.cashflow.assets;
+package org.localstorm.mcc.ejb.cashflow.impl;
 
+import org.localstorm.mcc.ejb.cashflow.entity.Cost;
+import org.localstorm.mcc.ejb.cashflow.entity.Asset;
+import org.localstorm.mcc.ejb.cashflow.entity.ValuableObject;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Collection;

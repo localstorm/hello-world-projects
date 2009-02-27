@@ -1,4 +1,4 @@
-package org.localstorm.mcc.ejb.cashflow.stat;
+package org.localstorm.mcc.ejb.cashflow.entity;
 
 /**
  *

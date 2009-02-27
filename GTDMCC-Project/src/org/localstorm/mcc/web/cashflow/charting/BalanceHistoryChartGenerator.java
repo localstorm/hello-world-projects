@@ -17,9 +17,9 @@ import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.xy.XYDataset;
 import org.localstorm.mcc.ejb.ContextLookup;
-import org.localstorm.mcc.ejb.cashflow.stat.HistoricalValue;
-import org.localstorm.mcc.ejb.cashflow.stat.HistoricalValuesManager;
-import org.localstorm.mcc.ejb.cashflow.stat.ValueType;
+import org.localstorm.mcc.ejb.cashflow.entity.HistoricalValue;
+import org.localstorm.mcc.ejb.cashflow.HistoricalValuesManager;
+import org.localstorm.mcc.ejb.cashflow.entity.ValueType;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.Constants;
 

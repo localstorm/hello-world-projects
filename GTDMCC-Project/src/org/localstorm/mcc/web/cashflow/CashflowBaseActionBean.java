@@ -1,10 +1,10 @@
 package org.localstorm.mcc.web.cashflow;
 
 import org.localstorm.mcc.ejb.ContextLookup;
-import org.localstorm.mcc.ejb.cashflow.assets.AssetManager;
-import org.localstorm.mcc.ejb.cashflow.operations.OperationManager;
-import org.localstorm.mcc.ejb.cashflow.targets.TargetManager;
-import org.localstorm.mcc.ejb.cashflow.stat.HistoricalValuesManager;
+import org.localstorm.mcc.ejb.cashflow.AssetManager;
+import org.localstorm.mcc.ejb.cashflow.OperationManager;
+import org.localstorm.mcc.ejb.cashflow.TargetManager;
+import org.localstorm.mcc.ejb.cashflow.HistoricalValuesManager;
 import org.localstorm.mcc.web.BaseActionBean;
 
 /**
