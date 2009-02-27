@@ -25,6 +25,7 @@ public class TaskManagerBean extends AbstractManager<Task>
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<Task> findByLoE(User user, Context ctx, Effort effort) {
         Query tq;
         if (ctx==null) {
@@ -42,6 +43,7 @@ public class TaskManagerBean extends AbstractManager<Task>
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<Task> findOldestOperative(Context ctx, int max) {
         Query tq = em.createNamedQuery(Task.Queries.FIND_OLDEST_BY_CTX);
         tq.setParameter(Task.Properties.CTX, ctx);
@@ -53,6 +55,7 @@ public class TaskManagerBean extends AbstractManager<Task>
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<Task> findOpeartiveByList(GTDList l) {
         Query tq = em.createNamedQuery(Task.Queries.FIND_BY_LIST);
         tq.setParameter(Task.Properties.LIST, l);
@@ -63,6 +66,7 @@ public class TaskManagerBean extends AbstractManager<Task>
     }
     
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<Task> findAwaitedByList(GTDList l)
     {
         Query tq = em.createNamedQuery(Task.Queries.FIND_BY_LIST_AWAITED);
@@ -74,6 +78,7 @@ public class TaskManagerBean extends AbstractManager<Task>
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<Task> findArchiveByList(GTDList l) {
         Query tq = em.createNamedQuery(Task.Queries.FIND_BY_LIST_ARCHIVED);
         tq.setParameter(Task.Properties.LIST, l);
@@ -84,6 +89,7 @@ public class TaskManagerBean extends AbstractManager<Task>
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<Task> findAwaited(User u, Context ctx) {
         Query tq;
         if (ctx==null) {
@@ -100,6 +106,7 @@ public class TaskManagerBean extends AbstractManager<Task>
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<Task> findRedlinedTasks(User user, Context ctx) {
         
         Query tq;
@@ -119,6 +126,7 @@ public class TaskManagerBean extends AbstractManager<Task>
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<Task> findPending(User user, Context ctx) {
         Query tq;
         if (ctx==null) {
@@ -136,6 +144,7 @@ public class TaskManagerBean extends AbstractManager<Task>
 
 
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<Task> findFinished(User user, Context ctx) {
         Query tq;
         if (ctx==null) {
@@ -152,6 +161,7 @@ public class TaskManagerBean extends AbstractManager<Task>
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<Task> findDeadlinedTasks(User user, Context ctx) {
         Query tq;
         if (ctx==null) {
@@ -170,6 +180,7 @@ public class TaskManagerBean extends AbstractManager<Task>
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<Task> findAllByUser(User user) {
         Query tq = em.createNamedQuery(Task.Queries.FIND_BY_USER);
 
@@ -180,6 +191,7 @@ public class TaskManagerBean extends AbstractManager<Task>
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void removeFinishedTasks(User user) {
         Query tq = em.createNamedQuery(Task.Queries.FIND_CLEANABLE_BY_USER);
         tq.setParameter(Task.Properties.USER, user);
@@ -192,6 +204,7 @@ public class TaskManagerBean extends AbstractManager<Task>
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<Task> findScheduledNonFinishedTasks(User user) {
         Query tq = em.createNamedQuery(Task.Queries.FIND_SCHEDULED_BY_USER);
         tq.setParameter(Task.Properties.USER, user);

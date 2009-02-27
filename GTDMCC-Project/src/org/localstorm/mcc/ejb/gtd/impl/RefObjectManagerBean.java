@@ -22,6 +22,7 @@ public class RefObjectManagerBean extends AbstractManager<ReferencedObject>
     }
     
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<ReferencedObject> findOperativeByOwner(User user, boolean sortByContext) {
         String queryName;
         if (sortByContext) {
@@ -37,6 +38,7 @@ public class RefObjectManagerBean extends AbstractManager<ReferencedObject>
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<ReferencedObject> findAllByOwner(User user) {
         Query lq = em.createNamedQuery(ReferencedObject.Queries.FIND_BY_OWNER);
         lq.setParameter(ReferencedObject.Properties.OWNER, user);
@@ -46,6 +48,7 @@ public class RefObjectManagerBean extends AbstractManager<ReferencedObject>
     }
     
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<ReferencedObject> findAllArchivedByOwner(User user) {
         Query lq = em.createNamedQuery(ReferencedObject.Queries.FIND_ARCHIVED_BY_OWNER);
         lq.setParameter(ReferencedObject.Properties.OWNER, user);

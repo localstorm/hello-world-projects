@@ -19,6 +19,7 @@ public class ListManagerBean extends AbstractManager<GTDList>
     }
 
     
+    @SuppressWarnings("unchecked")
     @Override
     public Collection<GTDList> findByContext(Context ctx)
     {
@@ -29,6 +30,7 @@ public class ListManagerBean extends AbstractManager<GTDList>
         return list;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public Collection<GTDList> findByContextArchived(Context ctx) {
         Query lq = em.createNamedQuery(GTDList.Queries.FIND_BY_CTX_ARCHIVED);

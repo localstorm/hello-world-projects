@@ -34,7 +34,7 @@ public class GtdBaseActionBean extends BaseActionBean {
         return Effort.values();
     }
 
-    public HintManager getHintManager() {
+    protected HintManager getHintManager() {
         return ContextLookup.lookup(HintManager.class, HintManager.BEAN_NAME);
     }
 

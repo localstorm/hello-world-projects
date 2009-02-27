@@ -33,6 +33,7 @@ public class HintManagerBean extends AbstractManager<Hint>
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Collection<Hint> getHintsForTask(Task t)
     {
         Query tq = em.createNamedQuery(Hint.Queries.FIND_BY_TASK);
