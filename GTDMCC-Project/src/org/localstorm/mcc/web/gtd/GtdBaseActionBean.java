@@ -22,7 +22,6 @@ import org.localstorm.mcc.ejb.gtd.tasks.HintManager;
 import org.localstorm.mcc.ejb.gtd.tasks.Task;
 import org.localstorm.mcc.ejb.gtd.tasks.TaskManager;
 import org.localstorm.mcc.web.BaseActionBean;
-import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
@@ -70,64 +69,64 @@ public class GtdBaseActionBean extends BaseActionBean {
     public void setCurrent(ReferencedObject objectResult)
     {
         HttpSession sess = this.getSession();
-        SessionUtil.fill(sess, SessionKeys.CURR_CTX, objectResult.getContext());
-        SessionUtil.fill(sess, SessionKeys.CURR_OBJ, objectResult);
+        SessionUtil.fill(sess, GtdSessionKeys.CURR_CTX, objectResult.getContext());
+        SessionUtil.fill(sess, GtdSessionKeys.CURR_OBJ, objectResult);
     }
 
     protected void setCurrent(GTDList list)
     {
         HttpSession sess = this.getSession();
-        SessionUtil.fill(sess, SessionKeys.CURR_CTX, list.getContext());
-        SessionUtil.fill(sess, SessionKeys.CURR_LIST, list);
-        SessionUtil.clear(sess, SessionKeys.CURR_TASK);
+        SessionUtil.fill(sess,  GtdSessionKeys.CURR_CTX, list.getContext());
+        SessionUtil.fill(sess,  GtdSessionKeys.CURR_LIST, list);
+        SessionUtil.clear(sess, GtdSessionKeys.CURR_TASK);
     }
 
     protected void setCurrent(Task t)
     {
         HttpSession sess = this.getSession();
-        SessionUtil.fill(sess, SessionKeys.CURR_CTX,  t.getList().getContext());
-        SessionUtil.fill(sess, SessionKeys.CURR_LIST, t.getList());
-        SessionUtil.fill(sess, SessionKeys.CURR_TASK, t);
+        SessionUtil.fill(sess, GtdSessionKeys.CURR_CTX,  t.getList().getContext());
+        SessionUtil.fill(sess, GtdSessionKeys.CURR_LIST, t.getList());
+        SessionUtil.fill(sess, GtdSessionKeys.CURR_TASK, t);
     }
 
     protected void setCurrent(Context t)
     {
         HttpSession sess = this.getSession();
-        SessionUtil.clear(sess, SessionKeys.CURR_TASK);
-        SessionUtil.clear(sess, SessionKeys.CURR_LIST);
-        SessionUtil.fill(sess, SessionKeys.CURR_CTX,  t);
+        SessionUtil.clear(sess, GtdSessionKeys.CURR_TASK);
+        SessionUtil.clear(sess, GtdSessionKeys.CURR_LIST);
+        SessionUtil.fill(sess,  GtdSessionKeys.CURR_CTX,  t);
     }
 
     protected void clearCurrent()
     {
         HttpSession sess = this.getSession();
-        SessionUtil.clear(sess, SessionKeys.CURR_TASK);
-        SessionUtil.clear(sess, SessionKeys.CURR_LIST);
-        SessionUtil.clear(sess, SessionKeys.CURR_CTX);
+        SessionUtil.clear(sess, GtdSessionKeys.CURR_TASK);
+        SessionUtil.clear(sess, GtdSessionKeys.CURR_LIST);
+        SessionUtil.clear(sess, GtdSessionKeys.CURR_CTX);
     }
 
     public Context getCurrentContext()
     {
-        return (Context) SessionUtil.getValue(this.getSession(), SessionKeys.CURR_CTX);
+        return (Context) SessionUtil.getValue(this.getSession(), GtdSessionKeys.CURR_CTX);
     }
 
     public GTDList getCurrentList()
     {
-        return (GTDList) SessionUtil.getValue(this.getSession(), SessionKeys.CURR_LIST);
+        return (GTDList) SessionUtil.getValue(this.getSession(), GtdSessionKeys.CURR_LIST);
     }
 
     public Task getCurrentTask()
     {
-        return (Task) SessionUtil.getValue(this.getSession(), SessionKeys.CURR_TASK);
+        return (Task) SessionUtil.getValue(this.getSession(), GtdSessionKeys.CURR_TASK);
     }
 
     protected GtdClipboard getClipboard()
     {
         HttpSession sess = this.getSession();
-        GtdClipboard clip = (GtdClipboard) SessionUtil.getValue(sess, SessionKeys.GTD_CLIPBOARD);
+        GtdClipboard clip = (GtdClipboard) SessionUtil.getValue(sess, GtdSessionKeys.GTD_CLIPBOARD);
         if (clip==null) {
             clip = new GtdClipboard();
-            SessionUtil.fill(sess, SessionKeys.GTD_CLIPBOARD, clip);
+            SessionUtil.fill(sess, GtdSessionKeys.GTD_CLIPBOARD, clip);
         }
 
         return clip;
@@ -135,7 +134,7 @@ public class GtdBaseActionBean extends BaseActionBean {
 
     protected Integer getContextIdFilter()
     {
-        Integer ctx = (Integer) SessionUtil.getValue(this.getSession(), SessionKeys.FILTER_CONTEXT);
+        Integer ctx = (Integer) SessionUtil.getValue(this.getSession(), GtdSessionKeys.FILTER_CONTEXT);
 
         if (ctx==null) {
             return -1;
@@ -158,7 +157,7 @@ public class GtdBaseActionBean extends BaseActionBean {
             contextId = -1;
         }
 
-        SessionUtil.fill(this.getSession(), SessionKeys.FILTER_CONTEXT, contextId);
+        SessionUtil.fill(this.getSession(), GtdSessionKeys.FILTER_CONTEXT, contextId);
     }
 
     public void setAffectedContexts(Collection<Context> ctxs) {

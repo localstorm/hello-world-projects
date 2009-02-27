@@ -10,8 +10,8 @@ import org.localstorm.mcc.ejb.cashflow.assets.Asset;
 import org.localstorm.mcc.ejb.cashflow.assets.AssetManager;
 
 import org.localstorm.mcc.ejb.cashflow.operations.OperationManager;
-import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
+import org.localstorm.mcc.web.cashflow.CashflowSessionKeys;
 import org.localstorm.mcc.web.cashflow.actions.wrap.AssetWrapper;
 import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
 import org.localstorm.mcc.web.util.SessionUtil;
@@ -51,7 +51,7 @@ public class AssetToggleStateActionBean extends CashflowBaseActionBean
         
         am.update(asset);
         
-        SessionUtil.clear(getSession(), SessionKeys.ASSETS);
+        SessionUtil.clear(getSession(), CashflowSessionKeys.ASSETS);
         return new RedirectResolution(AssetsEditActionBean.class);
     }
 }

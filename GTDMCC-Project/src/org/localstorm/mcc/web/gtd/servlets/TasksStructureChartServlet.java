@@ -10,7 +10,7 @@ import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.Constants;
-import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.gtd.GtdSessionKeys;
 import org.localstorm.mcc.web.gtd.charting.TasksStructureChartGenerator;
 import org.localstorm.mcc.web.util.SessionUtil;
 
@@ -23,7 +23,7 @@ public class TasksStructureChartServlet extends HttpServlet
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession sess = req.getSession(true);
-        User user = (User) SessionUtil.getValue(sess, SessionKeys.USER);
+        User user = (User) SessionUtil.getValue(sess, GtdSessionKeys.USER);
 
         if (user==null) {
             resp.sendError(HttpServletResponse.SC_FORBIDDEN);

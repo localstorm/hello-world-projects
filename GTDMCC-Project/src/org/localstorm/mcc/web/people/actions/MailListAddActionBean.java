@@ -12,10 +12,10 @@ import org.localstorm.mcc.ejb.people.PersonManager;
 import org.localstorm.mcc.ejb.people.entity.Person;
 import org.localstorm.mcc.ejb.people.entity.PregeneratedMailList;
 import org.localstorm.mcc.web.ReturnPageBean;
-import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.WebUtil;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
 import org.localstorm.mcc.web.people.PeopleClipboard;
+import org.localstorm.mcc.web.people.PeopleSessionKeys;
 import org.localstorm.mcc.web.people.RequestAttributes;
 import org.localstorm.mcc.web.people.Views;
 import org.localstorm.mcc.web.util.SessionUtil;
@@ -104,7 +104,7 @@ public class MailListAddActionBean extends PeopleBaseActionBean
         if (pml.isReady())  {
             mlm.create(pml, this.getName(), super.getUser());
 
-            SessionUtil.clear(super.getSession(), SessionKeys.MAIL_LISTS);
+            SessionUtil.clear(super.getSession(), PeopleSessionKeys.MAIL_LISTS);
             super.getClipboard().clearPersons();
 
             ReturnPageBean rpb = super.getReturnPageBean();

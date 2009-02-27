@@ -13,8 +13,8 @@ import org.localstorm.mcc.ejb.gtd.notes.Note;
 import org.localstorm.mcc.ejb.gtd.notes.NoteManager;
 import org.localstorm.mcc.ejb.gtd.referenced.RefObjectManager;
 import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
-import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.gtd.GtdClipboard;
+import org.localstorm.mcc.web.gtd.GtdSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 
@@ -58,7 +58,7 @@ public class RefObjEraseActionBean extends GtdBaseActionBean
 
        rom.remove(ro);
        
-       SessionUtil.clear(getSession(), SessionKeys.REFERENCE_OBJECTS);
+       SessionUtil.clear(getSession(), GtdSessionKeys.REFERENCE_OBJECTS);
        return new RedirectResolution(RefObjEditActionBean.class);
     }
 }

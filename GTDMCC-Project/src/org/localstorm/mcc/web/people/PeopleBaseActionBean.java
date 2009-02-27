@@ -5,7 +5,6 @@ import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.people.MailListManager;
 import org.localstorm.mcc.ejb.people.PersonManager;
 import org.localstorm.mcc.web.BaseActionBean;
-import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
@@ -26,10 +25,10 @@ public class PeopleBaseActionBean extends BaseActionBean {
     protected PeopleClipboard getClipboard()
     {
         HttpSession sess = this.getSession();
-        PeopleClipboard clip = (PeopleClipboard) SessionUtil.getValue(sess, SessionKeys.PEOPLE_CLIPBOARD);
+        PeopleClipboard clip = (PeopleClipboard) SessionUtil.getValue(sess, PeopleSessionKeys.PEOPLE_CLIPBOARD);
         if (clip==null) {
             clip = new PeopleClipboard();
-            SessionUtil.fill(sess, SessionKeys.PEOPLE_CLIPBOARD, clip);
+            SessionUtil.fill(sess, PeopleSessionKeys.PEOPLE_CLIPBOARD, clip);
         }
 
         return clip;

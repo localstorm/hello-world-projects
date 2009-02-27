@@ -10,7 +10,7 @@ import net.sourceforge.stripes.validation.Validate;
 
 import org.localstorm.mcc.ejb.people.entity.PersonGroup;
 import org.localstorm.mcc.ejb.people.PersonManager;
-import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.people.PeopleSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
@@ -51,8 +51,8 @@ public class PersonGroupRenameActionBean extends PersonGroupViewActionBean {
         g.setName(this.getName());
         pm.update(g);
         
-        SessionUtil.clear(getSession(), SessionKeys.PERSON_GROUPS);
-        SessionUtil.clear(getSession(), SessionKeys.ARCHIVE_PERSON_GROUPS);
+        SessionUtil.clear(getSession(), PeopleSessionKeys.PERSON_GROUPS);
+        SessionUtil.clear(getSession(), PeopleSessionKeys.ARCHIVE_PERSON_GROUPS);
         
         RedirectResolution rr = new RedirectResolution(PersonGroupViewActionBean.class);
         {

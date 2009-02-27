@@ -10,7 +10,7 @@ import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.users.*;
-import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.people.PeopleSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 
@@ -50,7 +50,7 @@ public class PersonGroupAddActionBean extends PersonGroupsEditActionBean {
 
         super.getPersonManager().create(g);
 
-        SessionUtil.clear(super.getSession(), SessionKeys.PERSON_GROUPS);
+        SessionUtil.clear(super.getSession(), PeopleSessionKeys.PERSON_GROUPS);
    
         return new RedirectResolution( PersonGroupsEditActionBean.class );
     }

@@ -17,7 +17,7 @@ import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.gtd.contexts.Context;
 import org.localstorm.mcc.ejb.gtd.contexts.ContextManager;
 import org.localstorm.mcc.ejb.users.User;
-import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.gtd.GtdSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
@@ -60,18 +60,18 @@ public class LazyLoadFilter implements Filter
         {
             acm.put(ctx.getId(), Boolean.TRUE);
         }
-        SessionUtil.fill(sess, SessionKeys.ACCESSIBLE_CONTEXTS_MAP, acm);
+        SessionUtil.fill(sess, GtdSessionKeys.ACCESSIBLE_CONTEXTS_MAP, acm);
     }
 
     private void performLazyLoad(HttpServletRequest req, HttpServletResponse res) {
         HttpSession sess = req.getSession(true);
-        User user = (User) sess.getAttribute(SessionKeys.USER);
+        User user = (User) sess.getAttribute(GtdSessionKeys.USER);
         
-        if ( SessionUtil.isEmpty(sess, SessionKeys.FILTER_CONTEXT) ) {
-            SessionUtil.fill(sess, SessionKeys.FILTER_CONTEXT, -1);
+        if ( SessionUtil.isEmpty(sess, GtdSessionKeys.FILTER_CONTEXT) ) {
+            SessionUtil.fill(sess, GtdSessionKeys.FILTER_CONTEXT, -1);
         }
         
-        if ( SessionUtil.isEmpty(sess, SessionKeys.CONTEXTS) ) {
+        if ( SessionUtil.isEmpty(sess, GtdSessionKeys.CONTEXTS) ) {
             ContextManager cm = ContextLookup.lookup(ContextManager.class, 
                                                      ContextManager.BEAN_NAME);
             
@@ -82,16 +82,16 @@ public class LazyLoadFilter implements Filter
             
             Collections.sort(ctxs, new Context.NameAscComparator());
             
-            SessionUtil.fill(sess, SessionKeys.CONTEXTS, ctxs);
+            SessionUtil.fill(sess, GtdSessionKeys.CONTEXTS, ctxs);
 
             this.fillAccessibleContexts(ctxs, actxList,sess);
         }
         
-        if ( SessionUtil.isEmpty(sess, SessionKeys.REFERENCE_OBJECTS) ) {
+        if ( SessionUtil.isEmpty(sess, GtdSessionKeys.REFERENCE_OBJECTS) ) {
             RefObjectManager rom = ContextLookup.lookup(RefObjectManager.class, 
                                                          RefObjectManager.BEAN_NAME);
 
-            SessionUtil.fill(sess, SessionKeys.REFERENCE_OBJECTS, rom.findOperativeByOwner(user, false));
+            SessionUtil.fill(sess, GtdSessionKeys.REFERENCE_OBJECTS, rom.findOperativeByOwner(user, false));
         }
 
     }

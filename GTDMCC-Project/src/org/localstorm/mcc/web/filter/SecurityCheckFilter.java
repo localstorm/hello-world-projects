@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.localstorm.mcc.ejb.users.User;
-import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.CommonSessionKeys;
 import org.localstorm.mcc.web.Views;
 import org.localstorm.mcc.web.util.RequestUtil;
 
@@ -27,7 +27,7 @@ public abstract class SecurityCheckFilter implements Filter
     public User getUser(HttpServletRequest req)
     {
         HttpSession sess = req.getSession(true);
-        return (User) sess.getAttribute(SessionKeys.USER);
+        return (User) sess.getAttribute(CommonSessionKeys.USER);
     }
 
     @Override

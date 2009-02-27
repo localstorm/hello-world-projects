@@ -12,7 +12,7 @@ import org.localstorm.mcc.ejb.people.entity.PersonGroup;
 import org.localstorm.mcc.ejb.people.PersonManager;
 import org.localstorm.mcc.ejb.people.entity.MailList;
 import org.localstorm.mcc.ejb.users.User;
-import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.people.PeopleSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
@@ -46,38 +46,38 @@ public class LazyLoadFilter implements Filter
 
     private void performLazyLoad(HttpServletRequest req, HttpServletResponse res) {
         HttpSession sess = req.getSession(true);
-        User user = (User) sess.getAttribute(SessionKeys.USER);
+        User user = (User) sess.getAttribute(PeopleSessionKeys.USER);
         
-        if ( SessionUtil.isEmpty(sess, SessionKeys.PERSON_GROUPS) ) {
+        if ( SessionUtil.isEmpty(sess, PeopleSessionKeys.PERSON_GROUPS) ) {
             PersonManager pm = ContextLookup.lookup(PersonManager.class,
                                                     PersonManager.BEAN_NAME);
             
             Collection<PersonGroup> pgList = pm.getGroups(user);
-            SessionUtil.fill(sess, SessionKeys.PERSON_GROUPS, pgList);
+            SessionUtil.fill(sess, PeopleSessionKeys.PERSON_GROUPS, pgList);
         }
 
-        if ( SessionUtil.isEmpty(sess, SessionKeys.ARCHIVE_PERSON_GROUPS) ) {
+        if ( SessionUtil.isEmpty(sess, PeopleSessionKeys.ARCHIVE_PERSON_GROUPS) ) {
             PersonManager pm = ContextLookup.lookup(PersonManager.class,
                                                     PersonManager.BEAN_NAME);
 
             Collection<PersonGroup> pgList = pm.getArchivedGroups(user);
-            SessionUtil.fill(sess, SessionKeys.ARCHIVE_PERSON_GROUPS, pgList);
+            SessionUtil.fill(sess, PeopleSessionKeys.ARCHIVE_PERSON_GROUPS, pgList);
         }
 
-        if ( SessionUtil.isEmpty(sess, SessionKeys.MAIL_LISTS) ) {
+        if ( SessionUtil.isEmpty(sess, PeopleSessionKeys.MAIL_LISTS) ) {
             MailListManager mlm = ContextLookup.lookup(MailListManager.class,
                                                        MailListManager.BEAN_NAME);
 
             Collection<MailList> mll = mlm.getMailLists(user);
-            SessionUtil.fill(sess, SessionKeys.MAIL_LISTS, mll);
+            SessionUtil.fill(sess, PeopleSessionKeys.MAIL_LISTS, mll);
         }
 
-        if ( SessionUtil.isEmpty(sess, SessionKeys.ARCHIVE_MAIL_LISTS) ) {
+        if ( SessionUtil.isEmpty(sess, PeopleSessionKeys.ARCHIVE_MAIL_LISTS) ) {
             MailListManager mlm = ContextLookup.lookup(MailListManager.class,
                                                        MailListManager.BEAN_NAME);
 
             Collection<MailList> mll = mlm.getArchivedMailLists(user);
-            SessionUtil.fill(sess, SessionKeys.ARCHIVE_MAIL_LISTS, mll);
+            SessionUtil.fill(sess, PeopleSessionKeys.ARCHIVE_MAIL_LISTS, mll);
         }
         
     }

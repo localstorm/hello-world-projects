@@ -6,7 +6,6 @@ import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.people.dao.DashboardReportBean;
 import org.localstorm.mcc.ejb.people.PeopleReporter;
 import org.localstorm.mcc.ejb.users.User;
-import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 import org.localstorm.mcc.web.RequestAttributes;
@@ -23,7 +22,7 @@ public class PeopleDashboardAgent {
 
         User u = (User) SessionUtil.getValue(
                                       request.getSession(true),
-                                      SessionKeys.USER
+                                      PeopleSessionKeys.USER
                                     );
 
         DashboardReportBean drb = rep.getDashboardReport(u);

@@ -8,7 +8,6 @@ import org.localstorm.mcc.ejb.gtd.reports.GtdReporter;
 import org.localstorm.mcc.ejb.gtd.tasks.HintManager;
 import org.localstorm.mcc.ejb.gtd.tasks.dao.FiredHintsReportBean;
 import org.localstorm.mcc.ejb.users.User;
-import org.localstorm.mcc.web.SessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 import org.localstorm.mcc.web.RequestAttributes;
@@ -27,7 +26,7 @@ public class GtdDashboardAgent {
 
         User u = (User) SessionUtil.getValue(
                                       request.getSession(true),
-                                      SessionKeys.USER
+                                      GtdSessionKeys.USER
                                     );
 
         DashboardReportBean drb  = rep.getDashboardReport(u);

@@ -11,7 +11,7 @@ import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.gtd.contexts.Context;
 import org.localstorm.mcc.ejb.gtd.referenced.RefObjectManager;
 import org.localstorm.mcc.ejb.gtd.referenced.ReferencedObject;
-import org.localstorm.mcc.web.SessionKeys;
+import org.localstorm.mcc.web.gtd.GtdSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
 
 
@@ -64,7 +64,7 @@ public class RefObjUpdateActionBean extends RefObjViewActionBean
         ro.setContext(ctx);
 
         rom.update(ro);
-        SessionUtil.clear(this.getSession(), SessionKeys.REFERENCE_OBJECTS);
+        SessionUtil.clear(this.getSession(), GtdSessionKeys.REFERENCE_OBJECTS);
         RedirectResolution rr = new RedirectResolution(RefObjViewActionBean.class);
         {
             rr.addParameter(RefObjViewActionBean.IncommingParameters.OBJECT_ID, super.getObjectId());
