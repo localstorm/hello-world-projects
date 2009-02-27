@@ -1,6 +1,5 @@
 package org.localstorm.mcc.ejb.cashflow.entity;
 
-import org.localstorm.mcc.ejb.cashflow.assets.*;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
