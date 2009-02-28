@@ -4,7 +4,7 @@
 <%@ include file="/WEB-INF/jsp/includes/people/hdr.jsp" %>
 
 <h2><span>Mail List</span> resolution</h2><br/><br/>
-<stripes:form action="/actions/ppl/ml/ManualResolveMailList" >
+<stripes:form action="/actions/ppl/ml/special/ManualResolveMailList" >
     <stripes:hidden name="mailListId" value="${actionBean.mailListId}" />
     <c:if test="${not empty pml.resolved}">
         <h2><span>Resolved Members</span> list</h2><br/>

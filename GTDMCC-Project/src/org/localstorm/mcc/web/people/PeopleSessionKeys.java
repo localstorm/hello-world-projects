@@ -13,4 +13,6 @@ public interface PeopleSessionKeys extends CommonSessionKeys
     public static final String MAIL_LISTS           = "mailLists";
     public static final String ARCHIVE_MAIL_LISTS   = "archivedMailLists";
     public static final String ARCHIVE_PERSON_GROUPS= "archivedGroups";
+    public static final String ACCESSIBLE_GROUPS_MAP= "accessiblePersonGroups";
+    public static final String ACCESSIBLE_MAIL_LISTS_MAP="accessibleMailLists";
 }
