@@ -51,7 +51,9 @@
      <hr/>
      <div align="right">Try <a href="<c:url value="/actions/ppl/ml/AutoResolveMailListProblems">
                         <c:param name="mailListId" value="${actionBean.mailList.id}" />
-     </c:url>">automatic</a> or <a href="#">manual</a> problem resolution&nbsp;</div>
+     </c:url>">automatic</a> or <a href="<c:url value="/actions/ppl/ml/ManualResolveMailListProblems">
+                        <c:param name="mailListId" value="${actionBean.mailList.id}" />
+     </c:url>">manual</a> problem resolution&nbsp;</div>
 </div><br/>
 </c:if>
 <div align="center"><textarea rows="8" style="width: 80%;" readonly >
@@ -63,12 +65,13 @@
 <h2><span>Members</span> view</h2><br/>
 <c:forEach items="${actionBean.mailListContent}" var="p2ml">
     <p><img src="<c:url value="/images/person.png"/>"/><span>
-            <a href="<c:url value="/actions/ppl/group/person/ViewPerson">
-                <c:param name="personId" value="${p2ml.person.id}" />
-                </c:url>"><a href="<c:url value="/actions/ppl/ml/person/LeaveMailList">
+            <a href="<c:url value="/actions/ppl/ml/person/LeaveMailList">
                     <c:param name="personId" value="${p2ml.person.id}" />
                     <c:param name="mailListId" value="${actionBean.mailList.id}" />
-                </c:url>"><img src="<c:url value="/images/trash.png"/>"/></a><c:out value="${p2ml.person.fullName}" /></a>
+                </c:url>"><img src="<c:url value="/images/trash.png"/>"/></a>
+            <a href="<c:url value="/actions/ppl/group/person/ViewPerson">
+                <c:param name="personId" value="${p2ml.person.id}" />
+                </c:url>"><c:out value="${p2ml.person.fullName}" /></a>
             &nbsp;(<a href="mailto:<c:out value="${p2ml.attributeValue}"/>"><c:out value="${p2ml.attributeValue}"/></a>)
        </span></p>
 </c:forEach>

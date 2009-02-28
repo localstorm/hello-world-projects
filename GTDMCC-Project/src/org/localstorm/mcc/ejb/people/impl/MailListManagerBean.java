@@ -4,7 +4,9 @@ import java.util.Arrays;
 import org.localstorm.mcc.ejb.people.entity.MailList;
 import org.localstorm.mcc.ejb.people.entity.PregeneratedMailList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -32,6 +34,54 @@ public class MailListManagerBean extends PeopleStatelessBean implements MailList
     public MailList find(Integer mailListId)
     {
         return em.find(MailList.class, mailListId);
+    }
+
+    @Override
+    public PregeneratedMailList tryManualResolveBrokenEmails(MailList ml)
+    {
+        Collection<Person> fromMailList = super.getPersonManager().getPersons(ml);
+        PregeneratedMailList pml = this.generateMailList(fromMailList, null);
+
+        Collection<Pair<Person, Collection<Attribute>>> many = pml.getManyEmails();
+        Set<Integer> manyEmailedPersons = new HashSet<Integer>();
+        for (Pair<Person, Collection<Attribute>> pair: many) {
+            manyEmailedPersons.add(pair.getFirst().getId());
+        }
+
+        Collection<PersonToMailList> cont = this.getMailListContent(ml);
+        for (PersonToMailList p2ml: cont) {
+            if (p2ml.getAttribute()!=null && manyEmailedPersons.contains(p2ml.getPerson().getId())) {
+                pml.resolveMultiEmail(p2ml.getPerson(), p2ml.getAttribute());
+            }
+        }
+
+        return pml;
+    }
+
+    @Override
+    public void repair(MailList ml, PregeneratedMailList pml, User user)
+    {
+        PersonManager pm = super.getPersonManager();
+
+        Map<Integer, Attribute> resolvedMap = new HashMap<Integer, Attribute>();
+        Collection<Pair<Person, Attribute>> resolv = pml.getResolved();
+        for (Pair<Person, Attribute> pair: resolv) {
+            resolvedMap.put(pair.getFirst().getId(), pair.getSecond());
+        }
+
+        Collection<PersonToMailList> cont = this.getMailListContent(ml);
+ outer: for (PersonToMailList p2ml : cont) {
+            if (p2ml.getAttribute()==null) {
+
+                Attribute attr = resolvedMap.get(p2ml.getPerson().getId());
+                if (attr!=null) {
+                    p2ml.setAttribute(attr);
+                    em.merge(p2ml);
+                    continue;
+                }
+
+            }
+        }
     }
 
     @Override
@@ -63,7 +113,8 @@ public class MailListManagerBean extends PeopleStatelessBean implements MailList
             suggested.addAll(Arrays.asList(attributes));
         }
 
-        outer: for (Person p : persons) {
+    
+ outer: for (Person p : persons) {
             Collection<Attribute> attrs = pm.getEmailAttributes(p);
             
             if (attrs.isEmpty()) {
