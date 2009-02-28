@@ -4,7 +4,7 @@
 <%@ include file="/WEB-INF/jsp/includes/people/hdr.jsp" %>
 
 <h2><span>Mail List</span> generation</h2><br/>
-<stripes:form action="/actions/ppl/nil/AddMailList" >
+<stripes:form action="/actions/ppl/ml/special/AddMailList" >
 
 <div align="center">
 <div id="renameDiv" width="80%">

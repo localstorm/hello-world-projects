@@ -14,10 +14,9 @@ import org.localstorm.mcc.web.people.PeopleBaseActionBean;
 
 
 /**
- * TODO: Special security check!!
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/ppl/ml/ManualResolveMailList")
+@UrlBinding("/actions/ppl/ml/special/ManualResolveMailList")
 public class MailListManualResolveActionBean extends PeopleBaseActionBean
 {
     private String manyEmailsPersonIds;

@@ -131,6 +131,32 @@
             <filter-class>org.localstorm.mcc.web.cashflow.filter.security.CashflowTargetSecurityCheckFilter</filter-class>
         </filter>
 
+
+        <filter>
+            <filter-name>PeopleGroupSecurityCheckFilter</filter-name>
+            <filter-class>org.localstorm.mcc.web.people.filter.security.PeopleGroupSecurityCheckFilter</filter-class>
+        </filter>
+
+        <filter>
+            <filter-name>PeoplePersonSecurityCheckFilter</filter-name>
+            <filter-class>org.localstorm.mcc.web.people.filter.security.PeoplePersonSecurityCheckFilter</filter-class>
+        </filter>
+
+        <filter>
+            <filter-name>PeopleAttributeSecurityCheckFilter</filter-name>
+            <filter-class>org.localstorm.mcc.web.people.filter.security.PeopleAttributeSecurityCheckFilter</filter-class>
+        </filter>
+
+        <filter>
+            <filter-name>PeopleMailListSecurityCheckFilter</filter-name>
+            <filter-class>org.localstorm.mcc.web.people.filter.security.PeopleMailListSecurityCheckFilter</filter-class>
+        </filter>
+
+        <filter>
+            <filter-name>PeopleMailListSpecialSecurityCheckFilter</filter-name>
+            <filter-class>org.localstorm.mcc.web.people.filter.security.PeopleMailListSpecialSecurityCheckFilter</filter-class>
+        </filter>
+
         <!-- =========== Filter Mapping ============ -->
         <!-- Stripes -->
         <filter-mapping>
@@ -277,6 +303,36 @@
             <url-pattern>/actions/cash/target/*</url-pattern>
         </filter-mapping>
 
+        <filter-mapping>
+            <filter-name>PeopleGroupSecurityCheckFilter</filter-name>
+            <url-pattern>/actions/ppl/group/*</url-pattern>
+        </filter-mapping>
+
+        <filter-mapping>
+            <filter-name>PeoplePersonSecurityCheckFilter</filter-name>
+            <url-pattern>/actions/ppl/group/person/*</url-pattern>
+        </filter-mapping>
+
+        <filter-mapping>
+            <filter-name>PeopleAttributeSecurityCheckFilter</filter-name>
+            <url-pattern>/actions/ppl/group/person/attr/*</url-pattern>
+        </filter-mapping>
+
+        <filter-mapping>
+            <filter-name>PeopleMailListSecurityCheckFilter</filter-name>
+            <url-pattern>/actions/ppl/ml/*</url-pattern>
+        </filter-mapping>
+
+        <filter-mapping>
+            <filter-name>PeoplePersonSecurityCheckFilter</filter-name>
+            <url-pattern>/actions/ppl/ml/person/*</url-pattern>
+        </filter-mapping>
+
+        <filter-mapping>
+            <filter-name>PeopleMailListSpecialSecurityCheckFilter</filter-name>
+            <url-pattern>/actions/ppl/ml/special/*</url-pattern>
+        </filter-mapping>>
+
         <!-- Compression -->
 
         <filter-mapping>
@@ -379,7 +435,4 @@
         <session-timeout>120</session-timeout>
     </session-config>
 
-
-        org.localstorm.mcc.web.cashflow.filter.security.CashflowAssetSecurityCheckFilter
-
-        </web-app>
+</web-app>

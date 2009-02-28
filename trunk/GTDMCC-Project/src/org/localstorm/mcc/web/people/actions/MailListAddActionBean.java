@@ -24,7 +24,7 @@ import org.localstorm.mcc.web.util.SessionUtil;
  * TODO: Special security check!!
  * @author Alexey Kuznetsov
  */
-@UrlBinding("/actions/ppl/nil/AddMailList")
+@UrlBinding("/actions/ppl/ml/special/AddMailList")
 public class MailListAddActionBean extends PeopleBaseActionBean
 {
     private String manyEmailsPersonIds;
