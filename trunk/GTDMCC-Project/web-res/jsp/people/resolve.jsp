@@ -3,7 +3,7 @@
 
 <%@ include file="/WEB-INF/jsp/includes/people/hdr.jsp" %>
 
-<h2><span>Mail List</span> view</h2><br/>
+<h2><span>Mail List</span> generation</h2><br/>
 <stripes:form action="/actions/ppl/nil/AddMailList" >
 
 <div align="center">

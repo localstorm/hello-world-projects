@@ -2,6 +2,7 @@ package org.localstorm.mcc.ejb.people.entity;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 import org.localstorm.mcc.ejb.Pair;
@@ -43,6 +44,11 @@ public class PregeneratedMailList implements Serializable
         return noEmail.isEmpty() && manyEmails.isEmpty();
     }
 
+    public boolean isPartiallyReady()
+    {
+        return manyEmails.isEmpty();
+    }
+
     public Collection<Pair<Person, Collection<Attribute>>> getManyEmails()
     {
         return manyEmails;
@@ -56,6 +62,32 @@ public class PregeneratedMailList implements Serializable
     public Collection<Pair<Person, Attribute>> getResolved()
     {
         return resolved;
+    }
+
+    public void resolveMultiEmail(Person person, Attribute attribute)
+    {
+        Integer pid = person.getId();
+        for (Iterator<Pair<Person, Collection<Attribute>>> it =manyEmails.iterator(); it.hasNext(); ) {
+            Pair<Person, Collection<Attribute>> pair = it.next();
+            if (pair.getFirst().getId().equals(pid)) {
+                it.remove();
+                resolved.add(new Pair<Person, Attribute>(pair.getFirst(), attribute));
+                break;
+            }
+        }
+    }
+
+    public void resolveUnresolvedEmail(Person person, Attribute attr)
+    {
+        Integer pid = person.getId();
+        for (Iterator<Person> it= noEmail.iterator(); it.hasNext(); ) {
+            Person p = it.next();
+            if (p.getId().equals(pid)) {
+                it.remove();
+                resolved.add(new Pair<Person, Attribute>(person, attr));
+                break;
+            }
+        }
     }
     
 }

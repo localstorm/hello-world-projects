@@ -29,6 +29,10 @@ public interface MailListManager
 
     public void remove(MailList ml);
 
+    public void repair(MailList ml, PregeneratedMailList pml, User user);
+
+    public PregeneratedMailList tryManualResolveBrokenEmails(MailList ml);
+
     public void update(MailList ml);
 
     public void leaveMailList(MailList ml, Person p);
