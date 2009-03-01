@@ -27,8 +27,8 @@
                     </c:url>"><c:out value="${taskMarker.task.summary}" /></a>
         </div>
         <c:if test="${not empty taskMarker.task.details}" >
-            &nbsp;<a href="#" onclick="$('#details_<c:out value="${taskMarker.task.id}"/>').animate({height:'toggle',opacity:'toggle'}, 'fast'); return false">Details (click to view/hide)</a>
-            <div align="justify" id="details_<c:out value="${taskMarker.task.id}"/>" style="display: none;" >
+            &nbsp;<a href="#" onclick="$('#details_b_<c:out value="${taskMarker.task.id}"/>').animate({height:'toggle',opacity:'toggle'}, 'fast'); return false">Details (click to view/hide)</a>
+            <div align="justify" id="details_b_<c:out value="${taskMarker.task.id}"/>" style="display: none;" >
                 <c:out escapeXml="false" value="${taskMarker.task.detailsHtmlEscaped}"/>
             </div>
         </c:if>
@@ -92,8 +92,8 @@
                     </c:url>"><c:out value="${taskMarker.task.summary}" /></a>
         </div>
         <c:if test="${not empty taskMarker.task.details}" >
-            &nbsp;<a href="#" onclick="$('#details_<c:out value="${taskMarker.task.id}"/>').animate({height:'toggle',opacity:'toggle'}, 'fast'); return false">Details (click to view/hide)</a>
-            <div align="justify" id="details_<c:out value="${taskMarker.task.id}"/>" style="display: none;" >
+            &nbsp;<a href="#" onclick="$('#details_f_<c:out value="${taskMarker.task.id}"/>').animate({height:'toggle',opacity:'toggle'}, 'fast'); return false">Details (click to view/hide)</a>
+            <div align="justify" id="details_f_<c:out value="${taskMarker.task.id}"/>" style="display: none;" >
                 <c:out escapeXml="false" value="${taskMarker.task.detailsHtmlEscaped}"/>
             </div>
         </c:if>
