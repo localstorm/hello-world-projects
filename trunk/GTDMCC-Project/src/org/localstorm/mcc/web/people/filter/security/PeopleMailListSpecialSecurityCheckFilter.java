@@ -34,29 +34,31 @@ public class PeopleMailListSpecialSecurityCheckFilter extends SecurityCheckFilte
         Collection<Integer> personIds = new ArrayList<Integer>();
         Collection<Integer> attributeIds = new ArrayList<Integer>();
 
-        if (mepid!=null) {
+        if (mepid!=null && mepid.length()>0) {
             personIds.addAll(WebUtil.stringToIds(mepid));
         }
 
-        if (rpid!=null) {
+        if (rpid!=null && rpid.length()>0) {
             personIds.addAll(WebUtil.stringToIds(rpid));
         }
 
-        Integer[] pids = new Integer[personIds.size()];
-        personIds.toArray(pids);
+        if (!personIds.isEmpty()) {
+            Integer[] pids = new Integer[personIds.size()];
+            personIds.toArray(pids);
 
-        SecurityUtil.checkPersonsSecurity(req.getSession(true), pids, user, log);
+            SecurityUtil.checkPersonsSecurity(req.getSession(true), pids, user, log);
+        }
 
         if (attrs!=null && attrs.length>0) {
             for (String att: attrs) {
                 attributeIds.add(Integer.parseInt(att));
             }
+
+            Integer[] attrsArray = new Integer[attributeIds.size()];
+            attributeIds.toArray(attrsArray);
+
+            SecurityUtil.checkAttributesSecurity(req.getSession(true), attrsArray, user, log);
         }
-
-        Integer[] attrsArray = new Integer[attributeIds.size()];
-        attributeIds.toArray(attrsArray);
-
-        SecurityUtil.checkAttributesSecurity(req.getSession(true), attrsArray, user, log);
     }
 
 }
