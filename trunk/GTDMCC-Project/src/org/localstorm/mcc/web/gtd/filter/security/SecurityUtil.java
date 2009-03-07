@@ -111,7 +111,7 @@ class SecurityUtil
 
     public static void checkFileSecurity(HttpSession sess, Integer fileId, User user, Logger log)
     {
-        if (fileId!=null)
+        if (fileId!=null && fileId>0)
         {
             log.info("Checking access to file=" + fileId + " for user=" + user.getLogin());
             Integer objectId;
