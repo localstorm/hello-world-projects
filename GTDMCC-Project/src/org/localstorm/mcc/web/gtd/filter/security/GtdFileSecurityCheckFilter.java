@@ -24,7 +24,6 @@ public class GtdFileSecurityCheckFilter extends SecurityCheckFilter
 
         if (fid!=null)
         {
-
             Integer fileId = Integer.parseInt(fid);
             SecurityUtil.checkFileSecurity(req.getSession(true), fileId, user, log);
         }
