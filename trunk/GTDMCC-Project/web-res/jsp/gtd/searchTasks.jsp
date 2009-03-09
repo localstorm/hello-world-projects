@@ -61,7 +61,7 @@
                                 <c:param name="action" value="UNDELEGATE" />
                             </c:url>" title="Not delegated"><img src="<c:url value="/images/delegated.png"/>"/></a>
                         </c:otherwise>
-                    </c:choose><c:out value="${task.list.name}" />:</span><br/>
+                    </c:choose><c:out value="${task.list.context.name}" />, <c:out value="${task.list.name}" />:</span><br/>
                 <div align="center">
                     <a href="<c:url value="/actions/gtd/ctx/list/task/ViewTask">
                                     <c:param name="taskId" value="${task.id}" />
@@ -86,9 +86,6 @@
                 </table>
             </stripes:form>
         </div>
-        <c:if test="${not empty task.runtimeNote}">
-            <p><i>&nbsp;Responsibility:&nbsp;</i><c:out value="${task.runtimeNote}"/></p>
-        </c:if>
         <table width="100%">
             <tr>
                 <td width="80%" >
@@ -148,7 +145,7 @@
                                 <c:param name="taskId" value="${task.id}" />
                                 <c:param name="action" value="UNDELEGATE" />
                             </c:url>" title="Not delegated"><img src="<c:url value="/images/delegated.png"/>"/></a>
-                      <c:out value="${task.list.name}" />:</span><br/>
+                      <c:out value="${task.list.context.name}" />, <c:out value="${task.list.name}" />:</span><br/>
                 <div align="center">
                     <a href="<c:url value="/actions/gtd/ctx/list/task/ViewTask">
                                     <c:param name="taskId" value="${task.id}" />
@@ -241,7 +238,7 @@
                                         <c:param name="action" value="UNFLIGHT" />
                                      </c:url>" title="Remove From Flight Plan"><img alt="Unflight" src="<c:url value="/images/unflight.png"/>"/></a>
                 </c:if>
-                <c:out value="${task.list.name}" />:</span><br/>
+                <c:out value="${task.list.context.name}" />, <c:out value="${task.list.name}" />:</span><br/>
                 <div align="center">
                     <a href="<c:url value="/actions/gtd/ctx/list/task/ViewTask">
                                     <c:param name="taskId" value="${task.id}" />

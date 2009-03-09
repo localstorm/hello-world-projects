@@ -2,6 +2,7 @@ package org.localstorm.mcc.web.gtd.actions.wrap;
 
 import java.util.Date;
 import org.localstorm.mcc.ejb.gtd.entity.Note;
+import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
 import org.localstorm.mcc.web.util.EscapeUtil;
 
 /**
@@ -11,9 +12,15 @@ import org.localstorm.mcc.web.util.EscapeUtil;
 public class NoteWrapper extends Note
 {
     private Note note;
+    private ReferencedObject ro;
 
     public NoteWrapper(Note note) {
         this.note = note;
+    }
+
+    public NoteWrapper(Note note, ReferencedObject ro) {
+        this(note);
+        this.ro = ro;
     }
 
     @Override
@@ -56,9 +63,11 @@ public class NoteWrapper extends Note
         this.note.setType(type);
     }
 
-    public String getNoteHtmlEscaped()
-    {
+    public String getNoteHtmlEscaped() {
         return EscapeUtil.forHTML(this.getNote());
     }
-    
+
+    public ReferencedObject getRefObject() {
+        return this.ro;
+    }
 }

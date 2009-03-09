@@ -5,8 +5,10 @@ import org.localstorm.mcc.web.gtd.backend.RefObjectCollector;
 import java.io.IOException;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedList;
 
+import java.util.Map;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
@@ -32,7 +34,6 @@ import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.mcc.web.gtd.actions.wrap.RoSearchResult;
-import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
 
 
 /**
@@ -110,19 +111,21 @@ public class RefObjAttachmentSearchSubmitActionBean extends GtdBaseActionBean
         Collection<ReferencedObject> ros = rm.findAllByOwner(user);
         Collection<Note>           notes = new LinkedList<Note>();
         Collection<FileAttachment> files = new LinkedList<FileAttachment>();
+        Map<Integer, ReferencedObject> note2ro = new HashMap<Integer, ReferencedObject>();
+        Map<Integer, ReferencedObject> file2ro = new HashMap<Integer, ReferencedObject>();
         
-        RAMDirectory ramd = this.fetchRamDirectory(ros, notes, files);
+        RAMDirectory ramd = this.fetchRamDirectory(ros, notes, files, note2ro, file2ro);
 
         this.setFound(false);
-        RoSearchResult result = this.search(ramd, ros, notes, files, text);
+        RoSearchResult result = this.search(ramd, ros, notes, files, note2ro, file2ro, text);
 
         this.setFound(!result.isEmpty());
 
         if (this.isFound())
         {
             this.setObjectFiles(result.getFilesFound());
-            this.setObjectTextualNotes(WrapUtil.genWrappers(result.getTextualNotesFound()));
-            this.setObjectUrlNotes(WrapUtil.genWrappers(result.getUrlNotesFound()));
+            this.setObjectTextualNotes(result.getTextualNotesFound());
+            this.setObjectUrlNotes(result.getUrlNotesFound());
         }
 
         return new ForwardResolution(Views.SEARCH_RO_ATTACH);
@@ -130,7 +133,9 @@ public class RefObjAttachmentSearchSubmitActionBean extends GtdBaseActionBean
 
     private RAMDirectory fetchRamDirectory(Collection<ReferencedObject> ros,
                                            Collection<Note> outNotes,
-                                           Collection<FileAttachment> outFiles ) throws IOException {
+                                           Collection<FileAttachment> outFiles,
+                                           Map<Integer, ReferencedObject> note2ro,
+                                           Map<Integer, ReferencedObject> file2ro) throws IOException {
 
         FileManager    fm = super.getFileManager();
         NoteManager    nm = super.getNoteManager();
@@ -145,6 +150,7 @@ public class RefObjAttachmentSearchSubmitActionBean extends GtdBaseActionBean
             for (Note note : notes)
             {
                 outNotes.add(note);
+                note2ro.put(note.getId(), ro);
 
                 String searchable = this.getSearchable(note, ro);
                 Document doc = new Document();
@@ -160,7 +166,8 @@ public class RefObjAttachmentSearchSubmitActionBean extends GtdBaseActionBean
             for (FileAttachment file : files)
             {
                 outFiles.add(file);
-                
+                file2ro.put(file.getId(), ro);
+
                 Document doc = new Document();
                 {
                     String searchable = this.getSearchable(file, ro);
@@ -226,6 +233,8 @@ public class RefObjAttachmentSearchSubmitActionBean extends GtdBaseActionBean
                                   Collection<ReferencedObject> ros,
                                   Collection<Note> notes,
                                   Collection<FileAttachment> files,
+                                  Map<Integer, ReferencedObject> note2ro,
+                                  Map<Integer, ReferencedObject> file2ro,
                                   String text) throws Exception {
 
         Analyzer analyzer   = new StandardAnalyzer();
@@ -237,7 +246,9 @@ public class RefObjAttachmentSearchSubmitActionBean extends GtdBaseActionBean
                                                         TYPE_FIELD,
                                                         ros,
                                                         notes,
-                                                        files);
+                                                        files,
+                                                        note2ro,
+                                                        file2ro);
 
         is.search(query, roc);
 

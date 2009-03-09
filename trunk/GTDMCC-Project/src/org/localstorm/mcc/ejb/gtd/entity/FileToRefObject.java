@@ -13,7 +13,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.localstorm.mcc.ejb.AbstractEntity;
 import org.localstorm.mcc.ejb.Identifiable;
-import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
 
 /**
  *
