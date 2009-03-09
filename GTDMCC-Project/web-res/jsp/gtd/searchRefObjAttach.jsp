@@ -43,7 +43,7 @@
     <br/>
     <c:if test="${actionBean.found}">
         <c:forEach var="note" items="${actionBean.objectTextualNotes}">
-            <p><span>Text</span>:<br/>
+            <p><span><c:out value="${note.refObject.context.name}"/>, <c:out value="${note.refObject.name}"/>, Text</span>:<br/>
                 <table width="100%">
                     <tr><td><c:out escapeXml="false" value="${note.noteHtmlEscaped}" /></td></tr>
                 </table>
@@ -55,7 +55,7 @@
                 <hr/>
             </c:if>
             <c:forEach var="note" items="${actionBean.objectUrlNotes}">
-                <p><span>Link</span>: <a href="<c:out value="${note.note}" />"><c:out value="${note.description}" /></a></p>
+                <p><span><c:out value="${note.refObject.context.name}"/>, <c:out value="${note.refObject.name}"/>, Link</span>: <a href="<c:out value="${note.note}" />"><c:out value="${note.description}" /></a></p>
             </c:forEach>
         </c:if>
 
@@ -64,7 +64,7 @@
                 <hr/>
             </c:if>
             <c:forEach var="file" items="${actionBean.objectFiles}">
-                <p><span>File</span>: <a href="<c:url value="/actions/gtd/ctx/obj/file/DownloadFile">
+                <p><span><c:out value="${file.refObject.context.name}"/>, <c:out value="${file.refObject.name}"/>, File</span>: <a href="<c:url value="/actions/gtd/ctx/obj/file/DownloadFile">
                     <c:param name="fileId" value="${file.id}" />
             </c:url>"><c:out value="${file.name}"/></a> (<c:out value="${file.description}" />)</p>
             </c:forEach>

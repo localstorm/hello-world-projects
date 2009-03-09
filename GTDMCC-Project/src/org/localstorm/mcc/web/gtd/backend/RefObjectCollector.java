@@ -10,6 +10,8 @@ import org.apache.lucene.search.IndexSearcher;
 import org.localstorm.mcc.ejb.gtd.entity.FileAttachment;
 import org.localstorm.mcc.ejb.gtd.entity.Note;
 import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
+import org.localstorm.mcc.web.gtd.actions.wrap.FileAttachmentWrapper;
+import org.localstorm.mcc.web.gtd.actions.wrap.NoteWrapper;
 import org.localstorm.mcc.web.gtd.actions.wrap.RoSearchResult;
 
 /**
@@ -24,13 +26,17 @@ public class RefObjectCollector extends HitCollector {
     private String         typeField;
     private Map<Integer, Note> noteMap;
     private Map<Integer, FileAttachment> fileMap;
+    private Map<Integer, ReferencedObject> note2ro;
+    private Map<Integer, ReferencedObject> file2ro;
     
     public RefObjectCollector(IndexSearcher is,
                               String idField,
                               String typeField,
                               Collection<ReferencedObject> ros,
                               Collection<Note> notes,
-                              Collection<FileAttachment> files) {
+                              Collection<FileAttachment> files,
+                              Map<Integer, ReferencedObject> noteToRefObject,
+                              Map<Integer, ReferencedObject> fileToRefObject) {
         
         this.sr = new RoSearchResult();
         this.searcher = is;
@@ -48,6 +54,8 @@ public class RefObjectCollector extends HitCollector {
             this.fileMap.put(file.getId(), file);
         }
 
+        this.note2ro = noteToRefObject;
+        this.file2ro = fileToRefObject;
     }
 
     @Override
@@ -65,15 +73,18 @@ public class RefObjectCollector extends HitCollector {
             switch (type) {
                 case TEXT:
                     note = this.noteMap.get(id);
-                    this.sr.addTextualNote(note, relevance);
+                    NoteWrapper nw1 = new NoteWrapper(note, note2ro.get(id));
+                    this.sr.addTextualNote(nw1, relevance);
                     break;
                 case URL:
                     note = this.noteMap.get(id);
-                    this.sr.addUrlNote(note, relevance);
+                    NoteWrapper nw2 = new NoteWrapper(note, note2ro.get(id));
+                    this.sr.addUrlNote(nw2, relevance);
                     break;
                 case FILE:
                     FileAttachment file = this.fileMap.get(id);
-                    this.sr.addFileResult(file, relevance);
+                    FileAttachmentWrapper fw = new FileAttachmentWrapper(file, file2ro.get(id));
+                    this.sr.addFileResult(fw, relevance);
                     break;
                 default:
                     throw new RuntimeException("Unexpected case!");
