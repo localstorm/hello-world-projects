@@ -1,7 +1,7 @@
 select totals.name cname, totals.cid cid, total pending, awaited, flight, red, dead, done, effort1, effort2, effort3, effort4, effort5 from (
     (
             select c.name name, c.id cid, IF(total IS NULL, 0, total) total from (
-                (select name, id from CONTEXTS where user_id=?) c                
+                (select name, id from CONTEXTS where user_id=? and is_archived=false) c
                 LEFT OUTER JOIN
                 (
                     select context_id, SUM(lcnt) total from
@@ -23,7 +23,7 @@ select totals.name cname, totals.cid cid, total pending, awaited, flight, red, d
         JOIN
         (
             select c.id cid, IF(total IS NULL, 0, total) awaited  from (
-                (select name, id from CONTEXTS where user_id=?) c
+                (select name, id from CONTEXTS where user_id=? and is_archived=false) c
                 LEFT OUTER JOIN
                 (
                     select context_id, SUM(lcnt) total from
@@ -45,7 +45,7 @@ select totals.name cname, totals.cid cid, total pending, awaited, flight, red, d
         (
             select id cid, IF(total IS NULL, 0, total) flight  from (
                 
-                    (select name, id from CONTEXTS where user_id=?) c
+                    (select name, id from CONTEXTS where user_id=? and is_archived=false) c
                     LEFT OUTER JOIN
                     (
                         select context_id, SUM(lcnt) total from
@@ -71,7 +71,7 @@ select totals.name cname, totals.cid cid, total pending, awaited, flight, red, d
         JOIN
         (
             select id cid, IF(total IS NULL, 0, total) red  from (
-                    (select name, id from CONTEXTS where user_id=?) c
+                    (select name, id from CONTEXTS where user_id=? and is_archived=false) c
                     LEFT OUTER JOIN
                     (
                         select context_id, SUM(lcnt) total from
@@ -96,7 +96,7 @@ select totals.name cname, totals.cid cid, total pending, awaited, flight, red, d
         JOIN 
         (
             select id cid, IF(total IS NULL, 0, total) dead  from (
-                    (select name, id from CONTEXTS where user_id=?) c
+                    (select name, id from CONTEXTS where user_id=? and is_archived=false) c
                     LEFT OUTER JOIN
                     (
                         select context_id, SUM(lcnt) total from
@@ -121,7 +121,7 @@ select totals.name cname, totals.cid cid, total pending, awaited, flight, red, d
         JOIN
         (
             select id cid, IF(total IS NULL, 0, total) done  from (
-                    (select name, id from CONTEXTS where user_id=?) c
+                    (select name, id from CONTEXTS where user_id=? and is_archived=false) c
                     LEFT OUTER JOIN
                     (
                         select context_id, SUM(lcnt) total from
@@ -144,7 +144,7 @@ select totals.name cname, totals.cid cid, total pending, awaited, flight, red, d
         JOIN
         (
             select id cid, IF(total IS NULL, 0, total) effort1  from (
-                    (select name, id from CONTEXTS where user_id=?) c
+                    (select name, id from CONTEXTS where user_id=? and is_archived=false) c
                     LEFT OUTER JOIN
                     (
                         select context_id, SUM(lcnt) total from
@@ -171,7 +171,7 @@ select totals.name cname, totals.cid cid, total pending, awaited, flight, red, d
         JOIN
         (
             select id cid, IF(total IS NULL, 0, total) effort2  from (
-                    (select name, id from CONTEXTS where user_id=?) c
+                    (select name, id from CONTEXTS where user_id=? and is_archived=false) c
                     LEFT OUTER JOIN
                     (
                         select context_id, SUM(lcnt) total from
@@ -198,7 +198,7 @@ select totals.name cname, totals.cid cid, total pending, awaited, flight, red, d
         JOIN
         (
             select id cid, IF(total IS NULL, 0, total) effort3  from (
-                    (select name, id from CONTEXTS where user_id=?) c
+                    (select name, id from CONTEXTS where user_id=? and is_archived=false) c
                     LEFT OUTER JOIN
                     (
                         select context_id, SUM(lcnt) total from
@@ -225,7 +225,7 @@ select totals.name cname, totals.cid cid, total pending, awaited, flight, red, d
         JOIN
         (
             select id cid, IF(total IS NULL, 0, total) effort4  from (
-                    (select name, id from CONTEXTS where user_id=?) c
+                    (select name, id from CONTEXTS where user_id=? and is_archived=false) c
                     LEFT OUTER JOIN
                     (
                         select context_id, SUM(lcnt) total from
@@ -252,7 +252,7 @@ select totals.name cname, totals.cid cid, total pending, awaited, flight, red, d
         JOIN
         (
             select id cid, IF(total IS NULL, 0, total) effort5  from (
-                    (select name, id from CONTEXTS where user_id=?) c
+                    (select name, id from CONTEXTS where user_id=? and is_archived=false) c
                     LEFT OUTER JOIN
                     (
                         select context_id, SUM(lcnt) total from
