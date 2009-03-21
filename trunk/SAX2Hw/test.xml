@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<!DOCTYPE PubmedArticleSet PUBLIC "-//NLM//DTD PubMedArticle, 1st January 2009//EN" "http://www.ncbi.nlm.nih.gov/entrez/query/DTD/pubmed_090101.dtd">
+<PubmedArticleSet>
+	<PubmedArticle>
+		<MedlineCitation Owner="NLM" Status="In-Data-Review">
+			<PMID>19294774</PMID>
+			<DateCreated>
+				<Year>2009</Year>
+				<Month>03</Month>
+				
+				<Day>18</Day>
+			</DateCreated>
+			<Article PubModel="Print">
+				<Journal>
+					<ISSN IssnType="Print">1007-9327</ISSN>
+					<JournalIssue CitedMedium="Print">
+						<Volume>15</Volume>
+						
+						<Issue>11</Issue>
+						<PubDate>
+							<Year>2009</Year>
+							<Month>Mar</Month>
+							<Day>21</Day>
+						</PubDate>
+					</JournalIssue>
+					
+					<Title>World journal of gastroenterology : WJG</Title>
+					<ISOAbbreviation>World J. Gastroenterol.</ISOAbbreviation>
+				</Journal>
+				<ArticleTitle>Congenital absence of the splenic artery and splenic vein accompanied with a duodenal ulcer and deformity.</ArticleTitle>
+				<Pagination>
+					<MedlinePgn>1401-3</MedlinePgn>
+				</Pagination>
+				
+				<Abstract>
+					<AbstractText>Congenital absence of the splenic artery is a very rare condition. To the best of our knowledge, congenital absence of the splenic artery accompanied with absence of the splenic vein has not been reported. We report a case of the absence of the splenic artery and vein in a 61-year-old woman who presented with postprandial epigastric discomfort. Upper gastrointestinal endoscopy showed a dilated, pulsatile vessel in the fundus and duodenal stenosis. An abdominal computed tomography (CT) scan revealed absence of the splenic vein with a tortuously engorged gastroepiploic vein. Three-dimensional CT demonstrated the tortuously dilated left gastric artery and the left gastroepiploic artery with non-visualization of the splenic artery. After administration of a proton pump inhibitor, abdominal symptoms resolved without any recurrence of symptoms during 6 mo of follow-up.</AbstractText>
+				</Abstract>
+				<Affiliation>Department of Gastroenterology, Kosin University College of Medicine, 34 Amnam-dong, Seo-gu, Busan, South Korea 602-702, South Korea. moonone70@yahoo.co.kr.</Affiliation>
+				<AuthorList CompleteYN="Y">
+					<Author ValidYN="Y">
+						<LastName>Shin</LastName>
+						
+						<ForeName>Eun-Kyung</ForeName>
+						<Initials>EK</Initials>
+					</Author>
+					<Author ValidYN="Y">
+						<LastName>Moon</LastName>
+						<ForeName>Won</ForeName>
+						<Initials>W</Initials>
+						
+					</Author>
+					<Author ValidYN="Y">
+						<LastName>Park</LastName>
+						<ForeName>Seun-Ja</ForeName>
+						<Initials>SJ</Initials>
+					</Author>
+					<Author ValidYN="Y">
+						
+						<LastName>Park</LastName>
+						<ForeName>Moo-In</ForeName>
+						<Initials>MI</Initials>
+					</Author>
+					<Author ValidYN="Y">
+						<LastName>Kim</LastName>
+						<ForeName>Kyu-Jong</ForeName>
+						
+						<Initials>KJ</Initials>
+					</Author>
+					<Author ValidYN="Y">
+						<LastName>Lee</LastName>
+						<ForeName>Jee-Suk</ForeName>
+						<Initials>JS</Initials>
+					</Author>
+					
+					<Author ValidYN="Y">
+						<LastName>Kwon</LastName>
+						<ForeName>Jin-Hwan</ForeName>
+						<Initials>JH</Initials>
+					</Author>
+				</AuthorList>
+				<Language>eng</Language>
+				
+				<PublicationTypeList>
+					<PublicationType>Journal Article</PublicationType>
+				</PublicationTypeList>
+			</Article>
+			<MedlineJournalInfo>
+				<Country>China</Country>
+				<MedlineTA>World J Gastroenterol</MedlineTA>
+				
+				<NlmUniqueID>100883448</NlmUniqueID>
+			</MedlineJournalInfo>
+			<CitationSubset>IM</CitationSubset>
+		</MedlineCitation>
+		<PubmedData>
+			<History>
+				<PubMedPubDate PubStatus="entrez">
+					<Year>2009</Year>
+					
+					<Month>3</Month>
+					<Day>19</Day>
+					<Hour>9</Hour>
+					<Minute>0</Minute>
+				</PubMedPubDate>
+				<PubMedPubDate PubStatus="pubmed">
+					<Year>2009</Year>
+					
+					<Month>3</Month>
+					<Day>19</Day>
+					<Hour>9</Hour>
+					<Minute>0</Minute>
+				</PubMedPubDate>
+				<PubMedPubDate PubStatus="medline">
+					<Year>2009</Year>
+					
+					<Month>3</Month>
+					<Day>19</Day>
+					<Hour>9</Hour>
+					<Minute>0</Minute>
+				</PubMedPubDate>
+			</History>
+			<PublicationStatus>ppublish</PublicationStatus>
+			
+			<ArticleIdList>
+				<ArticleId IdType="pubmed">19294774</ArticleId>
+			</ArticleIdList>
+		</PubmedData>
+	</PubmedArticle>
+	
+	
+</PubmedArticleSet>
+ 
