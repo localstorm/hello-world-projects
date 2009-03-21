@@ -16,15 +16,11 @@
             </c:forEach>
         </table>            
 	
-        <h2><span>Search</span> pane</h2>
+        <%--h2><span>Search</span> pane</h2>
             <table class="reports">
                 <tr>
                     <td width="18px" valign="top"><img src="<c:url value="/images/search.png"/>"/></td>
                     <td><a href="<c:url value="/actions/gtd/nil/SearchTasks"/>">Search people</a></td>
                 </tr>
-                <%--tr>
-                    <td width="18px" valign="top"><img src="<c:url value="/images/search.png"/>"/></td>
-                    <td><a href="<c:url value="/actions/gtd/nil/SearchRefObjAttach"/>">Search reference</a></td>
-                </tr--%>
-            </table>
+            </table--%>
 </div>
