@@ -37,6 +37,16 @@ public class MailListManagerBean extends PeopleStatelessBean implements MailList
     }
 
     @Override
+    public Collection<MailList> getJoinableMailLists(Person p, User user)
+    {
+        Query q = em.createNamedQuery(MailList.Queries.FIND_JOINABLE_MLS);
+        q.setParameter(MailList.Properties.OWNER, user);
+        q.setParameter(MailList.Properties.PERSON, p);
+
+        return (Collection<MailList>) q.getResultList();
+    }
+
+    @Override
     public PregeneratedMailList tryManualResolveBrokenEmails(MailList ml)
     {
         Collection<Person> fromMailList = super.getPersonManager().getPersons(ml);

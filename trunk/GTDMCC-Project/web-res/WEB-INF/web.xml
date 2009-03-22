@@ -131,7 +131,6 @@
             <filter-class>org.localstorm.mcc.web.cashflow.filter.security.CashflowTargetSecurityCheckFilter</filter-class>
         </filter>
 
-
         <filter>
             <filter-name>PeopleGroupSecurityCheckFilter</filter-name>
             <filter-class>org.localstorm.mcc.web.people.filter.security.PeopleGroupSecurityCheckFilter</filter-class>
@@ -316,6 +315,11 @@
         <filter-mapping>
             <filter-name>PeopleAttributeSecurityCheckFilter</filter-name>
             <url-pattern>/actions/ppl/group/person/attr/*</url-pattern>
+        </filter-mapping>
+
+        <filter-mapping>
+            <filter-name>PeopleAttributeSecurityCheckFilter</filter-name>
+            <url-pattern>/actions/ppl/ml/person/attr/*</url-pattern>
         </filter-mapping>
 
         <filter-mapping>

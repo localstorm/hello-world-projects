@@ -41,6 +41,7 @@ public class ExpirableValuesCache<K, T> {
 
     }
 
+    @SuppressWarnings("unchecked")
     public void put(K key, T value)
     {
         this.checkLog();
@@ -64,6 +65,7 @@ public class ExpirableValuesCache<K, T> {
         }
     }
 
+    @SuppressWarnings("unchecked")
     private void reloadTrigger() {
         Object trigger = new Object();
         this.sr = new SoftReference(trigger, rq);
