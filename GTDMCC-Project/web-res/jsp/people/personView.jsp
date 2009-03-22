@@ -7,14 +7,18 @@
 <div align="right" >
     <a href="<c:url value="/actions/ppl/group/ViewPersonGroup">
         <c:param name="groupId" value="${actionBean.person.group.id}" />
-    </c:url>" title="Go to parent"><img src="<c:url value="/images/parent.png" />" /></a>&nbsp;<a href="#" onclick="show('editPersonDiv', 'name-id'); return false">Edit person</a>
+    </c:url>" title="Go to parent"><img src="<c:url value="/images/parent.png" />" /></a>
+    <c:if test="${not empty actionBean.joinableMailLists and not empty actionBean.emails}">
+        <a href="#" onclick="show('joinMLDiv', 'ml-id'); hide('editPersonDiv'); return false">Subscribe</a>
+    </c:if>
+    <a href="#" onclick="show('editPersonDiv', 'name-id'); hide('joinMLDiv'); return false">Edit person</a>
     <a href="<c:url value="/actions/ppl/group/person/RemovePerson">
         <c:param name="personId" value="${actionBean.person.id}" />
     </c:url>" onclick="return confirm('Are you sure?');">Remove person</a>
 
 </div>
 
-    <div align="center">
+<div align="center">
     <div id="editPersonDiv" width="80%" style="display: <c:choose>
              <c:when test="${not empty actionBean.context.validationErrors and not empty updateForm}">inline</c:when>
              <c:otherwise>none</c:otherwise>
@@ -76,8 +80,56 @@
             </tr>
         </table>
         </stripes:form>
-</div>
+    </div>
+    <div id="joinMLDiv" width="80%" style="display: <c:choose>
+             <c:when test="${not empty actionBean.context.validationErrors and not empty joinForm}">inline</c:when>
+             <c:otherwise>none</c:otherwise>
+    </c:choose>;">
+        <stripes:form action="/actions/ppl/ml/person/attr/JoinMailList" name="joinForm">
+        <stripes:errors/>
+        <stripes:hidden name="personId" value="${actionBean.person.id}" />
 
+        <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
+            <tr>
+                <td>&nbsp;</td>
+                <td>Mail List: </td>
+                <td>
+                    <stripes:select name="mailListId" id="ml-id" style="width: 100%">
+                        <c:forEach items="${actionBean.joinableMailLists}" var="ml">
+                            <stripes:option value="${ml.id}" ><c:out escapeXml="false" value="${ml.name}"/></stripes:option>
+                        </c:forEach>
+                    </stripes:select>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>E-mail: </td>
+                <td>
+                    <stripes:select name="attributeId" id="attr-id" style="width: 100%">
+                        <c:forEach items="${actionBean.emails}" var="attr">
+                            <stripes:option value="${attr.id}" ><c:out escapeXml="false" value="${attr.val}"/></stripes:option>
+                        </c:forEach>
+                    </stripes:select>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td colspan="2"><hr/></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td colspan="2" align="center">
+                    <stripes:submit name="submit" value="Ok" style="width: 7em;"/>&nbsp;
+                    <stripes:submit name="cancel" value="Cancel" style="width: 7em;" onclick="hide('joinMLDiv'); return false" />
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+        </stripes:form>
+    </div>
 </div>
 <br/>
 <c:if test="${actionBean.needEmail}">

@@ -17,7 +17,6 @@ import org.localstorm.mcc.ejb.Identifiable;
 import org.localstorm.mcc.ejb.users.User;
 
 /**
- *
  * @author Alexey Kuznetsov
  */
 @Entity
@@ -30,6 +29,13 @@ import org.localstorm.mcc.ejb.users.User;
     @NamedQuery(
         name = MailList.Queries.FIND_ARCHIVED_MLS_BY_OWNER,
         query= "SELECT ml FROM MailList ml WHERE ml.archived=true and ml.owner=:owner ORDER BY ml.name ASC"
+    ),
+    @NamedQuery(
+        name = MailList.Queries.FIND_JOINABLE_MLS,
+        query= "SELECT DISTINCT p2ml.mailList FROM PersonToMailList p2ml WHERE p2ml.mailList IN (" +
+        "SELECT ml FROM MailList ml where ml.owner=:owner) AND p2ml.mailList NOT IN (" +
+        "SELECT p2ml2.mailList FROM PersonToMailList p2ml2 WHERE p2ml2.person=:person"+
+        ") ORDER BY p2ml.mailList.name ASC"
     )
 })
 public class MailList  extends AbstractEntity implements Identifiable, Serializable
@@ -92,10 +98,12 @@ public class MailList  extends AbstractEntity implements Identifiable, Serializa
     {
         public static final String FIND_MLS_BY_OWNER = "findMailListsByOwner";
         public static final String FIND_ARCHIVED_MLS_BY_OWNER = "findArchivedMailListsByOwner";
+        public static final String FIND_JOINABLE_MLS = "findJoinableMailLists";
     }
 
     public static interface Properties
     {
-        public static final String OWNER = "owner";
+        public static final String PERSON = "person";
+        public static final String OWNER  = "owner";
     }
 }

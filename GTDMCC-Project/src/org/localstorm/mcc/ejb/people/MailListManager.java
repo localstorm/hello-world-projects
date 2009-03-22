@@ -19,6 +19,8 @@ public interface MailListManager
 
     public PregeneratedMailList generateMailList(Collection<Person> resolvedPersons, Integer[] attributes);
 
+    public Collection<MailList> getJoinableMailLists(Person p, User user);
+
     public Collection<MailList> getMailLists(User u);
 
     public Collection<MailList> getArchivedMailLists(User u);
