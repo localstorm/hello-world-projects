@@ -1,0 +1,23 @@
+#!/bin/sh
+
+//bin/true; exec $JAVA_HOME/bin/java -cp ./lib/bsh-2.0b4.jar:build/classes bsh.Interpreter "$0" "$@"
+
+import org.localstorm.bsh.*;
+
+if (bsh.args.length!=2)
+{
+    print("Usage: sample.bsh <RMI-network-interface> <port>");
+    return;
+}
+
+port = new Integer(bsh.args[1]);
+host = bsh.args[0];
+
+print("Connecting to ["+host+":"+port+"]...");
+
+locator = new MegaLocator(host, port);
+
+print(locator.locate()+" located!");
+
+print("\u0007");
+
