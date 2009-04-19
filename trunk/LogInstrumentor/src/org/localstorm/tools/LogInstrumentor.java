@@ -48,7 +48,7 @@ public class LogInstrumentor {
     }
 
     private static String getRandomThreadLocalFieldDeclaration(String field) {
-        return "private final ThreadLocal "+field+" = new ThreadLocal();";
+        return "private final static ThreadLocal "+field+" = new ThreadLocal();";
     }
 
     private static String getParametersString(CtClass[] params) {
