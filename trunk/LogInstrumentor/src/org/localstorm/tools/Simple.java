@@ -6,30 +6,32 @@ package org.localstorm.tools;
  */
 public class Simple 
 {
-    @Log
-    public void foo() throws Exception
+    @Logged
+    public void boo()
     {
-        //ThreadLocal tl = new ThreadLocal();
-        //tl.remove()
-        Thread.sleep(1000);
-        System.out.println("\tFoo!");
-//        throw new RuntimeException();
+        System.out.println("\tBoo!");
     }
 
-    @Log
+    @Logged(100)
+    public void foo(int a) throws Exception
+    {
+        Thread.sleep(1000);
+        System.out.println("\tFoo!");
+    }
+
+    @Logged
     public void goo()
     {
-        //ThreadLocal tl = new ThreadLocal();
-        //tl.remove()
-        
         System.out.println("\tGoo!");
         throw new RuntimeException();
     }
 
     public static void main(String[] args) throws Exception
     {
-        (new Simple()).foo();
-        (new Simple()).foo();
+        (new Simple()).foo(1);
+        (new Simple()).foo(2);
+        (new Simple()).boo();
+        (new Simple()).boo();
         (new Simple()).goo();
     }
 }
