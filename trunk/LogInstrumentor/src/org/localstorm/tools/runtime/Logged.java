@@ -1,4 +1,4 @@
-package org.localstorm.tools;
+package org.localstorm.tools.runtime;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

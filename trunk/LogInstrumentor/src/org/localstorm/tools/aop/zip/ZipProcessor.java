@@ -1,4 +1,4 @@
-package org.localstorm.tools.zip;
+package org.localstorm.tools.aop.zip;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
-import org.localstorm.tools.random.RandomUtil;
+import org.localstorm.tools.aop.random.RandomUtil;
 
 /**
  *
@@ -22,10 +22,12 @@ public class ZipProcessor
     private static final String[] zipFileExtensions = new String[]{".zip", ".ear", ".war", ".jar"};
 
     private FileHandler handler;
+    private boolean readOnly;
 
-    public ZipProcessor(FileHandler fh)
+    public ZipProcessor(FileHandler fh, boolean readOnly)
     {
         this.handler = fh;
+        this.readOnly = readOnly;
     }
 
     public void process(File assembly) throws IOException
@@ -39,7 +41,9 @@ public class ZipProcessor
         
         this.unzipAssembly(tempDir, assembly);
 
-        this.zipAssembly(tempDir, assembly);
+        if (!readOnly) {
+            this.zipAssembly(tempDir, assembly);
+        }
 
         if (!Util.deleteDirectory(tempDir))
         {
@@ -114,7 +118,7 @@ public class ZipProcessor
         if (this.isZipFile(fileName))
         {
             // So, ZIP-file unzipped, starting recursion
-            ZipProcessor zp = new ZipProcessor(this.handler);
+            ZipProcessor zp = new ZipProcessor(this.handler, this.readOnly);
             zp.process(new File(extractedFilePath));
         } else {
             this.handler.handle(new File(extractedFilePath));
