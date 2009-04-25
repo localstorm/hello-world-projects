@@ -1,4 +1,4 @@
-package org.localstorm.tools.zip;
+package org.localstorm.tools.aop.zip;
 
 import java.io.IOException;
 import java.io.InputStream;

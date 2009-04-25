@@ -1,4 +1,4 @@
-package org.localstorm.tools.random;
+package org.localstorm.tools.aop.random;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;

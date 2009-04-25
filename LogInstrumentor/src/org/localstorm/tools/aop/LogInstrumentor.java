@@ -1,58 +1,43 @@
-package org.localstorm.tools;
+package org.localstorm.tools.aop;
 
+import org.localstorm.tools.runtime.DeadlineCallLogger;
+import org.localstorm.tools.runtime.CallLogger;
+import org.localstorm.tools.runtime.Logged;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import javassist.CannotCompileException;
 import javassist.ClassPool;
 import javassist.CtClass;
 import javassist.CtField;
 import javassist.CtMethod;
 import javassist.NotFoundException;
 import javassist.compiler.Javac.CtFieldWithInit;
-import org.localstorm.tools.random.RandomUtil;
+import org.localstorm.tools.aop.random.RandomUtil;
 
 /**
  * @author localstorm
  */
 public class LogInstrumentor {
 
-    private static String INSTRUMENTED_FLAG = "__$logInstrumentor$";
+    private static String INSTRUMENTED_FLAG = "__$localstorm";
 
-    public static void tryInstrument(File f) throws Exception {
+    public static void tryInstrument(ClassPool pool, File f) throws Exception {
 
-        ClassPool cp = ClassPool.getDefault();
+        FileInputStream fis = null;
 
-        CtClass cl = cp.makeClass(new FileInputStream(f));
+        try {
 
-        if (instrumented(cl)) {
-            System.err.println("Class ["+cl.getName()+"] already instrumented!");
-        }
+            fis = new FileInputStream(f);
+            CtClass cl = pool.makeClass(fis);
+            tryInstrumentCtClass(cl, f);
 
-        boolean changes = false;
-        
-        
-        CtMethod[] mets = cl.getDeclaredMethods();
-        for (CtMethod method : mets) {
-            Logged logAnn = getLogAnnotation(method);
-            if (logAnn!=null) {
-                changes = true;
-                String fieldId = RandomUtil.generateRandomVariableName(12);
-
-                CtField tlf = CtFieldWithInit.make(getRandomThreadLocalFieldDeclaration(fieldId), cl);
-                cl.addField(tlf);
-
-                method.insertBefore(getTimeLoggingBlock(fieldId));
-                method.insertAfter(getTimingCheckBlock(fieldId, cl, method, logAnn.value()));
+        } finally {
+            if (fis!=null) {
+                fis.close();
             }
-        }
-
-        if (changes) {
-            markClassAsInstrumented(cl);
-            cl.toBytecode(new DataOutputStream(new FileOutputStream(f)));
-            System.err.println("Class ["+cl.getName()+"] was instrumented!");
-        } else {
-            System.out.println("Class ["+cl.getName()+"] was skipped!");
         }
     }
 
@@ -78,8 +63,7 @@ public class LogInstrumentor {
 
     private static boolean instrumented(CtClass cl) {
         try {
-            cl.getField(INSTRUMENTED_FLAG);
-            return true;
+            return cl.getField(INSTRUMENTED_FLAG)!=null;
         } catch(NotFoundException e) {
             return false;
         }
@@ -130,6 +114,73 @@ public class LogInstrumentor {
         }
 
         return null;
+    }
+
+    private static void tryInstrumentCtClass(CtClass cl, File f) throws Exception
+    {
+        if (cl.isFrozen())
+        {
+            System.err.println("Class [" + cl.getName() + "] is frozen. Skipping...");
+            return;
+        }
+
+        if (instrumented(cl))
+        {
+            System.err.println("Class [" + cl.getName() + "] already instrumented!");
+            return;
+        }
+        
+        boolean changes = false;
+        CtMethod[] mets = cl.getDeclaredMethods();
+        for (CtMethod method:mets)
+        {
+            Logged logAnn = getLogAnnotation(method);
+            if (logAnn != null)
+            {
+                changes = true;
+                String fieldId = RandomUtil.generateRandomVariableName(12);
+                CtField tlf = CtFieldWithInit.make(getRandomThreadLocalFieldDeclaration(fieldId), cl);
+                cl.addField(tlf);
+                method.insertBefore(getTimeLoggingBlock(fieldId));
+                method.insertAfter(getTimingCheckBlock(fieldId, cl, method, logAnn.value()));
+            }
+        }
+
+        if (changes)
+        {
+            markClassAsInstrumented(cl);
+            tryWriteClass(cl, f);
+            System.out.println("Class [" + cl.getName() + "] was instrumented!");
+        } else
+        {
+            System.out.println("Class [" + cl.getName() + "] was skipped!");
+        }
+    }
+
+    private static void tryWriteClass(CtClass cl, File f)
+            throws IOException,
+                   CannotCompileException
+    {
+        DataOutputStream dos = null;
+        String temp = f.getAbsolutePath()+".tmp";
+        File tempFile = new File(temp);
+
+        try
+        {
+            dos = new DataOutputStream(new FileOutputStream(temp));
+            cl.toBytecode(dos);
+            tempFile.renameTo(f);
+        } catch(CannotCompileException e)
+        {
+            System.err.println("Can't compile class ["+cl.getName()+"]. Skipping...");
+        } finally {
+            tempFile.delete();
+            
+            if (dos!=null)
+            {
+                dos.close();
+            }
+        }
     }
 
 }
