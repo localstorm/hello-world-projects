@@ -175,12 +175,11 @@ public class ZipProcessor
                 zos.write(buf, 0, _rd);
             }
         } finally {
-            if (fis==null)
+            if (fis!=null)
             {
                 fis.close();
             }
         }
-
 
     }
 
