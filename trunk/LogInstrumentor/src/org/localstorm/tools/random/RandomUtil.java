@@ -25,4 +25,9 @@ public class RandomUtil
     {
         return "$"+RandomStringUtils.random(len-1, 0, 0, true, false, null, sr);
     }
+
+    public static String generateDirectoryName(String baseDir, int len)
+    {
+        return baseDir+"/li$"+RandomStringUtils.random(len-1, 0, 0, true, false, null, sr);
+    }
 }

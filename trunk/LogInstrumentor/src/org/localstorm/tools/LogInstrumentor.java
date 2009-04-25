@@ -1,6 +1,8 @@
 package org.localstorm.tools;
 
 import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import javassist.ClassPool;
 import javassist.CtClass;
@@ -17,14 +19,14 @@ public class LogInstrumentor {
 
     private static String INSTRUMENTED_FLAG = "__$instrumented$";
 
-    public static void main(String[] args) throws Exception {
+    public static boolean instrument(File f) throws Exception {
 
         ClassPool cp = ClassPool.getDefault();
-        CtClass cl = cp.getCtClass("org.localstorm.tools.Simple");
+        CtClass cl = cp.makeClass(new FileInputStream(f));
 
         if (instrumented(cl)) {
             System.err.println("Class ["+cl.getName()+"] already instrumented!");
-            return;
+            return false;
         }
 
         markClassAsInstrumented(cl);
@@ -43,8 +45,8 @@ public class LogInstrumentor {
             }
         }
 
-        cl.toBytecode(new DataOutputStream(new FileOutputStream("build/classes/org/localstorm/tools/Simple.class")));
-
+        cl.toBytecode(new DataOutputStream(new FileOutputStream(f)));
+        return true;
     }
 
     private static String getRandomThreadLocalFieldDeclaration(String field) {
