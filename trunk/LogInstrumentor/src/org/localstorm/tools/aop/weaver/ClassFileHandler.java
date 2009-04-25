@@ -26,7 +26,7 @@ public class ClassFileHandler implements FileHandler
             if (FileTypes.isBytecodeFile(f))
             {
                 System.out.println("Trying to instrument class-file: "+f.getName());
-                LogInstrumentor.tryInstrument(pool, f);
+                LoggedWeaver.tryInstrument(pool, f);
             }
         } catch(Exception e) {
             throw new IOException(e);
