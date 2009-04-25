@@ -1,4 +1,4 @@
-package org.localstorm.tools.aop.zip;
+package org.localstorm.tools.aop.weaver.zip;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
-import org.localstorm.tools.aop.random.RandomUtil;
+import org.apache.commons.io.FileUtils;
+import org.localstorm.tools.aop.weaver.RandomUtil;
 
 /**
  *
@@ -21,13 +22,15 @@ public class ZipProcessor
   
     private static final String[] zipFileExtensions = new String[]{".zip", ".ear", ".war", ".jar"};
 
-    private FileHandler handler;
-    private boolean readOnly;
+    private final FileHandler handler;
+    private final boolean readOnly;
+    private final File tmpDir;
 
-    public ZipProcessor(FileHandler fh, boolean readOnly)
+    public ZipProcessor(File tmpDir, FileHandler fh, boolean readOnly)
     {
-        this.handler = fh;
+        this.handler  = fh;
         this.readOnly = readOnly;
+        this.tmpDir   = tmpDir;
     }
 
     public void process(File assembly) throws IOException
@@ -45,10 +48,7 @@ public class ZipProcessor
             this.zipAssembly(tempDir, assembly);
         }
 
-        if (!Util.deleteDirectory(tempDir))
-        {
-            System.err.println("Directory ["+tempDir.getName()+"] was not deleted");
-        }
+        FileUtils.deleteDirectory(tempDir);
     }
 
     private ZipEntry genZipEntry(File tempDir, File toZip)
@@ -118,7 +118,7 @@ public class ZipProcessor
         if (this.isZipFile(fileName))
         {
             // So, ZIP-file unzipped, starting recursion
-            ZipProcessor zp = new ZipProcessor(this.handler, this.readOnly);
+            ZipProcessor zp = new ZipProcessor(this.tmpDir, this.handler, this.readOnly);
             zp.process(new File(extractedFilePath));
         } else {
             this.handler.handle(new File(extractedFilePath));
@@ -217,7 +217,7 @@ public class ZipProcessor
         File f = null;
         while (f==null)
         {
-            String name = RandomUtil.generateDirectoryName("/tmp", RANDOM_FILE_NAME_LENGTH);
+            String name = RandomUtil.generateDirectoryName(tmpDir.getAbsolutePath(), RANDOM_FILE_NAME_LENGTH);
             f = new File(name);
             if (f.exists()) {
                 f = null;

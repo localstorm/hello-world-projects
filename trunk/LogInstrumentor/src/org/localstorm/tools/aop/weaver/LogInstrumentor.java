@@ -1,8 +1,8 @@
-package org.localstorm.tools.aop;
+package org.localstorm.tools.aop.weaver;
 
-import org.localstorm.tools.runtime.DeadlineCallLogger;
-import org.localstorm.tools.runtime.CallLogger;
-import org.localstorm.tools.runtime.Logged;
+import org.localstorm.tools.aop.runtime.DeadlineCallLogger;
+import org.localstorm.tools.aop.runtime.CallLogger;
+import org.localstorm.tools.aop.runtime.Logged;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,7 +15,7 @@ import javassist.CtField;
 import javassist.CtMethod;
 import javassist.NotFoundException;
 import javassist.compiler.Javac.CtFieldWithInit;
-import org.localstorm.tools.aop.random.RandomUtil;
+import org.localstorm.tools.aop.weaver.RandomUtil;
 
 /**
  * @author localstorm
