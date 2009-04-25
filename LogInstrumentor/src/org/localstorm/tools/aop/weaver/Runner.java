@@ -30,8 +30,7 @@ public class Runner
         
         ZipProcessor zp = new ZipProcessor(tempFileDir, new ClassFileCopierHandler(pool, dir), true);
         for (String file : args) {
-            if (!file.equals(DONT_INSTRUMENT_NEXT_ASSEMBLY_KEY))
-            {
+            if (!file.equals(DONT_INSTRUMENT_NEXT_ASSEMBLY_KEY)) {
                 System.out.println("Appending in classpath: "+file);
                 zp.process(new File(file));
             }
@@ -46,8 +45,8 @@ public class Runner
 
         for (int i=0; i<args.length; i++) {
             String file = args[i];
-            if (file.equals(DONT_INSTRUMENT_NEXT_ASSEMBLY_KEY))
-            {
+            
+            if (file.equals(DONT_INSTRUMENT_NEXT_ASSEMBLY_KEY)) {
                 i++;
                 continue;
             }
