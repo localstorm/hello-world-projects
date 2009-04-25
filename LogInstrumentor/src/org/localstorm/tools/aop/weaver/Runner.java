@@ -11,7 +11,7 @@ import org.localstorm.tools.aop.weaver.zip.ZipProcessor;
 public class Runner 
 {
     private static final String DEFAULT_TMP_DIR = ".";
-    private static final String SKIP_MEXT_PARAMETER_KEY = "-s";
+    private static final String DONT_INSTRUMENT_NEXT_ASSEMBLY_KEY = "-s";
     private static final String TMP_DIR_PROPERTY = "java.io.tmpdir";
 
     public static void main(String[] args) throws Exception
@@ -30,7 +30,7 @@ public class Runner
         
         ZipProcessor zp = new ZipProcessor(tempFileDir, new ClassFileCopierHandler(pool, dir), true);
         for (String file : args) {
-            if (!file.equals(SKIP_MEXT_PARAMETER_KEY))
+            if (!file.equals(DONT_INSTRUMENT_NEXT_ASSEMBLY_KEY))
             {
                 System.out.println("Appending in classpath: "+file);
                 zp.process(new File(file));
@@ -46,7 +46,7 @@ public class Runner
 
         for (int i=0; i<args.length; i++) {
             String file = args[i];
-            if (file.equals(SKIP_MEXT_PARAMETER_KEY))
+            if (file.equals(DONT_INSTRUMENT_NEXT_ASSEMBLY_KEY))
             {
                 i++;
                 continue;
