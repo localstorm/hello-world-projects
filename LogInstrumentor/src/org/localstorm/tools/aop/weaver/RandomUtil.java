@@ -1,4 +1,4 @@
-package org.localstorm.tools.aop.random;
+package org.localstorm.tools.aop.weaver;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -10,11 +10,13 @@ import org.apache.commons.lang.RandomStringUtils;
  */
 public class RandomUtil 
 {
-    private static SecureRandom sr;
+    private static final String SECURE_RANDOM_ALGO = "SHA1PRNG";
+    private static final SecureRandom sr;
+
     static
     {
         try {
-            sr = SecureRandom.getInstance("SHA1PRNG");
+            sr = SecureRandom.getInstance(SECURE_RANDOM_ALGO);
             sr.setSeed(sr.generateSeed(24));
         } catch(NoSuchAlgorithmException e) {
             throw new RuntimeException(e);

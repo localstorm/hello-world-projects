@@ -1,4 +1,4 @@
-package org.localstorm.tools.aop.zip;
+package org.localstorm.tools.aop.weaver.zip;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author Alexey Kuznetsov
  */
-public class DirLister 
+class DirLister 
 {
 
     public static List<File> getListing( File aStartingDir ) throws FileNotFoundException {
@@ -33,28 +33,6 @@ public class DirLister
         }
 
         return result;
-    }
-
-    /**
-    * Directory is valid if it exists, does not represent a file, and can be read.
-    */
-    private static void validateDirectory ( File aDirectory ) throws FileNotFoundException {
-
-        if (aDirectory == null) {
-            throw new IllegalArgumentException("Directory should not be null.");
-        }
-
-        if (!aDirectory.exists()) {
-            throw new FileNotFoundException("Directory does not exist: " + aDirectory);
-        }
-
-        if (!aDirectory.isDirectory()) {
-            throw new IllegalArgumentException("Is not a directory: " + aDirectory);
-        }
-
-        if (!aDirectory.canRead()) {
-            throw new IllegalArgumentException("Directory cannot be read: " + aDirectory);
-        }
     }
 
 }

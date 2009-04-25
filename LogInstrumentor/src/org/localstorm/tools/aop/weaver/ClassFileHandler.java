@@ -1,6 +1,6 @@
-package org.localstorm.tools.aop;
+package org.localstorm.tools.aop.weaver;
 
-import org.localstorm.tools.aop.zip.FileHandler;
+import org.localstorm.tools.aop.weaver.zip.FileHandler;
 import java.io.File;
 import java.io.IOException;
 import javassist.ClassPool;
@@ -23,15 +23,16 @@ public class ClassFileHandler implements FileHandler
     {
         try {
 
-            if (f.getName().toLowerCase().endsWith(".class"))
+            if (FileTypes.isBytecodeFile(f))
             {
                 System.out.println("Trying to instrument class-file: "+f.getName());
                 LogInstrumentor.tryInstrument(pool, f);
-                
             }
         } catch(Exception e) {
             throw new IOException(e);
         }
         
     }
+
+
 }
