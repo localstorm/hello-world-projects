@@ -23,12 +23,8 @@ public class ClassFileHandler implements FileHandler
             if (f.getName().toLowerCase().endsWith(".class"))
             {
                 System.out.println("Trying to instrument class-file: "+f.getName());
-                if (LogInstrumentor.instrument(f))
-                {
-                    System.out.println(f.getName()+" instrumented!");
-                } else {
-                    System.out.println("**"+f.getName()+" not instrumented!**");
-                }
+                LogInstrumentor.tryInstrument(f);
+                
             }
         } catch(Exception e) {
             throw new IOException(e);

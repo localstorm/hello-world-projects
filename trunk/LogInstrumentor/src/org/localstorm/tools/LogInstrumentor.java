@@ -17,24 +17,26 @@ import org.localstorm.tools.random.RandomUtil;
  */
 public class LogInstrumentor {
 
-    private static String INSTRUMENTED_FLAG = "__$instrumented$";
+    private static String INSTRUMENTED_FLAG = "__$logInstrumentor$";
 
-    public static boolean instrument(File f) throws Exception {
+    public static void tryInstrument(File f) throws Exception {
 
         ClassPool cp = ClassPool.getDefault();
+
         CtClass cl = cp.makeClass(new FileInputStream(f));
 
         if (instrumented(cl)) {
             System.err.println("Class ["+cl.getName()+"] already instrumented!");
-            return false;
         }
 
-        markClassAsInstrumented(cl);
+        boolean changes = false;
+        
         
         CtMethod[] mets = cl.getDeclaredMethods();
         for (CtMethod method : mets) {
             Logged logAnn = getLogAnnotation(method);
             if (logAnn!=null) {
+                changes = true;
                 String fieldId = RandomUtil.generateRandomVariableName(12);
 
                 CtField tlf = CtFieldWithInit.make(getRandomThreadLocalFieldDeclaration(fieldId), cl);
@@ -45,8 +47,13 @@ public class LogInstrumentor {
             }
         }
 
-        cl.toBytecode(new DataOutputStream(new FileOutputStream(f)));
-        return true;
+        if (changes) {
+            markClassAsInstrumented(cl);
+            cl.toBytecode(new DataOutputStream(new FileOutputStream(f)));
+            System.err.println("Class ["+cl.getName()+"] was instrumented!");
+        } else {
+            System.out.println("Class ["+cl.getName()+"] was skipped!");
+        }
     }
 
     private static String getRandomThreadLocalFieldDeclaration(String field) {
