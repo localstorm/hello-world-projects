@@ -20,7 +20,7 @@ import org.localstorm.tools.aop.weaver.RandomUtil;
 /**
  * @author localstorm
  */
-public class LogInstrumentor {
+public class LoggedWeaver {
 
     private static String INSTRUMENTED_FLAG = "__$localstorm";
 
