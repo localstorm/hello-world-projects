@@ -184,7 +184,6 @@ public class ZipProcessor
                 fis.close();
             }
         }
-
     }
 
     private void zipAssembly(File tempDir, File assembly) throws IOException
