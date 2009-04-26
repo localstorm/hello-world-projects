@@ -55,7 +55,7 @@ public class ZipProcessor
     {
         String toZipAp = toZip.getAbsolutePath();
         String baseDirAp = tempDir.getAbsolutePath();
-        String zeName = toZipAp.substring(baseDirAp.length(), toZipAp.length());
+        String zeName = toZipAp.substring(baseDirAp.length()+1, toZipAp.length());
         return new ZipEntry(zeName);
     }
 
@@ -196,7 +196,8 @@ public class ZipProcessor
 
             for (File toZip: files)
             {
-                zos.putNextEntry(genZipEntry(tempDir, toZip));
+                ZipEntry ze = genZipEntry(tempDir, toZip);
+                zos.putNextEntry(ze);
                 
                 this.writeEntryContent(toZip, zos);
 

@@ -10,9 +10,10 @@ import org.localstorm.tools.aop.weaver.zip.ZipProcessor;
  */
 public class Runner 
 {
-    private static final String DEFAULT_TMP_DIR = ".";
+    private static final String DEFAULT_TMP_DIR     = ".";
     private static final String DONT_INSTRUMENT_NEXT_ASSEMBLY_KEY = "-s";
-    private static final String TMP_DIR_PROPERTY = "java.io.tmpdir";
+    private static final String TMP_DIR_PROPERTY    = "java.io.tmpdir";
+    private static final int    DIR_NAME_LENGTH     = 10;
 
     public static void main(String[] args) throws Exception
     {
@@ -26,7 +27,7 @@ public class Runner
         String    tmpDir = System.getProperty(TMP_DIR_PROPERTY, DEFAULT_TMP_DIR);
         File tempFileDir = new File(tmpDir);
         
-        File dir = new File(RandomUtil.generateDirectoryName(tmpDir, 10));
+        File dir = new File(RandomUtil.generateDirectoryName(tmpDir, DIR_NAME_LENGTH));
         
         ZipProcessor zp = new ZipProcessor(tempFileDir, new ClassFileCopierHandler(pool, dir), true);
         for (String file : args) {
