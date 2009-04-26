@@ -5,6 +5,7 @@ import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
+import org.localstorm.tools.aop.runtime.Logged;
 
 
 /**
@@ -14,6 +15,7 @@ import net.sourceforge.stripes.action.UrlBinding;
 public class FlightPlanUtilizeActionBean extends GtdBaseActionBean
 {
     @DefaultHandler
+    @Logged
     public Resolution utilization() throws Exception {
         this.getFlightPlanManager().utilizeCurrent(this.getUser());
         return new RedirectResolution(FlightPlanViewActionBean.class);

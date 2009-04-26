@@ -9,6 +9,7 @@ import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.UrlBinding;
 
 import org.localstorm.mcc.web.gtd.Views;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @author Alexey Kuznetsov
@@ -27,6 +28,7 @@ public class ContextsEditActionBean extends GtdBaseActionBean {
     }
 
     @DefaultHandler
+    @Logged
     public Resolution filling() {
         super.clearCurrent();
         

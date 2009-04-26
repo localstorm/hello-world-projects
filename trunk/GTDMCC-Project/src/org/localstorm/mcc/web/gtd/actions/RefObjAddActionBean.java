@@ -11,6 +11,7 @@ import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
 import org.localstorm.mcc.web.gtd.GtdSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 
 /**
@@ -52,6 +53,7 @@ public class RefObjAddActionBean extends RefObjEditActionBean
     }
     
     @DefaultHandler
+    @Logged        
     public Resolution addRefObject() throws Exception {
         Context ctx = this.getContextManager().findById(this.getContextId());
         ReferencedObject ro = new ReferencedObject(name, ctx);

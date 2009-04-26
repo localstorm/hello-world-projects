@@ -11,6 +11,7 @@ import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
 import org.localstorm.mcc.web.cashflow.Views;
 import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 
 /**
@@ -42,6 +43,7 @@ public class AssetCostHistoryActionBean extends CashflowBaseActionBean
     }
     
     @DefaultHandler
+    @Logged
     public Resolution filling() throws Exception {
         Asset asset = super.getAssetManager().find(this.getAssetId());
         

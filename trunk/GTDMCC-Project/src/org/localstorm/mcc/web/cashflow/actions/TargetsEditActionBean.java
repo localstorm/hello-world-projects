@@ -12,6 +12,7 @@ import org.localstorm.mcc.ejb.cashflow.TargetManager;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
 import org.localstorm.mcc.web.cashflow.Views;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @secure-by session
@@ -31,6 +32,7 @@ public class TargetsEditActionBean extends CashflowBaseActionBean {
     }
 
     @DefaultHandler
+    @Logged
     public Resolution filling() {
         
         TargetManager tm = super.getTargetManager();

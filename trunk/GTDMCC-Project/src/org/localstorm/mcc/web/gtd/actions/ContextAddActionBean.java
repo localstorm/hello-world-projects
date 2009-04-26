@@ -12,6 +12,7 @@ import org.localstorm.mcc.ejb.gtd.entity.Context;
 import org.localstorm.mcc.ejb.users.*;
 import org.localstorm.mcc.web.gtd.GtdSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 
 /**
@@ -42,6 +43,7 @@ public class ContextAddActionBean extends ContextsEditActionBean {
     }
     
     @DefaultHandler
+    @Logged
     public Resolution addContext() throws Exception {
         User user = super.getUser();
 

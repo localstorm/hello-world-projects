@@ -14,6 +14,7 @@ import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
 import org.localstorm.mcc.web.cashflow.Views;
 import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @secure-by session (no security check)
@@ -33,6 +34,7 @@ public class AssetsEditActionBean extends CashflowBaseActionBean {
     }
 
     @DefaultHandler
+    @Logged
     public Resolution filling() {
         
         OperationManager om = super.getOperationManager();

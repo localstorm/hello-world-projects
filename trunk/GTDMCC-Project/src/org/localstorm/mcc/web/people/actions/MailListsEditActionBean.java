@@ -10,6 +10,7 @@ import org.localstorm.mcc.ejb.people.MailListManager;
 import org.localstorm.mcc.ejb.people.entity.MailList;
 import org.localstorm.mcc.web.people.Views;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @secure-by nil
@@ -29,6 +30,7 @@ public class MailListsEditActionBean extends PeopleBaseActionBean {
     }
 
     @DefaultHandler
+    @Logged
     public Resolution filling() {
         MailListManager mlm = super.getMailListManager();
         result = mlm.getArchivedMailLists(super.getUser());

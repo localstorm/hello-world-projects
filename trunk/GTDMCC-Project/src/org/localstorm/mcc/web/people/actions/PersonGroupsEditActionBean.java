@@ -10,6 +10,7 @@ import org.localstorm.mcc.ejb.people.entity.PersonGroup;
 import org.localstorm.mcc.ejb.people.PersonManager;
 import org.localstorm.mcc.web.people.Views;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @secure-by nil
@@ -29,6 +30,7 @@ public class PersonGroupsEditActionBean extends PeopleBaseActionBean {
     }
 
     @DefaultHandler
+    @Logged
     public Resolution filling() {
         PersonManager pm = super.getPersonManager();
         result = pm.getArchivedGroups(super.getUser());

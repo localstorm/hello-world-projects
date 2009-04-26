@@ -10,6 +10,7 @@ import org.localstorm.mcc.ejb.gtd.entity.Task;
 import org.localstorm.mcc.ejb.gtd.TaskManager;
 import org.localstorm.mcc.web.dashboard.actions.DashboardActionBean;
 import org.localstorm.mcc.web.gtd.GtdClipboard;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @author Alexey Kuznetsov
@@ -18,6 +19,7 @@ import org.localstorm.mcc.web.gtd.GtdClipboard;
 public class FinishedTasksCleanupActionBean extends GtdBaseActionBean {
 
     @DefaultHandler
+    @Logged
     public Resolution cleanup() {
         
         TaskManager tm = super.getTaskManager();

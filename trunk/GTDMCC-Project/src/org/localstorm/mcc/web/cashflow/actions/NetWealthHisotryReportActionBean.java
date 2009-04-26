@@ -6,6 +6,7 @@ import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import org.localstorm.mcc.web.ReturnPageBean;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @secure-by session (no security checks)
@@ -15,6 +16,7 @@ import org.localstorm.mcc.web.ReturnPageBean;
 public class NetWealthHisotryReportActionBean extends CashflowBaseActionBean {
 
     @DefaultHandler
+    @Logged
     public Resolution filling() {
         ReturnPageBean rpb = new ReturnPageBean(Pages.NET_WEALTH_HISTORY.toString());
         super.setReturnPageBean(rpb);

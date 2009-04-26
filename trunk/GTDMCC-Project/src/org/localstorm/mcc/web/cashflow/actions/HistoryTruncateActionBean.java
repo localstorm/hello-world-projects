@@ -10,6 +10,7 @@ import org.localstorm.mcc.ejb.cashflow.entity.ValueType;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @secure-by session (no security checks)
@@ -57,6 +58,7 @@ public class HistoryTruncateActionBean extends CashflowBaseActionBean
     }
     
     @DefaultHandler
+    @Logged
     public Resolution filling() {
         User user                   = super.getUser();
         HistoricalValuesManager hvm = super.getHistoricalValuesManager();

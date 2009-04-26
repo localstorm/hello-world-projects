@@ -5,6 +5,7 @@ import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @secure-by session (no security checks)
@@ -14,6 +15,7 @@ import net.sourceforge.stripes.action.UrlBinding;
 public class AssetsStructureReportActionBean extends CashflowBaseActionBean {
 
     @DefaultHandler
+    @Logged
     public Resolution filling() {
         
         return new ForwardResolution(Views.ASSETS_STRUCTURE);

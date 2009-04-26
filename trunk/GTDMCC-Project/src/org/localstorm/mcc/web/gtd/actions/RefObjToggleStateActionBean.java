@@ -10,6 +10,7 @@ import org.localstorm.mcc.ejb.gtd.RefObjectManager;
 import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
 import org.localstorm.mcc.web.gtd.GtdSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @author Alexey Kuznetsov
@@ -30,6 +31,7 @@ public class RefObjToggleStateActionBean extends GtdBaseActionBean
 
     
     @DefaultHandler
+    @Logged
     public Resolution toggle() throws Exception {
         
         RefObjectManager rom = super.getRefObjectManager();

@@ -10,6 +10,7 @@ import org.localstorm.mcc.ejb.people.entity.MailList;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
 import org.localstorm.mcc.web.people.PeopleSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @secure-by ml
@@ -32,6 +33,7 @@ public class MailListToggleStateActionBean extends PeopleBaseActionBean
     }
 
     @DefaultHandler
+    @Logged
     public Resolution toggle() throws Exception {
         
         MailListManager mlm = super.getMailListManager();

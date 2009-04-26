@@ -11,6 +11,7 @@ import org.localstorm.mcc.ejb.gtd.ContextManager;
 import org.localstorm.mcc.ejb.gtd.entity.GTDList;
 import org.localstorm.mcc.ejb.gtd.ListManager;
 import org.localstorm.mcc.web.gtd.GtdClipboard;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @author Alexey Kuznetsov
@@ -31,6 +32,7 @@ public class ListBulkPasteActionBean extends GtdBaseActionBean
 
     
     @DefaultHandler
+    @Logged
     public Resolution pasting() throws Exception {
         
         ListManager lm    = super.getListManager();

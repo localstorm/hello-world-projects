@@ -10,6 +10,7 @@ import org.localstorm.mcc.ejb.people.PersonManager;
 import org.localstorm.mcc.web.people.PeopleSessionKeys;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
 import org.localstorm.mcc.web.util.SessionUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @secure-by group id
@@ -30,6 +31,7 @@ public class PersonGroupEraseActionBean extends PeopleBaseActionBean {
     }
 
     @DefaultHandler
+    @Logged
     public Resolution deletingContext() throws Exception {
 
         PersonManager pm = super.getPersonManager();

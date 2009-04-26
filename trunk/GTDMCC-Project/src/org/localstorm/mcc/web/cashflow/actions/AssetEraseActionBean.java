@@ -14,6 +14,7 @@ import org.localstorm.mcc.web.cashflow.CashflowSessionKeys;
 import org.localstorm.mcc.web.cashflow.actions.wrap.AssetWrapper;
 import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
 import org.localstorm.mcc.web.util.SessionUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @secure-by assetId parameter
@@ -34,6 +35,7 @@ public class AssetEraseActionBean extends CashflowBaseActionBean
     }
     
     @DefaultHandler
+    @Logged
     public Resolution deletingContext() throws Exception {
         
         OperationManager om = super.getOperationManager();

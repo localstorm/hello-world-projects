@@ -16,6 +16,7 @@ import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
 import org.localstorm.mcc.web.gtd.GtdClipboard;
 import org.localstorm.mcc.web.gtd.GtdSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 
 /**
@@ -36,6 +37,7 @@ public class RefObjEraseActionBean extends GtdBaseActionBean
     }
 
     @DefaultHandler
+    @Logged
     public Resolution deletingRefObj() throws Exception {
         
        RefObjectManager rom = super.getRefObjectManager();

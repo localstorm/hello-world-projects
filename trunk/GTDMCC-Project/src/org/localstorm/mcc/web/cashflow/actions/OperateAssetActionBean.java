@@ -18,6 +18,7 @@ import org.localstorm.mcc.ejb.cashflow.entity.ValuableObject;
 import org.localstorm.mcc.ejb.cashflow.OperationManager;
 import org.localstorm.mcc.web.cashflow.CashflowSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @secure-by assetId parameter
@@ -69,6 +70,7 @@ public class OperateAssetActionBean extends AssetViewActionBean {
     }
 
     @DefaultHandler
+    @Logged
     @SuppressWarnings("fallthrough")
     public Resolution operate() throws Exception {
 

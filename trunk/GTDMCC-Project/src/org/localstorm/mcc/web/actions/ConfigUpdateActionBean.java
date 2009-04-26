@@ -12,6 +12,7 @@ import net.sourceforge.stripes.validation.ValidationState;
 import org.localstorm.mcc.ejb.users.UserManager;
 import org.localstorm.mcc.web.BaseActionBean;
 import org.localstorm.mcc.web.Views;
+import org.localstorm.tools.aop.runtime.Logged;
 
 
 
@@ -60,6 +61,7 @@ public class ConfigUpdateActionBean extends BaseActionBean {
     }
     
     @DefaultHandler
+    @Logged
     public Resolution configure() {
         UserManager um = this.getUserManager();
         um.changePassword(this.getUser(), this.password);

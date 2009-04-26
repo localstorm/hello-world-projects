@@ -10,6 +10,7 @@ import org.localstorm.mcc.web.people.PeopleBaseActionBean;
 import org.localstorm.mcc.web.people.PeopleClipboard;
 import org.localstorm.mcc.web.people.RequestAttributes;
 import org.localstorm.mcc.web.people.Views;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @secure-by nil
@@ -20,6 +21,7 @@ public class MailListGenerateActionBean extends PeopleBaseActionBean
 {
 
     @DefaultHandler
+    @Logged
     public Resolution filling() {
         PeopleClipboard clip = super.getClipboard();
         

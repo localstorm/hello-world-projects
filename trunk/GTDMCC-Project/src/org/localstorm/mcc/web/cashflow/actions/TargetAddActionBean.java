@@ -18,6 +18,7 @@ import org.localstorm.mcc.ejb.cashflow.entity.ValuableObject;
 import org.localstorm.mcc.ejb.users.*;
 import org.localstorm.mcc.web.cashflow.CashflowSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 
 /**
@@ -58,6 +59,7 @@ public class TargetAddActionBean extends TargetsEditActionBean {
     }
 
     @DefaultHandler
+    @Logged
     public Resolution addContext() throws Exception {
         
         User user = super.getUser();

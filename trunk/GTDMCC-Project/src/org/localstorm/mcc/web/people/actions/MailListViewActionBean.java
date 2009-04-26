@@ -14,6 +14,7 @@ import org.localstorm.mcc.ejb.people.entity.PersonToMailList;
 import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
 import org.localstorm.mcc.web.people.Views;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  *
@@ -72,6 +73,7 @@ public class MailListViewActionBean extends PeopleBaseActionBean
     }
 
     @DefaultHandler
+    @Logged
     public Resolution filling() throws Exception {
         
         MailListManager mlm = super.getMailListManager();

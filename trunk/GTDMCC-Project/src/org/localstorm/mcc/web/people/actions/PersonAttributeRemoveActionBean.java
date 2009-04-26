@@ -7,6 +7,7 @@ import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.people.entity.Attribute;
 import org.localstorm.mcc.ejb.people.PersonManager;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @secure-by person-id, attribute-id
@@ -27,6 +28,7 @@ public class PersonAttributeRemoveActionBean extends PersonViewActionBean
     }
     
     @DefaultHandler
+    @Logged
     public Resolution rm() throws Exception {
         
         PersonManager pm = super.getPersonManager();

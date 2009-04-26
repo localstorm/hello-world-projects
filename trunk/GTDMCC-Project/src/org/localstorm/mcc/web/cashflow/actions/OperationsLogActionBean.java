@@ -13,6 +13,7 @@ import org.localstorm.mcc.ejb.cashflow.entity.ValuableObject;
 import org.localstorm.mcc.ejb.cashflow.OperationManager;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
 import org.localstorm.mcc.web.cashflow.Views;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @secure-by assetId parameter
@@ -54,6 +55,7 @@ public class OperationsLogActionBean extends CashflowBaseActionBean {
     }
 
     @DefaultHandler
+    @Logged
     public Resolution filling() throws Exception {
 
         AssetManager     am = super.getAssetManager();

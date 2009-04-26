@@ -10,6 +10,7 @@ import org.localstorm.mcc.ejb.cashflow.entity.Asset;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
 import org.localstorm.mcc.web.cashflow.Views;
 import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 
 /**
@@ -41,6 +42,7 @@ public class AssetViewActionBean extends CashflowBaseActionBean
     }
     
     @DefaultHandler
+    @Logged
     public Resolution filling() throws Exception {
         Asset asset = super.getAssetManager().find(this.getAssetId());
 

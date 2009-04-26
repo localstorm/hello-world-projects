@@ -20,6 +20,7 @@ import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
 import org.localstorm.mcc.web.people.Views;
 import org.localstorm.mcc.web.people.actions.wrap.WrapUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @secure-by personId
@@ -106,6 +107,7 @@ public class PersonViewActionBean extends PeopleBaseActionBean
     }
 
     @DefaultHandler
+    @Logged
     public Resolution filling() throws Exception {
         MailListManager mlm = super.getMailListManager();
         PersonManager   pm = super.getPersonManager();

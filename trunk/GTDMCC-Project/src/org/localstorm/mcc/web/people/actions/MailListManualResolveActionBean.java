@@ -1,6 +1,7 @@
 package org.localstorm.mcc.web.people.actions;
 
 import java.util.Collection;
+import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
@@ -11,6 +12,7 @@ import org.localstorm.mcc.ejb.people.entity.Person;
 import org.localstorm.mcc.ejb.people.entity.PregeneratedMailList;
 import org.localstorm.mcc.web.WebUtil;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
+import org.localstorm.tools.aop.runtime.Logged;
 
 
 /**
@@ -65,6 +67,8 @@ public class MailListManualResolveActionBean extends PeopleBaseActionBean
         this.manyEmailsPersonIds = manyEmailsPersonIds;
     }
 
+    @DefaultHandler
+    @Logged
     public Resolution handle() throws Exception
     {
         MailListManager mlm = super.getMailListManager();

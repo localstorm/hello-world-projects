@@ -11,6 +11,7 @@ import org.localstorm.mcc.ejb.cashflow.TargetManager;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
 import org.localstorm.mcc.web.cashflow.CashflowSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @secure-by target Id
@@ -32,6 +33,7 @@ public class TargetToggleStateActionBean extends CashflowBaseActionBean
 
     
     @DefaultHandler
+    @Logged
     public Resolution toggle() throws Exception {
 
         TargetManager tm = super.getTargetManager();

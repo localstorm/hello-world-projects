@@ -19,6 +19,7 @@ import org.localstorm.mcc.ejb.gtd.TaskManager;
 import org.localstorm.mcc.web.util.DateUtil;
 import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @author Alexey Kuznetsov
@@ -67,6 +68,7 @@ public class TaskViewActionBean extends GtdBaseActionBean
 
     
     @DefaultHandler
+    @Logged
     public Resolution filling() throws Exception {
         SimpleDateFormat sdf = new SimpleDateFormat(Constants.DATE_FORMAT);
         

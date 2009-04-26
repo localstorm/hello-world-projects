@@ -10,6 +10,7 @@ import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.gtd.entity.GTDList;
 import org.localstorm.mcc.ejb.gtd.ListManager;
 import org.localstorm.mcc.web.gtd.GtdClipboard;
+import org.localstorm.tools.aop.runtime.Logged;
 
 
 /**
@@ -41,6 +42,7 @@ public class ListRenameActionBean extends ListViewActionBean
 
     @DefaultHandler
     @Override
+    @Logged
     public Resolution filling() throws Exception {
         ListManager lm = this.getListManager();
         

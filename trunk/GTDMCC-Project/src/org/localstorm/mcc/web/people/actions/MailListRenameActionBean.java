@@ -12,6 +12,7 @@ import org.localstorm.mcc.ejb.people.MailListManager;
 import org.localstorm.mcc.ejb.people.entity.MailList;
 import org.localstorm.mcc.web.people.PeopleSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @secure-by ml
@@ -44,6 +45,7 @@ public class MailListRenameActionBean extends MailListViewActionBean {
     
     @Override
     @DefaultHandler
+    @Logged
     public Resolution filling() throws Exception {
         MailListManager mlm = super.getMailListManager();
         

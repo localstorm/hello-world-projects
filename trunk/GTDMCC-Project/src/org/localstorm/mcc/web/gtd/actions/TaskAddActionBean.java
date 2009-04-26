@@ -13,6 +13,7 @@ import org.localstorm.mcc.ejb.gtd.entity.FlightPlan;
 import org.localstorm.mcc.ejb.gtd.FlightPlanManager;
 import org.localstorm.mcc.ejb.gtd.entity.GTDList;
 import org.localstorm.mcc.ejb.gtd.ListManager;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @author Alexey Kuznetsov
@@ -61,6 +62,7 @@ public class TaskAddActionBean extends ListViewActionBean
     }
     
     @DefaultHandler
+    @Logged
     public Resolution addTask() throws Exception {
 
         ListManager lm = getListManager();

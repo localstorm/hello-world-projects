@@ -9,6 +9,7 @@ import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.gtd.entity.GTDList;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @author Alexey Kuznetsov
@@ -39,6 +40,7 @@ public class ListAddActionBean extends ContextViewActionBean
     }
 
     @DefaultHandler
+    @Logged
     public Resolution addList() throws Exception {
         this.contextResult = getContextManager().findById(super.getContextId());
         

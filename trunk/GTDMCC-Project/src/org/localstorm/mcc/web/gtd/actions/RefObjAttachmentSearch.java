@@ -6,6 +6,7 @@ import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import org.localstorm.mcc.web.gtd.Views;
+import org.localstorm.tools.aop.runtime.Logged;
 
 
 /**
@@ -23,6 +24,7 @@ public class RefObjAttachmentSearch extends GtdBaseActionBean
     }
 
     @DefaultHandler
+    @Logged
     public Resolution filling() throws Exception {
         return new ForwardResolution(Views.SEARCH_RO_ATTACH);
     }

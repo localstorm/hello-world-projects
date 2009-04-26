@@ -11,6 +11,7 @@ import org.localstorm.mcc.ejb.people.entity.PregeneratedMailList;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
 import org.localstorm.mcc.web.people.RequestAttributes;
 import org.localstorm.mcc.web.people.Views;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  *
@@ -33,6 +34,7 @@ public class MailListProblemsManualResolve extends PeopleBaseActionBean
     }
 
     @DefaultHandler
+    @Logged
     public Resolution filling() throws Exception
     {
         MailListManager mlm = super.getMailListManager();

@@ -12,6 +12,7 @@ import org.localstorm.mcc.ejb.people.entity.PersonGroup;
 import org.localstorm.mcc.ejb.people.PersonManager;
 import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.people.Views;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @secure-by group id
@@ -51,6 +52,7 @@ public class PersonGroupViewActionBean extends PeopleBaseActionBean {
     }
 
     @DefaultHandler
+    @Logged
     public Resolution filling() throws Exception {
         PersonManager pm = super.getPersonManager();
         PersonGroup    g = pm.findGroup(this.getGroupId());

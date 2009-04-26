@@ -7,6 +7,7 @@ import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.people.Views;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @author localstorm
@@ -15,6 +16,7 @@ import org.localstorm.mcc.web.people.Views;
 public class PeopleViewActionBean extends PeopleBaseActionBean {
 
     @DefaultHandler
+    @Logged
     public Resolution filling() {
         ReturnPageBean rpb = new ReturnPageBean(Pages.PEOPLE_INDEX.toString());
         
