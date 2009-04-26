@@ -9,6 +9,7 @@ import org.localstorm.mcc.ejb.gtd.HintManager;
 import org.localstorm.mcc.ejb.gtd.entity.Task;
 import org.localstorm.mcc.ejb.gtd.TaskManager;
 import org.localstorm.mcc.web.ReturnPageBean;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @author Alexey Kuznetsov
@@ -28,6 +29,7 @@ public class TaskUnhintActionBean extends GtdBaseActionBean
     }
     
     @DefaultHandler
+    @Logged
     public Resolution resolvingTask() throws Exception {
         
         TaskManager tm = super.getTaskManager();

@@ -16,6 +16,7 @@ import org.localstorm.mcc.ejb.people.PersonManager;
 import org.localstorm.mcc.web.Constants;
 import org.localstorm.mcc.web.people.PeopleClipboard;
 import org.localstorm.mcc.web.util.DateUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @secure-by person-id, group-id
@@ -89,6 +90,7 @@ public class PersonUpdateActionBean extends PersonViewActionBean
 
     @DefaultHandler
     @Override
+    @Logged
     public Resolution filling() throws Exception {
         SimpleDateFormat sdf = new SimpleDateFormat(Constants.DATE_FORMAT);
 

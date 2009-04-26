@@ -14,6 +14,7 @@ import org.localstorm.mcc.ejb.gtd.entity.Context;
 import org.localstorm.mcc.ejb.gtd.entity.GTDList;
 import org.localstorm.mcc.ejb.gtd.ListManager;
 import org.localstorm.mcc.web.gtd.Views;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @author Alexey Kuznetsov
@@ -67,6 +68,7 @@ public class ContextViewActionBean extends GtdBaseActionBean
     }
     
     @DefaultHandler
+    @Logged
     public Resolution filling() throws Exception {
         contextResult   = getContextManager().findById(getContextId());
         

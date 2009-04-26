@@ -13,6 +13,7 @@ import org.localstorm.mcc.ejb.gtd.entity.Context;
 import org.localstorm.mcc.ejb.gtd.entity.GTDList;
 import org.localstorm.mcc.ejb.gtd.ListManager;
 import org.localstorm.mcc.web.gtd.GtdClipboard;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @author Alexey Kuznetsov
@@ -42,9 +43,8 @@ public class ListResolveActionBean extends GtdBaseActionBean
         this.action = action;
     }
 
-    
-    
     @DefaultHandler
+    @Logged
     public Resolution resolvingList() throws Exception {
         
         ListManager lm = getListManager();

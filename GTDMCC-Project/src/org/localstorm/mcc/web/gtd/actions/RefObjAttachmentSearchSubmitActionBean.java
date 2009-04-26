@@ -34,6 +34,7 @@ import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.mcc.web.gtd.actions.wrap.RoSearchResult;
+import org.localstorm.tools.aop.runtime.Logged;
 
 
 /**
@@ -99,6 +100,7 @@ public class RefObjAttachmentSearchSubmitActionBean extends GtdBaseActionBean
     }
 
     @DefaultHandler
+    @Logged
     public Resolution filling() throws Exception {
         
         this.objectFiles        = new LinkedList<FileAttachment>();

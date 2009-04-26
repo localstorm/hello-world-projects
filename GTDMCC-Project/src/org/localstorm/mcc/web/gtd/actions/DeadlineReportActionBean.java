@@ -26,6 +26,7 @@ import org.localstorm.mcc.web.gtd.actions.wrap.TaskMarker;
 import org.localstorm.mcc.web.gtd.actions.wrap.TaskWrapper;
 import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
 import org.localstorm.mcc.web.util.FilterUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @author Alexey Kuznetsov
@@ -71,6 +72,8 @@ public class DeadlineReportActionBean extends GtdBaseActionBean
     }
 
     @DefaultHandler
+    @SuppressWarnings("unchecked")
+    @Logged
     public Resolution filling() throws Exception {
 
         this.setToday(new Date());

@@ -394,6 +394,12 @@
                 <load-on-startup>2</load-on-startup>
         </servlet>
 
+        <servlet>
+                <servlet-name>CallTimingServlet</servlet-name>
+                <servlet-class>org.localstorm.mcc.web.CallTimingServlet</servlet-class>
+                <load-on-startup>2</load-on-startup>
+        </servlet>
+
         <servlet-mapping>
                 <servlet-name>StripesDispatcher</servlet-name>
                 <url-pattern>/actions/*</url-pattern>
@@ -433,6 +439,11 @@
         <servlet-mapping>
                 <servlet-name>AssetCostChartServlet</servlet-name>
                 <url-pattern>/chart/assetCost.png</url-pattern>
+        </servlet-mapping>
+
+        <servlet-mapping>
+                <servlet-name>CallTimingServlet</servlet-name>
+                <url-pattern>/timing</url-pattern>
         </servlet-mapping>
 
     <session-config>

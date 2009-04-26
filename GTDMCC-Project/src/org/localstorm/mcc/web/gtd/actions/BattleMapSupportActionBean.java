@@ -21,6 +21,7 @@ import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
 import org.localstorm.mcc.web.util.FilterUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @author Alexey Kuznetsov
@@ -73,6 +74,7 @@ public class BattleMapSupportActionBean extends GtdBaseActionBean
 
 
     @DefaultHandler
+    @Logged
     public Resolution filling() throws Exception {
 
         User            user = super.getUser();

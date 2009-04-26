@@ -9,6 +9,7 @@ import net.sourceforge.stripes.validation.Validate;
 
 import org.localstorm.mcc.ejb.gtd.entity.FileAttachment;
 import org.localstorm.mcc.ejb.gtd.FileManager;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @author Alexey Kuznetsov
@@ -24,6 +25,7 @@ public class FileDownloadActionBean extends GtdBaseActionBean
     }
     
     @DefaultHandler
+    @Logged
     public Resolution filling() throws Exception {
         HttpServletResponse resp = this.getContext().getResponse();
         FileManager fm           = this.getFileManager();

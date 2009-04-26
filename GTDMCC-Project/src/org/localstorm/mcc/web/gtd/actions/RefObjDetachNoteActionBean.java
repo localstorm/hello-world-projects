@@ -10,6 +10,7 @@ import org.localstorm.mcc.ejb.gtd.entity.Note;
 import org.localstorm.mcc.ejb.gtd.NoteManager;
 import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
 import org.localstorm.mcc.web.gtd.GtdClipboard;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @author Alexey Kuznetsov
@@ -41,6 +42,7 @@ public class RefObjDetachNoteActionBean extends GtdBaseActionBean
 
 
     @DefaultHandler
+    @Logged
     public Resolution handling() throws Exception {
         
         ReferencedObject ro = super.getRefObjectManager().findById(this.getObjectId());

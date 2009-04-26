@@ -12,6 +12,7 @@ import org.localstorm.mcc.ejb.gtd.entity.Task;
 import org.localstorm.mcc.ejb.gtd.TaskManager;
 import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.gtd.backend.TaskResolutionLogic;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @author Alexey Kuznetsov
@@ -52,6 +53,7 @@ public class TaskResolveActionBean extends GtdBaseActionBean
     }
     
     @DefaultHandler
+    @Logged
     public Resolution resolvingTask() throws Exception {
         
         TaskManager tm = super.getTaskManager();

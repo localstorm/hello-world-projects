@@ -10,6 +10,7 @@ import org.localstorm.mcc.ejb.cashflow.AssetManager;
 import org.localstorm.mcc.ejb.cashflow.entity.Operation;
 import org.localstorm.mcc.ejb.cashflow.OperationManager;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @secure-by operationId parameter
@@ -31,6 +32,7 @@ public class OperationRevokeActionBean extends CashflowBaseActionBean {
 
 
     @DefaultHandler
+    @Logged
     public Resolution filling() throws Exception {
 
         AssetManager     am = super.getAssetManager();

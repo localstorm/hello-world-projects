@@ -10,6 +10,7 @@ import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.people.entity.Person;
 import org.localstorm.mcc.ejb.people.entity.PersonGroup;
 import org.localstorm.mcc.ejb.people.PersonManager;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @secure-by group id
@@ -59,6 +60,7 @@ public class PersonAddActionBean extends PersonGroupViewActionBean {
 
     @Override
     @DefaultHandler
+    @Logged
     public Resolution filling() throws Exception {
         
         PersonManager pm = super.getPersonManager();

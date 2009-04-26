@@ -13,6 +13,7 @@ import net.sourceforge.stripes.validation.ValidationErrors;
 import org.localstorm.mcc.ejb.gtd.entity.Note;
 import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
 import org.localstorm.mcc.web.gtd.Types;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @author Alexey Kuznetsov
@@ -86,6 +87,7 @@ public class RefObjAttachActionBean extends RefObjViewActionBean
     
     @DefaultHandler
     @Override
+    @Logged
     public Resolution filling() throws Exception {
         
         ReferencedObject ro = this.getRefObjectManager().findById(this.objectId);

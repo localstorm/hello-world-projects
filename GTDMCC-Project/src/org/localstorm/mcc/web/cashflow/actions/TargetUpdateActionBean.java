@@ -19,6 +19,7 @@ import org.localstorm.mcc.ejb.cashflow.entity.ValuableObject;
 import org.localstorm.mcc.ejb.cashflow.OperationManager;
 import org.localstorm.mcc.web.cashflow.CashflowSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @secure-by target Id
@@ -58,6 +59,7 @@ public class TargetUpdateActionBean extends TargetViewActionBean {
     }
 
     @DefaultHandler
+    @Logged
     public Resolution update() throws Exception {
 
         AssetManager     am = super.getAssetManager();

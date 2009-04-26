@@ -2,6 +2,7 @@ package org.localstorm.mcc.web.people.actions;
 
 import java.util.Collection;
 import net.sourceforge.stripes.action.After;
+import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
@@ -19,6 +20,7 @@ import org.localstorm.mcc.web.people.PeopleSessionKeys;
 import org.localstorm.mcc.web.people.RequestAttributes;
 import org.localstorm.mcc.web.people.Views;
 import org.localstorm.mcc.web.util.SessionUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * TODO: Special security check!!
@@ -86,6 +88,8 @@ public class MailListAddActionBean extends PeopleBaseActionBean
         this.manyEmailsPersonIds = manyEmailsPersonIds;
     }
 
+    @DefaultHandler
+    @Logged
     public Resolution handle() throws Exception
     {
         MailListManager mlm = super.getMailListManager();

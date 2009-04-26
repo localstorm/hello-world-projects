@@ -11,6 +11,7 @@ import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.gtd.entity.FileAttachment;
 import org.localstorm.mcc.ejb.gtd.FileManager;
 import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @secure-by object Id parameter
@@ -65,6 +66,7 @@ public class RefObjUploadActionBean extends RefObjViewActionBean
 
     @DefaultHandler
     @Override
+    @Logged
     public Resolution filling() throws Exception {
         
         ReferencedObject ro = super.getRefObjectManager().findById(this.objectId);

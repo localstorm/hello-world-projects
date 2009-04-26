@@ -21,6 +21,7 @@ import org.localstorm.mcc.ejb.gtd.TaskManager;
 import org.localstorm.mcc.web.util.DateUtil;
 import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.gtd.GtdClipboard;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @author Alexey Kuznetsov
@@ -90,6 +91,7 @@ public class TaskUpdateActionBean extends TaskViewActionBean
     }
 
     @DefaultHandler
+    @Logged
     public Resolution updatingTask() throws Exception {
         SimpleDateFormat sdf = new SimpleDateFormat(Constants.DATE_FORMAT);
         

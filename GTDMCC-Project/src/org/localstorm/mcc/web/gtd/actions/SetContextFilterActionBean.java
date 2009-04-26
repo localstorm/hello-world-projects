@@ -5,6 +5,7 @@ import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @author localstorm
@@ -24,6 +25,7 @@ public class SetContextFilterActionBean extends GtdBaseActionBean {
     }
 
     @DefaultHandler
+    @Logged
     public Resolution filling() {
        super.setContextIdFilter(contextId);
        return NextDestinationUtil.getRedirection(this.getReturnPageBean());

@@ -15,6 +15,7 @@ import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.mcc.web.util.FilterUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @author localstorm
@@ -53,6 +54,8 @@ public class FlightPlanViewActionBean extends GtdBaseActionBean {
     }
     
     @DefaultHandler
+    @Logged
+    @SuppressWarnings("unchecked")
     public Resolution filling() {
         super.clearCurrent();
         
@@ -65,16 +68,14 @@ public class FlightPlanViewActionBean extends GtdBaseActionBean {
         archiveFlightPlanTasks = new LinkedList<Task>();
         awaitedFlightPlanTasks = new LinkedList<Task>();
         
-        for (Iterator<Task> it = flightPlanTasks.iterator(); it.hasNext(); )
-        {
+        for (Iterator<Task> it = flightPlanTasks.iterator(); it.hasNext(); ) {
             Task t = it.next();
-            if (t.isFinished() || t.isCancelled()){
+            if (t.isFinished() || t.isCancelled()) {
                 it.remove();
                 archiveFlightPlanTasks.add(t);
                 continue;
             }
-            if (t.isAwaited() || t.isDelegated())
-            {
+            if (t.isAwaited() || t.isDelegated()) {
                 it.remove();
                 awaitedFlightPlanTasks.add(t);
             }

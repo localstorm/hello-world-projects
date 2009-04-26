@@ -9,6 +9,7 @@ import org.localstorm.mcc.ejb.people.entity.Person;
 import org.localstorm.mcc.ejb.people.PersonManager;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
 import org.localstorm.mcc.web.people.PeopleClipboard;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @secure-by person id
@@ -29,6 +30,7 @@ public class PersonUnclipActionBean extends PeopleBaseActionBean
     }
 
     @DefaultHandler
+    @Logged
     public Resolution filling() throws Exception {
         PersonManager  pm = super.getPersonManager();
         Person          p = pm.findPerson(this.getPersonId());

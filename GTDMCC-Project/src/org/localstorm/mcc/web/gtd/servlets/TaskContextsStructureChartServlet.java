@@ -13,6 +13,7 @@ import org.localstorm.mcc.web.Constants;
 import org.localstorm.mcc.web.gtd.GtdSessionKeys;
 import org.localstorm.mcc.web.gtd.charting.TasksStructureChartGenerator;
 import org.localstorm.mcc.web.util.SessionUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @author localstorm
@@ -21,6 +22,7 @@ public class TaskContextsStructureChartServlet extends HttpServlet
 {
 
     @Override
+    @Logged
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession sess = req.getSession(true);
         User user = (User) SessionUtil.getValue(sess, GtdSessionKeys.USER);

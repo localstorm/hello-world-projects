@@ -15,6 +15,7 @@ import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
 import org.localstorm.mcc.web.gtd.Types;
 import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 
 /**
@@ -57,6 +58,7 @@ public class RefObjViewActionBean extends GtdBaseActionBean
     }
 
     @DefaultHandler
+    @Logged
     public Resolution filling() throws Exception {
         
         this.objectResult = super.getRefObjectManager().findById(this.getObjectId());

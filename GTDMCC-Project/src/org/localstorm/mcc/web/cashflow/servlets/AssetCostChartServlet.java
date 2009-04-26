@@ -13,6 +13,7 @@ import org.localstorm.mcc.web.Constants;
 import org.localstorm.mcc.web.cashflow.CashflowSessionKeys;
 import org.localstorm.mcc.web.cashflow.charting.AssetCostHistoryChartGenerator;
 import org.localstorm.mcc.web.util.SessionUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @author localstorm
@@ -24,6 +25,7 @@ public class AssetCostChartServlet extends HttpServlet
     public static final String NAME                = "name";
 
     @Override
+    @Logged
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
 

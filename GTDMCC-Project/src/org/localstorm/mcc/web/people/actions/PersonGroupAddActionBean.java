@@ -12,6 +12,7 @@ import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.users.*;
 import org.localstorm.mcc.web.people.PeopleSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 
 /**
@@ -41,6 +42,7 @@ public class PersonGroupAddActionBean extends PersonGroupsEditActionBean {
     }
     
     @DefaultHandler
+    @Logged
     public Resolution addPg() throws Exception {
         User user = super.getUser();
 

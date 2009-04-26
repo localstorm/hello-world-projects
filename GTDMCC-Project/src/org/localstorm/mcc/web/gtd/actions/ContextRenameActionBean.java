@@ -12,6 +12,7 @@ import org.localstorm.mcc.ejb.gtd.entity.Context;
 import org.localstorm.mcc.ejb.gtd.ContextManager;
 import org.localstorm.mcc.web.gtd.GtdSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @author Alexey Kuznetsov
@@ -42,6 +43,7 @@ public class ContextRenameActionBean extends ContextViewActionBean {
 
     @DefaultHandler
     @Override
+    @Logged
     public Resolution filling() throws Exception {
         ContextManager cm = super.getContextManager();
         

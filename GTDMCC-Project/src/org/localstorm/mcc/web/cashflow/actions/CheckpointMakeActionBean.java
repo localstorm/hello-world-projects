@@ -17,6 +17,7 @@ import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
 import org.localstorm.mcc.web.cashflow.actions.wrap.AssetWrapper;
 import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @secure-by session (no security checks)
@@ -26,6 +27,7 @@ import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
 public class CheckpointMakeActionBean extends CashflowBaseActionBean
 {
     @DefaultHandler
+    @Logged
     public Resolution filling() {
         User             user = super.getUser();
         AssetManager     am   = super.getAssetManager();
