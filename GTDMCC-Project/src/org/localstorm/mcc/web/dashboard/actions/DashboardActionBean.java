@@ -12,12 +12,14 @@ import org.localstorm.mcc.web.Views;
 import org.localstorm.mcc.web.gtd.GtdDashboardAgent;
 import org.localstorm.mcc.web.gtd.actions.Pages;
 import org.localstorm.mcc.web.people.PeopleDashboardAgent;
+import org.localstorm.tools.aop.runtime.Logged;
 
 @UrlBinding("/actions/Dashboard")
 public class DashboardActionBean extends BaseActionBean {
 
     
     @DefaultHandler
+    @Logged
     public Resolution filling() {
 
         ActionBeanContext ctx = super.getContext();
