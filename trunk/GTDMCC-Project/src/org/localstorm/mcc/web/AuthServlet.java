@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.users.*;
+import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  *
@@ -22,6 +23,7 @@ public class AuthServlet extends HttpServlet
     }
 
     @Override
+    @Logged
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         String login = req.getParameter(CGIParams.AUTH_LOGIN);
