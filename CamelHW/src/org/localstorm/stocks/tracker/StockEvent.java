@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * @author Alexey Kuznetsov
  */
-public final class Event extends Printable implements Serializable
+public final class StockEvent extends Printable implements Serializable
 {
     private final StockChangeType type;
     private final String          symbol;
@@ -15,7 +15,7 @@ public final class Event extends Printable implements Serializable
     private final Date            start;
     private final Date            end;
 
-    public Event(StockChangeType type, String symbol, BigDecimal price, Date start, Date end) {
+    public StockEvent(StockChangeType type, String symbol, BigDecimal price, Date start, Date end) {
         this.type = type;
         this.symbol = symbol;
         this.price = price;
@@ -31,7 +31,7 @@ public final class Event extends Printable implements Serializable
         return end;
     }
 
-    public BigDecimal getPrice() {
+    public BigDecimal getThreshold() {
         return price;
     }
 
