@@ -1,4 +1,4 @@
-package org.localstorm.camel.ss;
+package org.localstorm.camel.ts;
 
 import java.util.Map;
 import org.apache.camel.Endpoint;
@@ -8,7 +8,7 @@ import org.apache.camel.impl.DefaultExchange;
 /**
  * @author Alexey Kuznetsov
  */
-public class SchedulerComponent extends DefaultComponent<DefaultExchange>
+public class TrackingSchedulerComponent extends DefaultComponent<DefaultExchange>
 {
 
     @Override
@@ -16,7 +16,7 @@ public class SchedulerComponent extends DefaultComponent<DefaultExchange>
                                                          String remaining,
                                                          Map parameters) throws Exception
     {
-        return new SchedulerEndpoint(uri, this);
+        return new TrackingSchedulerEndpoint(uri, this);
     }
     
 }

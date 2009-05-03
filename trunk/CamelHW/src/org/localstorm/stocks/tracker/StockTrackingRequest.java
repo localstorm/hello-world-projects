@@ -10,19 +10,19 @@ import java.util.List;
  */
 public class StockTrackingRequest extends Printable implements Serializable
 {
-    private final List<Event> watchList;
+    private final List<StockEvent> watchList;
     private final String account;
 
     public StockTrackingRequest(String account) {
-        this.watchList  = new LinkedList<Event>();
+        this.watchList  = new LinkedList<StockEvent>();
         this.account    = account;
     }
 
-    public void watchEvent(Event e) {
+    public void watchEvent(StockEvent e) {
         this.watchList.add(e);
     }
 
-    public List<Event> getWatchList()
+    public List<StockEvent> getWatchList()
     {
         return watchList;
     }

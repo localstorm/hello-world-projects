@@ -1,19 +1,19 @@
 package org.localstorm.camel.th;
 
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import org.apache.camel.Consumer;
-import org.apache.camel.ExchangePattern;
 import org.apache.camel.Processor;
 import org.apache.camel.Producer;
 import org.apache.camel.impl.DefaultConsumer;
 import org.apache.camel.impl.DefaultEndpoint;
 import org.apache.camel.impl.DefaultExchange;
-import org.localstorm.stocks.tracker.Event;
+import org.localstorm.stocks.tracker.StockEvent;
 import org.localstorm.stocks.tracker.StockChangeType;
 import org.localstorm.stocks.tracker.StockTrackingRequest;
 
@@ -68,7 +68,12 @@ public class TrackingHandlerEndpoint extends DefaultEndpoint<DefaultExchange>
         System.out.println("XML to be parsed:"+xml);
 
         StockTrackingRequest str = new StockTrackingRequest("localstorm");
-        str.watchEvent(new Event(StockChangeType.RAISE, "MSFT", new BigDecimal("10.1"), null, new Date()));
+        Calendar c = Calendar.getInstance();
+
+        c.add(Calendar.SECOND, 10);
+        Date end = c.getTime();
+        
+        str.watchEvent(new StockEvent(StockChangeType.RAISE, "MSFT", new BigDecimal("10.1"), null, end));
         return str;
     }
 
