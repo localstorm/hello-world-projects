@@ -13,6 +13,7 @@ import org.apache.camel.Producer;
 import org.apache.camel.impl.DefaultConsumer;
 import org.apache.camel.impl.DefaultEndpoint;
 import org.apache.camel.impl.DefaultExchange;
+import org.localstorm.camel.GenericConsumerableEndpoint;
 import org.localstorm.stocks.tracker.StockEvent;
 import org.localstorm.stocks.tracker.StockChangeType;
 import org.localstorm.stocks.tracker.StockTrackingRequest;
@@ -22,12 +23,11 @@ import org.localstorm.stocks.tracker.StockTrackingRequest;
  * @out StockTrackingRequest instance
  * @author Alexey Kuznetsov
  */
-public class TrackingXmlEndpoint extends DefaultEndpoint<DefaultExchange>
+public class TrackingXmlEndpoint extends GenericConsumerableEndpoint<DefaultExchange>
 {
-    private List<DefaultConsumer> consumers = new CopyOnWriteArrayList<DefaultConsumer>();
-
+ 
     public TrackingXmlEndpoint(String endpointUri,
-                                   TrackingXmlComponent component) {
+                               TrackingXmlComponent component) {
         super(endpointUri, component);
     }
 
@@ -42,23 +42,6 @@ public class TrackingXmlEndpoint extends DefaultEndpoint<DefaultExchange>
     @Override
     public TrackingXmlComponent getComponent() {
         return (TrackingXmlComponent) super.getComponent();
-    }
-
-    public Consumer<DefaultExchange> createConsumer(Processor processor) throws Exception {
-        return new DefaultConsumer<DefaultExchange>(this, processor) {
-
-            @Override
-            public void start() throws Exception {
-                consumers.add(this);
-                super.start();
-            }
-
-            @Override
-            public void stop() throws Exception {
-                super.stop();
-                consumers.remove(this);
-            }
-        };
     }
 
     public Producer<DefaultExchange> createProducer() throws Exception {
@@ -76,10 +59,6 @@ public class TrackingXmlEndpoint extends DefaultEndpoint<DefaultExchange>
 
         str.addEvent(new StockEvent(StockChangeType.RAISE, "MSFT", new BigDecimal("10.1"), null, end));
         return str;
-    }
-
-    /*package*/ Collection<DefaultConsumer> getConsumers() {
-        return Collections.unmodifiableCollection(consumers);
     }
 
 }

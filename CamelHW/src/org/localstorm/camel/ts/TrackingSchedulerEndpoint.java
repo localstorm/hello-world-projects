@@ -1,18 +1,11 @@
 package org.localstorm.camel.ts;
 
 import java.util.Calendar;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-import org.apache.camel.Consumer;
-import org.apache.camel.Processor;
 import org.apache.camel.Producer;
 import org.apache.camel.component.quartz.QuartzEndpoint;
-import org.apache.camel.impl.DefaultConsumer;
-import org.apache.camel.impl.DefaultEndpoint;
 import org.apache.camel.impl.DefaultExchange;
+import org.localstorm.camel.GenericConsumerableEndpoint;
 import org.localstorm.camel.util.Sequence;
 import org.localstorm.camel.util.EndpointUtil;
 import org.localstorm.camel.util.ProcessUtil;
@@ -29,12 +22,11 @@ import org.quartz.SimpleTrigger;
  * @out AnalyzerInstruction instance
  * @author Alexey Kuznetsov
  */
-public class TrackingSchedulerEndpoint extends DefaultEndpoint<DefaultExchange>
+public class TrackingSchedulerEndpoint extends GenericConsumerableEndpoint<DefaultExchange>
 {
     public static final String ANALYZER_INSTRUCTION_KEY = "$aInstruction";
     public static final String   SCHEDULER_ENDPOINT_KEY = "$schedulerEp";
 
-    private List<DefaultConsumer> consumers = new CopyOnWriteArrayList<DefaultConsumer>();
     private Sequence seq = new Sequence();
 
     public TrackingSchedulerEndpoint(String endpointUri,
@@ -44,24 +36,6 @@ public class TrackingSchedulerEndpoint extends DefaultEndpoint<DefaultExchange>
 
     public TrackingSchedulerEndpoint(String endpointUri, Object some) {
         super(endpointUri);
-    }
-
-    public Consumer<DefaultExchange> createConsumer(Processor p) throws Exception {
-
-        return new DefaultConsumer<DefaultExchange>(this, p) {
-
-            @Override
-            public void start() throws Exception {
-                consumers.add(this);
-                super.start();
-            }
-
-            @Override
-            public void stop() throws Exception {
-                super.stop();
-                consumers.remove(this);
-            }
-        };
     }
 
     public Producer<DefaultExchange> createProducer() throws Exception {
@@ -92,12 +66,7 @@ public class TrackingSchedulerEndpoint extends DefaultEndpoint<DefaultExchange>
     /*package*/ void onJobExecute(AnalyzerInstruction ai) throws Exception
     {
         System.out.println("Resending: "+ai);
-        ProcessUtil.process(ai, this.getCamelContext(), consumers);
-    }
-
-
-    /*package*/ Collection<DefaultConsumer> getConsumers() {
-        return Collections.unmodifiableCollection(consumers);
+        ProcessUtil.process(ai, this.getCamelContext(), super.getConsumers());
     }
 
 
