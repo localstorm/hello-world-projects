@@ -1,4 +1,4 @@
-package org.localstorm.camel.th;
+package org.localstorm.camel.txml;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
@@ -13,25 +13,25 @@ import org.apache.camel.Producer;
 import org.apache.camel.impl.DefaultConsumer;
 import org.apache.camel.impl.DefaultEndpoint;
 import org.apache.camel.impl.DefaultExchange;
-import org.localstorm.camel.util.ThreadUtil;
 import org.localstorm.stocks.tracker.StockEvent;
 import org.localstorm.stocks.tracker.StockChangeType;
 import org.localstorm.stocks.tracker.StockTrackingRequest;
 
 /**
- *
+ * @in  XML (Stock racking Request format)
+ * @out StockTrackingRequest instance
  * @author Alexey Kuznetsov
  */
-public class TrackingHandlerEndpoint extends DefaultEndpoint<DefaultExchange>
+public class TrackingXmlEndpoint extends DefaultEndpoint<DefaultExchange>
 {
     private List<DefaultConsumer> consumers = new CopyOnWriteArrayList<DefaultConsumer>();
 
-    public TrackingHandlerEndpoint(String endpointUri,
-                                   TrackingHandlerComponent component) {
+    public TrackingXmlEndpoint(String endpointUri,
+                                   TrackingXmlComponent component) {
         super(endpointUri, component);
     }
 
-    public TrackingHandlerEndpoint(String endpointUri) {
+    public TrackingXmlEndpoint(String endpointUri) {
         super(endpointUri);
     }
 
@@ -40,8 +40,8 @@ public class TrackingHandlerEndpoint extends DefaultEndpoint<DefaultExchange>
     }
 
     @Override
-    public TrackingHandlerComponent getComponent() {
-        return (TrackingHandlerComponent) super.getComponent();
+    public TrackingXmlComponent getComponent() {
+        return (TrackingXmlComponent) super.getComponent();
     }
 
     public Consumer<DefaultExchange> createConsumer(Processor processor) throws Exception {
@@ -62,7 +62,7 @@ public class TrackingHandlerEndpoint extends DefaultEndpoint<DefaultExchange>
     }
 
     public Producer<DefaultExchange> createProducer() throws Exception {
-        return new TrackingProducer(this);
+        return new TrackingXmlProducer(this);
     }
 
     /*package*/ StockTrackingRequest parseXmlRequest(String xml) {
@@ -73,8 +73,8 @@ public class TrackingHandlerEndpoint extends DefaultEndpoint<DefaultExchange>
 
         c.add(Calendar.SECOND, 10);
         Date end = c.getTime();
-        
-        str.watchEvent(new StockEvent(StockChangeType.RAISE, "MSFT", new BigDecimal("10.1"), null, end));
+
+        str.addEvent(new StockEvent(StockChangeType.RAISE, "MSFT", new BigDecimal("10.1"), null, end));
         return str;
     }
 

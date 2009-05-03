@@ -1,4 +1,4 @@
-package org.localstorm.camel.th;
+package org.localstorm.camel.txml;
 
 
 import java.util.Collection;
@@ -8,15 +8,16 @@ import org.apache.camel.impl.DefaultExchange;
 import org.apache.camel.impl.DefaultProducer;
 import org.localstorm.camel.ExchangeFactory;
 import org.localstorm.camel.util.ProcessUtil;
+import org.localstorm.stocks.tracker.StockTrackingRequest;
 
 /**
  *
  * @author Alexey Kuznetsov
  */
-public class TrackingProducer extends DefaultProducer<DefaultExchange>
+public class TrackingXmlProducer extends DefaultProducer<DefaultExchange>
 {
 
-    public TrackingProducer(TrackingHandlerEndpoint endpoint) {
+    public TrackingXmlProducer(TrackingXmlEndpoint endpoint) {
         super(endpoint);
     }
 
@@ -26,9 +27,9 @@ public class TrackingProducer extends DefaultProducer<DefaultExchange>
 
         System.out.println("TrackingRequestProducer:process("+request+");");
 
-        Object result = this.getEndpoint().parseXmlRequest(request.toString());
+        StockTrackingRequest result = this.getEndpoint().parseXmlRequest(request.toString());
 
-        TrackingHandlerEndpoint ep = this.getEndpoint();
+        TrackingXmlEndpoint ep = this.getEndpoint();
 
         Collection<DefaultConsumer> consumers = ep.getConsumers();
 
@@ -42,8 +43,8 @@ public class TrackingProducer extends DefaultProducer<DefaultExchange>
     }
 
     @Override
-    public TrackingHandlerEndpoint getEndpoint() {
-        return (TrackingHandlerEndpoint) super.getEndpoint();
+    public TrackingXmlEndpoint getEndpoint() {
+        return (TrackingXmlEndpoint) super.getEndpoint();
     }
 
 }

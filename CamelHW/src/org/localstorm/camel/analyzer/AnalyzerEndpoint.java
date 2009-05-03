@@ -8,11 +8,13 @@ import org.apache.camel.impl.DefaultExchange;
 import org.localstorm.stocks.tracker.AnalyzerInstruction;
 
 /**
- *
+ * @in TODO!!!  (stock prices)
+ * @out TODO!!! (notifications)
  * @author Alexey Kuznetsov
  */
 public class AnalyzerEndpoint extends DefaultEndpoint<DefaultExchange>
 {
+    private final RulesModel model = new RulesModel();
 
     public AnalyzerEndpoint(String uri, AnalyzerComponent component)
     {
@@ -26,11 +28,19 @@ public class AnalyzerEndpoint extends DefaultEndpoint<DefaultExchange>
     /*package*/ void appendRule(AnalyzerInstruction ai)
     {
         System.out.println("Appending rule: "+ai);
+        this.model.addRule(ai.getSymbol(),
+                           ai.getStockChangeType(),
+                           ai.getThreshold(),
+                           ai.getAccount());
     }
 
     /*package*/ void removeRule(AnalyzerInstruction ai)
     {
         System.out.println("Removing rule: "+ai);
+        this.model.removeRule(ai.getSymbol(),
+                              ai.getStockChangeType(),
+                              ai.getThreshold(),
+                              ai.getAccount());
     }
 
     public Consumer<DefaultExchange> createConsumer(Processor arg0)

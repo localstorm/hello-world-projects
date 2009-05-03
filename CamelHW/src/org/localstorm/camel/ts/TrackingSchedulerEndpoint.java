@@ -15,7 +15,6 @@ import org.apache.camel.impl.DefaultEndpoint;
 import org.apache.camel.impl.DefaultExchange;
 import org.localstorm.camel.util.Sequence;
 import org.localstorm.camel.util.EndpointUtil;
-import org.localstorm.camel.util.ExchangeUtil;
 import org.localstorm.camel.util.ProcessUtil;
 import org.localstorm.stocks.tracker.AnalyzerInstruction;
 import org.localstorm.stocks.tracker.StockEvent;
@@ -26,7 +25,8 @@ import org.quartz.SchedulerException;
 import org.quartz.SimpleTrigger;
 
 /**
- *
+ * @in StockTrackingRequest instance
+ * @out AnalyzerInstruction instance
  * @author Alexey Kuznetsov
  */
 public class TrackingSchedulerEndpoint extends DefaultEndpoint<DefaultExchange>
@@ -77,6 +77,9 @@ public class TrackingSchedulerEndpoint extends DefaultEndpoint<DefaultExchange>
     /* package */ void scheduleTracking(StockTrackingRequest str) {
         
         String account = str.getAccount();
+
+        // TODO: Check str.size() here (configurable)
+
         for (StockEvent e: str.getWatchList()) {
 
             if (this.needSchedule(e)) {

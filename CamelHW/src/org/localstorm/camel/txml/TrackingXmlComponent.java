@@ -1,4 +1,4 @@
-package org.localstorm.camel.th;
+package org.localstorm.camel.txml;
 
 import java.util.Map;
 import org.apache.camel.Endpoint;
@@ -8,7 +8,7 @@ import org.apache.camel.impl.DefaultExchange;
 /**
  * @author Alexey Kuznetsov
  */
-public class TrackingHandlerComponent extends DefaultComponent<DefaultExchange>
+public class TrackingXmlComponent extends DefaultComponent<DefaultExchange>
 {
 
     @Override
@@ -16,7 +16,7 @@ public class TrackingHandlerComponent extends DefaultComponent<DefaultExchange>
                                                        String remaining,
                                                        Map parameters) throws Exception
     {
-        return new TrackingHandlerEndpoint(uri, this);
+        return new TrackingXmlEndpoint(uri, this);
     }
     
 }

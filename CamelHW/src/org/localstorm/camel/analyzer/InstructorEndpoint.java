@@ -9,7 +9,8 @@ import org.localstorm.camel.util.EndpointUtil;
 import org.localstorm.stocks.tracker.AnalyzerInstruction;
 
 /**
- *
+ * @in AnalyzerInstruction instance
+ * @out N/A
  * @author Alexey Kuznetsov
  */
 public class InstructorEndpoint extends DefaultEndpoint<DefaultExchange>
