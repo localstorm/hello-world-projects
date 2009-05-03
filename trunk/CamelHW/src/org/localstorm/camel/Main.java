@@ -46,7 +46,7 @@ public class Main {
 
         ProducerTemplate pt = cc.createProducerTemplate();
 
-        for (int i=0; i<1; i++){
+        for (int i=0; i<5; i++){
             System.out.println("-->");
             pt.sendBody(TRACKING_REQ_HANDLER_URI, "<?xml version=\"1.0\" ?><call/>");
             System.out.println("<--");
