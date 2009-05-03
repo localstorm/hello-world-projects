@@ -10,6 +10,12 @@ public class EndpointUtil
 {
     @SuppressWarnings("unchecked")
     public static <T> T getEndpoint(Endpoint ep, String uri) {
-        return (T) ep.getCamelContext().getEndpoint(uri);
+        T t = (T) ep.getCamelContext().getEndpoint(uri);
+
+        if (t==null) {
+            throw new RuntimeException("Endpoint not found for given URI: "+uri);
+        }
+
+        return t;
     }
 }

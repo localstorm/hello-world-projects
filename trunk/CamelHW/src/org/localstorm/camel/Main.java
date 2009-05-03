@@ -2,6 +2,7 @@ package org.localstorm.camel;
 
 import org.localstorm.camel.util.ThreadUtil;
 import org.apache.camel.CamelContext;
+import org.apache.camel.ExchangePattern;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
@@ -14,7 +15,9 @@ public class Main {
 
     public static final String TRACKING_REQ_HANDLER_URI = "th:singleton";
     public static final String SCHED_SERVICE_URI        = "ts:singleton";
-    public static final String STOCK_ANALYZER_URI       = "sa:singleton";
+    public static final String INSTRUCTOR_URI           = "i:singleton";
+    public static final String STOCK_ANALYZER_URI       = "a:singleton";
+    
 
     /**
      * @param args the command line arguments
@@ -28,7 +31,8 @@ public class Main {
 
             public void configure() {
                 from(TRACKING_REQ_HANDLER_URI).to(SCHED_SERVICE_URI);
-                from(SCHED_SERVICE_URI).to(STOCK_ANALYZER_URI);
+                from(SCHED_SERVICE_URI).to(INSTRUCTOR_URI);
+                //from(INSTRUCTOR_URI).to(STOCK_ANALYZER_URI); // Direct calls
             }
         });
 
@@ -45,10 +49,14 @@ public class Main {
         ApplicationLogger.getInstance().log("Apache Camel kernel started.");
 
         ProducerTemplate pt = cc.createProducerTemplate();
-
-        for (int i=0; i<5; i++){
+        
+        for (int i=0; i<1; i++){
             System.out.println("-->");
-            pt.sendBody(TRACKING_REQ_HANDLER_URI, "<?xml version=\"1.0\" ?><call/>");
+
+            pt.sendBody(TRACKING_REQ_HANDLER_URI,
+                        ExchangePattern.InOnly,
+                        "<?xml version=\"1.0\" ?><call/>");
+
             System.out.println("<--");
         }
 

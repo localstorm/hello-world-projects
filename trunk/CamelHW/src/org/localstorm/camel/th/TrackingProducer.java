@@ -25,6 +25,7 @@ public class TrackingProducer extends DefaultProducer<DefaultExchange>
         Object request = exchange.getIn().getBody();
 
         System.out.println("TrackingRequestProducer:process("+request+");");
+
         Object result = this.getEndpoint().parseXmlRequest(request.toString());
 
         TrackingHandlerEndpoint ep = this.getEndpoint();

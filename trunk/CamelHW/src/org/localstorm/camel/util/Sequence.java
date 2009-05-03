@@ -3,7 +3,6 @@ package org.localstorm.camel.util;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- *
  * @author Alexey Kuznetsov
  */
 public class Sequence 
@@ -12,6 +11,10 @@ public class Sequence
 
     public Sequence() {
         value = new AtomicLong(0);
+    }
+
+    public Sequence(long startValue) {
+        value = new AtomicLong(startValue);
     }
 
     public long next() {

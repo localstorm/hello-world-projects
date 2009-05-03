@@ -13,38 +13,41 @@ import org.localstorm.stocks.tracker.AnalyzerInstruction;
  */
 public class AnalyzerEndpoint extends DefaultEndpoint<DefaultExchange>
 {
-    public AnalyzerEndpoint(String endpointUri,
-                             AnalyzerComponent component) {
-        super(endpointUri, component);
+
+    public AnalyzerEndpoint(String uri, AnalyzerComponent component)
+    {
+        super(uri, component);
     }
 
-    public AnalyzerEndpoint(String endpointUri, Object some) {
+    public AnalyzerEndpoint(String endpointUri) {
         super(endpointUri);
     }
 
-    @Override
-    public AnalyzerComponent getComponent() {
-        return (AnalyzerComponent) super.getComponent();
+    /*package*/ void appendRule(AnalyzerInstruction ai)
+    {
+        System.out.println("Appending rule: "+ai);
     }
 
-    public Consumer<DefaultExchange> createConsumer(Processor p) throws Exception
+    /*package*/ void removeRule(AnalyzerInstruction ai)
     {
-        throw new UnsupportedOperationException("You cannot recieve messages from this endpoint");
+        System.out.println("Removing rule: "+ai);
     }
 
-    public Producer<DefaultExchange> createProducer() throws Exception
+    public Consumer<DefaultExchange> createConsumer(Processor arg0)
+            throws Exception
     {
-        //throw new UnsupportedOperationException("You cannot recieve messages from this endpoint");
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public Producer<DefaultExchange> createProducer()
+            throws Exception
+    {
         return new AnalyzerProducer(this);
     }
 
-    public boolean isSingleton() {
+    public boolean isSingleton()
+    {
         return true;
     }
 
-    /*package*/ void processInstruction(AnalyzerInstruction ai)
-    {
-        System.out.println("Instruction to process: "+ai);
-    }
-    
 }
