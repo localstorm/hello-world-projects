@@ -1,10 +1,8 @@
 package org.localstorm.camel.analyzer;
 
-import org.apache.camel.Consumer;
-import org.apache.camel.Processor;
 import org.apache.camel.Producer;
-import org.apache.camel.impl.DefaultEndpoint;
 import org.apache.camel.impl.DefaultExchange;
+import org.localstorm.camel.GenericConsumerableEndpoint;
 import org.localstorm.stocks.tracker.AnalyzerInstruction;
 
 /**
@@ -12,12 +10,11 @@ import org.localstorm.stocks.tracker.AnalyzerInstruction;
  * @out TODO!!! (notifications)
  * @author Alexey Kuznetsov
  */
-public class AnalyzerEndpoint extends DefaultEndpoint<DefaultExchange>
+public class AnalyzerEndpoint extends GenericConsumerableEndpoint<DefaultExchange>
 {
     private final RulesModel model = new RulesModel();
-
-    public AnalyzerEndpoint(String uri, AnalyzerComponent component)
-    {
+    
+    public AnalyzerEndpoint(String uri, AnalyzerComponent component) {
         super(uri, component);
     }
 
@@ -41,12 +38,6 @@ public class AnalyzerEndpoint extends DefaultEndpoint<DefaultExchange>
                               ai.getStockChangeType(),
                               ai.getThreshold(),
                               ai.getAccount());
-    }
-
-    public Consumer<DefaultExchange> createConsumer(Processor arg0)
-            throws Exception
-    {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     public Producer<DefaultExchange> createProducer()

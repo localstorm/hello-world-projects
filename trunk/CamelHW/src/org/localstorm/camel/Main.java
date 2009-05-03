@@ -1,11 +1,13 @@
 package org.localstorm.camel;
 
+import javax.activation.DataHandler;
 import org.localstorm.camel.util.ThreadUtil;
 import org.apache.camel.CamelContext;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
+import org.apache.camel.impl.DefaultExchange;
 
 /**
  *
@@ -17,7 +19,7 @@ public class Main {
     public static final String TRACKING_SCHEDULER_URI   = "ts:singleton";
     public static final String INSTRUCTOR_URI           = "i:singleton";
     public static final String STOCK_ANALYZER_URI       = "a:singleton";
-    
+    public static final String NOTIFIER_URI             = "n:singleton";
 
     /**
      * @param args the command line arguments
@@ -32,6 +34,7 @@ public class Main {
             public void configure() {
                 from(TRACKING_XML_HANDLER_URI).to(TRACKING_SCHEDULER_URI);
                 from(TRACKING_SCHEDULER_URI).to(INSTRUCTOR_URI);
+                from(STOCK_ANALYZER_URI).to(NOTIFIER_URI);
                 //from(INSTRUCTOR_URI).to(STOCK_ANALYZER_URI); // Direct calls
             }
         });
