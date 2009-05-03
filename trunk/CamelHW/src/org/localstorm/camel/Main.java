@@ -13,8 +13,8 @@ import org.apache.camel.impl.DefaultCamelContext;
  */
 public class Main {
 
-    public static final String TRACKING_REQ_HANDLER_URI = "th:singleton";
-    public static final String SCHED_SERVICE_URI        = "ts:singleton";
+    public static final String TRACKING_XML_HANDLER_URI = "txml:singleton";
+    public static final String TRACKING_SCHEDULER_URI   = "ts:singleton";
     public static final String INSTRUCTOR_URI           = "i:singleton";
     public static final String STOCK_ANALYZER_URI       = "a:singleton";
     
@@ -30,8 +30,8 @@ public class Main {
         cc.addRoutes(new RouteBuilder() {
 
             public void configure() {
-                from(TRACKING_REQ_HANDLER_URI).to(SCHED_SERVICE_URI);
-                from(SCHED_SERVICE_URI).to(INSTRUCTOR_URI);
+                from(TRACKING_XML_HANDLER_URI).to(TRACKING_SCHEDULER_URI);
+                from(TRACKING_SCHEDULER_URI).to(INSTRUCTOR_URI);
                 //from(INSTRUCTOR_URI).to(STOCK_ANALYZER_URI); // Direct calls
             }
         });
@@ -53,7 +53,7 @@ public class Main {
         for (int i=0; i<1; i++){
             System.out.println("-->");
 
-            pt.sendBody(TRACKING_REQ_HANDLER_URI,
+            pt.sendBody(TRACKING_XML_HANDLER_URI,
                         ExchangePattern.InOnly,
                         "<?xml version=\"1.0\" ?><call/>");
 

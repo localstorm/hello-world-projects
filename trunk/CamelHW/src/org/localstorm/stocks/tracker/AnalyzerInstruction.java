@@ -38,7 +38,7 @@ public class AnalyzerInstruction extends Printable
         return threshold;
     }
 
-    public StockChangeType getType()
+    public StockChangeType getStockChangeType()
     {
         return type;
     }

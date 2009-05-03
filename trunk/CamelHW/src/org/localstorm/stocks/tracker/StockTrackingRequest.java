@@ -18,7 +18,7 @@ public class StockTrackingRequest extends Printable implements Serializable
         this.account    = account;
     }
 
-    public void watchEvent(StockEvent e) {
+    public void addEvent(StockEvent e) {
         this.watchList.add(e);
     }
 
