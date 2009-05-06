@@ -1,13 +1,15 @@
 package org.localstorm.camel;
 
-import javax.activation.DataHandler;
+import com.sun.grizzly.http.SelectorThread;
+import com.sun.jersey.api.container.grizzly.GrizzlyWebContainerFactory;
+import java.util.HashMap;
+import java.util.Map;
 import org.localstorm.camel.util.ThreadUtil;
 import org.apache.camel.CamelContext;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
-import org.apache.camel.impl.DefaultExchange;
 
 /**
  *
@@ -51,6 +53,13 @@ public class Main {
         
         ApplicationLogger.getInstance().log("Apache Camel kernel started.");
 
+        Map<String, String> init = new HashMap<String, String>();
+
+        init.put("com.sun.jersey.config.property.packages",
+                 "org.localstorm.camel.rest");
+
+        SelectorThread threadSelector = GrizzlyWebContainerFactory.create("http://localhost:8080/", init);
+        
         ProducerTemplate pt = cc.createProducerTemplate();
         
         for (int i=0; i<1; i++){
@@ -65,6 +74,8 @@ public class Main {
 
         ThreadUtil.waitForInterruption();
 
+        System.out.println("============ EP!!! ===========");
+        threadSelector.stopEndpoint();
         ApplicationLogger.getInstance().log("Shutdown signal!");
     }
 
