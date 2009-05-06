@@ -43,11 +43,9 @@
     </target>
 
     <target name="dist" depends="compile">
-
         <copy todir="${tmp.dir}">
             <fileset dir="${build.dir}" />
         </copy>
-
         <copy todir="${tmp.dir}">
             <fileset dir="${res.dir}" />
         </copy>
@@ -56,10 +54,4 @@
         <delete dir="${tmp.dir}" />
     </target>
 
-    <target name="run" depends="dist">
-        <java classname="org.localstorm.camel.Main">
-            <classpath refid="run.classpath"/>
-        </java>
-    </target>
-    
 </project>

@@ -2,16 +2,8 @@ package org.localstorm.camel.txml;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-import org.apache.camel.Consumer;
-import org.apache.camel.Processor;
 import org.apache.camel.Producer;
-import org.apache.camel.impl.DefaultConsumer;
-import org.apache.camel.impl.DefaultEndpoint;
 import org.apache.camel.impl.DefaultExchange;
 import org.localstorm.camel.GenericConsumerableEndpoint;
 import org.localstorm.stocks.tracker.StockEvent;
