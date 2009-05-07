@@ -1,4 +1,4 @@
-package org.localstorm.stocktracker;
+package org.localstorm.stocktracker.base;
 
 /**
  *

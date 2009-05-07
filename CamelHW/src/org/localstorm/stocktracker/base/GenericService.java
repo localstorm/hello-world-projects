@@ -1,10 +1,10 @@
-package org.localstorm.stocktracker;
+package org.localstorm.stocktracker.base;
 
 /**
  *
  * @author Alexey Kuznetsov
  */
-public interface ServiceFasade
+public interface GenericService
 {
     public void start() throws Exception;
 

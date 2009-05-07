@@ -1,5 +1,6 @@
 package org.localstorm.stocktracker.scheduler;
 
+import org.localstorm.stocktracker.camel.GenericConsumerableEndpoint;
 import java.util.Calendar;
 import java.util.Date;
 import org.apache.camel.Producer;
