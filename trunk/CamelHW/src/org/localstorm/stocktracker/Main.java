@@ -1,6 +1,6 @@
 package org.localstorm.stocktracker;
 
-import org.localstorm.stocktracker.util.ThreadUtil;
+import org.localstorm.stocktracker.util.misc.ThreadUtil;
 
 /**
  * @author localstorm

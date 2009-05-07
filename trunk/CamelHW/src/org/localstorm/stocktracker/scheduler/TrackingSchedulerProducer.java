@@ -3,7 +3,7 @@ package org.localstorm.stocktracker.scheduler;
 import org.apache.camel.Exchange;
 import org.apache.camel.impl.DefaultExchange;
 import org.apache.camel.impl.DefaultProducer;
-import org.localstorm.stocktracker.util.ExchangeUtil;
+import org.localstorm.stocktracker.util.camel.ExchangeUtil;
 import org.localstorm.stocktracker.exchange.StockTrackingRequest;
 
 /**
