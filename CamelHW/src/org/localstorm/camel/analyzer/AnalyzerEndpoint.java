@@ -2,8 +2,8 @@ package org.localstorm.camel.analyzer;
 
 import org.apache.camel.Producer;
 import org.apache.camel.impl.DefaultExchange;
-import org.localstorm.camel.GenericConsumerableEndpoint;
-import org.localstorm.stocks.tracker.AnalyzerInstruction;
+import org.localstorm.stocktracker.*;
+import org.localstorm.stocktracker.exchange.*;
 
 /**
  * @in TODO!!!  (stock prices)

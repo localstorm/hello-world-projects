@@ -4,7 +4,7 @@ import org.apache.camel.Exchange;
 import org.apache.camel.impl.DefaultExchange;
 import org.apache.camel.impl.DefaultProducer;
 import org.localstorm.camel.util.ExchangeUtil;
-import org.localstorm.stocks.tracker.AnalyzerInstruction;
+import org.localstorm.stocktracker.exchange.AnalyzerInstruction;
 
 /**
  * @author Alexey Kuznetsov

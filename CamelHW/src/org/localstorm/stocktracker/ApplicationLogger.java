@@ -1,4 +1,4 @@
-package org.localstorm.camel;
+package org.localstorm.stocktracker;
 
 /**
  *
@@ -18,6 +18,11 @@ public class ApplicationLogger
 
     public void log(String message) {
         System.out.println(message);
+        System.out.flush();
+    }
+
+    public void log(String message, Exception e) {
+        System.out.println(message+e.getMessage());
         System.out.flush();
     }
 

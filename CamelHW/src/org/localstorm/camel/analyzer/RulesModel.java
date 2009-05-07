@@ -1,6 +1,6 @@
 package org.localstorm.camel.analyzer;
 
-import org.localstorm.stocks.tracker.*;
+import org.localstorm.stocktracker.exchange.*;
 import java.math.BigDecimal;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ConcurrentNavigableMap;

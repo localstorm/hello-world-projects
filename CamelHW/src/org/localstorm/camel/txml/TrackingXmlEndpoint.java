@@ -5,10 +5,8 @@ import java.util.Calendar;
 import java.util.Date;
 import org.apache.camel.Producer;
 import org.apache.camel.impl.DefaultExchange;
-import org.localstorm.camel.GenericConsumerableEndpoint;
-import org.localstorm.stocks.tracker.StockEvent;
-import org.localstorm.stocks.tracker.StockChangeType;
-import org.localstorm.stocks.tracker.StockTrackingRequest;
+import org.localstorm.stocktracker.*;
+import org.localstorm.stocktracker.exchange.*;
 
 /**
  * @in  XML (Stock racking Request format)

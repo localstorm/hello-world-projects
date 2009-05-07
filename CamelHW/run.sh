@@ -1,3 +1,3 @@
 #!/bin/sh
 
-java -cp 'lib/*:dist/*' org.localstorm.camel.Main
+java -cp 'lib/*:dist/*' org.localstorm.stocktracker.Main
