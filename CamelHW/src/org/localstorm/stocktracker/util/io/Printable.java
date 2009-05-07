@@ -3,6 +3,7 @@ package org.localstorm.stocktracker.util.io;
 import org.apache.commons.beanutils.BeanUtils;
 
 /**
+ * Provides toString() for any JavaBean instances.
  * @author Alexey Kuznetsov
  */
 public abstract class Printable
