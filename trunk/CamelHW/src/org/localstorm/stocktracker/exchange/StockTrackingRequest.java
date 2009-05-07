@@ -32,7 +32,5 @@ public class StockTrackingRequest extends Printable implements Serializable
     {
         return account;
     }
-
-    
     
 }
