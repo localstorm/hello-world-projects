@@ -10,16 +10,16 @@ import java.util.Date;
  */
 public final class StockEvent extends Printable implements Serializable
 {
-    private final StockEventType type;
+    private final StockEventType  type;
     private final String          symbol;
-    private final BigDecimal      price;
+    private final BigDecimal      threshold;
     private final Date            start;
     private final Date            end;
 
-    public StockEvent(StockEventType type, String symbol, BigDecimal price, Date start, Date end) {
+    public StockEvent(StockEventType type, String symbol, BigDecimal threshold, Date start, Date end) {
         this.type = type;
         this.symbol = symbol;
-        this.price = price;
+        this.threshold = threshold;
         this.start = start;
         this.end = end;
     }
@@ -33,7 +33,7 @@ public final class StockEvent extends Printable implements Serializable
     }
 
     public BigDecimal getThreshold() {
-        return price;
+        return threshold;
     }
 
     public String getSymbol() {
