@@ -28,7 +28,7 @@ public class CamelService implements GenericService
         camelContext.addRoutes(new RouteBuilder() {
 
             public void configure() {
-                from(Endpoints.TRACKING_XML_HANDLER_URI).to(Endpoints.TRACKING_SCHEDULER_URI);
+                from(Endpoints.TRACKING_XML_INPUT_URI).to(Endpoints.TRACKING_SCHEDULER_URI);
                 from(Endpoints.TRACKING_SCHEDULER_URI).to(Endpoints.INSTRUCTOR_URI);
                 from(Endpoints.STOCK_ANALYZER_URI).to(Endpoints.NOTIFIER_URI);
                 //from(INSTRUCTOR_URI).to(STOCK_ANALYZER_URI); // Direct calls

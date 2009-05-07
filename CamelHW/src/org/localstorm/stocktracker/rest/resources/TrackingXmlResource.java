@@ -36,7 +36,7 @@ public class TrackingXmlResource {
         CamelContext cc = CamelService.getInstance().getCamelContext();
 
         // That is quite efficient event to create endpoint for each request
-        this.ep = cc.getEndpoint(Endpoints.TRACKING_XML_HANDLER_URI);
+        this.ep = cc.getEndpoint(Endpoints.TRACKING_XML_INPUT_URI);
         this.channel = ep.createProducer();
     }
 
