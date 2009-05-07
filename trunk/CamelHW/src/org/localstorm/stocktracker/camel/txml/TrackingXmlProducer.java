@@ -1,4 +1,4 @@
-package org.localstorm.stocktracker.txml;
+package org.localstorm.stocktracker.camel.txml;
 
 
 import java.util.Collection;
@@ -6,8 +6,8 @@ import org.apache.camel.Exchange;
 import org.apache.camel.impl.DefaultConsumer;
 import org.apache.camel.impl.DefaultExchange;
 import org.apache.camel.impl.DefaultProducer;
-import org.localstorm.stocktracker.util.camel.ExchangeFactory;
-import org.localstorm.stocktracker.util.camel.ProcessUtil;
+import org.localstorm.stocktracker.camel.util.ExchangeFactory;
+import org.localstorm.stocktracker.camel.util.ProcessUtil;
 import org.localstorm.stocktracker.exchange.StockTrackingRequest;
 
 /**

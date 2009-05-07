@@ -1,4 +1,4 @@
-package org.localstorm.stocktracker.notifier;
+package org.localstorm.stocktracker.camel.notifier;
 
 import org.apache.camel.Consumer;
 import org.apache.camel.Processor;

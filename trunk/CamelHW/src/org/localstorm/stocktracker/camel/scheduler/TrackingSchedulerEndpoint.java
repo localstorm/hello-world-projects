@@ -1,4 +1,4 @@
-package org.localstorm.stocktracker.scheduler;
+package org.localstorm.stocktracker.camel.scheduler;
 
 import org.localstorm.stocktracker.camel.GenericConsumerableEndpoint;
 import java.util.Calendar;
@@ -6,11 +6,10 @@ import java.util.Date;
 import org.apache.camel.Producer;
 import org.apache.camel.component.quartz.QuartzEndpoint;
 import org.apache.camel.impl.DefaultExchange;
-import org.localstorm.stocktracker.*;
 import org.localstorm.stocktracker.exchange.*;
 import org.localstorm.stocktracker.util.misc.Sequence;
-import org.localstorm.stocktracker.util.camel.EndpointUtil;
-import org.localstorm.stocktracker.util.camel.ProcessUtil;
+import org.localstorm.stocktracker.camel.util.EndpointUtil;
+import org.localstorm.stocktracker.camel.util.ProcessUtil;
 import org.quartz.JobDataMap;
 import org.quartz.JobDetail;
 import org.quartz.SchedulerException;

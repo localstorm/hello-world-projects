@@ -1,4 +1,4 @@
-package org.localstorm.stocktracker.txml;
+package org.localstorm.stocktracker.camel.notifier;
 
 import java.util.Map;
 import org.apache.camel.Endpoint;
@@ -8,7 +8,7 @@ import org.apache.camel.impl.DefaultExchange;
 /**
  * @author Alexey Kuznetsov
  */
-public class TrackingXmlComponent extends DefaultComponent<DefaultExchange>
+public class NotifierComponent extends DefaultComponent<DefaultExchange>
 {
 
     @Override
@@ -16,7 +16,7 @@ public class TrackingXmlComponent extends DefaultComponent<DefaultExchange>
                                                        String remaining,
                                                        Map parameters) throws Exception
     {
-        return new TrackingXmlEndpoint(uri, this);
+        return new NotifierEndpoint(uri, this);
     }
     
 }

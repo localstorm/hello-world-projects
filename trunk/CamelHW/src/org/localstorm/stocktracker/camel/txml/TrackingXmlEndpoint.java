@@ -1,4 +1,4 @@
-package org.localstorm.stocktracker.txml;
+package org.localstorm.stocktracker.camel.txml;
 
 import org.localstorm.stocktracker.camel.GenericConsumerableEndpoint;
 import java.math.BigDecimal;

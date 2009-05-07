@@ -1,4 +1,4 @@
-package org.localstorm.stocktracker.scheduler;
+package org.localstorm.stocktracker.camel.scheduler;
 
 import org.localstorm.stocktracker.exchange.AnalyzerInstruction;
 import org.quartz.Job;

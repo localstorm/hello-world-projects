@@ -1,4 +1,4 @@
-package org.localstorm.stocktracker.util.camel;
+package org.localstorm.stocktracker.camel.util;
 
 import org.apache.camel.Exchange;
 

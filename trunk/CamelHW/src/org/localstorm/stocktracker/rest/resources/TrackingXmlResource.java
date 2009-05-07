@@ -15,11 +15,11 @@ import org.apache.camel.Producer;
 import org.apache.camel.impl.DefaultExchange;
 import org.localstorm.stocktracker.camel.CamelService;
 import org.localstorm.stocktracker.camel.Endpoints;
-import org.localstorm.stocktracker.camel.ProducerUtil;
+import org.localstorm.stocktracker.camel.util.ProducerUtil;
 import org.localstorm.stocktracker.exchange.StockChangeType;
 import org.localstorm.stocktracker.exchange.StockEvent;
 import org.localstorm.stocktracker.exchange.StockTrackingRequest;
-import org.localstorm.stocktracker.util.camel.ExchangeFactory;
+import org.localstorm.stocktracker.camel.util.ExchangeFactory;
 import org.localstorm.stocktracker.util.io.LimitedInputStream;
 
 /**

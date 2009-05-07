@@ -1,4 +1,4 @@
-package org.localstorm.stocktracker.analyzer;
+package org.localstorm.stocktracker.camel.analyzer;
 
 import java.util.Map;
 import org.apache.camel.Endpoint;
@@ -8,7 +8,7 @@ import org.apache.camel.impl.DefaultExchange;
 /**
  * @author Alexey Kuznetsov
  */
-public class AnalyzerComponent extends DefaultComponent<DefaultExchange>
+public class InstructorComponent extends DefaultComponent<DefaultExchange>
 {
 
     @Override
@@ -16,7 +16,7 @@ public class AnalyzerComponent extends DefaultComponent<DefaultExchange>
                                                        String remaining,
                                                        Map parameters) throws Exception
     {
-        return new AnalyzerEndpoint(uri, this);
+        return new InstructorEndpoint(uri, this);
     }
     
 }
