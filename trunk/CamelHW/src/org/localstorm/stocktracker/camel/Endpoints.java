@@ -12,4 +12,5 @@ public interface Endpoints
     public static final String INSTRUCTOR_URI                = "i:singleton";
     public static final String STOCK_ANALYZER_URI            = "a:singleton";
     public static final String NOTIFIER_URI                  = "n:singleton";
+    public static final String STOCK_PRICES_INPUT_URI        = "price:singleton";
 }
