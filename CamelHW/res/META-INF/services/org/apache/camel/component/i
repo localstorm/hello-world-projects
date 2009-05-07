@@ -1,1 +1,1 @@
-class=org.localstorm.stocktracker.analyzer.InstructorComponent
+class=org.localstorm.stocktracker.camel.analyzer.InstructorComponent

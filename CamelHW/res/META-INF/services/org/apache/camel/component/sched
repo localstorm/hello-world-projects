@@ -1,1 +1,1 @@
-class=org.localstorm.stocktracker.scheduler.TrackingSchedulerComponent
+class=org.localstorm.stocktracker.camel.scheduler.TrackingSchedulerComponent

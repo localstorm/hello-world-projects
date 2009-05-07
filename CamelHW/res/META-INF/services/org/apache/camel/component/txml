@@ -1,1 +1,1 @@
-class=org.localstorm.stocktracker.txml.TrackingXmlComponent
+class=org.localstorm.stocktracker.camel.txml.TrackingXmlComponent

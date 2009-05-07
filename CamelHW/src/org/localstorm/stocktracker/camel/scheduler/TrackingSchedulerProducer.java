@@ -1,9 +1,9 @@
-package org.localstorm.stocktracker.scheduler;
+package org.localstorm.stocktracker.camel.scheduler;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.impl.DefaultExchange;
 import org.apache.camel.impl.DefaultProducer;
-import org.localstorm.stocktracker.util.camel.ExchangeUtil;
+import org.localstorm.stocktracker.camel.util.ExchangeUtil;
 import org.localstorm.stocktracker.exchange.StockTrackingRequest;
 
 /**

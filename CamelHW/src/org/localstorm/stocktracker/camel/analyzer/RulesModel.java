@@ -1,4 +1,4 @@
-package org.localstorm.stocktracker.analyzer;
+package org.localstorm.stocktracker.camel.analyzer;
 
 import org.localstorm.stocktracker.exchange.*;
 import java.math.BigDecimal;

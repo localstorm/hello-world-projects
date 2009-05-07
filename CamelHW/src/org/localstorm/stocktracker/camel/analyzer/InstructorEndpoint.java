@@ -1,11 +1,11 @@
-package org.localstorm.stocktracker.analyzer;
+package org.localstorm.stocktracker.camel.analyzer;
 
 import org.apache.camel.Consumer;
 import org.apache.camel.Processor;
 import org.apache.camel.Producer;
 import org.apache.camel.impl.DefaultEndpoint;
 import org.apache.camel.impl.DefaultExchange;
-import org.localstorm.stocktracker.util.camel.EndpointUtil;
+import org.localstorm.stocktracker.camel.util.EndpointUtil;
 import org.localstorm.stocktracker.exchange.AnalyzerInstruction;
 
 /**

@@ -1,4 +1,4 @@
-package org.localstorm.stocktracker.analyzer;
+package org.localstorm.stocktracker.camel.analyzer;
 
 import org.localstorm.stocktracker.camel.GenericConsumerableEndpoint;
 import org.apache.camel.Producer;

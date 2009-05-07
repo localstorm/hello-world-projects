@@ -1,4 +1,4 @@
-package org.localstorm.stocktracker.scheduler;
+package org.localstorm.stocktracker.camel.scheduler;
 
 import java.util.Map;
 import org.apache.camel.Endpoint;
