@@ -1,5 +1,10 @@
 package org.localstorm.stocktracker.camel;
 
+import bsh.EvalError;
+import bsh.Interpreter;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import org.localstorm.stocktracker.base.ApplicationLogger;
 import org.localstorm.stocktracker.base.GenericService;
 import org.apache.camel.CamelContext;
@@ -25,13 +30,27 @@ public class CamelService implements GenericService
     }
 
     public void start() throws Exception {
+
         camelContext.addRoutes(new RouteBuilder() {
 
             public void configure() {
-                from(Endpoints.TRACKING_XML_INPUT_URI).to(Endpoints.TRACKING_SCHEDULER_URI);
-                from(Endpoints.TRACKING_SCHEDULER_URI).to(Endpoints.INSTRUCTOR_URI);
-                from(Endpoints.STOCK_ANALYZER_URI).to(Endpoints.NOTIFIER_URI);
-                //from(INSTRUCTOR_URI).to(STOCK_ANALYZER_URI); // Direct calls
+
+                BufferedReader reader = null;
+                try {
+
+                    Interpreter interpreter = new Interpreter();
+                    interpreter.set("builder", this);
+
+                    // TODO: remove this:---------
+                    from(Endpoints.TRACKING_REQUESTS_INPUT_URI).to(Endpoints.TRACKING_SCHEDULER_URI);
+                    from(Endpoints.TRACKING_SCHEDULER_URI).to(Endpoints.INSTRUCTOR_URI);
+                    from(Endpoints.STOCK_ANALYZER_URI).to(Endpoints.NOTIFIER_URI);
+                    //----------------------------
+
+                    //Evaluating here
+                } catch(EvalError e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
         

@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentSkipListMap;
  */
 public class RulesModel 
 {
-    // Key: Symbol+'-'+StockChangeType (ex.: MSFT-RAISE)
+    // Key: Symbol+'-'+StockEventType (ex.: MSFT-RAISE)
     private final ConcurrentNavigableMap<String, ConcurrentLinkedQueue<Rule>> rules;
 
 
@@ -20,7 +20,7 @@ public class RulesModel
         rules = new ConcurrentSkipListMap<String, ConcurrentLinkedQueue<Rule>>();
     }
 
-    public void addRule(String symbol, StockChangeType type, BigDecimal threshold, String account) {
+    public void addRule(String symbol, StockEventType type, BigDecimal threshold, String account) {
         ConcurrentLinkedQueue<Rule> newQ = new ConcurrentLinkedQueue<Rule>();
         ConcurrentLinkedQueue<Rule> queue = this.rules.putIfAbsent(symbol+type, newQ);
 
@@ -31,7 +31,7 @@ public class RulesModel
         queue.add(new Rule(threshold, account));
     }
 
-    public void removeRule(String symbol, StockChangeType type, BigDecimal threshold, String account) {
+    public void removeRule(String symbol, StockEventType type, BigDecimal threshold, String account) {
         ConcurrentLinkedQueue<Rule> queue = this.rules.get(symbol+type);
         if (queue!=null) {
             queue.remove(new Rule(threshold, account));

@@ -1,5 +1,6 @@
 package org.localstorm.stocktracker.exchange;
 
+import org.localstorm.stocktracker.util.io.Printable;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -9,13 +10,13 @@ import java.util.Date;
  */
 public final class StockEvent extends Printable implements Serializable
 {
-    private final StockChangeType type;
+    private final StockEventType type;
     private final String          symbol;
     private final BigDecimal      price;
     private final Date            start;
     private final Date            end;
 
-    public StockEvent(StockChangeType type, String symbol, BigDecimal price, Date start, Date end) {
+    public StockEvent(StockEventType type, String symbol, BigDecimal price, Date start, Date end) {
         this.type = type;
         this.symbol = symbol;
         this.price = price;
@@ -39,7 +40,7 @@ public final class StockEvent extends Printable implements Serializable
         return symbol;
     }
 
-    public StockChangeType getType() {
+    public StockEventType getType() {
         return type;
     }
 

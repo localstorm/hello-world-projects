@@ -1,5 +1,6 @@
 package org.localstorm.stocktracker.exchange;
 
+import org.localstorm.stocktracker.util.io.Printable;
 import java.math.BigDecimal;
 
 /**
@@ -11,10 +12,10 @@ public class AnalyzerInstruction extends Printable
     private final boolean end;
     private final String symbol;
     private final String account;
-    private final StockChangeType type;
+    private final StockEventType type;
     private final BigDecimal threshold;
 
-    public AnalyzerInstruction(boolean end, String symbol, String account, StockChangeType type, BigDecimal threshold)
+    public AnalyzerInstruction(boolean end, String symbol, String account, StockEventType type, BigDecimal threshold)
     {
         this.end = end;
         this.symbol = symbol;
@@ -38,7 +39,7 @@ public class AnalyzerInstruction extends Printable
         return threshold;
     }
 
-    public StockChangeType getStockChangeType()
+    public StockEventType getStockChangeType()
     {
         return type;
     }
