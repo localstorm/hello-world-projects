@@ -1,4 +1,4 @@
-package org.localstorm.stocktracker.rest;
+package org.localstorm.stocktracker.rest.resources;
 
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;

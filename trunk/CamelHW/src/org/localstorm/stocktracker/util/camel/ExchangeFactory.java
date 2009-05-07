@@ -32,6 +32,13 @@ public class ExchangeFactory
         return new DefaultExchange(ep.getCamelContext(), ExchangePattern.InOut);
     }
 
+    public static DefaultExchange inOut(Endpoint ep, Object body)
+    {
+        DefaultExchange de = new DefaultExchange(ep.getCamelContext(), ExchangePattern.InOut);
+        de.getIn().setBody(body);
+        return de;
+    }
+
     public static  DefaultExchange outIn(Endpoint ep)
     {
         return new DefaultExchange(ep.getCamelContext(), ExchangePattern.OutIn);

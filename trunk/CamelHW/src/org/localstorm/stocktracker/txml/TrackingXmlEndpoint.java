@@ -1,5 +1,6 @@
 package org.localstorm.stocktracker.txml;
 
+import org.localstorm.stocktracker.camel.GenericConsumerableEndpoint;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
@@ -38,6 +39,7 @@ public class TrackingXmlEndpoint extends GenericConsumerableEndpoint<DefaultExch
         return new TrackingXmlProducer(this);
     }
 
+    @Deprecated
     /*package*/ StockTrackingRequest parseXmlRequest(String xml) {
         System.out.println("XML to be parsed:"+xml);
 

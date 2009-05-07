@@ -1,5 +1,8 @@
 package org.localstorm.stocktracker;
 
+import org.localstorm.stocktracker.base.ApplicationLogger;
+import org.localstorm.stocktracker.camel.CamelService;
+import org.localstorm.stocktracker.rest.WebConnectorService;
 import org.localstorm.stocktracker.util.misc.ThreadUtil;
 
 /**
@@ -13,8 +16,8 @@ public class Main {
     public static void main(String[] args)  {
         ApplicationLogger.getInstance().log("Starting Apache Camel kernel...");
 
-        WebConnectorFasade webContainer = new WebConnectorFasade();
-        CamelFasade         camelFasade = CamelFasade.getInstance();
+        WebConnectorService webContainer = new WebConnectorService();
+        CamelService         camelFasade = CamelService.getInstance();
     
         Main.onShutdown(Main.chainRunnables(
             webContainer.getShutdownRunnable(),
@@ -29,6 +32,9 @@ public class Main {
         
             ThreadUtil.waitForInterruption();
         } catch(Exception e) {
+            //TODO: no stack traces!
+            e.printStackTrace();
+            
             ApplicationLogger.getInstance().log("Can't start application due to error:", e);
         }
     }

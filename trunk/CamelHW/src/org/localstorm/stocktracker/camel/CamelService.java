@@ -1,5 +1,7 @@
-package org.localstorm.stocktracker;
+package org.localstorm.stocktracker.camel;
 
+import org.localstorm.stocktracker.base.ApplicationLogger;
+import org.localstorm.stocktracker.base.GenericService;
 import org.apache.camel.CamelContext;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
@@ -8,17 +10,17 @@ import org.apache.camel.impl.DefaultCamelContext;
  *
  * @author Alexey Kuznetsov
  */
-public class CamelFasade implements ServiceFasade
+public class CamelService implements GenericService
 {
-    private static final CamelFasade instance = new CamelFasade();
+    private static final CamelService instance = new CamelService();
 
     private final CamelContext camelContext;
 
-    private CamelFasade() {
+    private CamelService() {
         camelContext = new DefaultCamelContext();
     }
 
-    public static CamelFasade getInstance() {
+    public static CamelService getInstance() {
         return instance;
     }
 
@@ -53,7 +55,7 @@ public class CamelFasade implements ServiceFasade
                 try {
 
                     ApplicationLogger.getInstance().log("Stopping Apache Camel kernel...");
-                    CamelFasade.this.stop();
+                    CamelService.this.stop();
                     ApplicationLogger.getInstance().log("Apache Camel kernel is down.");
                     
                 } catch(Exception e) {

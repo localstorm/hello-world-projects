@@ -1,30 +1,36 @@
-package org.localstorm.stocktracker;
+package org.localstorm.stocktracker.rest;
 
+import org.localstorm.stocktracker.util.misc.PropertiesUtil;
+import org.localstorm.stocktracker.base.ApplicationLogger;
+import org.localstorm.stocktracker.*;
+import org.localstorm.stocktracker.base.GenericService;
 import com.sun.grizzly.http.SelectorThread;
 import com.sun.jersey.api.container.grizzly.GrizzlyWebContainerFactory;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 /**
  *
  * @author Alexey Kuznetsov
  */
-public class WebConnectorFasade implements ServiceFasade
+public class WebConnectorService implements GenericService
 {
+    private static final String JERSEY_PROPERTIES = "META-INF/jersey/resources/config";
     private SelectorThread selectorThread = null;
 
-    public WebConnectorFasade() {
+    public WebConnectorService() {
 
     }
 
     public void start() throws Exception  {
-        Map<String, String> init = new HashMap<String, String>();
 
-        //TODO: something more robust needed
-        init.put("com.sun.jersey.config.property.packages",
-                 "org.localstorm.stocktracker.rest");
+        Properties prop = PropertiesUtil.loadFromResource(JERSEY_PROPERTIES);
+        Map<String, String> init = PropertiesUtil.asMap(prop);
 
         //That is not a real thread. SelectorThread is an entry point to embedded Grizzly Servlet Container
+        // TODO: "http://localhost:8080/" -- to config
         this.selectorThread = GrizzlyWebContainerFactory.create("http://localhost:8080/", init);
     }
 
@@ -41,7 +47,7 @@ public class WebConnectorFasade implements ServiceFasade
             public void run() {
                 try {
                     ApplicationLogger.getInstance().log("Stopping web container...");
-                    WebConnectorFasade.this.stop();
+                    WebConnectorService.this.stop();
                     ApplicationLogger.getInstance().log("WebContainer is down.");
                 } catch(Exception e) {
                     //TODO: log here
