@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- *
+ * Barrier class for huge requests prevention.
  * @author Alexey Kuznetsov
  */
 public class LimitedInputStream extends InputStream
@@ -14,10 +14,14 @@ public class LimitedInputStream extends InputStream
 
     private final long threshold;
 
-    public LimitedInputStream(InputStream is, long maxDataAmount) {
+    /**
+     * @param is Original unbounded input stream 
+     * @param threshold Maximum number of bytes allowed to be read.
+     */
+    public LimitedInputStream(InputStream is, long threshold) {
         this.is        = is;
         this.count     = 0;
-        this.threshold = maxDataAmount;
+        this.threshold = threshold;
     }
 
     @Override
@@ -30,6 +34,9 @@ public class LimitedInputStream extends InputStream
         is.close();
     }
 
+    /**
+     * @return Number of bytes that was actually read from original stream
+     */
     public long getCount() {
         return count;
     }
@@ -44,6 +51,11 @@ public class LimitedInputStream extends InputStream
         return false;
     }
 
+    /**
+     * TODO (link to InputStream);
+     * @throws IOException general I/O-error
+     * @throws TooLongStreamException if it was read more bytes than <i>threshold</i>
+     */
     @Override
     public int read() throws IOException {
         
@@ -56,6 +68,11 @@ public class LimitedInputStream extends InputStream
         return _rd;
     }
 
+    /**
+     * TODO (link to InputStream);
+     * @throws IOException general I/O-error
+     * @throws TooLongStreamException if it was read more bytes than <i>threshold</i>
+     */
     @Override
     public int read(byte[] b) throws IOException {
         int _rd = is.read(b);
@@ -67,6 +84,11 @@ public class LimitedInputStream extends InputStream
         return _rd;
     }
 
+    /**
+     * TODO (link to InputStream);
+     * @throws IOException general I/O-error
+     * @throws TooLongStreamException if it was read more bytes than <i>threshold</i>
+     */
     @Override
     public int read(byte[] b, int off, int len) throws IOException {
         int _rd = is.read(b, off, len);
@@ -78,6 +100,11 @@ public class LimitedInputStream extends InputStream
         return _rd;
     }
 
+    /**
+     * TODO (link to InputStream);
+     * @throws IOException general I/O-error
+     * @throws TooLongStreamException if it was read more bytes than <i>threshold</i>
+     */
     @Override
     public long skip(long n) throws IOException {
         long _rd = is.skip(n);
@@ -91,7 +118,7 @@ public class LimitedInputStream extends InputStream
 
     private void checkOverflow() throws IOException {
         if (this.count>this.threshold) {
-            throw new IOException("Stream overflow! Not more than ["+threshold+"] bytes expected!");
+            throw new TooLongStreamException(threshold);
         }
     }
 
