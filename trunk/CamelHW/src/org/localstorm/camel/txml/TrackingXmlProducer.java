@@ -8,7 +8,7 @@ import org.apache.camel.impl.DefaultExchange;
 import org.apache.camel.impl.DefaultProducer;
 import org.localstorm.camel.ExchangeFactory;
 import org.localstorm.camel.util.ProcessUtil;
-import org.localstorm.stocks.tracker.StockTrackingRequest;
+import org.localstorm.stocktracker.exchange.StockTrackingRequest;
 
 /**
  *

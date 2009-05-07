@@ -1,6 +1,6 @@
 package org.localstorm.camel.ts;
 
-import org.localstorm.stocks.tracker.AnalyzerInstruction;
+import org.localstorm.stocktracker.exchange.AnalyzerInstruction;
 import org.quartz.Job;
 import org.quartz.JobDataMap;
 import org.quartz.JobDetail;

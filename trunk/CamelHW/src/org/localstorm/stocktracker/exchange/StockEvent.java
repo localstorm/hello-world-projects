@@ -1,4 +1,4 @@
-package org.localstorm.stocks.tracker;
+package org.localstorm.stocktracker.exchange;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

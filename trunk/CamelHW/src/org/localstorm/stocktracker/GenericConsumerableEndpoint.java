@@ -1,4 +1,4 @@
-package org.localstorm.camel;
+package org.localstorm.stocktracker;
 
 import java.util.Collections;
 import java.util.List;
