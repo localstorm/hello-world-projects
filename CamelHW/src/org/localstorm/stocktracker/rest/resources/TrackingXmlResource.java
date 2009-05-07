@@ -16,7 +16,7 @@ import org.apache.camel.impl.DefaultExchange;
 import org.localstorm.stocktracker.camel.CamelService;
 import org.localstorm.stocktracker.camel.Endpoints;
 import org.localstorm.stocktracker.camel.util.ProducerUtil;
-import org.localstorm.stocktracker.exchange.StockChangeType;
+import org.localstorm.stocktracker.exchange.StockEventType;
 import org.localstorm.stocktracker.exchange.StockEvent;
 import org.localstorm.stocktracker.exchange.StockTrackingRequest;
 import org.localstorm.stocktracker.camel.util.ExchangeFactory;
@@ -36,7 +36,7 @@ public class TrackingXmlResource {
         CamelContext cc = CamelService.getInstance().getCamelContext();
 
         // That is quite efficient event to create endpoint for each request
-        this.ep = cc.getEndpoint(Endpoints.TRACKING_XML_INPUT_URI);
+        this.ep = cc.getEndpoint(Endpoints.TRACKING_REQUESTS_INPUT_URI);
         this.channel = ep.createProducer();
     }
 
@@ -61,7 +61,7 @@ public class TrackingXmlResource {
             c.add(Calendar.SECOND, 10);
             Date end = c.getTime();
 
-            str.addEvent(new StockEvent(StockChangeType.RAISE, "MSFT", new BigDecimal("10.1"), null, end));
+            str.addEvent(new StockEvent(StockEventType.RAISE, "MSFT", new BigDecimal("10.1"), null, end));
 
             DefaultExchange ex = ExchangeFactory.inOut(ep, str);
             this.channel.process(ex);

@@ -1,5 +1,6 @@
 package org.localstorm.stocktracker.exchange;
 
+import org.localstorm.stocktracker.util.io.Printable;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;

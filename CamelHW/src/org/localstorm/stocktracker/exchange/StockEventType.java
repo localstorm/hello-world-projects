@@ -4,7 +4,7 @@ package org.localstorm.stocktracker.exchange;
  *
  * @author Alexey Kuznetsov
  */
-public enum StockChangeType {
+public enum StockEventType {
     RAISE,
     FALL
 }

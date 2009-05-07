@@ -1,4 +1,4 @@
-package org.localstorm.stocktracker.exchange;
+package org.localstorm.stocktracker.util.io;
 
 import org.apache.commons.beanutils.BeanUtils;
 
