@@ -35,7 +35,7 @@ public class TrackingXmlResource {
     public TrackingXmlResource() throws Exception {
         CamelContext cc = CamelService.getInstance().getCamelContext();
 
-        // That is quite efficient event to create endpoint for each request
+        // That is quite efficient even to create endpoint for each request
         this.ep = cc.getEndpoint(Endpoints.TRACKING_REQUESTS_INPUT_URI);
         this.channel = ep.createProducer();
     }
