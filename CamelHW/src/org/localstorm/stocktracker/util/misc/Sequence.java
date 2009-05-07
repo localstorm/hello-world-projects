@@ -1,4 +1,4 @@
-package org.localstorm.stocktracker.util;
+package org.localstorm.stocktracker.util.misc;
 
 import java.util.concurrent.atomic.AtomicLong;
 
