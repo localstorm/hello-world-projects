@@ -20,8 +20,9 @@ public class WebConnectorFasade implements ServiceFasade
     public void start() throws Exception  {
         Map<String, String> init = new HashMap<String, String>();
 
+        //TODO: something more robust needed
         init.put("com.sun.jersey.config.property.packages",
-                 "org.localstorm.camel.rest");
+                 "org.localstorm.stocktracker.rest");
 
         //That is not a real thread. SelectorThread is an entry point to embedded Grizzly Servlet Container
         this.selectorThread = GrizzlyWebContainerFactory.create("http://localhost:8080/", init);

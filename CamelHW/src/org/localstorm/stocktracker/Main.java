@@ -1,6 +1,6 @@
 package org.localstorm.stocktracker;
 
-import org.localstorm.camel.util.ThreadUtil;
+import org.localstorm.stocktracker.util.ThreadUtil;
 
 /**
  * @author localstorm
