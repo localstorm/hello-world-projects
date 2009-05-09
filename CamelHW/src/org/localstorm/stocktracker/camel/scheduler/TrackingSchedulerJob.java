@@ -23,8 +23,6 @@ public class TrackingSchedulerJob implements Job {
             TrackingSchedulerEndpoint   ep = (TrackingSchedulerEndpoint)   jdm.get(TrackingSchedulerEndpoint.SCHEDULER_ENDPOINT_KEY);
 
             ep.onJobExecute(ai);
-
-            //System.out.println("Triggered: "+ai);
         } catch(Exception e) {
             e.printStackTrace();
             //TODO: Log!
