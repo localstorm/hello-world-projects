@@ -1,23 +1,28 @@
 package org.localstorm.stocktracker.rest.resources;
 
+import java.io.IOException;
 import java.io.InputStream;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
+import javax.xml.stream.XMLStreamException;
 import org.apache.camel.CamelContext;
 import org.apache.camel.Endpoint;
 import org.apache.camel.Producer;
+import org.apache.camel.impl.DefaultExchange;
 import org.localstorm.stocktracker.camel.CamelService;
 import org.localstorm.stocktracker.camel.Endpoints;
+import org.localstorm.stocktracker.camel.util.ExchangeFactory;
 import org.localstorm.stocktracker.camel.util.ProducerUtil;
-import org.localstorm.stocktracker.util.io.LimitedInputStream;
-import org.localstorm.stocktracker.util.io.TooLongStreamException;
+import org.localstorm.stocktracker.exchange.StockPriceRequest;
+import org.localstorm.stocktracker.rest.parsers.ObjectXmlReader;
+import org.localstorm.stocktracker.rest.parsers.StockPriceRequestParser;
 
 /**
  * @author Alexey Kuznetsov
  */
-@Path("/stocks")
+@Path("/prices")
 public class StockPricesXmlResource {
 
     private Endpoint ep;
@@ -39,24 +44,40 @@ public class StockPricesXmlResource {
     @Produces("text/plain")
     public Response handle(InputStream is) {
 
+       ObjectXmlReader<StockPriceRequest> reader = null;
+
         try {
+
             this.channel.start();
 
-            // 30240 -- to configuration file
-            LimitedInputStream lis = new LimitedInputStream(is, 30240L);
+            // 10240 -- to configuration file
+            reader = new ObjectXmlReader<StockPriceRequest>(is, 10240L);
 
-            // TODO: sending this to parsers
+            // 1000 -- to config file
+            StockPriceRequest spr = reader.getObject(new StockPriceRequestParser(100000));
 
-            return Response.ok().build();
+            DefaultExchange ex = ExchangeFactory.inOut(ep, spr);
+            this.channel.process(ex);
 
-            //TODO: some other exceptions? Parse exception->400?
+            return Response.ok(Constants.SUCCESS_RESPONSE).build();
 
-        } catch(TooLongStreamException e ) {
+        } catch(XMLStreamException e) {
+            e.printStackTrace();
+            //TODO: log!
+            return Response.status(400).build(); // Bad request
+        } catch(IOException e) {
+            e.printStackTrace();
             //TODO: log!
             return Response.status(400).build(); // Bad request
         } catch(Exception e) {
+            e.printStackTrace();
             return Response.status(500).build(); // Server error
         } finally {
+
+            if ( reader!=null ) {
+                reader.close();
+            }
+
             ProducerUtil.stopQuietly(channel);
         }
     }

@@ -24,7 +24,7 @@ public class AnalyzerEndpoint extends GenericConsumerableEndpoint<DefaultExchang
 
     /*package*/ void appendRule(AnalyzerInstruction ai)
     {
-        System.out.println("Appending rule: "+ai);
+        //System.out.println("Appending rule: "+ai);
         this.model.addRule(ai.getSymbol(),
                            ai.getStockChangeType(),
                            ai.getThreshold(),
