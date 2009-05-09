@@ -1,10 +1,8 @@
 package org.localstorm.stocktracker.rest.resources;
 
+import java.io.IOException;
 import org.localstorm.stocktracker.util.io.TooLongStreamException;
 import java.io.InputStream;
-import java.math.BigDecimal;
-import java.util.Calendar;
-import java.util.Date;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -16,11 +14,10 @@ import org.apache.camel.impl.DefaultExchange;
 import org.localstorm.stocktracker.camel.CamelService;
 import org.localstorm.stocktracker.camel.Endpoints;
 import org.localstorm.stocktracker.camel.util.ProducerUtil;
-import org.localstorm.stocktracker.exchange.StockEventType;
-import org.localstorm.stocktracker.exchange.StockEvent;
 import org.localstorm.stocktracker.exchange.StockTrackingRequest;
 import org.localstorm.stocktracker.camel.util.ExchangeFactory;
-import org.localstorm.stocktracker.util.io.LimitedInputStream;
+import org.localstorm.stocktracker.rest.parsers.ObjectReader;
+import org.localstorm.stocktracker.rest.parsers.TrackingRequestParser;
 
 /**
  * @author Alexey Kuznetsov
@@ -47,35 +44,32 @@ public class TrackingXmlResource {
     @Produces("text/plain")
     public Response handle(InputStream is) {
 
+        ObjectReader<StockTrackingRequest> trr = null;
+
         try {
             this.channel.start();
 
             // 10240 -- to configuration file
-            LimitedInputStream lis = new LimitedInputStream(is, 10240L);
+            trr = new ObjectReader<StockTrackingRequest>(is, 10240L);
 
-            // TODO: sending this to parsers
-
-            StockTrackingRequest str = new StockTrackingRequest("localstorm");
-            Calendar c = Calendar.getInstance();
-
-            c.add(Calendar.SECOND, 10);
-            Date end = c.getTime();
-
-            str.addEvent(new StockEvent(StockEventType.RAISE, "MSFT", new BigDecimal("10.1"), null, end));
+            // 1000 -- to config file
+            StockTrackingRequest str = trr.getObject(new TrackingRequestParser(1000));
 
             DefaultExchange ex = ExchangeFactory.inOut(ep, str);
             this.channel.process(ex);
 
-            return Response.ok().build();
+            return Response.ok(""+str.toString()).build();
 
-            //TODO: some other exceptions? Parse exception->400?
-
-        } catch(TooLongStreamException e ) {
+        } catch(IOException e) {
             //TODO: log!
             return Response.status(400).build(); // Bad request
         } catch(Exception e) {
             return Response.status(500).build(); // Server error
         } finally {
+            if ( trr!=null ) {
+                trr.close();
+            }
+
             ProducerUtil.stopQuietly(channel);
         }
     }

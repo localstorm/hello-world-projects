@@ -2,12 +2,9 @@ package org.localstorm.stocktracker.rest;
 
 import org.localstorm.stocktracker.util.misc.PropertiesUtil;
 import org.localstorm.stocktracker.base.ApplicationLogger;
-import org.localstorm.stocktracker.*;
 import org.localstorm.stocktracker.base.GenericService;
 import com.sun.grizzly.http.SelectorThread;
 import com.sun.jersey.api.container.grizzly.GrizzlyWebContainerFactory;
-import java.io.InputStream;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
