@@ -24,7 +24,7 @@ public class TrackingSchedulerJob implements Job {
 
             ep.onJobExecute(ai);
 
-            System.out.println("Triggered: "+ai);
+            //System.out.println("Triggered: "+ai);
         } catch(Exception e) {
             e.printStackTrace();
             //TODO: Log!

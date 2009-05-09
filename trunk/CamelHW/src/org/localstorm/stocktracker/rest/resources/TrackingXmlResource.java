@@ -1,7 +1,6 @@
 package org.localstorm.stocktracker.rest.resources;
 
 import java.io.IOException;
-import org.localstorm.stocktracker.util.io.TooLongStreamException;
 import java.io.InputStream;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -45,22 +44,22 @@ public class TrackingXmlResource {
     @Produces("text/plain")
     public Response handle(InputStream is) {
 
-        ObjectXmlReader<StockTrackingRequest> trr = null;
+        ObjectXmlReader<StockTrackingRequest> reader = null;
 
         try {
 
             this.channel.start();
 
             // 10240 -- to configuration file
-            trr = new ObjectXmlReader<StockTrackingRequest>(is, 10240L);
+            reader = new ObjectXmlReader<StockTrackingRequest>(is, 10240L);
 
             // 1000 -- to config file
-            StockTrackingRequest str = trr.getObject(new TrackingRequestParser(1000));
+            StockTrackingRequest str = reader.getObject(new TrackingRequestParser(1000));
 
             DefaultExchange ex = ExchangeFactory.inOut(ep, str);
             this.channel.process(ex);
 
-            return Response.ok(""+str.toString()).build();
+            return Response.ok(Constants.SUCCESS_RESPONSE).build();
 
         } catch(XMLStreamException e) {
             e.printStackTrace();
@@ -75,8 +74,8 @@ public class TrackingXmlResource {
             return Response.status(500).build(); // Server error
         } finally {
 
-            if ( trr!=null ) {
-                trr.close();
+            if ( reader!=null ) {
+                reader.close();
             }
 
             ProducerUtil.stopQuietly(channel);
