@@ -19,6 +19,11 @@ public class StockTrackingRequest extends Printable implements Serializable
         this.account    = null;
     }
 
+    public int eventCount()
+    {
+        return this.getWatchList().size();
+    }
+
     public void setAccount(String account) {
         this.account = account;
     }

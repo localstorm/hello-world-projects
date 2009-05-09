@@ -11,11 +11,11 @@ import org.localstorm.stocktracker.util.io.LimitedInputStream;
  *
  * @author Alexey Kuznetsov
  */
-public class ObjectReader<T>
+public class ObjectXmlReader<T>
 {
     private final InputStream is;
 
-    public ObjectReader(InputStream is, long maxRequestSize) {
+    public ObjectXmlReader(InputStream is, long maxRequestSize) {
         this.is        = new LimitedInputStream(is, maxRequestSize);
     }
 

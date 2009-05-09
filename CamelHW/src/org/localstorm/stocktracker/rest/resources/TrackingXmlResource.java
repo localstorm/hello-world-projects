@@ -7,6 +7,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
+import javax.xml.stream.XMLStreamException;
 import org.apache.camel.CamelContext;
 import org.apache.camel.Endpoint;
 import org.apache.camel.Producer;
@@ -16,7 +17,7 @@ import org.localstorm.stocktracker.camel.Endpoints;
 import org.localstorm.stocktracker.camel.util.ProducerUtil;
 import org.localstorm.stocktracker.exchange.StockTrackingRequest;
 import org.localstorm.stocktracker.camel.util.ExchangeFactory;
-import org.localstorm.stocktracker.rest.parsers.ObjectReader;
+import org.localstorm.stocktracker.rest.parsers.ObjectXmlReader;
 import org.localstorm.stocktracker.rest.parsers.TrackingRequestParser;
 
 /**
@@ -44,13 +45,14 @@ public class TrackingXmlResource {
     @Produces("text/plain")
     public Response handle(InputStream is) {
 
-        ObjectReader<StockTrackingRequest> trr = null;
+        ObjectXmlReader<StockTrackingRequest> trr = null;
 
         try {
+
             this.channel.start();
 
             // 10240 -- to configuration file
-            trr = new ObjectReader<StockTrackingRequest>(is, 10240L);
+            trr = new ObjectXmlReader<StockTrackingRequest>(is, 10240L);
 
             // 1000 -- to config file
             StockTrackingRequest str = trr.getObject(new TrackingRequestParser(1000));
@@ -60,12 +62,19 @@ public class TrackingXmlResource {
 
             return Response.ok(""+str.toString()).build();
 
+        } catch(XMLStreamException e) {
+            e.printStackTrace();
+            //TODO: log!
+            return Response.status(400).build(); // Bad request
         } catch(IOException e) {
+            e.printStackTrace();
             //TODO: log!
             return Response.status(400).build(); // Bad request
         } catch(Exception e) {
+            e.printStackTrace();
             return Response.status(500).build(); // Server error
         } finally {
+
             if ( trr!=null ) {
                 trr.close();
             }
