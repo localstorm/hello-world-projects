@@ -12,11 +12,15 @@ import java.util.List;
 public class StockTrackingRequest extends Printable implements Serializable
 {
     private final List<StockEvent> watchList;
-    private final String account;
+    private String account;
 
-    public StockTrackingRequest(String account) {
+    public StockTrackingRequest() {
         this.watchList  = new LinkedList<StockEvent>();
-        this.account    = account;
+        this.account    = null;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
     }
 
     public void addEvent(StockEvent e) {
