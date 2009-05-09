@@ -80,6 +80,7 @@ public class TrackingSchedulerEndpoint extends GenericConsumerableEndpoint<Defau
     /*package*/ void onJobExecute(AnalyzerInstruction ai)
     {
         try {
+            // Sending AnalyzerInstruction instance to all consumers
             ProcessUtil.process(ai, this.getCamelContext(), super.getConsumers());
         } catch(Exception e) {
             // Log error here
