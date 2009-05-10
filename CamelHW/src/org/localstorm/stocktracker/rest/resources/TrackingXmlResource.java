@@ -22,14 +22,13 @@ import org.localstorm.stocktracker.config.Configuration;
 import org.localstorm.stocktracker.config.GlobalConfiguration;
 import org.localstorm.stocktracker.rest.parsers.ObjectXmlReader;
 import org.localstorm.stocktracker.rest.parsers.TrackingRequestParser;
+import static org.localstorm.stocktracker.rest.resources.Constants.*;
 
 /**
  * @author Alexey Kuznetsov
  */
 @Path("/tracking")
 public class TrackingXmlResource {
-    public static final int HTTP_BAD_REQUEST  = 400;
-    public static final int HTTP_SERVER_ERROR = 500;
 
     private static final Log log = LogFactory.getLog(TrackingXmlResource.class);
     
@@ -76,20 +75,20 @@ public class TrackingXmlResource {
             Throwable e = (Throwable) ex.getFault().getBody();
 
             if (e!=null) {
-                return Response.serverError().entity(e.getMessage()).build();
+                return ResponseUtil.buildErrorResponse(e, HTTP_SERVER_ERROR);
             } else {
-               return Response.ok(Constants.SUCCESS_RESPONSE).build();
+               return ResponseUtil.buildOkResponse(SUCCESS_RESPONSE);
             }
             
         } catch(XMLStreamException e) {
             log.error(e);
-            return buildErrorResponse(e, HTTP_BAD_REQUEST);
+            return ResponseUtil.buildErrorResponse(e, HTTP_BAD_REQUEST);
         } catch(IOException e) {
             log.error(e);
-            return buildErrorResponse(e, HTTP_BAD_REQUEST);
+            return ResponseUtil.buildErrorResponse(e, HTTP_BAD_REQUEST);
         } catch(Exception e) {
             log.error(e);
-            return buildErrorResponse(e, HTTP_SERVER_ERROR);
+            return ResponseUtil.buildErrorResponse(e, HTTP_SERVER_ERROR);
 
         } finally {
 
@@ -100,10 +99,6 @@ public class TrackingXmlResource {
             ProducerUtil.stopQuietly(channel);
         }
     }
-
-    private Response buildErrorResponse(Exception e, int code)
-    {
-        return Response.status(code).entity(e.getMessage()).build();
-    }
+   
   
 }

@@ -1,10 +1,16 @@
 package org.localstorm.stocktracker.camel.analyzer;
 
+import org.localstorm.stocktracker.exchange.Notification;
+import java.util.Collection;
+import java.util.List;
+import org.apache.camel.CamelContext;
 import org.localstorm.stocktracker.camel.GenericConsumerableEndpoint;
 import org.apache.camel.Producer;
+import org.apache.camel.impl.DefaultConsumer;
 import org.apache.camel.impl.DefaultExchange;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.localstorm.stocktracker.camel.util.ProcessUtil;
 import org.localstorm.stocktracker.exchange.*;
 
 /**
@@ -16,7 +22,7 @@ public class AnalyzerEndpoint extends GenericConsumerableEndpoint<DefaultExchang
 {
     private static final Log log = LogFactory.getLog(AnalyzerEndpoint.class);
     
-    private final RulesModel model = new RulesModel();
+    private final AnalyzerCore core = new AnalyzerCore();
     
     public AnalyzerEndpoint(String uri, AnalyzerComponent component) {
         super(uri, component);
@@ -26,14 +32,29 @@ public class AnalyzerEndpoint extends GenericConsumerableEndpoint<DefaultExchang
         super(endpointUri);
     }
 
-    /*package*/ void appendRule(AnalyzerInstruction ai)
-    {
+    /*package*/ void analyzeNewPrices(StockPriceRequest spr) {
+        Collection<Notification> ntfs = core.getFiredNotifications(spr);
+
+        CamelContext ctx = this.getCamelContext();
+        List<DefaultConsumer> cons = this.getConsumers();
+
+        for ( Notification n: ntfs ) {
+            try {
+                ProcessUtil.process(n, ctx, cons);
+            } catch(Exception e) {
+                log.error("Unable to deliver notification: ", e);
+            }
+        }
+    }
+
+    /*package*/ void appendRule(AnalyzerInstruction ai) {
+
         if (log.isDebugEnabled()) {
             // That's a heavyweight string-generating method
             log.debug("Appending rule: "+ai);
         }
 
-        this.model.addRule(ai.getSymbol(),
+        this.core.addRule(ai.getSymbol(),
                            ai.getStockChangeType(),
                            ai.getThreshold(),
                            ai.getAccount());
@@ -46,7 +67,7 @@ public class AnalyzerEndpoint extends GenericConsumerableEndpoint<DefaultExchang
             log.debug("Removing rule: "+ai);
         }
         
-        this.model.removeRule(ai.getSymbol(),
+        this.core.removeRule(ai.getSymbol(),
                               ai.getStockChangeType(),
                               ai.getThreshold(),
                               ai.getAccount());

@@ -2,6 +2,8 @@ package org.localstorm.stocktracker.camel.analyzer;
 
 import org.localstorm.stocktracker.exchange.*;
 import java.math.BigDecimal;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ConcurrentNavigableMap;
 import java.util.concurrent.ConcurrentSkipListMap;
@@ -11,13 +13,13 @@ import org.localstorm.stocktracker.util.misc.Guard;
  *
  * @author Alexey Kuznetsov
  */
-class RulesModel 
+class AnalyzerCore
 {
     // Key: Symbol+'-'+StockEventType (ex.: MSFT-RAISE)
     private final ConcurrentNavigableMap<String, ConcurrentLinkedQueue<Rule>> rules;
 
 
-    public RulesModel() {
+    public AnalyzerCore() {
         rules = new ConcurrentSkipListMap<String, ConcurrentLinkedQueue<Rule>>();
     }
 
@@ -37,6 +39,11 @@ class RulesModel
         if (queue!=null) {
             queue.remove(new Rule(threshold, account));
         }
+    }
+
+    public Collection<Notification> getFiredNotifications(StockPriceRequest spr) {
+        // TODO:!
+        return Collections.EMPTY_LIST;
     }
 
     // ------ Private rule class (impl details)
