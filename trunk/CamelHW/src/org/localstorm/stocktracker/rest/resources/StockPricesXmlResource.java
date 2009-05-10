@@ -11,6 +11,8 @@ import org.apache.camel.CamelContext;
 import org.apache.camel.Endpoint;
 import org.apache.camel.Producer;
 import org.apache.camel.impl.DefaultExchange;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.localstorm.stocktracker.camel.CamelService;
 import org.localstorm.stocktracker.camel.Endpoints;
 import org.localstorm.stocktracker.camel.util.ExchangeFactory;
@@ -25,6 +27,8 @@ import org.localstorm.stocktracker.rest.parsers.StockPriceRequestParser;
 @Path("/prices")
 public class StockPricesXmlResource {
 
+    private static final Log log = LogFactory.getLog(StockPricesXmlResource.class);
+    
     private Endpoint ep;
     private Producer channel;
 
@@ -50,10 +54,10 @@ public class StockPricesXmlResource {
 
             this.channel.start();
 
-            // 10240 -- to configuration file
+            // TODO: 10240 -- to configuration file
             reader = new ObjectXmlReader<StockPriceRequest>(is, 10240L);
 
-            // 1000 -- to config file
+            // TODO: 1000 -- to config file
             StockPriceRequest spr = reader.getObject(new StockPriceRequestParser(100000));
 
             DefaultExchange ex = ExchangeFactory.inOut(ep, spr);
@@ -62,15 +66,13 @@ public class StockPricesXmlResource {
             return Response.ok(Constants.SUCCESS_RESPONSE).build();
 
         } catch(XMLStreamException e) {
-            e.printStackTrace();
-            //TODO: log!
+            log.error(e);
             return Response.status(400).build(); // Bad request
         } catch(IOException e) {
-            e.printStackTrace();
-            //TODO: log!
+            log.error(e);
             return Response.status(400).build(); // Bad request
         } catch(Exception e) {
-            e.printStackTrace();
+            log.error(e);
             return Response.status(500).build(); // Server error
         } finally {
 

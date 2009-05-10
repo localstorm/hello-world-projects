@@ -2,15 +2,18 @@ package org.localstorm.stocktracker;
 
 import org.localstorm.stocktracker.config.GlobalConfiguration;
 import java.io.IOException;
-import org.localstorm.stocktracker.base.ApplicationLogger;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.localstorm.stocktracker.camel.CamelService;
 import org.localstorm.stocktracker.rest.WebConnectorService;
 import org.localstorm.stocktracker.util.misc.ThreadUtil;
 
 /**
- * @author localstorm
+ * @author Alexey Kuznetsov
  */
 public class Main {
+
+    private static Log log = LogFactory.getLog(Main.class);
 
     /**
      * @param args the command line arguments
@@ -22,28 +25,27 @@ public class Main {
             return;
         }
 
-        ApplicationLogger.getInstance().log("Starting Apache Camel kernel...");
-
         WebConnectorService webContainer = new WebConnectorService();
-        CamelService         camelFasade = CamelService.getInstance();
+        CamelService        camelService = CamelService.getInstance();
     
         Main.onShutdown(Main.chainRunnables(
             webContainer.getShutdownRunnable(),
-            camelFasade.getShutdownRunnable()
+            camelService.getShutdownRunnable()
         ));
 
-        ApplicationLogger.getInstance().log("Apache Camel kernel started.");
-
         try {
-            camelFasade.start();
+
+            log.info("Starting Apache Camel kernel...");
+            camelService.start();
+            log.info("Apache Camel kernel started.");
+
+            log.info("Starting Grizzly Web Container...");
             webContainer.start();
+            log.info("Grizzly Web Container started.");
         
             ThreadUtil.waitForInterruption();
         } catch(Exception e) {
-            //TODO: no stack traces!
-            e.printStackTrace();
-            
-            ApplicationLogger.getInstance().log("Can't start application due to error:", e);
+            log.error("Can't start application due to error:", e);
         }
     }
 
@@ -54,18 +56,14 @@ public class Main {
 
             @Override
             public void run() {
-
                 for (Runnable r: runnables) {
                     try {
                         r.run();
                     } catch(Exception e) {
-                        //TODO: log here
-                        e.printStackTrace();
+                        log.error(e);
                     }
                 }
-                
             }
-            
         };
         
     }
@@ -80,8 +78,7 @@ public class Main {
             }
             return true;
         } catch(IOException e) {
-            //TODO: log!
-            e.printStackTrace();
+            log.error(e);
             return false;
         }
     }
@@ -89,6 +86,5 @@ public class Main {
     private static void onShutdown(Runnable r) {
         Runtime.getRuntime().addShutdownHook(new Thread(r));
     }
-
     
 }

@@ -18,8 +18,11 @@ public class AnalyzerInstruction extends Printable implements Serializable
     private final StockEventType type;
     private final BigDecimal threshold;
 
-    public AnalyzerInstruction(boolean end, String symbol, String account, StockEventType type, BigDecimal threshold)
-    {
+    public AnalyzerInstruction(boolean end, 
+                               String symbol,
+                               String account,
+                               StockEventType type,
+                               BigDecimal threshold) {
         this.end = end;
         this.symbol = symbol;
         this.account = account;
@@ -27,28 +30,23 @@ public class AnalyzerInstruction extends Printable implements Serializable
         this.threshold = threshold;
     }
 
-    public String getAccount()
-    {
+    public String getAccount() {
         return account;
     }
 
-    public String getSymbol()
-    {
+    public String getSymbol() {
         return symbol;
     }
 
-    public BigDecimal getThreshold()
-    {
+    public BigDecimal getThreshold() {
         return threshold;
     }
 
-    public StockEventType getStockChangeType()
-    {
+    public StockEventType getStockChangeType() {
         return type;
     }
 
-    public boolean isEnd()
-    {
+    public boolean isEnd() {
         return end;
     }
 

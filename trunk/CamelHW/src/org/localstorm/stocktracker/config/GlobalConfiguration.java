@@ -40,8 +40,7 @@ public class GlobalConfiguration
         }
     }
 
-    public static Configuration getConfiguration()
-    {
+    public static Configuration getConfiguration() {
         return conf;
     }
 

@@ -2,11 +2,12 @@ package org.localstorm.stocktracker.camel;
 
 import bsh.EvalError;
 import bsh.Interpreter;
-import org.localstorm.stocktracker.base.ApplicationLogger;
 import org.localstorm.stocktracker.base.GenericService;
 import org.apache.camel.CamelContext;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.localstorm.stocktracker.config.Configuration;
 import org.localstorm.stocktracker.config.GlobalConfiguration;
 
@@ -16,6 +17,7 @@ import org.localstorm.stocktracker.config.GlobalConfiguration;
  */
 public class CamelService implements GenericService
 {
+    private static final Log log = LogFactory.getLog(CamelService.class);
     private static final CamelService instance = new CamelService();
     private static final String BUILDER_INJECTED = "builder";
 
@@ -74,14 +76,11 @@ public class CamelService implements GenericService
             @Override
             public void run() {
                 try {
-
-                    ApplicationLogger.getInstance().log("Stopping Apache Camel kernel...");
+                    System.out.println("Stopping Apache Camel kernel...");
                     CamelService.this.stop();
-                    ApplicationLogger.getInstance().log("Apache Camel kernel is down.");
-                    
+                    System.out.println("Apache Camel kernel is down.");
                 } catch(Exception e) {
-                    //TODO: log here
-                    e.printStackTrace();
+                    log.error(e);
                 }
             }
             

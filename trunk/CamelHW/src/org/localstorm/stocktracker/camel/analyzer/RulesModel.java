@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ConcurrentNavigableMap;
 import java.util.concurrent.ConcurrentSkipListMap;
+import org.localstorm.stocktracker.util.misc.Guard;
 
 /**
  *
@@ -45,7 +46,9 @@ public class RulesModel
         private String account;
 
         public Rule(BigDecimal threshold, String account) {
-            //TODO: Guard not null!
+            Guard.checkNotNull(threshold, NullPointerException.class, "Threshold is null!");
+            Guard.checkNotNull(account,   NullPointerException.class, "Account is null!");
+
             this.threshold = threshold;
             this.account   = account;
         }

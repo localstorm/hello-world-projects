@@ -1,5 +1,7 @@
 package org.localstorm.stocktracker.camel.scheduler;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.localstorm.stocktracker.exchange.AnalyzerInstruction;
 import org.quartz.Job;
 import org.quartz.JobDataMap;
@@ -13,6 +15,8 @@ import org.quartz.JobExecutionException;
  */
 public class TrackingSchedulerJob implements Job {
 
+    private static final Log log = LogFactory.getLog(TrackingSchedulerJob.class);
+
     public void execute(JobExecutionContext ctx) throws JobExecutionException
     {
         try {
@@ -24,8 +28,7 @@ public class TrackingSchedulerJob implements Job {
 
             ep.onJobExecute(ai);
         } catch(Exception e) {
-            e.printStackTrace();
-            //TODO: Log!
+            log.error(e);
         }
     }
 

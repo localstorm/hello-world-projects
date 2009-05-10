@@ -11,16 +11,18 @@ import org.apache.camel.impl.DefaultExchange;
  */
 public class ProcessUtil 
 {
-    public static void process(Exchange ex, Iterable<DefaultConsumer> cons)
-            throws Exception  {
+    public static void process(Exchange ex,
+                               Iterable<DefaultConsumer> cons) throws Exception  {
 
         for (DefaultConsumer con : cons) {
             con.getProcessor().process(ex);
         }
     }
 
-    public static void process(Object o, CamelContext ctx, Iterable<DefaultConsumer> cons)
-            throws Exception  {
+    public static void process(Object o,
+                               CamelContext ctx,
+                               Iterable<DefaultConsumer> cons) throws Exception  {
+
         DefaultExchange de = new DefaultExchange(ctx);
         de.getIn().setBody(o);
 

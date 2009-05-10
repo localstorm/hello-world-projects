@@ -1,13 +1,14 @@
 package org.localstorm.stocktracker.rest;
 
 import org.localstorm.stocktracker.util.misc.PropertiesUtil;
-import org.localstorm.stocktracker.base.ApplicationLogger;
 import org.localstorm.stocktracker.base.GenericService;
 import com.sun.grizzly.http.SelectorThread;
 import com.sun.jersey.api.container.grizzly.GrizzlyWebContainerFactory;
 import java.text.MessageFormat;
 import java.util.Map;
 import java.util.Properties;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.localstorm.stocktracker.config.Configuration;
 import org.localstorm.stocktracker.config.GlobalConfiguration;
 
@@ -17,6 +18,7 @@ import org.localstorm.stocktracker.config.GlobalConfiguration;
  */
 public class WebConnectorService implements GenericService
 {
+    private static final Log log = LogFactory.getLog(WebConnectorService.class);
     private static final String JERSEY_PROPERTIES = "META-INF/jersey/resources/config";
     private static final String URL_TEMPLATE      = "http://{0}:{1}/";
 
@@ -57,12 +59,11 @@ public class WebConnectorService implements GenericService
             @Override
             public void run() {
                 try {
-                    ApplicationLogger.getInstance().log("Stopping web container...");
+                    System.out.println("Stopping web container...");
                     WebConnectorService.this.stop();
-                    ApplicationLogger.getInstance().log("WebContainer is down.");
+                    System.out.println("WebContainer is down.");
                 } catch(Exception e) {
-                    //TODO: log here
-                    e.printStackTrace();
+                    log.error(e);
                 }
             }
         };

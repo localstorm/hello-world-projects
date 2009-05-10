@@ -5,6 +5,8 @@ import java.io.InputStream;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.localstorm.stocktracker.util.io.LimitedInputStream;
 
 /**
@@ -13,6 +15,8 @@ import org.localstorm.stocktracker.util.io.LimitedInputStream;
  */
 public class ObjectXmlReader<T>
 {
+    private static final Log log = LogFactory.getLog(ObjectXmlReader.class);
+    
     private final InputStream is;
 
     public ObjectXmlReader(InputStream is, long maxRequestSize) {
@@ -38,8 +42,7 @@ public class ObjectXmlReader<T>
         try {
             this.is.close();
         } catch( IOException e ) {
-            e.printStackTrace();
-            //TODO: Logging
+            log.error(e);
         }
     }
 

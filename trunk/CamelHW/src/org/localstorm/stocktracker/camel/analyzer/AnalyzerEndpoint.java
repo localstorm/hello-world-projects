@@ -3,6 +3,8 @@ package org.localstorm.stocktracker.camel.analyzer;
 import org.localstorm.stocktracker.camel.GenericConsumerableEndpoint;
 import org.apache.camel.Producer;
 import org.apache.camel.impl.DefaultExchange;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.localstorm.stocktracker.exchange.*;
 
 /**
@@ -12,6 +14,8 @@ import org.localstorm.stocktracker.exchange.*;
  */
 public class AnalyzerEndpoint extends GenericConsumerableEndpoint<DefaultExchange>
 {
+    private static final Log log = LogFactory.getLog(AnalyzerEndpoint.class);
+    
     private final RulesModel model = new RulesModel();
     
     public AnalyzerEndpoint(String uri, AnalyzerComponent component) {
@@ -24,7 +28,11 @@ public class AnalyzerEndpoint extends GenericConsumerableEndpoint<DefaultExchang
 
     /*package*/ void appendRule(AnalyzerInstruction ai)
     {
-        //System.out.println("Appending rule: "+ai);
+        if (log.isDebugEnabled()) {
+            // That's a heavyweight string-generating method
+            log.debug("Appending rule: "+ai);
+        }
+
         this.model.addRule(ai.getSymbol(),
                            ai.getStockChangeType(),
                            ai.getThreshold(),
@@ -33,7 +41,11 @@ public class AnalyzerEndpoint extends GenericConsumerableEndpoint<DefaultExchang
 
     /*package*/ void removeRule(AnalyzerInstruction ai)
     {
-        System.out.println("Removing rule: "+ai);
+        if (log.isDebugEnabled()) {
+            // That's a heavyweight string-generating method
+            log.debug("Removing rule: "+ai);
+        }
+        
         this.model.removeRule(ai.getSymbol(),
                               ai.getStockChangeType(),
                               ai.getThreshold(),
