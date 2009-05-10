@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<stocktracker host="0.0.0.0" port="8080" >
+  <!-- 100 Kb -->
+  <trackingRequestMaxSize>102400</trackingRequestMaxSize>
+
+  <!-- 100 events per user -->
+  <userMaxTrackingEventsQuota>100</userMaxTrackingEventsQuota>
+
+  <!-- Intervals are not shorter than 5 sec -->
+  <eventMinIntervalSize>5</eventMinIntervalSize>
+  
+  <!-- 3 Mb -->
+  <pricesRequestMaxSize>3145728</pricesRequestMaxSize>
+  
+  <routeBuilderBeanShellScript/>
+
+  <!-- Default configuration details 
+  <routeBuilderBeanShellScript>
+    // This is StockTracker message routing configuration BeanShell script (http://beanshell.org)
+
+    // Endpoints.TRACKING_REQUESTS_INPUT_URI - all stock tracking requests are accumulated to this endpoint
+    // Endpoints.TRACKING_SCHEDULER_URI      - all stock tracking requests are handled by this endpoint
+    // Endpoints.INSTRUCTOR_URI              - activates and discards tracking by AnalyzerInstruction messages
+    // Endpoints.STOCK_ANALYZER_URI          - all stock price events are analyzed by this endpoint (uses tracking rules)
+    // Endpoints.NOTIFIER_URI                - all fired notifications are accumulated here
+
+    import org.localstorm.stocktracker.camel.*;
+
+    builder.from(Endpoints.TRACKING_REQUESTS_INPUT_URI).to(Endpoints.TRACKING_SCHEDULER_URI);
+    builder.from(Endpoints.TRACKING_SCHEDULER_URI).to(Endpoints.INSTRUCTOR_URI);
+    builder.from(Endpoints.STOCK_ANALYZER_URI).to(Endpoints.NOTIFIER_URI);
+    
+  </routeBuilderBeanShellScript>
+  -->
+</stocktracker>

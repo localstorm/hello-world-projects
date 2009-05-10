@@ -5,8 +5,11 @@ import org.localstorm.stocktracker.base.ApplicationLogger;
 import org.localstorm.stocktracker.base.GenericService;
 import com.sun.grizzly.http.SelectorThread;
 import com.sun.jersey.api.container.grizzly.GrizzlyWebContainerFactory;
+import java.text.MessageFormat;
 import java.util.Map;
 import java.util.Properties;
+import org.localstorm.stocktracker.config.Configuration;
+import org.localstorm.stocktracker.config.GlobalConfiguration;
 
 /**
  *
@@ -15,6 +18,8 @@ import java.util.Properties;
 public class WebConnectorService implements GenericService
 {
     private static final String JERSEY_PROPERTIES = "META-INF/jersey/resources/config";
+    private static final String URL_TEMPLATE      = "http://{0}:{1}/";
+
     private SelectorThread selectorThread = null;
 
     public WebConnectorService() {
@@ -22,14 +27,23 @@ public class WebConnectorService implements GenericService
     }
 
     public void start() throws Exception  {
+        
 
         Properties prop = PropertiesUtil.loadFromResource(JERSEY_PROPERTIES);
         Map<String, String> init = PropertiesUtil.asMap(prop);
 
         //That is not a real thread. SelectorThread is an entry point to embedded Grizzly Servlet Container
-        // TODO: "http://localhost:8080/" -- to config
-        this.selectorThread = GrizzlyWebContainerFactory.create("http://localhost:8080/", init);
+        this.selectorThread = GrizzlyWebContainerFactory.create(getWebBaseUrl(), init);
     }
+
+    private String getWebBaseUrl() {
+        Configuration conf = GlobalConfiguration.getConfiguration();
+
+        return MessageFormat.format(URL_TEMPLATE,
+                                    conf.getHost(),
+                                    Integer.toString(conf.getPort()));
+    }
+
 
     public void stop() throws Exception {
         if (this.selectorThread!=null) {

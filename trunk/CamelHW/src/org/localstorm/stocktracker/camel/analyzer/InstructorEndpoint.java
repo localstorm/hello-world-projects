@@ -5,6 +5,7 @@ import org.apache.camel.Processor;
 import org.apache.camel.Producer;
 import org.apache.camel.impl.DefaultEndpoint;
 import org.apache.camel.impl.DefaultExchange;
+import org.localstorm.stocktracker.camel.Endpoints;
 import org.localstorm.stocktracker.camel.util.EndpointUtil;
 import org.localstorm.stocktracker.exchange.AnalyzerInstruction;
 
@@ -45,19 +46,13 @@ public class InstructorEndpoint extends DefaultEndpoint<DefaultExchange>
 
     /*package*/ void processInstruction(AnalyzerInstruction ai)
     {
-        AnalyzerEndpoint saEp = EndpointUtil.getEndpoint(this, generateStockAnalyzerUri());
+        AnalyzerEndpoint saEp = EndpointUtil.getEndpoint(this, Endpoints.STOCK_ANALYZER_URI);
 
         if (ai.isEnd()) {
             saEp.removeRule(ai);
         } else {
             saEp.appendRule(ai);
         }
-    }
-
-    private String generateStockAnalyzerUri()
-    {
-        // TODO: constant!
-        return "a:singleton";
     }
     
 }

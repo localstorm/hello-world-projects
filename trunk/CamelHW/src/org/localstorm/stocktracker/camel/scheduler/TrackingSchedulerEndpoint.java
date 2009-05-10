@@ -7,8 +7,9 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import org.apache.camel.Producer;
-//import org.apache.camel.component.quartz.QuartzEndpoint;
 import org.apache.camel.impl.DefaultExchange;
+import org.localstorm.stocktracker.config.Configuration;
+import org.localstorm.stocktracker.config.GlobalConfiguration;
 import org.localstorm.stocktracker.exchange.*;
 import org.localstorm.stocktracker.util.misc.Sequence;
 import org.localstorm.stocktracker.camel.util.ProcessUtil;
@@ -37,6 +38,8 @@ public class TrackingSchedulerEndpoint extends GenericConsumerableEndpoint<Defau
 
     private Scheduler scheduler;
     private Sequence  seq = new Sequence();
+    private int userQuota;
+    private int minIntervalInSeconds;
 
     public TrackingSchedulerEndpoint(String endpointUri,
                                      TrackingSchedulerComponent component) throws Exception {
@@ -45,6 +48,10 @@ public class TrackingSchedulerEndpoint extends GenericConsumerableEndpoint<Defau
         SchedulerFactory schedFact = new org.quartz.impl.StdSchedulerFactory();
         scheduler = schedFact.getScheduler();
         scheduler.start();
+
+        Configuration conf = GlobalConfiguration.getConfiguration();
+        userQuota = conf.getUserMaxTrackingEventsQuota();
+        minIntervalInSeconds = conf.getEventMinIntervalSize();
     }
 
     public Producer<DefaultExchange> createProducer() throws Exception {
@@ -63,7 +70,7 @@ public class TrackingSchedulerEndpoint extends GenericConsumerableEndpoint<Defau
         Object lock    = this.getAccountLock(account);
 
         synchronized(lock) {
-            // TODO: Check str.size() here (configurable)
+            this.checkUserQuota(str);
             this.cancelTracking(account);
 
             for (StockEvent e: str.getWatchList()) {
@@ -97,6 +104,13 @@ public class TrackingSchedulerEndpoint extends GenericConsumerableEndpoint<Defau
         waitForExecutedJobGroup(scheduler, account);
         forceTrackingEnd(scheduler, account);
         scheduler.resumeTriggerGroup(account);
+    }
+
+    private void checkUserQuota(StockTrackingRequest str) throws SchedulerException
+    {
+        if ( str.getWatchList().size() > userQuota ) {
+            throw new SchedulerException("User event tracking overquota!");
+        }
     }
 
     private void forceTrackingEnd(Scheduler sched, String account)
@@ -246,8 +260,7 @@ public class TrackingSchedulerEndpoint extends GenericConsumerableEndpoint<Defau
 
     private Date getMinEnd() {
         Calendar c = Calendar.getInstance();
-        // TODO: configure this param (5)
-        c.add(Calendar.SECOND, 5);
+        c.add(Calendar.SECOND, minIntervalInSeconds);
         return c.getTime();
     }
 

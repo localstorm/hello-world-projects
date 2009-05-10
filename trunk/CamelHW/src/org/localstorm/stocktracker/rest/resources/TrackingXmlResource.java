@@ -16,6 +16,8 @@ import org.localstorm.stocktracker.camel.Endpoints;
 import org.localstorm.stocktracker.camel.util.ProducerUtil;
 import org.localstorm.stocktracker.exchange.StockTrackingRequest;
 import org.localstorm.stocktracker.camel.util.ExchangeFactory;
+import org.localstorm.stocktracker.config.Configuration;
+import org.localstorm.stocktracker.config.GlobalConfiguration;
 import org.localstorm.stocktracker.rest.parsers.ObjectXmlReader;
 import org.localstorm.stocktracker.rest.parsers.TrackingRequestParser;
 
@@ -28,6 +30,9 @@ public class TrackingXmlResource {
     private Endpoint ep;
     private Producer channel;
 
+    private int maxRequestSize;
+    private int userQuota;
+
     @SuppressWarnings("unchecked") // don't want to write everywhere Producer<DefaultExchange>
     public TrackingXmlResource() throws Exception {
         CamelContext cc = CamelService.getInstance().getCamelContext();
@@ -35,6 +40,10 @@ public class TrackingXmlResource {
         // That is quite efficient even to create endpoint for each request
         this.ep = cc.getEndpoint(Endpoints.TRACKING_REQUESTS_INPUT_URI);
         this.channel = ep.createProducer();
+
+        Configuration  conf = GlobalConfiguration.getConfiguration();
+        this.maxRequestSize = conf.getTrackingRequestMaxSize();
+        this.userQuota      = conf.getUserMaxTrackingEventsQuota();
     }
 
 
@@ -50,11 +59,10 @@ public class TrackingXmlResource {
 
             this.channel.start();
 
-            // 10240 -- to configuration file
-            reader = new ObjectXmlReader<StockTrackingRequest>(is, 10240L);
+            reader = new ObjectXmlReader<StockTrackingRequest>(is, this.maxRequestSize);
 
-            // 1000 -- to config file
-            StockTrackingRequest str = reader.getObject(new TrackingRequestParser(1000));
+            TrackingRequestParser trp = new TrackingRequestParser(this.userQuota);
+            StockTrackingRequest str = reader.getObject(trp);
 
             DefaultExchange ex = ExchangeFactory.inOut(ep, str);
             this.channel.process(ex);

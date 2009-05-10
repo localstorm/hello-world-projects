@@ -10,6 +10,8 @@ import java.util.Date;
  */
 public final class StockEvent extends Printable implements Serializable
 {
+    private static final long serialVersionUID = 1L;
+
     private final StockEventType  type;
     private final String          symbol;
     private final BigDecimal      threshold;
