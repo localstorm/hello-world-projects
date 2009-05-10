@@ -1,9 +1,10 @@
 package org.localstorm.stocktracker.rest;
 
-import org.localstorm.stocktracker.util.misc.PropertiesUtil;
-import org.localstorm.stocktracker.base.GenericService;
 import com.sun.grizzly.http.SelectorThread;
 import com.sun.jersey.api.container.grizzly.GrizzlyWebContainerFactory;
+
+import org.localstorm.stocktracker.util.misc.PropertiesUtil;
+import org.localstorm.stocktracker.base.GenericService;
 import java.text.MessageFormat;
 import java.util.Map;
 import java.util.Properties;
@@ -11,14 +12,15 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.localstorm.stocktracker.config.Configuration;
 import org.localstorm.stocktracker.config.GlobalConfiguration;
+import org.localstorm.stocktracker.util.misc.ResourcesUtil;
 
 /**
- *
  * @author Alexey Kuznetsov
  */
 public class WebConnectorService implements GenericService
 {
     private static final Log log = LogFactory.getLog(WebConnectorService.class);
+
     private static final String JERSEY_PROPERTIES = "META-INF/jersey/resources/config";
     private static final String URL_TEMPLATE      = "http://{0}:{1}/";
 
@@ -30,8 +32,7 @@ public class WebConnectorService implements GenericService
 
     public void start() throws Exception  {
         
-
-        Properties prop = PropertiesUtil.loadFromResource(JERSEY_PROPERTIES);
+        Properties prop = ResourcesUtil.loadPropertiesResource(JERSEY_PROPERTIES);
         Map<String, String> init = PropertiesUtil.asMap(prop);
 
         //That is not a real thread. SelectorThread is an entry point to embedded Grizzly Servlet Container

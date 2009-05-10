@@ -35,7 +35,6 @@ public class CamelService implements GenericService
 
         camelContext.addRoutes(new RouteBuilder() {
             
-
             public void configure() {
 
                 Configuration conf = GlobalConfiguration.getConfiguration();
