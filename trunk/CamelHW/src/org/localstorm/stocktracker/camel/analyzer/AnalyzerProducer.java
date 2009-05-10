@@ -17,6 +17,8 @@ public class AnalyzerProducer extends DefaultProducer<DefaultExchange>
     public void process(Exchange exchange) throws Exception {
         AnalyzerEndpoint    ep = this.getEndpoint();
         // Getting Stock events here
+        
+        System.out.println("Analyzer:" +exchange.getIn().getBody());
     }
 
     @Override

@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import org.localstorm.stocktracker.util.io.Printable;
 
 /**
- * Stock price item class
+ * Stock price/event item class
  * @author Alexey Kuznetsov
  */
 public class StockPrice extends Printable implements Serializable
@@ -14,10 +14,12 @@ public class StockPrice extends Printable implements Serializable
 
     private final String          symbol;
     private final BigDecimal      price;
+    private StockEventType  type;
 
     public StockPrice(String symbol, BigDecimal price) {
         this.symbol = symbol;
         this.price  = price;
+        this.type   = null;
     }
 
     public String getSymbol() {
@@ -26,6 +28,14 @@ public class StockPrice extends Printable implements Serializable
 
     public BigDecimal getPrice() {
         return price;
+    }
+
+    public StockEventType getType() {
+        return type;
+    }
+
+    public void setType(StockEventType type) {
+        this.type = type;
     }
 
 }

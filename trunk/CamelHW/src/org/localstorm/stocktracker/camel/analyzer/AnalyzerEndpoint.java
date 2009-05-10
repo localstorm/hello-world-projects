@@ -53,13 +53,11 @@ public class AnalyzerEndpoint extends GenericConsumerableEndpoint<DefaultExchang
     }
 
     public Producer<DefaultExchange> createProducer()
-            throws Exception
-    {
+            throws Exception {
         return new AnalyzerProducer(this);
     }
 
-    public boolean isSingleton()
-    {
+    public boolean isSingleton() {
         return true;
     }
 
