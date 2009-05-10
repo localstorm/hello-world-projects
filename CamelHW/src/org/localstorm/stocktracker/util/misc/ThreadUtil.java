@@ -6,15 +6,15 @@ package org.localstorm.stocktracker.util.misc;
  */
 public class ThreadUtil
 {
-    private static final long DEFAULT_SLEEP_DELAY = 5000;
+    private static final long DEFAULT_SLEEP_DELAY = 50000;
 
-    public static void sleep(int delay)
+    public static boolean sleep(int delay)
     {
         try {
-            System.out.println("Sleeping: "+Thread.currentThread().getName());
             Thread.sleep(delay);
+            return true;
         } catch(InterruptedException e) {
-            // ignore
+            return false;
         }
     }
 

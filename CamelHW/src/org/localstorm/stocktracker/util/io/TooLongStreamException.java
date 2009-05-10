@@ -8,8 +8,9 @@ import java.io.IOException;
  */
 public class TooLongStreamException extends IOException
 {
-    public TooLongStreamException(long maxExpected)
-    {
+    private static final long serialVersionUID = 1L;
+    
+    public TooLongStreamException(long maxExpected) {
         super("["+maxExpected+"] bytes limit exceeded.");
     }
 }

@@ -44,7 +44,8 @@ import javax.xml.bind.annotation.XmlType;
 })
 @XmlRootElement(name = "stocktracker")
 public class Configuration implements Serializable {
-
+    private static final long serialVersionUID = 1L;
+    
     protected int trackingRequestMaxSize;
     protected int userMaxTrackingEventsQuota;
     protected int eventMinIntervalSize;

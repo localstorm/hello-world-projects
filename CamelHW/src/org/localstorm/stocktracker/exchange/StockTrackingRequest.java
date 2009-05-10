@@ -34,13 +34,11 @@ public class StockTrackingRequest extends Printable implements Serializable
         this.watchList.add(e);
     }
 
-    public List<StockEvent> getWatchList()
-    {
+    public List<StockEvent> getWatchList() {
         return watchList;
     }
 
-    public String getAccount()
-    {
+    public String getAccount() {
         return account;
     }
     

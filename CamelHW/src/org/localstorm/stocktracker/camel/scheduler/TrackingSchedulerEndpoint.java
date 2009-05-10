@@ -8,13 +8,14 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import org.apache.camel.Producer;
 import org.apache.camel.impl.DefaultExchange;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.localstorm.stocktracker.config.Configuration;
 import org.localstorm.stocktracker.config.GlobalConfiguration;
 import org.localstorm.stocktracker.exchange.*;
 import org.localstorm.stocktracker.util.misc.Sequence;
 import org.localstorm.stocktracker.camel.util.ProcessUtil;
 import org.localstorm.stocktracker.util.misc.ThreadUtil;
-import org.quartz.Job;
 import org.quartz.JobDataMap;
 import org.quartz.JobDetail;
 import org.quartz.JobExecutionContext;
@@ -30,6 +31,7 @@ import org.quartz.SimpleTrigger;
  */
 public class TrackingSchedulerEndpoint extends GenericConsumerableEndpoint<DefaultExchange>
 {
+    private static final Log log = LogFactory.getLog(TrackingSchedulerEndpoint.class);
     // This guarantee the only request per user at the same time
     private static final ConcurrentMap<String, Object> locks = new ConcurrentHashMap<String, Object>(10240);
 
@@ -49,8 +51,8 @@ public class TrackingSchedulerEndpoint extends GenericConsumerableEndpoint<Defau
         scheduler = schedFact.getScheduler();
         scheduler.start();
 
-        Configuration conf = GlobalConfiguration.getConfiguration();
-        userQuota = conf.getUserMaxTrackingEventsQuota();
+        Configuration   conf = GlobalConfiguration.getConfiguration();
+        userQuota            = conf.getUserMaxTrackingEventsQuota();
         minIntervalInSeconds = conf.getEventMinIntervalSize();
     }
 
@@ -90,8 +92,7 @@ public class TrackingSchedulerEndpoint extends GenericConsumerableEndpoint<Defau
             // Sending AnalyzerInstruction instance to all consumers
             ProcessUtil.process(ai, this.getCamelContext(), super.getConsumers());
         } catch(Exception e) {
-            // Log error here
-            e.printStackTrace();
+            log.error(e);
         }
     }
 
@@ -115,7 +116,6 @@ public class TrackingSchedulerEndpoint extends GenericConsumerableEndpoint<Defau
 
     private void forceTrackingEnd(Scheduler sched, String account)
             throws SchedulerException {
-        System.out.println("-->");
         // Executing all end-jobs
 
         String[] jobNames = sched.getJobNames(account);
@@ -133,8 +133,6 @@ public class TrackingSchedulerEndpoint extends GenericConsumerableEndpoint<Defau
 
             sched.deleteJob(jobName, account);
         }
-        
-        System.out.println("<--");
     }
 
     private Object getAccountLock(String account)
@@ -148,7 +146,7 @@ public class TrackingSchedulerEndpoint extends GenericConsumerableEndpoint<Defau
         return lock;
     }
 
-    private void scheduleTrackingEvents(String account, StockEvent e) {
+    private void scheduleTrackingEvents(String account, StockEvent e) throws SchedulerException {
 
         SimpleTrigger   endTrigger = new SimpleTrigger(generateNextTriggerName(), account);
         SimpleTrigger startTrigger = new SimpleTrigger(generateNextTriggerName(), account);
@@ -166,27 +164,24 @@ public class TrackingSchedulerEndpoint extends GenericConsumerableEndpoint<Defau
         try {
             scheduler.scheduleJob(endJob, endTrigger);
         } catch(SchedulerException ex) {
-            ex.printStackTrace();
-            // TODO: log here, exception here!
-            // Can't schedule termination -- aborting...
-            return;
+            log.warn("Can't schedule termination job. Aborting..", ex);
+            throw ex;
         }
-
-        Job j = new TrackingSchedulerJob();
 
         this.onJobExecute((AnalyzerInstruction) startJob.getJobDataMap().get(ANALYZER_INSTRUCTION_KEY));
         this.onJobExecute((AnalyzerInstruction) endJob.getJobDataMap().get(ANALYZER_INSTRUCTION_KEY));
 
-
         try {
-            // TODO: log
-            System.out.println("Scheduling job: "+startTrigger.getName()+";"+endJob.getName());
+            if (log.isDebugEnabled()) {
+                log.debug("Scheduling job: "+startTrigger.getName()+";"+endJob.getName());
+            }
+
             scheduler.scheduleJob(startJob, startTrigger);
-            //startEp.addTrigger(startTrigger, startJob);
+            
        } catch(SchedulerException ex) {
-            ex.printStackTrace();
+            log.error("Can't schedule start job. Cancelling end job schedule:", ex);
             cancelQuietly(endTrigger, account);
-            // Can't schedule start -- cancelling end job
+            throw ex;
        }
     }
 
@@ -195,8 +190,7 @@ public class TrackingSchedulerEndpoint extends GenericConsumerableEndpoint<Defau
         try {
             scheduler.unscheduleJob(t.getName(), account);
         } catch(SchedulerException e) {
-            e.printStackTrace();
-            // TODO: log here
+            log.error(e);
         }
     }
 
@@ -255,7 +249,11 @@ public class TrackingSchedulerEndpoint extends GenericConsumerableEndpoint<Defau
     }
 
     private String generateNextTriggerName() {
-        return System.currentTimeMillis()+"-"+seq.next();
+        StringBuilder sb = new StringBuilder(20);
+        sb.append(System.currentTimeMillis());
+        sb.append('-');
+        sb.append(seq.next());
+        return sb.toString();
     }
 
     private Date getMinEnd() {

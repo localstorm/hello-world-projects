@@ -18,7 +18,11 @@ public final class StockEvent extends Printable implements Serializable
     private final Date            start;
     private final Date            end;
 
-    public StockEvent(StockEventType type, String symbol, BigDecimal threshold, Date start, Date end) {
+    public StockEvent(StockEventType type, 
+                      String symbol,
+                      BigDecimal threshold,
+                      Date start,
+                      Date end) {
         this.type = type;
         this.symbol = symbol;
         this.threshold = threshold;

@@ -18,7 +18,7 @@ public class InstructorProducer extends DefaultProducer<DefaultExchange>
 
     public void process(Exchange exchange) throws Exception {
         InstructorEndpoint    ep = this.getEndpoint();
-        AnalyzerInstruction ai = ExchangeUtil.inBody(exchange);
+        AnalyzerInstruction   ai = ExchangeUtil.inBody(exchange);
 
         ep.processInstruction(ai);
     }

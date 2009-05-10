@@ -14,7 +14,8 @@ public class NotifierComponent extends DefaultComponent<DefaultExchange>
     @Override
     protected Endpoint<DefaultExchange> createEndpoint(String uri,
                                                        String remaining,
-                                                       Map parameters) throws Exception
+                                                       Map parameters)
+        throws Exception
     {
         return new NotifierEndpoint(uri, this);
     }
