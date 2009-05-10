@@ -12,6 +12,8 @@
   <!-- 3 Mb -->
   <pricesRequestMaxSize>3145728</pricesRequestMaxSize>
   
+  <pricesRequestMaxIssuers>20000</pricesRequestMaxIssuers>
+
   <routeBuilderBeanShellScript/>
 
   <!-- Default configuration details 

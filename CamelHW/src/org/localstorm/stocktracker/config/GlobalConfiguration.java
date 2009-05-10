@@ -5,6 +5,8 @@ import java.io.IOException;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.validation.Schema;
+import org.localstorm.stocktracker.util.misc.ResourcesUtil;
 
 /**
  *
@@ -12,6 +14,8 @@ import javax.xml.bind.Unmarshaller;
  */
 public class GlobalConfiguration
 {
+    public static final String CONFIG_SCHEMA_RESOURCE_NAME = "META-INF/config.xsd";
+    
     private static Configuration conf = null;
 
     public static void init(String pathToConfigFile) throws IOException {
@@ -27,12 +31,16 @@ public class GlobalConfiguration
             conf.setRouteBuilderBeanShellScript(null); // Default routing
             conf.setTrackingRequestMaxSize(100*1024);  // 100kb
             conf.setUserMaxTrackingEventsQuota(100);
+            conf.setPricesRequestMaxIssuers(20000);
         } else {
             try {
                 // Reading configuration using JAXB!
                 
                 JAXBContext ctx = JAXBContext.newInstance(Configuration.class);
                 Unmarshaller um = ctx.createUnmarshaller();
+
+                Schema   schema = ResourcesUtil.loadSchemaResource(CONFIG_SCHEMA_RESOURCE_NAME);
+                um.setSchema(schema);
                 conf = (Configuration) um.unmarshal(new File(pathToConfigFile));
             } catch(JAXBException e) {
                 throw new IOException(e);

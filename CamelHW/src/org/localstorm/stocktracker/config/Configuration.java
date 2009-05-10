@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.XmlType;
     "userMaxTrackingEventsQuota",
     "eventMinIntervalSize",
     "pricesRequestMaxSize",
+    "pricesRequestMaxIssuers",
     "routeBuilderBeanShellScript"
 })
 @XmlRootElement(name = "stocktracker")
@@ -50,6 +51,8 @@ public class Configuration implements Serializable {
     protected int userMaxTrackingEventsQuota;
     protected int eventMinIntervalSize;
     protected int pricesRequestMaxSize;
+    protected int pricesRequestMaxIssuers;
+
     @XmlElement(required = true)
     protected String routeBuilderBeanShellScript;
     @XmlAttribute(required = true)
@@ -183,4 +186,19 @@ public class Configuration implements Serializable {
         this.port = value;
     }
 
+    /**
+     * Gets the value of the pricesRequestMaxIssuers property.
+     */
+    public int getPricesRequestMaxIssuers() {
+        return pricesRequestMaxIssuers;
+    }
+
+    /**
+     * Sets the value of the pricesRequestMaxIssuers property.
+     */
+    public void setPricesRequestMaxIssuers(int pricesRequestMaxIssuers) {
+        this.pricesRequestMaxIssuers = pricesRequestMaxIssuers;
+    }
+
+    
 }

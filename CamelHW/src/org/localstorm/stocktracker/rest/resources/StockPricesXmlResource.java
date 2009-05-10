@@ -17,6 +17,8 @@ import org.localstorm.stocktracker.camel.CamelService;
 import org.localstorm.stocktracker.camel.Endpoints;
 import org.localstorm.stocktracker.camel.util.ExchangeFactory;
 import org.localstorm.stocktracker.camel.util.ProducerUtil;
+import org.localstorm.stocktracker.config.Configuration;
+import org.localstorm.stocktracker.config.GlobalConfiguration;
 import org.localstorm.stocktracker.exchange.StockPriceRequest;
 import org.localstorm.stocktracker.rest.parsers.ObjectXmlReader;
 import org.localstorm.stocktracker.rest.parsers.StockPriceRequestParser;
@@ -31,6 +33,8 @@ public class StockPricesXmlResource {
     
     private Endpoint ep;
     private Producer channel;
+    private int pricesMaxRequestSize;
+    private int maxIssuers;
 
     @SuppressWarnings("unchecked") // don't want to write everywhere Producer<DefaultExchange>
     public StockPricesXmlResource() throws Exception {
@@ -39,6 +43,11 @@ public class StockPricesXmlResource {
         // That is quite efficient even to create endpoint for each request
         this.ep = cc.getEndpoint(Endpoints.STOCK_PRICES_INPUT_URI);
         this.channel = ep.createProducer();
+
+        Configuration conf = GlobalConfiguration.getConfiguration();
+        this.pricesMaxRequestSize = conf.getPricesRequestMaxSize();
+        //TODO:!
+        //this.maxIssuers = conf.getPricesRequestMaxSize();
     }
 
 
@@ -53,6 +62,7 @@ public class StockPricesXmlResource {
         try {
 
             this.channel.start();
+
 
             // TODO: 10240 -- to configuration file
             reader = new ObjectXmlReader<StockPriceRequest>(is, 10240L);

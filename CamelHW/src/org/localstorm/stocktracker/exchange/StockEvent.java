@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
+ * Stock event class.
  * @author Alexey Kuznetsov
  */
 public final class StockEvent extends Printable implements Serializable
