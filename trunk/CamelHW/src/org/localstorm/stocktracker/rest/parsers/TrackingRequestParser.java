@@ -24,10 +24,10 @@ public class TrackingRequestParser extends GenericParser<StockTrackingRequest>
     public static final String DATETIME_FORMAT        = "yyyy-MM-dd HH:mm:ss";
 
     // Error messages
-    public static final String TYPE_NOT_FOUND         = "'type' attribute not found";
-    public static final String PRICE_NOT_FOUND        = "'price' attribute not found";
-    public static final String SYMBOL_NOT_FOUND       = "'symbol' attribute not found";
-    public static final String END_NOT_FOUND          = "'end' attribute not found";
+    public static final String TYPE_NOT_FOUND         = "/request/event@type attribute not found";
+    public static final String PRICE_NOT_FOUND        = "/request/event@price attribute not found";
+    public static final String SYMBOL_NOT_FOUND       = "/request/event@symbol attribute not found";
+    public static final String END_NOT_FOUND          = "/request/event@end attribute not found";
 
     public static final String REQUEST_NAME_NOT_FOUND = "Required attribute /request@name not found!";
     public static final String TAG_EVENT_IS_BEFORE_REQUEST_TAG = "Tag 'event' is before 'request' tag";
