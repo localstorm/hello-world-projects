@@ -28,6 +28,8 @@ import org.localstorm.stocktracker.rest.parsers.TrackingRequestParser;
  */
 @Path("/tracking")
 public class TrackingXmlResource {
+    public static final int HTTP_BAD_REQUEST  = 400;
+    public static final int HTTP_SERVER_ERROR = 500;
 
     private static final Log log = LogFactory.getLog(TrackingXmlResource.class);
     
@@ -81,13 +83,14 @@ public class TrackingXmlResource {
             
         } catch(XMLStreamException e) {
             log.error(e);
-            return Response.status(400).build(); // Bad request
+            return buildErrorResponse(e, HTTP_BAD_REQUEST);
         } catch(IOException e) {
             log.error(e);
-            return Response.status(400).build(); // Bad request
+            return buildErrorResponse(e, HTTP_BAD_REQUEST);
         } catch(Exception e) {
-            e.printStackTrace();
-            return Response.status(500).build(); // Server error
+            log.error(e);
+            return buildErrorResponse(e, HTTP_SERVER_ERROR);
+
         } finally {
 
             if ( reader!=null ) {
@@ -96,6 +99,11 @@ public class TrackingXmlResource {
 
             ProducerUtil.stopQuietly(channel);
         }
+    }
+
+    private Response buildErrorResponse(Exception e, int code)
+    {
+        return Response.status(code).entity(e.getMessage()).build();
     }
   
 }

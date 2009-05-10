@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>XML configuration Java binding class
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
@@ -171,7 +171,6 @@ public class Configuration implements Serializable {
 
     /**
      * Gets the value of the port property.
-     * 
      */
     public int getPort() {
         return port;
@@ -179,7 +178,6 @@ public class Configuration implements Serializable {
 
     /**
      * Sets the value of the port property.
-     * 
      */
     public void setPort(int value) {
         this.port = value;
