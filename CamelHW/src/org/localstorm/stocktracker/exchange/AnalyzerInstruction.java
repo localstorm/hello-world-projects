@@ -1,5 +1,6 @@
 package org.localstorm.stocktracker.exchange;
 
+import java.io.Serializable;
 import org.localstorm.stocktracker.util.io.Printable;
 import java.math.BigDecimal;
 
@@ -7,8 +8,10 @@ import java.math.BigDecimal;
  *
  * @author Alexey Kuznetsov
  */
-public class AnalyzerInstruction extends Printable
+public class AnalyzerInstruction extends Printable implements Serializable
 {
+    private static final long serialVersionUID = 1L;
+    
     private final boolean end;
     private final String symbol;
     private final String account;

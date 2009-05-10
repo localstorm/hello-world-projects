@@ -1,5 +1,7 @@
 package org.localstorm.stocktracker;
 
+import org.localstorm.stocktracker.config.GlobalConfiguration;
+import java.io.IOException;
 import org.localstorm.stocktracker.base.ApplicationLogger;
 import org.localstorm.stocktracker.camel.CamelService;
 import org.localstorm.stocktracker.rest.WebConnectorService;
@@ -14,6 +16,12 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args)  {
+
+        if ( !init(args) ) {
+            System.err.println("Invalid configuration file. Aborting...");
+            return;
+        }
+
         ApplicationLogger.getInstance().log("Starting Apache Camel kernel...");
 
         WebConnectorService webContainer = new WebConnectorService();
@@ -62,7 +70,25 @@ public class Main {
         
     }
 
+    private static boolean init(String[] args)
+    {
+        try {
+            if (args.length > 0) {
+                GlobalConfiguration.init(args[0]);
+            } else {
+                GlobalConfiguration.init(null);
+            }
+            return true;
+        } catch(IOException e) {
+            //TODO: log!
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     private static void onShutdown(Runnable r) {
         Runtime.getRuntime().addShutdownHook(new Thread(r));
     }
+
+    
 }
