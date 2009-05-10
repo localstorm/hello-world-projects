@@ -23,6 +23,8 @@ import org.localstorm.stocktracker.exchange.StockPriceRequest;
 import org.localstorm.stocktracker.rest.parsers.ObjectXmlReader;
 import org.localstorm.stocktracker.rest.parsers.StockPriceRequestParser;
 
+import static org.localstorm.stocktracker.rest.resources.Constants.*;
+
 /**
  * @author Alexey Kuznetsov
  */
@@ -46,8 +48,7 @@ public class StockPricesXmlResource {
 
         Configuration conf = GlobalConfiguration.getConfiguration();
         this.pricesMaxRequestSize = conf.getPricesRequestMaxSize();
-        //TODO:!
-        //this.maxIssuers = conf.getPricesRequestMaxSize();
+        this.maxIssuers           = conf.getPricesRequestMaxSize();
     }
 
 
@@ -63,27 +64,24 @@ public class StockPricesXmlResource {
 
             this.channel.start();
 
+            reader = new ObjectXmlReader<StockPriceRequest>(is, this.pricesMaxRequestSize);
 
-            // TODO: 10240 -- to configuration file
-            reader = new ObjectXmlReader<StockPriceRequest>(is, 10240L);
-
-            // TODO: 1000 -- to config file
-            StockPriceRequest spr = reader.getObject(new StockPriceRequestParser(100000));
+            StockPriceRequest spr = reader.getObject(new StockPriceRequestParser(this.maxIssuers));
 
             DefaultExchange ex = ExchangeFactory.inOut(ep, spr);
             this.channel.process(ex);
 
-            return Response.ok(Constants.SUCCESS_RESPONSE).build();
+            return ResponseUtil.buildOkResponse(SUCCESS_RESPONSE);
 
         } catch(XMLStreamException e) {
             log.error(e);
-            return Response.status(400).build(); // Bad request
+            return ResponseUtil.buildErrorResponse(e, HTTP_BAD_REQUEST);
         } catch(IOException e) {
             log.error(e);
-            return Response.status(400).build(); // Bad request
+            return ResponseUtil.buildErrorResponse(e, HTTP_BAD_REQUEST);
         } catch(Exception e) {
             log.error(e);
-            return Response.status(500).build(); // Server error
+            return ResponseUtil.buildErrorResponse(e, HTTP_SERVER_ERROR);
         } finally {
 
             if ( reader!=null ) {
