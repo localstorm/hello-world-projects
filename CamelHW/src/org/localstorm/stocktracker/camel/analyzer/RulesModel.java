@@ -11,7 +11,7 @@ import org.localstorm.stocktracker.util.misc.Guard;
  *
  * @author Alexey Kuznetsov
  */
-public class RulesModel 
+class RulesModel 
 {
     // Key: Symbol+'-'+StockEventType (ex.: MSFT-RAISE)
     private final ConcurrentNavigableMap<String, ConcurrentLinkedQueue<Rule>> rules;

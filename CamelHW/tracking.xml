@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<request name="localstorm">
+ <event type="raise" price="10.1" symbol="LocalStorm" end="2009-09-01 00:00:00" />
+ <event type="fall" price="1.0" symbol="IBMX" end="2009-09-01 00:00:00"   />
+</request>
