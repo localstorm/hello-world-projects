@@ -1,8 +1,8 @@
 #!/bin/sh
 
-#while [ true ]
-#do
+while [ true ]
+do
     curl -d @localstorm.xml http://localhost:8080/tracking
-#    date
-#done
+    date
+done
 
