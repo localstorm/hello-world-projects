@@ -41,6 +41,7 @@ import javax.xml.bind.annotation.XmlType;
     "eventMinIntervalSize",
     "pricesRequestMaxSize",
     "pricesRequestMaxIssuers",
+    "notificationOutputFilePath",
     "routeBuilderBeanShellScript"
 })
 @XmlRootElement(name = "stocktracker")
@@ -53,6 +54,8 @@ public class Configuration implements Serializable {
     protected int pricesRequestMaxSize;
     protected int pricesRequestMaxIssuers;
 
+    @XmlElement(required = true)
+    protected String notificationOutputFilePath;
     @XmlElement(required = true)
     protected String routeBuilderBeanShellScript;
     @XmlAttribute(required = true)
@@ -198,6 +201,20 @@ public class Configuration implements Serializable {
      */
     public void setPricesRequestMaxIssuers(int pricesRequestMaxIssuers) {
         this.pricesRequestMaxIssuers = pricesRequestMaxIssuers;
+    }
+
+    /**
+     * Gets the value of the notificationOutputFilePath property.
+     */
+    public String getNotificationOutputFilePath() {
+        return notificationOutputFilePath;
+    }
+
+    /**
+     * Sets the value of the notificationOutputFilePath property.
+     */
+    public void setNotificationOutputFilePath(String notificationOutputFilePath) {
+        this.notificationOutputFilePath = notificationOutputFilePath;
     }
 
     

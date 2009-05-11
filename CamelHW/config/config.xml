@@ -14,6 +14,8 @@
   
   <pricesRequestMaxIssuers>20000</pricesRequestMaxIssuers>
 
+  <notificationOutputFilePath>notifications.txt</notificationOutputFilePath>
+  
   <routeBuilderBeanShellScript/>
 
   <!-- Default configuration details 
@@ -30,9 +32,9 @@
 
     import org.localstorm.stocktracker.camel.*;
 
-    builder.from(Endpoints.TRACKING_REQUESTS_INPUT_URI).to(Endpoints.TRACKING_SCHEDULER_URI);
-    builder.from(Endpoints.TRACKING_SCHEDULER_URI).to(Endpoints.INSTRUCTOR_URI);
-    builder.from(Endpoints.STOCK_PRICES_INPUT_URI).to(Endpoints.PRICES_TRACKER_URI);
+    builder.from(Endpoints.TRACKING_REQUESTS_INPUT_URI).thread(10).to(Endpoints.TRACKING_SCHEDULER_URI);
+    builder.from(Endpoints.TRACKING_SCHEDULER_URI).thread(5).to(Endpoints.INSTRUCTOR_URI);
+    builder.from(Endpoints.STOCK_PRICES_INPUT_URI).thread(10).to(Endpoints.PRICES_TRACKER_URI);
     builder.from(Endpoints.PRICES_TRACKER_URI).to(Endpoints.STOCK_ANALYZER_URI);
     builder.from(Endpoints.STOCK_ANALYZER_URI).to(Endpoints.NOTIFIER_URI);
     
