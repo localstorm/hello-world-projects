@@ -5,7 +5,7 @@ import org.localstorm.stocktracker.util.io.Printable;
 import java.math.BigDecimal;
 
 /**
- *
+ * Instruction for stock events analyzer
  * @author Alexey Kuznetsov
  */
 public class AnalyzerInstruction extends Printable implements Serializable

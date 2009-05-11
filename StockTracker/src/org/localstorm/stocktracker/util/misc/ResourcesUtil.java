@@ -10,7 +10,7 @@ import javax.xml.validation.SchemaFactory;
 import org.xml.sax.SAXException;
 
 /**
- *
+ * Utility class to handle resources from classpath
  * @author Alexey Kuznetsov
  */
 public class ResourcesUtil 

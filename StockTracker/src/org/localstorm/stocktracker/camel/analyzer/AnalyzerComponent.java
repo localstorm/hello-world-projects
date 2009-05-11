@@ -6,6 +6,7 @@ import org.apache.camel.impl.DefaultComponent;
 import org.apache.camel.impl.DefaultExchange;
 
 /**
+ * Stock events analyzer component
  * @author Alexey Kuznetsov
  */
 public class AnalyzerComponent extends DefaultComponent<DefaultExchange>

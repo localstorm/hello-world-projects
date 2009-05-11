@@ -6,7 +6,7 @@ import org.apache.camel.impl.DefaultConsumer;
 import org.apache.camel.impl.DefaultExchange;
 
 /**
- *
+ * Exchange resending utility class
  * @author Alexey Kuznetsov
  */
 public class ProcessUtil 

@@ -1,7 +1,7 @@
 package org.localstorm.stocktracker.rest.resources;
 
 /**
- *
+ * HTTP error codes and messages
  * @author Alexey Kuznetsov
  */
 public class Constants 

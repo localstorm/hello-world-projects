@@ -1,7 +1,7 @@
 package org.localstorm.stocktracker.util.misc;
 
 /**
- *
+ * Utility class to ignore Interrupted Exception in some way
  * @author Alexey Kuznetsov
  */
 public class ThreadUtil

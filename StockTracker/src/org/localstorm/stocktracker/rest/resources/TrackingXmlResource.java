@@ -25,6 +25,7 @@ import org.localstorm.stocktracker.rest.parsers.TrackingRequestParser;
 import static org.localstorm.stocktracker.rest.resources.Constants.*;
 
 /**
+ & RESTful resource for StockTrackingRequests handling 
  * @author Alexey Kuznetsov
  */
 @Path("/tracking")

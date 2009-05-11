@@ -10,7 +10,7 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
 /**
- *
+ * Quartz scheduler job
  * @author Alexey Kuznetsov
  */
 public class TrackingSchedulerJob implements Job {

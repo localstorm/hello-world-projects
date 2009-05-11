@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *
+ * Stock traking request class
  * @author Alexey Kuznetsov
  */
 public class StockTrackingRequest extends Printable implements Serializable

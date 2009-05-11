@@ -6,6 +6,7 @@ import org.apache.camel.impl.DefaultComponent;
 import org.apache.camel.impl.DefaultExchange;
 
 /**
+ * Price tracking component
  * @author Alexey Kuznetsov
  */
 public class PriceTrackerComponent extends DefaultComponent<DefaultExchange>

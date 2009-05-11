@@ -10,6 +10,7 @@ import org.localstorm.stocktracker.exchange.StockPrice;
 import org.localstorm.stocktracker.exchange.StockPriceRequest;
 
 /**
+ * Analyzer Camel producer for AnalyzerEndpoint
  * @author Alexey Kuznetsov
  */
 public class AnalyzerProducer extends DefaultProducer<DefaultExchange>

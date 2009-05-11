@@ -3,6 +3,7 @@ package org.localstorm.stocktracker.util.misc;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
+ * Thread-safe counter
  * @author Alexey Kuznetsov
  */
 public class Sequence 

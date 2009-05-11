@@ -10,7 +10,7 @@ import org.apache.commons.logging.LogFactory;
 import org.localstorm.stocktracker.util.io.LimitedInputStream;
 
 /**
- *
+ * helper class to provide XML-request size constraints
  * @author Alexey Kuznetsov
  */
 public class ObjectXmlReader<T>

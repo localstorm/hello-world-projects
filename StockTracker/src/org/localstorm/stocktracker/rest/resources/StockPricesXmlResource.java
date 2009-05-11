@@ -26,6 +26,7 @@ import org.localstorm.stocktracker.rest.parsers.StockPriceRequestParser;
 import static org.localstorm.stocktracker.rest.resources.Constants.*;
 
 /**
+ * RESTful resource for StockPricesRequests handling
  * @author Alexey Kuznetsov
  */
 @Path("/prices")

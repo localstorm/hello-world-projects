@@ -5,7 +5,7 @@ import java.util.Properties;
 import java.util.TreeMap;
 
 /**
- *
+ * Utility class to handle Properties
  * @author Alexey Kuznetsov
  */
 public class PropertiesUtil

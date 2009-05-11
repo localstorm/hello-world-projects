@@ -13,7 +13,7 @@ import org.localstorm.stocktracker.config.Configuration;
 import org.localstorm.stocktracker.config.GlobalConfiguration;
 
 /**
- *
+ * Apache Camel infrastructure service
  * @author Alexey Kuznetsov
  */
 public class CamelService implements GenericService

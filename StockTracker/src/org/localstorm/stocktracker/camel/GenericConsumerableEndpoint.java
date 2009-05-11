@@ -12,7 +12,7 @@ import org.apache.camel.impl.DefaultConsumer;
 import org.apache.camel.impl.DefaultEndpoint;
 
 /**
- *
+ * Base class for any consumerable endpoint 
  * @author Alexey Kuznetsov
  */
 public abstract class GenericConsumerableEndpoint<T extends Exchange> extends DefaultEndpoint<T>

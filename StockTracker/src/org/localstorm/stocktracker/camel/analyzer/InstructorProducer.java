@@ -7,6 +7,7 @@ import org.localstorm.stocktracker.camel.util.ExchangeUtil;
 import org.localstorm.stocktracker.exchange.AnalyzerInstruction;
 
 /**
+ * Apache Camel Producer for Instructor endpoint
  * @author Alexey Kuznetsov
  */
 public class InstructorProducer extends DefaultProducer<DefaultExchange>

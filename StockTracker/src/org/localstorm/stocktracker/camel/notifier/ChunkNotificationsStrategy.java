@@ -8,7 +8,8 @@ import org.localstorm.stocktracker.exchange.NotificationFire;
 import org.localstorm.stocktracker.exchange.NotificationsChunk;
 
 /**
- * TODO!
+ * Aggregates fired notifications (NotificationsChunk instances) to 
+ * eleminate duplicated and too frequent notifications
  * @author Alexey Kuznetsov
  */
 public class ChunkNotificationsStrategy implements AggregationStrategy

@@ -3,7 +3,7 @@ package org.localstorm.stocktracker.camel.util;
 import org.apache.camel.Exchange;
 
 /**
- *
+ * Utility class to operate with Exchange message bodies
  * @author Alexey Kuznetsov
  */
 public class ExchangeUtil 

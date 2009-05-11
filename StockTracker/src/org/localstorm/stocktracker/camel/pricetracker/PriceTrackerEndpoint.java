@@ -12,13 +12,12 @@ import org.localstorm.stocktracker.exchange.StockPrice;
 import org.localstorm.stocktracker.exchange.StockPriceRequest;
 
 /**
- * @in TODO!!!  (stock prices)
- * @out TODO!!! (notifications)
+ * @in StockPriceRequest instances
+ * @out StockPriceRequest instances
  * @author Alexey Kuznetsov
  */
 public class PriceTrackerEndpoint extends GenericConsumerableEndpoint<DefaultExchange>
 {
-
     // Key: symbol
     private final ConcurrentMap<String, StockPrice> prices = new ConcurrentHashMap<String, StockPrice>();
     private final StockEventType[] types;
