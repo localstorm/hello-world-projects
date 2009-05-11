@@ -5,7 +5,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- *
+ * Utility class to make producers operations less complex
  * @author Alexey Kuznetsov
  */
 public class ProducerUtil 

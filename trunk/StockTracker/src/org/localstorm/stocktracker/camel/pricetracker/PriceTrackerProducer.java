@@ -9,6 +9,7 @@ import org.localstorm.stocktracker.camel.util.ExchangeUtil;
 import org.localstorm.stocktracker.exchange.StockPriceRequest;
 
 /**
+ * Apache Camel producer for NotifierEndpoint
  * @author Alexey Kuznetsov
  */
 public class PriceTrackerProducer extends DefaultProducer<DefaultExchange>

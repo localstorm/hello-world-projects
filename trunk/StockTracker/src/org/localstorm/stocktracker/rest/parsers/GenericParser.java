@@ -7,7 +7,7 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
 /**
- *
+ * Base class for any XML stream parser
  * @author Alexey Kuznetsov
  */
 public abstract class GenericParser<T> implements XmlStreamParser<T>

@@ -12,8 +12,8 @@ import org.localstorm.stocktracker.camel.util.ProcessUtil;
 import org.localstorm.stocktracker.exchange.*;
 
 /**
- * @in TODO!!!  (stock prices)
- * @out TODO!!! (notifications)
+ * @in  StockPriceRequest instances
+ * @out NotificationsChuck instances
  * @author Alexey Kuznetsov
  */
 public class AnalyzerEndpoint extends GenericConsumerableEndpoint<DefaultExchange>

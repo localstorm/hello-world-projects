@@ -1,7 +1,7 @@
 package org.localstorm.stocktracker.camel;
 
 /**
- *
+ * Standard endpoints registry
  * @author Alexey Kuznetsov
  */
 public interface Endpoints

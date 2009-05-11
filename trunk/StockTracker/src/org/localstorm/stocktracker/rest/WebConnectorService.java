@@ -15,6 +15,7 @@ import org.localstorm.stocktracker.config.GlobalConfiguration;
 import org.localstorm.stocktracker.util.misc.ResourcesUtil;
 
 /**
+ * RESTful infrastructure service
  * @author Alexey Kuznetsov
  */
 public class WebConnectorService implements GenericService

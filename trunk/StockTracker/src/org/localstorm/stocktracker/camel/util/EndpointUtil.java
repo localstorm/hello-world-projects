@@ -3,7 +3,7 @@ package org.localstorm.stocktracker.camel.util;
 import org.apache.camel.Endpoint;
 
 /**
- *
+ * Small utility class to make accessing endpoints easier
  * @author Alexey Kuznetsov
  */
 public class EndpointUtil

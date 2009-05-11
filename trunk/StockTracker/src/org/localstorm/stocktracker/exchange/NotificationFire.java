@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import org.localstorm.stocktracker.util.io.Printable;
 
 /**
+ * Atomic notification 
  * @author Alexey Kuznetsov
  */
 public class NotificationFire extends Printable implements Serializable

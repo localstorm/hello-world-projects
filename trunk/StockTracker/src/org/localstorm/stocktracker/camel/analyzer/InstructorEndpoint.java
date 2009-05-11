@@ -10,7 +10,7 @@ import org.localstorm.stocktracker.camel.util.EndpointUtil;
 import org.localstorm.stocktracker.exchange.AnalyzerInstruction;
 
 /**
- * @in AnalyzerInstruction instance
+ * @in AnalyzerInstruction instances
  * @out N/A
  * @author Alexey Kuznetsov
  */

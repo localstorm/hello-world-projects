@@ -6,6 +6,7 @@ import org.apache.camel.impl.DefaultComponent;
 import org.apache.camel.impl.DefaultExchange;
 
 /**
+ * Instructor component. Handles all incoming instructions from scheduler
  * @author Alexey Kuznetsov
  */
 public class InstructorComponent extends DefaultComponent<DefaultExchange>

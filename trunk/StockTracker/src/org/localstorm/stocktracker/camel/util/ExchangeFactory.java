@@ -5,7 +5,7 @@ import org.apache.camel.ExchangePattern;
 import org.apache.camel.impl.DefaultExchange;
 
 /**
- *
+ * Utility class to make DefaultExchange easier
  * @author Alexey Kuznetsov
  */
 public class ExchangeFactory 

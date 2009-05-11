@@ -9,7 +9,7 @@ import javax.xml.validation.Schema;
 import org.localstorm.stocktracker.util.misc.ResourcesUtil;
 
 /**
- *
+ * Configuration access holder
  * @author Alexey Kuznetsov
  */
 public class GlobalConfiguration

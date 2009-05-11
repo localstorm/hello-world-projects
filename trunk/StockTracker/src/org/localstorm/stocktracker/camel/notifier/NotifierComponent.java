@@ -77,10 +77,6 @@ public class NotifierComponent extends DefaultComponent<DefaultExchange>
             }
         }
         this.ps.flush();
-            /*            Dear Account,
-            MSFT stock  10.000$ and currently is 7.893$
-            IBM stock rose over 100.000$ and currently is 101.450$
-            */
         this.ps.println("");
     }
 

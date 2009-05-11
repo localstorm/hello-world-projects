@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentSkipListMap;
 import org.localstorm.stocktracker.util.misc.Guard;
 
 /**
- *
+ * Analyzer algorithm and data is located here
  * @author Alexey Kuznetsov
  */
 class AnalyzerCore
@@ -22,6 +22,9 @@ class AnalyzerCore
         rules = new ConcurrentSkipListMap<String, ConcurrentLinkedQueue<Rule>>();
     }
 
+    /**
+    * Appends new rule to analyzer active rule set
+    */
     public void addRule(String symbol, StockEventType type, BigDecimal threshold, String account) {
         ConcurrentLinkedQueue<Rule> newQ = new ConcurrentLinkedQueue<Rule>();
         ConcurrentLinkedQueue<Rule> queue = this.rules.putIfAbsent(getKey(symbol, type), newQ);
@@ -32,7 +35,11 @@ class AnalyzerCore
         
         queue.add(new Rule(threshold, account));
     }
-
+    
+    /**
+    * Removes rule from analyzer active rule set.
+    * Does nothing if such rule doesn't exist
+    */
     public void removeRule(String symbol, StockEventType type, BigDecimal threshold, String account) {
         ConcurrentLinkedQueue<Rule> queue = this.rules.get(getKey(symbol, type));
         if (queue!=null) {
@@ -40,6 +47,9 @@ class AnalyzerCore
         }
     }
 
+    /**
+    * Returns all fired notifications for given stock event
+    */
     @SuppressWarnings("unchecked")
     public NotificationsChunk getFiredNotifications(StockPrice sp) {
         
@@ -131,7 +141,6 @@ class AnalyzerCore
         @Override
         public boolean equals(Object obj)
         {
-            // TODO: is this correct?
             if (obj==null) {
                 return false;
             }

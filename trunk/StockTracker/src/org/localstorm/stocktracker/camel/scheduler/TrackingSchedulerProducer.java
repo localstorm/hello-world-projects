@@ -9,7 +9,7 @@ import org.localstorm.stocktracker.camel.util.ExchangeUtil;
 import org.localstorm.stocktracker.exchange.StockTrackingRequest;
 
 /**
- *
+ * Apache Camel producer for TrackingScheduler endpoint
  * @author Alexey Kuznetsov
  */
 public class TrackingSchedulerProducer extends DefaultProducer<DefaultExchange>

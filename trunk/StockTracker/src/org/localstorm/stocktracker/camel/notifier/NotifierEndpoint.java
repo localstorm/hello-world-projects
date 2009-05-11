@@ -8,8 +8,8 @@ import org.apache.camel.impl.DefaultExchange;
 import org.localstorm.stocktracker.exchange.NotificationsChunk;
 
 /**
- * @in TODO!!!  
- * @out TODO!!! 
+ * @in NotificationsChunk instances
+ * @out N/A
  * @author Alexey Kuznetsov
  */
 public class NotifierEndpoint extends DefaultEndpoint<DefaultExchange>

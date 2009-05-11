@@ -52,7 +52,6 @@ public class LimitedInputStream extends InputStream
     }
 
     /**
-     * TODO (link to InputStream);
      * @throws IOException general I/O-error
      * @throws TooLongStreamException if it was read more bytes than <i>threshold</i>
      */
@@ -69,7 +68,6 @@ public class LimitedInputStream extends InputStream
     }
 
     /**
-     * TODO (link to InputStream);
      * @throws IOException general I/O-error
      * @throws TooLongStreamException if it was read more bytes than <i>threshold</i>
      */
@@ -85,7 +83,6 @@ public class LimitedInputStream extends InputStream
     }
 
     /**
-     * TODO (link to InputStream);
      * @throws IOException general I/O-error
      * @throws TooLongStreamException if it was read more bytes than <i>threshold</i>
      */
@@ -101,7 +98,6 @@ public class LimitedInputStream extends InputStream
     }
 
     /**
-     * TODO (link to InputStream);
      * @throws IOException general I/O-error
      * @throws TooLongStreamException if it was read more bytes than <i>threshold</i>
      */
