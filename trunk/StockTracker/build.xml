@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="stocktracker" default="dist" basedir=".">
+
+    <property name="src.dir"    value="src" />
+    <property name="lib.dir"    value="lib" />
+    <property name="dist.dir"   value="dist" />
+    <property name="build.dir"  value="build" />
+    <property name="tmp.dir"    value="tmp" />
+    <property name="res.dir"    value="res" />
+    <property name="target-jar" value="${ant.project.name}.jar" />
+
+    <path id="compile.classpath">
+        <fileset dir="${lib.dir}">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="clean">
+        <delete dir="${tmp.dir}" />
+        <delete dir="${dist.dir}" />
+        <delete dir="${build.dir}" />
+    </target>
+
+    <target name="prepare">
+        <mkdir dir="${tmp.dir}" />
+        <mkdir dir="${dist.dir}" />
+        <mkdir dir="${build.dir}" />
+    </target>
+
+    <target name="compile" depends="clean,prepare">
+        <javac srcdir="${src.dir}"  destdir="${build.dir}"  debug="true">
+            <classpath refid="compile.classpath"/>
+        </javac>
+    </target>
+
+    <target name="dist" depends="compile">
+        <copy todir="${tmp.dir}">
+            <fileset dir="${build.dir}" />
+        </copy>
+        <copy todir="${tmp.dir}">
+            <fileset dir="${res.dir}" />
+        </copy>
+
+        <jar destfile="${dist.dir}/${target-jar}" basedir="${tmp.dir}" />
+        <delete dir="${tmp.dir}" />
+    </target>
+
+</project>

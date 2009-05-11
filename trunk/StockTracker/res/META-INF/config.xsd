@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<!-- JAXB XJC input source -->
+<xs:element name="stocktracker">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element name="trackingRequestMaxSize"      type="xs:int" />
+      <xs:element name="userMaxTrackingEventsQuota"  type="xs:int" />
+      <xs:element name="eventMinIntervalSize"        type="xs:int" />
+      <xs:element name="pricesRequestMaxSize"        type="xs:int" />
+      <xs:element name="pricesRequestMaxIssuers"     type="xs:int" />
+      <xs:element name="notificationOutputFilePath"  type="xs:string" />
+      <xs:element name="routeBuilderBeanShellScript" type="xs:string" />
+   </xs:sequence>
+   <xs:attribute name="host" type="xs:string" use="required"/>
+   <xs:attribute name="port" type="xs:int"    use="required"/>
+  </xs:complexType>
+</xs:element>
+</xs:schema>

@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<prices>
+ <item price="0.1" symbol="SUN" />
+ <item price="0.2"  symbol="ORCL" />
+</prices>
