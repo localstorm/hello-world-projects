@@ -1,3 +1,13 @@
+BUILDING:
+
+./build.sh (Needs Apache Ant 1.7.0 in your classpath)
+
+RUNNING:
+
+./run.sh (Needs java >= v1.6 in your classpath)
+or 
+./run.sh config/config.xml (Needs java >= v1.6 in your classpath)
+
 Third-party libs:
 
 ASM                       v3.1     // Jersey dependency
