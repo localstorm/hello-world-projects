@@ -2,8 +2,7 @@ package org.localstorm.stocktracker.camel.analyzer;
 
 import org.localstorm.stocktracker.exchange.*;
 import java.math.BigDecimal;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ConcurrentNavigableMap;
 import java.util.concurrent.ConcurrentSkipListMap;
@@ -15,7 +14,7 @@ import org.localstorm.stocktracker.util.misc.Guard;
  */
 class AnalyzerCore
 {
-    // Key: Symbol+'-'+StockEventType (ex.: MSFT-RAISE)
+    // Key: Symbol+'#'+StockEventType (ex.: MSFT-RAISE)
     private final ConcurrentNavigableMap<String, ConcurrentLinkedQueue<Rule>> rules;
 
 
@@ -25,7 +24,7 @@ class AnalyzerCore
 
     public void addRule(String symbol, StockEventType type, BigDecimal threshold, String account) {
         ConcurrentLinkedQueue<Rule> newQ = new ConcurrentLinkedQueue<Rule>();
-        ConcurrentLinkedQueue<Rule> queue = this.rules.putIfAbsent(symbol+type, newQ);
+        ConcurrentLinkedQueue<Rule> queue = this.rules.putIfAbsent(getKey(symbol, type), newQ);
 
         if (queue==null) {
             queue = newQ;
@@ -35,16 +34,71 @@ class AnalyzerCore
     }
 
     public void removeRule(String symbol, StockEventType type, BigDecimal threshold, String account) {
-        ConcurrentLinkedQueue<Rule> queue = this.rules.get(symbol+type);
+        ConcurrentLinkedQueue<Rule> queue = this.rules.get(getKey(symbol, type));
         if (queue!=null) {
             queue.remove(new Rule(threshold, account));
         }
     }
 
-    public Collection<Notification> getFiredNotifications(StockPriceRequest spr) {
-        // TODO:!
-        return Collections.EMPTY_LIST;
+    @SuppressWarnings("unchecked")
+    public NotificationsChunk getFiredNotifications(StockPrice sp) {
+        
+        StockEventType type   = sp.getType();
+        BigDecimal    price   = sp.getPrice();
+        Queue<Rule>   toCheck = this.rules.get(getKey(sp.getSymbol(), type));
+
+        NotificationsChunk chunk = new NotificationsChunk();
+
+        if (toCheck==null || toCheck.isEmpty()) {
+            return chunk;
+        }
+        
+        switch (type) {
+            case RAISE:
+                for (Rule rule: toCheck) {
+                    if (rule.getThreshold().compareTo(price)<=0) {
+                        this.appendNotification(chunk, rule, StockEventType.RAISE, sp);
+                    }
+                }
+                break;
+            case FALL:
+                for (Rule rule: toCheck) {
+                    if (rule.getThreshold().compareTo(price)>=0) {
+                        this.appendNotification(chunk, rule, StockEventType.FALL, sp);
+                    }
+                }
+                break;
+            default:
+                throw new RuntimeException("Unexpected case: "+type);
+        }
+
+        return chunk;
     }
+
+
+    // Private ---------
+    
+    private void appendNotification(NotificationsChunk chunk, Rule rule, StockEventType type, StockPrice sp) {
+        NotificationFire ntf = new NotificationFire(rule.getAccount(),
+                                                    sp.getSymbol(), 
+                                                    type,
+                                                    rule.getThreshold(),
+                                                    sp.getPrice());
+        chunk.addNote(ntf);
+    }
+
+
+    private String getKey(String symbol, StockEventType type) {
+        String t = type.toString();
+
+        StringBuilder sb = new StringBuilder(symbol.length()+t.length()+1);
+        sb.append(symbol);
+        sb.append('#');
+        sb.append(type);
+
+        return sb.toString();
+    }
+
 
     // ------ Private rule class (impl details)
 
@@ -59,7 +113,7 @@ class AnalyzerCore
             this.threshold = threshold;
             this.account   = account;
         }
-
+ 
         public String getAccount() {
             return account;
         }

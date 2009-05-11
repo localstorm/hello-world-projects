@@ -5,6 +5,7 @@ import org.apache.camel.Processor;
 import org.apache.camel.Producer;
 import org.apache.camel.impl.DefaultEndpoint;
 import org.apache.camel.impl.DefaultExchange;
+import org.localstorm.stocktracker.exchange.NotificationsChunk;
 
 /**
  * @in TODO!!!  
@@ -14,30 +15,32 @@ import org.apache.camel.impl.DefaultExchange;
 public class NotifierEndpoint extends DefaultEndpoint<DefaultExchange>
 {
 
-    public NotifierEndpoint(String uri, NotifierComponent component)
-    {
+    public NotifierEndpoint(String uri, NotifierComponent component) {
         super(uri, component);
     }
 
-    public NotifierEndpoint(String endpointUri) {
-        super(endpointUri);
+    public Consumer<DefaultExchange> createConsumer(Processor arg0) throws Exception
+    {
+        throw new UnsupportedOperationException("You can not consume messages from this endpoint");
     }
 
-    public Consumer<DefaultExchange> createConsumer(Processor arg0)
-            throws Exception
-    {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public Producer<DefaultExchange> createProducer()
-            throws Exception
-    {
+    public Producer<DefaultExchange> createProducer() throws Exception {
         return new NotifierProducer(this);
     }
 
-    public boolean isSingleton()
-    {
+    public boolean isSingleton() {
         return true;
+    }
+
+    @Override
+    public NotifierComponent getComponent() {
+        return (NotifierComponent) super.getComponent();
+    }
+
+    // Some business
+
+    public synchronized void writeNotifications(NotificationsChunk chunk) {
+        this.getComponent().writeNotifications(chunk);
     }
 
 }
