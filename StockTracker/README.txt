@@ -1,14 +1,24 @@
-BUILD COMMAND:
+-------------------------- BUILD COMMAND: --------------------------
 
 ant (Needs Apache Ant 1.7.0 in your classpath)
 
-RUN COMMAND:
+-------------------------- RUN COMMAND: --------------------------
 
 ./run.sh (Needs java >= v1.6 in your classpath)
 or 
 ./run.sh config/config.xml (Needs java >= v1.6 in your classpath)
 
-TESTING:
+Stock tracker opens port 8080 on 127.0.0.1 interface and expects POST requests
+on 
+
+http://localhost:8080/tracking
+and 
+http://localhost:8080/prices
+
+URLS.
+
+
+-------------------------- TESTING: --------------------------
 
 'test' directory contains some test data and test scripts. 
 
