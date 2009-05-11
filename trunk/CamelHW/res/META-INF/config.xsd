@@ -9,6 +9,7 @@
       <xs:element name="eventMinIntervalSize"        type="xs:int" />
       <xs:element name="pricesRequestMaxSize"        type="xs:int" />
       <xs:element name="pricesRequestMaxIssuers"     type="xs:int" />
+      <xs:element name="notificationOutputFilePath"  type="xs:string" />
       <xs:element name="routeBuilderBeanShellScript" type="xs:string" />
    </xs:sequence>
    <xs:attribute name="host" type="xs:string" use="required"/>

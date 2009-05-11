@@ -47,9 +47,9 @@ public class CamelService implements GenericService
                         interpreter.eval(bsh);
                     } else {
                         // Default routing
-                        from(Endpoints.TRACKING_REQUESTS_INPUT_URI).to(Endpoints.TRACKING_SCHEDULER_URI);
-                        from(Endpoints.TRACKING_SCHEDULER_URI).to(Endpoints.INSTRUCTOR_URI);
-                        from(Endpoints.STOCK_PRICES_INPUT_URI).to(Endpoints.PRICES_TRACKER_URI);
+                        from(Endpoints.TRACKING_REQUESTS_INPUT_URI).thread(10).to(Endpoints.TRACKING_SCHEDULER_URI);
+                        from(Endpoints.TRACKING_SCHEDULER_URI).thread(5).to(Endpoints.INSTRUCTOR_URI);
+                        from(Endpoints.STOCK_PRICES_INPUT_URI).thread(10).to(Endpoints.PRICES_TRACKER_URI);
                         from(Endpoints.PRICES_TRACKER_URI).to(Endpoints.STOCK_ANALYZER_URI);
                         from(Endpoints.STOCK_ANALYZER_URI).to(Endpoints.NOTIFIER_URI);
                     }
