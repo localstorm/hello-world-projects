@@ -14,12 +14,12 @@
   
   <pricesRequestMaxIssuers>20000</pricesRequestMaxIssuers>
 
-  <notificationOutputFilePath>notifications.txt</notificationOutputFilePath>
+  <notificationOutputFilePath>output/notifications.txt</notificationOutputFilePath>
   
   <routeBuilderBeanShellScript/>
 
-  <!-- Default configuration details 
-  <routeBuilderBeanShellScript>
+  <!--Default configuration details  -->
+  <!--routeBuilderBeanShellScript>
     // This is StockTracker message routing configuration BeanShell script (http://beanshell.org)
 
     // Endpoints.TRACKING_REQUESTS_INPUT_URI - all stock tracking requests are accumulated in this endpoint
@@ -31,13 +31,17 @@
     // Endpoints.PRICES_TRACKER_URI          - all stock prices are compared to previous history here
 
     import org.localstorm.stocktracker.camel.*;
+    import org.localstorm.stocktracker.camel.notifier.*;
 
     builder.from(Endpoints.TRACKING_REQUESTS_INPUT_URI).thread(10).to(Endpoints.TRACKING_SCHEDULER_URI);
     builder.from(Endpoints.TRACKING_SCHEDULER_URI).thread(5).to(Endpoints.INSTRUCTOR_URI);
     builder.from(Endpoints.STOCK_PRICES_INPUT_URI).thread(10).to(Endpoints.PRICES_TRACKER_URI);
     builder.from(Endpoints.PRICES_TRACKER_URI).to(Endpoints.STOCK_ANALYZER_URI);
-    builder.from(Endpoints.STOCK_ANALYZER_URI).to(Endpoints.NOTIFIER_URI);
+
+    builder.from(Endpoints.STOCK_ANALYZER_URI).
+        aggregator(builder.constant(true), new ChunkNotificationsStrategy()).
+            batchSize(100).batchTimeout(1000). // Aggregator configuration params
+                to(Endpoints.NOTIFIER_URI);
     
-  </routeBuilderBeanShellScript>
-  -->
+  </routeBuilderBeanShellScript-->
 </stocktracker>

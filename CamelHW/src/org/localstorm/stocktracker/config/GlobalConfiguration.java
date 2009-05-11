@@ -32,7 +32,7 @@ public class GlobalConfiguration
             conf.setTrackingRequestMaxSize(100*1024);  // 100kb
             conf.setUserMaxTrackingEventsQuota(100);
             conf.setPricesRequestMaxIssuers(20000);
-            conf.setNotificationOutputFilePath("notifications.txt");
+            conf.setNotificationOutputFilePath("output/notifications.txt");
         } else {
             try {
                 // Reading configuration using JAXB!

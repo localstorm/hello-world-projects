@@ -1,5 +1,6 @@
 package org.localstorm.stocktracker.camel;
 
+import org.localstorm.stocktracker.camel.notifier.ChunkNotificationsStrategy;
 import bsh.EvalError;
 import bsh.Interpreter;
 import org.localstorm.stocktracker.base.GenericService;
@@ -38,6 +39,7 @@ public class CamelService implements GenericService
             public void configure() {
 
                 Configuration conf = GlobalConfiguration.getConfiguration();
+
                 try {
                     String bsh = conf.getRouteBuilderBeanShellScript();
 
@@ -51,7 +53,11 @@ public class CamelService implements GenericService
                         from(Endpoints.TRACKING_SCHEDULER_URI).thread(5).to(Endpoints.INSTRUCTOR_URI);
                         from(Endpoints.STOCK_PRICES_INPUT_URI).thread(10).to(Endpoints.PRICES_TRACKER_URI);
                         from(Endpoints.PRICES_TRACKER_URI).to(Endpoints.STOCK_ANALYZER_URI);
-                        from(Endpoints.STOCK_ANALYZER_URI).to(Endpoints.NOTIFIER_URI);
+
+                        from(Endpoints.STOCK_ANALYZER_URI).
+                            aggregator(constant(true), new ChunkNotificationsStrategy()).
+                                batchSize(100).batchTimeout(1000). // Aggregator configuration params
+                                    to(Endpoints.NOTIFIER_URI);
                     }
                 } catch(EvalError e) {
                     throw new RuntimeException(e);

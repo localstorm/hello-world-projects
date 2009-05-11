@@ -1,7 +1,5 @@
 package org.localstorm.stocktracker.camel.analyzer;
 
-import org.localstorm.stocktracker.exchange.Notification;
-import java.util.Collection;
 import java.util.List;
 import org.apache.camel.CamelContext;
 import org.localstorm.stocktracker.camel.GenericConsumerableEndpoint;
@@ -32,25 +30,33 @@ public class AnalyzerEndpoint extends GenericConsumerableEndpoint<DefaultExchang
         super(endpointUri);
     }
 
-    /*package*/ void analyzeNewPrices(StockPriceRequest spr) {
-        Collection<Notification> ntfs = core.getFiredNotifications(spr);
+    /*package*/ void analyzeNewPrice(StockPrice sp) {
 
-        CamelContext ctx = this.getCamelContext();
-        List<DefaultConsumer> cons = this.getConsumers();
+        if (sp.getType()!=null) {
 
-        for ( Notification n: ntfs ) {
-            try {
-                ProcessUtil.process(n, ctx, cons);
-            } catch(Exception e) {
-                log.error("Unable to deliver notification: ", e);
+            NotificationsChunk chunk = core.getFiredNotifications(sp);
+
+            if (!chunk.isEmpty()) {
+
+                CamelContext ctx = this.getCamelContext();
+                List<DefaultConsumer> cons = this.getConsumers();
+
+                try {
+                    ProcessUtil.process(chunk, ctx, cons);
+                } catch(Exception e) {
+                    log.error("Unable to deliver notification: ", e);
+                }
+                
             }
+            
+        } else {
+            log.warn("Analyzer got 'null' stock event type. Skipping...");
         }
     }
 
     /*package*/ void appendRule(AnalyzerInstruction ai) {
 
         if (log.isDebugEnabled()) {
-            // That's a heavyweight string-generating method
             log.debug("Appending rule: "+ai);
         }
 
@@ -63,7 +69,6 @@ public class AnalyzerEndpoint extends GenericConsumerableEndpoint<DefaultExchang
     /*package*/ void removeRule(AnalyzerInstruction ai)
     {
         if (log.isDebugEnabled()) {
-            // That's a heavyweight string-generating method
             log.debug("Removing rule: "+ai);
         }
         

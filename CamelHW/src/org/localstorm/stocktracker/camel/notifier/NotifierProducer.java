@@ -5,6 +5,8 @@ import org.apache.camel.impl.DefaultExchange;
 import org.apache.camel.impl.DefaultProducer;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.localstorm.stocktracker.camel.util.ExchangeUtil;
+import org.localstorm.stocktracker.exchange.NotificationsChunk;
 
 /**
  * @author Alexey Kuznetsov
@@ -20,12 +22,14 @@ public class NotifierProducer extends DefaultProducer<DefaultExchange>
     public void process(Exchange exchange) throws Exception {
         NotifierEndpoint    ep = this.getEndpoint();
 
-        //System.out.println("Notifier called: "+exchange.getIn().getBody());
+        NotificationsChunk chunk = ExchangeUtil.inBody(exchange);
+        ep.writeNotifications(chunk);
     }
 
     @Override
     public NotifierEndpoint getEndpoint() {
         return (NotifierEndpoint) super.getEndpoint();
     }
+
 
 }

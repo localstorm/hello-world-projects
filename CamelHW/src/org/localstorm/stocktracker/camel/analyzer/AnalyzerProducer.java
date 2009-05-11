@@ -6,6 +6,7 @@ import org.apache.camel.impl.DefaultProducer;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.localstorm.stocktracker.camel.util.ExchangeUtil;
+import org.localstorm.stocktracker.exchange.StockPrice;
 import org.localstorm.stocktracker.exchange.StockPriceRequest;
 
 /**
@@ -29,7 +30,9 @@ public class AnalyzerProducer extends DefaultProducer<DefaultExchange>
             log.debug("Analyzer: "+spr);
         }
 
-        ep.analyzeNewPrices(spr);
+        for (StockPrice sp: spr.getPriceList()) {
+            ep.analyzeNewPrice(sp);
+        }
     }
 
     @Override
