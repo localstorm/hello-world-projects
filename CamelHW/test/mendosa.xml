@@ -1,5 +1,0 @@
-<?xml version="1.0"?>
-<request name="mendosa">
- <event type="fall" price="10.2" symbol="SUN"  end="2009-09-01 00:00:00" />
- <event type="raise" price="1.1"   symbol="ORCL" end="2009-09-01 00:00:00"   />
-</request>
