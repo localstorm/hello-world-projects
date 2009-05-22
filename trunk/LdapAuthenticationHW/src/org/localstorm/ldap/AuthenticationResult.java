@@ -1,5 +1,6 @@
 package org.localstorm.ldap;
 
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
 public class AuthenticationResult
 {
     private String login;
-    private String uuid;
+    private String dn;
     private List<String> groups;
 
     public AuthenticationResult()
@@ -28,19 +29,19 @@ public class AuthenticationResult
         return login;
     }
 
-    public void setUuid(String uuid)
+    public void setDn(String uuid)
     {
-        this.uuid = uuid;
+        this.dn = uuid;
     }
 
-    public String getUuid()
+    public String getDn()
     {
-        return uuid;
+        return dn;
     }
 
-    public void addGroup(String group)
+    public void addGroups(Collection<String> groups)
     {
-        this.groups.add(group);
+        this.groups.addAll(groups);
     }
 
     public List<String> getGroups()
