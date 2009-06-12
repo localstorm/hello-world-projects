@@ -8,7 +8,7 @@
         <table class="contexts">
             <c:forEach items="${assets}" var="asset" >
             <tr>
-                <td width="18px" valign="top"><img src="<c:url value="/images/button.png"/>"/></td>
+                <td width="18px" valign="top"><img src="<c:url value="/images/asset.png"/>"/></td>
                 <td><a href="<c:url value="/actions/cash/asset/ViewAsset">
                        <c:param name="assetId" value="${asset.id}" />
                      </c:url>"><c:out value="${asset.name}"/></a></td>
