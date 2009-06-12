@@ -55,29 +55,43 @@
 		<th colspan="2">Operative</th>
 	</tr>
         <c:forEach items="${actionBean.refObjects}" var="ro">
-            
-	<tr>
-		<td width="95%">
-			<p><img src="<c:url value="/images/arrow.gif" />"/>
-                        <span><c:out value="${ro.context.name}"/>:&nbsp;<a href="<c:url value="/actions/gtd/ctx/obj/ViewRefObj">
-                                            <c:param name="objectId" value="${ro.id}" />
-                                       </c:url>"><c:out value="${ro.name}"/></a></span>
-		</td>
-		<td width="5%"> <a href="<c:url value="/actions/gtd/ctx/obj/ToggleStateRefObj">
-                                            <c:param name="objectId" value="${ro.id}" />
-                                       </c:url>" title="Archive"><img src="<c:url value="/images/trash.png"/>" /></a></p></td>
-	</tr>
+            <c:choose>
+                <c:when test="${color eq '#E4F1F3'}">
+                    <c:set var="color" value="#F3F3F3" />
+                </c:when>
+                <c:otherwise>
+                    <c:set var="color" value="#E4F1F3" />
+                </c:otherwise>
+            </c:choose>
+            <tr bgColor="<c:out value="${color}" />">
+                <td width="95%">
+                    <p><span><c:out value="${ro.context.name}"/>:&nbsp;<a href="<c:url value="/actions/gtd/ctx/obj/ViewRefObj">
+                                     <c:param name="objectId" value="${ro.id}" />
+                              </c:url>"><c:out value="${ro.name}"/></a></span>
+                </td>
+                <td width="5%"> <a href="<c:url value="/actions/gtd/ctx/obj/ToggleStateRefObj">
+                                                    <c:param name="objectId" value="${ro.id}" />
+                                               </c:url>" title="Archive"><img src="<c:url value="/images/trash.png"/>" /></a></p></td>
+            </tr>
         </c:forEach>
         </c:if>
         <c:if test="${not empty actionBean.archiveObjects}">
             <tr >
                     <th colspan="2">Archived</th>
             </tr>
+            <c:remove var="color" />
             <c:forEach items="${actionBean.archiveObjects}" var="ro" >
-            <tr>
+                <c:choose>
+                    <c:when test="${color eq '#E4F1F3'}">
+                        <c:set var="color" value="#F3F3F3" />
+                    </c:when>
+                    <c:otherwise>
+                        <c:set var="color" value="#E4F1F3" />
+                    </c:otherwise>
+                </c:choose>
+                <tr bgColor="<c:out value="${color}"/>">
                     <td width="95%">
-                            <p><img src="<c:url value="/images/arrow.gif"/>"/> 
-                            <span><a href="<c:url value="/actions/gtd/ctx/obj/ViewRefObj">
+                            <p><span><a href="<c:url value="/actions/gtd/ctx/obj/ViewRefObj">
                                             <c:param name="contextId" value="${ro.id}" />
                                         </c:url>"><c:out value="${ro.name}"/></a></span>
                     </td>
@@ -89,7 +103,7 @@
                                            </c:url>" title="Delete permanently"><img src="<c:url value="/images/erase.png"/>" /></a>
                     </nobr>
                     </td>
-            </tr>
+                </tr>
             </c:forEach>
         </c:if>
    </table>
