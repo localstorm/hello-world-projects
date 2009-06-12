@@ -1,6 +1,12 @@
 package org.localstorm.mcc.web;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -39,11 +45,45 @@ public class AuthServlet extends HttpServlet
 
         if (u!=null) {
             sess.setAttribute(CommonSessionKeys.USER, u);
-            res.sendRedirect(Views.DASH_REDIRECT);
+
+            ReturnPageBean rpb = (ReturnPageBean) sess.getAttribute(CommonSessionKeys.ORIGINAL_REQUEST);
+            
+            if (rpb==null) {
+                res.sendRedirect(Views.DASH_REDIRECT);
+            } else {
+                res.sendRedirect(buildUrl(rpb));
+            }
         } else {
             req.getRequestDispatcher(Views.LOGIN).forward(req, res);
             return;
         }
+    }
+
+    private String buildUrl(ReturnPageBean rpb) throws UnsupportedEncodingException
+    {
+        StringBuilder            url = new StringBuilder(rpb.getPageToken());
+        Map<String, String[]> params = rpb.getParams();
+
+        if (!params.isEmpty()) {
+            url.append('?');
+
+            for (Iterator<Map.Entry<String, String[]>> eit = params.entrySet().iterator(); eit.hasNext(); ) {
+                Map.Entry<String, String[]> entry = eit.next();
+                String    paramName = entry.getKey();
+                List<String> values = Arrays.asList(entry.getValue());
+
+                for (Iterator<String> vit = values.iterator(); vit.hasNext(); ) {
+                    url.append(paramName);
+                    url.append('=');
+                    url.append(URLEncoder.encode(vit.next(), "UTF-8"));
+                    if (vit.hasNext() || eit.hasNext()) {
+                        url.append("&");
+                    }
+                }
+            }
+        }
+
+        return url.toString();
     }
 
     
