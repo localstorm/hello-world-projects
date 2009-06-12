@@ -14,7 +14,7 @@
                 
             <td align="right">
                 <c:if test="${(not empty actionBean.flightPlanTasks) or (not empty actionBean.awaitedFlightPlanTasks) or (not empty actionBean.archiveFlightPlanTasks)}">
-                    <a onclick="return confirm('Are you sure?');" href="<c:url value="/actions/gtd/nil/UtilizeFlightPlan" />" title="Utilize &amp; build new"><img src="<c:url value="/images/utilize.gif"/>" /></a>
+                    <a onclick="return confirm('Are you sure?');" href="<c:url value="/actions/gtd/nil/UtilizeFlightPlan" />" title="Utilize &amp; build new"><img src="<c:url value="/images/unhint.png"/>" /></a>
                 </c:if>
             </td>
         </tr>
