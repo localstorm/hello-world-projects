@@ -12,6 +12,7 @@ import org.localstorm.mcc.ejb.cashflow.AssetManager;
 import org.localstorm.mcc.ejb.cashflow.OperationManager;
 import org.localstorm.mcc.ejb.cashflow.entity.HistoricalValue;
 import org.localstorm.mcc.ejb.cashflow.HistoricalValuesManager;
+import org.localstorm.mcc.ejb.cashflow.entity.ValuableObject;
 import org.localstorm.mcc.ejb.cashflow.entity.ValueType;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.cashflow.actions.wrap.AssetWrapper;
@@ -26,9 +27,11 @@ import org.localstorm.tools.aop.runtime.Logged;
 public class AssetsViewActionBean extends CashflowBaseActionBean {
 
     private Collection<Asset> assets;
+    private BigDecimal        netWealthWoDebt;
     private BigDecimal        netWealth;
     private BigDecimal        balance;
     private boolean           checkpointUpdateNeeded;
+
 
     public Collection<Asset> getAssets() {
         return assets;
@@ -51,6 +54,16 @@ public class AssetsViewActionBean extends CashflowBaseActionBean {
         return checkpointUpdateNeeded;
     }
 
+    public BigDecimal getNetWealthWoDebt()
+    {
+        return netWealthWoDebt;
+    }
+
+    public void setNetWealthWoDebt(BigDecimal netWealthWoDebt)
+    {
+        this.netWealthWoDebt = netWealthWoDebt;
+    }
+
     @DefaultHandler
     @Logged
     public Resolution filling() {
@@ -62,39 +75,51 @@ public class AssetsViewActionBean extends CashflowBaseActionBean {
         this.assets = am.getAssets(user);
         this.assets = WrapUtil.wrapAssets(assets, om);
 
-        this.netWealth = BigDecimal.ZERO;
-        this.balance   = BigDecimal.ZERO;
+        this.netWealth       = BigDecimal.ZERO;
+        this.netWealthWoDebt = BigDecimal.ZERO;
+        this.balance         = BigDecimal.ZERO;
 
         for (Asset a: assets)
         {
             AssetWrapper aw = (AssetWrapper) a;
             this.netWealth = this.netWealth.add(aw.getNetWealth());
 
-            if (aw.getValuable().isUsedInBalance()) {
+            ValuableObject vo = aw.getValuable();
+            if (!vo.isDebt()) {
+                this.netWealthWoDebt = this.netWealthWoDebt.add(aw.getNetWealth());
+            }
+
+            if (vo.isUsedInBalance()) {
                 this.balance   = this.balance.add(aw.getBalance());
             }
         }
 
         this.checkpointUpdateNeeded = this.getCheckpointStatus(user,
                                                                this.netWealth,
-                                                               this.balance);
+                                                               this.balance,
+                                                               this.netWealthWoDebt);
 
         return new ForwardResolution(Views.ASSETS);
     }
 
     private boolean getCheckpointStatus(User user,
                                         BigDecimal netWealth,
-                                        BigDecimal balance) {
+                                        BigDecimal balance,
+                                        BigDecimal netWealthWoDebt) {
+
         HistoricalValuesManager hvm = super.getHistoricalValuesManager();
 
         ValueType twc  = ValueType.NET_WEALTH_CHECKPOINT;
         ValueType twc2 = ValueType.BALANCE_CHECKPOINT;
+        ValueType twc3 = ValueType.NET_WEALTH_WO_DEBT_CHECKPOINT;
 
         HistoricalValue hv  = hvm.getLastHistoricalValue(twc, BigDecimal.ZERO, user);
         HistoricalValue hv2 = hvm.getLastHistoricalValue(twc2, BigDecimal.ZERO, user);
+        HistoricalValue hv3 = hvm.getLastHistoricalValue(twc3, BigDecimal.ZERO, user);
 
         return !hv.getVal().equals(netWealth) ||
-               !hv2.getVal().equals(balance);
+               !hv2.getVal().equals(balance)  ||
+               !hv3.getVal().equals(netWealthWoDebt);
     }
 
 }

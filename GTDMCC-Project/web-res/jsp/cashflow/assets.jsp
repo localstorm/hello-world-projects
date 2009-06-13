@@ -21,7 +21,11 @@
         <td width="50%" align="right" >Net wealth:</td>
         <td width="50%" align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${actionBean.netWealth}"/></td>
     </tr>
-    <tr bgColor="#E4F1F3">
+    <tr bgcolor="#E4F1F3">
+        <td width="50%" align="right" >Net wealth (w/o debt):</td>
+        <td width="50%" align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${actionBean.netWealthWoDebt}"/></td>
+    </tr>
+    <tr bgColor="#F3F3F3">
         <td width="50%" align="right" >Balance:</td>
         <td width="50%" align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${actionBean.balance}"/></td>
     </tr>
@@ -31,7 +35,9 @@
 <table width="80%" border="0px" >
     <tr><th colspan="2" align="center"><a href="<c:url value="/actions/cash/asset/ViewAsset">
                                                     <c:param name="assetId" value="${asset.id}" />
-                                                </c:url>"><c:out value="${asset.name}"/></a></th></tr>
+                                                </c:url>"><c:out value="${asset.name}"/></a><c:if test="${asset.valuable.debt}">
+                                                    <img src="<c:url value="/images/toxic.png"/>" title="This asset is debt"/>
+                                                </c:if></th></tr>
     <tr bgcolor="#F3F3F3">
         <td width="50%" align="right" >Buy cost (1 piece):</td>
         <td width="50%" align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${asset.currentCost.buy}"/></td>

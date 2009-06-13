@@ -44,6 +44,8 @@ public class AssetUpdateActionBean extends AssetViewActionBean {
 
     private boolean usedInBalance;
 
+    private boolean debt;
+
     @After( LifecycleStage.BindingAndValidation )
     public void doPostValidationStuff() throws Exception {
         if ( getContext().getValidationErrors().hasFieldErrors() )
@@ -51,7 +53,15 @@ public class AssetUpdateActionBean extends AssetViewActionBean {
             super.filling();
         }
     }
-    
+
+    public boolean isDebt() {
+        return debt;
+    }
+
+    public void setDebt(boolean debt) {
+        this.debt = debt;
+    }
+
     public void setBuy(BigDecimal buy) {
         this.buy = buy;
     }
@@ -121,6 +131,7 @@ public class AssetUpdateActionBean extends AssetViewActionBean {
         }
 
         vo.setUsedInBalance(this.isUsedInBalance());
+        vo.setDebt(this.isDebt());
         asset.setName(this.getName());
 
         am.update(asset);

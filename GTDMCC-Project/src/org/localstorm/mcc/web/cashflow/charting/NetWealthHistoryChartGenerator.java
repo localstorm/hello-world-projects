@@ -36,7 +36,10 @@ import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
  */
 public class NetWealthHistoryChartGenerator {
 
-     private static XYDataset getNetWealthDataset(User user, Integer daysPeriod, boolean showTargets) {
+     private static XYDataset getNetWealthDataset(User user,
+                                                  Integer daysPeriod,
+                                                  boolean showTargets,
+                                                  boolean includeDebt) {
 
         Calendar cal = Calendar.getInstance();
 
@@ -49,13 +52,17 @@ public class NetWealthHistoryChartGenerator {
         HistoricalValuesManager hvm = ContextLookup.lookup(HistoricalValuesManager.class,
                                                            HistoricalValuesManager.BEAN_NAME);
         
-        Collection<HistoricalValue> hvs = hvm.getHistory(ValueType.NET_WEALTH_CHECKPOINT,
-                                                             user,
-                                                             cal.getTime());
+        
+        ValueType valueType = (includeDebt) ? ValueType.NET_WEALTH_CHECKPOINT
+                                            : ValueType.NET_WEALTH_WO_DEBT_CHECKPOINT;
 
-        HistoricalValue last  = hvm.getLastHistoricalValue(ValueType.NET_WEALTH_CHECKPOINT,
-                                                       BigDecimal.ZERO,
-                                                       user);
+        Collection<HistoricalValue> hvs = hvm.getHistory(valueType,
+                                                         user,
+                                                         cal.getTime());
+
+        HistoricalValue last  = hvm.getLastHistoricalValue(valueType,
+                                                           BigDecimal.ZERO,
+                                                           user);
 
         Date minDate = new Date();
 
@@ -66,7 +73,7 @@ public class NetWealthHistoryChartGenerator {
                 first.setObjectId(null);
                 first.setOwner(user);
                 first.setVal(last.getVal());
-                first.setValueTag(ValueType.NET_WEALTH_CHECKPOINT);
+                first.setValueTag(valueType);
             }
             hvs.add(first);
         }
@@ -77,7 +84,7 @@ public class NetWealthHistoryChartGenerator {
             right.setObjectId(null);
             right.setOwner(user);
             right.setVal(last.getVal());
-            right.setValueTag(ValueType.NET_WEALTH_CHECKPOINT);
+            right.setValueTag(valueType);
         }
 
         hvs.add(right);
@@ -129,8 +136,14 @@ public class NetWealthHistoryChartGenerator {
         return tsc;
     }
 
-    public static JFreeChart getChart(User user, Integer daysOffset, String name, boolean showTargets) {
-        XYDataset dataset = getNetWealthDataset(user, daysOffset, showTargets);
+    public static JFreeChart getChart(User user,
+                                      Integer daysOffset,
+                                      String name,
+                                      boolean showTargets,
+                                      boolean includeDebt)
+    {
+
+        XYDataset dataset = getNetWealthDataset(user, daysOffset, showTargets, includeDebt);
 
         JFreeChart chart = ChartFactory.createTimeSeriesChart(name,
                                                               "Time line",

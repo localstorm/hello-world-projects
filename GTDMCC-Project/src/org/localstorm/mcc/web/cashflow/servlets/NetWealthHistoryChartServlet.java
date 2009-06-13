@@ -38,8 +38,15 @@ public class NetWealthHistoryChartServlet extends HttpServlet
             showTgts = Boolean.parseBoolean(sstgt);
         }
 
-        String name = (showTgts) ? "Net wealth history (with targets)" : "Net wealth history";
-        JFreeChart chart = NetWealthHistoryChartGenerator.getChart(user, null, name, showTgts);
+        String sdbt = req.getParameter("includeDebt");
+        boolean includeDebt = false;
+        if (sdbt!=null) {
+            includeDebt = Boolean.parseBoolean(sdbt);
+        }
+
+        String name = (showTgts) ? "Targeted net wealth history" : "Net wealth history";
+        name        += (includeDebt) ? " (debt included)" : " (no debt)";
+        JFreeChart chart = NetWealthHistoryChartGenerator.getChart(user, null, name, showTgts, includeDebt);
 
         resp.setContentType(Constants.PNG_CONTENT_TYPE);
         ChartUtilities.writeChartAsPNG(resp.getOutputStream(), chart, 640, 480);

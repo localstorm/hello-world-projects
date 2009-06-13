@@ -46,6 +46,9 @@ public class ValuableObject extends AbstractEntity implements Identifiable, Seri
     @Column(name="is_used_in_balance", updatable=true, nullable=false )
     private boolean usedInBalance;
 
+    @Column(name="is_debt", updatable=true, nullable=false )
+    private boolean debt;
+
 
     public ValuableObject()
     {
@@ -71,6 +74,16 @@ public class ValuableObject extends AbstractEntity implements Identifiable, Seri
 
     public void setUsedInBalance(boolean usedInBalance) {
         this.usedInBalance = usedInBalance;
+    }
+
+    public boolean isDebt()
+    {
+        return debt;
+    }
+
+    public void setDebt(boolean debt)
+    {
+        this.debt = debt;
     }
 
     public static interface Queries

@@ -12,6 +12,7 @@ import org.localstorm.mcc.ejb.cashflow.AssetManager;
 import org.localstorm.mcc.ejb.cashflow.OperationManager;
 import org.localstorm.mcc.ejb.cashflow.entity.HistoricalValue;
 import org.localstorm.mcc.ejb.cashflow.HistoricalValuesManager;
+import org.localstorm.mcc.ejb.cashflow.entity.ValuableObject;
 import org.localstorm.mcc.ejb.cashflow.entity.ValueType;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
@@ -38,18 +39,33 @@ public class CheckpointMakeActionBean extends CashflowBaseActionBean
         Collection<Asset> assets = am.getAssets(user);
         assets = WrapUtil.wrapAssets(assets, om);
 
-        BigDecimal netWealth = BigDecimal.ZERO;
-        BigDecimal balance   = BigDecimal.ZERO;
+        BigDecimal netWealthWoDebt = BigDecimal.ZERO;
+        BigDecimal netWealth       = BigDecimal.ZERO;
+        BigDecimal balance         = BigDecimal.ZERO;
 
         for (Asset a: assets)
         {
             AssetWrapper aw = (AssetWrapper) a;
-            netWealth = netWealth.add(aw.getNetWealth());
-            if (aw.getValuable().isUsedInBalance()) {
+            netWealth       = netWealth.add(aw.getNetWealth());
+
+            ValuableObject vo = aw.getValuable();
+            if (!vo.isDebt()) {
+                netWealthWoDebt = netWealthWoDebt.add(aw.getNetWealth());
+            }
+
+            if (vo.isUsedInBalance()) {
                 balance   = balance.add(aw.getBalance());
             }
         }
 
+        HistoricalValue netWealthWoDebtHV = new HistoricalValue();
+        {
+            netWealthWoDebtHV.setFixDate(new Date());
+            netWealthWoDebtHV.setObjectId(null);
+            netWealthWoDebtHV.setOwner(user);
+            netWealthWoDebtHV.setValueTag(ValueType.NET_WEALTH_WO_DEBT_CHECKPOINT);
+            netWealthWoDebtHV.setVal(netWealthWoDebt);
+        }
 
         HistoricalValue netWealthHV = new HistoricalValue();
         {
@@ -69,6 +85,7 @@ public class CheckpointMakeActionBean extends CashflowBaseActionBean
             balanceHV.setVal(balance);
         }
 
+        hvm.log(netWealthWoDebtHV);
         hvm.log(netWealthHV);
         hvm.log(balanceHV);
 
