@@ -22,9 +22,9 @@
         <stripes:hidden name="assetId" value="${actionBean.assetResult.id}" />
         <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
             <tr>
-                <th>&nbsp;</td>
-                <th colspan="2">Buying asset</td>
-                <th>&nbsp;</td>
+                <th>&nbsp;</th>
+                <th colspan="2">Buying asset</th>
+                <th>&nbsp;</th>
             </tr>
             <tr>
                 <td>&nbsp;</td>
@@ -64,9 +64,9 @@
         <stripes:hidden name="assetId" value="${actionBean.assetResult.id}" />
         <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
             <tr>
-                <th>&nbsp;</td>
-                <th colspan="2">Selling asset</td>
-                <th>&nbsp;</td>
+                <th>&nbsp;</th>
+                <th colspan="2">Selling asset</th>
+                <th>&nbsp;</th>
             </tr>
             <tr>
                 <td>&nbsp;</td>
@@ -106,9 +106,9 @@
         <stripes:hidden name="assetId" value="${actionBean.assetResult.id}" />
         <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
             <tr>
-                <th>&nbsp;</td>
-                <th colspan="2">Selling asset for exchange</td>
-                <th>&nbsp;</td>
+                <th>&nbsp;</th>
+                <th colspan="2">Selling asset for exchange</th>
+                <th>&nbsp;</th>
             </tr>
             <tr>
                 <td>&nbsp;</td>
@@ -148,9 +148,9 @@
         <stripes:hidden name="assetId" value="${actionBean.assetResult.id}" />
         <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
             <tr>
-                <th>&nbsp;</td>
-                <th colspan="2">Buying asset for exchange</td>
-                <th>&nbsp;</td>
+                <th>&nbsp;</th>
+                <th colspan="2">Buying asset for exchange</th>
+                <th>&nbsp;</th>
             </tr>
             <tr>
                 <td>&nbsp;</td>
@@ -235,10 +235,14 @@
         <td align="right" ><stripes:checkbox name="usedInBalance" checked="${actionBean.assetResult.valuable.usedInBalance}" /></td>
     </tr>
     <tr bgColor="#FBFFBD">
+        <td align="right" >Is debt:</td>
+        <td align="right" ><stripes:checkbox name="debt" checked="${actionBean.assetResult.valuable.debt}" /></td>
+    </tr>
+    <tr bgColor="#DFFFBF">
         <td colspan="2" align="center"><stripes:submit name="upd" value="Update"/>&nbsp;<stripes:reset name="rst" /></td>
     </tr>
     
-    <tr bgcolor="#FFEABD">
+    <tr bgcolor="#FBFFBD">
         <td colspan="2">
         <table width="100%" border="0px">
             <tr>

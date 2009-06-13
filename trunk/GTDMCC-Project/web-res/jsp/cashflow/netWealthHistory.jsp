@@ -30,12 +30,15 @@
 <div align="center">
     <br/>
     <img src="<c:url value="/chart/netWealthHistory.png">
-                    <c:param name="showTargets" value="false" />
+                    <c:param name="showTargets" value="true" />
+                    <c:param name="includeDebt" value="true" />
               </c:url>"/>
     <br/><br/>
     <img src="<c:url value="/chart/netWealthHistory.png">
                     <c:param name="showTargets" value="true" />
+                    <c:param name="includeDebt" value="false" />
               </c:url>"/>
+    
 </div>
 
 
