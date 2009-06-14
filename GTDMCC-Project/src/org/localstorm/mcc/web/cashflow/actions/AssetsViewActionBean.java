@@ -30,8 +30,8 @@ public class AssetsViewActionBean extends CashflowBaseActionBean {
     private BigDecimal        netWealthWoDebt;
     private BigDecimal        netWealth;
     private BigDecimal        balance;
+    private BigDecimal        debt;
     private boolean           checkpointUpdateNeeded;
-
 
     public Collection<Asset> getAssets() {
         return assets;
@@ -64,6 +64,16 @@ public class AssetsViewActionBean extends CashflowBaseActionBean {
         this.netWealthWoDebt = netWealthWoDebt;
     }
 
+    public BigDecimal getDebt()
+    {
+        return debt;
+    }
+
+    public void setDebt(BigDecimal debt)
+    {
+        this.debt = debt;
+    }
+
     @DefaultHandler
     @Logged
     public Resolution filling() {
@@ -78,6 +88,7 @@ public class AssetsViewActionBean extends CashflowBaseActionBean {
         this.netWealth       = BigDecimal.ZERO;
         this.netWealthWoDebt = BigDecimal.ZERO;
         this.balance         = BigDecimal.ZERO;
+        this.debt            = BigDecimal.ZERO;
 
         for (Asset a: assets)
         {
@@ -87,6 +98,8 @@ public class AssetsViewActionBean extends CashflowBaseActionBean {
             ValuableObject vo = aw.getValuable();
             if (!vo.isDebt()) {
                 this.netWealthWoDebt = this.netWealthWoDebt.add(aw.getNetWealth());
+            } else {
+                this.debt = this.debt.add(aw.getNetWealth());
             }
 
             if (vo.isUsedInBalance()) {
@@ -97,7 +110,8 @@ public class AssetsViewActionBean extends CashflowBaseActionBean {
         this.checkpointUpdateNeeded = this.getCheckpointStatus(user,
                                                                this.netWealth,
                                                                this.balance,
-                                                               this.netWealthWoDebt);
+                                                               this.netWealthWoDebt,
+                                                               this.debt);
 
         return new ForwardResolution(Views.ASSETS);
     }
@@ -105,21 +119,25 @@ public class AssetsViewActionBean extends CashflowBaseActionBean {
     private boolean getCheckpointStatus(User user,
                                         BigDecimal netWealth,
                                         BigDecimal balance,
-                                        BigDecimal netWealthWoDebt) {
+                                        BigDecimal netWealthWoDebt,
+                                        BigDecimal debt) {
 
         HistoricalValuesManager hvm = super.getHistoricalValuesManager();
 
         ValueType twc  = ValueType.NET_WEALTH_CHECKPOINT;
         ValueType twc2 = ValueType.BALANCE_CHECKPOINT;
         ValueType twc3 = ValueType.NET_WEALTH_WO_DEBT_CHECKPOINT;
+        ValueType twc4 = ValueType.DEBT_CHECKPOINT;
 
         HistoricalValue hv  = hvm.getLastHistoricalValue(twc, BigDecimal.ZERO, user);
         HistoricalValue hv2 = hvm.getLastHistoricalValue(twc2, BigDecimal.ZERO, user);
         HistoricalValue hv3 = hvm.getLastHistoricalValue(twc3, BigDecimal.ZERO, user);
+        HistoricalValue hv4 = hvm.getLastHistoricalValue(twc4, BigDecimal.ZERO, user);
 
         return !hv.getVal().equals(netWealth) ||
                !hv2.getVal().equals(balance)  ||
-               !hv3.getVal().equals(netWealthWoDebt);
+               !hv3.getVal().equals(netWealthWoDebt) ||
+               !hv4.getVal().equals(debt);
     }
 
 }

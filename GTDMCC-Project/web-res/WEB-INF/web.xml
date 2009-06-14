@@ -383,6 +383,12 @@
         </servlet>
 
         <servlet>
+                <servlet-name>DebtHistoryChartServlet</servlet-name>
+                <servlet-class>org.localstorm.mcc.web.cashflow.servlets.DebtHistoryChartServlet</servlet-class>
+                <load-on-startup>2</load-on-startup>
+        </servlet>
+
+        <servlet>
                 <servlet-name>AssetCostChartServlet</servlet-name>
                 <servlet-class>org.localstorm.mcc.web.cashflow.servlets.AssetCostChartServlet</servlet-class>
                 <load-on-startup>2</load-on-startup>
@@ -434,6 +440,11 @@
         <servlet-mapping>
                 <servlet-name>BalanceHistoryChartServlet</servlet-name>
                 <url-pattern>/chart/balanceHistory.png</url-pattern>
+        </servlet-mapping>
+
+        <servlet-mapping>
+                <servlet-name>DebtHistoryChartServlet</servlet-name>
+                <url-pattern>/chart/debtHistory.png</url-pattern>
         </servlet-mapping>
 
         <servlet-mapping>

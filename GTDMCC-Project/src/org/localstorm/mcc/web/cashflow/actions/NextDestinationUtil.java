@@ -29,6 +29,9 @@ public class NextDestinationUtil
             case NET_WEALTH_HISTORY:
                 rr = new RedirectResolution(NetWealthHisotryReportActionBean.class);
                 break;
+            case DEBT_HISTORY:
+                rr = new RedirectResolution(DebtHisotryReportActionBean.class);
+                break;
             default:
                 rr = NextDestinationUtil.getDefaultRedirection();
                 break;

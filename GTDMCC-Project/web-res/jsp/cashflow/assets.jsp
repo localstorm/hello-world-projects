@@ -25,7 +25,11 @@
         <td width="50%" align="right" >Net wealth (w/o debt):</td>
         <td width="50%" align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${actionBean.netWealthWoDebt}"/></td>
     </tr>
-    <tr bgColor="#F3F3F3">
+    <tr bgcolor="#F3F3F3">
+        <td width="50%" align="right" >Total debt:</td>
+        <td width="50%" align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${actionBean.debt}"/></td>
+    </tr>
+    <tr bgColor="#E4F1F3">
         <td width="50%" align="right" >Balance:</td>
         <td width="50%" align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${actionBean.balance}"/></td>
     </tr>
