@@ -42,6 +42,7 @@ public class CheckpointMakeActionBean extends CashflowBaseActionBean
         BigDecimal netWealthWoDebt = BigDecimal.ZERO;
         BigDecimal netWealth       = BigDecimal.ZERO;
         BigDecimal balance         = BigDecimal.ZERO;
+        BigDecimal debt            = BigDecimal.ZERO;
 
         for (Asset a: assets)
         {
@@ -51,6 +52,8 @@ public class CheckpointMakeActionBean extends CashflowBaseActionBean
             ValuableObject vo = aw.getValuable();
             if (!vo.isDebt()) {
                 netWealthWoDebt = netWealthWoDebt.add(aw.getNetWealth());
+            } else {
+                debt = debt.add(aw.getNetWealth());
             }
 
             if (vo.isUsedInBalance()) {
@@ -85,9 +88,19 @@ public class CheckpointMakeActionBean extends CashflowBaseActionBean
             balanceHV.setVal(balance);
         }
 
+        HistoricalValue debtHV = new HistoricalValue();
+        {
+            debtHV.setFixDate(new Date());
+            debtHV.setObjectId(null);
+            debtHV.setOwner(user);
+            debtHV.setValueTag(ValueType.DEBT_CHECKPOINT);
+            debtHV.setVal(debt);
+        }
+
         hvm.log(netWealthWoDebtHV);
         hvm.log(netWealthHV);
         hvm.log(balanceHV);
+        hvm.log(debtHV);
 
         return new RedirectResolution(AssetsViewActionBean.class);
     }

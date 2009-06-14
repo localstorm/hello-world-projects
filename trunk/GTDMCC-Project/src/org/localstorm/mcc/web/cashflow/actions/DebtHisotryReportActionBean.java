@@ -12,15 +12,15 @@ import org.localstorm.tools.aop.runtime.Logged;
  * @secure-by session (no security checks)
  * @author localstorm
  */
-@UrlBinding("/actions/cash/nil/NetWealthHistoryReport")
-public class NetWealthHisotryReportActionBean extends CashflowBaseActionBean {
+@UrlBinding("/actions/cash/nil/DebtHistoryReport")
+public class DebtHisotryReportActionBean extends CashflowBaseActionBean {
 
     @DefaultHandler
     @Logged
     public Resolution filling() {
-        ReturnPageBean rpb = new ReturnPageBean(Pages.NET_WEALTH_HISTORY.toString());
+        ReturnPageBean rpb = new ReturnPageBean(Pages.DEBT_HISTORY.toString());
         super.setReturnPageBean(rpb);
-        return new ForwardResolution(Views.NET_WEALTH_HISTORY);
+        return new ForwardResolution(Views.DEBT_HISTORY);
     }
 
 }
