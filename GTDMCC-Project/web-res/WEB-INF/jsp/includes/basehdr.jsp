@@ -17,7 +17,15 @@
 <body>
 
 <script type="text/javascript">
-setActiveStyleSheet(this, 'blue');
+    setActiveStyleSheet(this, 'blue');
+    var poller = window.setInterval('$.ajax({ type: "GET", url: "<c:url value="/poll" />", \n\
+                                              dataType: "text", \n\
+                                              error: function(msg){ \n\
+                                                        alert("Remote server polling failed. Connection error, server down or session expired!");\n\
+                                                        window.clearTimeout(poller);\n\
+                                                     }\n\
+                                    });',
+                                    1800000);
 </script>
 
 <div id="topPan">
