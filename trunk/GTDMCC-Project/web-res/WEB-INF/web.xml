@@ -401,6 +401,12 @@
         </servlet>
 
         <servlet>
+                <servlet-name>PollingServlet</servlet-name>
+                <servlet-class>org.localstorm.mcc.web.PollingServlet</servlet-class>
+                <load-on-startup>2</load-on-startup>
+        </servlet>
+
+        <servlet>
                 <servlet-name>CallTimingServlet</servlet-name>
                 <servlet-class>org.localstorm.mcc.web.CallTimingServlet</servlet-class>
                 <load-on-startup>2</load-on-startup>
@@ -416,6 +422,10 @@
                 <url-pattern>/auth</url-pattern>
         </servlet-mapping>
 
+        <servlet-mapping>
+                <servlet-name>PollingServlet</servlet-name>
+                <url-pattern>/poll</url-pattern>
+        </servlet-mapping>
 
         <servlet-mapping>
                 <servlet-name>TaskContextsStructureChartServlet</servlet-name>
