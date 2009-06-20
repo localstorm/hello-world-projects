@@ -1,18 +1,3 @@
-var browserType;
-
-if (document.layers) {
-    browserType = "nn4"
-}
-if (document.all) {
-    browserType = "ie"
-}
-if (window.navigator.userAgent.toLowerCase().match("gecko")) {
-  browserType = "gecko"
-}
-if (window.opera) {
-  browserType = "opera"
-}
-
 function focus(id)    
 {
     var z=document.getElementById(id); 
@@ -23,60 +8,23 @@ function focus(id)
     }
 }
 
-
-function hide(id) 
+function hide(id)
 {
-  if (browserType == "gecko" || browserType == "opera")
-     document.poppedLayer = eval('document.getElementById("'+id+'")');
-  else if (browserType == "ie")
-     document.poppedLayer = eval('document.getElementById("'+id+'")');
-  else
-     document.poppedLayer = eval('document.layers["'+id+'"]');
-  document.poppedLayer.style.display = "none";
+  $('#'+id).hide('fast');
 }
+
 
 function show(id) 
 {
-  if (browserType == "gecko" || browserType == "opera")
-     document.poppedLayer = eval('document.getElementById("'+id+'")');
-  else if (browserType == "ie")
-     document.poppedLayer = eval('document.getElementById("'+id+'")');
-  else
-     document.poppedLayer = eval('document.layers["'+id+'"]');
-  document.poppedLayer.style.display = "inline";
+  $('#'+id).show('fast');
 }
 
 function show(id, focusId) 
 {
-  if (browserType == "gecko" || browserType == "opera")
-     document.poppedLayer = eval('document.getElementById("'+id+'")');
-  else if (browserType == "ie")
-     document.poppedLayer = eval('document.getElementById("'+id+'")');
-  else
-     document.poppedLayer = eval('document.layers["'+id+'"]');
-  document.poppedLayer.style.display = "inline";
-  
+  $('#'+id).show('fast');
   focus(focusId);
 }
 
-function show_tr(id) {
-  if (browserType == "gecko" || browserType == "opera")
-     document.poppedLayer = eval('document.getElementById("'+id+'")');
-  else if (browserType == "ie")
-     document.poppedLayer = eval('document.getElementById("'+id+'")');
-  else
-     document.poppedLayer = eval('document.layers["'+id+'"]');
-  document.poppedLayer.style.display = '';
-}
 
-function hide_tr(id) {
-  if (browserType == "gecko" || browserType == "opera")
-     document.poppedLayer = eval('document.getElementById("'+id+'")');
-  else if (browserType == "ie")
-     document.poppedLayer = eval('document.getElementById("'+id+'")');
-  else
-     document.poppedLayer = eval('document.layers["'+id+'"]');
-  document.poppedLayer.style.display = 'none';
-}
 
 
