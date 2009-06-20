@@ -12,7 +12,8 @@ select totals.name cname, totals.cid cid, total pending, awaited, flight, red, d
                                 is_cancelled=false and
                                 is_finished=false and
                                 is_awaited=false and
-                                is_delegated=false
+                                is_delegated=false and
+                                id not in (select task_id from HINTS)
                             GROUP BY list_id) tc
                         ON l.id=tc.list_id
                     ) GROUP BY context_id
@@ -158,7 +159,8 @@ select totals.name cname, totals.cid cid, total pending, awaited, flight, red, d
                                         is_finished=false and
                                         is_awaited=false and
                                         is_delegated=false and
-                                        effort=1
+                                        effort=1 and
+                                        id not in (select task_id from HINTS)
                                     GROUP BY list_id
                                 ) lc ON lst.id=lc.list_id
                             )
@@ -185,7 +187,8 @@ select totals.name cname, totals.cid cid, total pending, awaited, flight, red, d
                                         is_finished=false and
                                         is_awaited=false and
                                         is_delegated=false and
-                                        effort=2
+                                        effort=2 and
+                                        id not in (select task_id from HINTS)
                                     GROUP BY list_id
                                 ) lc ON lst.id=lc.list_id
                             )
@@ -212,7 +215,8 @@ select totals.name cname, totals.cid cid, total pending, awaited, flight, red, d
                                         is_finished=false and
                                         is_awaited=false and
                                         is_delegated=false and
-                                        effort=3
+                                        effort=3 and
+                                        id not in (select task_id from HINTS)
                                     GROUP BY list_id
                                 ) lc ON lst.id=lc.list_id
                             )
@@ -239,7 +243,8 @@ select totals.name cname, totals.cid cid, total pending, awaited, flight, red, d
                                         is_finished=false and
                                         is_awaited=false and
                                         is_delegated=false and
-                                        effort=4
+                                        effort=4 and
+                                        id not in (select task_id from HINTS)
                                     GROUP BY list_id
                                 ) lc ON lst.id=lc.list_id
                             )
@@ -266,7 +271,8 @@ select totals.name cname, totals.cid cid, total pending, awaited, flight, red, d
                                         is_finished=false and
                                         is_awaited=false and
                                         is_delegated=false and
-                                        effort=5
+                                        effort=5 and
+                                        id not in (select task_id from HINTS)
                                     GROUP BY list_id
                                 ) lc ON lst.id=lc.list_id
                             )

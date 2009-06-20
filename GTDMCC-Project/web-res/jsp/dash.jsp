@@ -43,20 +43,20 @@
     <h2><span>GTD Battle Map</span> pane</h2>
 	<div align="center">
 		<table class="dash">
-			<tr class="dashHdr" ><th colspan="12">Consolidated Tasks Report</th></tr>
-			<tr class="dashHdr">
-                <th width="34%">Context name</th>
-                <th width="6%"><img src="<c:url value="/images/loex.png"/>" /></th>
-                <th width="6%"><img src="<c:url value="/images/loe1.png"/>" /></th>
-                <th width="6%"><img src="<c:url value="/images/loe2.png"/>" /></th>
-                <th width="6%"><img src="<c:url value="/images/loe3.png"/>" /></th>
-                <th width="6%"><img src="<c:url value="/images/loe4.png"/>" /></th>
-                <th width="6%"><img src="<c:url value="/images/loe5.png"/>" /></th>
-                <th width="6%"><img src="<c:url value="/images/awaited_dash.png"/>" /></th>
-                <th width="6%"><img src="<c:url value="/images/flight_dash.png"/>" /></th>
-                <th width="6%"><img src="<c:url value="/images/redline.png"/>" /></th>
-                <th width="6%"><img src="<c:url value="/images/deadline.png" />"/></th>
-                <th width="6%"><img src="<c:url value="/images/check.png" />"/></th>
+			<tr class="dashHdr" ><th colspan="12" class="normalGtdTh">Consolidated Tasks Report</th></tr>
+			<tr>
+                <th width="34%" class="normalGtdTh">Context name</th>
+                <th width="6%" class="specialGtdTh"><img src="<c:url value="/images/loex.png"/>" /></th>
+                <th width="6%" class="specialGtdTh"><img src="<c:url value="/images/loe1.png"/>" /></th>
+                <th width="6%" class="specialGtdTh"><img src="<c:url value="/images/loe2.png"/>" /></th>
+                <th width="6%" class="specialGtdTh"><img src="<c:url value="/images/loe3.png"/>" /></th>
+                <th width="6%" class="specialGtdTh"><img src="<c:url value="/images/loe4.png"/>" /></th>
+                <th width="6%" class="specialGtdTh"><img src="<c:url value="/images/loe5.png"/>" /></th>
+                <th width="6%" class="normalGtdTh"><img src="<c:url value="/images/awaited_dash.png"/>" /></th>
+                <th width="6%" class="normalGtdTh"><img src="<c:url value="/images/flight_dash.png"/>" /></th>
+                <th width="6%" class="normalGtdTh"><img src="<c:url value="/images/redline.png"/>" /></th>
+                <th width="6%" class="normalGtdTh"><img src="<c:url value="/images/deadline.png" />"/></th>
+                <th width="6%" class="normalGtdTh"><img src="<c:url value="/images/check.png" />"/></th>
             </tr>
             <c:set var="color" value="#FFFFFF" />
             <c:forEach items="${gtdDashReport.rows}" var="row">
@@ -118,19 +118,19 @@
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
-			<tr class="dashHdr">
-                <th>Total</th>
-                <th><c:out value="${gtdDashReport.totals.pending}" /></th>
-                <th><c:out value="${gtdDashReport.totals.elementary}" /></th>
-                <th><c:out value="${gtdDashReport.totals.easy}" /></th>
-                <th><c:out value="${gtdDashReport.totals.medium}" /></th>
-                <th><c:out value="${gtdDashReport.totals.difficult}" /></th>
-                <th><c:out value="${gtdDashReport.totals.veryDifficult}" /></th>
-                <th><c:out value="${gtdDashReport.totals.awaited}" /></th>
-                <th><c:out value="${gtdDashReport.totals.flightPlan}" /></th>
-                <th><c:out value="${gtdDashReport.totals.red}" /></th>
-                <th><c:out value="${gtdDashReport.totals.dead}" /></th>
-                <th><c:out value="${gtdDashReport.totals.done}" /></th>
+			<tr>
+                <th class="normalGtdTh">Total</th>
+                <th class="specialGtdTh"><c:out value="${gtdDashReport.totals.pending}" /></th>
+                <th class="specialGtdTh"><c:out value="${gtdDashReport.totals.elementary}" /></th>
+                <th class="specialGtdTh"><c:out value="${gtdDashReport.totals.easy}" /></th>
+                <th class="specialGtdTh"><c:out value="${gtdDashReport.totals.medium}" /></th>
+                <th class="specialGtdTh"><c:out value="${gtdDashReport.totals.difficult}" /></th>
+                <th class="specialGtdTh"><c:out value="${gtdDashReport.totals.veryDifficult}" /></th>
+                <th class="normalGtdTh"><c:out value="${gtdDashReport.totals.awaited}" /></th>
+                <th class="normalGtdTh"><c:out value="${gtdDashReport.totals.flightPlan}" /></th>
+                <th class="normalGtdTh"><c:out value="${gtdDashReport.totals.red}" /></th>
+                <th class="normalGtdTh"><c:out value="${gtdDashReport.totals.dead}" /></th>
+                <th class="normalGtdTh"><c:out value="${gtdDashReport.totals.done}" /></th>
             </tr>
 		</table>
         <c:if test="${gtdDashReport.totals.done>0 or 

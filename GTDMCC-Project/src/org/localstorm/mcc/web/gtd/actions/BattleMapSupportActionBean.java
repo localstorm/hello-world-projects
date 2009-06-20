@@ -100,11 +100,11 @@ public class BattleMapSupportActionBean extends GtdBaseActionBean
             case VERY_DIFFICULT:
                 _tasks = tm.findByLoE(user, context, Effort.valueOf(this.getFilter()));
                 break;
-            case FIN:
-                _tasks = tm.findFinished(user, context);
-                break;
             case PENDING:
                 _tasks = tm.findPending(user, context);
+                break;
+            case FIN:
+                _tasks = tm.findFinished(user, context);
                 break;
             case AWAITED:
                 _tasks = tm.findAwaited(user, context);
