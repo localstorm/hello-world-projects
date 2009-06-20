@@ -184,7 +184,13 @@ div.warn {
   text-align: center;
 }
 
-#dashGTDPan tr.dashHdr th {
+#dashGTDPan th.specialGtdTh {
+  border: 1px solid #DADADA;
+  border-collapse: collapse;
+  background:#DCFDB4;
+}
+
+#dashGTDPan th.normalGtdTh {
   border: 1px solid #DADADA;
   border-collapse: collapse;
   background:#FFFDCD;

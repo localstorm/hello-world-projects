@@ -72,6 +72,10 @@ create table HINTS
     FOREIGN KEY (task_id) REFERENCES TASKS(id) ON DELETE CASCADE 
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
+CREATE INDEX idx_hints_tasks
+    using BTREE
+    ON HINTS (task_id);
+
 create table TASKS_TO_FLIGHT_PLANS 
 (
     id      INT NOT NULL AUTO_INCREMENT,

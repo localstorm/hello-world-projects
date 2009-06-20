@@ -1,6 +1,5 @@
 package org.localstorm.mcc.ejb.gtd.entity;
 
-import org.localstorm.mcc.ejb.gtd.entity.GTDList;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
@@ -28,12 +27,16 @@ import org.localstorm.mcc.ejb.Identifiable;
 @NamedQueries({
     @NamedQuery(
         name = Task.Queries.FIND_LOE,
-        query= "SELECT o FROM Task o WHERE o.cancelled=false and o.finished=false and o.awaited=false and o.delegated=false and o.list.context.owner=:user and o.effort=:effort" +
+        query= "SELECT o FROM Task o WHERE o.cancelled=false and o.finished=false and " +
+        "o.awaited=false and o.delegated=false and o.list.context.owner=:user " +
+        "and o.effort=:effort and o NOT IN (SELECT h.task from Hint h)" +
         " ORDER BY o.list.name"
     ),
     @NamedQuery(
         name = Task.Queries.FIND_LOE_BY_CTX,
-        query= "SELECT o FROM Task o WHERE o.cancelled=false and o.finished=false and o.awaited=false and o.delegated=false and o.list.context=:ctx and o.effort=:effort" +
+        query= "SELECT o FROM Task o WHERE o.cancelled=false and o.finished=false and o.awaited=false and " +
+               "o.delegated=false and o.list.context=:ctx and " +
+               "o.effort=:effort and o NOT IN (SELECT h.task from Hint h)" +
         " ORDER BY o.list.name"
     ),
     @NamedQuery(
@@ -46,7 +49,7 @@ import org.localstorm.mcc.ejb.Identifiable;
         query= "SELECT o FROM Task o WHERE (o.cancelled=true or o.finished=true) and o.list.context.owner=:user" +
         " ORDER BY o.list.context.name, o.list.name"
     ),
-            @NamedQuery(
+    @NamedQuery(
         name = Task.Queries.FIND_AWAITED_BY_CTX,
         query= "SELECT o FROM Task o WHERE o.cancelled=false and o.finished=false and o.delegated=true and o.list.context=:ctx" +
         " ORDER BY o.list.name, o.effort"
@@ -58,12 +61,15 @@ import org.localstorm.mcc.ejb.Identifiable;
     ),
     @NamedQuery(
         name = Task.Queries.FIND_UNFINISHED,
-        query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and o.delegated=false and " +
+        query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and " +
+        "o.finished=false and o.cancelled=false and o.delegated=false and " +
+        "o NOT IN (SELECT h.task from Hint h) and " +
         "o.awaited=false ORDER BY o.list.context.name, o.list.name ASC"
     ),
     @NamedQuery(
         name = Task.Queries.FIND_UNFINISHED_BY_CTX,
-        query= "SELECT o FROM Task o WHERE o.list.context=:ctx and o.finished=false and o.cancelled=false and o.delegated=false " +
+        query= "SELECT o FROM Task o WHERE o.list.context=:ctx and o.finished=false and " +
+        "o.cancelled=false and o.delegated=false and o NOT IN (SELECT h.task from Hint h) " +
         "and o.awaited=false ORDER BY o.list.name, o.effort ASC"
     ),
     @NamedQuery(
