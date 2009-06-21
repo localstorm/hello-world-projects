@@ -90,7 +90,9 @@ import org.localstorm.mcc.ejb.Identifiable;
     ),
     @NamedQuery(
         name = Task.Queries.FIND_OLDEST_BY_CTX,
-        query= "SELECT o FROM Task o JOIN FETCH o.list JOIN FETCH o.list.context WHERE o.list.context=:ctx and o.finished=false and o.cancelled=false and o.delegated=false ORDER BY o.creation ASC"
+        query= "SELECT o FROM Task o WHERE o.list.context=:ctx and o.finished=false and " +
+        "o.cancelled=false and o NOT IN (SELECT h.task from Hint h) " +
+        "ORDER BY o.creation ASC"
     ),
     @NamedQuery(
         name = Task.Queries.FIND_PENDING_CONSTRAINED_BY_USER,
