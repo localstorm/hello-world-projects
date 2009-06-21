@@ -60,6 +60,18 @@ import org.localstorm.mcc.ejb.Identifiable;
         " ORDER BY o.list.context.name, o.list.name"
     ),
     @NamedQuery(
+        name = Task.Queries.FIND_HINTED_BY_USER,
+        query= "SELECT o FROM Task o WHERE o.cancelled=false and o.finished=false and o.delegated=false and o.list.context.owner=:user" +
+        " and o in (SELECT h.task FROM Hint h)" +
+        " ORDER BY o.list.context.name, o.list.name"
+    ),
+    @NamedQuery(
+        name = Task.Queries.FIND_HINTED_BY_CTX,
+        query= "SELECT o FROM Task o WHERE o.cancelled=false and o.finished=false and o.delegated=false and o.list.context=:ctx" +
+        " and o in (SELECT h.task FROM Hint h)" +
+        " ORDER BY o.list.context.name, o.list.name"
+    ),
+    @NamedQuery(
         name = Task.Queries.FIND_UNFINISHED,
         query= "SELECT o FROM Task o WHERE o.list.context.owner=:user and " +
         "o.finished=false and o.cancelled=false and o.delegated=false and " +
@@ -81,7 +93,7 @@ import org.localstorm.mcc.ejb.Identifiable;
         query= "SELECT o FROM Task o JOIN FETCH o.list JOIN FETCH o.list.context WHERE o.list.context=:ctx and o.finished=false and o.cancelled=false and o.delegated=false ORDER BY o.creation ASC"
     ),
     @NamedQuery(
-        name = Task.Queries.FIND_SCHEDULED_BY_USER, 
+        name = Task.Queries.FIND_PENDING_CONSTRAINED_BY_USER,
         query= "SELECT o FROM Task o JOIN FETCH o.list JOIN FETCH o.list.context WHERE o.list.context.owner=:user and o.finished=false and o.cancelled=false and (o.redline IS NOT NULL or o.deadline IS NOT NULL)"
     ),
     @NamedQuery(
@@ -317,7 +329,9 @@ public class Task extends AbstractEntity implements Identifiable, Serializable
         public static final String FIND_DEADLINED        = "findDeadlined";
         public static final String FIND_DEADLINED_BY_CTX = "findDeadlinedByCtx";
         public static final String FIND_CLEANABLE_BY_USER= "findCleanableTasksUpByUser";
-        public static final String FIND_SCHEDULED_BY_USER = "findScheduledTasksByUser";
+        public static final String FIND_PENDING_CONSTRAINED_BY_USER = "findPendingConstrByUser";
+        public static final String FIND_HINTED_BY_USER   = "findHintedByUser";
+        public static final String FIND_HINTED_BY_CTX    = "findHintedByCtx";
         public static final String FIND_OLDEST_BY_CTX    = "finOldestTasksByCtx";
         public static final String FIND_BY_USER          = "findAllTasksByUser";
         public static final String FIND_FINISHED         = "findFinished";

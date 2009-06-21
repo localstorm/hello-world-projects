@@ -1,4 +1,5 @@
-select totals.name cname, totals.cid cid, total pending, awaited, flight, red, dead, done, effort1, effort2, effort3, effort4, effort5 from (
+select totals.name cname, totals.cid cid, total pending, awaited, flight, red, dead, done, effort1, effort2, effort3, effort4, effort5, hinted
+from (
     (
             select c.name name, c.id cid, IF(total IS NULL, 0, total) total from (
                 (select name, id from CONTEXTS where user_id=? and is_archived=false) c
@@ -282,4 +283,31 @@ select totals.name cname, totals.cid cid, total pending, awaited, flight, red, d
             )
         ) vd
         ON difficult.cid=vd.cid
+        JOIN
+        (
+            select id cid, IF(total IS NULL, 0, total) hinted  from (
+                    (select name, id from CONTEXTS where user_id=? and is_archived=false) c
+                    LEFT OUTER JOIN
+                    (
+                        select context_id, SUM(lcnt) total from
+                        (
+                            select context_id, lcnt from
+                            (
+                                LISTS lst
+                                JOIN (
+                                    select list_id, SUM(1) lcnt from TASKS where
+                                        is_cancelled=false and
+                                        is_finished=false and
+                                        is_awaited=false and
+                                        is_delegated=false and
+                                        id in (select task_id from HINTS)
+                                    GROUP BY list_id
+                                ) lc ON lst.id=lc.list_id
+                            )
+                        ) ctx GROUP BY ctx.context_id
+                    ) co
+                    ON c.id=co.context_id
+            )
+        ) hnt
+        ON vd.cid=hnt.cid
 ) ORDER BY cname
