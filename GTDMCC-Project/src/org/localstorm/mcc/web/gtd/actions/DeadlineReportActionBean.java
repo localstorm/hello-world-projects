@@ -87,7 +87,7 @@ public class DeadlineReportActionBean extends GtdBaseActionBean
 
         FlightPlan fp = fpm.findByUser(user);
         Collection<Task> fpt   = fpm.getTasksFromFlightPlan(fp);
-        Collection<Task> tasks = tm.findScheduledNonFinishedTasks(user);
+        Collection<Task> tasks = tm.findPendingTimeConstrainedTasks(user);
 
         if (this.isNoFilter()) {
             super.setContextIdFilter(-1);

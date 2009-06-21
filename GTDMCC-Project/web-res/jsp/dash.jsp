@@ -67,8 +67,8 @@
                                             </c:url>';"><c:out value="${row.contextName}" /></td>
                     <td onClick="document.location.href='<c:url value="/actions/gtd/ctx/BattleMapSupport">
                                                 <c:param name="contextId" value="${row.contextId}" />
-                                                <c:param name="filter" value="REPEATED" />
-                                            </c:url>';"><c:out value="?" /></td>
+                                                <c:param name="filter" value="HINTED" />
+                                            </c:url>';"><c:out value="${row.hinted}" /></td>
                     <td onClick="document.location.href='<c:url value="/actions/gtd/ctx/BattleMapSupport">
                                                 <c:param name="contextId" value="${row.contextId}" />
                                                 <c:param name="filter" value="PENDING" />
@@ -125,7 +125,7 @@
             </c:forEach>
 			<tr>
                 <th class="normalGtdTh">Total</th>
-                <th class="normalGtdTh"><c:out value="XXX" /></th>
+                <th class="normalGtdTh"><c:out value="${gtdDashReport.totals.hinted}" /></th>
                 <th class="specialGtdTh"><c:out value="${gtdDashReport.totals.pending}" /></th>
                 <th class="specialGtdTh"><c:out value="${gtdDashReport.totals.elementary}" /></th>
                 <th class="specialGtdTh"><c:out value="${gtdDashReport.totals.easy}" /></th>

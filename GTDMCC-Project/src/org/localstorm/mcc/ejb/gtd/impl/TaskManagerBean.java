@@ -107,7 +107,7 @@ public class TaskManagerBean extends AbstractManager<Task>
 
     @Override
     @SuppressWarnings("unchecked")
-    public Collection<Task> findRedlinedTasks(User user, Context ctx) {
+    public Collection<Task> findRedlined(User user, Context ctx) {
         
         Query tq;
         if (ctx==null) {
@@ -162,7 +162,7 @@ public class TaskManagerBean extends AbstractManager<Task>
 
     @Override
     @SuppressWarnings("unchecked")
-    public Collection<Task> findDeadlinedTasks(User user, Context ctx) {
+    public Collection<Task> findDeadlined(User user, Context ctx) {
         Query tq;
         if (ctx==null) {
             tq = em.createNamedQuery(Task.Queries.FIND_DEADLINED);
@@ -174,6 +174,23 @@ public class TaskManagerBean extends AbstractManager<Task>
             tq.setParameter(Task.Properties.NOW, new Date());
         }
         
+        List<Task> list = tq.getResultList();
+        super.updateObjectsMap(list);
+        return list;
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public Collection<Task> findHinted(User user, Context ctx) {
+        Query tq;
+        if (ctx==null) {
+            tq = em.createNamedQuery(Task.Queries.FIND_HINTED_BY_USER);
+            tq.setParameter(Task.Properties.USER, user);
+        } else {
+            tq = em.createNamedQuery(Task.Queries.FIND_HINTED_BY_CTX);
+            tq.setParameter(Task.Properties.CTX, ctx);
+        }
+
         List<Task> list = tq.getResultList();
         super.updateObjectsMap(list);
         return list;
@@ -205,8 +222,8 @@ public class TaskManagerBean extends AbstractManager<Task>
 
     @Override
     @SuppressWarnings("unchecked")
-    public Collection<Task> findScheduledNonFinishedTasks(User user) {
-        Query tq = em.createNamedQuery(Task.Queries.FIND_SCHEDULED_BY_USER);
+    public Collection<Task> findPendingTimeConstrainedTasks(User user) {
+        Query tq = em.createNamedQuery(Task.Queries.FIND_PENDING_CONSTRAINED_BY_USER);
         tq.setParameter(Task.Properties.USER, user);
 
         List<Task> list = tq.getResultList();

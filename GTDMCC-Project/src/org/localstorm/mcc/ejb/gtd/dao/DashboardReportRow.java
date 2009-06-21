@@ -20,6 +20,11 @@ public class DashboardReportRow extends AbstractEntity {
     private int medium;
     private int difficult;
     private int veryDifficult;
+    private int hinted;
+
+    public int getHinted() {
+        return hinted;
+    }
 
     public int getAwaited() {
         return awaited;
@@ -124,6 +129,10 @@ public class DashboardReportRow extends AbstractEntity {
 
     public void setVeryDifficult(int veryDifficult) {
         this.veryDifficult = veryDifficult;
+    }
+
+    public void setHinted(int hinted) {
+        this.hinted = hinted;
     }
     
 }

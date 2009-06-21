@@ -4,6 +4,9 @@
 <%@ include file="/WEB-INF/jsp/includes/gtd/hdr.jsp" %>
 
 <c:choose>
+    <c:when test="${actionBean.filter eq 'HINTED'}">
+        <h2><span>HINTED</span> tasks</h2>
+    </c:when>
     <c:when test="${actionBean.filter eq 'PENDING'}">
         <h2><span>PENDING</span> tasks</h2>
     </c:when>

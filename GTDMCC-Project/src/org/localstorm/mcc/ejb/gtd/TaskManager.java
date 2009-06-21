@@ -22,11 +22,13 @@ public interface TaskManager extends BaseManager<Task>
 
     public Collection<Task> findAwaited(User user, Context ctx);
 
-    public Collection<Task> findDeadlinedTasks(User user, Context ctx);
+    public Collection<Task> findDeadlined(User user, Context ctx);
 
     public Collection<Task> findFinished(User user, Context context);
 
-    public Collection<Task> findRedlinedTasks(User user, Context ctx);
+    public Collection<Task> findHinted(User user, Context context);
+
+    public Collection<Task> findRedlined(User user, Context ctx);
 
     public Collection<Task> findPending(User user, Context ctx);
 
@@ -42,7 +44,7 @@ public interface TaskManager extends BaseManager<Task>
 
     public Collection<Task> findOldestOperative(Context ctx, int maxOldestTasks);
 
-    public Collection<Task> findScheduledNonFinishedTasks(User user);
+    public Collection<Task> findPendingTimeConstrainedTasks(User user);
 
 
 

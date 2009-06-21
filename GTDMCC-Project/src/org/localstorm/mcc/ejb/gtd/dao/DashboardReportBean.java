@@ -29,6 +29,7 @@ public class DashboardReportBean extends AbstractEntity {
     }
 
     public void addReportRow(DashboardReportRow row) {
+        totals.setHinted(totals.getHinted()+row.getHinted());
         totals.setPending(totals.getPending()+row.getPending());
         totals.setAwaited(totals.getAwaited()+row.getAwaited());
         totals.setFlightPlan(totals.getFlightPlan()+row.getFlightPlan());

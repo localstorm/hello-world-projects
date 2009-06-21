@@ -31,6 +31,7 @@ public class GtdReportsDao {
     public static final String MEDIUM_TASKS     = "effort3";
     public static final String DIFFICULT_TASKS  = "effort4";
     public static final String VERY_DIFFICULT_TASKS  = "effort5";
+    public static final String HINTED_TASKS     = "hinted";
 
     
 
@@ -56,7 +57,7 @@ public class GtdReportsDao {
 
             PreparedStatement ps = conn.prepareStatement(rptSql);
 
-            for (int i=1; i<=12; i++) {
+            for (int i=1; i<=13; i++) {
                 JdbcDaoHelper.setInteger(ps, i, u.getId());
             }
 
@@ -81,6 +82,7 @@ public class GtdReportsDao {
                 int medium     = JdbcDaoHelper.getInteger(rs, MEDIUM_TASKS);
                 int difficult  = JdbcDaoHelper.getInteger(rs, DIFFICULT_TASKS);
                 int vd         = JdbcDaoHelper.getInteger(rs, VERY_DIFFICULT_TASKS);
+                int hinted     = JdbcDaoHelper.getInteger(rs, HINTED_TASKS);
 
                 // Interpreting
                 DashboardReportRow row = new DashboardReportRow();
@@ -98,6 +100,7 @@ public class GtdReportsDao {
                     row.setMedium(medium);
                     row.setDifficult(difficult);
                     row.setVeryDifficult(vd);
+                    row.setHinted(hinted);
                 }
 
                 drb.addReportRow(row);

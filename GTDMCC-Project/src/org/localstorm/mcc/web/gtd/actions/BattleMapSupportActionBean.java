@@ -100,6 +100,9 @@ public class BattleMapSupportActionBean extends GtdBaseActionBean
             case VERY_DIFFICULT:
                 _tasks = tm.findByLoE(user, context, Effort.valueOf(this.getFilter()));
                 break;
+            case HINTED:
+                _tasks = tm.findHinted(user, context);
+                break;
             case PENDING:
                 _tasks = tm.findPending(user, context);
                 break;
@@ -110,10 +113,10 @@ public class BattleMapSupportActionBean extends GtdBaseActionBean
                 _tasks = tm.findAwaited(user, context);
                 break;
             case REDLINE:
-                _tasks = tm.findRedlinedTasks(user, context);
+                _tasks = tm.findRedlined(user, context);
                 break;
             case DEADLINE:
-                _tasks = tm.findDeadlinedTasks(user, context);
+                _tasks = tm.findDeadlined(user, context);
                 break;
             case FLIGHT:
                 _tasks = fpm.getTasksFromFlightPlan(fp, context);
@@ -145,6 +148,7 @@ public class BattleMapSupportActionBean extends GtdBaseActionBean
 
     private static enum Filter
     {
+        HINTED,
         PENDING,
         AWAITED,
         FLIGHT,
