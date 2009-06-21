@@ -46,7 +46,6 @@
 			<tr class="dashHdr" ><th colspan="13" class="normalGtdTh">Consolidated Tasks Report</th></tr>
 			<tr>
                 <th width="28%" class="normalGtdTh">Context name</th>
-                <th width="6%" class="normalGtdTh"><img src="<c:url value="/images/repeated.png"/>" /></th>
                 <th width="6%" class="specialGtdTh"><img src="<c:url value="/images/loex.png"/>" /></th>
                 <th width="6%" class="specialGtdTh"><img src="<c:url value="/images/loe1.png"/>" /></th>
                 <th width="6%" class="specialGtdTh"><img src="<c:url value="/images/loe2.png"/>" /></th>
@@ -55,6 +54,7 @@
                 <th width="6%" class="specialGtdTh"><img src="<c:url value="/images/loe5.png"/>" /></th>
                 <th width="6%" class="normalGtdTh"><img src="<c:url value="/images/awaited_dash.png"/>" /></th>
                 <th width="6%" class="normalGtdTh"><img src="<c:url value="/images/flight_dash.png"/>" /></th>
+                <th width="6%" class="normalGtdTh"><img src="<c:url value="/images/repeated.png"/>" /></th>
                 <th width="6%" class="normalGtdTh"><img src="<c:url value="/images/redline.png"/>" /></th>
                 <th width="6%" class="normalGtdTh"><img src="<c:url value="/images/deadline.png" />"/></th>
                 <th width="6%" class="normalGtdTh"><img src="<c:url value="/images/check.png" />"/></th>
@@ -65,10 +65,6 @@
                     <td onClick="document.location.href='<c:url value="/actions/gtd/ctx/ViewContext">
                                                 <c:param name="contextId" value="${row.contextId}" />
                                             </c:url>';"><c:out value="${row.contextName}" /></td>
-                    <td onClick="document.location.href='<c:url value="/actions/gtd/ctx/BattleMapSupport">
-                                                <c:param name="contextId" value="${row.contextId}" />
-                                                <c:param name="filter" value="HINTED" />
-                                            </c:url>';"><c:out value="${row.hinted}" /></td>
                     <td onClick="document.location.href='<c:url value="/actions/gtd/ctx/BattleMapSupport">
                                                 <c:param name="contextId" value="${row.contextId}" />
                                                 <c:param name="filter" value="PENDING" />
@@ -103,6 +99,10 @@
                                             </c:url>';"><c:out value="${row.flightPlan}" /></td>
                     <td onClick="document.location.href='<c:url value="/actions/gtd/ctx/BattleMapSupport">
                                                 <c:param name="contextId" value="${row.contextId}" />
+                                                <c:param name="filter" value="HINTED" />
+                                            </c:url>';"><c:out value="${row.hinted}" /></td>
+                    <td onClick="document.location.href='<c:url value="/actions/gtd/ctx/BattleMapSupport">
+                                                <c:param name="contextId" value="${row.contextId}" />
                                                 <c:param name="filter" value="REDLINE" />
                                             </c:url>';"><c:out value="${row.red}" /></td>
                     <td onClick="document.location.href='<c:url value="/actions/gtd/ctx/BattleMapSupport">
@@ -125,7 +125,6 @@
             </c:forEach>
 			<tr>
                 <th class="normalGtdTh">Total</th>
-                <th class="normalGtdTh"><c:out value="${gtdDashReport.totals.hinted}" /></th>
                 <th class="specialGtdTh"><c:out value="${gtdDashReport.totals.pending}" /></th>
                 <th class="specialGtdTh"><c:out value="${gtdDashReport.totals.elementary}" /></th>
                 <th class="specialGtdTh"><c:out value="${gtdDashReport.totals.easy}" /></th>
@@ -134,6 +133,7 @@
                 <th class="specialGtdTh"><c:out value="${gtdDashReport.totals.veryDifficult}" /></th>
                 <th class="normalGtdTh"><c:out value="${gtdDashReport.totals.awaited}" /></th>
                 <th class="normalGtdTh"><c:out value="${gtdDashReport.totals.flightPlan}" /></th>
+                <th class="normalGtdTh"><c:out value="${gtdDashReport.totals.hinted}" /></th>
                 <th class="normalGtdTh"><c:out value="${gtdDashReport.totals.red}" /></th>
                 <th class="normalGtdTh"><c:out value="${gtdDashReport.totals.dead}" /></th>
                 <th class="normalGtdTh"><c:out value="${gtdDashReport.totals.done}" /></th>
