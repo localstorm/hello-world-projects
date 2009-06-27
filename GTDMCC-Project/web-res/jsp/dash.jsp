@@ -39,6 +39,13 @@
     </c:if>
 </div>
 
+<c:if test="${not empty inbox}">
+    <div id="dashIbxPan">
+        <h2><span>GTD Inbox</span> pane</h2>
+        <p><img src="<c:url value="/images/inbox.png"/>" border="0"/> <a href="#">Inbox messages (<c:out value="${fn:length(inbox)}" />)</a></p>
+    </div>
+</c:if>
+
 <div id="dashGTDPan">
     <h2><span>GTD Battle Map</span> pane</h2>
 	<div align="center">

@@ -156,9 +156,7 @@ img{border:none;}
 #dashBirthdaysPan p.more a:hover{display:block; width:44px; height:11px; background:#E0DEDE; color:#003D5C; text-decoration:none;}
 /*------/DASH BIRTHDAYS PANEL------*/
 
-
-
-#dashGTDPan{width:930px; float:right; border:1px solid #DADADA; background:#F3F3F3; color:#1A1A1A; padding:0 0 6px; margin:0 0 10px 25px;}
+#dashGTDPan{width:930px; float:right; border:1px solid #DADADA; background:#F3F3F3; color:#1A1A1A; padding:0 0 6px; margin:10px 0 10px 25px;}
 #dashGTDPan h2{width:893px; height:35px; display:block; border:1px solid #DADADA; background:#fff; color:#00111A; font:24px/34px Georgia, "Times New Roman", Times, serif; margin:6px 8px 16px; padding:0 0 0 20px;}
 #dashGTDPan h2 span{ color:#046598;}
 #dashGTDPan h3{width:893px; height:35px; display:block; border:1px solid #DADADA; background:#fff; color:#00111A; font:24px/34px Georgia, "Times New Roman", Times, serif; margin:6px 8px 0; padding:0 0 0 20px;}
@@ -209,8 +207,7 @@ div.warn {
     background: #FEECFF;
 }
 
-
-#dashGTD2Pan{width:930px; float:right; border:1px solid #DADADA; background:#F3F3F3; color:#1A1A1A; padding:0 0 28px; margin:10px 0 0 25px;}
+#dashGTD2Pan{width:930px; float:right; border:1px solid #DADADA; background:#F3F3F3; color:#1A1A1A; padding:0 0 10px; margin:10px 0 0 25px;}
 #dashGTD2Pan h2{width:893px; height:35px; display:block; border:1px solid #DADADA; background:#fff; color:#00111A; font:24px/34px Georgia, "Times New Roman", Times, serif; margin:6px 8px 16px; padding:0 0 0 20px;}
 #dashGTD2Pan h2 span{ color:#046598;}
 #dashGTD2Pan h3{width:893px; height:35px; display:block; border:1px solid #DADADA; background:#fff; color:#00111A; font:24px/34px Georgia, "Times New Roman", Times, serif; margin:6px 8px 0; padding:0 0 0 20px;}
@@ -220,6 +217,21 @@ div.warn {
 #dashGTD2Pan p.more{background:#fff; color:#003D5C; width:175px; height:11px; margin:10px 29px 10px; padding:0px; line-height:11px; }
 #dashGTD2Pan p.more a{display:block; width:44px; height:11px; background:#F3F3F3; color:#003D5C; text-decoration:none; margin:0 0 0 97px; font-size:11px; line-height:11px; text-align:center; text-transform:uppercase;}
 #dashGTD2Pan p.more a:hover{display:block; width:44px; height:11px; background:#E0DEDE; color:#003D5C; text-decoration:none;}
+
+/*------DASH INBOX PANEL------*/
+#dashIbxPan{width:930px; float:right; border:1px solid #DADADA; background:#F3F3F3; color:#1A1A1A; padding:0 0 6px; margin:0 0 10px 25px;}
+#dashIbxPan h2{width:893px; height:35px; display:block; border:1px solid #DADADA; background:#fff; color:#00111A; font:24px/34px Georgia, "Times New Roman", Times, serif; margin:6px 8px 16px; padding:0 0 0 20px;}
+#dashIbxPan h2 span{ color:#046598;}
+#dashIbxPan h3{width:893px; height:35px; display:block; border:1px solid #DADADA; background:#fff; color:#00111A; font:24px/34px Georgia, "Times New Roman", Times, serif; margin:6px 8px 0; padding:0 0 0 20px;}
+#dashIbxPan h3 span{ color:#046598;}
+#dashIbxPan p{padding:0px 29px 0px 29px;}
+#dashIbxPan p.boldtext{padding:10px 29px 0px; font-size:14px; background:#F3F3F3; color:#1A1A1A; font-weight:bold;}
+#dashIbxPan p.more{background:#fff; color:#003D5C; width:175px; height:11px; margin:10px 29px 10px; padding:0px; line-height:11px; }
+#dashIbxPan p.more a{display:block; width:44px; height:11px; background:#F3F3F3; color:#003D5C; text-decoration:none; margin:0 0 0 97px; font-size:11px; line-height:11px; text-align:center; text-transform:uppercase;}
+#dashIbxPan p.more a:hover{display:block; width:44px; height:11px; background:#E0DEDE; color:#003D5C; text-decoration:none;}
+/*------/DASH INBOX PANEL------*/
+
+
 
 #greenDashPane{border:1px solid #DADADA; background:#D0EED0; margin:4px 8px 8px 8px; padding:4px 0 4px;}
 #greenDashPane p{padding:0px 0px 0px 5px;}
