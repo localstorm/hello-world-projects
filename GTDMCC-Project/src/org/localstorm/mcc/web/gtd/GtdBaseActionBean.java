@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
+import org.localstorm.mcc.ejb.gtd.InboxManager;
 import org.localstorm.mcc.ejb.gtd.entity.Context;
 import org.localstorm.mcc.ejb.gtd.ContextManager;
 import org.localstorm.mcc.ejb.gtd.FileManager;
@@ -32,6 +33,10 @@ public class GtdBaseActionBean extends BaseActionBean {
 
     public Effort[] getEfforts() {
         return Effort.values();
+    }
+
+    protected InboxManager getInboxManager() {
+        return ContextLookup.lookup(InboxManager.class, InboxManager.BEAN_NAME);
     }
 
     protected HintManager getHintManager() {

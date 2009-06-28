@@ -42,7 +42,9 @@
 <c:if test="${not empty inbox}">
     <div id="dashIbxPan">
         <h2><span>GTD Inbox</span> pane</h2>
-        <p><img src="<c:url value="/images/inbox.png"/>" border="0"/> <a href="#">Inbox messages (<c:out value="${fn:length(inbox)}" />)</a></p>
+        <p><img src="<c:url value="/images/inbox.png"/>" border="0"/>
+           <a href="<c:url value="/actions/gtd/nil/ViewInbox"/>">Inbox messages (<c:out value="${fn:length(inbox)}" />)</a>
+        </p>
     </div>
 </c:if>
 
