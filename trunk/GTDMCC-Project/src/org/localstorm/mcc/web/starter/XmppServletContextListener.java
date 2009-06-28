@@ -19,17 +19,7 @@ import org.localstorm.mcc.ejb.gtd.entity.Agent;
 public class XmppServletContextListener implements ServletContextListener
 {
     private static final Logger log = Logger.getLogger(XmppServletContextListener.class);
-
-    private final static XmppContainer container = new XmppContainer(new XmppHandler()
-    {
-
-        @Override
-        public String handle(int uid, JID from, JID to, String message)
-        {
-            System.out.println("from:" + from);
-            return "Yo!";
-        }
-    });
+    private static final XmppContainer container = new XmppContainer(new AssistantXmppHandler());
 
     @Override
     public void contextInitialized(ServletContextEvent arg0)
