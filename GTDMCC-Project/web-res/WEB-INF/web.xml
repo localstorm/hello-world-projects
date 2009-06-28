@@ -96,6 +96,11 @@
         </filter>
 
         <filter>
+            <filter-name>GtdInboxSecurityCheckFilter</filter-name>
+            <filter-class>org.localstorm.mcc.web.gtd.filter.security.GtdInboxSecurityCheckFilter</filter-class>
+        </filter>
+
+        <filter>
             <filter-name>GtdListSecurityCheckFilter</filter-name>
             <filter-class>org.localstorm.mcc.web.gtd.filter.security.GtdListSecurityCheckFilter</filter-class>
         </filter>
@@ -264,6 +269,11 @@
         <filter-mapping>
                 <filter-name>GtdContextSecurityCheckFilter</filter-name>
                 <url-pattern>/actions/gtd/ctx/*</url-pattern>
+        </filter-mapping>
+
+        <filter-mapping>
+                <filter-name>GtdInboxSecurityCheckFilter</filter-name>
+                <url-pattern>/actions/gtd/ibx/*</url-pattern>
         </filter-mapping>
 
         <filter-mapping>
