@@ -19,24 +19,26 @@ public class UserManagerBean implements UserManagerLocal, UserManagerRemote
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public User login(String login, String pwd) 
     {
         Query uq = em.createNamedQuery(User.Queries.FIND_BY_LOGIN_AND_PASS);
         uq.setParameter(User.Properties.LOGIN, login);
         
         uq.setParameter(User.Properties.PASSWORD, this.getHashString(pwd) );
-        
+                
         List<User> l = uq.getResultList();
         if ( l.isEmpty() ) {
             return null;
         } else {
-            User user  = (User) l.get(0);
+            User user  = l.get(0);
             return user;
         }
         
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public boolean subscribe(String login, String pwd) 
     {
         Query uq = em.createNamedQuery(User.Queries.FIND_BY_LOGIN);
@@ -63,6 +65,12 @@ public class UserManagerBean implements UserManagerLocal, UserManagerRemote
             em.merge(user);
         } catch(EntityExistsException e) {
         }
+    }
+
+    @Override
+    public User findById(int uid)
+    {
+        return em.find(User.class, uid);
     }
     
     private String getHashString(String s)
