@@ -3,6 +3,10 @@
 
         <display-name>GTD Personal Task Manager</display-name>
 
+        <listener>
+            <listener-class>org.localstorm.mcc.web.starter.XmppServletContextListener</listener-class>
+        </listener>
+
         <filter>
                 <filter-name>StripesFilter</filter-name>
                 <filter-class>net.sourceforge.stripes.controller.StripesFilter</filter-class>
@@ -110,12 +114,12 @@
             <filter-name>GtdFileSecurityCheckFilter</filter-name>
             <filter-class>org.localstorm.mcc.web.gtd.filter.security.GtdFileSecurityCheckFilter</filter-class>
         </filter>
- 
+
         <filter>
             <filter-name>GtdNoteSecurityCheckFilter</filter-name>
             <filter-class>org.localstorm.mcc.web.gtd.filter.security.GtdNoteSecurityCheckFilter</filter-class>
         </filter>
-        
+
         <filter>
             <filter-name>CashflowAssetSecurityCheckFilter</filter-name>
             <filter-class>org.localstorm.mcc.web.cashflow.filter.security.CashflowAssetSecurityCheckFilter</filter-class>
@@ -335,7 +339,7 @@
         <filter-mapping>
             <filter-name>PeopleMailListSpecialSecurityCheckFilter</filter-name>
             <url-pattern>/actions/ppl/ml/special/*</url-pattern>
-        </filter-mapping>>
+        </filter-mapping>
 
         <!-- Compression -->
 

@@ -337,3 +337,18 @@ create table INBOX
     PRIMARY KEY (id),
     FOREIGN KEY (owner) REFERENCES USERS(id)  ON DELETE CASCADE    
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+create table AGENTS
+(
+    id      INT NOT NULL AUTO_INCREMENT,
+    owner   INT NOT NULL,
+    jid TEXT NOT NULL,
+    host_name TEXT NOT NULL,
+    password TEXT NOT NULL,
+    port   INT NOT NULL,
+    is_secure SMALLINT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (owner) REFERENCES USERS(id)  ON DELETE CASCADE    
+)  ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+insert into AGENTS (owner, jid, host_name, password, port, is_secure) VALUES (174947681, 'zeextor@gmail.com', 'talk.google.com', '****', 5223, true);

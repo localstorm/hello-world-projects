@@ -50,7 +50,7 @@ public class TxFilter implements Filter
                     ut.setRollbackOnly();
                 }
 
-                RequestUtil.setException((HttpServletRequest) req, e);
+                RequestUtil.setException(req, e);
                 req.getRequestDispatcher( Views.ERROR ).forward( req, resp );
 
             } finally {
