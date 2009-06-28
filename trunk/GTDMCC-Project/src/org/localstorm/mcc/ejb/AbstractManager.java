@@ -51,6 +51,7 @@ public abstract class AbstractManager<T extends Identifiable> implements BaseMan
     }
     
     @Override
+    @SuppressWarnings("unchecked")
     public T findById( int id ) throws ObjectNotFoundException
     {
         MemcachedFasade mf = MemcachedFasade.getInstance();

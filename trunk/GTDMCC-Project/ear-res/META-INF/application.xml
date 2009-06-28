@@ -13,4 +13,7 @@
   <module id="GTDMCCEJB">
     <ejb>gtdmcc-ejb.jar</ejb>
   </module>
+  <module id="GTDMCCXMPP">
+    <ejb>gtdmcc-xmpp.jar</ejb>
+  </module>
 </application>
