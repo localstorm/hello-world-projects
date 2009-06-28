@@ -7,7 +7,9 @@
 <br/>
 <c:if test="${not empty actionBean.inbox}">
 <c:forEach items="${actionBean.inbox}" var="entry">
-    <p><c:out value="${entry.content}"/></p>
+    <p><a href="<c:url value="/actions/gtd/ibx/EraseInboxEntry">
+        <c:param name="entryId" value="${entry.id}"/>
+    </c:url>" title="Delete note"><img src="<c:url value="/images/erase.png"/>" /></a> <c:out value="${entry.content}"/></p>
     <hr/>
 </c:forEach>
 </c:if>

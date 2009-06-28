@@ -28,7 +28,7 @@ import org.localstorm.mcc.ejb.users.User;
 @NamedQueries({
     @NamedQuery(
         name = InboxEntry.Queries.FIND_BY_OWNER,
-        query= "SELECT o FROM InboxEntry o WHERE o.owner=:owner ORDER BY o.creation"
+        query= "SELECT o FROM InboxEntry o WHERE o.owner=:owner ORDER BY o.creation DESC"
     )
 })
 public class InboxEntry extends AbstractEntity implements Identifiable, Serializable {

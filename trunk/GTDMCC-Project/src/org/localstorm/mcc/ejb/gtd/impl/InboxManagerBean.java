@@ -5,6 +5,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import org.localstorm.mcc.ejb.AbstractManager;
 import org.localstorm.mcc.ejb.Constants;
 import org.localstorm.mcc.ejb.gtd.entity.InboxEntry;
 import org.localstorm.mcc.ejb.users.User;
@@ -13,8 +14,14 @@ import org.localstorm.mcc.ejb.users.User;
  * @author localstorm
  */
 @Stateless
-public class InboxManagerBean implements InboxManagerLocal
+public class InboxManagerBean extends AbstractManager<InboxEntry> implements InboxManagerLocal
 {
+
+    public InboxManagerBean()
+    {
+        super(InboxEntry.class);
+    }
+
     @Override
     @SuppressWarnings("unchecked")
     public List<InboxEntry> getInboxEntries(User owner)

@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.gtd.entity.FileAttachment;
 import org.localstorm.mcc.ejb.gtd.FileManager;
+import org.localstorm.mcc.ejb.gtd.InboxManager;
 import org.localstorm.mcc.ejb.gtd.entity.GTDList;
 import org.localstorm.mcc.ejb.gtd.ListManager;
 import org.localstorm.mcc.ejb.gtd.entity.Note;
@@ -14,6 +15,7 @@ import org.localstorm.mcc.ejb.gtd.RefObjectManager;
 import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
 import org.localstorm.mcc.ejb.gtd.entity.Task;
 import org.localstorm.mcc.ejb.gtd.TaskManager;
+import org.localstorm.mcc.ejb.gtd.entity.InboxEntry;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.SecurityRuntimeException;
 import org.localstorm.mcc.web.gtd.GtdSessionKeys;
@@ -27,6 +29,7 @@ class SecurityUtil
 {
     public static final String ACCESS_DENIED = "Access denied!";
     
+    @SuppressWarnings("unchecked")
     public static void checkContextSecurity(HttpSession sess, Integer contextId, User user, Logger log)
     {
         if (contextId!=null)
@@ -152,6 +155,28 @@ class SecurityUtil
             }
 
             checkObjectSecurity(sess, objectId, user, log);
+        }
+    }
+
+    public static void checkInboxEntrySecurity(HttpSession session, Integer entryId, User user, Logger log)
+    {
+        if (entryId!=null)
+        {
+            log.info("Checking access to inboxEntry=" + entryId + " for user=" + user.getLogin());
+
+            InboxManager  im = ContextLookup.lookup(InboxManager.class, InboxManager.BEAN_NAME);
+            
+            try {
+                InboxEntry entry = im.findById(entryId);
+                if (user.getId().equals( entry.getOwner().getId() ))
+                {
+                    return;
+                }
+            } catch(Exception e) {
+                log.error(e);
+            }
+
+            throw new SecurityRuntimeException(ACCESS_DENIED);
         }
     }
 
