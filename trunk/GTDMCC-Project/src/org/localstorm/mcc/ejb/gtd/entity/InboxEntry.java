@@ -18,6 +18,7 @@ import javax.persistence.TemporalType;
 import org.localstorm.mcc.ejb.AbstractEntity;
 import org.localstorm.mcc.ejb.Identifiable;
 import org.localstorm.mcc.ejb.users.User;
+import org.localstorm.mcc.web.util.EscapeUtil;
 
 
 /**
@@ -70,6 +71,10 @@ public class InboxEntry extends AbstractEntity implements Identifiable, Serializ
 
     public String getContent() {
         return content;
+    }
+
+    public String getContentHtmlEscaped() {
+        return EscapeUtil.forHTML(this.getContent());
     }
 
     public User getOwner() {

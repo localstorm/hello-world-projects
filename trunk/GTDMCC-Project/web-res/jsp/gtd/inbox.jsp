@@ -9,7 +9,7 @@
 <c:forEach items="${actionBean.inbox}" var="entry">
     <p><a href="<c:url value="/actions/gtd/ibx/EraseInboxEntry">
         <c:param name="entryId" value="${entry.id}"/>
-    </c:url>" title="Delete note"><img src="<c:url value="/images/erase.png"/>" /></a> <c:out value="${entry.content}"/></p>
+        </c:url>" title="Delete note"><img src="<c:url value="/images/erase.png"/>" /></a> <c:out escapeXml="false" value="${entry.contentHtmlEscaped}"/></p>
     <hr/>
 </c:forEach>
 </c:if>
