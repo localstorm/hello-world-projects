@@ -5,10 +5,9 @@ import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 import org.apache.log4j.Logger;
 import org.localstorm.mcc.ejb.ContextLookup;
-import org.localstorm.mcc.ejb.gtd.InboxManager;
-import org.localstorm.mcc.ejb.gtd.entity.InboxEntry;
-import org.localstorm.mcc.ejb.users.User;
-import org.localstorm.mcc.ejb.users.UserManager;
+import org.localstorm.mcc.ejb.gtd.agent.AgentExecutionFrontend;
+import org.localstorm.mcc.ejb.gtd.agent.DefaultCommandHandler;
+import org.localstorm.mcc.ejb.gtd.agent.InboxCommandHandler;
 import org.localstorm.mcc.xmpp.JID;
 import org.localstorm.mcc.xmpp.XmppHandler;
 
@@ -20,47 +19,56 @@ public class AssistantXmppHandler implements XmppHandler
 {
     private static final Logger log = Logger.getLogger(AssistantXmppHandler.class);
 
+    private AgentExecutionFrontend aef;
+
+    public AssistantXmppHandler()
+    {
+        this.aef = new AgentExecutionFrontend();
+        this.aef.setDefaultCommandHandler(new DefaultCommandHandler());
+        this.aef.addCommandHandler("inbox", new InboxCommandHandler());
+    }
+
     @Override
     public String handle(int uid, JID from, JID to, String message)
     {
-        UserTransaction ut = null;
-
-        try
+        // TODO: make solid security solution
+        if (!from.toString().equals("localstorm@gmail.com"))
         {
-            try {
-                InboxManager im = ContextLookup.lookup(InboxManager.class, InboxManager.BEAN_NAME);
-                UserManager  um = ContextLookup.lookup(UserManager.class,  UserManager.BEAN_NAME);
+            return "Fuck off, nigger.";
+        }
 
-                ut = ContextLookup.lookupTransaction();
-                ut.begin();
+        UserTransaction ut = null;
+        
+        try {
+            ut = ContextLookup.lookupTransaction();
 
-                User user = um.findById(uid);
-                InboxEntry note = new InboxEntry(message, user);
-                im.submitNote(note);
+            String response = null;
+            ut.begin();
+                response = aef.handle(uid, from.toString(), to.toString(), message);
+            ut.commit();
+            return response;
+        } catch(Exception e) {
+            log.fatal(e.getMessage(), e);
+        } finally {
+            rollbackSilently(ut);
+        }
 
-                ut.commit();
-                return "accepted.";
+        return "Server error. Contact service administrator please.";
+        
+    }
 
-            } catch (Exception e) {
-                log.error("Transaction failed:", e);
-                if (ut!=null && Status.STATUS_COMMITTED!=ut.getStatus() &&
-                    ut.getStatus()!=Status.STATUS_NO_TRANSACTION) {
-                    ut.setRollbackOnly();
-                }
-
-            } finally {
-                if (ut!=null &&
-                    Status.STATUS_COMMITTED!=ut.getStatus() &&
-                    ut.getStatus()!=Status.STATUS_NO_TRANSACTION)
-                {
-                    ut.rollback();
-                }
+    private void rollbackSilently(UserTransaction ut)
+    {
+        try {
+            if (ut!=null &&
+                Status.STATUS_COMMITTED!=ut.getStatus() &&
+                ut.getStatus()!=Status.STATUS_NO_TRANSACTION)
+            {
+                ut.rollback();
             }
         } catch(SystemException e) {
-            log.fatal(e.getMessage(), e);
+            log.error(e);
         }
-        
-        return "Server error. Contact service administrator please.";
     }
 
 }
