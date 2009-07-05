@@ -5,9 +5,13 @@ import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 import org.apache.log4j.Logger;
 import org.localstorm.mcc.ejb.ContextLookup;
+import org.localstorm.mcc.ejb.gtd.agent.AgendaCommandHandler;
 import org.localstorm.mcc.ejb.gtd.agent.AgentExecutionFrontend;
 import org.localstorm.mcc.ejb.gtd.agent.DefaultCommandHandler;
+import org.localstorm.mcc.ejb.gtd.agent.FlightCommandHandler;
+import org.localstorm.mcc.ejb.gtd.agent.HintCommandHandler;
 import org.localstorm.mcc.ejb.gtd.agent.InboxCommandHandler;
+import org.localstorm.mcc.ejb.gtd.agent.OverdueCommandHandler;
 import org.localstorm.mcc.xmpp.JID;
 import org.localstorm.mcc.xmpp.XmppHandler;
 
@@ -25,7 +29,11 @@ public class AssistantXmppHandler implements XmppHandler
     {
         this.aef = new AgentExecutionFrontend();
         this.aef.setDefaultCommandHandler(new DefaultCommandHandler());
-        this.aef.addCommandHandler("inbox", new InboxCommandHandler());
+        this.aef.addCommandHandler("inbox",  new InboxCommandHandler());
+        this.aef.addCommandHandler("flight", new FlightCommandHandler());
+        this.aef.addCommandHandler("hints",  new HintCommandHandler());
+        this.aef.addCommandHandler("agenda", new AgendaCommandHandler());
+        this.aef.addCommandHandler("overdue", new OverdueCommandHandler());
     }
 
     @Override

@@ -5,7 +5,6 @@ import java.util.concurrent.ConcurrentMap;
 import org.apache.log4j.Logger;
 
 /**
- *
  * @author Alexey Kuznetsov
  */
 public class AgentExecutionFrontend 
@@ -61,7 +60,7 @@ public class AgentExecutionFrontend
         if (spacePos==-1) {
             return message.toLowerCase();
         } else {
-            return message.substring(0, spacePos);
+            return message.substring(0, spacePos).trim();
         }
     }
 
