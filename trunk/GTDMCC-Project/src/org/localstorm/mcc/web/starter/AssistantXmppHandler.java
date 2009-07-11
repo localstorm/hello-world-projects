@@ -8,6 +8,7 @@ import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.gtd.agent.AgendaCommandHandler;
 import org.localstorm.mcc.ejb.gtd.agent.AgentExecutionFrontend;
 import org.localstorm.mcc.ejb.gtd.agent.DefaultCommandHandler;
+import org.localstorm.mcc.ejb.gtd.agent.DoneCommandHandler;
 import org.localstorm.mcc.ejb.gtd.agent.FlightCommandHandler;
 import org.localstorm.mcc.ejb.gtd.agent.HintCommandHandler;
 import org.localstorm.mcc.ejb.gtd.agent.InboxCommandHandler;
@@ -34,6 +35,7 @@ public class AssistantXmppHandler implements XmppHandler
         this.aef.addCommandHandler("hints",  new HintCommandHandler());
         this.aef.addCommandHandler("agenda", new AgendaCommandHandler());
         this.aef.addCommandHandler("overdue", new OverdueCommandHandler());
+        this.aef.addCommandHandler("done",   new DoneCommandHandler());
     }
 
     @Override

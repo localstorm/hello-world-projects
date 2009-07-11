@@ -5,5 +5,5 @@ package org.localstorm.mcc.ejb.gtd.agent;
  */
 public interface CommandHandler
 {
-    public String handle(int uid, String from, String to, String message);
+    public String handle(int uid, String from, String to, String param);
 }

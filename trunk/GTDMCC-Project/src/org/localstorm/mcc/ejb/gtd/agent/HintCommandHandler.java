@@ -14,7 +14,7 @@ public class HintCommandHandler implements CommandHandler
 {
 
     @Override
-    public String handle(int uid, String from, String to, String message)
+    public String handle(int uid, String from, String to, String param)
     {
         HintManager   hm = ContextLookup.lookup(HintManager.class, HintManager.BEAN_NAME);
         UserManager   um = ContextLookup.lookup(UserManager.class, UserManager.BEAN_NAME);

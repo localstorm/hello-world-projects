@@ -34,7 +34,8 @@ public class AgentExecutionFrontend
         if (prefix==COMMAND_PREFIX_CHAR)
         {
             String commandName = getCommand(message);
-            return handleCommand(commandName, uid, from, to, message);
+            String param = getParameter(message);
+            return handleCommand(commandName, uid, from, to, param);
         } else {
             return handleDefault(uid, from, to, message);
         }
@@ -60,7 +61,7 @@ public class AgentExecutionFrontend
         if (spacePos==-1) {
             return message.toLowerCase();
         } else {
-            return message.substring(0, spacePos).trim();
+            return message.substring(0, spacePos).trim().toLowerCase();
         }
     }
 
@@ -84,6 +85,19 @@ public class AgentExecutionFrontend
             return null;
         } else {
             return this.defaultCh.handle(uid, from, to, message);
+        }
+    }
+
+    private String getParameter(String message) {
+        if (message.startsWith(""+COMMAND_PREFIX_CHAR)) {
+            message = message.substring(1);
+        }
+
+        int spacePos = message.indexOf(" ");
+        if (spacePos==-1) {
+            return null;
+        } else {
+            return message.substring(spacePos).trim();
         }
     }
 }
