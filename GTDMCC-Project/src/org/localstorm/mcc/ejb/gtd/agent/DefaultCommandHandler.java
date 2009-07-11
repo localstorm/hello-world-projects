@@ -13,13 +13,13 @@ import org.localstorm.mcc.ejb.users.UserManager;
 public class DefaultCommandHandler implements CommandHandler
 {
     @Override
-    public String handle(int uid, String from, String to, String message)
+    public String handle(int uid, String from, String to, String param)
     {
         InboxManager im = ContextLookup.lookup(InboxManager.class, InboxManager.BEAN_NAME);
         UserManager  um = ContextLookup.lookup(UserManager.class,  UserManager.BEAN_NAME);
 
         User user = um.findById(uid);
-        InboxEntry note = new InboxEntry(message, user);
+        InboxEntry note = new InboxEntry(param, user);
         im.submitNote(note);
 
         return "accepted.";

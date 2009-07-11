@@ -18,7 +18,7 @@ public class AgendaCommandHandler implements CommandHandler
 {
 
     @Override
-    public String handle(int uid, String from, String to, String message)
+    public String handle(int uid, String from, String to, String param)
     {
         FlightPlanManager fpm = ContextLookup.lookup(FlightPlanManager.class, FlightPlanManager.BEAN_NAME);
         HintManager   hm = ContextLookup.lookup(HintManager.class, HintManager.BEAN_NAME);
@@ -48,7 +48,7 @@ public class AgendaCommandHandler implements CommandHandler
             sb.append("--------------------\n");
         }
 
-        sb.append("--- FLIGHT PLAN tasks ---\n");
+        sb.append("\n--- FLIGHT PLAN tasks ---\n");
         for (Task t: tasks)
         {
             sb.append('[');

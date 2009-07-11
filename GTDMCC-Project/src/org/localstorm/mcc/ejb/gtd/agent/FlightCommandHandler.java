@@ -16,7 +16,7 @@ public class FlightCommandHandler implements CommandHandler
 {
 
     @Override
-    public String handle(int uid, String from, String to, String message)
+    public String handle(int uid, String from, String to, String param)
     {
         FlightPlanManager fpm = ContextLookup.lookup(FlightPlanManager.class, FlightPlanManager.BEAN_NAME);
         UserManager   um = ContextLookup.lookup(UserManager.class, UserManager.BEAN_NAME);

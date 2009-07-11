@@ -15,7 +15,7 @@ public class OverdueCommandHandler implements CommandHandler
 {
 
     @Override
-    public String handle(int uid, String from, String to, String message)
+    public String handle(int uid, String from, String to, String param)
     {
         TaskManager tm = ContextLookup.lookup(TaskManager.class, TaskManager.BEAN_NAME);
         UserManager um = ContextLookup.lookup(UserManager.class, UserManager.BEAN_NAME);
