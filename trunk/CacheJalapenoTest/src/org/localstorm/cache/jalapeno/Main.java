@@ -35,7 +35,7 @@ public class Main {
 			BigDecimal pay = getPayment(e);
 			total = total.add(pay);
 
-			// It may seems confusing, but classes doesn't have ID fields :)
+			// It may seems confusing, but classes don't have ID fields :)
 			System.out.println(e.getFullName() + " ["+objManager.getId(e)+"] : " + pay.doubleValue());
 		}
 
