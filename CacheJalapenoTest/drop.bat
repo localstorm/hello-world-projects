@@ -1,0 +1,1 @@
+java -cp bin;./lib/CacheDB.jar com.jalapeno.tools.util.KillExtent -namespace USER -user _SYSTEM -password SYS -class org.localstorm.cache.jalapeno.entity.Employee -class org.localstorm.cache.jalapeno.entity.Department
