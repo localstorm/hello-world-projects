@@ -34,11 +34,22 @@ public class FlightCommandHandler implements CommandHandler
         sb.append("--- FLIGHT PLAN tasks ---\n");
         for (Task t: tasks)
         {
+            if (t.isCancelled() || t.isFinished())
+            {
+                continue;
+            }
             sb.append('[');
             sb.append(t.getId());
             sb.append("] ");
             sb.append(t.getSummary());
             sb.append('\n');
+
+            String rn = t.getRuntimeNote();
+            if (rn!=null && rn.length()>0)
+            {
+                sb.append(rn);
+                sb.append('\n');
+            }
             sb.append("--------------------\n");
         }
 
