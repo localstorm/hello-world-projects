@@ -66,9 +66,14 @@ public class HistoryTruncateActionBean extends CashflowBaseActionBean
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, -this.getKeepDays());
 
-        hvm.truncateHistory(ValueType.valueOf(this.getValueTag()),
-                                              this.getObjectId(),
-                                              user, cal.getTime());
+        String[] tags = this.getValueTag().split(",");
+
+        for (String vTag: tags) {
+            hvm.truncateHistory(ValueType.valueOf(vTag),
+                                this.getObjectId(),
+                                user,
+                                cal.getTime());
+        }
 
         ReturnPageBean rpb = super.getReturnPageBean();
         return NextDestinationUtil.getRedirection(rpb);
