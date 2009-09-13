@@ -1,6 +1,8 @@
 package org.localstorm.mcc.web.cashflow.servlets;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +34,21 @@ public class AssetsStructureChartServlet extends HttpServlet
             return;
         }
 
-        JFreeChart chart = AssetsStructureChartGenerator.getChart(user);
+        String incDebt = req.getParameter("includeDebt");
+        Boolean includeDebt = (incDebt==null) ? false : Boolean.valueOf(incDebt);
+
+        SimpleDateFormat sdf = new SimpleDateFormat(Constants.DATE_FORMAT);
+        String curDate = sdf.format(new Date());
+
+        String title = null;
+        if (includeDebt) {
+            title = "Assets structure (" + curDate + ")";
+        } else {
+            title = "Assets structure w/o debt (" + curDate + ")";
+        }
+
+        
+        JFreeChart chart = AssetsStructureChartGenerator.getChart(user, title, includeDebt);
 
         resp.setContentType(Constants.PNG_CONTENT_TYPE);
         ChartUtilities.writeChartAsPNG(resp.getOutputStream(), chart, 640, 480);

@@ -1,9 +1,7 @@
 package org.localstorm.mcc.web.cashflow.charting;
 
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
 import java.util.Collection;
-import java.util.Date;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PiePlot3D;
@@ -15,7 +13,6 @@ import org.localstorm.mcc.ejb.cashflow.entity.Asset;
 import org.localstorm.mcc.ejb.cashflow.AssetManager;
 import org.localstorm.mcc.ejb.cashflow.OperationManager;
 import org.localstorm.mcc.ejb.users.User;
-import org.localstorm.mcc.web.Constants;
 import org.localstorm.mcc.web.cashflow.actions.wrap.AssetWrapper;
 import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
 
@@ -26,11 +23,10 @@ import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
  */
 public class AssetsStructureChartGenerator {
 
-    public static JFreeChart getChart(User user) {
-        SimpleDateFormat sdf = new SimpleDateFormat(Constants.DATE_FORMAT);
-        String curDate = sdf.format(new Date());
-        JFreeChart chart = ChartFactory.createPieChart3D("Assets structure (" + curDate + ")",
-                                                         getWealthDataset(user),
+    public static JFreeChart getChart(User user, String title, boolean includeDebt) {
+        
+        JFreeChart chart = ChartFactory.createPieChart3D(title,
+                                                         getWealthDataset(user, includeDebt),
                                                          true,
                                                          true,
                                                          false);
@@ -49,7 +45,7 @@ public class AssetsStructureChartGenerator {
         return chart;
     }
 
-    private static PieDataset getWealthDataset(User user) {
+    private static PieDataset getWealthDataset(User user, boolean includeDebt) {
 
         OperationManager om = ContextLookup.lookup(OperationManager.class, OperationManager.BEAN_NAME);
         AssetManager     am = ContextLookup.lookup(AssetManager.class, AssetManager.BEAN_NAME);
@@ -62,6 +58,11 @@ public class AssetsStructureChartGenerator {
 
         for (Asset a: assets) {
 
+            if (!includeDebt && a.getValuable().isDebt())
+            {
+                continue;
+            }
+            
             AssetWrapper aw = (AssetWrapper) a;
             BigDecimal nw = aw.getNetWealth();
 

@@ -109,9 +109,6 @@ public class NetWealthHistoryChartGenerator {
             OperationManager om = ContextLookup.lookup(OperationManager.class,
                                                        OperationManager.BEAN_NAME);
 
-            AssetManager  am = ContextLookup.lookup(AssetManager.class,
-                                                    AssetManager.BEAN_NAME);
-
             TargetManager tm = ContextLookup.lookup(TargetManager.class,
                                                     TargetManager.BEAN_NAME);
 
