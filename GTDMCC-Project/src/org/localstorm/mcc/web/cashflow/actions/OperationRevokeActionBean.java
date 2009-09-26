@@ -43,9 +43,9 @@ public class OperationRevokeActionBean extends CashflowBaseActionBean {
 
         om.remove(op);
 
-        RedirectResolution rr = new RedirectResolution(OperationsLogActionBean.class);
+        RedirectResolution rr = new RedirectResolution(OperationsViewActionBean.class);
         {
-            rr.addParameter(OperationsLogActionBean.IncomingParameters.ASSET_ID, asset.getId());
+            rr.addParameter(OperationsViewActionBean.IncomingParameters.ASSET_ID, asset.getId());
         }
         return rr;
     }

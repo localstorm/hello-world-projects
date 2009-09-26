@@ -4,12 +4,19 @@
 <%@ include file="/WEB-INF/jsp/includes/cashflow/hdr.jsp" %>
 
 <h2><span>OPERATIONS</span> history</h2>
-<div align="right" width="80%">(<a href="<c:url value="/actions/cash/asset/ViewAsset">
+<div align="right" width="80%"><a href="<c:url value="/actions/cash/asset/ViewAsset">
                                             <c:param name="assetId" value="${actionBean.asset.id}"/>
-                                         </c:url>"><c:out value="${actionBean.asset.name}"/></a>)</div>
+                                  </c:url>"><img src="<c:url value="/images/parent.png"/>" /></a>
+                                      <a href="<c:url value="/actions/cash/asset/ViewOperations">
+                                            <c:param name="assetId" value="${actionBean.asset.id}"/>
+                                      </c:url>">View full history</a>
+</div>
 <br/>
 <div align="center">
 <table width="90%" border="0px" >
+    <tr bgcolor="#FFFFFF">
+        <th colspan="5"><c:out value="${actionBean.asset.name}"/></th>
+    </tr>
     <tr bgcolor="#DFFFBF">
         <th>Type</th>
         <th>Amount</th>

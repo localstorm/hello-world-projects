@@ -189,6 +189,7 @@
 <table width="80%" border="0px" >
     <tr><th colspan="2" align="center"><c:out value="${actionBean.assetResult.name}"/> (<a href="<c:url value="/actions/cash/asset/ViewOperations">
                                                                                             <c:param name="assetId" value="${actionBean.assetResult.id}" />
+                                                                                            <c:param name="thisMonth" value="true" />
                                                                                         </c:url>">Operations</a>)</th></tr>
     <tr bgColor="#DFFFBF">
         <td align="right">Asset name:</td>
