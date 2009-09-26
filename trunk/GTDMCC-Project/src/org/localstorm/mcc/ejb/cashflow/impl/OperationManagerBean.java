@@ -111,9 +111,17 @@ public class OperationManagerBean implements OperationManagerLocal
 
     @Override
     @SuppressWarnings("unchecked")
-    public Collection<Operation> getOperations(ValuableObject vo) {
-        Query uq = em.createNamedQuery(Operation.Queries.FIND_BY_VO_DESC);
-        uq.setParameter(Cost.Properties.VALUABLE, vo);
+    public Collection<Operation> getOperations(ValuableObject vo, Date minDate) {
+        
+        Query uq;
+        if (minDate != null) {
+            uq= em.createNamedQuery(Operation.Queries.FIND_BY_VO_DESC_LIMITED);
+            uq.setParameter(Operation.Properties.VALUABLE, vo);
+            uq.setParameter(Operation.Properties.MIN_DATE, minDate);
+        } else {
+            uq= em.createNamedQuery(Operation.Queries.FIND_BY_VO_DESC);
+            uq.setParameter(Operation.Properties.VALUABLE, vo);
+        }
 
         Collection<Operation> ops = (Collection<Operation>) uq.getResultList();
         return ops;

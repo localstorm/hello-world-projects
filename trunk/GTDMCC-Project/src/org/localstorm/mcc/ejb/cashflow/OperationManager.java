@@ -44,11 +44,12 @@ public interface OperationManager
 
     public Collection<Cost> getCostHistory(ValuableObject valuable, Date time);
 
-    public Collection<Operation> getOperations(ValuableObject vo);
+    public Collection<Operation> getOperations(ValuableObject vo, Date minDate);
 
     // Operations
     public void buy(ValuableObject vo, BigDecimal amount, String comment, boolean exchange);
 
     public boolean sell(ValuableObject vo, BigDecimal amount, String comment, boolean exchange);
+
 
 }

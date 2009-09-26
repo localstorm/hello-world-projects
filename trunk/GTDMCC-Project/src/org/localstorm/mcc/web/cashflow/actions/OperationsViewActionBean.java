@@ -1,6 +1,8 @@
 package org.localstorm.mcc.web.cashflow.actions;
 
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
@@ -20,15 +22,26 @@ import org.localstorm.tools.aop.runtime.Logged;
  * @author localstorm
  */
 @UrlBinding("/actions/cash/asset/ViewOperations")
-public class OperationsLogActionBean extends CashflowBaseActionBean {
+public class OperationsViewActionBean extends CashflowBaseActionBean {
 
 
     @Validate(required=true)
     private Integer assetId;
 
+    @Validate(required=false)
+    private Boolean thisMonth;
+
     private Asset asset;
     
     private Collection<Operation> operations;
+
+    public Boolean isThisMonth() {
+        return thisMonth;
+    }
+
+    public void setThisMonth(Boolean thisMonth) {
+        this.thisMonth = thisMonth;
+    }
 
     public Asset getAsset() {
         return asset;
@@ -64,7 +77,15 @@ public class OperationsLogActionBean extends CashflowBaseActionBean {
         Asset           ass = am.find(this.getAssetId());
         ValuableObject   vo = ass.getValuable();
 
-        Collection<Operation> ops = om.getOperations(vo);
+        Date minDate = null;
+        if (thisMonth!=null && thisMonth.equals(Boolean.TRUE))
+        {
+            Calendar cal = Calendar.getInstance();
+            cal.set(Calendar.DAY_OF_MONTH, 1);
+            minDate = cal.getTime();
+        }
+
+        Collection<Operation> ops = om.getOperations(vo, minDate);
 
         this.setOperations(ops);
         this.setAsset(ass);

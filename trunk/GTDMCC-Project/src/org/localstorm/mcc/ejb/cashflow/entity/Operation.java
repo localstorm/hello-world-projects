@@ -26,6 +26,11 @@ import org.localstorm.mcc.ejb.Identifiable;
 @Entity
 @Table(name="OPERATIONS")
 @NamedQueries({
+
+    @NamedQuery(
+        name = Operation.Queries.FIND_BY_VO_DESC_LIMITED,
+        query= "SELECT o FROM Operation o WHERE o.cost.valuable=:valuable AND o.operationDate>:minDate ORDER BY o.operationDate DESC"
+    ),
     @NamedQuery(
         name = Operation.Queries.FIND_BY_VO_DESC,
         query= "SELECT o FROM Operation o WHERE o.cost.valuable=:valuable ORDER BY o.operationDate DESC"
@@ -121,6 +126,7 @@ public class Operation extends AbstractEntity implements Identifiable, Serializa
 
     public static interface Queries
     {
+        public static final String FIND_BY_VO_DESC_LIMITED = "findOpsByVoDescLimited";
         public static final String FIND_BY_VO_DESC = "findOpsByVoDesc";
         public static final String SUM_BOUGHT_BY_VO = "sumBought";
         public static final String SUM_BOUGHT_FOR_EXCHANGE_BY_VO = "sumBoughtFx";
@@ -132,5 +138,6 @@ public class Operation extends AbstractEntity implements Identifiable, Serializa
     public static interface Properties
     {
         public static final String VALUABLE = "valuable";
+        public static final String MIN_DATE = "minDate";
     }
 }
