@@ -47,23 +47,23 @@ public class GtdReportsDao {
     {
 
         QueriesLoader ql = QueriesLoader.getInstance();
-        String    rptSql = ql.getQuery(QueriesLoader.GTD_DASHBOARD_REPORT);
+        String    rpt1Sql = ql.getQuery(QueriesLoader.GTD_DASHBOARD_REPORT_P1);
+        String    rpt2Sql = ql.getQuery(QueriesLoader.GTD_DASHBOARD_REPORT_P2);
 
         Connection conn = null;
         try {
             conn = ds.getConnection();
             Guard.checkConnectionNotNull(conn);
 
+            PreparedStatement ps = conn.prepareStatement(rpt1Sql);
 
-            PreparedStatement ps = conn.prepareStatement(rptSql);
-
-            for (int i=1; i<=13; i++) {
+            for (int i=1; i<=7; i++) {
                 JdbcDaoHelper.setInteger(ps, i, u.getId());
             }
 
-            ResultSet rs = ps.executeQuery();
-
             DashboardReportBean drb = new DashboardReportBean();
+
+            ResultSet rs = ps.executeQuery();
 
             while (rs.next())
             {
@@ -77,15 +77,9 @@ public class GtdReportsDao {
                 int red        = JdbcDaoHelper.getInteger(rs, REDLINE_TASKS);
                 int dead       = JdbcDaoHelper.getInteger(rs, DEADLINE_TASK);
                 int done       = JdbcDaoHelper.getInteger(rs, DONE_TASKS);
-                int elementary = JdbcDaoHelper.getInteger(rs, ELEMENTARY_TASKS);
-                int easy       = JdbcDaoHelper.getInteger(rs, EASY_TASKS);
-                int medium     = JdbcDaoHelper.getInteger(rs, MEDIUM_TASKS);
-                int difficult  = JdbcDaoHelper.getInteger(rs, DIFFICULT_TASKS);
-                int vd         = JdbcDaoHelper.getInteger(rs, VERY_DIFFICULT_TASKS);
-                int hinted     = JdbcDaoHelper.getInteger(rs, HINTED_TASKS);
 
                 // Interpreting
-                DashboardReportRow row = new DashboardReportRow();
+                DashboardReportRowP1 row = new DashboardReportRowP1();
                 {
                     row.setAwaited(awaited);
                     row.setPending(pending);
@@ -95,6 +89,35 @@ public class GtdReportsDao {
                     row.setRed(red);
                     row.setDead(dead);
                     row.setDone(done);
+                }
+
+                drb.addReportRowP1(row);
+            }
+
+            ps = conn.prepareStatement(rpt2Sql);
+
+            for (int i=1; i<=6; i++) {
+                JdbcDaoHelper.setInteger(ps, i, u.getId());
+            }
+
+            rs = ps.executeQuery();
+
+            while (rs.next())
+            {
+                // Null is impossible here
+
+                int ctxId      = JdbcDaoHelper.getInteger(rs, CONTEXT_ID);
+                int elementary = JdbcDaoHelper.getInteger(rs, ELEMENTARY_TASKS);
+                int easy       = JdbcDaoHelper.getInteger(rs, EASY_TASKS);
+                int medium     = JdbcDaoHelper.getInteger(rs, MEDIUM_TASKS);
+                int difficult  = JdbcDaoHelper.getInteger(rs, DIFFICULT_TASKS);
+                int vd         = JdbcDaoHelper.getInteger(rs, VERY_DIFFICULT_TASKS);
+                int hinted     = JdbcDaoHelper.getInteger(rs, HINTED_TASKS);
+
+                // Interpreting
+                DashboardReportRowP2 row = new DashboardReportRowP2();
+                {
+                    row.setContextId(ctxId);
                     row.setEasy(easy);
                     row.setElementary(elementary);
                     row.setMedium(medium);
@@ -103,9 +126,9 @@ public class GtdReportsDao {
                     row.setHinted(hinted);
                 }
 
-                drb.addReportRow(row);
+                drb.addReportRowP2(row);
             }
-            
+
             return drb;
         } finally {
             JdbcDaoHelper.safeClose(conn, log);
