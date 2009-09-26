@@ -157,11 +157,6 @@
                 </tr>
 
             </table>
-            <c:if test="${empty actionBean.awaitedTasks}">
-                <c:if test="${status.last}">
-                    <p class="more"><a href="#">PRINT</a></p>
-                </c:if>
-            </c:if>
         </td>
     </tr>
     </c:forEach>
@@ -184,9 +179,6 @@
                 <p><i>&nbsp;Responsibility:&nbsp;</i><c:out value="${task.runtimeNote}"/></p>
             </c:if>
             <hr/>
-            <c:if test="${status.last}">
-                <p class="more"><a href="#">PRINT</a></p>
-            </c:if>
         </td>
     </tr>
     </c:forEach>

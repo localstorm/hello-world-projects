@@ -106,10 +106,6 @@
 </c:forEach>
 </c:if>
 
-<c:if test="${(not empty actionBean.flightPlanTasks) or (not empty actionBean.awaitedFlightPlanTasks)}">
-    <p class="more"><a href="#">PRINT</a></p>
-</c:if>
-
 <c:if test="${not empty actionBean.archiveFlightPlanTasks}">
 <table width="100%"><tr><th>Archive</th></tr></table> 
 <c:forEach items="${actionBean.archiveFlightPlanTasks}" var="task" >
