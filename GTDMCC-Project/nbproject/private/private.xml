@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/src/org/localstorm/mcc/web/ReturnPageBean.java</file>
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/src/org/localstorm/mcc/web/BaseActionBean.java</file>
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/src/org/localstorm/mcc/web/util/SessionUtil.java</file>
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/src/org/localstorm/mcc/web/ExpirableValuesCache.java</file>
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/web-res/jsp/gtd/viewList.jsp</file>
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/web-res/jsp/gtd/index.jsp</file>
+        <file>file:/home/localstorm/Dev/Code/J2EE/GTD-MCC/src/org/localstorm/mcc/web/cashflow/actions/AssetsViewActionBean.java</file>
+    </open-files>
 </project-private>
