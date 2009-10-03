@@ -63,7 +63,7 @@ public class BaseActionBean implements ActionBean
         }
         
         if (token!=null) {
-            return (ReturnPageBean) SessionUtil.getSoftValue(sess, CommonSessionKeys.RETURN_PAGE_BEAN_REFIX+token);
+            return (ReturnPageBean) SessionUtil.getExpirableValue(sess, CommonSessionKeys.RETURN_PAGE_BEAN_REFIX+token);
         } else {
             return null;
         }
@@ -77,7 +77,7 @@ public class BaseActionBean implements ActionBean
         HttpServletRequest req = this.getRequest();
 
         req.setAttribute(RequestAttributes.RETURN_PAGE_TOKEN, token);
-        SessionUtil.softFill(sess, CommonSessionKeys.RETURN_PAGE_BEAN_REFIX+token, rpb);
+        SessionUtil.fillExpirable(sess, CommonSessionKeys.RETURN_PAGE_BEAN_REFIX+token, rpb);
     }
 
     

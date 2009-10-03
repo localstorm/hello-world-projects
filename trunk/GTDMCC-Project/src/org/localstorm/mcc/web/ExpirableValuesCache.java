@@ -1,11 +1,7 @@
 package org.localstorm.mcc.web;
 
-import java.lang.ref.Reference;
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.SoftReference;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.LinkedBlockingDeque;
 
 /**
  *
@@ -13,86 +9,32 @@ import java.util.Map;
  */
 public class ExpirableValuesCache<K, T> {
 
-    private SoftReference<Object> sr;
-    private ReferenceQueue<Object> rq;
-    private Map<K, Logged<T>> store;
-    private long expiration;
-    private long lastCleanup;
-
-    public ExpirableValuesCache(long expirationMillis)
+    private final ConcurrentHashMap<K, T> store;
+    private final LinkedBlockingDeque<K> cyclic;
+    private final int size;
+    
+    public ExpirableValuesCache(int size)
     {
-        this.rq = new ReferenceQueue<Object>();
-        this.store = new HashMap<K, Logged<T>>();
-        this.expiration = expirationMillis;
-        this.reloadTrigger();
+        store = new ConcurrentHashMap<K, T>();
+        cyclic = new LinkedBlockingDeque<K>();
+        this.size = size;
     }
 
     public T get(K key)
     {
-        this.checkLog();
-        Logged<T> log = store.get(key);
-
-        if (log!=null) {
-            log.update();
-            return log.getObject();
-        } else {
-            return null;
-        }
-
+        return store.get(key);
     }
 
     @SuppressWarnings("unchecked")
-    public void put(K key, T value)
+    public synchronized void put(K key, T value)
     {
-        this.checkLog();
-        store.put(key, new Logged(value));
+        cyclic.add(key);
+        while (cyclic.size() > size) {
+           K removed = cyclic.removeFirst();
+           store.remove(removed);
+        }
+
+        store.put(key, value);
     }
-
-    private void checkLog() {
-        Reference<? extends Object> ref = rq.poll();
-        if (ref!=null && lastCleanup<(System.currentTimeMillis()-(expiration*10)))
-        {
-            this.reloadTrigger();
-
-            for (Iterator<Map.Entry<K, Logged<T>>> it = store.entrySet().iterator(); it.hasNext(); )
-            {
-                Logged<T> logged = it.next().getValue();
-                if (logged.expired(expiration))
-                {
-                    it.remove();
-                }
-            }
-        }
-    }
-
-    @SuppressWarnings("unchecked")
-    private void reloadTrigger() {
-        Object trigger = new Object();
-        this.sr = new SoftReference(trigger, rq);
-    }
-
-    private static class Logged<T>
-    {
-        private T obj;
-        private long ts;
-
-        public Logged(T obj)
-        {
-            this.obj = obj;
-            this.ts = System.currentTimeMillis();
-        }
-
-        public T getObject() {
-            return this.obj;
-        }
-
-        public boolean expired(long expiration) {
-            return ts<(System.currentTimeMillis()-expiration);
-        }
-
-        private void update() {
-            this.ts = System.currentTimeMillis();
-        }
-    }
-
+   
 }

@@ -10,6 +10,7 @@ import org.localstorm.mcc.web.ExpirableValuesCache;
 public class SessionUtil 
 {
     private static final String EXPIRABLE_MAP = "$expAttributes$";
+    private static final int RPB_MAP_CAPACITY = 100;
 
     public static void clear(HttpSession sess, String key) {
         sess.removeAttribute(key);
@@ -28,14 +29,11 @@ public class SessionUtil
     }
 
     @SuppressWarnings("unchecked")
-    public static void softFill(HttpSession sess, String key, Object o) {
+    public static void fillExpirable(HttpSession sess, String key, Object o) {
         
-
-        //Soft
         ExpirableValuesCache evc = (ExpirableValuesCache) sess.getAttribute(EXPIRABLE_MAP);
         if (evc==null) {
-            long expirationTime = sess.getMaxInactiveInterval()*1000;
-            evc = new ExpirableValuesCache(expirationTime);
+            evc = new ExpirableValuesCache(RPB_MAP_CAPACITY);
             sess.setAttribute(EXPIRABLE_MAP, evc);
         }
         
@@ -43,12 +41,11 @@ public class SessionUtil
     }
 
     @SuppressWarnings("unchecked")
-    public static Object getSoftValue(HttpSession sess, String key)
+    public static Object getExpirableValue(HttpSession sess, String key)
     {
         ExpirableValuesCache evc = (ExpirableValuesCache) sess.getAttribute(EXPIRABLE_MAP);
         if (evc==null) {
-            long expirationTime = sess.getMaxInactiveInterval()*1000;
-            evc = new ExpirableValuesCache(expirationTime);
+            evc = new ExpirableValuesCache(RPB_MAP_CAPACITY);
             sess.setAttribute(EXPIRABLE_MAP, evc);
         }
         return evc.get(key);
