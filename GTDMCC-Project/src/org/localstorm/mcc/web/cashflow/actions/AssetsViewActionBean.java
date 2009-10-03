@@ -26,6 +26,7 @@ import org.localstorm.tools.aop.runtime.Logged;
 @UrlBinding("/actions/cash/nil/ViewAssets")
 public class AssetsViewActionBean extends CashflowBaseActionBean {
 
+    private final static BigDecimal EPS = new BigDecimal("0.0001");
     private Collection<Asset> assets;
     private BigDecimal        netWealthWoDebt;
     private BigDecimal        netWealth;
@@ -134,10 +135,15 @@ public class AssetsViewActionBean extends CashflowBaseActionBean {
         HistoricalValue hv3 = hvm.getLastHistoricalValue(twc3, BigDecimal.ZERO, user);
         HistoricalValue hv4 = hvm.getLastHistoricalValue(twc4, BigDecimal.ZERO, user);
 
-        return !hv.getVal().equals(netWealth) ||
-               !hv2.getVal().equals(balance)  ||
-               !hv3.getVal().equals(netWealthWoDebt) ||
-               !hv4.getVal().equals(debt);
+        return !equals(netWealth, hv) ||
+               !equals(balance, hv2)  ||
+               !equals(netWealthWoDebt, hv3) ||
+               !equals(debt, hv4);
+    }
+
+    private boolean equals(BigDecimal orig, HistoricalValue hv)
+    {
+        return hv.getVal().subtract(orig).abs().compareTo(EPS)<=0;
     }
 
 }
