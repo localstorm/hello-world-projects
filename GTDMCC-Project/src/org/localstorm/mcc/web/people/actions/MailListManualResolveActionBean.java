@@ -88,7 +88,7 @@ public class MailListManualResolveActionBean extends PeopleBaseActionBean
 
         RedirectResolution rr = new RedirectResolution(MailListViewActionBean.class);
         {
-            rr.addParameter(MailListViewActionBean.IncommingParameters.MAIL_LIST_ID, this.getMailListId());
+            rr.addParameter(MailListViewActionBean.IncomingParameters.MAIL_LIST_ID, this.getMailListId());
         }
         return rr;
     }

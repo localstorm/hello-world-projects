@@ -45,8 +45,8 @@ public class PersonClipActionBean extends PeopleBaseActionBean
         if (emails.isEmpty()) {
             RedirectResolution rr = new RedirectResolution(PersonViewActionBean.class);
             {
-                rr.addParameter(PersonViewActionBean.IncommingParameters.PERSON_ID, this.getPersonId());
-                rr.addParameter(PersonViewActionBean.IncommingParameters.NEED_EMAIL, Boolean.TRUE);
+                rr.addParameter(PersonViewActionBean.IncomingParameters.PERSON_ID, this.getPersonId());
+                rr.addParameter(PersonViewActionBean.IncomingParameters.NEED_EMAIL, Boolean.TRUE);
             }
 
             return rr;
@@ -57,14 +57,14 @@ public class PersonClipActionBean extends PeopleBaseActionBean
 
             RedirectResolution rr = new RedirectResolution(PersonGroupViewActionBean.class);
             {
-                rr.addParameter(PersonGroupViewActionBean.IncommingParameters.GROUP_ID, group.getId());
+                rr.addParameter(PersonGroupViewActionBean.IncomingParameters.GROUP_ID, group.getId());
             }
 
             return rr;
         }
     }
     
-    public static interface IncommingParameters {
+    public static interface IncomingParameters {
         public static final String PERSON_ID = "personId";
     }
 }

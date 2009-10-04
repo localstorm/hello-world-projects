@@ -58,12 +58,12 @@ public class ListRenameActionBean extends ListViewActionBean
 
         RedirectResolution rr = new RedirectResolution(ListViewActionBean.class);
         {
-            rr.addParameter(ListViewActionBean.IncommingParameters.LIST_ID, super.getListId());
+            rr.addParameter(ListViewActionBean.IncomingParameters.LIST_ID, super.getListId());
         }
         return rr;
     }
     
-    public static interface IncommingParameters {
+    public static interface IncomingParameters {
         public static final String LIST_ID = "listId";
     }
     

@@ -9,6 +9,7 @@ import org.localstorm.mcc.ejb.cashflow.entity.Asset;
 import org.localstorm.mcc.ejb.cashflow.AssetManager;
 import org.localstorm.mcc.ejb.cashflow.entity.Operation;
 import org.localstorm.mcc.ejb.cashflow.OperationManager;
+import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
 import org.localstorm.tools.aop.runtime.Logged;
 
@@ -43,11 +44,16 @@ public class OperationRevokeActionBean extends CashflowBaseActionBean {
 
         om.remove(op);
 
-        RedirectResolution rr = new RedirectResolution(OperationsViewActionBean.class);
-        {
-            rr.addParameter(OperationsViewActionBean.IncomingParameters.ASSET_ID, asset.getId());
+        ReturnPageBean rpb = super.getReturnPageBean();
+        if (rpb!= null) {
+            return NextDestinationUtil.getRedirection(rpb);
+        } else {
+            RedirectResolution rr = new RedirectResolution(OperationsViewActionBean.class);
+            {
+                rr.addParameter(OperationsViewActionBean.IncomingParameters.ASSET_ID, asset.getId());
+            }
+            return rr;
         }
-        return rr;
     }
 
 

@@ -13,6 +13,7 @@ import org.localstorm.mcc.ejb.cashflow.AssetManager;
 import org.localstorm.mcc.ejb.cashflow.entity.Operation;
 import org.localstorm.mcc.ejb.cashflow.entity.ValuableObject;
 import org.localstorm.mcc.ejb.cashflow.OperationManager;
+import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
 import org.localstorm.mcc.web.cashflow.Views;
 import org.localstorm.tools.aop.runtime.Logged;
@@ -78,7 +79,7 @@ public class OperationsViewActionBean extends CashflowBaseActionBean {
         ValuableObject   vo = ass.getValuable();
 
         Date minDate = null;
-        if (thisMonth!=null && thisMonth.equals(Boolean.TRUE))
+        if (thisMonth!=null)
         {
             Calendar cal = Calendar.getInstance();
             cal.set(Calendar.DAY_OF_MONTH, 1);
@@ -90,11 +91,22 @@ public class OperationsViewActionBean extends CashflowBaseActionBean {
         this.setOperations(ops);
         this.setAsset(ass);
 
+        ReturnPageBean rpb = new ReturnPageBean(Pages.OPS_HISTORY.toString());
+        {
+            rpb.setParam(IncomingParameters.ASSET_ID, Integer.toString(this.getAssetId()));
+            if (isThisMonth()!=null) {
+                rpb.setParam(IncomingParameters.THIS_MONTH, "true");  
+            }
+        }
+
+        super.setReturnPageBean(rpb);
+
         return new ForwardResolution(Views.OPS_LOG);
     }
 
     public static interface IncomingParameters {
         public static final String ASSET_ID = "assetId";
+        public static final String THIS_MONTH = "thisMonth";
     }
 
 }

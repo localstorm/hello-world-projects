@@ -119,13 +119,13 @@ public class PersonUpdateActionBean extends PersonViewActionBean
 
         RedirectResolution rr = new RedirectResolution(PersonViewActionBean.class);
         {
-            rr.addParameter(PersonViewActionBean.IncommingParameters.PERSON_ID, this.getPersonId());
+            rr.addParameter(PersonViewActionBean.IncomingParameters.PERSON_ID, this.getPersonId());
         }
 
         return rr;
     }
     
-    public static interface IncommingParameters {
+    public static interface IncomingParameters {
         public static final String PERSON_ID = "personId";
     }
 

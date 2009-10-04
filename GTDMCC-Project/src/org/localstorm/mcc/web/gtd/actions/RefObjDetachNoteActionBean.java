@@ -55,12 +55,12 @@ public class RefObjDetachNoteActionBean extends GtdBaseActionBean
         
         RedirectResolution rr = new RedirectResolution(RefObjViewActionBean.class);
         {
-            rr.addParameter(RefObjViewActionBean.IncommingParameters.OBJECT_ID, this.getObjectId());
+            rr.addParameter(RefObjViewActionBean.IncomingParameters.OBJECT_ID, this.getObjectId());
         }
         return rr;
     }
 
-    public static interface IncommingParameters {
+    public static interface IncomingParameters {
         public static final String OBJECT_ID = "objectId";
         public static final String NOTE_ID = "noteId";
     }

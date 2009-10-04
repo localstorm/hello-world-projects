@@ -51,7 +51,7 @@ public class AssetCostHistoryActionBean extends CashflowBaseActionBean
 
         ReturnPageBean rpb = new ReturnPageBean(Pages.ASSET_COST_HISTORY.toString());
         {
-            rpb.setParam(IncommingParameters.ASSET_ID, Integer.toString(this.getAssetId()));
+            rpb.setParam(IncomingParameters.ASSET_ID, Integer.toString(this.getAssetId()));
         }
 
         super.setReturnPageBean(rpb);
@@ -59,7 +59,7 @@ public class AssetCostHistoryActionBean extends CashflowBaseActionBean
         return new ForwardResolution(Views.VIEW_ASSET_COST_HISTORY);
     }
     
-    public static interface IncommingParameters {
+    public static interface IncomingParameters {
         public static final String ASSET_ID = "assetId";
     }
 }

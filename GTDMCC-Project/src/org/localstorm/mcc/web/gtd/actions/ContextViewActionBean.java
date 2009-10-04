@@ -91,7 +91,7 @@ public class ContextViewActionBean extends GtdBaseActionBean
         return new ForwardResolution(Views.VIEW_CTX);
     }
     
-    public static interface IncommingParameters {
+    public static interface IncomingParameters {
         public static final String CTX_ID = "contextId";
     }
 }

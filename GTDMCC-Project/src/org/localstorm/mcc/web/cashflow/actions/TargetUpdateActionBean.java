@@ -88,7 +88,7 @@ public class TargetUpdateActionBean extends TargetViewActionBean {
         
         RedirectResolution rr = new RedirectResolution(TargetViewActionBean.class);
         {
-            rr.addParameter(TargetViewActionBean.IncommingParameters.TARGET_ID, this.getTargetId());
+            rr.addParameter(TargetViewActionBean.IncomingParameters.TARGET_ID, this.getTargetId());
         }
 
         return rr;

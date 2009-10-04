@@ -84,12 +84,12 @@ public class RefObjUploadActionBean extends RefObjViewActionBean
         
         RedirectResolution rr = new RedirectResolution(RefObjViewActionBean.class);
         {
-            rr.addParameter(RefObjViewActionBean.IncommingParameters.OBJECT_ID, this.objectId);
+            rr.addParameter(RefObjViewActionBean.IncomingParameters.OBJECT_ID, this.objectId);
         }
         return rr;
     }
 
-    public static interface IncommingParameters {
+    public static interface IncomingParameters {
         public static final String OBJECT_ID = "objectId";
     }
       

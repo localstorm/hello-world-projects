@@ -95,7 +95,7 @@ public class ListResolveActionBean extends GtdBaseActionBean
         
         RedirectResolution rr = new RedirectResolution(ContextViewActionBean.class);
         {
-            rr.addParameter(ContextViewActionBean.IncommingParameters.CTX_ID, dstCtx.getId());
+            rr.addParameter(ContextViewActionBean.IncomingParameters.CTX_ID, dstCtx.getId());
         }
         return rr;
     }

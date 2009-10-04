@@ -41,7 +41,7 @@ public class PersonUnclipActionBean extends PeopleBaseActionBean
         return NextDestinationUtil.getRedirection(super.getReturnPageBean());
     }
     
-    public static interface IncommingParameters {
+    public static interface IncomingParameters {
         public static final String PERSON_ID = "personId";
     }
 }

@@ -37,12 +37,12 @@ public class ConfigUpdateActionBean extends BaseActionBean {
         UserManager um = this.getUserManager();
 
         if (um.login(this.getUser().getLogin(), oldPassword)==null) {
-            errors.add(IncommingParameters.OLD_PASSW, 
+            errors.add(IncomingParameters.OLD_PASSW,
                        new SimpleError("Old passwrod is not valid."));
         }
 
         if (!password.equals(password2)) {
-            errors.add(IncommingParameters.PASSWORD, 
+            errors.add(IncomingParameters.PASSWORD,
                        new SimpleError("New password values are not the same."));
         }
     }
@@ -68,7 +68,7 @@ public class ConfigUpdateActionBean extends BaseActionBean {
         return new ForwardResolution( Views.CONFIGURE );
     }
     
-    public static interface IncommingParameters {
+    public static interface IncomingParameters {
         public static final String PASSWORD  = "password";
         public static final String PASSWORD2 = "password2";
         public static final String OLD_PASSW = "oldPassword";

@@ -51,7 +51,7 @@ public class TargetViewActionBean extends CashflowBaseActionBean
         return new ForwardResolution(Views.VIEW_TARGET);
     }
     
-    public static interface IncommingParameters {
+    public static interface IncomingParameters {
         public static final String TARGET_ID = "targetId";
     }
 }

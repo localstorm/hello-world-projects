@@ -136,7 +136,7 @@ public class TaskUpdateActionBean extends TaskViewActionBean
         if (rpb==null)
         {
             rr = new RedirectResolution(ListViewActionBean.class);
-            rr.addParameter(ListViewActionBean.IncommingParameters.LIST_ID, t.getList().getId());
+            rr.addParameter(ListViewActionBean.IncomingParameters.LIST_ID, t.getList().getId());
             return rr;
         } else {
             rr = NextDestinationUtil.getRedirection(rpb);

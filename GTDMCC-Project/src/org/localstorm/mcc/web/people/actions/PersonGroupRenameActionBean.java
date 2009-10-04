@@ -58,7 +58,7 @@ public class PersonGroupRenameActionBean extends PersonGroupViewActionBean {
         
         RedirectResolution rr = new RedirectResolution(PersonGroupViewActionBean.class);
         {
-            rr.addParameter(PersonGroupViewActionBean.IncommingParameters.GROUP_ID,
+            rr.addParameter(PersonGroupViewActionBean.IncomingParameters.GROUP_ID,
                             super.getGroupId());
         }
         return rr;
