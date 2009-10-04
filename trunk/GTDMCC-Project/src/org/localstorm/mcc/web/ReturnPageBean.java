@@ -46,6 +46,7 @@ public class ReturnPageBean {
 
     public void appendParams(OnwardResolution res) {
         for (Map.Entry<String, String[]> e: this.params.entrySet()) {
+	    System.out.println("PARAM: "+e.getValue()[0]);
             res.addParameter(e.getKey(), (Object[]) e.getValue());
         }
     }

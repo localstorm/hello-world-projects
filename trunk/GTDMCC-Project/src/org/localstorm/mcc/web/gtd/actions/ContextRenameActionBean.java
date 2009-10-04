@@ -55,12 +55,12 @@ public class ContextRenameActionBean extends ContextViewActionBean {
         
         RedirectResolution rr = new RedirectResolution(ContextViewActionBean.class);
         {
-            rr.addParameter(ContextViewActionBean.IncommingParameters.CTX_ID, super.getContextId());
+            rr.addParameter(ContextViewActionBean.IncomingParameters.CTX_ID, super.getContextId());
         }
         return rr;
     }
     
-    public static interface IncommingParameters {
+    public static interface IncomingParameters {
         public static final String CTX_ID = "contextId";
     }
 }

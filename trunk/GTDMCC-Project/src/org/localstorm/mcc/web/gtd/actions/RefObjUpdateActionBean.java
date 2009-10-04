@@ -69,7 +69,7 @@ public class RefObjUpdateActionBean extends RefObjViewActionBean
         SessionUtil.clear(this.getSession(), GtdSessionKeys.REFERENCE_OBJECTS);
         RedirectResolution rr = new RedirectResolution(RefObjViewActionBean.class);
         {
-            rr.addParameter(RefObjViewActionBean.IncommingParameters.OBJECT_ID, super.getObjectId());
+            rr.addParameter(RefObjViewActionBean.IncomingParameters.OBJECT_ID, super.getObjectId());
         }
 
         return rr;

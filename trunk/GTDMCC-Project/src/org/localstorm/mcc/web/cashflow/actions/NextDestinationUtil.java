@@ -4,7 +4,6 @@ import net.sourceforge.stripes.action.RedirectResolution;
 import org.localstorm.mcc.web.ReturnPageBean;
 
 /**
- *
  * @author Alexey Kuznetsov
  */
 public class NextDestinationUtil 
@@ -31,6 +30,9 @@ public class NextDestinationUtil
                 break;
             case DEBT_HISTORY:
                 rr = new RedirectResolution(DebtHisotryReportActionBean.class);
+                break;
+            case OPS_HISTORY:
+                rr = new RedirectResolution(OperationsViewActionBean.class);
                 break;
             default:
                 rr = NextDestinationUtil.getDefaultRedirection();

@@ -51,7 +51,7 @@ public class AssetViewActionBean extends CashflowBaseActionBean
         return new ForwardResolution(Views.VIEW_ASSET);
     }
     
-    public static interface IncommingParameters {
+    public static interface IncomingParameters {
         public static final String ASSET_ID = "assetId";
     }
 }

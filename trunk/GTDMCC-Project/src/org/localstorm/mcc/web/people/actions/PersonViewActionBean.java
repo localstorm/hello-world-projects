@@ -133,7 +133,7 @@ public class PersonViewActionBean extends PeopleBaseActionBean
 
         ReturnPageBean rpb = new ReturnPageBean(Pages.PERSON_VIEW.toString());
         {
-            rpb.setParam(IncommingParameters.PERSON_ID, Integer.toString(this.personId));
+            rpb.setParam(IncomingParameters.PERSON_ID, Integer.toString(this.personId));
         }
 
         super.setReturnPageBean(rpb);
@@ -141,7 +141,7 @@ public class PersonViewActionBean extends PeopleBaseActionBean
         return new ForwardResolution(Views.VIEW_PERSON);
     }
     
-    public static interface IncommingParameters {
+    public static interface IncomingParameters {
         public static final String PERSON_ID = "personId";
         public static final String NEED_EMAIL= "needEmail";
     }

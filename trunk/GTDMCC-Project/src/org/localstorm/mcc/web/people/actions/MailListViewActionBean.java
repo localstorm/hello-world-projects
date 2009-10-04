@@ -94,7 +94,7 @@ public class MailListViewActionBean extends PeopleBaseActionBean
 
         ReturnPageBean rpb = new ReturnPageBean(Pages.MAIL_LIST_VIEW.toString());
         {
-            rpb.setParam(IncommingParameters.MAIL_LIST_ID, this.getMailListId().toString());
+            rpb.setParam(IncomingParameters.MAIL_LIST_ID, this.getMailListId().toString());
         }
 
         super.setReturnPageBean(rpb);
@@ -103,7 +103,7 @@ public class MailListViewActionBean extends PeopleBaseActionBean
     }
 
 
-    public static interface IncommingParameters {
+    public static interface IncomingParameters {
         public static final String MAIL_LIST_ID = "mailListId";
     }
 

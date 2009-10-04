@@ -45,7 +45,7 @@ public class RefObjAttachActionBean extends RefObjViewActionBean
             try {
                 new URL(this.text);
             } catch (Exception e) {
-                ve.add(IncommingParameters.URL, new SimpleError("Given URL is malformed!"));
+                ve.add(IncomingParameters.URL, new SimpleError("Given URL is malformed!"));
             }
 
             if ( this.getContext().getValidationErrors().hasFieldErrors() )
@@ -98,13 +98,13 @@ public class RefObjAttachActionBean extends RefObjViewActionBean
         
         RedirectResolution rr = new RedirectResolution(RefObjViewActionBean.class);
         {
-            rr.addParameter(RefObjViewActionBean.IncommingParameters.OBJECT_ID, this.objectId);
+            rr.addParameter(RefObjViewActionBean.IncomingParameters.OBJECT_ID, this.objectId);
         }
         return rr;
     }
 
    
-    public static interface IncommingParameters {
+    public static interface IncomingParameters {
         public static final String OBJECT_ID = "objectId";
         public static final String URL       = "text";
     }

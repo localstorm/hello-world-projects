@@ -102,7 +102,7 @@ public class OperateAssetActionBean extends AssetViewActionBean {
         
         RedirectResolution rr = new RedirectResolution(AssetViewActionBean.class);
         {
-            rr.addParameter(AssetViewActionBean.IncommingParameters.ASSET_ID, asset.getId());
+            rr.addParameter(AssetViewActionBean.IncomingParameters.ASSET_ID, asset.getId());
         }
         return rr;
     }

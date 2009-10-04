@@ -59,7 +59,7 @@ public class MailListRenameActionBean extends MailListViewActionBean {
         
         RedirectResolution rr = new RedirectResolution(MailListViewActionBean.class);
         {
-            rr.addParameter(MailListViewActionBean.IncommingParameters.MAIL_LIST_ID,
+            rr.addParameter(MailListViewActionBean.IncomingParameters.MAIL_LIST_ID,
                             super.getMailListId());
         }
         return rr;

@@ -49,7 +49,7 @@ public class ListAddActionBean extends ContextViewActionBean
         getListManager().create(list);
         
         RedirectResolution fr = new RedirectResolution( ContextViewActionBean.class );
-        fr.addParameter( ContextViewActionBean.IncommingParameters.CTX_ID, getContextId() );
+        fr.addParameter( ContextViewActionBean.IncomingParameters.CTX_ID, getContextId() );
         return fr;
     }
     

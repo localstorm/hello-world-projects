@@ -87,7 +87,7 @@ public class RefObjViewActionBean extends GtdBaseActionBean
         return new ForwardResolution(Views.VIEW_RO);
     }
 
-    public static interface IncommingParameters {
+    public static interface IncomingParameters {
         public static final String OBJECT_ID = "objectId";
     }
     

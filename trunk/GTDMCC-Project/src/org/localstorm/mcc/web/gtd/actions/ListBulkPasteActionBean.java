@@ -51,7 +51,7 @@ public class ListBulkPasteActionBean extends GtdBaseActionBean
         
         RedirectResolution rr = new RedirectResolution(ContextViewActionBean.class);
         {
-            rr.addParameter(ContextViewActionBean.IncommingParameters.CTX_ID, dst.getId());
+            rr.addParameter(ContextViewActionBean.IncomingParameters.CTX_ID, dst.getId());
         }
         
         return rr;

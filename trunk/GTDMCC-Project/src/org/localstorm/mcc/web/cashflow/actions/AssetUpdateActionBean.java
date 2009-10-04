@@ -142,7 +142,7 @@ public class AssetUpdateActionBean extends AssetViewActionBean {
 
         RedirectResolution rr = new RedirectResolution(AssetViewActionBean.class);
         {
-            rr.addParameter(AssetViewActionBean.IncommingParameters.ASSET_ID, this.getAssetId());
+            rr.addParameter(AssetViewActionBean.IncomingParameters.ASSET_ID, this.getAssetId());
         }
 
         return rr;

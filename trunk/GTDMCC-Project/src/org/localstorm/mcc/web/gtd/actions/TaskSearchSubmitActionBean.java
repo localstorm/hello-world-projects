@@ -127,7 +127,7 @@ public class TaskSearchSubmitActionBean extends GtdBaseActionBean
 
         ReturnPageBean rpb = new ReturnPageBean(Pages.TASK_SEARCH_SUBMIT.toString());
         {
-            rpb.setParam(IncommingParameters.TEXT, this.getText());
+            rpb.setParam(IncomingParameters.TEXT, this.getText());
         }
         super.setReturnPageBean(rpb);
 
@@ -190,7 +190,7 @@ public class TaskSearchSubmitActionBean extends GtdBaseActionBean
         return hc.getTasks();
     }
 
-    public static interface IncommingParameters {
+    public static interface IncomingParameters {
         public static final String TEXT = "text";
     }
 

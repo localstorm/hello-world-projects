@@ -61,7 +61,7 @@ public class FileDownloadActionBean extends GtdBaseActionBean
     }
 
     
-    public static interface IncommingParameters {
+    public static interface IncomingParameters {
         public static final String FILE_ID = "fileId";
     }
     

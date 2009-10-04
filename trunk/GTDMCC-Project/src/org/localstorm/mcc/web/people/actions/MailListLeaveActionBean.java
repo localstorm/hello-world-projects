@@ -60,14 +60,14 @@ public class MailListLeaveActionBean extends PeopleBaseActionBean
 
         RedirectResolution rr = new RedirectResolution(MailListViewActionBean.class);
         {
-            rr.addParameter(MailListViewActionBean.IncommingParameters.MAIL_LIST_ID, this.getMailListId());
+            rr.addParameter(MailListViewActionBean.IncomingParameters.MAIL_LIST_ID, this.getMailListId());
         }
 
         return rr;
     }
 
 
-    public static interface IncommingParameters {
+    public static interface IncomingParameters {
         public static final String MAIL_LIST_ID = "mailListId";
         public static final String PERSON_ID = "personId";
     }

@@ -78,7 +78,7 @@ public class TaskResolveActionBean extends GtdBaseActionBean
         } else {
             RedirectResolution rr = new RedirectResolution(ListViewActionBean.class);
             {
-                rr.addParameter(ListViewActionBean.IncommingParameters.LIST_ID, list.getId());
+                rr.addParameter(ListViewActionBean.IncomingParameters.LIST_ID, list.getId());
             }
             return rr;
         }

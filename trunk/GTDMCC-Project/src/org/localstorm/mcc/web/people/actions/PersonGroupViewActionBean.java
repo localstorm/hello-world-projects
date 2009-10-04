@@ -62,7 +62,7 @@ public class PersonGroupViewActionBean extends PeopleBaseActionBean {
 
         ReturnPageBean rpb = new ReturnPageBean(Pages.GROUP_VIEW.toString());
         {
-            rpb.setParam(IncommingParameters.GROUP_ID, this.groupId.toString());
+            rpb.setParam(IncomingParameters.GROUP_ID, this.groupId.toString());
         }
         
         super.setReturnPageBean(rpb);
@@ -70,7 +70,7 @@ public class PersonGroupViewActionBean extends PeopleBaseActionBean {
         return new ForwardResolution(Views.PERSON_GROUP);
     }
 
-    public static interface IncommingParameters {
+    public static interface IncomingParameters {
         public static final String GROUP_ID = "groupId";
     }
 

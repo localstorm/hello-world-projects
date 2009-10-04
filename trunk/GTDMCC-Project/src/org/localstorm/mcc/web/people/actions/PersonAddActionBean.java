@@ -77,7 +77,7 @@ public class PersonAddActionBean extends PersonGroupViewActionBean {
 
         RedirectResolution rr = new RedirectResolution(PersonGroupViewActionBean.class);
         {
-            rr.addParameter(PersonGroupViewActionBean.IncommingParameters.GROUP_ID,
+            rr.addParameter(PersonGroupViewActionBean.IncomingParameters.GROUP_ID,
                             this.getGroupId());
         }
 

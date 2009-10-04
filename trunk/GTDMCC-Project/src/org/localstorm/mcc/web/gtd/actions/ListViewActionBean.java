@@ -94,7 +94,7 @@ public class ListViewActionBean extends GtdBaseActionBean
 
         ReturnPageBean rpb = new ReturnPageBean(Pages.LIST_VIEW.toString());
         {
-            rpb.setParam(IncommingParameters.LIST_ID, Integer.toString(listId));
+            rpb.setParam(IncomingParameters.LIST_ID, Integer.toString(listId));
         }
         
         super.setReturnPageBean(rpb);
@@ -104,7 +104,7 @@ public class ListViewActionBean extends GtdBaseActionBean
 
     
 
-    public static interface IncommingParameters {
+    public static interface IncomingParameters {
         public static final String LIST_ID = "listId";
     }
     

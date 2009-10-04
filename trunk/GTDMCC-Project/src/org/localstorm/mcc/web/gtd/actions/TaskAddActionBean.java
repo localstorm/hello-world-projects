@@ -82,7 +82,7 @@ public class TaskAddActionBean extends ListViewActionBean
         }
         
         RedirectResolution rr = new RedirectResolution( ListViewActionBean.class );
-        rr.addParameter( ListViewActionBean.IncommingParameters.LIST_ID, super.getListId() );
+        rr.addParameter( ListViewActionBean.IncomingParameters.LIST_ID, super.getListId() );
         return rr;
     }
     
