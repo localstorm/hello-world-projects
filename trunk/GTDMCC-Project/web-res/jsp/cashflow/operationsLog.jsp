@@ -29,7 +29,7 @@
         <td width="5%" align="center" ><img src="<c:url value="/images/op_${op.type}.png"/>"/></td>
         <td align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${op.amount}"/></td>
         <td align="right" ><c:out value="${op.comment}" /></td>
-        <td align="right" ><c:out value="${op.operationDate}" /></td>
+        <td align="right" ><fmt:formatDate type="date" value="${op.operationDate}" /></td>
         <td align="center" ><a onclick="return confirm('Are you sure?');" title="Revoke operation" href="<c:url value="/actions/cash/op/RevokeOperation">
                                         <c:param name="operationId" value="${op.id}" />
                                         <c:param name="returnPageToken" value="${returnPageToken}" />Щ
