@@ -1,6 +1,8 @@
 package org.localstorm.mcc.web.people.actions;
 
 import java.util.Collection;
+import java.util.Map;
+import javax.servlet.http.HttpSession;
 import net.sourceforge.stripes.action.After;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
@@ -21,6 +23,7 @@ import org.localstorm.mcc.web.people.RequestAttributes;
 import org.localstorm.mcc.web.people.Views;
 import org.localstorm.mcc.web.util.SessionUtil;
 import org.localstorm.tools.aop.runtime.Logged;
+import org.localstorm.mcc.ejb.people.entity.MailList;
 
 /**
  * TODO: Special security check!!
@@ -106,10 +109,12 @@ public class MailListAddActionBean extends PeopleBaseActionBean
         PregeneratedMailList pml = mlm.generateMailList(resolvedPersons, attributes);
 
         if (pml.isReady())  {
-            mlm.create(pml, this.getName(), super.getUser());
+            MailList created = mlm.create(pml, this.getName(), super.getUser());
 
             SessionUtil.clear(super.getSession(), PeopleSessionKeys.MAIL_LISTS);
             super.getClipboard().clearPersons();
+
+            appendAccessibleMailList(created);
 
             ReturnPageBean rpb = super.getReturnPageBean();
             return NextDestinationUtil.getRedirection(rpb);
@@ -117,5 +122,12 @@ public class MailListAddActionBean extends PeopleBaseActionBean
             super.getRequest().setAttribute(RequestAttributes.PREGENERATED_MAIL_LIST, pml);
             return new ForwardResolution(Views.VIEW_RESOLVE_EMAILS);
         }
+    }
+
+    private void appendAccessibleMailList(MailList created) {
+        HttpSession sess = super.getSession();
+        Map<Integer, Boolean> amlm = (Map<Integer, Boolean>) SessionUtil.getValue(sess, PeopleSessionKeys.ACCESSIBLE_MAIL_LISTS_MAP);
+        amlm.put(created.getId(), Boolean.TRUE);
+        SessionUtil.fill(sess, PeopleSessionKeys.ACCESSIBLE_MAIL_LISTS_MAP, amlm);
     }
 }
