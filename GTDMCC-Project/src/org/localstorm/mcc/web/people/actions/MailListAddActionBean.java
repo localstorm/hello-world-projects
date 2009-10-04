@@ -110,11 +110,12 @@ public class MailListAddActionBean extends PeopleBaseActionBean
 
         if (pml.isReady())  {
             MailList created = mlm.create(pml, this.getName(), super.getUser());
+            HttpSession sess = super.getSession();
 
-            SessionUtil.clear(super.getSession(), PeopleSessionKeys.MAIL_LISTS);
+            SessionUtil.clear(sess, PeopleSessionKeys.MAIL_LISTS);
+            SessionUtil.clear(sess, PeopleSessionKeys.ACCESSIBLE_MAIL_LISTS_MAP);
+
             super.getClipboard().clearPersons();
-
-            appendAccessibleMailList(created);
 
             ReturnPageBean rpb = super.getReturnPageBean();
             return NextDestinationUtil.getRedirection(rpb);
@@ -124,10 +125,4 @@ public class MailListAddActionBean extends PeopleBaseActionBean
         }
     }
 
-    private void appendAccessibleMailList(MailList created) {
-        HttpSession sess = super.getSession();
-        Map<Integer, Boolean> amlm = (Map<Integer, Boolean>) SessionUtil.getValue(sess, PeopleSessionKeys.ACCESSIBLE_MAIL_LISTS_MAP);
-        amlm.put(created.getId(), Boolean.TRUE);
-        SessionUtil.fill(sess, PeopleSessionKeys.ACCESSIBLE_MAIL_LISTS_MAP, amlm);
-    }
 }
