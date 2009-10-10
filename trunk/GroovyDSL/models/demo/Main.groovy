@@ -9,7 +9,10 @@ Component.declarations(
     MyAnotherComposite: MyAnotherComposite.class
 )
 
-"MyComposite".component().port("OUTPUT") >> "MyAnotherComposite".component().port("INPUT")
+myComposite = "MyComposite".component()
+myAnotherComposite = "MyAnotherComposite".component()
+
+myComposite.port("OUTPUT") >> myAnotherComposite.port("INPUT")
 
 
 
