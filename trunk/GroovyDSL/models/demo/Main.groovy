@@ -4,7 +4,7 @@ import org.localstorm.groovy.dsl.fbp.*
 
 DSL.init()
 
-new Components(
+Component.declarations(
     MyComposite: MyComposite.class,
     MyAnotherComposite: MyAnotherComposite.class
 )
