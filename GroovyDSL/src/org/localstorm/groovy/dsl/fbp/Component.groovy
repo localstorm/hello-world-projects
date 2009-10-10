@@ -16,6 +16,15 @@ class Component {
 	}
     }
     
+     static void declarations(Map declMap) {
+	if (declMap) {
+    	    for (entry in declMap.entrySet()) {
+		println "Processing '"+entry.key+"' declaration..."
+    		// TODO: invoke entry.value.main() method here
+	    }
+        }
+     }
+                 
     Port port(name) {
 	println "Creating or looking up port '"+this.name+":"+name+"'"
 	return new Port(this, name)

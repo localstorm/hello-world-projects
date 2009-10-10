@@ -3,8 +3,7 @@ package org.localstorm.groovy.dsl.fbp
 class DSL {
     
     static void init() {
-	println("Extending String...")
-
+	println("Initializing DSL...")
 		
         String.metaClass.component = {
     	    props -> String name = delegate
