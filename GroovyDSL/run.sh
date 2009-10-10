@@ -1,3 +1,3 @@
 #! /bin/sh
 
-java -cp build:lib/* org.localstorm.groovy.dsl.Main 
+java -cp apps:build:lib/* demo.Main
