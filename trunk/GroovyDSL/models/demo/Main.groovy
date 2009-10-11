@@ -5,12 +5,14 @@ import org.localstorm.groovy.dsl.fbp.*
 DSL.init()
 
 Component.declarations(
-    MyComposite: MyComposite.class,
+//    Cool:               "CSVAdapter".import,
+//    Uncool:             "JMSAdapter".import,
+    MyComposite:        MyComposite.class,
     MyAnotherComposite: MyAnotherComposite.class
 )
 
-myComposite = "MyComposite".component()
-myAnotherComposite = "MyAnotherComposite".component()
+myComposite = "MyComposite".component
+myAnotherComposite = "MyAnotherComposite".component
 
 myComposite.port("OUTPUT") >> myAnotherComposite.port("INPUT")
 
