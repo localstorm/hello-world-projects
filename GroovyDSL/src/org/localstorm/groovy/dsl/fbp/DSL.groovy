@@ -10,6 +10,11 @@ class DSL {
 	             println "Creating or looking up component '"+name+"'"
 	             return new Component(name, props)
         }
+
+        String.metaClass.getComponent = { -> String name = delegate
+	             println "Creating or looking up component '"+name+"'"
+	             return new Component(name, [:])
+        }
     }
             
 }

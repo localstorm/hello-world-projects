@@ -20,7 +20,9 @@ class Component {
 	if (declMap) {
     	    for (entry in declMap.entrySet()) {
 		println "Processing '"+entry.key+"' declaration..."
-    		// TODO: invoke entry.value.main() method here
+		Boundary.pushComponent(null);
+    		entry.value.main(new String[0]);
+    		Boundary.popComponent();
 	    }
         }
      }
