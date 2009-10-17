@@ -31,6 +31,11 @@ public class ScriptBasedComponent implements ComponentInternal {
 	}
 	
 	@Override
+	public void setProperty(String name, Object value) {
+		properties.put(name, value);
+	}
+	
+	@Override
 	public Object getProperty(String name) {
 		return properties.get(name);
 	}

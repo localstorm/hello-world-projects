@@ -8,4 +8,5 @@ public interface ComponentInternal {
 	
 	void setProperties(Map<String, Object> props);
 	Object getProperty(String name);
+	void setProperty(String name, Object value);
 }
