@@ -4,6 +4,8 @@ import java.util.Map;
 
 public interface ComponentInternal {
 	String getName();
-	void setProperties(Map<String, Object> props);
 	PortInternal getOrCreatePort(String name);
+	
+	void setProperties(Map<String, Object> props);
+	Object getProperty(String name);
 }

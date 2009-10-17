@@ -19,8 +19,10 @@ uncool = "Uncool".component(
 uncoolOutput = uncool.port("OUTPUT")
 coolInput    = cool.port("INPUT")
 
-//uncoolOutput >> coolInput >> $.out
+uncoolOutput >> coolInput
 
 // delegation
 compositeOutput = Boundary.port("OUTPUT")
-compositeOutput > uncoolOutput
+compositeOutput >> uncoolOutput
+
+println "${args[0]} was initiallized with fileName="+("fileName".attribute)
