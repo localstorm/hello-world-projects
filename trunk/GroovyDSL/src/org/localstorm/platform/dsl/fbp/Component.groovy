@@ -49,7 +49,9 @@ class Component {
 	
 	def propertyMissing(String name, value) { 
 		println "Setting property '"+name+"' = ["+value+"] for component "+this.name
-		internal.setProperties([name: value]);
+		Map props = new LinkedHashMap();
+		props.put(name, value);
+		internal.setProperties(props);
 	}
 	
 	def propertyMissing(String name) { 

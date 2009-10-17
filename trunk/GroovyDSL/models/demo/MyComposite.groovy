@@ -8,12 +8,12 @@ Component.declarations(
 )
 
 cool = "Cool".component(
-    filename: 'file.csv',
+    fileName: 'file.csv',
     pollForUpdates: 1000
 )
 
 uncool = "Uncool".component(
-    filename : (args.length>0) ? args[0] : null
+    compositeName : (args.length>0) ? args[0] : null
 )
 
 uncoolOutput = uncool.port("OUTPUT")
