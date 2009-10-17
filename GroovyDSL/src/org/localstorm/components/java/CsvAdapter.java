@@ -19,7 +19,12 @@ public class CsvAdapter implements ComponentInternal {
 	
 	@Override
 	public void setProperties(Map<String, Object> props) {
-		
+		System.out.println(NAME+" properties: "+props);
+	}
+	
+	@Override
+	public Object getProperty(String name) {
+		return null;
 	}
 	
 	@Override

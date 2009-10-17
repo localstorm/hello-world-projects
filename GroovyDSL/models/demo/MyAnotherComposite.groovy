@@ -18,4 +18,4 @@ coolInput    = cool.port("INPUT")
 
 // delegation
 compositeInput = Boundary.port("INPUT")
-compositeInput > coolInput  
+compositeInput >> coolInput  

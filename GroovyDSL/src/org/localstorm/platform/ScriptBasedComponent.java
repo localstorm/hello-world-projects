@@ -6,12 +6,14 @@ import java.util.Map;
 public class ScriptBasedComponent implements ComponentInternal {
 
 	private final String name;
-	private Map<String, PortInternal> ports;
+	private final Map<String, PortInternal> ports;
+	private final Map<String, Object> properties;
 	private boolean creationAllowed;
 	
 	public ScriptBasedComponent(String name) {
 		this.name = name;
 		ports = new HashMap<String, PortInternal>();
+		properties = new HashMap<String, Object>();
 	}
 	
 	@Override
@@ -21,7 +23,16 @@ public class ScriptBasedComponent implements ComponentInternal {
 	
 	@Override
 	public void setProperties(Map<String, Object> props) {
-		
+		if (props!=null) {
+			for (Map.Entry<String, Object> e: props.entrySet()) {
+				properties.put(e.getKey(), e.getValue());
+			}
+		}
+	}
+	
+	@Override
+	public Object getProperty(String name) {
+		return properties.get(name);
 	}
 	
 	public void setCreationAllowed(boolean creationAllowed) {

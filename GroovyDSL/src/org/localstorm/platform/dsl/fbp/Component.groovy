@@ -16,17 +16,7 @@ class Component {
 	String getName() {
 		internal.getName()
 	}
-	
-//	Component(name, Map<String, Object> properties) {
-//		this.name = name
-//		
-//		if (properties) {
-//			for (entry in properties.entrySet()) {
-//				println "Setting property '"+entry.key+"' = ["+entry.value+"] for component "+name
-//			}
-//		} 
-//	}
-	
+
 	static void declarations(Map<String, Object> declMap) {
 		if (declMap) {
 			for (entry in declMap.entrySet()) {
@@ -59,10 +49,12 @@ class Component {
 	
 	def propertyMissing(String name, value) { 
 		println "Setting property '"+name+"' = ["+value+"] for component "+this.name
+		internal.setProperties([name: value]);
 	}
 	
 	def propertyMissing(String name) { 
 		println "Getting property '"+name+"'for component "+this.name
+		return internal.getProperty(name);
 	}
 	
 	private static tryCompositeScriptDefinition(final String _name, final Class<?> definition) {
@@ -71,6 +63,7 @@ class Component {
 		ComponentFactories.instance.register(_name, new ComponentFactory() {
 			public ComponentInternal instantiate(String name, Map<String,Object> props) {
 				Boundary.pushComponent(sbc)
+				sbc.setProperties(props);
 				sbc.setCreationAllowed(true);
 					definition.main([name] as String[]);
 				sbc.setCreationAllowed(false);

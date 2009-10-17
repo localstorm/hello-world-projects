@@ -9,7 +9,7 @@ Component.declarations(
     MyAnotherComposite: MyAnotherComposite.class
 )
 
-myComposite = "MyComposite".component
+myComposite 	   = "MyComposite".component(fileName: "data.csv")
 myAnotherComposite = "MyAnotherComposite".component
 
 myComposite.port("OUTPUT") >> myAnotherComposite.port("INPUT")

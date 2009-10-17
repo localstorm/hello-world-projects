@@ -2,7 +2,7 @@ package org.localstorm.platform.dsl.fbp
 
 import org.localstorm.platform.*;
 
-class Port implements Comparable<Port> {
+class Port {
 	PortInternal internal;
 	String name
 	def parent
@@ -18,13 +18,13 @@ class Port implements Comparable<Port> {
 	}
 	
 	Port rightShift(Port port) {
-		println("Connecting "+parent+":"+name+" -> "+port.parent+":"+port.name)    
+		println "Connecting "+parent+":"+name+" -> "+port.parent+":"+port.name    
 		return this
+	}
+
+	Port leftShift(Port port) {
+		println "Connecting "+port.parent+":"+port.name+"-> "+parent+":"+name    
+		return port
 	}    
 
-	def int compareTo(Port port) {
-		println("Data forwarding "+parent+":"+name+" -> "+parent+":"+port.parent+":"+port.name)
-		return 0;
-	}
-	
 }
