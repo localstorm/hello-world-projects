@@ -3,34 +3,19 @@ package org.localstorm.components.java;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.localstorm.platform.ComponentInternal;
+import org.localstorm.platform.ComponentBase;
 import org.localstorm.platform.PortInternal;
 
-public class CsvAdapter implements ComponentInternal {
+public class CsvAdapter extends ComponentBase {
 	
 	public static final String NAME = "CsvAdapter";
 	private Map<String, PortInternal> ports;
-	private String name;
 
 	public CsvAdapter(String name) {
+		super(name);
 		ports = new HashMap<String, PortInternal>();
-		this.name = name;
 	}
 	
-	@Override
-	public void setProperties(Map<String, Object> props) {
-		System.out.println(NAME+" properties: "+props);
-	}
-	
-	@Override
-	public Object getProperty(String name) {
-		return null;
-	}
-	
-	@Override
-	public String getName() {
-		return name;
-	}
 	
 	@Override
 	public PortInternal getOrCreatePort(String name) {
@@ -42,8 +27,5 @@ public class CsvAdapter implements ComponentInternal {
 		return port;
 	}
 	
-	@Override
-	public String toString() {
-		return getName();
-	}
+
 }

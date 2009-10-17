@@ -42,7 +42,7 @@ class Boundary {
 		println "Setting property '"+name+"' = ["+value+"] for component "+this.name
 
 		ScriptBasedComponent c = stack.peek();
-		c.setProperties([name: value]);
+		c.setProperty(name, value);
 	}
 	
     def propertyMissing(String name) {

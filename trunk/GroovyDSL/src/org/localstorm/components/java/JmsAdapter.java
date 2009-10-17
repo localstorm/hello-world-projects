@@ -3,36 +3,19 @@ package org.localstorm.components.java;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.localstorm.platform.ComponentInternal;
+import org.localstorm.platform.ComponentBase;
 import org.localstorm.platform.PortInternal;
 
-public class JmsAdapter implements ComponentInternal {
+public class JmsAdapter extends ComponentBase {
 	
 	public static final String NAME = "JmsAdapter"; 
 	private Map<String, PortInternal> ports;
-	private String name;
 	
 	public JmsAdapter(String name) {
+		super(name);
 		ports = new HashMap<String, PortInternal>();
-		this.name = name;
 	}
 	
-	@Override
-	public void setProperties(Map<String, Object> props) {
-		System.out.println(NAME+" properties: "+props);
-	}
-	
-	@Override
-	public Object getProperty(String name) {
-		return null;
-	}
-
-	@Override
-	public String getName() {
-		return name;
-	}
-	
-
 	// Just a stub. In real life, port creation can be disabled and
 	// only standard precreated ports would be available
 	@Override
@@ -43,10 +26,5 @@ public class JmsAdapter implements ComponentInternal {
 			ports.put(name, port);
 		}
 		return port;
-	}
-	
-	@Override
-	public String toString() {
-		return getName();
 	}
 }
