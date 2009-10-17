@@ -1,3 +1,3 @@
 #! /bin/sh
 
-java -cp apps:build:lib/* demo.Main
+java -cp build:lib/* demo.Main
