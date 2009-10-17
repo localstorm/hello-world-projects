@@ -1,35 +1,56 @@
 package org.localstorm.platform.dsl.fbp
 
+import org.localstorm.platform.*;
+
 // This class doesn't represent actual component. It
 // is a part of DSL component stub to make it easier to build
 // application model
 
 class Component {
-	def name
-	
-	Component(name, Map<String, Object> properties) {
-		this.name = name
-		if (properties) {
-			for (entry in properties.entrySet()) {
-				println "Setting property '"+entry.key+"' = ["+entry.value+"] for component "+name
-			}
-		} 
+	ComponentInternal internal;
+
+	Component(ComponentInternal ci)	{
+		internal = ci
 	}
+
+	String getName() {
+		internal.getName()
+	}
+	
+//	Component(name, Map<String, Object> properties) {
+//		this.name = name
+//		
+//		if (properties) {
+//			for (entry in properties.entrySet()) {
+//				println "Setting property '"+entry.key+"' = ["+entry.value+"] for component "+name
+//			}
+//		} 
+//	}
 	
 	static void declarations(Map<String, Object> declMap) {
 		if (declMap) {
 			for (entry in declMap.entrySet()) {
 				println "Processing '"+entry.key+"' declaration..."
-				Boundary.pushComponent(null);
-				entry.value.main(new String[0]);
-				Boundary.popComponent();
+				def definition = entry.value
+				String name = entry.key
+				
+				if (definition instanceof Class) {
+					tryCompositeScriptDefinition(name, definition);
+					continue;
+				}
+				if (definition instanceof ComponentFactory) {
+					ComponentFactories.instance.register(entry.key, definition);
+					continue;
+				}
+
+				throw new UnknownComponentDeclarationException(name, definition);
 			}
 		}
 	}
 	
 	Port port(name) {
 		println "Creating or looking up port '"+this.name+":"+name+"'"
-		return new Port(this, name)
+		return new Port(internal.getOrCreatePort(name))
 	}
 	
 	String toString() {
@@ -44,5 +65,19 @@ class Component {
 		println "Getting property '"+name+"'for component "+this.name
 	}
 	
-	
+	private static tryCompositeScriptDefinition(final String _name, final Class<?> definition) {
+		final ScriptBasedComponent sbc = new ScriptBasedComponent(_name);
+		
+		ComponentFactories.instance.register(_name, new ComponentFactory() {
+			public ComponentInternal instantiate(String name, Map<String,Object> props) {
+				Boundary.pushComponent(sbc)
+				sbc.setCreationAllowed(true);
+					definition.main([name] as String[]);
+				sbc.setCreationAllowed(false);
+				Boundary.popComponent()
+				return sbc; 
+			}
+		});
+	}
+
 }

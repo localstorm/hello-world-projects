@@ -1,5 +1,6 @@
 package org.localstorm.platform.dsl.fbp
 
+/*
 class $ {
 	
 	private static _self = new Component("\$", [:])
@@ -10,3 +11,4 @@ class $ {
 	private $() {
 	}
 }
+*/

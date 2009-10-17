@@ -1,4 +1,4 @@
-package org.localstorm.platform.dsl.fbp;
+package org.localstorm.platform.dsl.fbp
 
 public class ComponentNotRegisteredException extends Exception {
 	public ComponentNotRegisteredException(String name) {

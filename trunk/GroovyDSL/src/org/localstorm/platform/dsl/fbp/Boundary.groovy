@@ -1,13 +1,15 @@
 package org.localstorm.platform.dsl.fbp
 
+import org.localstorm.platform.*;
+
 class Boundary {
-	static Stack<Component> stack = new Stack<Component>();
+	static Stack<ScriptBasedComponent> stack = new Stack<ScriptBasedComponent>();
 	
-	static void pushComponent(Component c) {
+	static void pushComponent(ScriptBasedComponent c) {
 		stack.push(c)
 	}
 	
-	static Component popComponent() {
+	static ScriptBasedComponent popComponent() {
 		stack.pop()
 	}
 	
@@ -16,8 +18,8 @@ class Boundary {
 			throw new IllegalStateException("Illegal call context for Boundary.port()");
 		}
 		
-		Component c = stack.peek();
-		return c?.port(name);
+		ScriptBasedComponent c = stack.peek();
+		return new Port(c.getOrCreatePort(name));
 	}
 	
 } 

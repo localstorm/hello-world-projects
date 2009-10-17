@@ -16,13 +16,20 @@ class DSL {
     	    		throw new ComponentNotRegisteredException(name);
        	    	}
 
-    	    	ComponentInternal ci = f.instantiate(props);
+    	    	ComponentInternal ci = factory.instantiate(name, props);
     	    	return new Component(ci); 
         }
 
         String.metaClass.getComponent = { -> String name = delegate
-	             println "Creating or looking up component '"+name+"'"
-	             return new Component(name, [:])
+    		println "Looking up component '"+name+"'"
+            ComponentFactories f =  ComponentFactories.instance;
+	    	ComponentFactory factory = f.lookup(name);
+	    	if (!factory) {
+	    		throw new ComponentNotRegisteredException(name);
+   	    	}
+
+	    	ComponentInternal ci = factory.instantiate(name, null);
+	    	return new Component(ci); 
         }
     }
             

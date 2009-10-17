@@ -5,8 +5,6 @@ import org.localstorm.platform.dsl.fbp.*;
 DSL.init()
 
 Component.declarations(
-//    Cool:               "CSVAdapter".import,
-//    Uncool:             "JMSAdapter".import,
     MyComposite:        MyComposite.class,
     MyAnotherComposite: MyAnotherComposite.class
 )
