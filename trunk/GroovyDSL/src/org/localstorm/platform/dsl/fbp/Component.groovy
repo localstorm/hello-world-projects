@@ -1,4 +1,4 @@
-package org.localstorm.groovy.dsl.fbp
+package org.localstorm.platform.dsl.fbp
 
 // This class doesn't represent actual component. It
 // is a part of DSL component stub to make it easier to build

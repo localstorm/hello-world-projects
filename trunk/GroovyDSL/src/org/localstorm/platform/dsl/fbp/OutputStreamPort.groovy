@@ -1,4 +1,4 @@
-package org.localstorm.groovy.dsl.fbp
+package org.localstorm.platform.dsl.fbp
 
 import java.io.OutputStream
 

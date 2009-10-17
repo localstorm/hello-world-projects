@@ -1,6 +1,6 @@
 package demo
 
-import org.localstorm.groovy.dsl.fbp.*
+import org.localstorm.platform.dsl.fbp.*;
 
 DSL.init()
 
