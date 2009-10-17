@@ -1,6 +1,11 @@
 package demo
 
-import org.localstorm.groovy.dsl.fbp.*
+import org.localstorm.platform.dsl.fbp.*
+
+Component.declarations(
+	Cool   : stdlib.CsvAdapter,
+	Uncool : stdlib.JmsAdapter
+)
 
 cool = "Cool".component(
     filename: 'file.csv',
@@ -14,14 +19,8 @@ uncool = "Uncool".component(
 uncoolOutput = uncool.port("OUTPUT")
 coolInput    = cool.port("INPUT")
 
-uncoolOutput >> coolInput >> $.out
-
+//uncoolOutput >> coolInput >> $.out
 
 // delegation
-/*
-input = Boundary.port("INPUT")
-input <=> coolInput 
-
-output = Boundary.port("OUTPUT")
-output <=> uncoolOutput
-*/
+compositeOutput = Boundary.port("OUTPUT")
+compositeOutput > uncoolOutput
