@@ -57,7 +57,7 @@ public class BaseActionBean implements ActionBean
         HttpServletRequest req = this.getRequest();
         HttpSession       sess = this.getSession();
 
-        String token = (String) req.getParameter(RequestAttributes.RETURN_PAGE_TOKEN);
+        String token = req.getParameter(RequestAttributes.RETURN_PAGE_TOKEN);
         if (token==null) {
             token = (String) req.getAttribute(RequestAttributes.RETURN_PAGE_TOKEN);
         }

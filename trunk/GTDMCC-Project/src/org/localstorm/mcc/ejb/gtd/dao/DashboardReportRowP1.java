@@ -14,6 +14,7 @@ public class DashboardReportRowP1 extends AbstractEntity {
     private int red;
     private int dead;
     private int done;
+    private static final long serialVersionUID = 4145688403130841354L;
 
     public int getAwaited() {
         return awaited;

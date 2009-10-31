@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/ear-res/lib/commons-io-1.3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ear-res/lib/spy-2.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ear-res/lib/memcached-2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ear-res/lib/smackx.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ear-res/lib/smack.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ear-res/lib/log-weaver-runtime.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ear-res/lib/commons-lang-2.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ear-res/lib/commons-beanutils.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

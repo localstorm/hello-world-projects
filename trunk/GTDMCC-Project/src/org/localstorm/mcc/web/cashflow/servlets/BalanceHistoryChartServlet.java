@@ -20,6 +20,7 @@ import org.localstorm.tools.aop.runtime.Logged;
  */
 public class BalanceHistoryChartServlet extends HttpServlet
 {
+    private static final long serialVersionUID = -8747574208860334031L;
 
     @Override
     @Logged

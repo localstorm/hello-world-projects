@@ -56,6 +56,7 @@ public class GTDList extends AbstractEntity implements Identifiable, Serializabl
     @Column(name="creation", unique=false, updatable=true, nullable=false )    
     @Temporal(TemporalType.TIMESTAMP)
     private Date creation;
+    private static final long serialVersionUID = -2321503383647833036L;
 
     public GTDList() 
     {

@@ -51,7 +51,7 @@ public final class JdbcDaoHelper
             stmt.setNull(index, Types.INTEGER);
         } else
         {
-            stmt.setInt(index, param.intValue());
+            stmt.setInt(index, param);
         }
     }
 
@@ -106,7 +106,7 @@ public final class JdbcDaoHelper
             stmt.setNull(index, Types.BIGINT);
         } else
         {
-            stmt.setLong(index, param.longValue());
+            stmt.setLong(index, param);
         }
     }
 
@@ -164,7 +164,7 @@ public final class JdbcDaoHelper
             throw new IllegalArgumentException("NaN and infinite values can't be saved to database (" + param + ")");
         } else
         {
-            stmt.setDouble(index, param.doubleValue());
+            stmt.setDouble(index, param);
         }
     }
 
@@ -188,7 +188,7 @@ public final class JdbcDaoHelper
         throws SQLException
     {
         assert (rs != null && index > 0);
-        Double value = new Double(rs.getDouble(index));
+        Double value = rs.getDouble(index);
 
         if (rs.wasNull())
         {
@@ -213,7 +213,7 @@ public final class JdbcDaoHelper
             throw new IllegalArgumentException("NaN and infinitive can't be saved to database (" + param + ")");
         } else
         {
-            stmt.setFloat(index, param.floatValue());
+            stmt.setFloat(index, param);
         }
     }
 
@@ -237,7 +237,7 @@ public final class JdbcDaoHelper
         throws SQLException
     {
         assert (rs != null && index > 0);
-        Float value = new Float(rs.getFloat(index));
+        Float value = rs.getFloat(index);
         if (rs.wasNull())
         {
             value = null;
@@ -251,7 +251,7 @@ public final class JdbcDaoHelper
         throws SQLException
     {
         assert (rs != null && columnName != null && columnName.length() > 0);
-        Float value = new Float(rs.getFloat(columnName));
+        Float value = rs.getFloat(columnName);
         if (rs.wasNull())
         {
             value = null;
@@ -288,7 +288,7 @@ public final class JdbcDaoHelper
             stmt.setNull(index, Types.BIT);
         } else
         {
-            stmt.setBoolean(index, param.booleanValue());
+            stmt.setBoolean(index, param);
         }
     }
 
@@ -509,43 +509,4 @@ public final class JdbcDaoHelper
         }
     }
 
-    public static boolean isValid(Connection conn,
-                                  Logger log)
-    {
-        if (conn == null)
-        {
-            return false;
-        }
-
-        synchronized (conn)
-        {
-            try
-            {
-                if (conn.isClosed())
-                {
-                    return false;
-                }
-
-                Statement stmt = null;
-                ResultSet rset = null;
-                try
-                {
-                    stmt = conn.createStatement();
-                    rset = stmt.executeQuery(JdbcDaoHelper.DB_VALIDATION_QUERY);
-                    return rset.next();
-                } finally
-                {
-                    JdbcDaoHelper.safeClose(rset, log);
-                    JdbcDaoHelper.safeClose(stmt, log);
-                }
-            } catch (final SQLException e)
-            {
-                if (log != null)
-                {
-                    log.warn("Connection validation", e);
-                }
-                return false;
-            }
-        }
-    }
 }

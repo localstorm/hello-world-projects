@@ -1,13 +1,10 @@
 package org.localstorm.mcc.web.cashflow.actions;
 
+import net.sourceforge.stripes.action.*;
 import org.localstorm.mcc.web.util.RoundUtil;
 import java.math.BigDecimal;
 import java.math.MathContext;
-import net.sourceforge.stripes.action.After;
-import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.RedirectResolution;
-import net.sourceforge.stripes.action.Resolution;
-import net.sourceforge.stripes.action.UrlBinding;
+
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.cashflow.entity.Asset;
@@ -109,25 +106,44 @@ public class AssetUpdateActionBean extends AssetViewActionBean {
     public void setName(String name) {
         this.name = name;
     }
+
+    @HandlesEvent("fix")
+    @Logged
+    public Resolution fix() throws Exception {
+        return updateOrFix(true);
+    }
     
     @DefaultHandler
     @Logged
     public Resolution update() throws Exception {
+        return updateOrFix(false);
+    }
 
+    public Resolution updateOrFix(boolean fix) throws  Exception {
         AssetManager     am = super.getAssetManager();
         OperationManager om = super.getOperationManager();
         Asset         asset = am.find(this.getAssetId());
         ValuableObject vo = asset.getValuable();
 
-        
         MathContext rounding = MoneyMathContext.ROUNDING;
 
-        Cost cost = new Cost(vo);
-        {
-            cost.setBuy(RoundUtil.round(this.getBuy(), rounding));
-            cost.setExchangeBuy(RoundUtil.round(this.getBuyFx(), rounding));
-            cost.setSell(RoundUtil.round(this.getSell(), rounding));
-            cost.setExchangeSell(RoundUtil.round(this.getSellFx(), rounding));
+        Cost cost = null;
+        if (!fix) {
+            cost = new Cost(vo);
+            {
+                cost.setBuy(RoundUtil.round(this.getBuy(), rounding));
+                cost.setExchangeBuy(RoundUtil.round(this.getBuyFx(), rounding));
+                cost.setSell(RoundUtil.round(this.getSell(), rounding));
+                cost.setExchangeSell(RoundUtil.round(this.getSellFx(), rounding));
+            }
+        } else {
+            cost = om.getCurrentCost(vo);
+            {
+                cost.setBuy(RoundUtil.round(this.getBuy(), rounding));
+                cost.setExchangeBuy(RoundUtil.round(this.getBuyFx(), rounding));
+                cost.setSell(RoundUtil.round(this.getSell(), rounding));
+                cost.setExchangeSell(RoundUtil.round(this.getSellFx(), rounding));
+            }
         }
 
         vo.setUsedInBalance(this.isUsedInBalance());
@@ -147,6 +163,6 @@ public class AssetUpdateActionBean extends AssetViewActionBean {
 
         return rr;
     }
-    
+
 
 }

@@ -13,6 +13,7 @@ public class PersonWrapper extends Person
 {
     private Person person;
     private PersonGroup group;
+    private static final long serialVersionUID = -5154125884525159920L;
 
     public PersonWrapper(Person person, PersonGroup group) {
         this.person = person;

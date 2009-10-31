@@ -48,6 +48,7 @@ public class ValuableObject extends AbstractEntity implements Identifiable, Seri
 
     @Column(name="is_debt", updatable=true, nullable=false )
     private boolean debt;
+    private static final long serialVersionUID = -1097606781530978130L;
 
 
     public ValuableObject()

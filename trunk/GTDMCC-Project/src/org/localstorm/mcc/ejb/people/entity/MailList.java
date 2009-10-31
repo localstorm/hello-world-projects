@@ -53,6 +53,7 @@ public class MailList  extends AbstractEntity implements Identifiable, Serializa
 
     @Column(name="is_archived", unique=false, updatable=true, nullable=false )
     private boolean archived;
+    private static final long serialVersionUID = 2668167181333769288L;
 
     public MailList()
     {

@@ -42,6 +42,7 @@ public class Target extends AbstractEntity implements Identifiable, Serializable
 
     @Column(name="is_archived", updatable=true, nullable=false )
     private boolean archived;
+    private static final long serialVersionUID = -4518360416297538455L;
 
     public Target() {
     }

@@ -20,6 +20,7 @@ import org.localstorm.tools.aop.runtime.Logged;
  */
 public class TasksStructureChartServlet extends HttpServlet
 {
+    private static final long serialVersionUID = 6876764306906430214L;
 
     @Override
     @Logged

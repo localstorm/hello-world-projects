@@ -57,6 +57,7 @@ public class Agent extends AbstractEntity implements Identifiable, Serializable
     @JoinColumn(name = "owner", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
     private User owner;
+    private static final long serialVersionUID = -6841950642664672980L;
 
     @Override
     public Integer getId()

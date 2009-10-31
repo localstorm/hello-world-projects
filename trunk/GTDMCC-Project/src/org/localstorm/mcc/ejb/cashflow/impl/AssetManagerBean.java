@@ -71,9 +71,7 @@ public class AssetManagerBean implements AssetManagerLocal
         Query uq = em.createNamedQuery(Asset.Queries.FIND_BY_OWNER);
         uq.setParameter(Asset.Properties.OWNER, user);
 
-        @SuppressWarnings("unchecked")
-        List<Asset> list = uq.getResultList();
-        return list;
+        return (List<Asset>) uq.getResultList();
     }
 
     @Override
@@ -81,9 +79,7 @@ public class AssetManagerBean implements AssetManagerLocal
         Query uq = em.createNamedQuery(Asset.Queries.FIND_ARCHIVED_BY_OWNER);
         uq.setParameter(Asset.Properties.OWNER, user);
 
-        @SuppressWarnings("unchecked")
-        List<Asset> list = uq.getResultList();
-        return list;
+        return (List<Asset>) uq.getResultList();
     }
 
     @Override

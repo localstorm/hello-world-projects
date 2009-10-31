@@ -9,6 +9,7 @@ import org.localstorm.mcc.ejb.people.entity.Person;
 public class PersonWrapper extends Person {
 
     private int remains;
+    private static final long serialVersionUID = -1550857252928371785L;
 
     public PersonWrapper(Integer pid)
     {

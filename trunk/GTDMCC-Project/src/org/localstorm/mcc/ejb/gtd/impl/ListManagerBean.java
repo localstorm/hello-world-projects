@@ -25,9 +25,8 @@ public class ListManagerBean extends AbstractManager<GTDList>
     {
         Query lq = em.createNamedQuery(GTDList.Queries.FIND_BY_CTX);
         lq.setParameter(GTDList.Properties.CONTEXT, ctx);
-        
-        List<GTDList> list = lq.getResultList();
-        return list;
+
+        return (List<GTDList>) lq.getResultList();
     }
 
     @SuppressWarnings("unchecked")
@@ -35,9 +34,8 @@ public class ListManagerBean extends AbstractManager<GTDList>
     public Collection<GTDList> findByContextArchived(Context ctx) {
         Query lq = em.createNamedQuery(GTDList.Queries.FIND_BY_CTX_ARCHIVED);
         lq.setParameter(GTDList.Properties.CONTEXT, ctx);
-        
-        List<GTDList> list = lq.getResultList();
-        return list;
+
+        return (List<GTDList>) lq.getResultList();
     }
     
 }

@@ -39,8 +39,7 @@ public class HintManagerBean extends AbstractManager<Hint>
         Query tq = em.createNamedQuery(Hint.Queries.FIND_BY_TASK);
         tq.setParameter(Hint.Properties.TASK, t);
 
-        List<Hint> list = tq.getResultList();
-        return list;
+        return (List<Hint>) tq.getResultList();
     }
 
     @Override

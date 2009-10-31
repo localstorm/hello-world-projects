@@ -12,7 +12,7 @@ import org.localstorm.mcc.ejb.AbstractSingletonManager;
 import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 import org.localstorm.mcc.ejb.gtd.entity.Context;
 import org.localstorm.mcc.ejb.gtd.entity.Task;
-import org.localstorm.mcc.ejb.memcached.MemcachedFasade;
+import org.localstorm.mcc.ejb.memcached.MemcachedFacade;
 import org.localstorm.mcc.ejb.users.User;
 
 /**
@@ -117,7 +117,7 @@ public  class FlightPlanManagerBean extends AbstractSingletonManager<FlightPlan,
             FlightPlan result = new FlightPlan(u);
             em.persist(result);
 
-            MemcachedFasade mf = MemcachedFasade.getInstance();
+            MemcachedFacade mf = MemcachedFacade.getInstance();
             mf.put(super.keyGen(u), result);
 
             return result;
@@ -129,7 +129,7 @@ public  class FlightPlanManagerBean extends AbstractSingletonManager<FlightPlan,
     }
 
     private FlightPlan findCurrentFlightPlan(User u) {
-        MemcachedFasade mf = MemcachedFasade.getInstance();
+        MemcachedFacade mf = MemcachedFacade.getInstance();
         String key = super.keyGen(u);
 
         FlightPlan fp = (FlightPlan) mf.get(key);
@@ -147,8 +147,7 @@ public  class FlightPlanManagerBean extends AbstractSingletonManager<FlightPlan,
         try {
             Query uq = em.createNamedQuery(FlightPlan.Queries.FIND_CURRENT_BY_USER);
             uq.setParameter(FlightPlan.Properties.OWNER, u);
-            FlightPlan fp = (FlightPlan) uq.getSingleResult();
-            return fp;
+            return (FlightPlan) uq.getSingleResult();
         } catch(NoResultException e) {
             return null;
         }

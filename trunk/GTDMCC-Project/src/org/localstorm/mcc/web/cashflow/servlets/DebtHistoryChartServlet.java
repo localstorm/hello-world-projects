@@ -20,6 +20,7 @@ import org.localstorm.tools.aop.runtime.Logged;
  */
 public class DebtHistoryChartServlet extends HttpServlet
 {
+    private static final long serialVersionUID = 8807185278351164139L;
 
     @Override
     @Logged

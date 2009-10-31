@@ -49,6 +49,7 @@ public class FlightPlanToTask extends AbstractEntity implements Serializable
     @JoinColumn(name="task_id", nullable=false)
     @ManyToOne(fetch=FetchType.LAZY)
     private Task task;
+    private static final long serialVersionUID = 551690240853897389L;
 
     public FlightPlanToTask() {
     }

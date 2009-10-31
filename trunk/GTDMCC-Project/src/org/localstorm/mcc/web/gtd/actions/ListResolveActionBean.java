@@ -51,8 +51,7 @@ public class ListResolveActionBean extends GtdBaseActionBean
         TaskManager tm = getTaskManager();
         
         GTDList list   = lm.findById(this.getListId());
-        Context ctx    = list.getContext();
-        Context dstCtx = ctx;
+        Context dstCtx = list.getContext();
         GtdClipboard clip = super.getClipboard();
         
         switch (ACTIONS.valueOf(this.getAction())) {

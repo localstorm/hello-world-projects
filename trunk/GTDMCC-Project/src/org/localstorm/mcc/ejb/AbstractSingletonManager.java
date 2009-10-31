@@ -3,7 +3,7 @@ package org.localstorm.mcc.ejb;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
-import org.localstorm.mcc.ejb.memcached.MemcachedFasade;
+import org.localstorm.mcc.ejb.memcached.MemcachedFacade;
 
 /**
  *
@@ -23,7 +23,7 @@ public abstract class AbstractSingletonManager <T extends Identifiable, E extend
     {
         em.merge( o );
 
-        MemcachedFasade mf = MemcachedFasade.getInstance();
+        MemcachedFacade mf = MemcachedFacade.getInstance();
         mf.put(this.keyGen(e), o);
     }
 
@@ -34,7 +34,7 @@ public abstract class AbstractSingletonManager <T extends Identifiable, E extend
             em.remove(current);
             em.flush();
 
-            MemcachedFasade mf = MemcachedFasade.getInstance();
+            MemcachedFacade mf = MemcachedFacade.getInstance();
             mf.remove(this.keyGen(e));
 
         } catch(ObjectNotFoundException ex) {

@@ -43,6 +43,7 @@ public class PersonToGroup extends AbstractEntity implements Identifiable, Seria
     @JoinColumn(name="group_id", nullable=false)
     @ManyToOne(fetch=FetchType.LAZY)
     private PersonGroup group;
+    private static final long serialVersionUID = 2488086926089958019L;
 
     public PersonToGroup() {
     }

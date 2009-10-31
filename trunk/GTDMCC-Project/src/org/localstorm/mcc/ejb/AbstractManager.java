@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.localstorm.mcc.ejb.except.DuplicateException;
 import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
-import org.localstorm.mcc.ejb.memcached.MemcachedFasade;
+import org.localstorm.mcc.ejb.memcached.MemcachedFacade;
 
 
 /**
@@ -27,7 +27,7 @@ public abstract class AbstractManager<T extends Identifiable> implements BaseMan
         
         em.merge( o );
 
-        MemcachedFasade mf = MemcachedFasade.getInstance();
+        MemcachedFacade mf = MemcachedFacade.getInstance();
         mf.put(this.keyGen(id), o);
     }
     
@@ -40,7 +40,7 @@ public abstract class AbstractManager<T extends Identifiable> implements BaseMan
             em.persist(o);
             this.flush();
 
-            MemcachedFasade mf = MemcachedFasade.getInstance();
+            MemcachedFacade mf = MemcachedFacade.getInstance();
             mf.put(this.keyGen(o.getId()), o);
 
             return o;
@@ -54,7 +54,7 @@ public abstract class AbstractManager<T extends Identifiable> implements BaseMan
     @SuppressWarnings("unchecked")
     public T findById( int id ) throws ObjectNotFoundException
     {
-        MemcachedFasade mf = MemcachedFasade.getInstance();
+        MemcachedFacade mf = MemcachedFacade.getInstance();
         String key = this.keyGen(id);
 
         T t = (T) mf.get(key);
@@ -84,12 +84,12 @@ public abstract class AbstractManager<T extends Identifiable> implements BaseMan
         obj = em.getReference( cl, id );
         em.remove(obj);
 
-        MemcachedFasade mf = MemcachedFasade.getInstance();
+        MemcachedFacade mf = MemcachedFacade.getInstance();
         mf.remove(this.keyGen(id));
     }
 
     protected final void updateObjectsMap(Collection<T> list) {
-        MemcachedFasade mf = MemcachedFasade.getInstance();
+        MemcachedFacade mf = MemcachedFacade.getInstance();
         
         for (T t: list) {
             mf.put(this.keyGen(t.getId()), t);

@@ -22,6 +22,7 @@ import org.localstorm.tools.aop.runtime.Logged;
  */
 public class AuthServlet extends HttpServlet 
 {
+    private static final long serialVersionUID = 3907696271015680047L;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -55,7 +56,6 @@ public class AuthServlet extends HttpServlet
             }
         } else {
             req.getRequestDispatcher(Views.LOGIN).forward(req, res);
-            return;
         }
     }
 

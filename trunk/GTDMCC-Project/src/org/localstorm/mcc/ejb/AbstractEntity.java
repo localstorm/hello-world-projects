@@ -7,6 +7,7 @@ import org.apache.commons.beanutils.BeanUtils;
  * @author localstorm
  */
 public class AbstractEntity implements Serializable {
+    private static final long serialVersionUID = 5105960921172895354L;
 
     @Override
     public String toString() {

@@ -58,10 +58,9 @@ public class FileManagerBean implements FileManagerLocal
     @Override
     public Collection<FileAttachment> findAllByObject(ReferencedObject ro) {
         Query uq = em.createNamedQuery(FileToRefObject.Queries.FIND_FILES_BY_OBJECT);
-        uq.setParameter(FileToRefObject.Properties.OBJECT, ro);  
-        
-        List<FileAttachment> list = uq.getResultList();
-        return list;
+        uq.setParameter(FileToRefObject.Properties.OBJECT, ro);
+
+        return (List<FileAttachment>) uq.getResultList();
     }
 
     @Override

@@ -78,7 +78,8 @@ public class Operation extends AbstractEntity implements Identifiable, Serializa
     @JoinColumn(name="cost_id", nullable=false)
     @ManyToOne(fetch=FetchType.LAZY)
     private Cost cost;
-    
+    private static final long serialVersionUID = -2760618946095185157L;
+
     @Override
     public Integer getId() {
         return id;

@@ -22,6 +22,7 @@ import org.localstorm.tools.aop.runtime.Logged;
  */
 public class AssetsStructureChartServlet extends HttpServlet
 {
+    private static final long serialVersionUID = -6194493889278623422L;
 
     @Override
     @Logged

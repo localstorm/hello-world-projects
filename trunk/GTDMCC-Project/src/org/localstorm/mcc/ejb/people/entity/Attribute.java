@@ -47,6 +47,7 @@ public class Attribute extends AbstractEntity implements Identifiable, Serializa
     @JoinColumn(name="type_id", nullable=false)
     @ManyToOne(fetch=FetchType.EAGER)
     private AttributeType type;
+    private static final long serialVersionUID = -1586053884724533456L;
 
     public Attribute() {
     }

@@ -51,6 +51,7 @@ public class NoteToObject extends AbstractEntity implements Serializable
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "object_id")
     private ReferencedObject refObject;
+    private static final long serialVersionUID = 2446491633646981850L;
 
     public NoteToObject() {
     }

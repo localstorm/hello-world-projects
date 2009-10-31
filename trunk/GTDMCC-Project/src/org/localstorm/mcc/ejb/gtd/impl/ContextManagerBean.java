@@ -26,9 +26,8 @@ public class ContextManagerBean extends AbstractManager<Context>
     {
         Query uq = em.createNamedQuery(Context.Queries.FIND_BY_OWNER);
         uq.setParameter(Context.Properties.OWNER, u);
-        
-        List<Context> list = uq.getResultList();
-        return list;
+
+        return (List<Context>) uq.getResultList();
     }
 
     @Override
@@ -36,9 +35,8 @@ public class ContextManagerBean extends AbstractManager<Context>
     public List<Context> getArchived(User u) {
         Query uq = em.createNamedQuery(Context.Queries.FIND_BY_OWNER_ARCHIVED);
         uq.setParameter(Context.Properties.OWNER, u);
-        
-        List<Context> list = uq.getResultList();
-        return list;
+
+        return (List<Context>) uq.getResultList();
     }
     
     

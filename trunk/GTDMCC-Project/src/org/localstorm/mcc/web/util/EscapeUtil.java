@@ -465,7 +465,9 @@ public final class EscapeUtil {
       //no prefix
     }
     String number = padding + aIdx.toString();
-    aBuilder.append("&#" + number + ";");
+    aBuilder.append("&#");
+    aBuilder.append(number);
+    aBuilder.append(";");
   }
 }
  

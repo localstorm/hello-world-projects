@@ -62,8 +62,9 @@ public class ReferencedObject extends AbstractEntity implements Serializable, Id
     @JoinColumn(name="context_id", nullable=false)
     @ManyToOne(fetch=FetchType.EAGER)
     private Context context;
-    
-    
+    private static final long serialVersionUID = -8627094131049744578L;
+
+
     public ReferencedObject() 
     {
     

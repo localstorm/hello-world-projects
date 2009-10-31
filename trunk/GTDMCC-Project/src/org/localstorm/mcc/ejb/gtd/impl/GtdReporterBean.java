@@ -25,8 +25,7 @@ public class GtdReporterBean implements GtdReporterLocal
         GtdReportsDao grd = new GtdReportsDao(ds);
         
         try {
-            DashboardReportBean drb = grd.getDashboardReport(user);
-            return drb;
+            return grd.getDashboardReport(user);
         }catch(SQLException e) {
             throw new RuntimeException(e);
         }
