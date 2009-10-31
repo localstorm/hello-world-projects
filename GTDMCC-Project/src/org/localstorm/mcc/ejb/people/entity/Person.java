@@ -48,6 +48,7 @@ public class Person extends AbstractEntity implements Identifiable, Serializable
     @Column(name="birth_date", unique=false, updatable=true, nullable=true )
     @Temporal(TemporalType.DATE)
     private Date birthDate;
+    private static final long serialVersionUID = 7496458575935458816L;
 
     public Person()
     {

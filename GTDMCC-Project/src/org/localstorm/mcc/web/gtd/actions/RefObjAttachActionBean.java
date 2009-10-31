@@ -53,8 +53,6 @@ public class RefObjAttachActionBean extends RefObjViewActionBean
                 this.getContext().getRequest().setAttribute("urlForm", "true");
                 super.filling();
             }
-            
-            return;
         }
         
     }

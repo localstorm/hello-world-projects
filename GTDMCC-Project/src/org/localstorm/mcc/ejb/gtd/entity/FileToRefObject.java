@@ -50,6 +50,7 @@ public class FileToRefObject extends AbstractEntity implements Serializable, Ide
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "object_id")
     private ReferencedObject refObject;
+    private static final long serialVersionUID = -1258433527506114783L;
 
     public FileToRefObject() {
     }

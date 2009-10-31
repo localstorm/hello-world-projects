@@ -55,6 +55,7 @@ public class PersonToMailList extends AbstractEntity implements Identifiable, Se
 
     @Column(name="attribute_value", unique=false, updatable=true, nullable=false )
     private String attributeValue;
+    private static final long serialVersionUID = 6192094272178233321L;
 
     public PersonToMailList() {
     }

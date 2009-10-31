@@ -19,7 +19,8 @@ public class TaskWrapper extends Task
     private boolean inFlightPlan;
     private boolean hinted;
     private Map<String, String> hints;
-    
+    private static final long serialVersionUID = -1835901001411335320L;
+
     public TaskWrapper(Task t) {
         this.t = t;
         this.hinted = false;

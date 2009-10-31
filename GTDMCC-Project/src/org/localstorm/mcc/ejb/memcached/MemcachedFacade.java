@@ -13,22 +13,22 @@ import org.apache.log4j.Logger;
  *
  * @author localstorm
  */
-public class MemcachedFasade {
+public class MemcachedFacade {
 
     public  static final int EXPIRATION_IN_SECONDS = 3600;
     public  static final int TIMEOUT_IN_SECONDS    = 2;
 
-    private static final Logger log = Logger.getLogger(MemcachedFasade.class);
-    private static final MemcachedFasade instance = new MemcachedFasade();
+    private static final Logger log = Logger.getLogger(MemcachedFacade.class);
+    private static final MemcachedFacade instance = new MemcachedFacade();
     
     private MemcachedClientIF client;
 
-    public static MemcachedFasade getInstance() {
+    public static MemcachedFacade getInstance() {
         return instance;
     }
 
     // Shutdown?
-    public MemcachedFasade() {
+    public MemcachedFacade() {
         try {
             String addresses = System.getProperty("memcached.server.instance");
 
@@ -44,7 +44,7 @@ public class MemcachedFasade {
                     @Override
                     public void run() {
                         log.info("MEMCACHED FASADE SHUTTING DOWN");
-                        MemcachedFasade.this.client.shutdown();
+                        MemcachedFacade.this.client.shutdown();
                     }
 
                 });

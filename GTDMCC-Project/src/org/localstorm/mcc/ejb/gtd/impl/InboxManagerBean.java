@@ -29,8 +29,7 @@ public class InboxManagerBean extends AbstractManager<InboxEntry> implements Inb
         Query uq = em.createNamedQuery(InboxEntry.Queries.FIND_BY_OWNER);
         uq.setParameter(InboxEntry.Properties.OWNER, owner);
 
-        List<InboxEntry> list = uq.getResultList();
-        return list;
+        return (List<InboxEntry>) uq.getResultList();
     }
 
     @Override

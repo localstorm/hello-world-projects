@@ -46,6 +46,7 @@ public class User  extends AbstractEntity implements Identifiable, Serializable
      
     @Column(name="is_blocked")
     private boolean blocked;
+    private static final long serialVersionUID = 1801591188632778874L;
 
     public User() 
     {

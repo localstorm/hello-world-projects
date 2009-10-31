@@ -13,6 +13,7 @@ public class DashboardReportRowP2 extends AbstractEntity {
     private int difficult;
     private int veryDifficult;
     private int hinted;
+    private static final long serialVersionUID = -90782187999011944L;
 
     public int getHinted() {
         return hinted;

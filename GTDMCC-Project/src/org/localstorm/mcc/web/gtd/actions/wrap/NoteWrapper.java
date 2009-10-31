@@ -13,6 +13,7 @@ public class NoteWrapper extends Note
 {
     private Note note;
     private ReferencedObject ro;
+    private static final long serialVersionUID = -6745552170532948365L;
 
     public NoteWrapper(Note note) {
         this.note = note;

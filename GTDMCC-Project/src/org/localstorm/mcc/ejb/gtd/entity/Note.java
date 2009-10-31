@@ -36,6 +36,7 @@ public class Note extends AbstractEntity implements Serializable {
     @Column(name="creation", unique=false, updatable=true, nullable=false )    
     @Temporal(TemporalType.TIMESTAMP)
     private Date creation;
+    private static final long serialVersionUID = 1828496921758323883L;
 
     public Note() 
     {

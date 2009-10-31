@@ -42,6 +42,7 @@ public class AttributeType extends AbstractEntity implements Identifiable, Seria
 
     @Column(name="is_email", unique=false, updatable=true, nullable=false )
     private boolean email;
+    private static final long serialVersionUID = 9107804959460701660L;
 
     @Override
     public Integer getId() {

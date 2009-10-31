@@ -10,6 +10,7 @@ package org.localstorm.mcc.ejb.except;
  * @author localstorm
  */
 public class ObjectNotFoundException extends Exception {
+    private static final long serialVersionUID = 5917998262540282790L;
 
     public ObjectNotFoundException(Throwable cause) {
         super(cause);

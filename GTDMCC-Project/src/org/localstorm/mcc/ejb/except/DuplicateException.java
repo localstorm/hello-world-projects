@@ -10,6 +10,7 @@ package org.localstorm.mcc.ejb.except;
  * @author localstorm
  */
 public class DuplicateException extends Exception {
+    private static final long serialVersionUID = -1047044062833851797L;
 
     public DuplicateException() {
     }

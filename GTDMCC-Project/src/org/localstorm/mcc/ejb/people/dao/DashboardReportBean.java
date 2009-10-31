@@ -16,6 +16,7 @@ public class DashboardReportBean  extends AbstractEntity
     private List<PersonWrapper> red;
     private List<PersonWrapper> yellow;
     private List<PersonWrapper> green;
+    private static final long serialVersionUID = 7027069440638777578L;
 
     public DashboardReportBean() {
         red    = new LinkedList<PersonWrapper>();
@@ -34,7 +35,6 @@ public class DashboardReportBean  extends AbstractEntity
         }
         if (pw.getRemains()<91) {
             green.add(pw);
-            return;
         }
     }
 

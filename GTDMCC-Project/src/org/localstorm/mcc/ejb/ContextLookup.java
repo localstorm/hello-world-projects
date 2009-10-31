@@ -52,8 +52,7 @@ public class ContextLookup<T>
     public static UserTransaction lookupTransaction()
     {
         try {
-            UserTransaction utx = (UserTransaction) (new InitialContext()).lookup(USER_TRANSACTION_JNDI);    
-            return utx;
+            return (UserTransaction) (new InitialContext()).lookup(USER_TRANSACTION_JNDI);
         } catch(NamingException e) {
             throw new RuntimeException(e);
         }

@@ -37,6 +37,7 @@ public class FileAttachment extends AbstractEntity implements Identifiable, Seri
     @Column(name="creation", unique=false, updatable=true, nullable=false )    
     @Temporal(TemporalType.TIMESTAMP)
     private Date creation;
+    private static final long serialVersionUID = 7121406874327830126L;
 
     public FileAttachment() {
         this.creation = new Date();

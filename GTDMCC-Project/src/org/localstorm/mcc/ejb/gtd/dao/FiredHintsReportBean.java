@@ -13,6 +13,7 @@ import org.localstorm.mcc.ejb.AbstractEntity;
 public class FiredHintsReportBean extends AbstractEntity
 {
     private Collection<TaskStub> fired;
+    private static final long serialVersionUID = 3061203756503731414L;
 
     public FiredHintsReportBean() {
         this.fired = new LinkedList<TaskStub>();
@@ -33,6 +34,7 @@ public class FiredHintsReportBean extends AbstractEntity
         private String summary;
         private int id;
         private int listId;
+        private static final long serialVersionUID = -1889685229053657951L;
 
         public TaskStub(String summary, int id, int listId) {
             this.summary   = summary;

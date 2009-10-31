@@ -23,6 +23,7 @@ public class AssetWrapper extends Asset {
     private BigDecimal iCost;
     private BigDecimal balance;
     private BigDecimal revenuAmount;
+    private static final long serialVersionUID = -2842467359188553256L;
 
     public AssetWrapper(Asset asset, 
                         BigDecimal amount,

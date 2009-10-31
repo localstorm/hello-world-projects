@@ -50,6 +50,7 @@ public class Asset extends AbstractEntity implements Identifiable, Serializable 
 
     @Column(name="is_archived", updatable=true, nullable=false )
     private boolean archived;
+    private static final long serialVersionUID = 8316404842745606918L;
 
     public Asset() {
     }

@@ -12,6 +12,7 @@ public class TargetWrapper extends Target {
 
     private Target target;
     private Cost cost;
+    private static final long serialVersionUID = 2612970717794392383L;
 
     public TargetWrapper(Target target,
                          Cost cost)

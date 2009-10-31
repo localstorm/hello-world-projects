@@ -51,6 +51,7 @@ public class PersonGroup extends AbstractEntity implements Serializable, Identif
     @JoinColumn(name="owner", nullable=false)
     @ManyToOne(fetch=FetchType.LAZY)
     private User owner;
+    private static final long serialVersionUID = -4914596367651790259L;
 
     public PersonGroup() {
     }

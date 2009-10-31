@@ -56,6 +56,7 @@ public class Cost extends AbstractEntity implements Identifiable, Serializable {
     @JoinColumn(name="valuable_id", nullable=false)
     @ManyToOne(fetch=FetchType.LAZY)
     private ValuableObject valuable;
+    private static final long serialVersionUID = 5813286831938101824L;
 
     protected Cost()
     {

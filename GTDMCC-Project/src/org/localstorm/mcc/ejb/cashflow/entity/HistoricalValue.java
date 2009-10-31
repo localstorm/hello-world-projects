@@ -66,6 +66,7 @@ public class HistoricalValue implements Identifiable, Serializable {
     @JoinColumn(name="user_id", nullable=false)
     @ManyToOne(fetch=FetchType.LAZY)
     private User owner;
+    private static final long serialVersionUID = 7274317512556950336L;
 
     @Override
     public Integer getId() {

@@ -16,6 +16,7 @@ public class PregeneratedMailList implements Serializable
     private Collection<Person> noEmail;
     private Collection<Pair<Person, Attribute>> resolved;
     private Collection<Pair<Person, Collection<Attribute>>> manyEmails;
+    private static final long serialVersionUID = -2548696795780126762L;
 
     public PregeneratedMailList()
     {

@@ -44,7 +44,8 @@ public class FlightPlan extends AbstractEntity implements Identifiable, Serializ
     @Column(name="creation", unique=false, updatable=true, nullable=false )    
     @Temporal(TemporalType.TIMESTAMP)
     private Date creation;
-    
+    private static final long serialVersionUID = 8092949036418657378L;
+
     public FlightPlan() {
     }
 

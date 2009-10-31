@@ -54,6 +54,7 @@ public class Hint extends AbstractEntity implements Identifiable
     @Column(name="last_update", unique=false, updatable=true, nullable=false )
     @Temporal(TemporalType.TIMESTAMP)
     private Date   lastUpdate;
+    private static final long serialVersionUID = -8078474234686322486L;
 
     public Hint() {
     }

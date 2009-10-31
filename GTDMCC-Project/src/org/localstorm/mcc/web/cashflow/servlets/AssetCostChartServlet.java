@@ -23,6 +23,7 @@ public class AssetCostChartServlet extends HttpServlet
     public static final String ASSERT_ID_PARAMETER = "assetId";
     public static final String PERIOD              = "period";
     public static final String NAME                = "name";
+    private static final long serialVersionUID = -4760047023337906193L;
 
     @Override
     @Logged

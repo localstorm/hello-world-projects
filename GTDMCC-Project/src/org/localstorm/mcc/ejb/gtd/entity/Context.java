@@ -49,6 +49,7 @@ public class Context extends AbstractEntity implements Identifiable, Retireable,
     
     @Column(name="is_archived", unique=false, updatable=true, nullable=false )    
     private boolean archived;
+    private static final long serialVersionUID = -5454239459488634070L;
 
     public Context() 
     {

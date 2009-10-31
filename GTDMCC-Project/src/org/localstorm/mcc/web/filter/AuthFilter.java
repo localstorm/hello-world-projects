@@ -38,7 +38,6 @@ public class AuthFilter extends SecurityCheckFilter
             }
 
             disp.forward(req, res);
-            return;
         }
     }
 

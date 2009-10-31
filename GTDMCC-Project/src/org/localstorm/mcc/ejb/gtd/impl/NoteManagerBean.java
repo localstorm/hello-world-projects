@@ -30,9 +30,8 @@ public class NoteManagerBean implements NoteManagerLocal
     public Collection<Note> findAllByObject(ReferencedObject obj) {
         Query lq = em.createNamedQuery(NoteToObject.Queries.FIND_NOTES_BY_OBJECT);
         lq.setParameter(NoteToObject.Properties.OBJECT, obj);
-        
-        List<Note> list = (List<Note>) lq.getResultList();
-        return list;
+
+        return (List<Note>) lq.getResultList();
     }
     
     @Override

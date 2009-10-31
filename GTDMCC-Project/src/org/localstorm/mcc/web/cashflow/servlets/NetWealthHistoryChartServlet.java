@@ -20,6 +20,7 @@ import org.localstorm.tools.aop.runtime.Logged;
  */
 public class NetWealthHistoryChartServlet extends HttpServlet
 {
+    private static final long serialVersionUID = -5239734711496278134L;
 
     @Override
     @Logged

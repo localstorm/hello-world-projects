@@ -184,6 +184,7 @@ public class Task extends AbstractEntity implements Identifiable, Serializable
     @Column(name="redline", unique=false, updatable=true, nullable=true )    
     @Temporal(TemporalType.TIMESTAMP)
     private Date redline;
+    private static final long serialVersionUID = 3044154145418166222L;
 
     public Task() 
     {

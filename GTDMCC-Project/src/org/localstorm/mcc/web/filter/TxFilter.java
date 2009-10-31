@@ -63,8 +63,8 @@ public class TxFilter implements Filter
                 log.info("Transaction ["+req.getRequestURL()+"] processed in "+(System.currentTimeMillis()-t1)+" ms.");
             }
         } catch(SystemException e) {
-            RequestUtil.setException((HttpServletRequest) req, e);
-            req.getRequestDispatcher( Views.ERROR ).forward( req, resp );
+            RequestUtil.setException(req, e);
+            req.getRequestDispatcher(Views.ERROR).forward( req, resp );
         }
     }
 

@@ -11,7 +11,8 @@ public class FileAttachmentWrapper extends FileAttachment
 {
     private FileAttachment   fa;
     private ReferencedObject ro;
-    
+    private static final long serialVersionUID = 3115378256272010804L;
+
     public FileAttachmentWrapper(FileAttachment fa, ReferencedObject ro) {
         this.fa = fa;
         this.ro = ro;

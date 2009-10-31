@@ -14,6 +14,7 @@ import org.localstorm.tools.aop.runtime.Logged;
  */
 public class PollingServlet extends HttpServlet 
 {
+    private static final long serialVersionUID = -7021029001862071061L;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

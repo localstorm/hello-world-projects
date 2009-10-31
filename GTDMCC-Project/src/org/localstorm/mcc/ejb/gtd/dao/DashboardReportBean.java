@@ -16,6 +16,7 @@ public class DashboardReportBean extends AbstractEntity {
     private Map<Integer, DashboardReportRow> merger;
     private List<DashboardReportRow> rows;
     private DashboardReportRow totals;
+    private static final long serialVersionUID = -8594071705479152121L;
 
     public DashboardReportBean()
     {

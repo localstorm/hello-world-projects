@@ -28,8 +28,7 @@ public class AgentManagerBean extends AbstractManager<Agent>
         Query uq = em.createNamedQuery(Agent.Queries.FIND_BY_OWNER);
         uq.setParameter(Agent.Properties.OWNER, u);
 
-        List<Agent> list = uq.getResultList();
-        return list;
+        return (List<Agent>) uq.getResultList();
     }
 
     @Override
@@ -37,8 +36,7 @@ public class AgentManagerBean extends AbstractManager<Agent>
     public Collection<Agent> getAgents()
     {
         Query uq = em.createNamedQuery(Agent.Queries.FIND_ALL);
-        List<Agent> list = uq.getResultList();
-        return list;
+        return (List<Agent>) uq.getResultList();
     }
     
 }

@@ -48,6 +48,7 @@ public class InboxEntry extends AbstractEntity implements Identifiable, Serializ
     @Column(name="creation", unique=false, updatable=true, nullable=false )    
     @Temporal(TemporalType.TIMESTAMP)
     private Date creation;
+    private static final long serialVersionUID = -4448210307719080190L;
 
     public InboxEntry() 
     {

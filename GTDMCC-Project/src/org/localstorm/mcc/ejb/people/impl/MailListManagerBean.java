@@ -80,7 +80,7 @@ public class MailListManagerBean extends PeopleStatelessBean implements MailList
         }
 
         Collection<PersonToMailList> cont = this.getMailListContent(ml);
- outer: for (PersonToMailList p2ml : cont) {
+        for (PersonToMailList p2ml : cont) {
             if (p2ml.getAttribute()==null) {
 
                 Attribute attr = resolvedMap.get(p2ml.getPerson().getId());
