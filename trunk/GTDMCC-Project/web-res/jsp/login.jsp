@@ -3,9 +3,27 @@
 
 <%@ include file="/WEB-INF/jsp/includes/loginhdr.jsp" %>
 
-<br/><br/><br/><br/><br/><br/>
-<form action="<c:url value="/auth" />" method="POST" >
+<br/><br/><br/>
+<form action='<c:url value="/auth" />' method="POST" >
 <div align="center">
+<c:if test="${invalidLoginOrPassword}">
+    <table width="30%" bgColor="#F0E68C" >
+        <tr>
+            <th colspan="2" bgColor="#BDB76B"><font color="white">Access Denied</font></th>
+        </tr>
+        <tr>
+            <th colspan="2" >&nbsp;</th>
+        </tr>
+        <tr>
+            <td align="right"><img alt="Access denied" src='<c:url value="/images/lock.png"/>' style="padding: 4px;"/></td>
+            <td>Login or password invalid. Try again please.</td>
+        </tr>
+        <tr>
+            <th colspan="2" >&nbsp;</th>
+        </tr>
+    </table>
+    <br/>
+</c:if>
 <table width="30%" bgColor="#CCCCEE" >
 	<tr>
 		<th colspan="2" bgColor="#7777EE"><font color="white">Sign in</font></th>
