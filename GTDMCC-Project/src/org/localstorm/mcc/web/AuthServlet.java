@@ -55,6 +55,7 @@ public class AuthServlet extends HttpServlet
                 res.sendRedirect(buildUrl(rpb));
             }
         } else {
+            req.setAttribute(RequestAttributes.INVALID_LOGIN_OR_PASSWORD, Boolean.TRUE);
             req.getRequestDispatcher(Views.LOGIN).forward(req, res);
         }
     }

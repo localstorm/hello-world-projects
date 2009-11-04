@@ -18,8 +18,6 @@ import org.localstorm.mcc.web.Views;
 public class AuthFilter extends SecurityCheckFilter
 {
     
-    
-    
     public AuthFilter() {
     
     }
