@@ -182,7 +182,7 @@
             <c:param name="noteId" value="${note.id}" />
         </c:url>"><img src="<c:url value="/images/cut.png"/>" alt="detach" /></a>&nbsp;Text: </span>&nbsp;<br/>
             <table width="100%">
-                <tr><td><c:out escapeXml="false" value="${note.noteHtmlEscaped}" /></td></tr>
+                <tr><td align="justify"><c:out escapeXml="false" value="${note.noteHtmlEscaped}" /></td></tr>
             </table>
         </p>
     </c:forEach>
