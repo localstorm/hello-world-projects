@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Java2Html">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/java2html.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
