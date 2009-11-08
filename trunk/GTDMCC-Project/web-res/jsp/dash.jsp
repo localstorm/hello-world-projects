@@ -13,7 +13,7 @@
                 </c:url>"><c:out value="${pw.shortName}"/></a>
                 <c:choose>
                     <c:when test="${pw.remains>0}">(+<c:out value="${pw.remains}"/>)</c:when>
-                    <c:otherwise>(Today!)</c:otherwise>
+                    <c:otherwise><img src='<c:url value="/images/today.png"/>' /></c:otherwise>
                 </c:choose>
                 </p>
             </c:forEach>
