@@ -1,3 +1,9 @@
+/**
+ * Copyright 1986-2009 Alexey Kuznetsov
+ *
+ * All rights reserved. 
+ */
+ 
 import java.io.InputStream;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -5,11 +11,6 @@ import java.util.Map;
 import org.apache.commons.io.IOUtils;
 import org.localstorm.cache.invalidator.ScriptableCacheInvalidator;
 
-/**
- * Copyright 1986-2009 Alexey Kuznetsov
- *
- * All rights reserved. 
- */
 public class Main {
 	
 	public static void main(String...args) throws Exception

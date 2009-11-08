@@ -1,12 +1,12 @@
-package org.localstorm.cache.invalidator.dsl
-
-import org.localstorm.cache.invalidator.Invalidator;
-
 /**
  * Copyright 1986-2009 Alexey Kuznetsov
  *
  * All rights reserved. 
  */
+
+package org.localstorm.cache.invalidator.dsl
+
+import org.localstorm.cache.invalidator.Invalidator
 
 public class StaticConstruction {
 	static Stack<Rule> rules = new Stack()

@@ -1,5 +1,5 @@
 /**
- * Copyright 1986-2007 Alexey Kuznetsov
+ * Copyright 1986-2009 Alexey Kuznetsov
  *
  * All rights reserved. 
  */

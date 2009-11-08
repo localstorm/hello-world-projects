@@ -3,6 +3,7 @@
  *
  * All rights reserved. 
  */
+ 
 package org.localstorm.cache.invalidator.dsl
 
 public class Resource {

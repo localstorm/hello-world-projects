@@ -1,3 +1,9 @@
+/**
+* Copyright 1986-2009 Alexey Kuznetsov
+*
+* All rights reserved
+*/
+
 package org.localstorm.cache.invalidator.dsl
 
 import org.localstorm.cache.invalidator.Invalidator
@@ -59,6 +65,6 @@ public class ProcessingEngine {
 		for (Map.Entry<String, ParamReference> entry: refs)	{
 			values.put(entry.key, entry.value.getParamValue(scope))
 		}
-		return values;
+		return values
 	}
 }
