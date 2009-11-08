@@ -8,8 +8,8 @@ package org.localstorm.cache.invalidator.dsl;
 
 public class Rule {
 	Change trigger
-	List<DropAction> drops;
-	List<CauseAction> causes;
+	List<DropAction> drops
+	List<CauseAction> causes
 	
 	Rule(Change c){
 		this.trigger = c

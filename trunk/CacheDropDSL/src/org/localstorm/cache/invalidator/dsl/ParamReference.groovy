@@ -1,10 +1,10 @@
 /**
- * Copyright 1986-2007 Alexey Kuznetsov
+ * Copyright 1986-2009 Alexey Kuznetsov
  *
  * All rights reserved. 
  */
 
-package org.localstorm.cache.invalidator.dsl;
+package org.localstorm.cache.invalidator.dsl
 
 public class ParamReference {
 
@@ -18,6 +18,6 @@ public class ParamReference {
 	}
 
 	String getParamValue(Map<String, String> scope) {
-		return scope.get(ref);
+		return scope.get(ref)
 	}
 }
