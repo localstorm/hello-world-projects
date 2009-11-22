@@ -2,6 +2,7 @@ package org.localstorm.springapp.servlet;
 
 import org.localstorm.springapp.beans.RequestScopedBean;
 import org.localstorm.springapp.beans.SingletonBean;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -9,7 +10,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 import java.io.IOException;
+import java.sql.Connection;
 
 /**
  * User: localstorm
@@ -22,14 +25,22 @@ public class TestServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        WebApplicationContext wac = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
-        RequestScopedBean o = (RequestScopedBean) wac.getBean("xBean");
-        o = (RequestScopedBean) wac.getBean("xBean");
-        o = (RequestScopedBean) wac.getBean("xBean");
+        try {
+            WebApplicationContext wac = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
+            RequestScopedBean o = (RequestScopedBean) wac.getBean("xBean");
+            o = (RequestScopedBean) wac.getBean("xBean");
+            o = (RequestScopedBean) wac.getBean("xBean");
 
-        SingletonBean s = (SingletonBean) wac.getBean("yBean");
-        
-        resp.getOutputStream().println("<b>"+o.getMessage()+":"+s.getMessage()+"</b>");
+            SingletonBean s = (SingletonBean) wac.getBean("yBean");
+
+            DataSource ds = (DataSource) wac.getBean("jndiDataSource");
+            JdbcTemplate jdbcT = new JdbcTemplate(ds);
+
+            long count = jdbcT.queryForLong("select count(*) from TEST");
+            resp.getOutputStream().println("<b>" + o.getUser().getName() + ":" + s.getMessage() + ":" + o.getSome().getName() + ", count=" + count+"</b>");
+        } catch (Exception e) {
+            throw new IOException(e);
+        }
     }
 
     @Override
