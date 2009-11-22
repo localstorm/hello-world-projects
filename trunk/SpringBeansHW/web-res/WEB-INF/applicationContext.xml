@@ -6,9 +6,18 @@
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
+    <bean id="someBean"
+              class="org.localstorm.springapp.beans.Some" scope="request">
+        <aop:scoped-proxy/>
+    </bean>
+
 
     <bean id="xBean"
           class="org.localstorm.springapp.beans.RequestScopedBean" scope="request">
+        <property name="user">
+            <ref bean="userBean"/>
+        </property>
+        <property name="some" ref="someBean" />
         <aop:scoped-proxy/>
     </bean>
 
@@ -17,4 +26,21 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
         <aop:scoped-proxy/>
     </bean>
 
+    <bean id="jndiTemplate" class="org.springframework.jndi.JndiTemplate">
+        <property name="environment">
+            <props>
+                <prop key="java.naming.factory.initial">org.jnp.interfaces.NamingContextFactory</prop>
+                <prop key="java.naming.factory.url.pkgs">org.jboss.naming:org.jnp.interfaces</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="jndiDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiTemplate">
+          <ref bean="jndiTemplate"/>
+        </property>
+        <property name="jndiName">
+              <value>java:MCC_DB</value>
+        </property>
+      </bean>
 </beans>
