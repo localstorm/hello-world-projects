@@ -41,7 +41,7 @@ public class PriorityQueueTest {
         results.add(new ExperimentResult(time, 1000000, 0));
     }
 
-    @Experiment(base = "PriorityQueue", name = "Inserting 100000 random elements")
+    @Experiment(base = "PriorityQueue", name = "Inserting 1000000 random elements")
     public void insertRnd(Queue<ExperimentResult> results) {
         System.gc();
         PriorityQueue<Integer> al = new PriorityQueue<Integer>();
@@ -65,7 +65,7 @@ public class PriorityQueueTest {
 
         System.gc();
         PriorityQueue<Integer> al = new PriorityQueue<Integer>();
-        for (int i = 0; i < 100000; i++) {
+        for (int i = 0; i < 1000000; i++) {
             al.add(i);
         }
         long nt = System.nanoTime();
