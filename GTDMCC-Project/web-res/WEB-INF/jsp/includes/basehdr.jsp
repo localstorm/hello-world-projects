@@ -30,7 +30,7 @@
 
 <div id="topPan">
 	<a href="<c:url value="/" />"><img src="<c:url value="/images/logo.png" />" alt="Mission-Control Center" width="245" height="37" class="logo" title="Mission-Control Center"/></a>
-	<p>Be aware!</p>
+	<p>Global operations</p>
 
   <div id="topContactPan" ></div>
 

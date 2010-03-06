@@ -296,6 +296,7 @@ insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null,
 insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Phone',  'text', 'phone', 0);
 insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Phone (Work)',  'text', 'phone', 0);
 insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Position',  'text', 'position', 0);
+insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Professionali',  'href', 'professionals', 0);
 insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'RSS Feed',  'href', 'rss', 0);
 insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Skype',  'text', 'skype', 0);
 insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Textual note',  'text', 'info', 0);
@@ -352,3 +353,21 @@ create table AGENTS
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 insert into AGENTS (owner, jid, host_name, password, port, is_secure) VALUES (174947681, 'zeextor@gmail.com', 'talk.google.com', '****', 5223, true);
+
+CREATE FUNCTION LS_DAYS_UNTIL (event DATETIME, since DATETIME)
+RETURNS INT DETERMINISTIC
+BEGIN
+    DECLARE nextDateForEvent DATETIME;
+
+    IF DATE(event) < DATE(since) THEN
+        SET nextDateForEvent = DATE(event) + INTERVAL ((YEAR(since)-YEAR(event))) YEAR;
+        IF nextDateForEvent < since THEN
+            SET nextDateForEvent = nextDateForEvent + INTERVAL 1 YEAR;
+        END IF;
+    ELSE
+        SET nextDateForEvent = DATE(event);
+    END IF;
+
+    return DATEDIFF(nextDateForEvent, DATE(since));
+END
+                      
