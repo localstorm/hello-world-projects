@@ -296,13 +296,16 @@ insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null,
 insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Phone',  'text', 'phone', 0);
 insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Phone (Work)',  'text', 'phone', 0);
 insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Position',  'text', 'position', 0);
-insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Professionali',  'href', 'professionals', 0);
 insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'RSS Feed',  'href', 'rss', 0);
 insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Skype',  'text', 'skype', 0);
 insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Textual note',  'text', 'info', 0);
 insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'VKontakte',  'href', 'vkontakte', 0);
 insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Home Page',  'href', 'web_page', 0);
 insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Yahoo! IM',  'text', 'yahoo', 0);
+insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Professionali',  'href', 'professionals', 0);
+insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Facebook',  'href', 'facebook', 0);
+insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'LinkedIn',  'href', 'linkedin', 0);
+insert into ATTRIBUTE_TYPES (id, name, view_type, token, is_email) VALUES (null, 'Twitter',  'href', 'twitter', 0);
 
 create table MAIL_LISTS
 (
