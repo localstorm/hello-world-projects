@@ -8,25 +8,15 @@
 
 4+. Мелкие improvement'ы, автодеплоймент, отладка и request, response, cookie, session
 
-5+. Базовые знания о JSP. самые необходимые теги c:url, c:if, c:choose, fmt:*, c:forEach, c:set 
+5+. Базовые знания о JSP. самые необходимые теги 
 
 6+. Пример на типичный сценарий работы с JSP. i18n + пара страниц + сервлет, обрабатывающий форму авторизации, forward vs. redirect
 
-7. Фильтры + структура web.xml
-1) Authentication Filters
-2) Logging and Auditing Filters
-3) Image conversion Filters
-4) Data compression Filters
-5) Encryption Filters
-6) Tokenizing Filters
-7) Filters that trigger resource access events
-8) XSL/T filters
-9) Mime-type chain Filter 
-Грабли с кодировкой формы.
+7+. Фильтры + структура web.xml. Грабли с кодировкой формы.
 
-8. Добавляем MVC. Настройка Struts2.
+8--+. Добавляем MVC. Настройка Spring Web MVC
 
-9. Собираем всё вместе. 
+9. Осмотримся по сторонам? 
 
 10. Enterprise приложения EAR -- зачем и как устроены (может сперва просто EJB-JAR сделать?)
 
