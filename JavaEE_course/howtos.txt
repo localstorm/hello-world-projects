@@ -22,10 +22,11 @@
 7) Filters that trigger resource access events
 8) XSL/T filters
 9) Mime-type chain Filter 
+Грабли с кодировкой формы.
 
 8. Добавляем MVC. Настройка Struts2.
 
-9. Собираем всё вместе. Грабли с кодировкой формы.
+9. Собираем всё вместе. 
 
 10. Enterprise приложения EAR -- зачем и как устроены (может сперва просто EJB-JAR сделать?)
 
