@@ -16,6 +16,8 @@
 
 8+. Добавляем MVC. Настройка Spring Web MVC
 
+9+-. JDBC
+
 9.  More advanced techniques with Spring Web MVC. Осмотримся по сторонам? 
 
 10. Enterprise приложения EAR -- зачем и как устроены (может сперва просто EJB-JAR сделать?)
@@ -24,10 +26,11 @@
 
 12. Пример доступа к СУБД через JNDI и JDBC
 
-13. JPA
-	EJB spec from Sun 
+13. JPA, EJB spec from Sun 
 
-14. Реализация транзакций в серверах приложений. Прокси-классы, thread-bounded transactions, transaction propagation. Ручной старт транзакций фильтром в web-приложениях
+14. Реализация транзакций в серверах приложений (JTA). 
+Прокси-классы, thread-bounded transactions, transaction propagation. 
+Ручной старт транзакций фильтром в web-приложениях
 
 15. 3-х уровневая архитектура Enterprise приложений
 
