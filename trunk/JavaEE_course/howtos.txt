@@ -20,9 +20,9 @@
 
 10+ Конфигурирование JBoss для работы с СУБД, MySQL
 
-11- More advanced techniques with Spring Web MVC. Осмотримся по сторонам? 
+11+ Enterprise приложения EAR -- зачем и как устроены 
 
-12- Enterprise приложения EAR -- зачем и как устроены (может сперва просто EJB-JAR сделать?)
+12- More advanced techniques with Spring Web MVC. Осмотримся по сторонам? 
 
 13- JPA, EJB spec from Sun 
 
