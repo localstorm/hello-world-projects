@@ -1,0 +1,22 @@
+package ${package};
+
+public class ${handlerName}ActionHandler implements IHandler {
+#foreach($attributeName in $attributeNames)
+	@InAttribute("${attributeName}")
+	private IStaticValue ${attributeName}Attr; 
+#end
+#foreach($inputPortName in $inputPortNames)
+	@InPort("${inputPortName}")
+	private InputPort ${inputPortName}_InputPort; 
+#end
+#foreach($outputPortName in $outputPortNames)
+	@OutPort("${outputPortName}")
+	private OutputPort ${outputPortName}_OutputPort; 
+#end
+	
+	public IValue handle(IContext context, Internal originator,
+		IMemory environment, IMemory locals, String actionName, IValue[] parameters) throws Exception
+	{
+		throw new UnsupportedOperationException("Not implemented!");
+	}
+}
