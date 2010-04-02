@@ -404,6 +404,11 @@ background-repeat: no-repeat;
 background-position: 0px 0px;
 }
 
+#primarycontent .post .footer ul li.over
+{
+background-image: url('images/over.png');
+}
+
 #primarycontent .post .footer ul li.readmore
 {
 background-image: url('images/readmore.png');
