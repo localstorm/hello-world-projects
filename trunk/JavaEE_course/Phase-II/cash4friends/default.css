@@ -87,12 +87,11 @@ ul.linklist_norss li
 border-top: solid 1px #EEEEEE;
 padding-top: 5px;
 margin: 5px 0px 0px 0px;
+text-indent:20px;
 
-text-align: center;
 background-image: url(images/search.png);
 background-repeat: no-repeat;
 background-position: 0 .5em;
-
 }
 
 ul.linklist_norss li.first
@@ -100,8 +99,8 @@ ul.linklist_norss li.first
 border-top: 0px;
 margin-top: 0px;
 padding-top: 5px;
+text-indent:20px;
 
-text-align: center;
 background-image: url(images/search.png);
 background-repeat: no-repeat;
 background-position: 0 .5em;
@@ -113,7 +112,8 @@ ul.linklist li
 border-top: solid 1px #EEEEEE;
 padding-top: 5px;
 margin: 5px 0px 0px 0px;
-text-align: center;
+text-indent:20px;
+background-image: url(images/dir.png);
 background-repeat: no-repeat;
 background-position: 0 .5em;
 }
@@ -124,7 +124,8 @@ ul.linklist li.first
 border-top: 0px;
 margin-top: 0px;
 padding-top: 5px;
-text-align: center;
+text-indent:20px;
+background-image: url(images/dir.png);
 background-repeat: no-repeat;
 background-position: 0 .5em;
 }
