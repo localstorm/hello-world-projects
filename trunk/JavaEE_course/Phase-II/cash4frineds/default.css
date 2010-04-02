@@ -51,6 +51,7 @@ background: url('images/a47.gif') no-repeat;
 width: 76px;
 height: 74px;
 padding: 8px;
+cursor:pointer;cursor:hand
 }
 
 img.picB
