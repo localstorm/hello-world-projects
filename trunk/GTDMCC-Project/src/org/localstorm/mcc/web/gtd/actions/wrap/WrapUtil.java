@@ -1,9 +1,8 @@
 package org.localstorm.mcc.web.gtd.actions.wrap;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+
+import org.localstorm.mcc.ejb.gtd.entity.InboxEntry;
 import org.localstorm.mcc.ejb.gtd.entity.Note;
 import org.localstorm.mcc.ejb.gtd.entity.Hint;
 import org.localstorm.mcc.ejb.gtd.entity.Task;
@@ -59,4 +58,14 @@ public class WrapUtil
         return nws;
     }
 
+    public static Collection<InboxEntryWrapper> genWrappers(List<InboxEntry> ibx) {
+        ArrayList<InboxEntryWrapper> nws = new ArrayList<InboxEntryWrapper>(ibx.size());
+
+        for (InboxEntry entry : ibx)
+        {
+            nws.add(new InboxEntryWrapper(entry));
+        }
+
+        return nws;
+    }
 }
