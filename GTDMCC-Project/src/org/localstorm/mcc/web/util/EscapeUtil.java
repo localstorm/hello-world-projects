@@ -8,85 +8,9 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 
-/**
-* Convenience methods for escaping special characters related to HTML, XML, 
-* and regular expressions.
-* 
-* <P>To keep you safe by default, WEB4J goes to some effort to escape 
-* characters in your data when appropriate, such that you <em>usually</em>
-* don't need to think too much about escaping special characters. Thus, you
-*  shouldn't need to <em>directly</em> use the services of this class very often. 
-* 
-* <P><span class='highlight'>For Model Objects containing free form user input, 
-* it is highly recommended that you use {@link SafeText}, not <tt>String</tt></span>.
-* Free form user input is open to malicious use, such as
-* <a href='http://www.owasp.org/index.php/Cross_Site_Scripting'>Cross Site Scripting</a>
-* attacks. 
-* Using <tt>SafeText</tt> will protect you from such attacks, by always escaping 
-* special characters automatically in its <tt>toString()</tt> method.   
-* 
-* <P>The following WEB4J classes will automatically escape special characters 
-* for you, when needed : 
-* <ul>
-* <li>the {@link SafeText} class, used as a building block class for your 
-* application's Model Objects, for modeling all free form user input
-* <li>the {@link Populate} tag used with forms
-* <li>the {@link Report} class used for creating quick reports
-* <li>the {@link Text}, {@link TextFlow}, and {@link Tooltips} custom tags used 
-* for translation
-* </ul> 
-*/
-public final class EscapeUtil {
+public class EscapeUtil {
 
-  /**
-   * Escape characters for text appearing in HTML markup.
-   * 
-   * <P>This method exists as a defence against Cross Site Scripting (XSS) hacks.
-   * The idea is to neutralize control characters commonly used by scripts, such that they will not 
-   * be executed by the browser. This is done by replacing the control characters with  
-   * their escaped equivalents.  See {@link hirondelle.web4j.security.SafeText} as well.
-   * 
-   * <P>The following characters are replaced with corresponding HTML character entities : 
-   * <table border='1' cellpadding='3' cellspacing='0'>
-   * <tr><th> Character </th><th>Replacement</th></tr>
-   * <tr><td> < </td><td> &lt; </td></tr>
-   * <tr><td> > </td><td> &gt; </td></tr>
-   * <tr><td> & </td><td> &amp; </td></tr>
-   * <tr><td> " </td><td> &quot;</td></tr>
-   * <tr><td> \t </td><td> &#009;</td></tr>
-   * <tr><td> ! </td><td> &#033;</td></tr>
-   * <tr><td> # </td><td> &#035;</td></tr>
-   * <tr><td> $ </td><td> &#036;</td></tr>
-   * <tr><td> % </td><td> &#037;</td></tr>
-   * <tr><td> ' </td><td> &#039;</td></tr>
-   * <tr><td> ( </td><td> &#040;</td></tr> 
-   * <tr><td> ) </td><td> &#041;</td></tr>
-   * <tr><td> * </td><td> &#042;</td></tr>
-   * <tr><td> + </td><td> &#043; </td></tr>
-   * <tr><td> , </td><td> &#044; </td></tr>
-   * <tr><td> - </td><td> &#045; </td></tr>
-   * <tr><td> . </td><td> &#046; </td></tr>
-   * <tr><td> / </td><td> &#047; </td></tr>
-   * <tr><td> : </td><td> &#058;</td></tr>
-   * <tr><td> ; </td><td> &#059;</td></tr>
-   * <tr><td> = </td><td> &#061;</td></tr>
-   * <tr><td> ? </td><td> &#063;</td></tr>
-   * <tr><td> @ </td><td> &#064;</td></tr>
-   * <tr><td> [ </td><td> &#091;</td></tr>
-   * <tr><td> \ </td><td> &#092;</td></tr>
-   * <tr><td> ] </td><td> &#093;</td></tr>
-   * <tr><td> ^ </td><td> &#094;</td></tr>
-   * <tr><td> _ </td><td> &#095;</td></tr>
-   * <tr><td> ` </td><td> &#096;</td></tr>
-   * <tr><td> { </td><td> &#123;</td></tr>
-   * <tr><td> | </td><td> &#124;</td></tr>
-   * <tr><td> } </td><td> &#125;</td></tr>
-   * <tr><td> ~ </td><td> &#126;</td></tr>
-   * </table>
-   * 
-   * <P>Note that JSTL's {@code <c:out>} escapes <em>only the first 
-   * five</em> of the above characters.
-   */
+  
    public static String forHTML(String aText){
      final StringBuilder result = new StringBuilder();
      final StringCharacterIterator iterator = new StringCharacterIterator(aText);

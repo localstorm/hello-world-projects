@@ -74,10 +74,6 @@ public class InboxEntry extends AbstractEntity implements Identifiable, Serializ
         return content;
     }
 
-    public String getContentHtmlEscaped() {
-        return EscapeUtil.forHTML(this.getContent());
-    }
-
     public User getOwner() {
         return owner;
     }
