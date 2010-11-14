@@ -1,9 +1,7 @@
 package org.localstorm.mcc.web.cashflow.filter;
 
 import java.io.IOException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +14,7 @@ import org.localstorm.mcc.ejb.cashflow.entity.Target;
 import org.localstorm.mcc.ejb.cashflow.TargetManager;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.cashflow.CashflowSessionKeys;
+import org.localstorm.mcc.web.cashflow.actions.wrap.TargetWrapper;
 import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
 import org.localstorm.mcc.web.util.SessionUtil;
 
@@ -69,12 +68,17 @@ public class LazyLoadFilter implements Filter
         if ( SessionUtil.isEmpty(sess, CashflowSessionKeys.TARGETS) ) {
             TargetManager tm = ContextLookup.lookup(TargetManager.class,
                                                     TargetManager.BEAN_NAME);
-
+            OperationManager om = ContextLookup.lookup(OperationManager.class,
+                                                       OperationManager.BEAN_NAME);
             Collection<Target> targets = tm.find(user);
-            
-            SessionUtil.fill(sess, CashflowSessionKeys.TARGETS, targets);
+            targets = WrapUtil.wrapTargets(targets, om);
 
-            this.fillAccessibleTargets(targets, tm.findArchived(user), sess);
+            List<Target> tarList = new ArrayList<Target>(targets);
+            Collections.sort(tarList, TargetWrapper.getCurrentCostComparator());
+
+            SessionUtil.fill(sess, CashflowSessionKeys.TARGETS, tarList);
+
+            this.fillAccessibleTargets(tarList, tm.findArchived(user), sess);
         }
     }
 

@@ -4,9 +4,8 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Date;
+import java.util.*;
+
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.DateAxis;
@@ -29,40 +28,40 @@ import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.Constants;
 import org.localstorm.mcc.web.cashflow.actions.wrap.TargetWrapper;
 import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
+import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
- *
  * @author localstorm
  */
 public class NetWealthHistoryChartGenerator {
 
-     private static XYDataset getNetWealthDataset(User user,
-                                                  Integer daysPeriod,
-                                                  boolean showTargets,
-                                                  boolean includeDebt) {
+    private static XYDataset getNetWealthDataset(User user,
+                                                 Integer daysPeriod,
+                                                 boolean showTargets,
+                                                 boolean includeDebt) {
 
         Calendar cal = Calendar.getInstance();
 
-        if ( daysPeriod==null ) {
+        if (daysPeriod == null) {
             cal.add(Calendar.YEAR, -50); // 50 years
         } else {
             cal.add(Calendar.DATE, -daysPeriod);
         }
 
         HistoricalValuesManager hvm = ContextLookup.lookup(HistoricalValuesManager.class,
-                                                           HistoricalValuesManager.BEAN_NAME);
-        
-        
+                HistoricalValuesManager.BEAN_NAME);
+
+
         ValueType valueType = (includeDebt) ? ValueType.NET_WEALTH_CHECKPOINT
-                                            : ValueType.NET_WEALTH_WO_DEBT_CHECKPOINT;
+                : ValueType.NET_WEALTH_WO_DEBT_CHECKPOINT;
 
         Collection<HistoricalValue> hvs = hvm.getHistory(valueType,
-                                                         user,
-                                                         cal.getTime());
+                user,
+                cal.getTime());
 
-        HistoricalValue last  = hvm.getLastHistoricalValue(valueType,
-                                                           BigDecimal.ZERO,
-                                                           user);
+        HistoricalValue last = hvm.getLastHistoricalValue(valueType,
+                BigDecimal.ZERO,
+                user);
 
         Date minDate = new Date();
 
@@ -88,8 +87,8 @@ public class NetWealthHistoryChartGenerator {
         }
 
         hvs.add(right);
-  
-        TimeSeries netWealth     = new TimeSeries("Net Wealth");
+
+        TimeSeries netWealth = new TimeSeries("Net Wealth");
 
         TimeSeriesCollection tsc = new TimeSeriesCollection();
 
@@ -97,8 +96,7 @@ public class NetWealthHistoryChartGenerator {
             Date fixDate = hv.getFixDate();
             netWealth.addOrUpdate(new Day(fixDate), hv.getVal());
 
-            if (minDate.after(fixDate))
-            {
+            if (minDate.after(fixDate)) {
                 minDate = fixDate;
             }
         }
@@ -107,27 +105,27 @@ public class NetWealthHistoryChartGenerator {
 
         if (showTargets) {
             OperationManager om = ContextLookup.lookup(OperationManager.class,
-                                                       OperationManager.BEAN_NAME);
+                    OperationManager.BEAN_NAME);
 
             TargetManager tm = ContextLookup.lookup(TargetManager.class,
-                                                    TargetManager.BEAN_NAME);
+                    TargetManager.BEAN_NAME);
 
             Collection<Target> tgts = tm.find(user);
-            for (Target tgt: tgts)
-            {
-                TargetWrapper tgtw = (TargetWrapper) WrapUtil.wrapTarget(tgt, om);
+            List<Target> tgtsList = new ArrayList<Target>(WrapUtil.wrapTargets(tgts, om));
+            Collections.sort(tgtsList, TargetWrapper.getCurrentCostComparator());
+
+            for (Target tgt : tgtsList) {
+                TargetWrapper tgtw = (TargetWrapper) tgt;
                 Cost c = tgtw.getCurrentCost();
 
                 TimeSeries ts = new TimeSeries(tgtw.getName());
                 {
                     ts.addOrUpdate(new Day(minDate), c.getBuy());
-                    ts.addOrUpdate(new Day(new Date()),    c.getBuy());
+                    ts.addOrUpdate(new Day(new Date()), c.getBuy());
                 }
-                
+
                 tsc.addSeries(ts);
             }
-
-            
         }
 
         return tsc;
@@ -137,18 +135,17 @@ public class NetWealthHistoryChartGenerator {
                                       Integer daysOffset,
                                       String name,
                                       boolean showTargets,
-                                      boolean includeDebt)
-    {
+                                      boolean includeDebt) {
 
         XYDataset dataset = getNetWealthDataset(user, daysOffset, showTargets, includeDebt);
 
         JFreeChart chart = ChartFactory.createTimeSeriesChart(name,
-                                                              "Time line",
-                                                              "Money",
-                                                              dataset,
-                                                              true,
-                                                              true,
-                                                              false);
+                "Time line",
+                "Money",
+                dataset,
+                true,
+                true,
+                false);
 
         XYPlot plot = (XYPlot) chart.getPlot();
         {
