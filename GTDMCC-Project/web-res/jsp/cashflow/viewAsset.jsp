@@ -240,7 +240,7 @@
         <td align="right" ><stripes:checkbox name="debt" checked="${actionBean.assetResult.valuable.debt}" /></td>
     </tr>
     <tr bgColor="#DFFFBF">
-        <td colspan="2" align="center"><stripes:submit name="fix" value="Correct" onclick="return confirm('Are you sure?');"/>&nbsp;<stripes:submit name="update" value="Update"/>&nbsp;<stripes:reset name="rst" /></td>
+        <td colspan="2" align="center"><stripes:submit name="fix" value="Correct" onclick="return confirm('Are you sure?');"/>&nbsp;<stripes:submit name="update" value="Update"/>&nbsp;<stripes:reset name="rst" value="Reset" /></td>
     </tr>
     
     <tr bgcolor="#FBFFBD">
