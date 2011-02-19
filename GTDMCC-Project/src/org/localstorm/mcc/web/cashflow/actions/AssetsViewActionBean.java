@@ -101,8 +101,8 @@ public class AssetsViewActionBean extends CashflowBaseActionBean {
                 this.netWealth = this.netWealth.add(worth);
                 this.netWealthWoDebt = this.netWealthWoDebt.add(worth);
             } else {
-                this.debt = this.debt.add(worth);
-                this.netWealthWoDebt = this.netWealthWoDebt.subtract(worth);
+                this.debt = this.debt.subtract(worth);
+                this.netWealthWoDebt = this.netWealthWoDebt.add(worth);
             }
 
             if (vo.isUsedInBalance()) {
