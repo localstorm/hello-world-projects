@@ -24,16 +24,16 @@ import org.localstorm.tools.aop.runtime.Logged;
 @UrlBinding("/actions/cash/asset/UpdateAsset")
 public class AssetUpdateActionBean extends AssetViewActionBean {
 
-    @Validate( required=true, minvalue=0, maxvalue=9999999999L )
+    @Validate( required=true, minvalue=-9999999999L, maxvalue=9999999999L )
     private BigDecimal buy;
 
-    @Validate( minvalue=0, maxvalue=9999999999L )
+    @Validate( minvalue=-9999999999L, maxvalue=9999999999L )
     private BigDecimal buyFx;
 
-    @Validate( required=true, minvalue=0, maxvalue=9999999999L )
+    @Validate( required=true, minvalue=-9999999999L, maxvalue=9999999999L )
     private BigDecimal sell;
 
-    @Validate( minvalue=0, maxvalue=9999999999L )
+    @Validate( minvalue=-9999999999L, maxvalue=9999999999L )
     private BigDecimal sellFx;
 
     @Validate( required=true )
