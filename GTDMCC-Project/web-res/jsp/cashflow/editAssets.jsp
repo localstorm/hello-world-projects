@@ -28,14 +28,14 @@
             </tr>
             <tr>
                 <td>&nbsp;</td>
-                <td>Cost (exchage buy): </td>
-                <td><stripes:text name="buyFx" id="buy-fx-id" style="width: 100%;" value=""/></td>
+                <td>Cost (sell): </td>
+                <td><stripes:text name="sell" id="sell-id" style="width: 100%;" value="0"/></td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
-                <td>Cost (sell): </td>
-                <td><stripes:text name="sell" id="sell-id" style="width: 100%;" value="0"/></td>
+                <td>Cost (exchage buy): </td>
+                <td><stripes:text name="buyFx" id="buy-fx-id" style="width: 100%;" value=""/></td>
                 <td>&nbsp;</td>
             </tr>
             <tr>

@@ -6,10 +6,12 @@
 <h2><span>ASSET</span> details</h2>
 <br/>
 <div align="center">
-<fmt:formatNumber var="buyCost" maxFractionDigits="2" minFractionDigits="2" value="${actionBean.assetResult.currentCost.buy}"/>
-<fmt:formatNumber var="sellCost" maxFractionDigits="2" minFractionDigits="2" value="${actionBean.assetResult.currentCost.sell}"/>
-<fmt:formatNumber var="buyFxCost" maxFractionDigits="2" minFractionDigits="2" value="${actionBean.assetResult.currentCost.exchangeBuy}"/>
-<fmt:formatNumber var="sellFxCost" maxFractionDigits="2" minFractionDigits="2" value="${actionBean.assetResult.currentCost.exchangeSell}"/>
+<fmt:formatNumber var="buyCost" maxFractionDigits="4" minFractionDigits="0" value="${actionBean.assetResult.currentCost.buy}"/>
+<fmt:formatNumber var="sellCost" maxFractionDigits="4" minFractionDigits="0" value="${actionBean.assetResult.currentCost.sell}"/>
+<fmt:formatNumber var="buyFxCost" maxFractionDigits="4" minFractionDigits="0" value="${actionBean.assetResult.currentCost.exchangeBuy}"/>
+<fmt:formatNumber var="sellFxCost" maxFractionDigits="4" minFractionDigits="0" value="${actionBean.assetResult.currentCost.exchangeSell}"/>
+<fmt:formatNumber var="spread" maxFractionDigits="4" minFractionDigits="0" value="${actionBean.assetResult.spread}"/>
+<fmt:formatNumber var="fxSpread" maxFractionDigits="4" minFractionDigits="0" value="${actionBean.assetResult.fxSpread}"/>
 
 <div align="center">
     <div id="buyDiv" width="80%" style="display: <c:choose>
@@ -210,6 +212,14 @@
     <tr bgColor="#DFFFBF">
         <td align="right" >Sell for exchange cost (1 piece):</td>
         <td align="right" ><stripes:text name="sellFx" id="sell-fx-id" value="${sellFxCost}" style="width: 95%"/></td>
+    </tr>
+    <tr bgcolor="#FBFFBD">
+        <td align="right">Spread:</td>
+        <td align="right"><c:out value="${spread}"/> %</td>
+    </tr>
+    <tr bgColor="#DFFFBF">
+        <td align="right" >Exchange Spread</td>
+        <td align="right" ><c:out value="${fxSpread}"/> %</td>
     </tr>
     <tr bgcolor="#FBFFBD">
         <td align="right" >Total amount (pieces):</td>
