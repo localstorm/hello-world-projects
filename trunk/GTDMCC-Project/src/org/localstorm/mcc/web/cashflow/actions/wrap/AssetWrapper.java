@@ -6,12 +6,15 @@
 package org.localstorm.mcc.web.cashflow.actions.wrap;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
+
+import org.localstorm.mcc.ejb.cashflow.MoneyMathContext;
 import org.localstorm.mcc.ejb.cashflow.entity.Asset;
 import org.localstorm.mcc.ejb.cashflow.entity.Cost;
 import org.localstorm.mcc.ejb.cashflow.entity.ValuableObject;
+import org.localstorm.mcc.web.util.RoundUtil;
 
 /**
- *
  * @author localstorm
  */
 public class AssetWrapper extends Asset {
@@ -24,28 +27,47 @@ public class AssetWrapper extends Asset {
     private BigDecimal balance;
     private BigDecimal revenuAmount;
     private static final long serialVersionUID = -2842467359188553256L;
+    private BigDecimal spread;
+    private BigDecimal fxSpread;
 
-    public AssetWrapper(Asset asset, 
+    public AssetWrapper(Asset asset,
                         BigDecimal amount,
                         Cost cost,
                         BigDecimal iCost,
                         BigDecimal balance,
                         BigDecimal revenuAmount) {
-        if (amount==null) {
+        if (amount == null) {
             throw new NullPointerException("Amount is null!");
         }
 
-        if (cost==null) {
+        if (cost == null) {
             throw new NullPointerException("Cost is null!");
         }
-        
-        this.asset     = asset;
-        this.amount    = amount;
-        this.cost      = cost;
-        this.iCost     = iCost;
+
+        this.asset = asset;
+        this.amount = amount;
+        this.cost = cost;
+        this.iCost = iCost;
         this.netWealth = amount.multiply(cost.getSell());
-        this.balance   = balance;
+        this.balance = balance;
         this.revenuAmount = revenuAmount;
+        if (cost.getBuy().equals(cost.getSell())) {
+            this.spread = BigDecimal.ZERO;
+        } else {
+            this.spread = (cost.getBuy().subtract(cost.getSell()).divide(cost.getSell().add(cost.getBuy()), MoneyMathContext.ROUNDING).multiply(new BigDecimal(200)));
+        }
+        if (cost.getExchangeBuy() == null || cost.getExchangeSell() == null) {
+            this.fxSpread = BigDecimal.ZERO;
+        } else {
+            if (cost.getExchangeBuy().equals(cost.getExchangeSell())) {
+                this.fxSpread = BigDecimal.ZERO;
+            } else {
+                this.fxSpread = (cost.getExchangeBuy().subtract(cost.getExchangeSell()).divide(cost.getExchangeSell().add(cost.getExchangeBuy()), MoneyMathContext.ROUNDING).multiply(new BigDecimal(200)));
+            }
+        }
+
+        this.spread = RoundUtil.round(this.spread.max(BigDecimal.ZERO), MoneyMathContext.ROUNDING);
+        this.fxSpread = RoundUtil.round(this.fxSpread.max(BigDecimal.ZERO), MoneyMathContext.ROUNDING);
     }
 
     @Override
@@ -73,23 +95,19 @@ public class AssetWrapper extends Asset {
         asset.setValuable(valuable);
     }
 
-    public BigDecimal getAmount()
-    {
+    public BigDecimal getAmount() {
         return this.amount;
     }
 
-    public Cost getCurrentCost()
-    {
+    public Cost getCurrentCost() {
         return this.cost;
     }
 
-    public BigDecimal getNetWealth()
-    {
+    public BigDecimal getNetWealth() {
         return this.netWealth;
     }
 
-    public BigDecimal getInvestmentsCost()
-    {
+    public BigDecimal getInvestmentsCost() {
         return this.iCost;
     }
 
@@ -101,6 +119,11 @@ public class AssetWrapper extends Asset {
         return revenuAmount;
     }
 
+    public BigDecimal getFxSpread() {
+        return fxSpread;
+    }
 
-    
+    public BigDecimal getSpread() {
+        return spread;
+    }
 }
