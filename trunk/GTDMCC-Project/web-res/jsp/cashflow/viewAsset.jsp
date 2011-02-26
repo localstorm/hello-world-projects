@@ -8,10 +8,7 @@
 <div align="center">
 <fmt:formatNumber var="buyCost" maxFractionDigits="4" minFractionDigits="0" value="${actionBean.assetResult.currentCost.buy}"/>
 <fmt:formatNumber var="sellCost" maxFractionDigits="4" minFractionDigits="0" value="${actionBean.assetResult.currentCost.sell}"/>
-<fmt:formatNumber var="buyFxCost" maxFractionDigits="4" minFractionDigits="0" value="${actionBean.assetResult.currentCost.exchangeBuy}"/>
-<fmt:formatNumber var="sellFxCost" maxFractionDigits="4" minFractionDigits="0" value="${actionBean.assetResult.currentCost.exchangeSell}"/>
 <fmt:formatNumber var="spread" maxFractionDigits="4" minFractionDigits="0" value="${actionBean.assetResult.spread}"/>
-<fmt:formatNumber var="fxSpread" maxFractionDigits="4" minFractionDigits="0" value="${actionBean.assetResult.fxSpread}"/>
 
 <div align="center">
     <div id="buyDiv" width="80%" style="display: <c:choose>
@@ -98,90 +95,6 @@
         </table>
         </stripes:form>
     </div>
-    <div id="sellFxDiv" width="80%" style="display: <c:choose>
-             <c:when test="${not empty actionBean.context.validationErrors and operationName eq 'SELL_FX'}">inline</c:when>
-             <c:otherwise>none</c:otherwise>
-    </c:choose>;">
-        <stripes:form action="/actions/cash/asset/OperateAsset">
-        <stripes:errors/>
-        <stripes:hidden name="operationName" value="SELL_FX" />
-        <stripes:hidden name="assetId" value="${actionBean.assetResult.id}" />
-        <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
-            <tr>
-                <th>&nbsp;</th>
-                <th colspan="2">Selling asset for exchange</th>
-                <th>&nbsp;</th>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>Amount: </td>
-                <td><stripes:text name="amount" id="sellFx-amount-id" style="width: 100%;" /></td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>Comment: </td>
-                <td><stripes:text name="comment" id="sellFx-comment-id" style="width: 100%;" /></td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td colspan="2"><hr/></td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td colspan="2" align="center">
-                    <stripes:submit name="submit" value="Sell" style="width: 7em;"/>&nbsp;
-                    <stripes:submit name="cancel" value="Cancel" style="width: 7em;" onclick="hide('sellFxDiv'); return false" />
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-        </table>
-        </stripes:form>
-    </div>
-    <div id="buyFxDiv" width="80%" style="display: <c:choose>
-             <c:when test="${not empty actionBean.context.validationErrors and operationName eq 'BUY_FX'}">inline</c:when>
-             <c:otherwise>none</c:otherwise>
-    </c:choose>;">
-        <stripes:form action="/actions/cash/asset/OperateAsset">
-        <stripes:errors/>
-        <stripes:hidden name="operationName" value="BUY_FX" />
-        <stripes:hidden name="assetId" value="${actionBean.assetResult.id}" />
-        <table style="background:#FFFFD0; border:1px dotted #DADADA;" >
-            <tr>
-                <th>&nbsp;</th>
-                <th colspan="2">Buying asset for exchange</th>
-                <th>&nbsp;</th>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>Amount: </td>
-                <td><stripes:text name="amount" id="buyFx-amount-id" style="width: 100%;" /></td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>Comment: </td>
-                <td><stripes:text name="comment" id="buyFx-comment-id" style="width: 100%;" /></td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td colspan="2"><hr/></td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td colspan="2" align="center">
-                    <stripes:submit name="submit" value="Buy" style="width: 7em;"/>&nbsp;
-                    <stripes:submit name="cancel" value="Cancel" style="width: 7em;" onclick="hide('buyFxDiv'); return false" />
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-        </table>
-        </stripes:form>
-    </div>
 </div>
 
 <stripes:form action="/actions/cash/asset/UpdateAsset">
@@ -206,20 +119,8 @@
         <td align="right"><stripes:text name="sell" id="sell-id" value="${sellCost}" style="width: 95%"/></td>
     </tr>
     <tr bgcolor="#FBFFBD">
-        <td align="right">Buy for exchange cost (1 piece):</td>
-        <td align="right"><stripes:text name="buyFx" id="buy-fx-id" value="${buyFxCost}" style="width: 95%"/></td>
-    </tr>
-    <tr bgColor="#DFFFBF">
-        <td align="right" >Sell for exchange cost (1 piece):</td>
-        <td align="right" ><stripes:text name="sellFx" id="sell-fx-id" value="${sellFxCost}" style="width: 95%"/></td>
-    </tr>
-    <tr bgcolor="#FBFFBD">
         <td align="right">Spread:</td>
         <td align="right"><c:out value="${spread}"/> %</td>
-    </tr>
-    <tr bgColor="#DFFFBF">
-        <td align="right" >Exchange Spread</td>
-        <td align="right" ><c:out value="${fxSpread}"/> %</td>
     </tr>
     <tr bgcolor="#FBFFBD">
         <td align="right" >Total amount (pieces):</td>
@@ -258,14 +159,8 @@
         <table width="100%" border="0px">
             <tr>
                 <td align="left" border="0px">
-                    <a href="#" onclick="show('buyDiv', 'buy-amount-id'); hide('buyFxDiv'); hide('sellFxDiv'); hide('sellDiv'); return false"><img src="<c:url value="/images/buy.png"/>"/></a>
-                    <c:if test="${not empty actionBean.assetResult.currentCost.exchangeBuy}">
-                        <a href="#" onclick="show('buyFxDiv', 'buyFx-amount-id'); hide('buyDiv'); hide('sellFxDiv'); hide('sellDiv'); return false"><img src="<c:url value="/images/exchange_buy.png"/>"/></a>
-                    </c:if>
-                    <a href="#" onclick="show('sellDiv', 'sell-amount-id'); hide('buyFxDiv'); hide('sellFxDiv'); hide('buyDiv');  return false"><img src="<c:url value="/images/sell.png"/>"/></a>
-                    <c:if test="${not empty actionBean.assetResult.currentCost.exchangeSell}">
-                        <a href="#" onclick="show('sellFxDiv', 'sellFx-amount-id'); hide('buyFxDiv'); hide('buyDiv'); hide('sellDiv'); return false"><img src="<c:url value="/images/exchange_sell.png"/>"/></a>
-                    </c:if>
+                    <a href="#" onclick="show('buyDiv', 'buy-amount-id'); hide('sellDiv'); return false"><img src="<c:url value="/images/buy.png"/>"/></a>
+                    <a href="#" onclick="show('sellDiv', 'sell-amount-id'); hide('buyDiv');  return false"><img src="<c:url value="/images/sell.png"/>"/></a>
                 </td>
                 <td align="right"  border="0px">
                     <a href="<c:url value="/actions/cash/asset/ViewAssetCostHistory">

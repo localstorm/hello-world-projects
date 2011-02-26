@@ -47,9 +47,9 @@ public interface OperationManager
     public Collection<Operation> getOperations(ValuableObject vo, Date minDate);
 
     // Operations
-    public void buy(ValuableObject vo, BigDecimal amount, String comment, boolean exchange);
+    public void buy(ValuableObject vo, BigDecimal amount, String comment);
 
-    public boolean sell(ValuableObject vo, BigDecimal amount, String comment, boolean exchange);
+    public boolean sell(ValuableObject vo, BigDecimal amount, String comment);
 
 
 }

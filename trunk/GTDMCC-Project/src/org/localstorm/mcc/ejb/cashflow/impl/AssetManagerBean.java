@@ -44,10 +44,8 @@ public class AssetManagerBean implements AssetManagerLocal
 
             fake.setActuationDate(cal.getTime());
             fake.setBuy(assetCost.getBuy());
-            fake.setExchangeBuy(assetCost.getExchangeBuy());
-            
+
             fake.setSell(BigDecimal.ZERO);
-            fake.setExchangeSell((assetCost.getExchangeSell()!=null) ? BigDecimal.ZERO : null);
         }
         em.persist(fake);
     }

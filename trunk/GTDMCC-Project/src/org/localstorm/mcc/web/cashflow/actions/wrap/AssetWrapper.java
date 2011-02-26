@@ -28,7 +28,6 @@ public class AssetWrapper extends Asset {
     private BigDecimal revenuAmount;
     private static final long serialVersionUID = -2842467359188553256L;
     private BigDecimal spread;
-    private BigDecimal fxSpread;
 
     public AssetWrapper(Asset asset,
                         BigDecimal amount,
@@ -56,18 +55,8 @@ public class AssetWrapper extends Asset {
         } else {
             this.spread = (cost.getBuy().subtract(cost.getSell()).divide(cost.getSell().add(cost.getBuy()), MoneyMathContext.ROUNDING).multiply(new BigDecimal(200)));
         }
-        if (cost.getExchangeBuy() == null || cost.getExchangeSell() == null) {
-            this.fxSpread = BigDecimal.ZERO;
-        } else {
-            if (cost.getExchangeBuy().equals(cost.getExchangeSell())) {
-                this.fxSpread = BigDecimal.ZERO;
-            } else {
-                this.fxSpread = (cost.getExchangeBuy().subtract(cost.getExchangeSell()).divide(cost.getExchangeSell().add(cost.getExchangeBuy()), MoneyMathContext.ROUNDING).multiply(new BigDecimal(200)));
-            }
-        }
 
         this.spread = RoundUtil.round(this.spread.max(BigDecimal.ZERO), MoneyMathContext.ROUNDING);
-        this.fxSpread = RoundUtil.round(this.fxSpread.max(BigDecimal.ZERO), MoneyMathContext.ROUNDING);
     }
 
     @Override
@@ -117,10 +106,6 @@ public class AssetWrapper extends Asset {
 
     public BigDecimal getRevenuAmount() {
         return revenuAmount;
-    }
-
-    public BigDecimal getFxSpread() {
-        return fxSpread;
     }
 
     public BigDecimal getSpread() {

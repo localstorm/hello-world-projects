@@ -81,18 +81,13 @@ public class OperateAssetActionBean extends AssetViewActionBean {
 
         MathContext rounding = MoneyMathContext.ROUNDING;
 
-        boolean exchange = false;
         switch (OperationType.valueOf(this.getOperationName()))
         {
-            case BUY_FX:
-                exchange = true;
             case BUY:
-                om.buy(vo, RoundUtil.round(this.getAmount(), rounding), this.getComment(), exchange);
+                om.buy(vo, RoundUtil.round(this.getAmount(), rounding), this.getComment());
                 break;
-            case SELL_FX:
-                exchange = true;
             case SELL:
-                om.sell(vo, RoundUtil.round(this.getAmount(), rounding), this.getComment(), exchange);
+                om.sell(vo, RoundUtil.round(this.getAmount(), rounding), this.getComment());
                 break;
             default:
                 throw new RuntimeException("Unexpected operation: "+this.getOperationName());

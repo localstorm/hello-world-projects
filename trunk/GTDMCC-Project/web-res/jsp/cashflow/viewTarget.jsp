@@ -25,20 +25,6 @@
     <tr bgColor="#FBFFBD">
         <td colspan="2" align="center"><stripes:submit name="upd" value="Update"/>&nbsp;<stripes:reset name="rst" /></td>
     </tr>
-    
-    <%--tr bgcolor="#FFEABD">
-        <td colspan="2">
-        <table width="100%" border="0px">
-            <tr>
-                <td align="right"  border="0px">
-                    <a href="<c:url value="/actions/cash/target/ViewTargetCostHistory">
-                                <c:param name="assetId" value="${actionBean.targetResult.id}"/>
-                        </c:url>"><img src="<c:url value="/images/history.png"/>"/></a>
-                </td>
-            </tr>
-        </table>
-        </td>
-    </tr--%>
 </table>
 </stripes:form>
 </div>

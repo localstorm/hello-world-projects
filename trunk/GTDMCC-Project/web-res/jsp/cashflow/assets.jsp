@@ -50,18 +50,6 @@
         <td align="right">Sell cost (1 piece):</td>
         <td align="right"><fmt:formatNumber maxFractionDigits="4" minFractionDigits="2" value="${asset.currentCost.sell}"/></td>
     </tr>
-    <c:if test="${not empty asset.currentCost.exchangeBuy}">
-    <tr bgcolor="#F3F3F3">
-        <td align="right">Buy for exchange cost (1 piece):</td>
-        <td align="right"><fmt:formatNumber maxFractionDigits="4" minFractionDigits="2" value="${asset.currentCost.exchangeBuy}"/></td>
-    </tr>
-    </c:if>
-    <c:if test="${not empty asset.currentCost.exchangeSell}">
-    <tr bgColor="#E4F1F3">
-        <td align="right" >Sell for exchange cost (1 piece):</td>
-        <td align="right" ><fmt:formatNumber maxFractionDigits="4" minFractionDigits="2" value="${asset.currentCost.exchangeSell}"/></td>
-    </tr>
-    </c:if>
     <tr bgcolor="#F3F3F3">
         <td align="right" >Total amount (pieces):</td>
         <td align="right" ><fmt:formatNumber maxFractionDigits="5" minFractionDigits="2" value="${asset.amount}"/></td>

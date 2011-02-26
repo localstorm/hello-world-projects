@@ -7,7 +7,5 @@ package org.localstorm.mcc.ejb.cashflow.entity;
 public enum OperationType
 {
     BUY,
-    SELL,
-    SELL_FX,
-    BUY_FX
+    SELL
 }
