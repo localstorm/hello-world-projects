@@ -5,7 +5,7 @@
     <option name="ANALYSIS_IN_BACKGROUND" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="a7c82dad-ef60-4daa-b07f-c32139869594" name="Default" comment="" />
+    <list default="true" id="a7c82dad-ef60-4daa-b07f-c32139869594" name="Default" comment="" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="GTD-MCC.iws" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -61,49 +61,50 @@
   <component name="FavoritesManager">
     <favorites_list name="GTD-MCC" />
   </component>
-  <component name="FileColors" enabled="false" enabledForTabs="false" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TargetManagerBean.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/impl/TargetManagerBean.java">
+      <file leaf-file-name="marketPrices.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-res/jsp/cashflow/marketPrices.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="46" selection-start="1521" selection-end="1521" vertical-scroll-proportion="0.0">
+            <state line="28" column="134" selection-start="1239" selection-end="1239" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TargetManager.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/TargetManager.java">
+      <file leaf-file-name="Sberbank.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/impl/ticker/connector/institutions/Sberbank.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="30" selection-start="586" selection-end="586" vertical-scroll-proportion="0.0">
+            <state line="26" column="64" selection-start="1116" selection-end="1116" vertical-scroll-proportion="1.5390071">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PriceTickerManagerBean.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/impl/PriceTickerManagerBean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="52" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NetWealthHistoryChartGenerator.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/charting/NetWealthHistoryChartGenerator.java">
+      <file leaf-file-name="Price.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/Price.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="128" column="0" selection-start="4452" selection-end="4452" vertical-scroll-proportion="1.5040984">
+            <state line="36" column="28" selection-start="722" selection-end="722" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NetWealthHistoryChartServlet.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/servlets/NetWealthHistoryChartServlet.java">
+      <file leaf-file-name="AssetViewActionBean.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/AssetViewActionBean.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="21" selection-start="734" selection-end="734" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-res/WEB-INF/web.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="459" column="30" selection-start="18385" selection-end="18385" vertical-scroll-proportion="0.0">
+            <state line="48" column="40" selection-start="1367" selection-end="1367" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -112,43 +113,43 @@
       <file leaf-file-name="WrapUtil.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/wrap/WrapUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="31" selection-start="1251" selection-end="1251" vertical-scroll-proportion="0.0">
+            <state line="20" column="25" selection-start="577" selection-end="577" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TargetViewActionBean.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/TargetViewActionBean.java">
+      <file leaf-file-name="AssetWrapper.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/wrap/AssetWrapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="45" selection-start="1393" selection-end="1393" vertical-scroll-proportion="0.0">
+            <state line="56" column="175" selection-start="1747" selection-end="1887" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TargetWrapper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/wrap/TargetWrapper.java">
+      <file leaf-file-name="assets.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-res/jsp/cashflow/assets.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="30" selection-start="1528" selection-end="1528" vertical-scroll-proportion="0.0">
+            <state line="76" column="24" selection-start="3991" selection-end="3997" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LazyLoadFilter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/filter/LazyLoadFilter.java">
+      <file leaf-file-name="MarketPricesViewActionBean.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/MarketPricesViewActionBean.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="84" selection-start="2916" selection-end="2984" vertical-scroll-proportion="0.0">
+            <state line="23" column="44" selection-start="829" selection-end="829" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MemcachedFacade.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/ejb/memcached/MemcachedFacade.java">
+      <file leaf-file-name="CashflowBaseActionBean.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/CashflowBaseActionBean.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="13" selection-start="389" selection-end="389" vertical-scroll-proportion="0.0">
+            <state line="30" column="54" selection-start="1009" selection-end="1009" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -164,22 +165,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/web-res/jsp/gtd/viewRefObject.jsp" />
-        <option value="$PROJECT_DIR$/web-res/jsp/dash.jsp" />
-        <option value="$PROJECT_DIR$/ear-res/META-INF/people-dashboard-report.sql" />
-        <option value="$PROJECT_DIR$/web-res/WEB-INF/jsp/includes/basehdr.jsp" />
-        <option value="$PROJECT_DIR$/web-res/WEB-INF/jsp/includes/loginhdr.jsp" />
-        <option value="$PROJECT_DIR$/db/script.sql" />
-        <option value="$PROJECT_DIR$/web-res/WEB-INF/classes/log4j.properties" />
-        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/web/util/EscapeUtil.java" />
-        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/ejb/gtd/entity/InboxEntry.java" />
-        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/web/gtd/actions/wrap/InboxEntryWrapper.java" />
-        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/web/gtd/actions/wrap/WrapUtil.java" />
-        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/web/gtd/actions/InboxViewActionBean.java" />
-        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/entity/Target.java" />
-        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/wrap/TargetWrapper.java" />
-        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/filter/LazyLoadFilter.java" />
-        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/charting/NetWealthHistoryChartGenerator.java" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/ticker/connector/Html2XmlUrlConnector.java" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/ticker/connector/institutions/Sberbank.java" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/ticker/connector/i18n/RussianPriceParser.java" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/ticker/connector/institutions/NomosMetalsAndCCYs.java" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/ticker/connector/JointConnector.java" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/impl/PriceTickerManagerLocal.java" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/impl/PriceTickerManagerBean.java" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/PriceTickerManager.java" />
+        <option value="$PROJECT_DIR$/web-res/WEB-INF/jsp/includes/cashflow/rightpan.jsp" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/Views.java" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/CashflowBaseActionBean.java" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/MarketPricesViewActionBean.java" />
+        <option value="$PROJECT_DIR$/web-res/jsp/cashflow/assets.jsp" />
+        <option value="$PROJECT_DIR$/web-res/jsp/cashflow/marketPrices.jsp" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/Price.java" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/impl/ticker/connector/institutions/Sberbank.java" />
       </list>
     </option>
   </component>
@@ -192,7 +193,7 @@
       <profile-state />
     </entry>
   </component>
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -218,7 +219,10 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope">
+        <subPane subId="Problems" />
+      </pane>
+      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -247,11 +251,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mcc" />
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -265,15 +265,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mcc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
+              <option name="myItemId" value="ejb-res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -287,19 +279,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mcc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
+              <option name="myItemId" value="ee-lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -313,19 +293,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mcc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gtd" />
+              <option name="myItemId" value="ear-res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -339,233 +307,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="ear-res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="mcc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cashflow" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GTDMCC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GTDMCC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mcc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cashflow" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="filter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GTDMCC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GTDMCC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mcc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cashflow" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GTDMCC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GTDMCC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mcc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cashflow" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wrap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GTDMCC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GTDMCC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mcc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GTDMCC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GTDMCC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mcc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ejb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GTDMCC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GTDMCC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mcc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ejb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="memcached" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GTDMCC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GTDMCC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mcc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ejb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cashflow" />
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Favorites" />
-      <pane id="Scope">
-        <subPane subId="Problems" />
-      </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="project.propDebugger" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="GenerateAntBuildDialog.generateSingleFile" value="false" />
     <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
@@ -582,7 +345,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.localstorm.mcc.web.cashflow.actions" />
+      <recent name="org.localstorm.mcc.ejb.cashflow.impl" />
+      <recent name="org.localstorm.mcc.ejb.cashflow" />
       <recent name="org.localstorm.mcc.web.gtd.actions.wrap" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\LocalStorm\Dev\JavaEE\GTDMCC\web-res\jsp\cashflow" />
+      <recent name="C:\Users\LocalStorm\Dev\JavaEE\GTDMCC\ear-res\lib" />
+      <recent name="C:\Users\LocalStorm\Dev\JavaEE\GTDMCC\src\org\localstorm\mcc\ejb\cashflow\ticker" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.localstorm.mcc.ejb.cashflow.ticker.connector" />
     </key>
   </component>
   <component name="RunManager">
@@ -617,7 +391,6 @@
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
-      <extension name="snapshooter" />
       <option name="MAIN_CLASS_NAME" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
@@ -637,7 +410,6 @@
       </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
-      <extension name="snapshooter" />
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -654,6 +426,7 @@
         <value defaultName="moduleWithDependencies" />
       </option>
       <envs />
+      <patterns />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -672,17 +445,26 @@
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
     <option name="LAST_MERGED_REVISION" />
-    <option name="UPDATE_RUN_STATUS" value="false" />
     <option name="MERGE_DRY_RUN" value="false" />
     <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
     <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
     <option name="IGNORE_SPACES_IN_MERGE" value="false" />
     <option name="DETECT_NESTED_COPIES" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
     <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
     <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
     <configuration useDefault="true">C:\Users\LocalStorm\AppData\Roaming\Subversion</configuration>
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
     <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a7c82dad-ef60-4daa-b07f-c32139869594" name="Default" comment="" />
+      <created>1293287872601</created>
+      <updated>1293287872601</updated>
+    </task>
+    <servers />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -705,26 +487,26 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="25" width="1384" height="752" extended-state="6" />
+    <frame x="-9" y="25" width="1384" height="752" extended-state="7" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21559633" sideWeight="0.647986" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12996942" sideWeight="0.4168126" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30297723" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33975482" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5831874" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30810398" sideWeight="0.647986" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3440367" sideWeight="0.4168126" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -740,6 +522,8 @@
     <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="true" />
     <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
+    <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
+    <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="LAST_COMMIT_MESSAGE" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
@@ -771,113 +555,117 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/gtd/actions/wrap/InboxEntryWrapper.java">
+    <entry file="file://$PROJECT_DIR$/web-res/jsp/cashflow/assetCosts.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="28" selection-start="1143" selection-end="1143" vertical-scroll-proportion="0.0" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/ejb/AbstractEntity.java">
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/Views.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="6" selection-start="472" selection-end="472" vertical-scroll-proportion="0.0">
+        <state line="6" column="14" selection-start="95" selection-end="95" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/AssetCostHistoryActionBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="37" selection-start="1770" selection-end="1770" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/AssetsViewActionBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="13" selection-start="1118" selection-end="1118" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-res/WEB-INF/jsp/includes/cashflow/hdr.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-res/WEB-INF/jsp/includes/cashflow/rightpan.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="83" selection-start="1023" selection-end="1041" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/CashflowBaseActionBean.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="57" selection-start="1052" selection-end="1052" vertical-scroll-proportion="0.0">
+        <state line="30" column="54" selection-start="1009" selection-end="1009" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/entity/ValuableObject.java">
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/MarketPricesViewActionBean.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="13" selection-start="956" selection-end="956" vertical-scroll-proportion="0.0">
+        <state line="23" column="44" selection-start="829" selection-end="829" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/impl/TargetManagerLocal.java">
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/impl/PriceTickerManagerBean.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="50" selection-start="185" selection-end="185" vertical-scroll-proportion="0.0">
+        <state line="9" column="52" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/entity/Target.java">
+    <entry file="file://$PROJECT_DIR$/web-res/jsp/cashflow/assets.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="91" selection-start="796" selection-end="796" vertical-scroll-proportion="0.0">
+        <state line="76" column="24" selection-start="3991" selection-end="3997" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/TargetManager.java">
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/AssetViewActionBean.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="30" selection-start="586" selection-end="586" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/ejb/memcached/MemcachedFacade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="13" selection-start="389" selection-end="389" vertical-scroll-proportion="0.0">
+        <state line="48" column="40" selection-start="1367" selection-end="1367" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/wrap/WrapUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="31" selection-start="1251" selection-end="1251" vertical-scroll-proportion="0.0">
+        <state line="20" column="25" selection-start="577" selection-end="577" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/TargetViewActionBean.java">
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/wrap/AssetWrapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="45" selection-start="1393" selection-end="1393" vertical-scroll-proportion="0.0">
+        <state line="56" column="175" selection-start="1747" selection-end="1887" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/impl/TargetManagerBean.java">
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/Price.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="46" selection-start="1521" selection-end="1521" vertical-scroll-proportion="0.0">
+        <state line="36" column="28" selection-start="722" selection-end="722" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-res/WEB-INF/web.xml">
+    <entry file="file://$PROJECT_DIR$/web-res/jsp/cashflow/marketPrices.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="459" column="30" selection-start="18385" selection-end="18385" vertical-scroll-proportion="0.0">
+        <state line="28" column="134" selection-start="1239" selection-end="1239" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/servlets/NetWealthHistoryChartServlet.java">
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/impl/ticker/connector/institutions/Sberbank.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="21" selection-start="734" selection-end="734" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/wrap/TargetWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="30" selection-start="1528" selection-end="1528" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/filter/LazyLoadFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="84" selection-start="2916" selection-end="2984" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/charting/NetWealthHistoryChartGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="128" column="0" selection-start="4452" selection-end="4452" vertical-scroll-proportion="1.5040984">
-          <folding />
+        <state line="26" column="64" selection-start="1116" selection-end="1116" vertical-scroll-proportion="1.5390071">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -885,33 +673,77 @@
   <component name="masterDetails">
     <states>
       <state key="ArtifactsStructureConfigurable.UI">
-        <UIState>
+        <settings>
+          <artifact-editor />
           <splitter-proportions>
-            <SplitterProportionsDataImpl>
-              <option name="proportions">
-                <list>
-                  <option value="0.2" />
-                </list>
-              </option>
-            </SplitterProportionsDataImpl>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
           </splitter-proportions>
-          <settings />
-        </UIState>
+        </settings>
       </state>
-      <state key="Copyright.UI">
-        <UIState>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Android</last-edited>
           <splitter-proportions>
-            <SplitterProportionsDataImpl />
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
           </splitter-proportions>
-        </UIState>
+        </settings>
       </state>
-      <state key="ScopeChooserConfigurable.UI">
-        <UIState>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Android 2.2 Google APIs</last-edited>
           <splitter-proportions>
-            <SplitterProportionsDataImpl />
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
           </splitter-proportions>
-          <settings />
-        </UIState>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.6</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>GTD-MCC</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>lib</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
       </state>
     </states>
   </component>

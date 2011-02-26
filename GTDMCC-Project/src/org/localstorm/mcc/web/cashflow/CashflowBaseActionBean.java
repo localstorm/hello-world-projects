@@ -1,10 +1,7 @@
 package org.localstorm.mcc.web.cashflow;
 
 import org.localstorm.mcc.ejb.ContextLookup;
-import org.localstorm.mcc.ejb.cashflow.AssetManager;
-import org.localstorm.mcc.ejb.cashflow.OperationManager;
-import org.localstorm.mcc.ejb.cashflow.TargetManager;
-import org.localstorm.mcc.ejb.cashflow.HistoricalValuesManager;
+import org.localstorm.mcc.ejb.cashflow.*;
 import org.localstorm.mcc.web.BaseActionBean;
 
 /**
@@ -30,4 +27,7 @@ public class CashflowBaseActionBean extends BaseActionBean {
         return ContextLookup.lookup(TargetManager.class, TargetManager.BEAN_NAME);
     }
 
+    public PriceTickerManager getPriceTickerManager() {
+        return ContextLookup.lookup(PriceTickerManager.class, PriceTickerManager.BEAN_NAME);
+    }
 }

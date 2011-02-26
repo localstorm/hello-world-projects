@@ -8,10 +8,6 @@
 <div align="center">
     <br/>
     <img src="<c:url value="/chart/assetsStructure.png">
-             <c:param name="includeDebt" value="true" />
-         </c:url>"/>
-    <br/><br/>
-    <img src="<c:url value="/chart/assetsStructure.png">
             <c:param name="includeDebt" value="false" />
          </c:url>"/>
 </div>
