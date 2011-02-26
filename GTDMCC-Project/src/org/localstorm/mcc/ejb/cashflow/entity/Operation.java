@@ -40,16 +40,8 @@ import org.localstorm.mcc.ejb.Identifiable;
         query= "SELECT SUM(o.cost.buy*o.amount) FROM Operation o WHERE o.cost.valuable=:valuable and o.type='BUY' and o.cost.buy IS NOT NULL"
     ),
     @NamedQuery(
-        name = Operation.Queries.SUM_BOUGHT_FOR_EXCHANGE_BY_VO,
-        query= "SELECT SUM(o.cost.exchangeBuy*o.amount) FROM Operation o WHERE o.cost.valuable=:valuable and o.type='BUY_FX' and o.cost.exchangeBuy IS NOT NULL"
-    ),
-    @NamedQuery(
         name = Operation.Queries.SUM_SELL_BY_VO,
         query= "SELECT SUM(o.cost.sell*o.amount) FROM Operation o WHERE o.cost.valuable=:valuable and o.type='SELL' and o.cost.sell IS NOT NULL"
-    ),
-    @NamedQuery(
-        name = Operation.Queries.SUM_SELL_FOR_EXCHANGE_BY_VO,
-        query= "SELECT SUM(o.cost.exchangeSell*o.amount) FROM Operation o WHERE o.cost.valuable=:valuable and o.type='SELL_FX' and o.cost.exchangeSell IS NOT NULL"
     ),
     @NamedQuery(
         name = Operation.Queries.SUM_AMOUNT_BY_VO,
@@ -130,10 +122,8 @@ public class Operation extends AbstractEntity implements Identifiable, Serializa
         public static final String FIND_BY_VO_DESC_LIMITED = "findOpsByVoDescLimited";
         public static final String FIND_BY_VO_DESC = "findOpsByVoDesc";
         public static final String SUM_BOUGHT_BY_VO = "sumBought";
-        public static final String SUM_BOUGHT_FOR_EXCHANGE_BY_VO = "sumBoughtFx";
         public static final String SUM_AMOUNT_BY_VO = "totalAmount";
         public static final String SUM_SELL_BY_VO   = "sumSell";
-        public static final String SUM_SELL_FOR_EXCHANGE_BY_VO = "sumSellFx";
     }
 
     public static interface Properties

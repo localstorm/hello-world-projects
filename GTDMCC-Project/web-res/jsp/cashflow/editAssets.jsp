@@ -34,18 +34,6 @@
             </tr>
             <tr>
                 <td>&nbsp;</td>
-                <td>Cost (exchage buy): </td>
-                <td><stripes:text name="buyFx" id="buy-fx-id" style="width: 100%;" value=""/></td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>Cost (exchage sell): </td>
-                <td><stripes:text name="sellFx" id="sell-fx-id" style="width: 100%;" value=""/></td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
                 <td colspan="2"><hr/></td>
                 <td>&nbsp;</td>
             </tr>

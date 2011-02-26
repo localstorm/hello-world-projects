@@ -41,16 +41,9 @@ public class AssetAddActionBean extends AssetsEditActionBean {
     @Validate( required=true, minvalue=-9999999999L, maxvalue=9999999999L )
     private BigDecimal buy;
 
-    @Validate( minvalue=-9999999999L, maxvalue=9999999999L )
-    private BigDecimal buyFx;
-
-
     @Validate( required=true, minvalue=-9999999999L, maxvalue=9999999999L )
     private BigDecimal sell;
 
-    @Validate( minvalue=-9999999999L, maxvalue=9999999999L )
-    private BigDecimal sellFx;
-    
     public String getName() {
         return this.name;
     }
@@ -63,34 +56,18 @@ public class AssetAddActionBean extends AssetsEditActionBean {
         this.buy = buy;
     }
 
-    public void setBuyFx(BigDecimal buyFx) {
-        this.buyFx = buyFx;
-    }
-
     public void setSell(BigDecimal sell) {
         this.sell = sell;
-    }
-
-    public void setSellFx(BigDecimal sellFx) {
-        this.sellFx = sellFx;
     }
 
     public BigDecimal getBuy() {
         return buy;
     }
 
-    public BigDecimal getBuyFx() {
-        return buyFx;
-    }
-
     public BigDecimal getSell() {
         return sell;
     }
 
-    public BigDecimal getSellFx() {
-        return sellFx;
-    }
-    
     @DefaultHandler
     @Logged
     public Resolution addContext() {
@@ -108,9 +85,7 @@ public class AssetAddActionBean extends AssetsEditActionBean {
             
             Cost cost = new Cost(vo);
             cost.setBuy(RoundUtil.round(this.getBuy(), rounding));
-            cost.setExchangeBuy(RoundUtil.round(this.getBuyFx(), rounding));
             cost.setSell(RoundUtil.round(this.getSell(), rounding));
-            cost.setExchangeSell(RoundUtil.round(this.getSellFx(), rounding));
 
             super.getAssetManager().create(asset, cost);
             

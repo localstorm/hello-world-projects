@@ -61,8 +61,6 @@ public class AssetCostHistoryChartGenerator {
             {
                 cost.setBuy(current.getBuy());
                 cost.setSell(current.getSell());
-                cost.setExchangeBuy(current.getExchangeBuy());
-                cost.setExchangeSell(current.getExchangeSell());
                 cost.setActuationDate(cal.getTime());
             }
 
@@ -71,20 +69,12 @@ public class AssetCostHistoryChartGenerator {
 
         TimeSeries sell     = new TimeSeries(asset.getName()+" sell cost");
         TimeSeries buy      = new TimeSeries(asset.getName()+" buy cost");
-        TimeSeries buyFx    = new TimeSeries(asset.getName()+" exchange buy cost");
-        TimeSeries sellFx   = new TimeSeries(asset.getName()+" exchange sell cost");
-
-        boolean buyFxEnable = false;
-        boolean sellFxEnable = false;
 
         TimeSeriesCollection tsc = new TimeSeriesCollection();
 
         for (Cost c: costs) {
             sell.addOrUpdate(new Day(c.getActuationDate()), c.getSell());
             buy.addOrUpdate(new Day(c.getActuationDate()), c.getBuy());
-
-            buyFxEnable  |= (c.getExchangeBuy() != null);
-            sellFxEnable |= (c.getExchangeSell() != null);
         }
 
         buy.addOrUpdate(new Day(new Date()), current.getBuy());
@@ -92,22 +82,6 @@ public class AssetCostHistoryChartGenerator {
 
         tsc.addSeries(buy);
         tsc.addSeries(sell);
-
-        if (buyFxEnable) {
-            for (Cost c: costs) {
-                buyFx.addOrUpdate(new Day(c.getActuationDate()), nvl(c.getExchangeBuy(), c.getBuy()));
-            }
-            buyFx.addOrUpdate(new Day(new Date()), nvl(current.getExchangeBuy(), current.getBuy()));
-            tsc.addSeries(buyFx);
-        }
-
-        if (sellFxEnable) {
-            for (Cost c: costs) {
-                sellFx.addOrUpdate(new Day(c.getActuationDate()), nvl(c.getExchangeSell(), c.getSell()));
-            }
-            sellFx.addOrUpdate(new Day(new Date()), nvl(current.getExchangeSell(), current.getSell()));
-            tsc.addSeries(sellFx);
-        }
 
         return tsc;
     }

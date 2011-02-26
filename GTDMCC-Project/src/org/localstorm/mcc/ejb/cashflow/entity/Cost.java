@@ -40,14 +40,8 @@ public class Cost extends AbstractEntity implements Identifiable, Serializable {
     @Column(name="buy", unique=false, updatable=true, nullable=true )
     private BigDecimal buy;
 
-    @Column(name="exchange_buy", unique=false, updatable=true, nullable=true )
-    private BigDecimal exchangeBuy;
-
     @Column(name="sell", unique=false, updatable=true, nullable=true )
     private BigDecimal sell;
-
-    @Column(name="exchange_sell", unique=false, updatable=true, nullable=true )
-    private BigDecimal exchangeSell;
 
     @Column(name="actuation_date", unique=false, updatable=true, nullable=false )
     @Temporal(TemporalType.TIMESTAMP)
@@ -82,28 +76,12 @@ public class Cost extends AbstractEntity implements Identifiable, Serializable {
         return sell;
     }
 
-    public BigDecimal getExchangeBuy() {
-        return exchangeBuy;
-    }
-
-    public BigDecimal getExchangeSell() {
-        return exchangeSell;
-    }
-
     public void setBuy(BigDecimal buy) {
         this.buy = buy;
     }
 
     public void setSell(BigDecimal sell) {
         this.sell = sell;
-    }
-
-    public void setExchangeBuy(BigDecimal exchangeBuy) {
-        this.exchangeBuy = exchangeBuy;
-    }
-
-    public void setExchangeSell(BigDecimal exchangeSell) {
-        this.exchangeSell = exchangeSell;
     }
 
     public ValuableObject getValuable() {

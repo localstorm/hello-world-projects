@@ -196,7 +196,7 @@ create table COSTS
     sell DECIMAL(15,5),
     exchange_buy  DECIMAL(15,5),
     exchange_sell DECIMAL(15,5),
-    PRIMARY KEY (id),    
+    PRIMARY KEY (id),
     FOREIGN KEY (valuable_id) REFERENCES VALUABLE_OBJECTS(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;
 

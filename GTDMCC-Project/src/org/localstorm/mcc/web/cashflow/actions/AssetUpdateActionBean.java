@@ -27,14 +27,8 @@ public class AssetUpdateActionBean extends AssetViewActionBean {
     @Validate( required=true, minvalue=-9999999999L, maxvalue=9999999999L )
     private BigDecimal buy;
 
-    @Validate( minvalue=-9999999999L, maxvalue=9999999999L )
-    private BigDecimal buyFx;
-
     @Validate( required=true, minvalue=-9999999999L, maxvalue=9999999999L )
     private BigDecimal sell;
-
-    @Validate( minvalue=-9999999999L, maxvalue=9999999999L )
-    private BigDecimal sellFx;
 
     @Validate( required=true )
     private String name;
@@ -63,32 +57,16 @@ public class AssetUpdateActionBean extends AssetViewActionBean {
         this.buy = buy;
     }
 
-    public void setBuyFx(BigDecimal buyFx) {
-        this.buyFx = buyFx;
-    }
-
     public void setSell(BigDecimal sell) {
         this.sell = sell;
-    }
-
-    public void setSellFx(BigDecimal sellFx) {
-        this.sellFx = sellFx;
     }
 
     public BigDecimal getBuy() {
         return buy;
     }
 
-    public BigDecimal getBuyFx() {
-        return buyFx;
-    }
-
     public BigDecimal getSell() {
         return sell;
-    }
-
-    public BigDecimal getSellFx() {
-        return sellFx;
     }
 
     public boolean isUsedInBalance() {
@@ -132,17 +110,13 @@ public class AssetUpdateActionBean extends AssetViewActionBean {
             cost = new Cost(vo);
             {
                 cost.setBuy(RoundUtil.round(this.getBuy(), rounding));
-                cost.setExchangeBuy(RoundUtil.round(this.getBuyFx(), rounding));
                 cost.setSell(RoundUtil.round(this.getSell(), rounding));
-                cost.setExchangeSell(RoundUtil.round(this.getSellFx(), rounding));
             }
         } else {
             cost = om.getCurrentCost(vo);
             {
                 cost.setBuy(RoundUtil.round(this.getBuy(), rounding));
-                cost.setExchangeBuy(RoundUtil.round(this.getBuyFx(), rounding));
                 cost.setSell(RoundUtil.round(this.getSell(), rounding));
-                cost.setExchangeSell(RoundUtil.round(this.getSellFx(), rounding));
             }
         }
 

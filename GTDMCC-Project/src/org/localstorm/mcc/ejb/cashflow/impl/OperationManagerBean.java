@@ -74,10 +74,10 @@ public class OperationManagerBean implements OperationManagerLocal
     }
 
     @Override
-    public void buy(ValuableObject vo, BigDecimal amount, String comment, boolean exchange) {
+    public void buy(ValuableObject vo, BigDecimal amount, String comment) {
         Operation op = new Operation();
         {
-            OperationType type = (!exchange)?OperationType.BUY:OperationType.BUY_FX;
+            OperationType type = OperationType.BUY;
             op.setType(type.toString());
             op.setAmount(amount);
             op.setCost(this.getCurrentCost(vo));
@@ -89,7 +89,7 @@ public class OperationManagerBean implements OperationManagerLocal
     }
 
     @Override
-    public boolean sell(ValuableObject vo, BigDecimal amount, String comment, boolean exchange) {
+    public boolean sell(ValuableObject vo, BigDecimal amount, String comment) {
         
         if ( this.getTotalAmount(vo).compareTo(amount)<0 ) {
             return false;
@@ -97,7 +97,7 @@ public class OperationManagerBean implements OperationManagerLocal
 
         Operation op = new Operation();
         {
-            OperationType type = (!exchange)?OperationType.SELL:OperationType.SELL_FX;
+            OperationType type = OperationType.SELL;
             op.setType(type.toString());
             op.setAmount(amount.negate());
             op.setCost(this.getCurrentCost(vo));
@@ -132,13 +132,8 @@ public class OperationManagerBean implements OperationManagerLocal
         Query b1 = em.createNamedQuery(Operation.Queries.SUM_BOUGHT_BY_VO);
         b1.setParameter(Cost.Properties.VALUABLE, vo);
 
-        Query b2 = em.createNamedQuery(Operation.Queries.SUM_BOUGHT_FOR_EXCHANGE_BY_VO);
-        b2.setParameter(Cost.Properties.VALUABLE, vo);
 
-        BigDecimal sb1 = this.nvl((BigDecimal) b1.getSingleResult());
-        BigDecimal sb2 = this.nvl((BigDecimal) b2.getSingleResult());
-
-        return sb1.add(sb2);
+        return this.nvl((BigDecimal) b1.getSingleResult());
     }
 
     @Override
@@ -146,12 +141,8 @@ public class OperationManagerBean implements OperationManagerLocal
         Query s1 = em.createNamedQuery(Operation.Queries.SUM_SELL_BY_VO);
         s1.setParameter(Cost.Properties.VALUABLE, vo);
 
-        Query s2 = em.createNamedQuery(Operation.Queries.SUM_SELL_FOR_EXCHANGE_BY_VO);
-        s2.setParameter(Cost.Properties.VALUABLE, vo);
-
         BigDecimal ss1 = this.nvl((BigDecimal) s1.getSingleResult());
-        BigDecimal ss2 = this.nvl((BigDecimal) s2.getSingleResult());
-        return BigDecimal.ZERO.subtract(ss1).subtract(ss2);
+        return BigDecimal.ZERO.subtract(ss1);
     }
 
     @Override
