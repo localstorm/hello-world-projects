@@ -40,7 +40,7 @@
     <tr><th colspan="2" align="center"><a href="<c:url value="/actions/cash/asset/ViewAsset">
                                                     <c:param name="assetId" value="${asset.id}" />
                                                 </c:url>"><c:out value="${asset.name}"/></a><c:if test="${asset.valuable.debt}">
-                                                    <img src="<c:url value="/images/toxic.png"/>" title="This asset is debt"/>
+                                                    <img src="<c:url value="/images/toxic.png"/>" title="This is a liability"/>
                                                 </c:if></th></tr>
     <tr bgcolor="#F3F3F3">
         <td width="50%" align="right" >Buy cost (1 piece):</td>
