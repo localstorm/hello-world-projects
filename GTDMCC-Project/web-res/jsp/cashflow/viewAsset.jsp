@@ -119,8 +119,8 @@
         <td align="right"><stripes:text name="sell" id="sell-id" value="${sellCost}" style="width: 95%"/></td>
     </tr>
     <tr bgcolor="#FBFFBD">
-        <td align="right">Spread:</td>
-        <td align="right"><c:out value="${spread}"/> %</td>
+        <td align="right">Spread (%):</td>
+        <td align="right"><c:out value="${spread}"/></td>
     </tr>
     <tr bgcolor="#FBFFBD">
         <td align="right" >Total amount (pieces):</td>
