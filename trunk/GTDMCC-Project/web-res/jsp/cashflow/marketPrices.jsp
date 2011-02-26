@@ -11,7 +11,7 @@
         <th>Symbol</th>
         <th>Buy price</th>
         <th>Sell price</th>
-        <th>Spread</th>
+        <th>Spread (%)</th>
     </tr>
 <c:forEach items="${actionBean.symbols}" var="symbol" varStatus="loop">
     <c:choose>
@@ -26,7 +26,7 @@
         <td width="40%" align="left" ><c:out value="${symbol.key}"/></td>
         <td width="20%" align="left" ><fmt:formatNumber maxFractionDigits="4" minFractionDigits="2" value="${symbol.value.buy}"/></td>
         <td width="20%" align="left" ><fmt:formatNumber maxFractionDigits="4" minFractionDigits="2" value="${symbol.value.sell}"/></td>
-        <td width="20%" align="left" ><fmt:formatNumber maxFractionDigits="4" minFractionDigits="2" value="${symbol.value.spread}"/> %</td>
+        <td width="20%" align="left" ><fmt:formatNumber maxFractionDigits="4" minFractionDigits="2" value="${symbol.value.spread}"/></td>
     </tr>
 </c:forEach>
 </table>
