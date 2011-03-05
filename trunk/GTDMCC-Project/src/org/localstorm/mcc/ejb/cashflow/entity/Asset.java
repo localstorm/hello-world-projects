@@ -44,6 +44,9 @@ public class Asset extends AbstractEntity implements Identifiable, Serializable 
     @Column(name="name", unique=false, updatable=true, nullable=false )
     private String name;
 
+    @Column(name="asset_class", unique=false, updatable=true, nullable=true )
+    private String assetClass;
+
     @JoinColumn(name="valuable_id", updatable=false, nullable=false)
     @ManyToOne(fetch=FetchType.EAGER)
     private ValuableObject valuable;
@@ -66,6 +69,14 @@ public class Asset extends AbstractEntity implements Identifiable, Serializable 
 
     public ValuableObject getValuable() {
         return valuable;
+    }
+
+    public String getAssetClass() {
+        return assetClass;
+    }
+
+    public void setAssetClass(String assetClass) {
+        this.assetClass = assetClass;
     }
 
     public void setName(String name) {

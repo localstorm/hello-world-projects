@@ -8,7 +8,11 @@
 <div align="center">
     <br/>
     <img src="<c:url value="/chart/assetsStructure.png">
-            <c:param name="includeDebt" value="false" />
+            <c:param name="byAssetClass" value="true" />
+         </c:url>"/>
+    <br/><br/>
+    <img src="<c:url value="/chart/assetsStructure.png">
+            <c:param name="byAssetClass" value="false" />
          </c:url>"/>
 </div>
 

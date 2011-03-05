@@ -173,6 +173,7 @@ create table ASSETS
     name        TEXT NOT NULL,
     is_archived SMALLINT NOT NULL,    
     valuable_id INT NOT NULL,
+    asset_class TEXT,
     PRIMARY KEY (id),    
     FOREIGN KEY (valuable_id) REFERENCES VALUABLE_OBJECTS(id)  ON DELETE CASCADE
 )  ENGINE=INNODB DEFAULT CHARSET=utf8;

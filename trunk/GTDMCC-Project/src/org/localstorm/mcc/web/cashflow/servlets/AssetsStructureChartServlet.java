@@ -35,21 +35,21 @@ public class AssetsStructureChartServlet extends HttpServlet
             return;
         }
 
-        String incDebt = req.getParameter("includeDebt");
-        Boolean includeDebt = (incDebt==null) ? false : Boolean.valueOf(incDebt);
+        String _byAssetClass = req.getParameter("byAssetClass");
+        Boolean byAssetClass = (_byAssetClass==null) ? false : Boolean.valueOf(_byAssetClass);
 
         SimpleDateFormat sdf = new SimpleDateFormat(Constants.DATE_FORMAT);
         String curDate = sdf.format(new Date());
 
         String title = null;
-        if (includeDebt) {
-            title = "Assets structure (" + curDate + ")";
+        if (byAssetClass) {
+            title = "Assets structure by class (" + curDate + ")";
         } else {
-            title = "Assets structure w/o debt (" + curDate + ")";
+            title = "Assets structure details (" + curDate + ")";
         }
 
         
-        JFreeChart chart = AssetsStructureChartGenerator.getChart(user, title, includeDebt);
+        JFreeChart chart = AssetsStructureChartGenerator.getChart(user, title, byAssetClass);
 
         resp.setContentType(Constants.PNG_CONTENT_TYPE);
         ChartUtilities.writeChartAsPNG(resp.getOutputStream(), chart, 640, 480);

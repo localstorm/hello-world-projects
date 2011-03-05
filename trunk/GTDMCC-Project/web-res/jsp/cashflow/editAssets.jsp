@@ -20,6 +20,12 @@
                 <td><stripes:text name="name" id="name-id" style="width: 100%;" /></td>
                 <td>&nbsp;</td>
             </tr>
+             <tr>
+                <td>&nbsp;</td>
+                <td>Class: </td>
+                <td><stripes:text name="assetClass" id="assetClass-id" style="width: 100%;" /></td>
+                <td>&nbsp;</td>
+            </tr>
             <tr>
                 <td>&nbsp;</td>
                 <td>Cost (buy): </td>

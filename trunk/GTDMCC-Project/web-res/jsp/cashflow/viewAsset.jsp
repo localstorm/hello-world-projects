@@ -110,15 +110,19 @@
         <td align="right">Asset name:</td>
         <td align="right"><stripes:text name="name" id="name-id" value="${actionBean.assetResult.name}" style="width: 95%"/></td>
     </tr>
-    <tr bgcolor="#FBFFBD">
+    <tr bgColor="#FBFFBD">
+        <td align="right">Asset class:</td>
+        <td align="right"><stripes:text name="assetClass" id="assetClass-id" value="${actionBean.assetResult.assetClass}" style="width: 95%"/></td>
+    </tr>
+    <tr bgcolor="#DFFFBF">
         <td width="50%" align="right" >Buy cost (1 piece):</td>
         <td width="50%" align="right" ><stripes:text name="buy" id="buy-id" value="${buyCost}" style="width: 95%"/></td>
     </tr>
-    <tr bgColor="#DFFFBF">
+    <tr bgColor="#FBFFBD">
         <td align="right">Sell cost (1 piece):</td>
         <td align="right"><stripes:text name="sell" id="sell-id" value="${sellCost}" style="width: 95%"/></td>
     </tr>
-    <tr bgcolor="#FBFFBD">
+    <tr bgcolor="#DFFFBF">
         <td align="right">Spread (%):</td>
         <td align="right"><c:out value="${spread}"/></td>
     </tr>

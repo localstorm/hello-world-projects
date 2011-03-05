@@ -31,6 +31,9 @@ public class AssetAddActionBean extends AssetsEditActionBean {
     @Validate( required=true )
     private String name;
 
+    @Validate( required=false )
+    private String assetClass;
+
     @After( LifecycleStage.BindingAndValidation ) 
     public void doPostValidationStuff() {
         if ( getContext().getValidationErrors().hasFieldErrors() ) {
@@ -45,27 +48,35 @@ public class AssetAddActionBean extends AssetsEditActionBean {
     private BigDecimal sell;
 
     public String getName() {
-        return this.name;
+        return name;
     }
-    
-    public void setName( String name ) {
+
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setBuy(BigDecimal buy) {
-        this.buy = buy;
+    public String getAssetClass() {
+        return assetClass;
     }
 
-    public void setSell(BigDecimal sell) {
-        this.sell = sell;
+    public void setAssetClass(String assetClass) {
+        this.assetClass = assetClass;
     }
 
     public BigDecimal getBuy() {
         return buy;
     }
 
+    public void setBuy(BigDecimal buy) {
+        this.buy = buy;
+    }
+
     public BigDecimal getSell() {
         return sell;
+    }
+
+    public void setSell(BigDecimal sell) {
+        this.sell = sell;
     }
 
     @DefaultHandler
@@ -79,6 +90,7 @@ public class AssetAddActionBean extends AssetsEditActionBean {
             ValuableObject vo = new ValuableObject(user);
 
             asset.setName(name);
+            asset.setAssetClass(assetClass);
             asset.setValuable(vo);
             
             MathContext rounding = MoneyMathContext.ROUNDING;

@@ -43,30 +43,34 @@
                                                     <img src="<c:url value="/images/toxic.png"/>" title="This is a liability"/>
                                                 </c:if></th></tr>
     <tr bgcolor="#F3F3F3">
+        <td width="50%" align="right" >Asset class:</td>
+        <td width="50%" align="right" ><c:out value="${asset.assetClass}"/></td>
+    </tr>
+    <tr bgcolor="#E4F1F3">
         <td width="50%" align="right" >Buy cost (1 piece):</td>
         <td width="50%" align="right" ><fmt:formatNumber maxFractionDigits="4" minFractionDigits="2" value="${asset.currentCost.buy}"/></td>
     </tr>
-    <tr bgColor="#E4F1F3">
+    <tr bgColor="#F3F3F3">
         <td align="right">Sell cost (1 piece):</td>
         <td align="right"><fmt:formatNumber maxFractionDigits="4" minFractionDigits="2" value="${asset.currentCost.sell}"/></td>
     </tr>
-    <tr bgcolor="#F3F3F3">
+    <tr bgcolor="#E4F1F3">
         <td align="right" >Total amount (pieces):</td>
         <td align="right" ><fmt:formatNumber maxFractionDigits="5" minFractionDigits="2" value="${asset.amount}"/></td>
     </tr>
-    <tr bgColor="#E4F1F3">
+    <tr bgColor="#F3F3F3">
         <td align="right" >Net wealth:</td>
         <td align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${asset.netWealth}"/></td>
     </tr>
-    <tr bgColor="#F3F3F3">
+    <tr bgColor="#E4F1F3">
         <td align="right" >Investment amount:</td>
         <td align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${asset.investmentsCost}"/></td>
     </tr>
-    <tr bgColor="#E4F1F3">
+    <tr bgColor="#F3F3F3">
         <td align="right" >Revenu amount:</td>
         <td align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${asset.revenuAmount}"/></td>
     </tr>
-    <tr bgColor="#F3F3F3">
+    <tr bgColor="#E4F1F3">
         <td align="right" ><c:choose>
                 <c:when test="${not asset.valuable.usedInBalance}"><s>Balance</s></c:when><c:otherwise>Balance</c:otherwise></c:choose>:
         </td>
