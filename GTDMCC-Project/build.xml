@@ -1,5 +1,6 @@
 <project name="GTD-MCC" basedir="." default="dist">
 
+    <property file="deploy.properties"/>
     <property name="antlib.dir" value="ant-lib"/>
     <property name="cobertura.dir" value="${antlib.dir}/cobertura"/>
     <property name="eelib.dir" value="ee-lib"/>
@@ -14,7 +15,7 @@
     <property name="pname" value="gtdmcc"/>
     <property name="earlib.dir" value="${earres.dir}/lib"/>
     <property name="cobertura.enabled" value="${cobertura.output}"/>
-    <property name="coveragereport.dir" value="cobertura-report" />
+    <property name="coveragereport.dir" value="cobertura-report"/>
 
     <taskdef resource="net/sf/antcontrib/antcontrib.properties">
         <classpath>
@@ -148,14 +149,14 @@
         <copy todir="${tmp.dir}">
             <fileset dir="${earres.dir}"/>
         </copy>
-        
+
         <if>
             <istrue value="${cobertura.enabled}"/>
             <then>
-        	<copy todir="${tmp.dir}/lib">
-        	    <fileset dir="${cobertura.dir}/lib"/>
-        	    <fileset file="${cobertura.dir}/cobertura.jar"/>
-    		</copy>
+                <copy todir="${tmp.dir}/lib">
+                    <fileset dir="${cobertura.dir}/lib"/>
+                    <fileset file="${cobertura.dir}/cobertura.jar"/>
+                </copy>
             </then>
         </if>
 
@@ -172,12 +173,17 @@
     </target>
 
     <target name="coverage-report">
-	<cobertura-report format="html" destdir="${coveragereport.dir}" >
-	    <fileset dir="${src.dir}">
-	        <include name="**/*.java" />
-	    </fileset>
+        <cobertura-report format="html" destdir="${coveragereport.dir}">
+            <fileset dir="${src.dir}">
+                <include name="**/*.java"/>
+            </fileset>
         </cobertura-report>
     </target>
 
+    <target name="deploy" depends="dist">
+        <copy todir="${deploy.dir}">
+            <fileset file="${dist.dir}/${pname}.ear"/>
+        </copy>
+    </target>
 
 </project>

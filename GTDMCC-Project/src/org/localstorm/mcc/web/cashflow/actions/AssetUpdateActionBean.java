@@ -33,6 +33,9 @@ public class AssetUpdateActionBean extends AssetViewActionBean {
     @Validate( required=true )
     private String name;
 
+    @Validate( required=false )
+    private String assetClass;
+
     private boolean usedInBalance;
 
     private boolean debt;
@@ -45,28 +48,36 @@ public class AssetUpdateActionBean extends AssetViewActionBean {
         }
     }
 
-    public boolean isDebt() {
-        return debt;
-    }
-
-    public void setDebt(boolean debt) {
-        this.debt = debt;
+    public BigDecimal getBuy() {
+        return buy;
     }
 
     public void setBuy(BigDecimal buy) {
         this.buy = buy;
     }
 
+    public BigDecimal getSell() {
+        return sell;
+    }
+
     public void setSell(BigDecimal sell) {
         this.sell = sell;
     }
 
-    public BigDecimal getBuy() {
-        return buy;
+    public String getName() {
+        return name;
     }
 
-    public BigDecimal getSell() {
-        return sell;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAssetClass() {
+        return assetClass;
+    }
+
+    public void setAssetClass(String assetClass) {
+        this.assetClass = assetClass;
     }
 
     public boolean isUsedInBalance() {
@@ -77,12 +88,12 @@ public class AssetUpdateActionBean extends AssetViewActionBean {
         this.usedInBalance = usedInBalance;
     }
 
-    public String getName() {
-        return name;
+    public boolean isDebt() {
+        return debt;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDebt(boolean debt) {
+        this.debt = debt;
     }
 
     @HandlesEvent("fix")
@@ -123,6 +134,7 @@ public class AssetUpdateActionBean extends AssetViewActionBean {
         vo.setUsedInBalance(this.isUsedInBalance());
         vo.setDebt(this.isDebt());
         asset.setName(this.getName());
+        asset.setAssetClass(this.getAssetClass());
 
         am.update(asset);
         om.updateCost(vo, cost);

@@ -84,6 +84,16 @@ public class AssetWrapper extends Asset {
         asset.setValuable(valuable);
     }
 
+    @Override
+    public void setAssetClass(String assetClass) {
+        asset.setAssetClass(assetClass);
+    }
+
+    @Override
+    public String getAssetClass() {
+        return asset.getAssetClass();
+    }
+
     public BigDecimal getAmount() {
         return this.amount;
     }
