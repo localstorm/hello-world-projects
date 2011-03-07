@@ -33,7 +33,7 @@ import org.localstorm.mcc.web.util.SessionUtil;
 /**
  * @author localstorm
  */
-public class NetWealthHistoryChartGenerator {
+public class NetWorthHistoryChartGenerator {
 
     private static XYDataset getNetWealthDataset(User user,
                                                  Integer daysPeriod,

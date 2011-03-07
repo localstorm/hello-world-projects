@@ -78,91 +78,73 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="editAssets.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-res/jsp/cashflow/editAssets.jsp">
+      <file leaf-file-name="netWorthHistory.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-res/jsp/cashflow/netWorthHistory.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="20" selection-start="1034" selection-end="1034" vertical-scroll-proportion="0.0">
+            <state line="25" column="55" selection-start="1670" selection-end="1670" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ValuableObject.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/entity/ValuableObject.java">
+      <file leaf-file-name="rightpan.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-res/WEB-INF/jsp/includes/cashflow/rightpan.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="13" selection-start="956" selection-end="956" vertical-scroll-proportion="0.0">
+            <state line="34" column="96" selection-start="1841" selection-end="1841" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Cost.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/entity/Cost.java">
+      <file leaf-file-name="NetWorthHisotryReportActionBean.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/NetWorthHisotryReportActionBean.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="32" selection-start="1351" selection-end="1365" vertical-scroll-proportion="0.0">
+            <state line="12" column="42" selection-start="466" selection-end="466" vertical-scroll-proportion="0.38257575">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AssetsStructureReportActionBean.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/AssetsStructureReportActionBean.java">
+      <file leaf-file-name="Views.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/Views.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="27" selection-start="661" selection-end="661" vertical-scroll-proportion="0.0">
+            <state line="17" column="50" selection-start="935" selection-end="935" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AssetsStructureChartGenerator.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/charting/AssetsStructureChartGenerator.java">
+      <file leaf-file-name="RoiHistoryChartGenerator.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/charting/RoiHistoryChartGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="41" selection-start="2184" selection-end="2184" vertical-scroll-proportion="0.0">
+            <state line="31" column="36" selection-start="1016" selection-end="1036" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="assets.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-res/jsp/cashflow/assets.jsp">
+      <file leaf-file-name="DebtHistoryChartGenerator.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/charting/DebtHistoryChartGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="46" selection-start="2329" selection-end="2329" vertical-scroll-proportion="0.0">
+            <state line="31" column="33" selection-start="1020" selection-end="1020" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AssetWrapper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/wrap/AssetWrapper.java">
+      <file leaf-file-name="RoiHistoryChartServlet.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/servlets/RoiHistoryChartServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="36" selection-start="553" selection-end="553" vertical-scroll-proportion="0.0">
+            <state line="20" column="21" selection-start="720" selection-end="742" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Asset.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/entity/Asset.java">
+      <file leaf-file-name="web.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-res/WEB-INF/web.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="13" selection-start="1152" selection-end="1152" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="assetsStructure.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-res/jsp/cashflow/assetsStructure.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="53" selection-start="516" selection-end="516" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AssetsStructureChartServlet.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/servlets/AssetsStructureChartServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="65" selection-start="1875" selection-end="1875" vertical-scroll-proportion="0.67128026">
+            <state line="465" column="35" selection-start="18645" selection-end="18645" vertical-scroll-proportion="-2.903226">
               <folding />
             </state>
           </provider>
@@ -178,22 +160,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/impl/OperationManagerBean.java" />
-        <option value="$PROJECT_DIR$/web-res/jsp/cashflow/marketPrices.jsp" />
-        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/impl/PriceTickerManagerBean.java" />
-        <option value="$PROJECT_DIR$/deploy.properties" />
-        <option value="$PROJECT_DIR$/build.xml" />
-        <option value="$PROJECT_DIR$/db/script.sql" />
-        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/entity/Asset.java" />
-        <option value="$PROJECT_DIR$/web-res/jsp/cashflow/editAssets.jsp" />
-        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/AssetUpdateActionBean.java" />
-        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/AssetAddActionBean.java" />
-        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/wrap/AssetWrapper.java" />
-        <option value="$PROJECT_DIR$/web-res/jsp/cashflow/assets.jsp" />
+        <option value="$PROJECT_DIR$/web-res/jsp/cashflow/balanceHistory.jsp" />
+        <option value="$PROJECT_DIR$/web-res/jsp/cashflow/debtHistory.jsp" />
         <option value="$PROJECT_DIR$/web-res/jsp/cashflow/viewAsset.jsp" />
-        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/charting/AssetsStructureChartGenerator.java" />
-        <option value="$PROJECT_DIR$/web-res/jsp/cashflow/assetsStructure.jsp" />
-        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/servlets/AssetsStructureChartServlet.java" />
+        <option value="$PROJECT_DIR$/web-res/jsp/cashflow/assets.jsp" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/servlets/NetWealthHistoryChartServlet.java" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/servlets/NetWorthHistoryChartServlet.java" />
+        <option value="$PROJECT_DIR$/web-res/jsp/cashflow/netWealthHistory.jsp" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/NetWealthHisotryReportActionBean.java" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/NetWorthHisotryReportActionBean.java" />
+        <option value="$PROJECT_DIR$/web-res/WEB-INF/jsp/includes/cashflow/rightpan.jsp" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/RoiReportActionBean.java" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/Views.java" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/charting/RoiHistoryChartGenerator.java" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/servlets/RoiHistoryChartServlet.java" />
+        <option value="$PROJECT_DIR$/web-res/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/web-res/jsp/cashflow/roiHistory.jsp" />
       </list>
     </option>
   </component>
@@ -232,6 +214,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -304,153 +287,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GTDMCC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GTDMCC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mcc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GTDMCC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GTDMCC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mcc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GTDMCC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GTDMCC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mcc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cashflow" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GTDMCC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GTDMCC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mcc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cashflow" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charting" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GTDMCC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GTDMCC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mcc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GTDMCC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GTDMCC" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mcc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ejb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Favorites" />
       <pane id="Scope">
         <subPane subId="Problems" />
       </pane>
@@ -475,10 +313,10 @@
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
-    <property name="GoToClass.includeLibraries" value="false" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -624,7 +462,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="25" width="1384" height="752" extended-state="6" />
+    <frame x="-9" y="25" width="1384" height="752" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -637,7 +475,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38990825" sideWeight="0.71978986" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39831805" sideWeight="0.71978986" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -692,114 +530,112 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/AssetUpdateActionBean.java">
+    <entry file="file://$PROJECT_DIR$/web-res/jsp/cashflow/marketPrices.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="136" column="48" selection-start="3751" selection-end="3751" vertical-scroll-proportion="0.0">
+        <state line="4" column="34" selection-start="184" selection-end="184" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/AssetAddActionBean.java">
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/charting/AssetCostHistoryChartGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="46" selection-start="2555" selection-end="2555" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/AssetsViewActionBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="35" selection-start="2583" selection-end="2583" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/wrap/WrapUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="26" selection-start="578" selection-end="578" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-res/jsp/cashflow/viewAsset.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="33" selection-start="5154" selection-end="5154" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/AssetsEditActionBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="13" selection-start="852" selection-end="852" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-res/jsp/cashflow/editAssets.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="20" selection-start="1034" selection-end="1034" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/entity/ValuableObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="13" selection-start="956" selection-end="956" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/entity/Cost.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="32" selection-start="1351" selection-end="1365" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/wrap/AssetWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="36" selection-start="553" selection-end="553" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/entity/Asset.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="13" selection-start="1152" selection-end="1152" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-res/jsp/cashflow/assets.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="46" selection-start="2329" selection-end="2329" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-res/jsp/cashflow/assetsStructure.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="53" selection-start="516" selection-end="516" vertical-scroll-proportion="0.0">
+        <state line="33" column="13" selection-start="1123" selection-end="1123" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/charting/AssetsStructureChartGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="41" selection-start="2184" selection-end="2184" vertical-scroll-proportion="0.0">
+        <state line="65" column="41" selection-start="2184" selection-end="2184" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/ejb/cashflow/entity/ValueType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="4" selection-start="110" selection-end="110" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/AssetsStructureReportActionBean.java">
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/charting/NetWorthHistoryChartGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="27" selection-start="661" selection-end="661" vertical-scroll-proportion="0.0">
+        <state line="133" column="34" selection-start="4523" selection-end="4523" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/servlets/AssetsStructureChartServlet.java">
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/servlets/NetWorthHistoryChartServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="65" selection-start="1875" selection-end="1875" vertical-scroll-proportion="0.67128026">
+        <state line="24" column="11" selection-start="859" selection-end="859" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-res/jsp/cashflow/netWorthHistory.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="55" selection-start="1670" selection-end="1670" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-res/WEB-INF/jsp/includes/cashflow/rightpan.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="96" selection-start="1841" selection-end="1841" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/charting/RoiHistoryChartGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="36" selection-start="1016" selection-end="1036" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/charting/DebtHistoryChartGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="33" selection-start="1020" selection-end="1020" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/servlets/RoiHistoryChartServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="21" selection-start="720" selection-end="742" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-res/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="465" column="35" selection-start="18645" selection-end="18645" vertical-scroll-proportion="-2.903226">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/Views.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="50" selection-start="935" selection-end="935" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-res/jsp/cashflow/roiHistory.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="38" selection-start="1697" selection-end="1697" vertical-scroll-proportion="1.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/RoiReportActionBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="34" selection-start="505" selection-end="505" vertical-scroll-proportion="0.31439394">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/mcc/web/cashflow/actions/NetWorthHisotryReportActionBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="42" selection-start="466" selection-end="466" vertical-scroll-proportion="0.38257575">
           <folding />
         </state>
       </provider>

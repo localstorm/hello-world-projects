@@ -27,9 +27,9 @@ import org.localstorm.mcc.web.Constants;
  *
  * @author localstorm
  */
-public class BalanceHistoryChartGenerator {
+public class RoiHistoryChartGenerator {
 
-     private static XYDataset getBalanceHistoryDataset(User user, Integer daysPeriod) {
+     private static XYDataset getRoiHistoryDataset(User user, Integer daysPeriod) {
 
         Calendar cal = Calendar.getInstance();
 
@@ -95,7 +95,7 @@ public class BalanceHistoryChartGenerator {
     }
 
     public static JFreeChart getChart(User user, Integer daysOffset, String name) {
-        XYDataset dataset = getBalanceHistoryDataset(user, daysOffset);
+        XYDataset dataset = getRoiHistoryDataset(user, daysOffset);
 
         JFreeChart chart = ChartFactory.createTimeSeriesChart(name,
                                                               "Time line",

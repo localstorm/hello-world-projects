@@ -23,10 +23,10 @@ public class NextDestinationUtil
                 rr = new RedirectResolution(AssetCostHistoryActionBean.class);
                 break;
             case BALANCE_HISTORY:
-                rr = new RedirectResolution(BalanceHisotryReportActionBean.class);
+                rr = new RedirectResolution(RoiReportActionBean.class);
                 break;
             case NET_WEALTH_HISTORY:
-                rr = new RedirectResolution(NetWealthHisotryReportActionBean.class);
+                rr = new RedirectResolution(NetWorthHisotryReportActionBean.class);
                 break;
             case DEBT_HISTORY:
                 rr = new RedirectResolution(DebtHisotryReportActionBean.class);
