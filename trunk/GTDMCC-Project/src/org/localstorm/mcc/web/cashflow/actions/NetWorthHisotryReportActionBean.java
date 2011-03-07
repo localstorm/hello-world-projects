@@ -12,8 +12,8 @@ import org.localstorm.tools.aop.runtime.Logged;
  * @secure-by session (no security checks)
  * @author localstorm
  */
-@UrlBinding("/actions/cash/nil/NetWealthHistoryReport")
-public class NetWealthHisotryReportActionBean extends CashflowBaseActionBean {
+@UrlBinding("/actions/cash/nil/NetWorthHistoryReport")
+public class NetWorthHisotryReportActionBean extends CashflowBaseActionBean {
 
     @DefaultHandler
     @Logged

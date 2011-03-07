@@ -3,7 +3,7 @@
 
 <%@ include file="/WEB-INF/jsp/includes/cashflow/hdr.jsp" %>
 
-<h2><span>NET WEALTH</span> history</h2>
+<h2><span>NET WORTH</span> history</h2>
 <div align="right">
     Truncate history up to: <a href="<c:url value="/actions/cash/nil/TruncateHistory">
         <c:param name="returnPageToken" value="${returnPageToken}" />
@@ -29,12 +29,12 @@
 </div>
 <div align="center">
     <br/>
-    <img src="<c:url value="/chart/netWealthHistory.png">
+    <img src="<c:url value="/chart/netWorthHistory.png">
                     <c:param name="showTargets" value="true" />
                     <c:param name="includeDebt" value="false" />
               </c:url>"/>
     <br/><br/>
-    <img src="<c:url value="/chart/netWealthHistory.png">
+    <img src="<c:url value="/chart/netWorthHistory.png">
                     <c:param name="showTargets" value="true" />
                     <c:param name="includeDebt" value="true" />
               </c:url>"/>

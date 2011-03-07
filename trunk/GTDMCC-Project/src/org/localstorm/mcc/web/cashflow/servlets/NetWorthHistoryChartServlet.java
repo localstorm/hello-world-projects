@@ -11,16 +11,16 @@ import org.jfree.chart.JFreeChart;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.Constants;
 import org.localstorm.mcc.web.cashflow.CashflowSessionKeys;
-import org.localstorm.mcc.web.cashflow.charting.BalanceHistoryChartGenerator;
+import org.localstorm.mcc.web.cashflow.charting.NetWorthHistoryChartGenerator;
 import org.localstorm.mcc.web.util.SessionUtil;
 import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @author localstorm
  */
-public class BalanceHistoryChartServlet extends HttpServlet
+public class NetWorthHistoryChartServlet extends HttpServlet
 {
-    private static final long serialVersionUID = -8747574208860334031L;
+    private static final long serialVersionUID = -5239734711496278134L;
 
     @Override
     @Logged
@@ -33,7 +33,22 @@ public class BalanceHistoryChartServlet extends HttpServlet
             return;
         }
 
-        JFreeChart chart = BalanceHistoryChartGenerator.getChart(user, null, "Balance history");
+        String sstgt = req.getParameter("showTargets");
+        boolean showTgts = false;
+        if (sstgt!=null) {
+            showTgts = Boolean.parseBoolean(sstgt);
+        }
+
+        String sdbt = req.getParameter("includeDebt");
+        boolean includeDebt = false;
+        if (sdbt!=null) {
+            includeDebt = Boolean.parseBoolean(sdbt);
+        }
+
+
+        String name = (showTgts) ? "Targeted" + (includeDebt ? " assets " : " equity ") : (includeDebt ? "Assets " : "Equity ");
+        name        += "worth history";
+        JFreeChart chart = NetWorthHistoryChartGenerator.getChart(user, null, name, showTgts, includeDebt);
 
         resp.setContentType(Constants.PNG_CONTENT_TYPE);
         ChartUtilities.writeChartAsPNG(resp.getOutputStream(), chart, 640, 480);

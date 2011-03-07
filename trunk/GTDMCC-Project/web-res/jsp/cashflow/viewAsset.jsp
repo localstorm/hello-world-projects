@@ -115,11 +115,11 @@
         <td align="right"><stripes:text name="assetClass" id="assetClass-id" value="${actionBean.assetResult.assetClass}" style="width: 95%"/></td>
     </tr>
     <tr bgcolor="#DFFFBF">
-        <td width="50%" align="right" >Buy cost (1 piece):</td>
+        <td width="50%" align="right" >Buy price (1 piece):</td>
         <td width="50%" align="right" ><stripes:text name="buy" id="buy-id" value="${buyCost}" style="width: 95%"/></td>
     </tr>
     <tr bgColor="#FBFFBD">
-        <td align="right">Sell cost (1 piece):</td>
+        <td align="right">Sell price (1 piece):</td>
         <td align="right"><stripes:text name="sell" id="sell-id" value="${sellCost}" style="width: 95%"/></td>
     </tr>
     <tr bgcolor="#DFFFBF">
@@ -143,15 +143,15 @@
         <td align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${actionBean.assetResult.revenuAmount}"/></td>
     </tr>
     <tr bgColor="#FBFFBD">
-        <td align="right" >Balance:</td>
+        <td align="right" >Investment return:</td>
         <td align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${actionBean.assetResult.balance}"/></td>
     </tr>
     <tr bgColor="#DFFFBF">
-        <td align="right" >Use in total balance:</td>
+        <td align="right" >Use in ROI:</td>
         <td align="right" ><stripes:checkbox name="usedInBalance" checked="${actionBean.assetResult.valuable.usedInBalance}" /></td>
     </tr>
     <tr bgColor="#FBFFBD">
-        <td align="right" >Is debt:</td>
+        <td align="right" >Is liability:</td>
         <td align="right" ><stripes:checkbox name="debt" checked="${actionBean.assetResult.valuable.debt}" /></td>
     </tr>
     <tr bgColor="#DFFFBF">

@@ -18,19 +18,19 @@
 <table width="80%" border="0px" >
     <tr><th colspan="2" align="center">Totals:</th></tr>
     <tr bgcolor="#F3F3F3">
-        <td width="50%" align="right" >Net wealth:</td>
+        <td width="50%" align="right" >Assets:</td>
         <td width="50%" align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${actionBean.netWealth}"/></td>
     </tr>
     <tr bgcolor="#E4F1F3">
-        <td width="50%" align="right" >Net wealth (w/o debt):</td>
+        <td width="50%" align="right" >Equity (Assets - Liabilities):</td>
         <td width="50%" align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${actionBean.netWealthWoDebt}"/></td>
     </tr>
     <tr bgcolor="#F3F3F3">
-        <td width="50%" align="right" >Total debt:</td>
+        <td width="50%" align="right" >Liabilities:</td>
         <td width="50%" align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${actionBean.debt}"/></td>
     </tr>
     <tr bgColor="#E4F1F3">
-        <td width="50%" align="right" >Balance:</td>
+        <td width="50%" align="right" >Investments return:</td>
         <td width="50%" align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${actionBean.balance}"/></td>
     </tr>
 </table>
@@ -47,11 +47,11 @@
         <td width="50%" align="right" ><c:out value="${asset.assetClass}"/></td>
     </tr>
     <tr bgcolor="#E4F1F3">
-        <td width="50%" align="right" >Buy cost (1 piece):</td>
+        <td width="50%" align="right" >Buy price (1 piece):</td>
         <td width="50%" align="right" ><fmt:formatNumber maxFractionDigits="4" minFractionDigits="2" value="${asset.currentCost.buy}"/></td>
     </tr>
     <tr bgColor="#F3F3F3">
-        <td align="right">Sell cost (1 piece):</td>
+        <td align="right">Sell price (1 piece):</td>
         <td align="right"><fmt:formatNumber maxFractionDigits="4" minFractionDigits="2" value="${asset.currentCost.sell}"/></td>
     </tr>
     <tr bgcolor="#E4F1F3">
@@ -59,25 +59,25 @@
         <td align="right" ><fmt:formatNumber maxFractionDigits="5" minFractionDigits="2" value="${asset.amount}"/></td>
     </tr>
     <tr bgColor="#F3F3F3">
-        <td align="right" >Net wealth:</td>
+        <td align="right" >Asset worth:</td>
         <td align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${asset.netWealth}"/></td>
     </tr>
-    <tr bgColor="#E4F1F3">
-        <td align="right" >Investment amount:</td>
-        <td align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${asset.investmentsCost}"/></td>
-    </tr>
-    <tr bgColor="#F3F3F3">
-        <td align="right" >Revenu amount:</td>
-        <td align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${asset.revenuAmount}"/></td>
-    </tr>
-    <tr bgColor="#E4F1F3">
-        <td align="right" ><c:choose>
-                <c:when test="${not asset.valuable.usedInBalance}"><s>Balance</s></c:when><c:otherwise>Balance</c:otherwise></c:choose>:
-        </td>
-        <td align="right" >
-            <fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${asset.balance}"/>
-        </td>
-    </tr>
+    <c:if test="${asset.valuable.usedInBalance}">
+        <tr bgColor="#E4F1F3">
+            <td align="right" >Investment amount:</td>
+            <td align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${asset.investmentsCost}"/></td>
+        </tr>
+        <tr bgColor="#F3F3F3">
+            <td align="right" >Revenue amount:</td>
+            <td align="right" ><fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${asset.revenuAmount}"/></td>
+        </tr>
+        <tr bgColor="#E4F1F3">
+            <td align="right" >Investment return:</td>
+            <td align="right" >
+                <fmt:formatNumber maxFractionDigits="2" minFractionDigits="2" value="${asset.balance}"/>
+            </td>
+        </tr>
+    </c:if>
 </table>
 </c:forEach>
 </div>

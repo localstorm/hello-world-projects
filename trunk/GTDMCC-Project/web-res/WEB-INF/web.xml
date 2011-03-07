@@ -385,14 +385,14 @@
         </servlet>
 
         <servlet>
-                <servlet-name>NetWealthHistoryChartServlet</servlet-name>
-                <servlet-class>org.localstorm.mcc.web.cashflow.servlets.NetWealthHistoryChartServlet</servlet-class>
+                <servlet-name>NetWorthHistoryChartServlet</servlet-name>
+                <servlet-class>org.localstorm.mcc.web.cashflow.servlets.NetWorthHistoryChartServlet</servlet-class>
                 <load-on-startup>2</load-on-startup>
         </servlet>
 
         <servlet>
-                <servlet-name>BalanceHistoryChartServlet</servlet-name>
-                <servlet-class>org.localstorm.mcc.web.cashflow.servlets.BalanceHistoryChartServlet</servlet-class>
+                <servlet-name>RoiHistoryChartServlet</servlet-name>
+                <servlet-class>org.localstorm.mcc.web.cashflow.servlets.RoiHistoryChartServlet</servlet-class>
                 <load-on-startup>2</load-on-startup>
         </servlet>
 
@@ -457,13 +457,13 @@
         </servlet-mapping>
 
         <servlet-mapping>
-                <servlet-name>NetWealthHistoryChartServlet</servlet-name>
-                <url-pattern>/chart/netWealthHistory.png</url-pattern>
+                <servlet-name>NetWorthHistoryChartServlet</servlet-name>
+                <url-pattern>/chart/netWorthHistory.png</url-pattern>
         </servlet-mapping>
 
         <servlet-mapping>
-                <servlet-name>BalanceHistoryChartServlet</servlet-name>
-                <url-pattern>/chart/balanceHistory.png</url-pattern>
+                <servlet-name>RoiHistoryChartServlet</servlet-name>
+                <url-pattern>/chart/roiHistory.png</url-pattern>
         </servlet-mapping>
 
         <servlet-mapping>

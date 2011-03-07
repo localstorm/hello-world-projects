@@ -28,11 +28,11 @@
                 </tr>
                 <tr>
                     <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
-                    <td><a href="<c:url value="/actions/cash/nil/NetWealthHistoryReport"/>">Net wealth history</a></td>
+                    <td><a href="<c:url value="/actions/cash/nil/NetWorthHistoryReport"/>">Net worth history</a></td>
                 </tr>
                 <tr>
                     <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>
-                    <td><a href="<c:url value="/actions/cash/nil/BalanceHistoryReport"/>">Balance history</a></td>
+                    <td><a href="<c:url value="/actions/cash/nil/RoiHistoryReport"/>">ROI report</a></td>
                 </tr>
                 <tr>
                     <td width="18px" valign="top"><img src="<c:url value="/images/report.png"/>"/></td>

@@ -3,7 +3,7 @@
 
 <%@ include file="/WEB-INF/jsp/includes/cashflow/hdr.jsp" %>
 
-<h2><span>BALANCE</span> history</h2>
+<h2><span>INVESTMENT</span> return history</h2>
 <div align="right">
     Truncate history up to: <a href="<c:url value="/actions/cash/nil/TruncateHistory">
         <c:param name="returnPageToken" value="${returnPageToken}" />
@@ -29,7 +29,7 @@
 </div>
 <div align="center">
     <br/>
-    <img src="<c:url value="/chart/balanceHistory.png"/>"/>
+    <img src="<c:url value="/chart/roiHistory.png"/>"/>
 </div>
 
 
