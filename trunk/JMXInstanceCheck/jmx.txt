@@ -1,0 +1,2 @@
+service:jmx:rmi:///jndi/rmi://:9999/jmxrmi
+service:jmx:rmi:///jndi/rmi://:10000/jmxrmi
