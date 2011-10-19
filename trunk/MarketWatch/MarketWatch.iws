@@ -73,10 +73,48 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AlertingCondition.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AlertingService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/alert/AlertingService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="0" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OneTimeAlertingService.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/alert/OneTimeAlertingService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="37" column="69" selection-start="1403" selection-end="1403" vertical-scroll-proportion="0.6254296">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="alerts.csv" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/price_tool/alerts.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="20" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AlertingCondition.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/alert/AlertingCondition.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="35" selection-start="383" selection-end="383" vertical-scroll-proportion="0.051671732">
+            <state line="10" column="35" selection-start="383" selection-end="383" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Silver.csv" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/Silver.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1580" column="41" selection-start="45895" selection-end="45895" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -92,7 +130,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/sms/Alerting.java" />
         <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/sms/SmsAlerting.java" />
         <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/sms/SmsNotificationUtil.java" />
         <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/OneTimeAlertingService.java" />
@@ -100,14 +137,15 @@
         <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/sms/AlertingCondition.java" />
         <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/sms/OneTimeAlertingService.java" />
         <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/sms/AlertingService.java" />
-        <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/alert/AlertingService.java" />
         <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/Possessions.java" />
         <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/alert/AlertingCondition.java" />
         <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/tools/MarketPriceTool.java" />
         <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/TxLog.java" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/alert/SmsNotificationUtil.java" />
+        <option value="$PROJECT_DIR$/data/Silver.csv" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/alert/AlertingService.java" />
         <option value="$PROJECT_DIR$/price_tool/alerts.csv" />
         <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/alert/OneTimeAlertingService.java" />
-        <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/alert/SmsNotificationUtil.java" />
       </list>
     </option>
   </component>
@@ -434,7 +472,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="25" width="1378" height="752" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32615894" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -444,7 +482,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3998471" sideWeight="0.5166375" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33026114" sideWeight="0.6009934" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33026114" sideWeight="0.6009934" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42218542" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39900663" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -510,13 +548,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/Silver.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1578" column="41" selection-start="45836" selection-end="45836" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/tools/VirtualPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="47" column="75" selection-start="1737" selection-end="1737" vertical-scroll-proportion="0.0">
@@ -534,13 +565,6 @@
     <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/alert/SmsAlerting.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="19" selection-start="63" selection-end="63" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/alert/AlertingService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="40" selection-start="317" selection-end="317" vertical-scroll-proportion="0.5866261">
           <folding />
         </state>
       </provider>
@@ -573,15 +597,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/alert/OneTimeAlertingService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="68" selection-start="1384" selection-end="1384" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/tools/MarketPriceTool.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="32" selection-start="743" selection-end="743" vertical-scroll-proportion="0.0">
@@ -589,9 +604,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/price_tool/alerts.csv">
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/alert/AlertingCondition.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="21" selection-start="73" selection-end="73" vertical-scroll-proportion="0.05592105">
+        <state line="10" column="35" selection-start="383" selection-end="383" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/Silver.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1580" column="41" selection-start="45895" selection-end="45895" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -603,10 +625,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/alert/AlertingCondition.java">
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/alert/AlertingService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="35" selection-start="383" selection-end="383" vertical-scroll-proportion="0.051671732">
+        <state line="5" column="0" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/price_tool/alerts.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="20" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/alert/OneTimeAlertingService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="69" selection-start="1403" selection-end="1403" vertical-scroll-proportion="0.6254296">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
