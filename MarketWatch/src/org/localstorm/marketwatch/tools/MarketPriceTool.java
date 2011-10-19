@@ -1,9 +1,11 @@
 package org.localstorm.marketwatch.tools;
 
 import org.localstorm.marketwatch.Asset;
+import org.localstorm.marketwatch.alert.OneTimeAlertingService;
 import org.localstorm.marketwatch.Price;
 import org.localstorm.marketwatch.pricing.NomosSource;
 import org.localstorm.marketwatch.pricing.PricingSource;
+import org.localstorm.marketwatch.alert.SmsAlerting;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -13,7 +15,10 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class MarketPriceTool {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws Exception {
+
+        OneTimeAlertingService alertingService = new OneTimeAlertingService(new SmsAlerting());
+        alertingService.loadAlertingConditions(new File("price_tool/alerts.csv"));
 
         Map<String, Price> prices = new HashMap<String, Price>();
 
@@ -24,7 +29,7 @@ public class MarketPriceTool {
                 }
 
                 while (ps.updatePrices()) {
-                    process(prices, ps);
+                    process(prices, ps, alertingService);
                     Thread.sleep(60000);
                 }
             } catch (Exception e) {
@@ -37,16 +42,16 @@ public class MarketPriceTool {
     private static void updateMarketLogs(List<Asset> assets) throws IOException {
 
         for (Asset a : assets) {
-            File f = new File("data/"+a.getName()+".csv");
+            File f = new File("data/" + a.getName() + ".csv");
             boolean needHeader = !f.exists();
 
             FileOutputStream fos = new FileOutputStream(f, true);
             PrintStream pst = new PrintStream(fos);
             try {
                 if (needHeader) {
-                   pst.println(a.getName()+"-Buy,"+a.getName()+"-Sell,Date");
+                    pst.println(a.getName() + "-Buy," + a.getName() + "-Sell,Date");
                 }
-                pst.println(a.getPrice().getBuy() + "," + a.getPrice().getSell()+","+timestamp());
+                pst.println(a.getPrice().getBuy() + "," + a.getPrice().getSell() + "," + timestamp());
             } finally {
                 pst.close();
             }
@@ -54,17 +59,18 @@ public class MarketPriceTool {
     }
 
     private static String timestamp() {
-        SimpleDateFormat sdf=new SimpleDateFormat("MM-dd-yy HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yy HH:mm:ss");
         return sdf.format(new Date());
     }
 
-    private static void process(Map<String, Price> prices, PricingSource ps) throws IOException{
+    private static void process(Map<String, Price> prices, PricingSource ps, OneTimeAlertingService alertingService) throws IOException {
         List<Asset> pc = ps.getPrices();
         for (Asset a : pc) {
             Price p = prices.get(a.getName());
             if (p == null || !p.equals(a.getPrice())) {
                 prices.put(a.getName(), a.getPrice());
                 updateMarketLogs(Collections.singletonList(a));
+                alertingService.onPriceChange(a);
             }
         }
     }
