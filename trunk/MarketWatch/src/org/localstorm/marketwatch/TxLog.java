@@ -125,6 +125,9 @@ public class TxLog {
 
             while (op != null) {
                 op = reader.readNext();
+                if (op == null) {
+                    break;
+                }
                 String assetName = op[0];
                 double quantity = Double.parseDouble(op[1]);
                 double buy = Double.parseDouble(op[2]);
@@ -136,10 +139,10 @@ public class TxLog {
 
                 if (quantity >= 0) {
                     possessions.add(assetName, quantity);
-                    pool.getCash(quantity*price.getBuy());
+                    pool.getCash(quantity * price.getBuy());
                 } else {
                     possessions.reduce(assetName, quantity);
-                    pool.putCash(quantity*price.getSell());
+                    pool.putCash(quantity * price.getSell());
                 }
             }
         } finally {

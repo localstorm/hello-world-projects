@@ -55,19 +55,7 @@ public class Possessions {
         return q.keySet();
     }
 
-    public void load(File file) throws IOException {
-        Properties p = new Properties();
-        FileReader reader = new FileReader(file);
-        try {
-            p.load(reader);
-
-            this.add(p.getProperty("assetName"), Double.parseDouble(p.getProperty("quantity")));
-        } finally {
-            IOUtils.closeQuietly(reader);
-        }
-    }
-
-     public double getValue(String assetName, PriceBoard prices) {
+    public double getValue(String assetName, PriceBoard prices) {
         return getQuantity(assetName)*prices.getCurrentPrice(assetName).getSell();
     }
 
