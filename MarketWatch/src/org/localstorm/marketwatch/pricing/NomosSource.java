@@ -68,14 +68,27 @@ public class NomosSource implements PricingSource {
         Asset slv = new Asset();
         slv.setName(silver);
         slv.setPrice(new Price(silverBuy, silverSell));
-        assets.put(slv.getName(), slv);
+        Asset old = assets.put(slv.getName(), slv);
+        if (old != null && hugeDeviation(old, slv)) {
+            assets.put(slv.getName(), old);
+        }
     }
 
     private void setGoldPrice(double goldBuy, double goldSell) {
         Asset gld = new Asset();
         gld.setName(gold);
         gld.setPrice(new Price(goldBuy, goldSell));
-        assets.put(gld.getName(), gld);
+        Asset old = assets.put(gld.getName(), gld);
+        if (old != null && hugeDeviation(old, gld)) {
+            assets.put(gld.getName(), old);
+        }
+    }
+
+    private boolean hugeDeviation(Asset old, Asset fresh) {
+        double b = (old.getPrice().getBuy() + fresh.getPrice().getBuy()) / 2;
+        double s = (old.getPrice().getSell() + fresh.getPrice().getSell()) / 2;
+        return (b > 2 * old.getPrice().getBuy() || b < 0.5 * old.getPrice().getBuy()) ||
+                (s > 2 * old.getPrice().getSell() || s < 0.5 * old.getPrice().getSell());
     }
 
     public Price getAssetPrice(String assetName) {

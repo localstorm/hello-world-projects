@@ -30,18 +30,12 @@ public class PriceBoard {
         String assetName = asset.getName();
         Price old = prices.put(assetName, newPrice);
         if (old != null) {
-            MinMax mm = sellMinMax.get(assetName);
-            if (mm == null) {
-                sellMinMax.put(assetName, new MinMax(Math.min(old.getSell(), newPrice.getSell()),
-                        Math.max(old.getSell(), newPrice.getSell())));
-                buyMinMax.put(assetName, new MinMax(Math.min(old.getBuy(), newPrice.getBuy()),
-                        Math.max(old.getBuy(), newPrice.getBuy())));
-            } else {
-                sellMinMax.put(assetName, new MinMax(Math.min(mm.getMin(), newPrice.getSell()),
-                        Math.max(mm.getMax(), newPrice.getSell())));
-                buyMinMax.put(assetName, new MinMax(Math.min(mm.getMin(), newPrice.getBuy()),
-                        Math.max(mm.getMax(), newPrice.getBuy())));
-            }
+            MinMax mmb = buyMinMax.get(assetName);
+            MinMax mms = sellMinMax.get(assetName);
+            sellMinMax.put(assetName, new MinMax(Math.min(mms.getMin(), newPrice.getSell()),
+                    Math.max(mms.getMax(), newPrice.getSell())));
+            buyMinMax.put(assetName, new MinMax(Math.min(mmb.getMin(), newPrice.getBuy()),
+                    Math.max(mmb.getMax(), newPrice.getBuy())));
         } else {
             sellMinMax.put(assetName, new MinMax(newPrice.getSell(), newPrice.getSell()));
             buyMinMax.put(assetName, new MinMax(newPrice.getBuy(), newPrice.getBuy()));

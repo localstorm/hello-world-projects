@@ -14,6 +14,7 @@ public class SellTheTopChunked implements SellStrategy {
     private PriceBoard board;
     private boolean dynamicChunks;
     private boolean dynamicSpreads;
+    private boolean maximizeOperationVolume;
 
     public SellTheTopChunked(Environment env, StrategyParams sp) {
         this.board = env.getBoard();
@@ -24,6 +25,7 @@ public class SellTheTopChunked implements SellStrategy {
         this.maxSpread = sp.getSpreadCap();
         this.dynamicChunks = sp.isDynamicChunks();
         this.dynamicSpreads = sp.isDynamicSpread();
+        this.maximizeOperationVolume = sp.isMaximizeOperationVolume();
     }
 
     public double onPriceChange(Asset changed) {
@@ -54,15 +56,7 @@ public class SellTheTopChunked implements SellStrategy {
 
         if (profitFactor >= profitChangeFactor) {
             System.out.println("SellStrategy >>> Profit factor: " + profitFactor + ". Selling");
-            double chunkFactor = (dynamicChunks) ? profitFactor / profitChangeFactor : 1;
-            double chunk = pool.getChunkSize() * chunkFactor;
-
-            double total = poss.getValue(changed.getName(), board);
-            double toSell = (total >= chunk) ? chunk : total;
-
-            System.out.println("SellStrategy >>> ChunkFactor: " + chunkFactor + ", Chunk: " + chunk);
-            return SignalFactory.roundedFixedCash(changed.getPrice().getSell(), toSell);
-
+            return SignalFactory.roundedFixedCash(changed.getPrice().getSell(), getSellVolume(changed, profitFactor));
         } else {
             System.out.println("SellStrategy >>> Small profit, holding");
         }
@@ -70,13 +64,29 @@ public class SellTheTopChunked implements SellStrategy {
         return 0;
     }
 
+    private double getSellVolume(Asset changed, double profitFactor) {
+        double toSell;
+        if (!maximizeOperationVolume) {
+            double chunkFactor = (dynamicChunks) ? profitFactor / profitChangeFactor : 1;
+            double chunk = pool.getChunkSize() * chunkFactor;
+
+            double total = poss.getValue(changed.getName(), board);
+            toSell = (total >= chunk) ? chunk : total;
+
+            System.out.println("SellStrategy >>> ChunkFactor: " + chunkFactor + ", Chunk: " + chunk);
+        } else {
+            toSell = poss.getValue(changed.getName(), board);
+        }
+        return toSell;
+    }
+
     private boolean isSpreadAcceptable(double profitFactor, double spread) {
         if (dynamicSpreads) {
             double spreadThreshold = maxSpread * (profitFactor / profitChangeFactor);
-            System.out.println("SellStrategy >>> SpreadFactor: "+spreadThreshold+", Spread: "+spread);
+            System.out.println("SellStrategy >>> SpreadFactor: " + spreadThreshold + ", Spread: " + spread);
             return spread <= spreadThreshold;
         } else {
-            System.out.println("SellStrategy >>> SpreadFactor: "+1.0+", Spread: "+spread);
+            System.out.println("SellStrategy >>> SpreadFactor: " + 1.0 + ", Spread: " + spread);
             return spread <= maxSpread;
         }
     }

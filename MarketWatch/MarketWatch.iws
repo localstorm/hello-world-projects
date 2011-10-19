@@ -64,28 +64,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MarketPriceTool.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/tools/MarketPriceTool.java">
+      <file leaf-file-name="baseline_buy.properties" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/player_conf/Silver/baseline_buy.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="31" selection-start="718" selection-end="718" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="liquidity.properties" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/player_conf/Gold/liquidity.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strategy.properties" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/player_conf/Gold/strategy.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="0" column="29" selection-start="29" selection-end="29" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -94,25 +76,25 @@
       <file leaf-file-name="baseline_sell.properties" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/player_conf/Silver/baseline_sell.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="19" selection-start="74" selection-end="74" vertical-scroll-proportion="0.0">
+            <state line="1" column="20" selection-start="50" selection-end="50" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="baseline_buy.properties" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/player_conf/Silver/baseline_buy.properties">
+        <entry file="file://$PROJECT_DIR$/player_conf/Gold/baseline_buy.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="36" selection-end="76" vertical-scroll-proportion="0.0">
+            <state line="0" column="20" selection-start="20" selection-end="20" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="baseline_buy.properties" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/player_conf/Gold/baseline_buy.properties">
+      <file leaf-file-name="MarketPriceTool.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/tools/MarketPriceTool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="78" selection-end="78" vertical-scroll-proportion="0.16346154">
+            <state line="67" column="20" selection-start="2256" selection-end="2256" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -121,25 +103,25 @@
       <file leaf-file-name="baseline_sell.properties" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/player_conf/Gold/baseline_sell.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="18" selection-start="55" selection-end="55" vertical-scroll-proportion="0.0">
+            <state line="0" column="20" selection-start="20" selection-end="20" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tx.csv" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/player_conf/Gold/tx.csv">
+      <file leaf-file-name="StrategyParams.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/strategies/StrategyParams.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="21" selection-start="70" selection-end="70" vertical-scroll-proportion="0.0">
+            <state line="68" column="48" selection-start="2141" selection-end="2141" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gold.csv" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/Gold.csv">
+      <file leaf-file-name="SellTheTopChunked.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/strategies/SellTheTopChunked.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="59" column="0" selection-start="2280" selection-end="2280" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -148,7 +130,25 @@
       <file leaf-file-name="BuyTheDeepChunked.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/strategies/BuyTheDeepChunked.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="35" selection-start="3874" selection-end="3874" vertical-scroll-proportion="0.0">
+            <state line="54" column="27" selection-start="2353" selection-end="2353" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Silver.csv" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/data/Silver.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1459" column="0" selection-start="38701" selection-end="38711" vertical-scroll-proportion="-10.680272">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Gold.csv" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/Gold.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="167" column="0" selection-start="5336" selection-end="5336" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -164,22 +164,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/pricing/HistoricalPricingSource.java" />
-        <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/tools/MarketWatcher.java" />
-        <option value="$PROJECT_DIR$/player_conf/Gold/baselineStrategy.properties" />
-        <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/tools/StrategyParams.java" />
-        <option value="$PROJECT_DIR$/data/Silver.csv" />
-        <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/strategies/Util.java" />
         <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/Environment.java" />
         <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/tools/VirtualPlayer.java" />
-        <option value="$PROJECT_DIR$/player_conf/Silver/baseline_sell.properties" />
+        <option value="$PROJECT_DIR$/player_conf/Gold/tx.csv" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/sms/NotificationUtil.java" />
+        <option value="$PROJECT_DIR$/data/Gold.csv" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/pricing/NomosSource.java" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/strategies/BuyTheDeepChunked.java" />
+        <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/pricing/PriceBoard.java" />
+        <option value="$PROJECT_DIR$/player_conf/Silver/liquidity.properties" />
         <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/strategies/StrategyParams.java" />
         <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/strategies/SellTheTopChunked.java" />
-        <option value="$PROJECT_DIR$/src/org/localstorm/marketwatch/strategies/BuyTheDeepChunked.java" />
+        <option value="$PROJECT_DIR$/player_conf/Silver/baseline_sell.properties" />
         <option value="$PROJECT_DIR$/player_conf/Silver/baseline_buy.properties" />
-        <option value="$PROJECT_DIR$/player_conf/Gold/baseline_buy.properties" />
         <option value="$PROJECT_DIR$/player_conf/Gold/baseline_sell.properties" />
-        <option value="$PROJECT_DIR$/player_conf/Gold/tx.csv" />
+        <option value="$PROJECT_DIR$/player_conf/Gold/baseline_buy.properties" />
+        <option value="$PROJECT_DIR$/data/Silver.csv" />
       </list>
     </option>
   </component>
@@ -213,8 +213,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -233,9 +231,167 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MarketWatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MarketWatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="marketwatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MarketWatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MarketWatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="marketwatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MarketWatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MarketWatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="marketwatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="strategies" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MarketWatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MarketWatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="marketwatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="strategies" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="signals" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MarketWatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MarketWatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="marketwatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MarketWatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MarketWatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="player_conf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Silver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MarketWatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MarketWatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="player_conf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MarketWatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MarketWatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Favorites" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -273,7 +429,7 @@
       <recent name="org.localstorm.marketwatch" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.GoldBaselinePlayer">
+  <component name="RunManager" selected="Application.SilverBaselinePlayer">
     <configuration default="false" name="SilverBaselinePlayer" type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" />
       <option name="MAIN_CLASS_NAME" value="org.localstorm.marketwatch.tools.VirtualPlayer" />
@@ -317,6 +473,23 @@
       </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="NotificationUtil" type="Application" factoryName="Application" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" />
+      <option name="MAIN_CLASS_NAME" value="org.localstorm.marketwatch.sms.NotificationUtil" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="MarketWatch" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -409,10 +582,11 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <list size="3">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Application.SilverBaselinePlayer" />
       <item index="1" class="java.lang.String" itemvalue="Application.MarketPriceTool" />
       <item index="2" class="java.lang.String" itemvalue="Application.GoldBaselinePlayer" />
+      <item index="3" class="java.lang.String" itemvalue="Application.NotificationUtil" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -447,21 +621,21 @@
     <frame x="-9" y="25" width="1378" height="752" extended-state="1" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32615894" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32749563" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.54801327" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32615894" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3998471" sideWeight="0.5166375" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31643626" sideWeight="0.6125828" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38741723" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33026114" sideWeight="0.42384106" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29139072" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.57615894" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32749563" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -507,118 +681,112 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data/Silver.csv">
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/Possessions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="932" column="17" selection-start="27079" selection-end="27079" vertical-scroll-proportion="0.0">
+        <state line="18" column="13" selection-start="388" selection-end="388" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/strategies/Util.java">
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/Price.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="17" selection-start="276" selection-end="276" vertical-scroll-proportion="0.0">
+        <state line="7" column="13" selection-start="112" selection-end="112" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/Environment.java">
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/Tx.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="103" selection-start="952" selection-end="952" vertical-scroll-proportion="0.0">
+        <state line="2" column="13" selection-start="50" selection-end="50" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/tools/VirtualPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="51" selection-start="1301" selection-end="1301" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
+        <state line="34" column="51" selection-start="1301" selection-end="1301" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/strategies/SellTheTopChunked.java">
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/pricing/PriceBoard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="12" selection-start="3019" selection-end="3097" vertical-scroll-proportion="0.0">
+        <state line="36" column="43" selection-start="1240" selection-end="1240" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/strategies/BuyTheDeepChunked.java">
+    <entry file="file://$PROJECT_DIR$/player_conf/Silver/liquidity.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="35" selection-start="3874" selection-end="3874" vertical-scroll-proportion="0.0">
+        <state line="1" column="7" selection-start="19" selection-end="19" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/strategies/StrategyParams.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="57" selection-start="1926" selection-end="1926" vertical-scroll-proportion="1.1543409">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/player_conf/Silver/baseline_sell.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="19" selection-start="74" selection-end="74" vertical-scroll-proportion="0.0">
+        <state line="68" column="48" selection-start="2141" selection-end="2141" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/player_conf/Silver/baseline_buy.properties">
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/strategies/SellTheTopChunked.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="36" selection-end="76" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/Gold.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/player_conf/Gold/tx.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="21" selection-start="70" selection-end="70" vertical-scroll-proportion="0.0">
+        <state line="59" column="0" selection-start="2280" selection-end="2280" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/tools/MarketPriceTool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="31" selection-start="718" selection-end="718" vertical-scroll-proportion="0.0">
+        <state line="67" column="20" selection-start="2256" selection-end="2256" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/player_conf/Gold/liquidity.properties">
+    <entry file="file://$PROJECT_DIR$/src/org/localstorm/marketwatch/strategies/BuyTheDeepChunked.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/player_conf/Gold/strategy.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="54" column="27" selection-start="2353" selection-end="2353" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/player_conf/Gold/baseline_sell.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="18" selection-start="55" selection-end="55" vertical-scroll-proportion="0.0">
+        <state line="0" column="20" selection-start="20" selection-end="20" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/player_conf/Gold/baseline_buy.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="78" selection-end="78" vertical-scroll-proportion="0.16346154">
+        <state line="0" column="20" selection-start="20" selection-end="20" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/player_conf/Silver/baseline_sell.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="20" selection-start="50" selection-end="50" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/player_conf/Silver/baseline_buy.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="29" selection-start="29" selection-end="29" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/Gold.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="167" column="0" selection-start="5336" selection-end="5336" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/Silver.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1459" column="0" selection-start="38701" selection-end="38711" vertical-scroll-proportion="-10.680272">
           <folding />
         </state>
       </provider>
