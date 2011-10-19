@@ -1,0 +1,9 @@
+Asset,BuyPriceLowerCap,SellPriceHigherCap,SpreadCap
+Silver,31.5,35.0,0.035
+Silver,31.0,35.0,0.035
+Silver,30.5,35.0,0.035
+Silver,30.0,35.0,0.035
+Gold,1600,1900,0.025
+Gold,1580,1900,0.025
+Gold,1550,1900,0.025
+Gold,1500,1900,0.025
