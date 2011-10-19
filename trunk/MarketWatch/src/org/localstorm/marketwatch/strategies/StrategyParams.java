@@ -13,6 +13,7 @@ public class StrategyParams {
     private double spreadCap;
     private boolean dynamicChunks;
     private boolean dynamicSpread;
+    private boolean maximizeOperationVolume;
 
     public static StrategyParams load(File f) throws IOException {
         Properties p = new Properties();
@@ -23,11 +24,14 @@ public class StrategyParams {
             double spreadCap = Double.parseDouble(p.getProperty("spreadCap"));
             boolean dynamicChunks = Boolean.parseBoolean(p.getProperty("dynamicChunks"));
             boolean dynamicSpread = Boolean.parseBoolean(p.getProperty("dynamicSpread"));
+            boolean maximizeOperationVolume = Boolean.parseBoolean(p.getProperty("maximizeOperationVolume"));
+
             StrategyParams sp = new StrategyParams();
             sp.setDeviationFactor(deviationFactor);
             sp.setSpreadCap(spreadCap);
             sp.setDynamicChunks(dynamicChunks);
             sp.setDynamicSpread(dynamicSpread);
+            sp.setMaximizeOperationVolume(maximizeOperationVolume);
             return sp;
         } finally {
             IOUtils.closeQuietly(reader);
@@ -62,7 +66,15 @@ public class StrategyParams {
         return dynamicSpread;
     }
 
+    public boolean isMaximizeOperationVolume() {
+        return maximizeOperationVolume;
+    }
+
     public void setDynamicSpread(boolean dynamicSpread) {
         this.dynamicSpread = dynamicSpread;
+    }
+
+    public void setMaximizeOperationVolume(boolean maximizeOperationVolume) {
+        this.maximizeOperationVolume = maximizeOperationVolume;
     }
 }

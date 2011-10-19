@@ -21,14 +21,21 @@ public class NotificationUtil {
     private final static String apiId = "3337956";
     private final static String to = "79163420445";
 
+    public static void main(String[] args) throws Exception {
+        notify("Sell everything");
+    }
+
+   // api.clickatell.com/http/sendmsg?user=localstorm%40gmail.com&password=WherWolF&api_id=3337956&to=79163420445&text=Message
+
     public static void notify(String msg) throws Exception {
         String url = "http://api.clickatell.com/http/sendmsg?";
         url = add(url, "user", user);
         url = add(url, "password", password);
-        url = add(url, "apiId", apiId);
+        url = add(url, "api_id", apiId);
         url = add(url, "to", to);
         url = add(url, "text", msg);
 
+        //System.out.println(url);
         URL u = new URL(url);
         URLConnection c = u.openConnection();
         InputStream is = c.getInputStream();
