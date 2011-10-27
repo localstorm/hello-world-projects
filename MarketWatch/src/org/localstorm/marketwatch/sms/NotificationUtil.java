@@ -7,13 +7,6 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 
-/**
- * Created by IntelliJ IDEA.
- * User: LocalStorm
- * Date: 10/15/11
- * Time: 4:05 PM
- * To change this template use File | Settings | File Templates.
- */
 public class NotificationUtil {
 
     private final static String password = "WherWolF";
