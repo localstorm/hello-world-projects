@@ -22,7 +22,6 @@ class SmsNotificationUtil {
         url = add(url, "to", to);
         url = add(url, "text", msg);
 
-        //System.out.println(url);
         URL u = new URL(url);
         URLConnection c = u.openConnection();
         InputStream is = c.getInputStream();
