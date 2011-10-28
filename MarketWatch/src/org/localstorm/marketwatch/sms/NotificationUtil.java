@@ -18,8 +18,6 @@ public class NotificationUtil {
         notify("Sell everything");
     }
 
-   // api.clickatell.com/http/sendmsg?user=localstorm%40gmail.com&password=WherWolF&api_id=3337956&to=79163420445&text=Message
-
     public static void notify(String msg) throws Exception {
         String url = "http://api.clickatell.com/http/sendmsg?";
         url = add(url, "user", user);
