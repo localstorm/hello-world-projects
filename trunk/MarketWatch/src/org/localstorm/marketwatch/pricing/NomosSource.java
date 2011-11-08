@@ -1,6 +1,5 @@
 package org.localstorm.marketwatch.pricing;
 
-import org.localstorm.marketwatch.Asset;
 import org.localstorm.marketwatch.Price;
 import org.w3c.dom.Document;
 
@@ -12,23 +11,24 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-public class NomosSource implements PricingSource {
-
-    private Map<String, Asset> assets = new HashMap<String, Asset>();
+public class NomosSource implements MarketSignalSource {
+    private Queue<MarketSignal> signals;
     private String silver;
     private String gold;
 
     public NomosSource(String silverAsset, String goldAsset) {
         this.silver = silverAsset;
         this.gold = goldAsset;
+        this.signals = new LinkedList<MarketSignal>();
     }
 
-    public boolean updatePrices() throws IOException {
+    public MarketSignal readSignal() throws Exception {
+        if (!signals.isEmpty()) {
+            return signals.poll();
+        }
+
         try {
             File file = File.createTempFile("nomos", "prices");
 
@@ -61,47 +61,51 @@ public class NomosSource implements PricingSource {
             throw new IOException(e);
         }
 
-        return true;
+        if (!signals.isEmpty()) {
+            return signals.poll();
+        } else {
+            return null;
+        }
+    }
+
+    public void close() {
+
     }
 
     private void setSilverPrice(double silverBuy, double silverSell) {
-        Asset slv = new Asset();
-        slv.setName(silver);
-        slv.setPrice(new Price(silverBuy, silverSell));
-        Asset old = assets.put(slv.getName(), slv);
-        if (old != null && hugeDeviation(old, slv)) {
-            assets.put(slv.getName(), old);
-        }
+        Price p = new Price(silverBuy, silverSell);
+
+        MarketSignal ms = new MarketSignal();
+        ms.setEventType(EventType.PriceChange);
+        ms.setDateTime(new Date());
+        ms.setAsset(silver);
+        ms.setPrice(p);
+        ms.setQuantity(0);
+        ms.setVolume(0);
+        ms.setSpread(p.getSpread());
+        signals.add(ms);
     }
 
     private void setGoldPrice(double goldBuy, double goldSell) {
-        Asset gld = new Asset();
-        gld.setName(gold);
-        gld.setPrice(new Price(goldBuy, goldSell));
-        Asset old = assets.put(gld.getName(), gld);
-        if (old != null && hugeDeviation(old, gld)) {
-            assets.put(gld.getName(), old);
-        }
+        Price p = new Price(goldBuy, goldSell);
+
+        MarketSignal ms = new MarketSignal();
+        ms.setEventType(EventType.PriceChange);
+        ms.setDateTime(new Date());
+        ms.setAsset(gold);
+        ms.setPrice(p);
+        ms.setQuantity(0);
+        ms.setVolume(0);
+        ms.setSpread(p.getSpread());
+        signals.add(ms);
     }
 
-    private boolean hugeDeviation(Asset old, Asset fresh) {
-        double b = (old.getPrice().getBuy() + fresh.getPrice().getBuy()) / 2;
-        double s = (old.getPrice().getSell() + fresh.getPrice().getSell()) / 2;
-        return (b > 2 * old.getPrice().getBuy() || b < 0.5 * old.getPrice().getBuy()) ||
-                (s > 2 * old.getPrice().getSell() || s < 0.5 * old.getPrice().getSell());
-    }
-
-    public Price getAssetPrice(String assetName) {
-        return assets.get(assetName).getPrice();
-    }
-
-    public List<Asset> getPrices() {
-        return new ArrayList<Asset>(assets.values());
-    }
-
-    public boolean isLocalSource() {
-        return false;
-    }
+//    private boolean hugeDeviation(Asset old, Asset fresh) {
+//        double b = (old.getPrice().getBuy() + fresh.getPrice().getBuy()) / 2;
+//        double s = (old.getPrice().getSell() + fresh.getPrice().getSell()) / 2;
+//        return (b > 2 * old.getPrice().getBuy() || b < 0.5 * old.getPrice().getBuy()) ||
+//                (s > 2 * old.getPrice().getSell() || s < 0.5 * old.getPrice().getSell());
+//    }
 
     private static String eval(String ex, Document doc) throws Exception {
         XPathFactory factory = XPathFactory.newInstance();

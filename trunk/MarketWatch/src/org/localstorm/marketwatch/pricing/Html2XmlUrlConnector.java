@@ -1,5 +1,8 @@
 package org.localstorm.marketwatch.pricing;
 
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpStatus;
+import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.io.IOUtils;
 import org.cyberneko.html.parsers.DOMParser;
 import org.w3c.dom.Document;
@@ -12,6 +15,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
@@ -26,9 +30,23 @@ class Html2XmlUrlConnector {
     }
 
     public void fetch() throws Exception {
-        URL u = new URL(url);
-        URLConnection conn = u.openConnection();
-        InputStream is = conn.getInputStream();
+        HttpClient client = new HttpClient();
+        GetMethod get = new GetMethod(url);
+        get.setFollowRedirects(true);
+        get.getParams().setParameter("http.socket.timeout", new Integer(5000));
+
+        int statusCode = client.executeMethod(get);
+
+        if (statusCode != HttpStatus.SC_OK) {
+            throw new IOException("Request failed: " + get.getStatusLine());
+        }
+
+        InputStream is = get.getResponseBodyAsStream();
+
+        if (is == null) {
+            throw new IOException("Zero data response.");
+        }
+
         try {
             DOMParser parser = new DOMParser();
             parser.parse(new InputSource(is));
@@ -44,6 +62,7 @@ class Html2XmlUrlConnector {
             xformer.transform(source, result);
         } finally {
             IOUtils.closeQuietly(is);
+            get.releaseConnection();
         }
     }
 

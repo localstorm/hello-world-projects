@@ -1,11 +1,14 @@
 package org.localstorm.marketwatch.tools;
 
 import org.localstorm.marketwatch.*;
+import org.localstorm.marketwatch.pricing.EventType;
+import org.localstorm.marketwatch.pricing.MarketSignal;
+import org.localstorm.marketwatch.pricing.MarketSignalReader;
 import org.localstorm.marketwatch.pricing.*;
 import org.localstorm.marketwatch.strategies.*;
 
 import java.io.File;
-import java.util.List;
+import java.io.IOException;
 
 public class VirtualPlayer {
 
@@ -26,69 +29,112 @@ public class VirtualPlayer {
 
         pool.init(new File("player_conf/" + assetName + "/liquidity.properties"));
 
-        TxLog txLog = new TxLog(new File("player_conf/" + assetName + "/tx.csv"), false);
-        Possessions possessions = txLog.load(pool);
+        TxLog txLog = new TxLog();
+        Possessions possessions = new Possessions();
 
         PriceBoard board = new PriceBoard();
         Environment env = Environment.getEnv(board, pool, possessions, txLog);
         PurchaseStrategy buyStrategy = new BuyTheDeepChunked(env, bsp);
         SellStrategy sellStrategy = new SellTheTopChunked(env, ssp);
 
-        PricingSource pricer = new CsvSource(assetName, new File("data/" + assetName + ".csv"));
+        MarketSignalReader msr = new MarketSignalReader(new File("data/" + assetName + ".mkt.csv"));
+        MarketSignal signal;
 
-        while (pricer.updatePrices()) {
-            List<Asset> prices = pricer.getPrices();
-            if (prices.isEmpty()) {
-                return;
+        boolean tradingStarted = false;
+
+        while ((signal = msr.readSignal()) != null) {
+            EventType event = signal.getEventType();
+
+            if (event.equals(EventType.StartTrading)) {
+                tradingStarted = true;
+                System.out.println("--->>>>> Trading started --->>>>>");
+                continue;
             }
 
-            for (Asset a : prices) {
-                board.updatePrice(a);
+            //PriceChange
+            Asset a = new Asset();
+            a.setName(signal.getAsset());
+            a.setPrice(signal.getPrice());
+            a.setQuantity(0.0);
 
-                System.out.println("MARKET: Current price: " + a.getPrice());
+            if (event.equals(EventType.Transaction)) {
+                executeTx(a, signal, possessions, pool, board, txLog);
+                continue;
+            }
 
-                double amountToBuy = buyStrategy.onPriceChange(a);
-                double amountToSell = sellStrategy.onPriceChange(a);
+            if (txLog.getLastPrice(a) == null) {
+                Tx tx = new Tx(a.getName(), BuySell.SELL, 0, a.getPrice());
+                txLog.logOperation(tx);
+            }
 
-                double totalBuy = amountToBuy - amountToSell;
+            board.updatePrice(a);
+            System.out.println("MARKET: Current price: " + a.getPrice());
 
-                if (totalBuy > 0) {
-                    System.out.println("SIGNAL: Buying: " + totalBuy + " of " + a.getName() + " at " + a.getPrice());
+            if (!tradingStarted) {
+                continue;
+            }
 
-                    double withdraw = a.getPrice().getBuy() * totalBuy;
-                    if (pool.getCash(withdraw)) {
-                        System.out.println("EXECUTED: Buy: " + totalBuy + " of " + a.getName() + " at " + a.getPrice());
-                    } else {
-                        System.out.println("NOT EXECUTED: Can't withdraw " + withdraw + " as no more cash");
-                        continue;
-                    }
+            double amountToBuy = buyStrategy.onPriceChange(a);
+            double amountToSell = sellStrategy.onPriceChange(a);
+            double totalBuy = amountToBuy - amountToSell;
 
-                    possessions.add(a.getName(), totalBuy);
-                    txLog.logOperation(new Tx(a.getName(), BuySell.BUY, totalBuy, a.getPrice()));
-                    dumpAccounting(txLog, pool, board, possessions);
-                    board.resetPriceMinMax(a);
+            if (totalBuy > 0) {
+                System.out.println("SIGNAL: Buying: " + totalBuy + " of " + a.getName() + " at " + a.getPrice());
+
+                double withdraw = a.getPrice().getBuy() * totalBuy;
+                if (pool.getCash(withdraw)) {
+                    System.out.println("EXECUTED: Buy: " + totalBuy + " of " + a.getName() + " at " + a.getPrice());
+                } else {
+                    System.out.println("NOT EXECUTED: Can't withdraw " + withdraw + " as no more cash");
+                    continue;
                 }
 
-                if (totalBuy < 0) {
-                    double sell = -totalBuy;
-                    System.out.println("SIGNAL: Selling: " + sell + " of " + a.getName());
+                possessions.add(a.getName(), totalBuy);
+                txLog.logOperation(new Tx(a.getName(), BuySell.BUY, totalBuy, a.getPrice()));
+                dumpAccounting(txLog, pool, board, possessions);
+                board.resetPriceMinMax(a);
+            }
 
-                    if (possessions.reduce(a.getName(), sell)) {
-                        System.out.println("EXECUTED: Sold: " + sell + " of " + a.getName() + " at " + a.getPrice());
-                    } else {
-                        System.out.println("NOT EXECUTION: Can't sell " + a.getName() + ". Nothing left to sell");
-                        continue;
-                    }
+            if (totalBuy < 0) {
+                double sell = -totalBuy;
+                System.out.println("SIGNAL: Selling: " + sell + " of " + a.getName());
 
-                    pool.putCash(a.getPrice().getSell() * sell);
-                    txLog.logOperation(new Tx(a.getName(), BuySell.SELL, sell, a.getPrice()));
-                    holdIfNeeded(pool, board, possessions);
-                    dumpAccounting(txLog, pool, board, possessions);
-                    board.resetPriceMinMax(a);
+                if (possessions.reduce(a.getName(), sell)) {
+                    System.out.println("EXECUTED: Sold: " + sell + " of " + a.getName() + " at " + a.getPrice());
+                } else {
+                    System.out.println("NOT EXECUTION: Can't sell " + a.getName() + ". Nothing left to sell");
+                    continue;
                 }
+
+                pool.putCash(a.getPrice().getSell() * sell);
+                txLog.logOperation(new Tx(a.getName(), BuySell.SELL, sell, a.getPrice()));
+                holdIfNeeded(pool, board, possessions);
+                dumpAccounting(txLog, pool, board, possessions);
+                board.resetPriceMinMax(a);
             }
         }
         dumpAccounting(txLog, pool, board, possessions);
+        msr.close();
+    }
+
+    private static void executeTx(Asset a, MarketSignal signal, Possessions possessions, LiquidityPool pool, PriceBoard board, TxLog txLog) throws IOException {
+        double buyAmt = signal.getQuantity();
+        if (buyAmt >= 0) {
+            double withdraw = a.getPrice().getBuy() * buyAmt;
+            pool.getCash(withdraw);
+            possessions.add(signal.getAsset(), buyAmt);
+            txLog.logOperation(new Tx(a.getName(), BuySell.BUY, buyAmt, a.getPrice()));
+            dumpAccounting(txLog, pool, board, possessions);
+            board.resetPriceMinMax(a);
+        } else {
+            double sell = -buyAmt;
+            possessions.reduce(a.getName(), sell);
+            pool.putCash(a.getPrice().getSell() * sell);
+            txLog.logOperation(new Tx(a.getName(), BuySell.SELL, sell, a.getPrice()));
+            holdIfNeeded(pool, board, possessions);
+            dumpAccounting(txLog, pool, board, possessions);
+            board.resetPriceMinMax(a);
+        }
     }
 
     private static void holdIfNeeded(LiquidityPool pool, PriceBoard board, Possessions possessions) {

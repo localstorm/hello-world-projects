@@ -42,12 +42,12 @@ public class BuyTheDeepChunked implements PurchaseStrategy {
         double sellPriceChangeFromLastTxFactor = newPrice.getSell() / lastTxSellPrice - 1;
         double buyPriceChangeFromPeakFactor = newPrice.getBuy() / buyPriceMax - 1;
         double buyPriceChangeFromLastTxFactor = newPrice.getBuy() / lastTxBuyPrice - 1;
-        double spread = Util.getSpread(changed.getPrice());
+        double spread = changed.getPrice().getSpread();
 
         System.out.println("BuyStrategy >>> Sell change from last peak ("+sellPriceMax+"): " + sellPriceChangeFromPeakFactor);
         System.out.println("BuyStrategy >>> Buy change from last peak ("+buyPriceMax+"): " + buyPriceChangeFromPeakFactor);
-        System.out.println("BuyStrategy >>> Sell change from last tx: " + sellPriceChangeFromLastTxFactor);
-        System.out.println("BuyStrategy >>> Buy change from last tx: " + buyPriceChangeFromLastTxFactor);
+        System.out.println("BuyStrategy >>> Sell change from last tx ("+lastTxSellPrice+"): " + sellPriceChangeFromLastTxFactor);
+        System.out.println("BuyStrategy >>> Buy change from last tx ("+lastTxBuyPrice+"): " + buyPriceChangeFromLastTxFactor);
         System.out.println("BuyStrategy >>> Current spread: " + spread);
 
 

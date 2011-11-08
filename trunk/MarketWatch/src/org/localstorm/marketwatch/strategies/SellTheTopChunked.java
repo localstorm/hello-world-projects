@@ -45,7 +45,7 @@ public class SellTheTopChunked implements SellStrategy {
             return 0;
         }
 
-        double spread = Util.getSpread(changed.getPrice());
+        double spread = changed.getPrice().getSpread();
         System.out.println("SellStrategy >>> Current profit factor: " + profitFactor);
         System.out.println("SellStrategy >>> Current spread: " + spread);
 

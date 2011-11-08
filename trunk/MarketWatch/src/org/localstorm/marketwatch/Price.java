@@ -64,4 +64,8 @@ public class Price {
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
+
+    public double getSpread() {
+        return 2 * (buy - sell) / (buy + sell);
+    }
 }
