@@ -44,10 +44,10 @@ public class LiquidityPool {
 
     public void hold(double value) {
         if (value>cash) {
-            onHold = cash;
+            onHold +=cash;
             cash = 0.0;
         } else {
-            onHold = value;
+            onHold += value;
             cash -= value;
         }
     }
