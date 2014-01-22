@@ -52,7 +52,7 @@ public class AssetsStructureChartServlet extends HttpServlet
         JFreeChart chart = AssetsStructureChartGenerator.getChart(user, title, byAssetClass);
 
         resp.setContentType(Constants.PNG_CONTENT_TYPE);
-        ChartUtilities.writeChartAsPNG(resp.getOutputStream(), chart, 640, 480);
+        ChartUtilities.writeChartAsPNG(resp.getOutputStream(), chart, 640, 640);
     }
 
     @Override

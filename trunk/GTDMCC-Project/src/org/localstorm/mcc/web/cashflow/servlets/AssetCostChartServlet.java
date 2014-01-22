@@ -57,7 +57,7 @@ public class AssetCostChartServlet extends HttpServlet
             }
 
             resp.setContentType(Constants.PNG_CONTENT_TYPE);
-            ChartUtilities.writeChartAsPNG(resp.getOutputStream(), chart, 640, 480);
+            ChartUtilities.writeChartAsPNG(resp.getOutputStream(), chart, 640, 640);
 
         } catch(Exception e) {
             throw new ServletException(e);

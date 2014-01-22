@@ -51,7 +51,7 @@ public class NetWorthHistoryChartServlet extends HttpServlet
         JFreeChart chart = NetWorthHistoryChartGenerator.getChart(user, null, name, showTgts, includeDebt);
 
         resp.setContentType(Constants.PNG_CONTENT_TYPE);
-        ChartUtilities.writeChartAsPNG(resp.getOutputStream(), chart, 640, 480);
+        ChartUtilities.writeChartAsPNG(resp.getOutputStream(), chart, 640, 640);
     }
 
     @Override
