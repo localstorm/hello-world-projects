@@ -36,7 +36,7 @@ public class DebtHistoryChartServlet extends HttpServlet
         JFreeChart chart = DebtHistoryChartGenerator.getChart(user, null, "Debt history");
 
         resp.setContentType(Constants.PNG_CONTENT_TYPE);
-        ChartUtilities.writeChartAsPNG(resp.getOutputStream(), chart, 640, 480);
+        ChartUtilities.writeChartAsPNG(resp.getOutputStream(), chart, 640, 640);
     }
 
     @Override

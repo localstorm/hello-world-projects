@@ -36,7 +36,7 @@ public class RoiHistoryChartServlet extends HttpServlet
         JFreeChart chart = RoiHistoryChartGenerator.getChart(user, null, "Balance history");
 
         resp.setContentType(Constants.PNG_CONTENT_TYPE);
-        ChartUtilities.writeChartAsPNG(resp.getOutputStream(), chart, 640, 480);
+        ChartUtilities.writeChartAsPNG(resp.getOutputStream(), chart, 640, 640);
     }
 
     @Override
