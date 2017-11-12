@@ -1,15 +1,16 @@
 package org.localstorm.mcc.ejb.gtd.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import javax.sql.DataSource;
 import org.apache.log4j.Logger;
 import org.localstorm.mcc.ejb.dao.Guard;
 import org.localstorm.mcc.ejb.dao.JdbcDaoHelper;
 import org.localstorm.mcc.ejb.dao.QueriesLoader;
 import org.localstorm.mcc.ejb.users.User;
+
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * @author localstorm

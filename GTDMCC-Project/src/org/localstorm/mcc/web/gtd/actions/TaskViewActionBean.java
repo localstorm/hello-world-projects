@@ -1,25 +1,25 @@
 package org.localstorm.mcc.web.gtd.actions;
 
-import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
-import org.localstorm.mcc.web.Constants;
-import java.text.SimpleDateFormat;
-import java.util.Collection;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
-
-import org.localstorm.mcc.ejb.gtd.entity.FlightPlan;
 import org.localstorm.mcc.ejb.gtd.FlightPlanManager;
-import org.localstorm.mcc.ejb.gtd.entity.Hint;
 import org.localstorm.mcc.ejb.gtd.HintManager;
-import org.localstorm.mcc.ejb.gtd.entity.Task;
 import org.localstorm.mcc.ejb.gtd.TaskManager;
-import org.localstorm.mcc.web.util.DateUtil;
+import org.localstorm.mcc.ejb.gtd.entity.FlightPlan;
+import org.localstorm.mcc.ejb.gtd.entity.Hint;
+import org.localstorm.mcc.ejb.gtd.entity.Task;
+import org.localstorm.mcc.web.Constants;
+import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
 import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
+import org.localstorm.mcc.web.util.DateUtil;
 import org.localstorm.tools.aop.runtime.Logged;
+
+import java.text.SimpleDateFormat;
+import java.util.Collection;
 
 /**
  * @author Alexey Kuznetsov

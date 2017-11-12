@@ -1,8 +1,9 @@
 package org.localstorm.mcc.ejb.gtd.agent;
 
+import org.apache.log4j.Logger;
+
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-import org.apache.log4j.Logger;
 
 /**
  * @author Alexey Kuznetsov

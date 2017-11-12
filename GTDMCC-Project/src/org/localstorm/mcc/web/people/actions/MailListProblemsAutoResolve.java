@@ -8,6 +8,7 @@ import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.people.MailListManager;
 import org.localstorm.mcc.ejb.people.entity.MailList;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
+import org.localstorm.mcc.web.util.RedirectUrlBuilderUtil;
 import org.localstorm.tools.aop.runtime.Logged;
 
 /**
@@ -39,7 +40,7 @@ public class MailListProblemsAutoResolve extends PeopleBaseActionBean
 
         mlm.tryAutoResolveBrokenEmails(ml);
 
-        RedirectResolution rr = new RedirectResolution(MailListViewActionBean.class);
+        RedirectResolution rr = RedirectUrlBuilderUtil.redirect(MailListViewActionBean.class);
         {
             rr.addParameter(MailListViewActionBean.IncomingParameters.MAIL_LIST_ID, this.getMailListId());
         }

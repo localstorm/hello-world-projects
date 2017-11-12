@@ -1,16 +1,12 @@
 package org.localstorm.mcc.web.gtd.actions;
 
-import net.sourceforge.stripes.action.After;
-import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.FileBean;
-import net.sourceforge.stripes.action.RedirectResolution;
-import net.sourceforge.stripes.action.Resolution;
-import net.sourceforge.stripes.action.UrlBinding;
+import net.sourceforge.stripes.action.*;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.gtd.entity.FileAttachment;
 import org.localstorm.mcc.ejb.gtd.FileManager;
+import org.localstorm.mcc.ejb.gtd.entity.FileAttachment;
 import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
+import org.localstorm.mcc.web.util.RedirectUrlBuilderUtil;
 import org.localstorm.tools.aop.runtime.Logged;
 
 /**
@@ -82,7 +78,7 @@ public class RefObjUploadActionBean extends RefObjViewActionBean
                 
         fm.attachToObject(fa, ro, fb.getInputStream());
         
-        RedirectResolution rr = new RedirectResolution(RefObjViewActionBean.class);
+        RedirectResolution rr = RedirectUrlBuilderUtil.redirect(RefObjViewActionBean.class);
         {
             rr.addParameter(RefObjViewActionBean.IncomingParameters.OBJECT_ID, this.objectId);
         }

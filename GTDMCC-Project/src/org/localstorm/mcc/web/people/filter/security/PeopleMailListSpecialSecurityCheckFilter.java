@@ -1,14 +1,15 @@
 package org.localstorm.mcc.web.people.filter.security;
 
-import javax.servlet.http.HttpServletResponse;
+import org.localstorm.mcc.ejb.users.User;
+import org.localstorm.mcc.web.WebUtil;
 import org.localstorm.mcc.web.filter.SecurityCheckFilter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-import javax.servlet.*;
-import javax.servlet.http.HttpServletRequest;
-import org.localstorm.mcc.ejb.users.User;
-import org.localstorm.mcc.web.WebUtil;
 
 /**
  *

@@ -1,8 +1,6 @@
 package org.localstorm.mcc.web.gtd.actions.wrap;
 
 import org.localstorm.mcc.ejb.gtd.entity.InboxEntry;
-import org.localstorm.mcc.ejb.gtd.entity.Note;
-import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.util.EscapeUtil;
 

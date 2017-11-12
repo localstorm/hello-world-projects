@@ -1,14 +1,15 @@
 package org.localstorm.mcc.ejb.gtd.impl;
 
-import java.util.List;
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import org.localstorm.mcc.ejb.AbstractManager;
 import org.localstorm.mcc.ejb.Constants;
 import org.localstorm.mcc.ejb.gtd.entity.InboxEntry;
 import org.localstorm.mcc.ejb.users.User;
+
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import java.util.List;
 
 /**
  * @author localstorm

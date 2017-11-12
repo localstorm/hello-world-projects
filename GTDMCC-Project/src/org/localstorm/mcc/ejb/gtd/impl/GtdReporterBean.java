@@ -1,13 +1,14 @@
 package org.localstorm.mcc.ejb.gtd.impl;
 
+import org.localstorm.mcc.ejb.Constants;
 import org.localstorm.mcc.ejb.gtd.dao.DashboardReportBean;
-import java.sql.SQLException;
+import org.localstorm.mcc.ejb.gtd.dao.GtdReportsDao;
+import org.localstorm.mcc.ejb.users.User;
+
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.sql.DataSource;
-import org.localstorm.mcc.ejb.Constants;
-import org.localstorm.mcc.ejb.gtd.dao.GtdReportsDao;
-import org.localstorm.mcc.ejb.users.User;
+import java.sql.SQLException;
 
 /**
  * @author localstorm

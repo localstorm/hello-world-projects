@@ -1,8 +1,8 @@
 package org.localstorm.mcc.ejb.dao;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
-import javax.sql.DataSource;
 
 /**
  *

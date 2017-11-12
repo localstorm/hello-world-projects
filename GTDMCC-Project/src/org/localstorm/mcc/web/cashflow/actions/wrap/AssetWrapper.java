@@ -5,14 +5,13 @@
 
 package org.localstorm.mcc.web.cashflow.actions.wrap;
 
-import java.math.BigDecimal;
-import java.math.MathContext;
-
 import org.localstorm.mcc.ejb.cashflow.MoneyMathContext;
 import org.localstorm.mcc.ejb.cashflow.entity.Asset;
 import org.localstorm.mcc.ejb.cashflow.entity.Cost;
 import org.localstorm.mcc.ejb.cashflow.entity.ValuableObject;
 import org.localstorm.mcc.web.util.RoundUtil;
+
+import java.math.BigDecimal;
 
 /**
  * @author localstorm

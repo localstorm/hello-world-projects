@@ -1,29 +1,21 @@
 package org.localstorm.mcc.web.people.actions;
 
-import java.util.Collection;
-import java.util.Map;
-import javax.servlet.http.HttpSession;
-import net.sourceforge.stripes.action.After;
-import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.ForwardResolution;
-import net.sourceforge.stripes.action.Resolution;
-import net.sourceforge.stripes.action.UrlBinding;
+import net.sourceforge.stripes.action.*;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.people.MailListManager;
 import org.localstorm.mcc.ejb.people.PersonManager;
+import org.localstorm.mcc.ejb.people.entity.MailList;
 import org.localstorm.mcc.ejb.people.entity.Person;
 import org.localstorm.mcc.ejb.people.entity.PregeneratedMailList;
 import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.WebUtil;
-import org.localstorm.mcc.web.people.PeopleBaseActionBean;
-import org.localstorm.mcc.web.people.PeopleClipboard;
-import org.localstorm.mcc.web.people.PeopleSessionKeys;
-import org.localstorm.mcc.web.people.RequestAttributes;
-import org.localstorm.mcc.web.people.Views;
+import org.localstorm.mcc.web.people.*;
 import org.localstorm.mcc.web.util.SessionUtil;
 import org.localstorm.tools.aop.runtime.Logged;
-import org.localstorm.mcc.ejb.people.entity.MailList;
+
+import javax.servlet.http.HttpSession;
+import java.util.Collection;
 
 /**
  * TODO: Special security check!!

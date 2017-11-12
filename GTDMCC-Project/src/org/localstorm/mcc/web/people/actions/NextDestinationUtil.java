@@ -2,6 +2,7 @@ package org.localstorm.mcc.web.people.actions;
 
 import net.sourceforge.stripes.action.RedirectResolution;
 import org.localstorm.mcc.web.ReturnPageBean;
+import org.localstorm.mcc.web.util.RedirectUrlBuilderUtil;
 
 /**
  *
@@ -21,13 +22,13 @@ public class NextDestinationUtil
         switch(rp)
         {
             case PEOPLE_INDEX:
-                rr = new RedirectResolution(PeopleViewActionBean.class);
+                rr = RedirectUrlBuilderUtil.redirect(PeopleViewActionBean.class);
                 break;
             case GROUP_VIEW:
-                rr = new RedirectResolution(PersonGroupViewActionBean.class);
+                rr = RedirectUrlBuilderUtil.redirect(PersonGroupViewActionBean.class);
                 break;
             case PERSON_VIEW:
-                rr = new RedirectResolution(PersonViewActionBean.class);
+                rr = RedirectUrlBuilderUtil.redirect(PersonViewActionBean.class);
                 break;
             default:
                 rr = NextDestinationUtil.getDefaultRedirection();
@@ -39,6 +40,6 @@ public class NextDestinationUtil
     }
 
     public static RedirectResolution getDefaultRedirection() {
-          return new RedirectResolution(PeopleViewActionBean.class);
+          return RedirectUrlBuilderUtil.redirect(PeopleViewActionBean.class);
     }
 }

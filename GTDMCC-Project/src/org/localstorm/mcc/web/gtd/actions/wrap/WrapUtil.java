@@ -1,11 +1,11 @@
 package org.localstorm.mcc.web.gtd.actions.wrap;
 
-import java.util.*;
-
+import org.localstorm.mcc.ejb.gtd.entity.Hint;
 import org.localstorm.mcc.ejb.gtd.entity.InboxEntry;
 import org.localstorm.mcc.ejb.gtd.entity.Note;
-import org.localstorm.mcc.ejb.gtd.entity.Hint;
 import org.localstorm.mcc.ejb.gtd.entity.Task;
+
+import java.util.*;
 
 /**
  *

@@ -1,11 +1,12 @@
 package org.localstorm.mcc.web.people;
 
-import javax.servlet.http.HttpSession;
 import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.people.MailListManager;
 import org.localstorm.mcc.ejb.people.PersonManager;
 import org.localstorm.mcc.web.BaseActionBean;
 import org.localstorm.mcc.web.util.SessionUtil;
+
+import javax.servlet.http.HttpSession;
 
 /**
  *

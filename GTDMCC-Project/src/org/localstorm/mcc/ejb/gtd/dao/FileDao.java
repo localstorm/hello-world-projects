@@ -1,19 +1,16 @@
 package org.localstorm.mcc.ejb.gtd.dao;
 
+import org.apache.commons.io.IOUtils;
+import org.apache.log4j.Logger;
+import org.localstorm.mcc.ejb.dao.Guard;
+import org.localstorm.mcc.ejb.dao.JdbcDaoHelper;
+
+import javax.sql.DataSource;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.sql.Blob;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import javax.sql.DataSource;
-import org.apache.commons.io.IOUtils;
-import org.apache.log4j.Logger;
-import org.localstorm.mcc.ejb.dao.JdbcDaoHelper;
-import org.localstorm.mcc.ejb.dao.Guard;
+import java.sql.*;
 
 /**
  * @author Alexey Kuznetsov

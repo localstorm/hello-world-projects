@@ -1,11 +1,11 @@
 package org.localstorm.mcc.ejb.cashflow;
 
-import java.util.Collection;
-
 import org.localstorm.mcc.ejb.cashflow.entity.Cost;
 import org.localstorm.mcc.ejb.cashflow.entity.Target;
 import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 import org.localstorm.mcc.ejb.users.User;
+
+import java.util.Collection;
 
 
 

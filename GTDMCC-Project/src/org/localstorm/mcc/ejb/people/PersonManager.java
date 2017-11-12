@@ -1,13 +1,10 @@
 package org.localstorm.mcc.ejb.people;
 
-import org.localstorm.mcc.ejb.people.entity.Attribute;
-import org.localstorm.mcc.ejb.people.entity.Person;
-import org.localstorm.mcc.ejb.people.entity.PersonGroup;
-import org.localstorm.mcc.ejb.people.entity.AttributeType;
-import java.util.Collection;
 import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
-import org.localstorm.mcc.ejb.people.entity.MailList;
+import org.localstorm.mcc.ejb.people.entity.*;
 import org.localstorm.mcc.ejb.users.User;
+
+import java.util.Collection;
 
 /**
  * @author localstorm

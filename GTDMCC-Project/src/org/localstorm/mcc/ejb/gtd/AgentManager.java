@@ -1,10 +1,10 @@
 package org.localstorm.mcc.ejb.gtd;
 
-import java.util.Collection;
 import org.localstorm.mcc.ejb.BaseManager;
-
 import org.localstorm.mcc.ejb.gtd.entity.Agent;
 import org.localstorm.mcc.ejb.users.User;
+
+import java.util.Collection;
 
 /**
  *

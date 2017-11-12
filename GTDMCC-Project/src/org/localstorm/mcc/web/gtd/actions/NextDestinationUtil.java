@@ -3,6 +3,7 @@ package org.localstorm.mcc.web.gtd.actions;
 import net.sourceforge.stripes.action.RedirectResolution;
 import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.dashboard.actions.DashboardActionBean;
+import org.localstorm.mcc.web.util.RedirectUrlBuilderUtil;
 
 /**
  *
@@ -22,25 +23,25 @@ public class NextDestinationUtil
         switch(rp)
         {
             case LIST_VIEW:
-                rr = new RedirectResolution(ListViewActionBean.class);
+                rr = RedirectUrlBuilderUtil.redirect(ListViewActionBean.class);
                 break;
             case TASK_SEARCH_SUBMIT:
-                rr = new RedirectResolution(TaskSearchSubmitActionBean.class);
+                rr = RedirectUrlBuilderUtil.redirect(TaskSearchSubmitActionBean.class);
                 break;
             case BMS_VIEW:
-                rr = new RedirectResolution(BattleMapSupportActionBean.class);
+                rr = RedirectUrlBuilderUtil.redirect(BattleMapSupportActionBean.class);
                 break;
             case DL_REPORT:
-                rr = new RedirectResolution(DeadlineReportActionBean.class);
+                rr = RedirectUrlBuilderUtil.redirect(DeadlineReportActionBean.class);
                 break;
             case OLD_REPORT:
-                rr = new RedirectResolution(OldTasksReportActionBean.class);
+                rr = RedirectUrlBuilderUtil.redirect(OldTasksReportActionBean.class);
                 break;
             case DASH:
-                rr = new RedirectResolution(DashboardActionBean.class);
+                rr = RedirectUrlBuilderUtil.redirect(DashboardActionBean.class);
                 break;
             case FPV:
-                rr = new RedirectResolution(FlightPlanViewActionBean.class);
+                rr = RedirectUrlBuilderUtil.redirect(FlightPlanViewActionBean.class);
                 break;
             default:
                 rr = NextDestinationUtil.getDefaultRedirection();
@@ -52,6 +53,6 @@ public class NextDestinationUtil
     }
 
     public static RedirectResolution getDefaultRedirection() {
-          return new RedirectResolution(FlightPlanViewActionBean.class);
+          return RedirectUrlBuilderUtil.redirect(FlightPlanViewActionBean.class);
     }
 }

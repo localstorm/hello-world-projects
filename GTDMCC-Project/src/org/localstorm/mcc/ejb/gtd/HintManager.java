@@ -1,11 +1,12 @@
 package org.localstorm.mcc.ejb.gtd;
 
-import org.localstorm.mcc.ejb.gtd.entity.Task;
-import org.localstorm.mcc.ejb.gtd.entity.Hint;
-import org.localstorm.mcc.ejb.gtd.dao.FiredHintsReportBean;
-import java.util.Collection;
 import org.localstorm.mcc.ejb.BaseManager;
+import org.localstorm.mcc.ejb.gtd.dao.FiredHintsReportBean;
+import org.localstorm.mcc.ejb.gtd.entity.Hint;
+import org.localstorm.mcc.ejb.gtd.entity.Task;
 import org.localstorm.mcc.ejb.users.User;
+
+import java.util.Collection;
 
 /**
  *

@@ -1,11 +1,6 @@
 package org.localstorm.mcc.web.gtd.actions;
 
-import java.net.URL;
-import net.sourceforge.stripes.action.After;
-import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.RedirectResolution;
-import net.sourceforge.stripes.action.Resolution;
-import net.sourceforge.stripes.action.UrlBinding;
+import net.sourceforge.stripes.action.*;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.SimpleError;
 import net.sourceforge.stripes.validation.Validate;
@@ -13,7 +8,10 @@ import net.sourceforge.stripes.validation.ValidationErrors;
 import org.localstorm.mcc.ejb.gtd.entity.Note;
 import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
 import org.localstorm.mcc.web.gtd.Types;
+import org.localstorm.mcc.web.util.RedirectUrlBuilderUtil;
 import org.localstorm.tools.aop.runtime.Logged;
+
+import java.net.URL;
 
 /**
  * @author Alexey Kuznetsov
@@ -94,7 +92,7 @@ public class RefObjAttachActionBean extends RefObjViewActionBean
         note.setDescription(description);
         this.getNoteManager().attachToObject(note, ro);
         
-        RedirectResolution rr = new RedirectResolution(RefObjViewActionBean.class);
+        RedirectResolution rr = RedirectUrlBuilderUtil.redirect(RefObjViewActionBean.class);
         {
             rr.addParameter(RefObjViewActionBean.IncomingParameters.OBJECT_ID, this.objectId);
         }

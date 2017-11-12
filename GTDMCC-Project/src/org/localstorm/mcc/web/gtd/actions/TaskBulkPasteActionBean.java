@@ -1,16 +1,17 @@
 package org.localstorm.mcc.web.gtd.actions;
 
-import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.gtd.entity.GTDList;
 import org.localstorm.mcc.ejb.gtd.ListManager;
-import org.localstorm.mcc.ejb.gtd.entity.Task;
 import org.localstorm.mcc.ejb.gtd.TaskManager;
+import org.localstorm.mcc.ejb.gtd.entity.GTDList;
+import org.localstorm.mcc.ejb.gtd.entity.Task;
+import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
 import org.localstorm.mcc.web.gtd.GtdClipboard;
+import org.localstorm.mcc.web.util.RedirectUrlBuilderUtil;
 import org.localstorm.tools.aop.runtime.Logged;
 
 /**
@@ -49,7 +50,7 @@ public class TaskBulkPasteActionBean extends GtdBaseActionBean
 
         clip.clearTasks();
         
-        RedirectResolution rr = new RedirectResolution(ListViewActionBean.class);
+        RedirectResolution rr = RedirectUrlBuilderUtil.redirect(ListViewActionBean.class);
         {
             rr.addParameter(ListViewActionBean.IncomingParameters.LIST_ID, dst.getId());
         }

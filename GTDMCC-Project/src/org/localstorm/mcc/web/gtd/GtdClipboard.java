@@ -1,12 +1,13 @@
 package org.localstorm.mcc.web.gtd;
 
-import java.util.Collection;
-import java.util.Map;
-import java.util.TreeMap;
 import org.localstorm.mcc.ejb.gtd.entity.FileAttachment;
 import org.localstorm.mcc.ejb.gtd.entity.GTDList;
 import org.localstorm.mcc.ejb.gtd.entity.Note;
 import org.localstorm.mcc.ejb.gtd.entity.Task;
+
+import java.util.Collection;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * @author Alexey Kuznetsov

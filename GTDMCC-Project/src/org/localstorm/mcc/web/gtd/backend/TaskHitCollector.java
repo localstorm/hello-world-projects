@@ -5,18 +5,13 @@
 
 package org.localstorm.mcc.web.gtd.backend;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
-import org.localstorm.mcc.ejb.gtd.entity.Task;
 import org.apache.lucene.search.HitCollector;
 import org.apache.lucene.search.IndexSearcher;
+import org.localstorm.mcc.ejb.gtd.entity.Task;
+
+import java.util.*;
 
 /**
  *

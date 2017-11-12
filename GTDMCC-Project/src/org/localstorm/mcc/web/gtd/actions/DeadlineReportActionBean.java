@@ -1,25 +1,16 @@
 package org.localstorm.mcc.web.gtd.actions;
 
-import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
-import org.localstorm.mcc.ejb.gtd.entity.FlightPlan;
 import org.localstorm.mcc.ejb.gtd.FlightPlanManager;
-import org.localstorm.mcc.ejb.gtd.entity.Task;
 import org.localstorm.mcc.ejb.gtd.TaskManager;
+import org.localstorm.mcc.ejb.gtd.entity.FlightPlan;
+import org.localstorm.mcc.ejb.gtd.entity.Task;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.ReturnPageBean;
+import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
 import org.localstorm.mcc.web.gtd.RequestAttributes;
 import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.mcc.web.gtd.actions.wrap.TaskMarker;
@@ -27,6 +18,9 @@ import org.localstorm.mcc.web.gtd.actions.wrap.TaskWrapper;
 import org.localstorm.mcc.web.gtd.actions.wrap.WrapUtil;
 import org.localstorm.mcc.web.util.FilterUtil;
 import org.localstorm.tools.aop.runtime.Logged;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.*;
 
 /**
  * @author Alexey Kuznetsov

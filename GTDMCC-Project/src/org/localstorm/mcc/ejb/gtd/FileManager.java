@@ -1,11 +1,12 @@
 package org.localstorm.mcc.ejb.gtd;
 
 import org.localstorm.mcc.ejb.gtd.entity.FileAttachment;
+import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Collection;
-import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
 
 /**
  *

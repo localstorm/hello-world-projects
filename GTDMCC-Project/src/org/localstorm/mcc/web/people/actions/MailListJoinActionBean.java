@@ -11,6 +11,7 @@ import org.localstorm.mcc.ejb.people.entity.Attribute;
 import org.localstorm.mcc.ejb.people.entity.MailList;
 import org.localstorm.mcc.ejb.people.entity.Person;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
+import org.localstorm.mcc.web.util.RedirectUrlBuilderUtil;
 import org.localstorm.tools.aop.runtime.Logged;
 
 /**
@@ -72,7 +73,7 @@ public class MailListJoinActionBean extends PeopleBaseActionBean
 
         mlm.joinMailList(ml, p, a);
 
-        RedirectResolution rr = new RedirectResolution(PersonViewActionBean.class);
+        RedirectResolution rr = RedirectUrlBuilderUtil.redirect(PersonViewActionBean.class);
         {
             rr.addParameter(PersonViewActionBean.IncomingParameters.PERSON_ID, this.getPersonId());
         }

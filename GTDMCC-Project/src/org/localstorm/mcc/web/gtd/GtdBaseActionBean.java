@@ -1,29 +1,18 @@
 package org.localstorm.mcc.web.gtd;
 
+import org.localstorm.mcc.ejb.ContextLookup;
+import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
+import org.localstorm.mcc.ejb.gtd.*;
+import org.localstorm.mcc.ejb.gtd.entity.*;
+import org.localstorm.mcc.ejb.gtd.impl.FileManagerLocal;
+import org.localstorm.mcc.web.BaseActionBean;
+import org.localstorm.mcc.web.util.SessionUtil;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import org.localstorm.mcc.ejb.ContextLookup;
-import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
-import org.localstorm.mcc.ejb.gtd.InboxManager;
-import org.localstorm.mcc.ejb.gtd.entity.Context;
-import org.localstorm.mcc.ejb.gtd.ContextManager;
-import org.localstorm.mcc.ejb.gtd.FileManager;
-import org.localstorm.mcc.ejb.gtd.impl.FileManagerLocal;
-import org.localstorm.mcc.ejb.gtd.FlightPlanManager;
-import org.localstorm.mcc.ejb.gtd.entity.GTDList;
-import org.localstorm.mcc.ejb.gtd.ListManager;
-import org.localstorm.mcc.ejb.gtd.NoteManager;
-import org.localstorm.mcc.ejb.gtd.RefObjectManager;
-import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
-import org.localstorm.mcc.ejb.gtd.entity.Effort;
-import org.localstorm.mcc.ejb.gtd.HintManager;
-import org.localstorm.mcc.ejb.gtd.entity.Task;
-import org.localstorm.mcc.ejb.gtd.TaskManager;
-import org.localstorm.mcc.web.BaseActionBean;
-import org.localstorm.mcc.web.util.SessionUtil;
 
 /**
  *

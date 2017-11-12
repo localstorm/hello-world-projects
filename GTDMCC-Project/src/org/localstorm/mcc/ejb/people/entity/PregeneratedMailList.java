@@ -1,11 +1,11 @@
 package org.localstorm.mcc.ejb.people.entity;
 
+import org.localstorm.mcc.ejb.Pair;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
-
-import org.localstorm.mcc.ejb.Pair;
 
 /**
  *

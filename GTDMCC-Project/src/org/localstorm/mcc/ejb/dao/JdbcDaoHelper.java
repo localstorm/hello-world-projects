@@ -1,14 +1,9 @@
 package org.localstorm.mcc.ejb.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Types;
-import java.util.Date;
-
 import org.apache.log4j.Logger;
+
+import java.sql.*;
+import java.util.Date;
 
 
 /**

@@ -1,15 +1,16 @@
 package org.localstorm.mcc.web.gtd.actions;
 
-import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.gtd.entity.Note;
 import org.localstorm.mcc.ejb.gtd.NoteManager;
+import org.localstorm.mcc.ejb.gtd.entity.Note;
 import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
+import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
 import org.localstorm.mcc.web.gtd.GtdClipboard;
+import org.localstorm.mcc.web.util.RedirectUrlBuilderUtil;
 import org.localstorm.tools.aop.runtime.Logged;
 
 /**
@@ -53,7 +54,7 @@ public class RefObjDetachNoteActionBean extends GtdBaseActionBean
         clip.pickNote(this.getNoteId());
         nm.detach(note, ro);
         
-        RedirectResolution rr = new RedirectResolution(RefObjViewActionBean.class);
+        RedirectResolution rr = RedirectUrlBuilderUtil.redirect(RefObjViewActionBean.class);
         {
             rr.addParameter(RefObjViewActionBean.IncomingParameters.OBJECT_ID, this.getObjectId());
         }

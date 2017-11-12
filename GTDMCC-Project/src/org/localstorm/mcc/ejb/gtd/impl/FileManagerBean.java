@@ -1,23 +1,24 @@
 package org.localstorm.mcc.ejb.gtd.impl;
 
-import org.localstorm.mcc.ejb.gtd.entity.FileToRefObject;
+import org.apache.log4j.Logger;
+import org.localstorm.mcc.ejb.Constants;
+import org.localstorm.mcc.ejb.gtd.dao.FileDao;
 import org.localstorm.mcc.ejb.gtd.entity.FileAttachment;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.sql.SQLException;
-import java.util.Collection;
-import java.util.List;
+import org.localstorm.mcc.ejb.gtd.entity.FileToRefObject;
+import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
+
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.sql.DataSource;
-import org.apache.log4j.Logger;
-import org.localstorm.mcc.ejb.gtd.dao.FileDao;
-import org.localstorm.mcc.ejb.Constants;
-import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.sql.SQLException;
+import java.util.Collection;
+import java.util.List;
 
 /**
  *

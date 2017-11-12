@@ -1,9 +1,10 @@
 package org.localstorm.mcc.ejb.gtd;
 
-import org.localstorm.mcc.ejb.gtd.entity.GTDList;
-import java.util.Collection;
 import org.localstorm.mcc.ejb.BaseManager;
 import org.localstorm.mcc.ejb.gtd.entity.Context;
+import org.localstorm.mcc.ejb.gtd.entity.GTDList;
+
+import java.util.Collection;
 
 /**
  *

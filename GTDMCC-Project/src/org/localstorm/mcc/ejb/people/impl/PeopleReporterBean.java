@@ -1,13 +1,14 @@
 package org.localstorm.mcc.ejb.people.impl;
 
-import java.sql.SQLException;
-import javax.annotation.Resource;
-import javax.ejb.Stateless;
-import javax.sql.DataSource;
 import org.localstorm.mcc.ejb.Constants;
 import org.localstorm.mcc.ejb.people.dao.DashboardReportBean;
 import org.localstorm.mcc.ejb.people.dao.PeopleReportsDao;
 import org.localstorm.mcc.ejb.users.User;
+
+import javax.annotation.Resource;
+import javax.ejb.Stateless;
+import javax.sql.DataSource;
+import java.sql.SQLException;
 
 /**
  * @author localstorm

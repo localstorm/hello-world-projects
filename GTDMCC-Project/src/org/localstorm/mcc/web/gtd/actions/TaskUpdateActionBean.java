@@ -1,27 +1,24 @@
 package org.localstorm.mcc.web.gtd.actions;
 
+import net.sourceforge.stripes.action.*;
+import net.sourceforge.stripes.controller.LifecycleStage;
+import net.sourceforge.stripes.validation.Validate;
+import org.localstorm.mcc.ejb.gtd.HintManager;
+import org.localstorm.mcc.ejb.gtd.TaskManager;
+import org.localstorm.mcc.ejb.gtd.entity.Hint;
+import org.localstorm.mcc.ejb.gtd.entity.HintCondition;
+import org.localstorm.mcc.ejb.gtd.entity.Task;
 import org.localstorm.mcc.web.Constants;
+import org.localstorm.mcc.web.ReturnPageBean;
+import org.localstorm.mcc.web.gtd.GtdClipboard;
+import org.localstorm.mcc.web.util.DateUtil;
+import org.localstorm.mcc.web.util.RedirectUrlBuilderUtil;
+import org.localstorm.tools.aop.runtime.Logged;
+
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Map;
 import java.util.TreeMap;
-import net.sourceforge.stripes.action.After;
-import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.RedirectResolution;
-import net.sourceforge.stripes.action.Resolution;
-import net.sourceforge.stripes.action.UrlBinding;
-import net.sourceforge.stripes.controller.LifecycleStage;
-import net.sourceforge.stripes.validation.Validate;
-
-import org.localstorm.mcc.ejb.gtd.entity.Hint;
-import org.localstorm.mcc.ejb.gtd.entity.HintCondition;
-import org.localstorm.mcc.ejb.gtd.HintManager;
-import org.localstorm.mcc.ejb.gtd.entity.Task;
-import org.localstorm.mcc.ejb.gtd.TaskManager;
-import org.localstorm.mcc.web.util.DateUtil;
-import org.localstorm.mcc.web.ReturnPageBean;
-import org.localstorm.mcc.web.gtd.GtdClipboard;
-import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  * @author Alexey Kuznetsov
@@ -135,7 +132,7 @@ public class TaskUpdateActionBean extends TaskViewActionBean
 
         if (rpb==null)
         {
-            rr = new RedirectResolution(ListViewActionBean.class);
+            rr = RedirectUrlBuilderUtil.redirect(ListViewActionBean.class);
             rr.addParameter(ListViewActionBean.IncomingParameters.LIST_ID, t.getList().getId());
             return rr;
         } else {

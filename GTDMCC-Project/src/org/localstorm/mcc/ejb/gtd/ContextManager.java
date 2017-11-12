@@ -1,11 +1,11 @@
 package org.localstorm.mcc.ejb.gtd;
 
+import org.localstorm.mcc.ejb.BaseManager;
 import org.localstorm.mcc.ejb.gtd.entity.Context;
+import org.localstorm.mcc.ejb.users.User;
+
 import java.util.Collection;
 import java.util.List;
-import org.localstorm.mcc.ejb.BaseManager;
-
-import org.localstorm.mcc.ejb.users.User;
 
 /**
  *

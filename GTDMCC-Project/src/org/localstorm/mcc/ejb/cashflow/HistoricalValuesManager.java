@@ -1,11 +1,12 @@
 package org.localstorm.mcc.ejb.cashflow;
 
-import org.localstorm.mcc.ejb.cashflow.entity.ValueType;
 import org.localstorm.mcc.ejb.cashflow.entity.HistoricalValue;
+import org.localstorm.mcc.ejb.cashflow.entity.ValueType;
+import org.localstorm.mcc.ejb.users.User;
+
 import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Date;
-import org.localstorm.mcc.ejb.users.User;
 
 
 /**

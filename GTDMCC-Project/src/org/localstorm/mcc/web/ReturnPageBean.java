@@ -1,9 +1,10 @@
 package org.localstorm.mcc.web;
 
+import net.sourceforge.stripes.action.OnwardResolution;
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 import java.util.TreeMap;
-import javax.servlet.http.HttpServletRequest;
-import net.sourceforge.stripes.action.OnwardResolution;
 
 /**
  *

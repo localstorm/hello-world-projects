@@ -1,20 +1,20 @@
 package org.localstorm.mcc.web.gtd.actions;
 
-import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
-
+import org.localstorm.mcc.ejb.gtd.ListManager;
 import org.localstorm.mcc.ejb.gtd.entity.Context;
 import org.localstorm.mcc.ejb.gtd.entity.GTDList;
-import org.localstorm.mcc.ejb.gtd.ListManager;
+import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
 import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.tools.aop.runtime.Logged;
+
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 /**
  * @author Alexey Kuznetsov

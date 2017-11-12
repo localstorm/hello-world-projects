@@ -1,26 +1,22 @@
 package org.localstorm.mcc.web.people.actions;
 
 
-import java.util.ArrayList;
-import java.util.Collection;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
-
 import org.localstorm.mcc.ejb.people.MailListManager;
-import org.localstorm.mcc.ejb.people.entity.Attribute;
-import org.localstorm.mcc.ejb.people.entity.AttributeType;
-import org.localstorm.mcc.ejb.people.entity.Person;
-import org.localstorm.mcc.ejb.people.entity.PersonGroup;
 import org.localstorm.mcc.ejb.people.PersonManager;
-import org.localstorm.mcc.ejb.people.entity.MailList;
+import org.localstorm.mcc.ejb.people.entity.*;
 import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
 import org.localstorm.mcc.web.people.Views;
 import org.localstorm.mcc.web.people.actions.wrap.WrapUtil;
 import org.localstorm.tools.aop.runtime.Logged;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * @secure-by personId

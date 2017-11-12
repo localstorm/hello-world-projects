@@ -1,24 +1,16 @@
 package org.localstorm.mcc.ejb.people.impl;
 
-import java.util.Arrays;
-import org.localstorm.mcc.ejb.people.entity.MailList;
-import org.localstorm.mcc.ejb.people.entity.PregeneratedMailList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import org.localstorm.mcc.ejb.Constants;
+import org.localstorm.mcc.ejb.Pair;
+import org.localstorm.mcc.ejb.people.PersonManager;
+import org.localstorm.mcc.ejb.people.entity.*;
+import org.localstorm.mcc.ejb.users.User;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import org.localstorm.mcc.ejb.Constants;
-import org.localstorm.mcc.ejb.Pair;
-import org.localstorm.mcc.ejb.people.entity.Attribute;
-import org.localstorm.mcc.ejb.people.entity.Person;
-import org.localstorm.mcc.ejb.people.PersonManager;
-import org.localstorm.mcc.ejb.people.entity.PersonToMailList;
-import org.localstorm.mcc.ejb.users.User;
+import java.util.*;
 
 /**
  * @author localstorm

@@ -1,14 +1,15 @@
 package org.localstorm.mcc.ejb.people.impl;
 
-import java.text.MessageFormat;
-import java.util.List;
+import org.localstorm.mcc.ejb.Constants;
+import org.localstorm.mcc.ejb.CsvUtil;
+import org.localstorm.mcc.ejb.users.User;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import org.localstorm.mcc.ejb.Constants;
-import org.localstorm.mcc.ejb.CsvUtil;
-import org.localstorm.mcc.ejb.users.User;
+import java.text.MessageFormat;
+import java.util.List;
 
 /**
  * @author localstorm

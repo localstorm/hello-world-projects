@@ -1,11 +1,12 @@
 package org.localstorm.mcc.web.cashflow.actions.wrap;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import org.localstorm.mcc.ejb.cashflow.OperationManager;
 import org.localstorm.mcc.ejb.cashflow.entity.Asset;
 import org.localstorm.mcc.ejb.cashflow.entity.Target;
 import org.localstorm.mcc.ejb.cashflow.entity.ValuableObject;
-import org.localstorm.mcc.ejb.cashflow.OperationManager;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  *

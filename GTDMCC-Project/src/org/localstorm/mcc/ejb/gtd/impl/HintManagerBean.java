@@ -1,20 +1,21 @@
 package org.localstorm.mcc.ejb.gtd.impl;
 
-import org.localstorm.mcc.ejb.gtd.entity.Task;
-import org.localstorm.mcc.ejb.gtd.entity.Hint;
-import java.sql.SQLException;
+import org.localstorm.mcc.ejb.AbstractManager;
+import org.localstorm.mcc.ejb.Constants;
 import org.localstorm.mcc.ejb.gtd.dao.FiredHintsReportBean;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
+import org.localstorm.mcc.ejb.gtd.dao.HintReportsDao;
+import org.localstorm.mcc.ejb.gtd.entity.Hint;
+import org.localstorm.mcc.ejb.gtd.entity.Task;
+import org.localstorm.mcc.ejb.users.User;
+
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
 import javax.sql.DataSource;
-import org.localstorm.mcc.ejb.AbstractManager;
-import org.localstorm.mcc.ejb.Constants;
-import org.localstorm.mcc.ejb.gtd.dao.HintReportsDao;
-import org.localstorm.mcc.ejb.users.User;
+import java.sql.SQLException;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 
 /**
  *

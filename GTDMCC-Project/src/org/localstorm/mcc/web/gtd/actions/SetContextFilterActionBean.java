@@ -1,10 +1,10 @@
 package org.localstorm.mcc.web.gtd.actions;
 
-import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
+import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
 import org.localstorm.tools.aop.runtime.Logged;
 
 /**

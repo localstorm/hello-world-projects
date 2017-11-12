@@ -1,8 +1,9 @@
 package org.localstorm.mcc.web.util;
 
+import org.localstorm.mcc.ejb.gtd.entity.Task;
+
 import java.util.Collection;
 import java.util.Iterator;
-import org.localstorm.mcc.ejb.gtd.entity.Task;
 
 /**
  *

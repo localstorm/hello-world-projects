@@ -1,11 +1,12 @@
 package org.localstorm.mcc.ejb.gtd;
 
-import org.localstorm.mcc.ejb.gtd.entity.FlightPlan;
-import java.util.Collection;
 import org.localstorm.mcc.ejb.BaseSingletonManager;
 import org.localstorm.mcc.ejb.gtd.entity.Context;
+import org.localstorm.mcc.ejb.gtd.entity.FlightPlan;
 import org.localstorm.mcc.ejb.gtd.entity.Task;
 import org.localstorm.mcc.ejb.users.User;
+
+import java.util.Collection;
 
 /**
  *

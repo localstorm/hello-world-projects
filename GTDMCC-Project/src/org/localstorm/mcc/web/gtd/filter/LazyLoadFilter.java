@@ -1,24 +1,20 @@
 package org.localstorm.mcc.web.gtd.filter;
 
 
+import org.localstorm.mcc.ejb.ContextLookup;
+import org.localstorm.mcc.ejb.gtd.ContextManager;
 import org.localstorm.mcc.ejb.gtd.RefObjectManager;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import org.localstorm.mcc.ejb.gtd.entity.Context;
+import org.localstorm.mcc.ejb.users.User;
+import org.localstorm.mcc.web.gtd.GtdSessionKeys;
+import org.localstorm.mcc.web.util.SessionUtil;
+
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.localstorm.mcc.ejb.ContextLookup;
-import org.localstorm.mcc.ejb.gtd.entity.Context;
-import org.localstorm.mcc.ejb.gtd.ContextManager;
-import org.localstorm.mcc.ejb.users.User;
-import org.localstorm.mcc.web.gtd.GtdSessionKeys;
-import org.localstorm.mcc.web.util.SessionUtil;
+import java.io.IOException;
+import java.util.*;
 
 /**
  *

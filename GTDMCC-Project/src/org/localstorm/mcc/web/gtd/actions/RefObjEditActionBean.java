@@ -1,7 +1,5 @@
 package org.localstorm.mcc.web.gtd.actions;
 
-import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
-import java.util.Collection;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
@@ -9,8 +7,11 @@ import net.sourceforge.stripes.action.UrlBinding;
 import org.localstorm.mcc.ejb.gtd.RefObjectManager;
 import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
 import org.localstorm.mcc.ejb.users.User;
+import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
 import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.tools.aop.runtime.Logged;
+
+import java.util.Collection;
 
 /**
  * @author Alexey Kuznetsov

@@ -4,16 +4,16 @@ import org.cyberneko.html.parsers.DOMParser;
 import org.localstorm.mcc.ejb.cashflow.Price;
 import org.localstorm.mcc.ejb.cashflow.impl.ticker.PriceConnector;
 import org.localstorm.mcc.ejb.cashflow.impl.ticker.PriceParser;
-import org.xml.sax.InputSource;
 import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
 
-import javax.xml.xpath.XPathFactory;
 import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathFactory;
+import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
-import java.io.InputStream;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 

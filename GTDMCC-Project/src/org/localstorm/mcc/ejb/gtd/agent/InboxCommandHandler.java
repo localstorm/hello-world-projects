@@ -1,10 +1,11 @@
 package org.localstorm.mcc.ejb.gtd.agent;
 
-import java.util.List;
 import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.gtd.InboxManager;
 import org.localstorm.mcc.ejb.gtd.entity.InboxEntry;
 import org.localstorm.mcc.ejb.users.UserManager;
+
+import java.util.List;
 
 /**
  *

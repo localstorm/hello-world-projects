@@ -1,19 +1,20 @@
 package org.localstorm.mcc.web.people.actions;
 
-import java.util.Collection;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
-
+import org.localstorm.mcc.ejb.people.PersonManager;
+import org.localstorm.mcc.ejb.people.entity.Attribute;
 import org.localstorm.mcc.ejb.people.entity.Person;
 import org.localstorm.mcc.ejb.people.entity.PersonGroup;
-import org.localstorm.mcc.ejb.people.PersonManager;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
 import org.localstorm.mcc.web.people.PeopleClipboard;
-import org.localstorm.mcc.ejb.people.entity.Attribute;
+import org.localstorm.mcc.web.util.RedirectUrlBuilderUtil;
 import org.localstorm.tools.aop.runtime.Logged;
+
+import java.util.Collection;
 
 /**
  * @secure-by person-id
@@ -43,7 +44,7 @@ public class PersonClipActionBean extends PeopleBaseActionBean
         Collection<Attribute> emails = pm.getEmailAttributes(p);
 
         if (emails.isEmpty()) {
-            RedirectResolution rr = new RedirectResolution(PersonViewActionBean.class);
+            RedirectResolution rr = RedirectUrlBuilderUtil.redirect(PersonViewActionBean.class);
             {
                 rr.addParameter(PersonViewActionBean.IncomingParameters.PERSON_ID, this.getPersonId());
                 rr.addParameter(PersonViewActionBean.IncomingParameters.NEED_EMAIL, Boolean.TRUE);
@@ -55,7 +56,7 @@ public class PersonClipActionBean extends PeopleBaseActionBean
             PeopleClipboard clip = super.getClipboard();
             clip.copyPerson(p);
 
-            RedirectResolution rr = new RedirectResolution(PersonGroupViewActionBean.class);
+            RedirectResolution rr = RedirectUrlBuilderUtil.redirect(PersonGroupViewActionBean.class);
             {
                 rr.addParameter(PersonGroupViewActionBean.IncomingParameters.GROUP_ID, group.getId());
             }

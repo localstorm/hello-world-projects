@@ -1,8 +1,5 @@
 package org.localstorm.mcc.web.gtd.backend;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.search.HitCollector;
@@ -13,6 +10,10 @@ import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
 import org.localstorm.mcc.web.gtd.actions.wrap.FileAttachmentWrapper;
 import org.localstorm.mcc.web.gtd.actions.wrap.NoteWrapper;
 import org.localstorm.mcc.web.gtd.actions.wrap.RoSearchResult;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *

@@ -1,15 +1,16 @@
 package org.localstorm.mcc.ejb.gtd.impl;
 
+import org.localstorm.mcc.ejb.Constants;
 import org.localstorm.mcc.ejb.gtd.entity.Note;
 import org.localstorm.mcc.ejb.gtd.entity.NoteToObject;
-import java.util.Collection;
-import java.util.List;
+import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import org.localstorm.mcc.ejb.Constants;
-import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
+import java.util.Collection;
+import java.util.List;
 
 /**
  *

@@ -1,16 +1,17 @@
 package org.localstorm.mcc.web.cashflow.filter.security;
 
-import java.util.Map;
-import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.localstorm.mcc.ejb.ContextLookup;
-import org.localstorm.mcc.ejb.cashflow.entity.Operation;
 import org.localstorm.mcc.ejb.cashflow.OperationManager;
+import org.localstorm.mcc.ejb.cashflow.entity.Operation;
 import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.SecurityRuntimeException;
 import org.localstorm.mcc.web.cashflow.CashflowSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
+
+import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 /**
  *

@@ -1,8 +1,9 @@
 package org.localstorm.mcc.web.util;
 
 
-import javax.servlet.http.HttpSession;
 import org.localstorm.mcc.web.ExpirableValuesCache;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * @author Alexey Kuznetsov

@@ -1,16 +1,15 @@
 package org.localstorm.mcc.web.people.actions;
 
-import org.localstorm.mcc.ejb.people.entity.PersonGroup;
 import net.sourceforge.stripes.action.After;
 import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
-
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.users.*;
+import org.localstorm.mcc.ejb.people.entity.PersonGroup;
+import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.people.PeopleSessionKeys;
+import org.localstorm.mcc.web.util.RedirectUrlBuilderUtil;
 import org.localstorm.mcc.web.util.SessionUtil;
 import org.localstorm.tools.aop.runtime.Logged;
 
@@ -54,7 +53,7 @@ public class PersonGroupAddActionBean extends PersonGroupsEditActionBean {
 
         SessionUtil.clear(super.getSession(), PeopleSessionKeys.PERSON_GROUPS);
    
-        return new RedirectResolution( PersonGroupsEditActionBean.class );
+        return RedirectUrlBuilderUtil.redirect( PersonGroupsEditActionBean.class );
     }
     
 }

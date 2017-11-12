@@ -1,21 +1,22 @@
 package org.localstorm.mcc.web.cashflow.actions;
 
 import net.sourceforge.stripes.action.*;
-import org.localstorm.mcc.web.util.RoundUtil;
-import java.math.BigDecimal;
-import java.math.MathContext;
-
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
-import org.localstorm.mcc.ejb.cashflow.entity.Asset;
 import org.localstorm.mcc.ejb.cashflow.AssetManager;
-import org.localstorm.mcc.ejb.cashflow.entity.Cost;
 import org.localstorm.mcc.ejb.cashflow.MoneyMathContext;
-import org.localstorm.mcc.ejb.cashflow.entity.ValuableObject;
 import org.localstorm.mcc.ejb.cashflow.OperationManager;
+import org.localstorm.mcc.ejb.cashflow.entity.Asset;
+import org.localstorm.mcc.ejb.cashflow.entity.Cost;
+import org.localstorm.mcc.ejb.cashflow.entity.ValuableObject;
 import org.localstorm.mcc.web.cashflow.CashflowSessionKeys;
+import org.localstorm.mcc.web.util.RedirectUrlBuilderUtil;
+import org.localstorm.mcc.web.util.RoundUtil;
 import org.localstorm.mcc.web.util.SessionUtil;
 import org.localstorm.tools.aop.runtime.Logged;
+
+import java.math.BigDecimal;
+import java.math.MathContext;
 
 /**
  * @secure-by assetId parameter
@@ -142,7 +143,7 @@ public class AssetUpdateActionBean extends AssetViewActionBean {
 
         SessionUtil.clear(super.getSession(), CashflowSessionKeys.ASSETS);
 
-        RedirectResolution rr = new RedirectResolution(AssetViewActionBean.class);
+        RedirectResolution rr = RedirectUrlBuilderUtil.redirect(AssetViewActionBean.class);
         {
             rr.addParameter(AssetViewActionBean.IncomingParameters.ASSET_ID, this.getAssetId());
         }

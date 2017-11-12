@@ -1,8 +1,5 @@
 package org.localstorm.mcc.web.people.filter.security;
 
-import java.util.Arrays;
-import java.util.Map;
-import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.people.PeopleSecuritySupport;
@@ -10,6 +7,10 @@ import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.SecurityRuntimeException;
 import org.localstorm.mcc.web.people.PeopleSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
+
+import javax.servlet.http.HttpSession;
+import java.util.Arrays;
+import java.util.Map;
 
 /**
  *

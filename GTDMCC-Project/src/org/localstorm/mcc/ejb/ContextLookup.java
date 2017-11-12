@@ -1,10 +1,10 @@
 package org.localstorm.mcc.ejb;
 
 
-import java.text.MessageFormat;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.transaction.UserTransaction;
+import java.text.MessageFormat;
 
 
 public class ContextLookup<T>

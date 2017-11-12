@@ -1,8 +1,9 @@
 
 package org.localstorm.mcc.ejb.gtd.impl;
 
-import javax.ejb.Local;
 import org.localstorm.mcc.ejb.gtd.AgentManager;
+
+import javax.ejb.Local;
 
 
 @Local

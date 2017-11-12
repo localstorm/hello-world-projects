@@ -1,12 +1,13 @@
 package org.localstorm.mcc.ejb.users;
 
-import java.util.List;
+import org.localstorm.mcc.ejb.Constants;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import org.localstorm.mcc.ejb.Constants;
+import java.util.List;
 
 /**
  *

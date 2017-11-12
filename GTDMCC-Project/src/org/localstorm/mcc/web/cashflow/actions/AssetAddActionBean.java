@@ -1,24 +1,21 @@
 package org.localstorm.mcc.web.cashflow.actions;
 
-import org.localstorm.mcc.web.util.RoundUtil;
-import java.math.BigDecimal;
-import java.math.MathContext;
-import net.sourceforge.stripes.action.After;
-import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.RedirectResolution;
-import net.sourceforge.stripes.action.Resolution;
-import net.sourceforge.stripes.action.UrlBinding;
-
+import net.sourceforge.stripes.action.*;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
+import org.localstorm.mcc.ejb.cashflow.MoneyMathContext;
 import org.localstorm.mcc.ejb.cashflow.entity.Asset;
 import org.localstorm.mcc.ejb.cashflow.entity.Cost;
-import org.localstorm.mcc.ejb.cashflow.MoneyMathContext;
 import org.localstorm.mcc.ejb.cashflow.entity.ValuableObject;
-import org.localstorm.mcc.ejb.users.*;
+import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.cashflow.CashflowSessionKeys;
+import org.localstorm.mcc.web.util.RedirectUrlBuilderUtil;
+import org.localstorm.mcc.web.util.RoundUtil;
 import org.localstorm.mcc.web.util.SessionUtil;
 import org.localstorm.tools.aop.runtime.Logged;
+
+import java.math.BigDecimal;
+import java.math.MathContext;
 
 
 /**
@@ -108,7 +105,7 @@ public class AssetAddActionBean extends AssetsEditActionBean {
             e.printStackTrace();
         }
         
-        return new RedirectResolution( AssetsEditActionBean.class );
+        return RedirectUrlBuilderUtil.redirect(ActionBean.class);
     }
     
 }

@@ -1,16 +1,17 @@
 package org.localstorm.mcc.web.gtd.actions;
 
-import java.util.Iterator;
-import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
 import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
-import org.localstorm.mcc.ejb.gtd.entity.Task;
 import org.localstorm.mcc.ejb.gtd.TaskManager;
+import org.localstorm.mcc.ejb.gtd.entity.Task;
 import org.localstorm.mcc.web.dashboard.actions.DashboardActionBean;
+import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
 import org.localstorm.mcc.web.gtd.GtdClipboard;
+import org.localstorm.mcc.web.util.RedirectUrlBuilderUtil;
 import org.localstorm.tools.aop.runtime.Logged;
+
+import java.util.Iterator;
 
 /**
  * @author Alexey Kuznetsov
@@ -35,7 +36,7 @@ public class FinishedTasksCleanupActionBean extends GtdBaseActionBean {
             }
         }
 
-        return new RedirectResolution( DashboardActionBean.class );
+        return RedirectUrlBuilderUtil.redirect(DashboardActionBean.class);
     }
     
 }

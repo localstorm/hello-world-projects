@@ -1,6 +1,5 @@
 package org.localstorm.mcc.web.cashflow.actions;
 
-import java.util.Calendar;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
@@ -11,6 +10,8 @@ import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
 import org.localstorm.tools.aop.runtime.Logged;
+
+import java.util.Calendar;
 
 /**
  * @secure-by session (no security checks)

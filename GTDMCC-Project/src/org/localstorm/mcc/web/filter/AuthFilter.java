@@ -1,15 +1,16 @@
 package org.localstorm.mcc.web.filter;
 
-import java.io.IOException;
+import org.localstorm.mcc.ejb.users.User;
+import org.localstorm.mcc.web.CommonSessionKeys;
+import org.localstorm.mcc.web.ReturnPageBean;
+import org.localstorm.mcc.web.Views;
+
 import javax.servlet.FilterConfig;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.localstorm.mcc.ejb.users.User;
-import org.localstorm.mcc.web.CommonSessionKeys;
-import org.localstorm.mcc.web.ReturnPageBean;
-import org.localstorm.mcc.web.Views;
+import java.io.IOException;
 
 /**
  *

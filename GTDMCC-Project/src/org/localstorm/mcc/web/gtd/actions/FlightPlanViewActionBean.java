@@ -1,21 +1,22 @@
 package org.localstorm.mcc.web.gtd.actions;
 
-import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
-import org.localstorm.mcc.ejb.gtd.entity.Task;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
 import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.ForwardResolution;
+import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
-import org.localstorm.mcc.ejb.gtd.entity.FlightPlan;
 import org.localstorm.mcc.ejb.gtd.FlightPlanManager;
+import org.localstorm.mcc.ejb.gtd.entity.FlightPlan;
+import org.localstorm.mcc.ejb.gtd.entity.Task;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.ReturnPageBean;
+import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
 import org.localstorm.mcc.web.gtd.Views;
 import org.localstorm.mcc.web.util.FilterUtil;
 import org.localstorm.tools.aop.runtime.Logged;
+
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 /**
  * @author localstorm

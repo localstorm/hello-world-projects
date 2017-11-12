@@ -1,12 +1,13 @@
 package org.localstorm.mcc.ejb.gtd.impl;
 
-import java.util.Collection;
-import java.util.List;
-import javax.ejb.Stateless;
-import javax.persistence.Query;
 import org.localstorm.mcc.ejb.AbstractManager;
 import org.localstorm.mcc.ejb.gtd.entity.Agent;
 import org.localstorm.mcc.ejb.users.User;
+
+import javax.ejb.Stateless;
+import javax.persistence.Query;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * @author localstorm

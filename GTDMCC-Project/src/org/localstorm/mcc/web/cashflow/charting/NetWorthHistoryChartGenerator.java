@@ -1,11 +1,5 @@
 package org.localstorm.mcc.web.cashflow.charting;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
-import java.util.*;
-
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.DateAxis;
@@ -16,19 +10,23 @@ import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.xy.XYDataset;
 import org.localstorm.mcc.ejb.ContextLookup;
-import org.localstorm.mcc.ejb.cashflow.AssetManager;
-import org.localstorm.mcc.ejb.cashflow.entity.Cost;
-import org.localstorm.mcc.ejb.cashflow.OperationManager;
-import org.localstorm.mcc.ejb.cashflow.entity.Target;
-import org.localstorm.mcc.ejb.cashflow.TargetManager;
-import org.localstorm.mcc.ejb.cashflow.entity.HistoricalValue;
 import org.localstorm.mcc.ejb.cashflow.HistoricalValuesManager;
+import org.localstorm.mcc.ejb.cashflow.OperationManager;
+import org.localstorm.mcc.ejb.cashflow.TargetManager;
+import org.localstorm.mcc.ejb.cashflow.entity.Cost;
+import org.localstorm.mcc.ejb.cashflow.entity.HistoricalValue;
+import org.localstorm.mcc.ejb.cashflow.entity.Target;
 import org.localstorm.mcc.ejb.cashflow.entity.ValueType;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.Constants;
 import org.localstorm.mcc.web.cashflow.actions.wrap.TargetWrapper;
 import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
-import org.localstorm.mcc.web.util.SessionUtil;
+
+import java.awt.*;
+import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.List;
 
 /**
  * @author localstorm

@@ -1,20 +1,19 @@
 package org.localstorm.mcc.web.cashflow.actions;
 
-import java.util.Collection;
-
 import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.ForwardResolution;
+import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
-
-import org.localstorm.mcc.ejb.cashflow.entity.Asset;
 import org.localstorm.mcc.ejb.cashflow.AssetManager;
 import org.localstorm.mcc.ejb.cashflow.OperationManager;
+import org.localstorm.mcc.ejb.cashflow.entity.Asset;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.cashflow.CashflowBaseActionBean;
 import org.localstorm.mcc.web.cashflow.Views;
 import org.localstorm.mcc.web.cashflow.actions.wrap.WrapUtil;
 import org.localstorm.tools.aop.runtime.Logged;
+
+import java.util.Collection;
 
 /**
  * @secure-by session (no security check)

@@ -1,15 +1,11 @@
 package org.localstorm.mcc.ejb.users;
 
-import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
 import org.apache.commons.lang.math.RandomUtils;
 import org.localstorm.mcc.ejb.AbstractEntity;
 import org.localstorm.mcc.ejb.Identifiable;
+
+import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * @author localstorm

@@ -1,7 +1,8 @@
 package org.localstorm.mcc.ejb;
 
-import java.io.Serializable;
 import org.apache.commons.beanutils.BeanUtils;
+
+import java.io.Serializable;
 
 /**
  * @author localstorm

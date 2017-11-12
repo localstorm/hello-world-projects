@@ -1,19 +1,20 @@
 package org.localstorm.mcc.ejb.gtd.impl;
 
+import org.localstorm.mcc.ejb.AbstractSingletonManager;
+import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
+import org.localstorm.mcc.ejb.gtd.entity.Context;
 import org.localstorm.mcc.ejb.gtd.entity.FlightPlan;
 import org.localstorm.mcc.ejb.gtd.entity.FlightPlanToTask;
-import java.util.Collection;
-import java.util.List;
+import org.localstorm.mcc.ejb.gtd.entity.Task;
+import org.localstorm.mcc.ejb.memcached.MemcachedFacade;
+import org.localstorm.mcc.ejb.users.User;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityExistsException;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
-import org.localstorm.mcc.ejb.AbstractSingletonManager;
-import org.localstorm.mcc.ejb.except.ObjectNotFoundException;
-import org.localstorm.mcc.ejb.gtd.entity.Context;
-import org.localstorm.mcc.ejb.gtd.entity.Task;
-import org.localstorm.mcc.ejb.memcached.MemcachedFacade;
-import org.localstorm.mcc.ejb.users.User;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * @author Alexey Kuznetsov

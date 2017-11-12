@@ -4,8 +4,8 @@ import org.localstorm.mcc.ejb.cashflow.impl.ticker.connector.Html2XmlUrlConnecto
 import org.localstorm.mcc.ejb.cashflow.impl.ticker.connector.PriceXPath;
 import org.localstorm.mcc.ejb.cashflow.impl.ticker.connector.i18n.RussianPriceParser;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by IntelliJ IDEA.

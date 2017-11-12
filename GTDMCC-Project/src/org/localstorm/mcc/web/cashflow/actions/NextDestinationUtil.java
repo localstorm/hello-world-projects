@@ -2,6 +2,7 @@ package org.localstorm.mcc.web.cashflow.actions;
 
 import net.sourceforge.stripes.action.RedirectResolution;
 import org.localstorm.mcc.web.ReturnPageBean;
+import org.localstorm.mcc.web.util.RedirectUrlBuilderUtil;
 
 /**
  * @author Alexey Kuznetsov
@@ -20,19 +21,19 @@ public class NextDestinationUtil
         switch(rp)
         {
             case ASSET_COST_HISTORY:
-                rr = new RedirectResolution(AssetCostHistoryActionBean.class);
+                rr = RedirectUrlBuilderUtil.redirect(AssetCostHistoryActionBean.class);
                 break;
             case BALANCE_HISTORY:
-                rr = new RedirectResolution(RoiReportActionBean.class);
+                rr = RedirectUrlBuilderUtil.redirect(RoiReportActionBean.class);
                 break;
             case NET_WEALTH_HISTORY:
-                rr = new RedirectResolution(NetWorthHisotryReportActionBean.class);
+                rr = RedirectUrlBuilderUtil.redirect(NetWorthHisotryReportActionBean.class);
                 break;
             case DEBT_HISTORY:
-                rr = new RedirectResolution(DebtHisotryReportActionBean.class);
+                rr = RedirectUrlBuilderUtil.redirect(DebtHisotryReportActionBean.class);
                 break;
             case OPS_HISTORY:
-                rr = new RedirectResolution(OperationsViewActionBean.class);
+                rr = RedirectUrlBuilderUtil.redirect(OperationsViewActionBean.class);
                 break;
             default:
                 rr = NextDestinationUtil.getDefaultRedirection();
@@ -44,6 +45,6 @@ public class NextDestinationUtil
     }
 
     public static RedirectResolution getDefaultRedirection() {
-          return new RedirectResolution(AssetsViewActionBean.class);
+          return RedirectUrlBuilderUtil.redirect(AssetsViewActionBean.class);
     }
 }

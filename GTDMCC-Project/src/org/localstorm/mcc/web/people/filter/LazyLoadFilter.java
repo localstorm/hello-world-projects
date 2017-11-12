@@ -1,21 +1,22 @@
 package org.localstorm.mcc.web.people.filter;
 
-import java.io.IOException;
-import java.util.Collection;
-import java.util.Map;
-import java.util.TreeMap;
+import org.localstorm.mcc.ejb.ContextLookup;
+import org.localstorm.mcc.ejb.people.MailListManager;
+import org.localstorm.mcc.ejb.people.PersonManager;
+import org.localstorm.mcc.ejb.people.entity.MailList;
+import org.localstorm.mcc.ejb.people.entity.PersonGroup;
+import org.localstorm.mcc.ejb.users.User;
+import org.localstorm.mcc.web.people.PeopleSessionKeys;
+import org.localstorm.mcc.web.util.SessionUtil;
+
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.localstorm.mcc.ejb.ContextLookup;
-import org.localstorm.mcc.ejb.people.MailListManager;
-import org.localstorm.mcc.ejb.people.entity.PersonGroup;
-import org.localstorm.mcc.ejb.people.PersonManager;
-import org.localstorm.mcc.ejb.people.entity.MailList;
-import org.localstorm.mcc.ejb.users.User;
-import org.localstorm.mcc.web.people.PeopleSessionKeys;
-import org.localstorm.mcc.web.util.SessionUtil;
+import java.io.IOException;
+import java.util.Collection;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  *

@@ -1,10 +1,11 @@
 package org.localstorm.mcc.web.util;
 
+import org.localstorm.mcc.web.RequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
-import javax.servlet.http.HttpServletRequest;
-import org.localstorm.mcc.web.RequestAttributes;
 
 /**
  *

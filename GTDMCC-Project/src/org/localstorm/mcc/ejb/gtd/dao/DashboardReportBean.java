@@ -1,11 +1,8 @@
 package org.localstorm.mcc.ejb.gtd.dao;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 import org.localstorm.mcc.ejb.AbstractEntity;
+
+import java.util.*;
 
 /**
  *

@@ -2,15 +2,14 @@ package org.localstorm.mcc.web.gtd.actions;
 
 import net.sourceforge.stripes.action.After;
 import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
-
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.gtd.entity.Context;
-import org.localstorm.mcc.ejb.users.*;
+import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.gtd.GtdSessionKeys;
+import org.localstorm.mcc.web.util.RedirectUrlBuilderUtil;
 import org.localstorm.mcc.web.util.SessionUtil;
 import org.localstorm.tools.aop.runtime.Logged;
 
@@ -53,7 +52,7 @@ public class ContextAddActionBean extends ContextsEditActionBean {
 
         SessionUtil.clear(super.getSession(), GtdSessionKeys.CONTEXTS);
 
-        return new RedirectResolution( ContextsEditActionBean.class );
+        return RedirectUrlBuilderUtil.redirect(ContextsEditActionBean.class);
     }
     
 }

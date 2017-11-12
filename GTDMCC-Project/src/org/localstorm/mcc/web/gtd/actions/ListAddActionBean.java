@@ -1,14 +1,11 @@
 package org.localstorm.mcc.web.gtd.actions;
 
-import org.localstorm.mcc.ejb.gtd.entity.Context;
-import net.sourceforge.stripes.action.After;
-import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.RedirectResolution;
-import net.sourceforge.stripes.action.Resolution;
-import net.sourceforge.stripes.action.UrlBinding;
+import net.sourceforge.stripes.action.*;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
+import org.localstorm.mcc.ejb.gtd.entity.Context;
 import org.localstorm.mcc.ejb.gtd.entity.GTDList;
+import org.localstorm.mcc.web.util.RedirectUrlBuilderUtil;
 import org.localstorm.tools.aop.runtime.Logged;
 
 /**
@@ -48,7 +45,7 @@ public class ListAddActionBean extends ContextViewActionBean
         
         getListManager().create(list);
         
-        RedirectResolution fr = new RedirectResolution( ContextViewActionBean.class );
+        RedirectResolution fr = RedirectUrlBuilderUtil.redirect(ContextViewActionBean.class);
         fr.addParameter( ContextViewActionBean.IncomingParameters.CTX_ID, getContextId() );
         return fr;
     }

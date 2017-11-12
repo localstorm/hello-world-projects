@@ -1,18 +1,19 @@
 package org.localstorm.mcc.web.people.actions;
 
-import java.util.Collection;
-import org.localstorm.mcc.web.people.PeopleBaseActionBean;
 import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.ForwardResolution;
+import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
+import org.localstorm.mcc.ejb.people.PersonManager;
 import org.localstorm.mcc.ejb.people.entity.Person;
 import org.localstorm.mcc.ejb.people.entity.PersonGroup;
-import org.localstorm.mcc.ejb.people.PersonManager;
 import org.localstorm.mcc.web.ReturnPageBean;
+import org.localstorm.mcc.web.people.PeopleBaseActionBean;
 import org.localstorm.mcc.web.people.Views;
 import org.localstorm.tools.aop.runtime.Logged;
+
+import java.util.Collection;
 
 /**
  * @secure-by group id

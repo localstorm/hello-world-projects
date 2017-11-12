@@ -1,5 +1,16 @@
 package org.localstorm.mcc.web;
 
+import org.localstorm.mcc.ejb.ContextLookup;
+import org.localstorm.mcc.ejb.users.User;
+import org.localstorm.mcc.ejb.users.UserManager;
+import org.localstorm.mcc.web.util.RedirectUrlBuilderUtil;
+import org.localstorm.tools.aop.runtime.Logged;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -7,14 +18,6 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import org.localstorm.mcc.ejb.ContextLookup;
-import org.localstorm.mcc.ejb.users.*;
-import org.localstorm.tools.aop.runtime.Logged;
 
 /**
  *
@@ -62,7 +65,7 @@ public class AuthServlet extends HttpServlet
 
     private String buildUrl(ReturnPageBean rpb) throws UnsupportedEncodingException
     {
-        StringBuilder            url = new StringBuilder(rpb.getPageToken());
+        StringBuilder            url = new StringBuilder(RedirectUrlBuilderUtil.redirectUrlNoAppRoot(rpb.getPageToken()));
         Map<String, String[]> params = rpb.getParams();
 
         if (!params.isEmpty()) {

@@ -1,15 +1,16 @@
 package org.localstorm.mcc.web.people.actions;
 
 import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.RedirectResolution;
+import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
+import org.localstorm.mcc.ejb.people.PersonManager;
 import org.localstorm.mcc.ejb.people.entity.Person;
 import org.localstorm.mcc.ejb.people.entity.PersonGroup;
-import org.localstorm.mcc.ejb.people.PersonManager;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
 import org.localstorm.mcc.web.people.PeopleClipboard;
+import org.localstorm.mcc.web.util.RedirectUrlBuilderUtil;
 import org.localstorm.tools.aop.runtime.Logged;
 
 /**
@@ -43,7 +44,7 @@ public class PersonRemoveActionBean extends PeopleBaseActionBean {
 
         pm.remove(p);
 
-        RedirectResolution rr = new RedirectResolution(PersonGroupViewActionBean.class);
+        RedirectResolution rr = RedirectUrlBuilderUtil.redirect(PersonGroupViewActionBean.class);
         {
             rr.addParameter(PersonGroupViewActionBean.IncomingParameters.GROUP_ID,
                             group.getId());

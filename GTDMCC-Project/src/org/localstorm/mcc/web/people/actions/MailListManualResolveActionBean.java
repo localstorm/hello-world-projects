@@ -1,6 +1,5 @@
 package org.localstorm.mcc.web.people.actions;
 
-import java.util.Collection;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
@@ -12,7 +11,10 @@ import org.localstorm.mcc.ejb.people.entity.Person;
 import org.localstorm.mcc.ejb.people.entity.PregeneratedMailList;
 import org.localstorm.mcc.web.WebUtil;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
+import org.localstorm.mcc.web.util.RedirectUrlBuilderUtil;
 import org.localstorm.tools.aop.runtime.Logged;
+
+import java.util.Collection;
 
 
 /**
@@ -86,7 +88,7 @@ public class MailListManualResolveActionBean extends PeopleBaseActionBean
         PregeneratedMailList pml = mlm.generateMailList(resolvedPersons, attributes);
         mlm.repair(ml, pml, super.getUser());
 
-        RedirectResolution rr = new RedirectResolution(MailListViewActionBean.class);
+        RedirectResolution rr = RedirectUrlBuilderUtil.redirect(MailListViewActionBean.class);
         {
             rr.addParameter(MailListViewActionBean.IncomingParameters.MAIL_LIST_ID, this.getMailListId());
         }

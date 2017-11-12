@@ -1,15 +1,15 @@
 package org.localstorm.mcc.web.gtd.actions;
 
-import org.localstorm.mcc.ejb.gtd.entity.Context;
 import net.sourceforge.stripes.action.After;
 import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
+import org.localstorm.mcc.ejb.gtd.entity.Context;
 import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
 import org.localstorm.mcc.web.gtd.GtdSessionKeys;
+import org.localstorm.mcc.web.util.RedirectUrlBuilderUtil;
 import org.localstorm.mcc.web.util.SessionUtil;
 import org.localstorm.tools.aop.runtime.Logged;
 
@@ -60,7 +60,7 @@ public class RefObjAddActionBean extends RefObjEditActionBean
         super.getRefObjectManager().create(ro);
         
         SessionUtil.clear(this.getSession(), GtdSessionKeys.REFERENCE_OBJECTS);
-        return new RedirectResolution( RefObjEditActionBean.class );
+        return RedirectUrlBuilderUtil.redirect( RefObjEditActionBean.class );
     }
     
 }

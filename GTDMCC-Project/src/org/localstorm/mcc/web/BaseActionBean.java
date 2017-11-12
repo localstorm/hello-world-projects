@@ -1,14 +1,15 @@
 package org.localstorm.mcc.web;
 
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import net.sourceforge.stripes.action.ActionBean;
 import net.sourceforge.stripes.action.ActionBeanContext;
 import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.ejb.users.UserManager;
 import org.localstorm.mcc.web.util.SessionUtil;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  *

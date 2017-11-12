@@ -1,15 +1,15 @@
 package org.localstorm.mcc.web.gtd.actions;
 
-import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
-import javax.servlet.http.HttpServletResponse;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
-
-import org.localstorm.mcc.ejb.gtd.entity.FileAttachment;
 import org.localstorm.mcc.ejb.gtd.FileManager;
+import org.localstorm.mcc.ejb.gtd.entity.FileAttachment;
+import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
 import org.localstorm.tools.aop.runtime.Logged;
+
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author Alexey Kuznetsov

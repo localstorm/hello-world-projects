@@ -1,14 +1,14 @@
 package org.localstorm.mcc.web.gtd.actions;
 
-import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
 import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.gtd.RefObjectManager;
 import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
+import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
 import org.localstorm.mcc.web.gtd.GtdSessionKeys;
+import org.localstorm.mcc.web.util.RedirectUrlBuilderUtil;
 import org.localstorm.mcc.web.util.SessionUtil;
 import org.localstorm.tools.aop.runtime.Logged;
 
@@ -40,6 +40,6 @@ public class RefObjToggleStateActionBean extends GtdBaseActionBean
         rom.update(ro);
         
         SessionUtil.clear(getSession(), GtdSessionKeys.REFERENCE_OBJECTS);
-        return new RedirectResolution(RefObjEditActionBean.class);
+        return RedirectUrlBuilderUtil.redirect(RefObjEditActionBean.class);
     }
 }

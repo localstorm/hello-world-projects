@@ -1,12 +1,8 @@
 package org.localstorm.mcc.web.people;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.TreeMap;
 import org.localstorm.mcc.ejb.people.entity.Person;
+
+import java.util.*;
 
 /**
  * @author Alexey Kuznetsov

@@ -1,16 +1,16 @@
 package org.localstorm.mcc.web.people.actions;
 
-import java.util.Collection;
 import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.ForwardResolution;
+import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
-
 import org.localstorm.mcc.ejb.people.MailListManager;
 import org.localstorm.mcc.ejb.people.entity.MailList;
-import org.localstorm.mcc.web.people.Views;
 import org.localstorm.mcc.web.people.PeopleBaseActionBean;
+import org.localstorm.mcc.web.people.Views;
 import org.localstorm.tools.aop.runtime.Logged;
+
+import java.util.Collection;
 
 /**
  * @secure-by nil

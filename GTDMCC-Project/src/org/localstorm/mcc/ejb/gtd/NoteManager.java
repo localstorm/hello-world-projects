@@ -1,8 +1,9 @@
 package org.localstorm.mcc.ejb.gtd;
 
 import org.localstorm.mcc.ejb.gtd.entity.Note;
-import java.util.Collection;
 import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
+
+import java.util.Collection;
 
 /**
  *

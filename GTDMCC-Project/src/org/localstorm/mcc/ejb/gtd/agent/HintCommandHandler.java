@@ -1,10 +1,11 @@
 package org.localstorm.mcc.ejb.gtd.agent;
 
-import java.util.Collection;
 import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.gtd.HintManager;
 import org.localstorm.mcc.ejb.gtd.dao.FiredHintsReportBean;
 import org.localstorm.mcc.ejb.users.UserManager;
+
+import java.util.Collection;
 
 /**
  *

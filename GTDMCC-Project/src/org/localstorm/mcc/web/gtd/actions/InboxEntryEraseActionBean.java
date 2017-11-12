@@ -1,13 +1,13 @@
 package org.localstorm.mcc.web.gtd.actions;
 
-import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
 import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.Validate;
 import org.localstorm.mcc.ejb.gtd.InboxManager;
 import org.localstorm.mcc.ejb.gtd.entity.InboxEntry;
+import org.localstorm.mcc.web.gtd.GtdBaseActionBean;
+import org.localstorm.mcc.web.util.RedirectUrlBuilderUtil;
 import org.localstorm.tools.aop.runtime.Logged;
 
 
@@ -41,6 +41,6 @@ public class InboxEntryEraseActionBean extends GtdBaseActionBean
             im.removeNote(ie);
         }
 
-        return new RedirectResolution(InboxViewActionBean.class);
+        return RedirectUrlBuilderUtil.redirect(InboxViewActionBean.class);
     }
 }

@@ -1,14 +1,14 @@
 package org.localstorm.mcc.web.people;
 
-import javax.servlet.http.HttpServletRequest;
 import net.sourceforge.stripes.action.ActionBeanContext;
 import org.localstorm.mcc.ejb.ContextLookup;
-import org.localstorm.mcc.ejb.people.dao.DashboardReportBean;
 import org.localstorm.mcc.ejb.people.PeopleReporter;
+import org.localstorm.mcc.ejb.people.dao.DashboardReportBean;
 import org.localstorm.mcc.ejb.users.User;
+import org.localstorm.mcc.web.RequestAttributes;
 import org.localstorm.mcc.web.util.SessionUtil;
 
-import org.localstorm.mcc.web.RequestAttributes;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author localstorm

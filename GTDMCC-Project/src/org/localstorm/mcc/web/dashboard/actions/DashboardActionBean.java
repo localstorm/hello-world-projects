@@ -1,14 +1,9 @@
 package org.localstorm.mcc.web.dashboard.actions;
 
-import net.sourceforge.stripes.action.ActionBeanContext;
-import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.Resolution;
-import net.sourceforge.stripes.action.ForwardResolution;
-import net.sourceforge.stripes.action.UrlBinding;
+import net.sourceforge.stripes.action.*;
 import org.localstorm.mcc.web.BaseActionBean;
 import org.localstorm.mcc.web.ReturnPageBean;
 import org.localstorm.mcc.web.Views;
-
 import org.localstorm.mcc.web.gtd.GtdDashboardAgent;
 import org.localstorm.mcc.web.gtd.actions.Pages;
 import org.localstorm.mcc.web.people.PeopleDashboardAgent;

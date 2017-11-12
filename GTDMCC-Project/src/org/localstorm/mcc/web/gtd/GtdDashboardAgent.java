@@ -1,19 +1,19 @@
 package org.localstorm.mcc.web.gtd;
 
-import java.util.List;
-import javax.servlet.http.HttpServletRequest;
 import net.sourceforge.stripes.action.ActionBeanContext;
 import org.localstorm.mcc.ejb.ContextLookup;
-import org.localstorm.mcc.ejb.gtd.dao.DashboardReportBean;
 import org.localstorm.mcc.ejb.gtd.GtdReporter;
 import org.localstorm.mcc.ejb.gtd.HintManager;
 import org.localstorm.mcc.ejb.gtd.InboxManager;
+import org.localstorm.mcc.ejb.gtd.dao.DashboardReportBean;
 import org.localstorm.mcc.ejb.gtd.dao.FiredHintsReportBean;
 import org.localstorm.mcc.ejb.gtd.entity.InboxEntry;
 import org.localstorm.mcc.ejb.users.User;
+import org.localstorm.mcc.web.RequestAttributes;
 import org.localstorm.mcc.web.util.SessionUtil;
 
-import org.localstorm.mcc.web.RequestAttributes;
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * @author localstorm

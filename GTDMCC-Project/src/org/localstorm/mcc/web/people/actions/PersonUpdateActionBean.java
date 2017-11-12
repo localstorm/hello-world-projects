@@ -1,22 +1,19 @@
 package org.localstorm.mcc.web.people.actions;
 
 
-import java.text.SimpleDateFormat;
-import net.sourceforge.stripes.action.After;
-import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.RedirectResolution;
-import net.sourceforge.stripes.action.Resolution;
-import net.sourceforge.stripes.action.UrlBinding;
+import net.sourceforge.stripes.action.*;
 import net.sourceforge.stripes.controller.LifecycleStage;
 import net.sourceforge.stripes.validation.Validate;
-
+import org.localstorm.mcc.ejb.people.PersonManager;
 import org.localstorm.mcc.ejb.people.entity.Person;
 import org.localstorm.mcc.ejb.people.entity.PersonGroup;
-import org.localstorm.mcc.ejb.people.PersonManager;
 import org.localstorm.mcc.web.Constants;
 import org.localstorm.mcc.web.people.PeopleClipboard;
 import org.localstorm.mcc.web.util.DateUtil;
+import org.localstorm.mcc.web.util.RedirectUrlBuilderUtil;
 import org.localstorm.tools.aop.runtime.Logged;
+
+import java.text.SimpleDateFormat;
 
 /**
  * @secure-by person-id, group-id
@@ -117,7 +114,7 @@ public class PersonUpdateActionBean extends PersonViewActionBean
             pm.movePersonToGroup(p, pm.findGroup(this.getGroupId()));
         }
 
-        RedirectResolution rr = new RedirectResolution(PersonViewActionBean.class);
+        RedirectResolution rr = RedirectUrlBuilderUtil.redirect(PersonViewActionBean.class);
         {
             rr.addParameter(PersonViewActionBean.IncomingParameters.PERSON_ID, this.getPersonId());
         }

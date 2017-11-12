@@ -1,8 +1,9 @@
 
 package org.localstorm.mcc.ejb.people.impl;
 
-import javax.ejb.Local;
 import org.localstorm.mcc.ejb.people.PeopleSecuritySupport;
+
+import javax.ejb.Local;
 
 
 @Local

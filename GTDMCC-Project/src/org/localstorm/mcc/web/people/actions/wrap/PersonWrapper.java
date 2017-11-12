@@ -1,9 +1,9 @@
 package org.localstorm.mcc.web.people.actions.wrap;
 
-import java.util.Date;
-
 import org.localstorm.mcc.ejb.people.entity.Person;
 import org.localstorm.mcc.ejb.people.entity.PersonGroup;
+
+import java.util.Date;
 
 /**
  *

@@ -1,25 +1,16 @@
 package org.localstorm.mcc.web.gtd.filter.security;
 
-import java.util.Map;
-import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.localstorm.mcc.ejb.ContextLookup;
-import org.localstorm.mcc.ejb.gtd.entity.FileAttachment;
-import org.localstorm.mcc.ejb.gtd.FileManager;
-import org.localstorm.mcc.ejb.gtd.InboxManager;
-import org.localstorm.mcc.ejb.gtd.entity.GTDList;
-import org.localstorm.mcc.ejb.gtd.ListManager;
-import org.localstorm.mcc.ejb.gtd.entity.Note;
-import org.localstorm.mcc.ejb.gtd.NoteManager;
-import org.localstorm.mcc.ejb.gtd.RefObjectManager;
-import org.localstorm.mcc.ejb.gtd.entity.ReferencedObject;
-import org.localstorm.mcc.ejb.gtd.entity.Task;
-import org.localstorm.mcc.ejb.gtd.TaskManager;
-import org.localstorm.mcc.ejb.gtd.entity.InboxEntry;
+import org.localstorm.mcc.ejb.gtd.*;
+import org.localstorm.mcc.ejb.gtd.entity.*;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.web.SecurityRuntimeException;
 import org.localstorm.mcc.web.gtd.GtdSessionKeys;
 import org.localstorm.mcc.web.util.SessionUtil;
+
+import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 /**
  *

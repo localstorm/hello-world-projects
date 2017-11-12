@@ -5,13 +5,14 @@
 
 package org.localstorm.mcc.web.gtd.actions.wrap;
 
+import org.localstorm.mcc.ejb.gtd.entity.FileAttachment;
+import org.localstorm.mcc.ejb.gtd.entity.Note;
+import org.localstorm.mcc.web.gtd.backend.RelevantObject;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import org.localstorm.mcc.ejb.gtd.entity.FileAttachment;
-import org.localstorm.mcc.ejb.gtd.entity.Note;
-import org.localstorm.mcc.web.gtd.backend.RelevantObject;
 
 /**
  *

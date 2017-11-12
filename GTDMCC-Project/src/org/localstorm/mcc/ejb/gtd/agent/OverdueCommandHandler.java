@@ -1,11 +1,12 @@
 package org.localstorm.mcc.ejb.gtd.agent;
 
-import java.util.Collection;
 import org.localstorm.mcc.ejb.ContextLookup;
 import org.localstorm.mcc.ejb.gtd.TaskManager;
 import org.localstorm.mcc.ejb.gtd.entity.Task;
 import org.localstorm.mcc.ejb.users.User;
 import org.localstorm.mcc.ejb.users.UserManager;
+
+import java.util.Collection;
 
 /**
  *
