@@ -10,12 +10,6 @@ import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Date;
 
-
-/**
- *
- * @author localstorm
- */
-
 public interface OperationManager
 {
     public static final String BEAN_NAME="OperationManagerBean";

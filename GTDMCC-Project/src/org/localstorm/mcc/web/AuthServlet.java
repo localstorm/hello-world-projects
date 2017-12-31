@@ -40,7 +40,7 @@ public class AuthServlet extends HttpServlet
         String pwd   = req.getParameter(CGIParams.AUTH_PASSWORD);
 
         login = (login!=null) ? login : "";
-        pwd   =  (pwd!=null)  ? pwd   : "";
+        pwd   = (pwd!=null)   ? pwd   : "";
                 
         UserManager um = ContextLookup.lookup(UserManager.class, 
                                               UserManager.BEAN_NAME);

@@ -4,7 +4,6 @@ import java.math.MathContext;
 import java.math.RoundingMode;
 
 /**
- *
  * @author localstorm
  */
 public class MoneyMathContext {

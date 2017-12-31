@@ -2,13 +2,7 @@ package org.localstorm.mcc.ejb.cashflow;
 
 import java.math.BigDecimal;
 
-/**
- * Created by IntelliJ IDEA.
- * User: LocalStorm
- * Date: Feb 26, 2011
- * Time: 1:12:04 PM
- * To change this template use File | Settings | File Templates.
- */
+
 public class Price {
     private BigDecimal buy;
     private BigDecimal sell;

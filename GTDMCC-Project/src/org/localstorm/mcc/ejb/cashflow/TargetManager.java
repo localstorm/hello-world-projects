@@ -8,12 +8,6 @@ import org.localstorm.mcc.ejb.users.User;
 import java.util.Collection;
 
 
-
-/**
- *
- * @author localstorm
- */
-
 public interface TargetManager
 {
     public static final String BEAN_NAME = "TargetManagerBean";
