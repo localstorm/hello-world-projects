@@ -105,7 +105,7 @@ public class AssetAddActionBean extends AssetsEditActionBean {
             e.printStackTrace();
         }
         
-        return RedirectUrlBuilderUtil.redirect(ActionBean.class);
+        return RedirectUrlBuilderUtil.redirect(AssetsEditActionBean.class);
     }
     
 }
